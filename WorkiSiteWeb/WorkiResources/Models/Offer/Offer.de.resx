@@ -117,39 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AvailabilityDate" xml:space="preserve">
-    <value>Date de disponibilité</value>
-  </data>
-  <data name="AvailabilityPeriod" xml:space="preserve">
-    <value>Durée de disponibilité</value>
-  </data>
-  <data name="AvailabilityPeriodType" xml:space="preserve">
-    <value>Unité de temps</value>
-  </data>
-  <data name="AvailableAt" xml:space="preserve">
-    <value>Disponible le {0}</value>
-  </data>
-  <data name="AvailableAtFor" xml:space="preserve">
-    <value>Disponible le {0} pour {1} {2}</value>
-  </data>
-  <data name="AvailableFor" xml:space="preserve">
-    <value>Disponible pour {1} {2}</value>
-  </data>
-  <data name="AvailableFrom" xml:space="preserve">
-    <value>Disponible à partir du {0}</value>
-  </data>
-  <data name="AvailableFromFor" xml:space="preserve">
-    <value>Disponible à partir du {0} pour {1} {2}</value>
-  </data>
-  <data name="Cash" xml:space="preserve">
-    <value>Espèces</value>
-  </data>
-  <data name="Check" xml:space="preserve">
-    <value>Chèque</value>
-  </data>
-  <data name="Currency" xml:space="preserve">
-    <value>Devise</value>
-  </data>
   <data name="Day" xml:space="preserve">
     <value>Tag</value>
   </data>
@@ -162,53 +129,11 @@
   <data name="Hour" xml:space="preserve">
     <value>Zeit</value>
   </data>
-  <data name="IsBookable" xml:space="preserve">
-    <value>Réservation en ligne</value>
-  </data>
-  <data name="IsOnline" xml:space="preserve">
-    <value>Offre en ligne</value>
-  </data>
-  <data name="IsQuotable" xml:space="preserve">
-    <value>Demande de devis en ligne</value>
-  </data>
-  <data name="Month" xml:space="preserve">
-    <value>Mois</value>
-  </data>
   <data name="Name" xml:space="preserve">
     <value>Name des Angebots</value>
   </data>
-  <data name="PaymentType" xml:space="preserve">
-    <value>Moyen de paiement proposé</value>
-  </data>
   <data name="Paypal" xml:space="preserve">
-    <value>PayPal</value>
-  </data>
-  <data name="Period" xml:space="preserve">
-    <value>Unité de temps</value>
-  </data>
-  <data name="PluralDay" xml:space="preserve">
-    <value>jour(s)</value>
-  </data>
-  <data name="PluralHalfDay" xml:space="preserve">
-    <value>demi-journée(s)</value>
-  </data>
-  <data name="PluralHour" xml:space="preserve">
-    <value>heure(s)</value>
-  </data>
-  <data name="PluralMonth" xml:space="preserve">
-    <value>mois</value>
-  </data>
-  <data name="PluralWeek" xml:space="preserve">
-    <value>semaine(s)</value>
-  </data>
-  <data name="PluralYear" xml:space="preserve">
-    <value>an(s)</value>
-  </data>
-  <data name="Price" xml:space="preserve">
-    <value>Prix</value>
-  </data>
-  <data name="PriceFrom" xml:space="preserve">
-    <value>A partir de {0}</value>
+    <value>Paypal</value>
   </data>
   <data name="PricePerPeriod" xml:space="preserve">
     <value>{0} / {1}</value>
@@ -222,28 +147,112 @@
   <data name="SingleHalfDay" xml:space="preserve">
     <value>Halbtag</value>
   </data>
-  <data name="SingleHour" xml:space="preserve">
-    <value>heure</value>
-  </data>
-  <data name="SingleMonth" xml:space="preserve">
-    <value>mois</value>
-  </data>
-  <data name="SingleWeek" xml:space="preserve">
-    <value>semaine</value>
-  </data>
   <data name="SingleYear" xml:space="preserve">
     <value>an</value>
-  </data>
-  <data name="Transfert" xml:space="preserve">
-    <value>Virement</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Angebotstyp</value>
   </data>
+  <data name="AvailabilityDate" xml:space="preserve">
+    <value>Verfügbarkeitsdatum</value>
+  </data>
+  <data name="AvailabilityPeriod" xml:space="preserve">
+    <value>Verfügbarkeitszeit</value>
+  </data>
+  <data name="AvailabilityPeriodType" xml:space="preserve">
+    <value>Zeiteinheit</value>
+  </data>
+  <data name="AvailableAt" xml:space="preserve">
+    <value>Verfügbar am {0}</value>
+  </data>
+  <data name="AvailableAtFor" xml:space="preserve">
+    <value>Verfügbar am {0} für {1} {2}</value>
+  </data>
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Verfügbar für {0} {1}</value>
+  </data>
+  <data name="AvailableFrom" xml:space="preserve">
+    <value>Verfübar ab dem {0}</value>
+  </data>
+  <data name="AvailableFromFor" xml:space="preserve">
+    <value>Verfügbar ab dem {0} für {1} {2}</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Online-Reservierung</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Devise</value>
+  </data>
+  <data name="IsBookable" xml:space="preserve">
+    <value>Online-Reservierung</value>
+  </data>
+  <data name="IsOnline" xml:space="preserve">
+    <value>Onlineangebot</value>
+  </data>
+  <data name="IsQuotable" xml:space="preserve">
+    <value>Online Kostenanfrage</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>angeboten Zahlungsart</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Zeiteinheit</value>
+  </data>
+  <data name="PluralDay" xml:space="preserve">
+    <value>Tag(e)</value>
+  </data>
+  <data name="PluralHalfDay" xml:space="preserve">
+    <value>Halbtag(e)</value>
+  </data>
+  <data name="PluralHour" xml:space="preserve">
+    <value>Stunde(n)</value>
+  </data>
+  <data name="PluralMonth" xml:space="preserve">
+    <value>Monat(e)</value>
+  </data>
+  <data name="PluralWeek" xml:space="preserve">
+    <value>Woche(n)</value>
+  </data>
+  <data name="PluralYear" xml:space="preserve">
+    <value>Jahr(e)</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preis einschließ Steuern</value>
+  </data>
+  <data name="PriceFrom" xml:space="preserve">
+    <value>Ab {0}</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Nachfragemanagement</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Kostenanfrage</value>
+  </data>
+  <data name="SingleHour" xml:space="preserve">
+    <value>Stunde</value>
+  </data>
+  <data name="SingleMonth" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="SingleWeek" xml:space="preserve">
+    <value>Woche</value>
+  </data>
+  <data name="Transfert" xml:space="preserve">
+    <value>Überweisung</value>
+  </data>
   <data name="Week" xml:space="preserve">
-    <value>Semaine</value>
+    <value>Woche</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Année</value>
+    <value>Jahr</value>
   </data>
 </root>

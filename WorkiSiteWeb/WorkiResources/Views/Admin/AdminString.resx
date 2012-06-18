@@ -169,7 +169,7 @@
     <value>Détail d'un article</value>
   </data>
   <data name="DetailWelcomePeople" xml:space="preserve">
-    <value>Détail d'un personne de la page d'accueil</value>
+    <value>Détail d'une personne de la page d'accueil</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editer</value>

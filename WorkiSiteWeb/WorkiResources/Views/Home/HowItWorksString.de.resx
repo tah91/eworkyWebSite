@@ -165,17 +165,11 @@
   <data name="HandleClients" xml:space="preserve">
     <value>Folgen Sie Ihre Kunden, drucken Sie Ihre Rechnungen und verwalten Sie die Aktivität Ihrer Arbeitsräume</value>
   </data>
-  <data name="HandleClientsTitle" xml:space="preserve">
-    <value>Gérer vos clients</value>
-  </data>
-  <data name="HandleSpace" xml:space="preserve">
-    <value>Gérez gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres, {0}.</value>
-  </data>
   <data name="HandleSpaceTitle" xml:space="preserve">
     <value>Managen Sie Ihren Raum</value>
   </data>
   <data name="Here" xml:space="preserve">
-    <value>ici</value>
+    <value>hier</value>
   </data>
   <data name="HowDoIt" xml:space="preserve">
     <value>Wie funktionniert es ?</value>
@@ -214,10 +208,7 @@
     <value>Online zahlen</value>
   </data>
   <data name="Pricing" xml:space="preserve">
-    <value>Espace gérant</value>
-  </data>
-  <data name="PricingHeaderTitle" xml:space="preserve">
-    <value>Découvrez notre espace gérant.</value>
+    <value>Office Manager</value>
   </data>
   <data name="PricingTitle" xml:space="preserve">
     <value>Sie möchten Ihren Raum einfach, sicher und kostenlos managen ?</value>
@@ -226,7 +217,7 @@
     <value>Reservierungsmanagement</value>
   </data>
   <data name="PrincingFeature_1_Text" xml:space="preserve">
-    <value>hre Kunden können eine Kostenanfrage oder einen Reservierungsantrag direkt auf Ihrer eWorky-Seite bekommen. Sie bekommen sofort eine Nachricht per E-Mail und können dann einfach akzeptieren oder ablehnen. </value>
+    <value>Ihre Kunden können eine Kostenanfrage oder einen Reservierungsantrag direkt auf Ihrer eWorky-Seite bekommen. Sie bekommen sofort eine Nachricht per E-Mail und können dann einfach akzeptieren oder ablehnen. </value>
   </data>
   <data name="PrincingFeature_2" xml:space="preserve">
     <value>Raumplanung-Management</value>
@@ -262,14 +253,8 @@
     <value>Erstellen Sie kostenlos eine {0} für Ihren Raum und geben Sie an, dass Sie der Eigentümer sind</value>
     <comment>JM Modif l.22</comment>
   </data>
-  <data name="ReferenceLink" xml:space="preserve">
-    <value>une fiche pour votre lieu</value>
-  </data>
   <data name="RefererenceTitle" xml:space="preserve">
     <value>Nachweisen</value>
-  </data>
-  <data name="RegisterLink" xml:space="preserve">
-    <value>vous inscrire gratuitement</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
     <value>Um einen Raum auf eWorky zu managen müssen Sie sich kostenlos {0}, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
@@ -313,5 +298,20 @@
   <data name="WorkTitle" xml:space="preserve">
     <value>An die Arbeit</value>
     <comment>Jm Modif L13</comment>
+  </data>
+  <data name="HandleClientsTitle" xml:space="preserve">
+    <value>Kunden managen</value>
+  </data>
+  <data name="HandleSpace" xml:space="preserve">
+    <value>Managen Sie kostenlos Ihre Reservierungen, Ihre Plannungen, zusätzliche Services, Preise und Abonnements, {0}.</value>
+  </data>
+  <data name="ReferenceLink" xml:space="preserve">
+    <value>Eine Seite für Ihren Ort</value>
+  </data>
+  <data name="RegisterLink" xml:space="preserve">
+    <value>Registrieren Sie sich kostenlos</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
 </root>

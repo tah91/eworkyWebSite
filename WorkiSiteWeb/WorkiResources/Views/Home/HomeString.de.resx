@@ -117,214 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BestWorkspace" xml:space="preserve">
-    <value>Find a workplace wherever you want : offices to rent, business centers, coworking spaces, WiFi cafes, meeting or seminar rooms</value>
-  </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Kontakt</value>
   </data>
   <data name="ContactUs" xml:space="preserve">
-    <value>Contact us</value>
+    <value>Kontaktieren Sie uns</value>
   </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>z. B. : Regus Hamburg, Club Office Berlin, The Hub Vienna...</value>
   </data>
-  <data name="Imprint" xml:space="preserve">
-    <value>Legal disclaimer</value>
-  </data>
   <data name="ImprintDescription" xml:space="preserve">
-    <value>This website is edited by:&lt;br /&gt;
+    <value>Diese Website wird angeboten von&lt;br /&gt;
         Omnicentre SAS&lt;br /&gt;
         Société par actions simplifiée au capital de 20 740 € - RCS NANTERRE 529 309 668&lt;br /&gt;
         Siège social : 57 rue de Lille, 75007 PARIS, FRANCE&lt;br /&gt;
         &lt;br /&gt;
-        Contact :&lt;br /&gt;
+        Kontakt :&lt;br /&gt;
         {0}&lt;br /&gt;
         &lt;br /&gt;
         Hosted by :&lt;br /&gt;
         Microsoft Windows Azure</value>
   </data>
-  <data name="MailWellSent" xml:space="preserve">
-    <value>Your message was successfully sent, our team will answer to you promptly.</value>
-  </data>
-  <data name="MoreCriterias" xml:space="preserve">
-    <value>More criteria</value>
-  </data>
-  <data name="News" xml:space="preserve">
-    <value>Press</value>
-  </data>
-  <data name="SpeechForJournalists" xml:space="preserve">
-    <value>You're a journalist and you would like to write an article or make a video coverage on eWorky? You need some information about the development of teleworking? You would like to interview some Human Resources Directors on these subjects? Contact us at {0}.</value>
-  </data>
   <data name="UsingOfEWorky" xml:space="preserve">
-    <value>How does eWorky work?</value>
+    <value>Wie funktionniert eWorky ?</value>
     <comment>?</comment>
-  </data>
-  <data name="What" xml:space="preserve">
-    <value>What are you looking for?</value>
-  </data>
-  <data name="Where" xml:space="preserve">
-    <value>Where are you looking?</value>
-  </data>
-  <data name="WhoAreWe" xml:space="preserve">
-    <value>About us</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Find a workplace wherever you want : offices to rent, business center, coworking spaces, WiFi cafe, meeting or seminar room.</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
-  </data>
-  <data name="eWorky" xml:space="preserve">
-    <value>2012 eWorky</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
-  </data>
-  <data name="MailWellSent2" xml:space="preserve">
-    <value>Your message was successfully sent!</value>
-  </data>
-  <data name="Rent" xml:space="preserve">
-    <value>Rental</value>
   </data>
   <data name="RentSpeech" xml:space="preserve">
-    <value>- professionnal offices&lt;br /&gt;- </value>
+    <value>- professionelle Büros&lt;br /&gt;- Geschäft&lt;br /&gt;- Geschäftslokal, usw.</value>
     <comment>A compléter</comment>
   </data>
-  <data name="Reserve" xml:space="preserve">
-    <value>Booking</value>
-  </data>
-  <data name="ReserveSpeech" xml:space="preserve">
-    <value>- Business centers, business lounges&lt;br /&gt;- Coworking space&lt;br /&gt;- Telecentres, usw.</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="Searching" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="SearchSpeech" xml:space="preserve">
-    <value>- Internet cafe, hotspot&lt;br /&gt;- Public digital space&lt;br /&gt;- Bibliothek, Museum, usw.</value>
-  </data>
-  <data name="SoonLotofFeatures" xml:space="preserve">
-    <value>And soon many other featrues.</value>
-  </data>
-  <data name="Teamworky" xml:space="preserve">
-    <value>eWorky team has many projects to get the work easier ! So do not hesitate to follow our news on Facebook, Twitter, Google+, etc.</value>
-  </data>
-  <data name="FindTheBesPlace" xml:space="preserve">
-    <value>Find the best workplace to work amongst {0:### ### ###} places</value>
-  </data>
-  <data name="MaxRate" xml:space="preserve">
-    <value>Maximal budget (€)</value>
-  </data>
-  <data name="MinSurface" xml:space="preserve">
-    <value>Minimal surface (Sq. ft.)</value>
-  </data>
-  <data name="BlogTitle" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="AddPlaceTitle" xml:space="preserve">
-    <value>Schlagen Sie einen neuen Arbeitsraum vor</value>
-  </data>
   <data name="CostSpace" xml:space="preserve">
-    <value>Kostenpflichtiger Arbeitsraum</value>
+    <value>Kostenpflichtiger Arbeitsplatz</value>
     <comment>?</comment>
   </data>
-  <data name="FreeSpace" xml:space="preserve">
-    <value>Kostenloser Arbeitsraum</value>
-  </data>
-  <data name="RentalAd" xml:space="preserve">
-    <value>A rental ads</value>
-  </data>
-  <data name="ChooseForm" xml:space="preserve">
-    <value>Wählen Sie den Raumtyp, den Sie hinzufügen möchten</value>
-  </data>
-  <data name="SharedOffice" xml:space="preserve">
-    <value>Geteilter Raum</value>
-  </data>
-  <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>Sie haben unbenützte Arbeitsplätze in Ihrem Unternehmen ? Teilen Sie sie auf eWorky und profitieren Sie von einem zusätzlichen Einkommen !</value>
-  </data>
-  <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>More than &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
-  </data>
   <data name="TalkAboutUs" xml:space="preserve">
-    <value>As seen on</value>
+    <value>eWorky ist zu sehen auf</value>
     <comment>Jm Modif l.17</comment>
-  </data>
-  <data name="FindTheBesPlace1" xml:space="preserve">
-    <value>Find the best place to work</value>
-  </data>
-  <data name="SliderItemDesc" xml:space="preserve">
-    <value>{0} in {1}</value>
-  </data>
-  <data name="Team" xml:space="preserve">
-    <value>The team</value>
-  </data>
-  <data name="IntroWhoAreWe" xml:space="preserve">
-    <value>eWorky is the portal to workspaces</value>
-  </data>
-  <data name="WeThinkThat" xml:space="preserve">
-    <value>We believe that: </value>
-  </data>
-  <data name="WeThinkThat_Text1" xml:space="preserve">
-    <value>Tomorrow’s workspace will be human-centric more than company-based and will be an interactive space suitable for exchange and collaboration: a place where we’re happy to be at work.</value>
-  </data>
-  <data name="WeThinkThat_Text10" xml:space="preserve">
-    <value> If you think like us, come join us!</value>
-  </data>
-  <data name="WeThinkThat_Text2" xml:space="preserve">
-    <value>In order to collectively reinvent tomorrow’s workplace, it’s necessary to explore, to test, to discuss and above all jump right in.</value>
-  </data>
-  <data name="WeThinkThat_Text3" xml:space="preserve">
-    <value>The advent of new ways of working is an opportunity to establish a new social norm in which autonomy overtakes subordination, creativity overtakes obedience and responsibility overtakes controlled hierarchy.</value>
-  </data>
-  <data name="WeThinkThat_Text4" xml:space="preserve">
-    <value>The opening to others, sharing and collaboration are essential to personal development and to a comfortable workspace.</value>
-  </data>
-  <data name="WeThinkThat_Text5" xml:space="preserve">
-    <value>Workers need social experiences and human exchange during their day.  Our work lives need to be more open, replacing constraints with cooperatives and co-creation in building collectivities of virtual work.</value>
-  </data>
-  <data name="WeThinkThat_Text6" xml:space="preserve">
-    <value>The workplace is no longer standalone, but rather collaborative, at times even non-physical et more adapted to specific tasks, a sector or to the worker’s personality.</value>
-  </data>
-  <data name="WeThinkThat_Text7" xml:space="preserve">
-    <value>Sustainable development is a priority… not tomorrow, but today. For this reason, our new workspaces and work habits must inherently take into account respect for our planet and environment.</value>
-  </data>
-  <data name="WeThinkThat_Text8" xml:space="preserve">
-    <value>The word is changing at an accelerating pace fueled by new technologies and faster exchanges of information.</value>
-  </data>
-  <data name="WeThinkThat_Text9" xml:space="preserve">
-    <value>In rethinking the workspace thanks largely to the idea of co-working spaces and shared workspaces, we can transform daily work life, our interaction with others and the world. The workspace must not only be a platform for change, but also the impulse behind change.</value>
-  </data>
-  <data name="WhoAreWe_Text1" xml:space="preserve">
-    <value>eWorky was created in 2011 by 3 young entrepreneurs in response to a simple need: the ability to access a wifi connection and renting a meeting room for precise times and in different cities. The idea of a collaborative search platform for workspaces, thus rapidly took off.</value>
-  </data>
-  <data name="WhoAreWe_Text2" xml:space="preserve">
-    <value>eWorky is thus the enjoyment of all types of shared workspaces and an exchange of experiences in these workspaces. Our community is made up of passionate users willing to discover or propose a diverse set of workspaces adapted to specific needs.
-</value>
-  </data>
-  <data name="WhoAreWe_Text3" xml:space="preserve">
-    <value>Now it’s your turn. Join the eWorky community now!</value>
   </data>
   <data name="Team_Member_1" xml:space="preserve">
     <value>Olivier Brun</value>
   </data>
   <data name="Team_Member_2" xml:space="preserve">
-    <value>Cecilia Durieu</value>
+    <value>Cécilia Durieu</value>
   </data>
   <data name="Team_Member_3" xml:space="preserve">
     <value>Tahir Iftikhar</value>
-  </data>
-  <data name="Team_Member_1_Text" xml:space="preserve">
-    <value>Living in Paris, Olivier is responsible for eWorky’s strategy and storyboarding. In addition to being discrete in his open space interactions as well as a fish vendor on Saturday mornings at 5am in Rungis market, Olivier is a big fan of walking and is a hardcore vegetarian. But above all, Olivier emphasizes pure design and is dedicated to removing unnecessary buttons and spelling mistakes.</value>
-  </data>
-  <data name="Team_Member_2_Text" xml:space="preserve">
-    <value>Cécilia is in charge of business development, PR, and finance for eWorky. She works from Grenoble and watch out, because she won’t deal with negative comments about her mountainous region! Optimistic, hyperactive and a big fan of full schedules and tight deadlines, she is implicated heavily in promoting digital culture and entrepreneurship as co-president of notably, the Young Entrepreneurs Circle (CJE). When she finds the time, she likes strolling around in her street shoes, rock climbing and horseback riding.</value>
-  </data>
-  <data name="Team_Member_3_Text" xml:space="preserve">
-    <value>Tahir is THE development specialist, so much so that it can sometimes be hard to understand everything he’s talking about. An avid reader of Dostoïevski and Camus, he is also comfortable with programming as immersing himself in coffee, cake and all types of chocolate bars. Originally from Ulis (like Thierry Henry), he has already worked with poultry, been scuba diving and a drive to correct spelling mistakes is as evident as the empty packs of cookies behind him compensates the zeal with which Olivier makes corrections.</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
@@ -338,49 +175,227 @@
   <data name="Spanish" xml:space="preserve">
     <value>Español</value>
   </data>
-  <data name="Team_Member_4_Text" xml:space="preserve">
-    <value>Marc is the head of Business Development for Spanish-speaking countries. He is based in Saragossa, Spain, and enjoys the lifestyle and extraordinary density of tapas bars the city has to offer. Marc is like the country where he settled down: friendly and passionate about good food, sport, and fiesta. We still haven’t figured out what drug he is on to bring so much energy to the team. But we suspect a secret mix of Cacique, olive oil and chorizo.</value>
-  </data>
   <data name="Team_Member_4" xml:space="preserve">
     <value>Marc Labrude</value>
   </data>
+  <data name="BestWorkspace" xml:space="preserve">
+    <value>Coworking, Office Sharing, Café mit Hot Sport</value>
+  </data>
+  <data name="Imprint" xml:space="preserve">
+    <value>Impressum</value>
+  </data>
+  <data name="MailWellSent" xml:space="preserve">
+    <value>Ihre Nachricht wurde erfolgreich zugeschickt. Unser Team wird Ihnen so schnell wie möglich antworten.</value>
+  </data>
+  <data name="MoreCriterias" xml:space="preserve">
+    <value>Mehr Kriterien</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Presse</value>
+  </data>
+  <data name="SpeechForJournalists" xml:space="preserve">
+    <value>Sie sind Journalist und möchten einen Artikel über eWorky schreiben oder ein Interview führen ? Sie brauchen eine Studie über die Entwicklung von Telearbeit in Frankreich ? Sie möchten mit HR-Direktoren in Kontakt treten ? Kontaktieren Sie uns an {0}.</value>
+  </data>
+  <data name="What" xml:space="preserve">
+    <value>Was suchen Sie ?</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Wo suchen Sie ?</value>
+  </data>
+  <data name="WhoAreWe" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Finden Sie einen Arbeitsplatz, wo Sie den brauchen : Shared Offices, Busiess Centers, Coworking Spaces, Hot Spot, Meeting- oder Konferenzräume.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="eWorky" xml:space="preserve">
+    <value>2012 eWorky</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Willkommen</value>
+  </data>
+  <data name="MailWellSent2" xml:space="preserve">
+    <value>Ihre Nachricht wurde erfolgreich zugeschickt !</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Miete</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reservierung</value>
+  </data>
+  <data name="ReserveSpeech" xml:space="preserve">
+    <value>- Business centers, business lounges&lt;br /&gt;- Coworking Space&lt;br /&gt;- Telecentro, usw.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suche</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="SearchSpeech" xml:space="preserve">
+    <value>- WiFi Cafes, WiFi Hot Spots&lt;br /&gt;- Public digital space&lt;br /&gt;- Bibliothek, Museum, usw.</value>
+  </data>
+  <data name="SoonLotofFeatures" xml:space="preserve">
+    <value>Und bald viel andere Funktionalitäten.</value>
+  </data>
+  <data name="Teamworky" xml:space="preserve">
+    <value>Das eWorky Team hat zahlreiche Projekte in Reserve, um Ihre Arbeit zu vereinfachen ! Also folgen Sie uns auf Facebook, Twitter, Google+, usw.</value>
+  </data>
+  <data name="FindTheBesPlace1" xml:space="preserve">
+    <value>Den besten Arbeitsplatz finden</value>
+  </data>
+  <data name="MaxRate" xml:space="preserve">
+    <value>Max. Budget (€)</value>
+  </data>
+  <data name="MinSurface" xml:space="preserve">
+    <value>Min. Fläche (m²)</value>
+  </data>
+  <data name="BlogTitle" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="AddPlaceTitle" xml:space="preserve">
+    <value>Neuer Arbeitsplatz anbieten</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Kostenloser Arbeitsplatz</value>
+  </data>
+  <data name="RentalAd" xml:space="preserve">
+    <value>Miete Anzeige</value>
+  </data>
+  <data name="ChooseForm" xml:space="preserve">
+    <value>Wählen Sie den Arbeitsplatztyp aus, den Sie hinzufügen möchten.</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Ein Shared Office</value>
+  </data>
+  <data name="FindTheBesPlace2" xml:space="preserve">
+    <value>Mehr als &lt;em&gt;{0:### ### ###}&lt;/em&gt; Coworking Spaces, Cafe WiFi, Business Centers, Shared Offices</value>
+  </data>
+  <data name="SharedOfficeSpeach" xml:space="preserve">
+    <value>Sie haben unbenutzten Arbeitsplätze in Ihrem Unternehmen ? Teilen Sie sie auf auf eWorky und genießen Sie ein zusätzliches Einkommen !</value>
+  </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value> {0} in {1}</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Das Team</value>
+  </data>
+  <data name="IntroWhoAreWe" xml:space="preserve">
+    <value>eWorky ist das Portal für Arbeitsplätze in Frankreich</value>
+  </data>
+  <data name="WeThinkThat" xml:space="preserve">
+    <value>Wir denken, dass :</value>
+  </data>
+  <data name="WeThinkThat_Text1" xml:space="preserve">
+    <value>Der Arbeitsplatz von Morgen wird sich mehr auf die Menschlichkeit als auf das Unternehmen konzentrieren und wird ein gastfreundlicher, zum Austäusche geeigneter Ort sein. Wir werden uns an die Arbeit erfreuen.</value>
+  </data>
+  <data name="WeThinkThat_Text10" xml:space="preserve">
+    <value>Wenn Sie der gleichen Meinung sind, kommen Sie zu uns !</value>
+  </data>
+  <data name="WeThinkThat_Text2" xml:space="preserve">
+    <value>Um den morgigen Arbeitsplatz gemeinsam zu erfinden ist es notwendig, dass wir untersuchen, testen, austauschen und ins Wasser springen.</value>
+  </data>
+  <data name="WeThinkThat_Text3" xml:space="preserve">
+    <value>Die Einführung neuer Arbeitsarten ist die Gelegenheit einen neuen Sozialvertrag zu unterschreiben, indem Autonomie auf Unterstellung, Kreativität auf Gehorsam und Verantwortung auf Dienstaufsicht folgen.</value>
+  </data>
+  <data name="WeThinkThat_Text4" xml:space="preserve">
+    <value>Die Öffnung zu den Anderen, der Austausch und die Zusammenarbeit sind für die persönliche Entwicklung und ein gutes Gleichgewicht zu der Arbeit unerlässlich.</value>
+  </data>
+  <data name="WeThinkThat_Text5" xml:space="preserve">
+    <value>Arbeiter brauchen tägliche soziale Erfahrungen und menschliche Austäusche. Unser Arbeitleben muss offener sein, Beschränkungen müssen durch Zusammenarbeit und Co-Creation ersetzen mit der Erstellung virtuellen Arbeitsgruppen.</value>
+  </data>
+  <data name="WeThinkThat_Text6" xml:space="preserve">
+    <value>Die morgige Arbeit wird nicht mehr eigenständig sondern vielfältig und kollaborativ sein, manchmal entmaterialisert und oft aufgaben-, sektor- und personenorientiert.</value>
+  </data>
+  <data name="WeThinkThat_Text7" xml:space="preserve">
+    <value>Nachhaltige Entwicklung ist die Priorität von heute. Aus diesem Grund müssen unsere neuen Arbeitsplätze und Arbeitsarten unseren Planet natürlichlich berücksichtigen und respektieren. </value>
+  </data>
+  <data name="WeThinkThat_Text8" xml:space="preserve">
+    <value>Die Welt entwickelt sich immer schneller mit dem Impuls neuer Technologien.  
+Unsere Arbeitsorganisation, die seit Jahrzehnten unverändert ist, muss heute auch seine Revolution erleben.</value>
+  </data>
+  <data name="WeThinkThat_Text9" xml:space="preserve">
+    <value>Mit Hilfe einer neuen Organisation der Arbeitsplätze dank Coworking Spaces und Shared Spaces ist es möglich, die tägliche Arbeit sowie unser Verhältnis zu den Anderen und der Welt zu verwandeln. Der Arbeitsplatz muss nicht nur die Rolle einer Plattform für Veränderung sonder des Impuls für diesen Wandel spielen.</value>
+  </data>
+  <data name="WhoAreWe_Text1" xml:space="preserve">
+    <value>eWorky wurde 2011 von drei jungen Unternehmer als Antworkt auf einen einfachen Bedarf gegründet : die Möglichkeit einen Hot Spot, einen Meetingraum oder einen Raum für Ausbildungen für festgelegte Zeiten und in verschiedenen Städten zu erreichen. Die Idee einer kollaborativen Suchplattform für Arbeitsplätze hat sich dann schnell entwickelt.</value>
+  </data>
+  <data name="WhoAreWe_Text2" xml:space="preserve">
+    <value>eWorky ist damit den Genuss aller Arten von Arbeitsplätzen aufzuteilen und über verschiedene Erfahrungen in diesen Orten auszutauschen. Unsere Gemeinschaft besteht aus begeisterten Anwendern, die diverse Arbeitsplätze entdecken oder anbieten möchten,  die an spezifischen Bedürfnissen eingepasst sind.</value>
+  </data>
+  <data name="WhoAreWe_Text3" xml:space="preserve">
+    <value>Jetzt sind Sie dran, schließen Sie sich der eWorky Gemeinschaft !</value>
+  </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Der Pariser Olivier ist für eWorkys Strategie und Storyboards verantwortlich. In dem Open Space und während Austäusche ist er nicht nur diskret wie einen Fischhändler Samstagmorgen um 5 Uhr in Rungis. Olivier ist ein großer Adept von Wanderung und ein überzeugter Vegetarier. Vor allem betont aber Olivier pures Design und ist spezialisiert auf die Beseitigung unnötiger Tasten und Rechtschreibfehler.</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia kümmert sich um eWorkys Geschäftsentwicklung, PR, und Finanzierung. Sie arbeitet von Grenoble und passen Sie auf, sie erträgt keine negativen Kommentare über ihr Bergland ! Optimistisch, hyperaktiv und ein großer Fan von vollen Agenden und knappen Deadlines ist Cécilia stark in der Förderung der Digitaltechnik und des Unternehmergeists, als Ko-Präsidentin des Young Entrepreneurs Circle (auf französisch "Cerle des Jeunes Entrepreneurs") involviert. Wenn Sie Freizeit hat mag sie in ihren Straßenschuhen bummeln, klettern und reiten.</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir ist DER Softwareentwickler Spezialist, so sehr, dass es manchmal schwierig ist zu verstehen, was er uns alles erzählt. Als eifriger Leser von Dostoïevski und Camus fühlt er sich wohl in der Programmierung sowie in dem Verschlingen von Kaffees, Kuchen und alle Arten von Schokoriegeln. Ursprünglich aus Ulis (wie Thierry Henry), hat er bereits Capoeira gemacht und ist in verschiedenen Meeren getaucht. Seine Konsumneigung Rechtschreibfehler sowie leere Kekspackungen hinter sich zu säen kompensiert den Eifer, mit dem Olivier seine Fehler korrigiert.</value>
+  </data>
+  <data name="Team_Member_4_Text" xml:space="preserve">
+    <value>Marc ist unser Business Developer für den spanischsprachigen Raum. „Marco“ wohnt in Saragossa und genießt den Lebensstil und die außergewöhnliche Dichte von Tapas-Bars, die die Stadt anzubieten hat. Marc gleicht dem Land, in dem er seine Koffer abgestellt hat : er ist freundlich, schlemmer, sportlich und feierwütig. Wir haben noch nicht herausfinden, welche Drogen er konsummert, um so viel Energie ins Team zu bringen. Wir vermuten aber eine geheime Mischung aus Cacique, Olivenöl und Chorizo.</value>
+  </data>
   <data name="TimeAgo_day" xml:space="preserve">
-    <value>a day</value>
+    <value>Ein Tag</value>
   </data>
   <data name="TimeAgo_days" xml:space="preserve">
-    <value>%d days</value>
+    <value>%d Tage</value>
   </data>
   <data name="TimeAgo_hour" xml:space="preserve">
-    <value>an hour</value>
+    <value>Eine Stunde</value>
   </data>
   <data name="TimeAgo_hours" xml:space="preserve">
-    <value>%d hours</value>
+    <value>%d Stunden</value>
   </data>
   <data name="TimeAgo_minute" xml:space="preserve">
-    <value>a minute</value>
+    <value>Eine Minute</value>
   </data>
   <data name="TimeAgo_minutes" xml:space="preserve">
-    <value>%d minutes</value>
+    <value>%d Minuten</value>
   </data>
   <data name="TimeAgo_month" xml:space="preserve">
-    <value>a month</value>
+    <value>Ein Monat</value>
   </data>
   <data name="TimeAgo_months" xml:space="preserve">
-    <value>%d months</value>
+    <value>%d Monate</value>
+  </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>Vor</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>In</value>
   </data>
   <data name="TimeAgo_seconds" xml:space="preserve">
-    <value>less than a minute</value>
+    <value>Weniger als eine Minute</value>
   </data>
   <data name="TimeAgo_year" xml:space="preserve">
-    <value>a year</value>
+    <value>Ein Jahr</value>
   </data>
   <data name="TimeAgo_years" xml:space="preserve">
-    <value>%d years</value>
+    <value>%d Jahre</value>
   </data>
-  <data name="TimeAgo_suffixAgo" xml:space="preserve">
-    <value>ago</value>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Vorstellung der Office Manager Optionen auf eWorky.</value>
   </data>
-  <data name="TimeAgo_suffixFromNow" xml:space="preserve">
-    <value>from now</value>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>Vorstellung des eWorky Team</value>
+  </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan hilft uns zurzeit von der amerikanischen Westküste, um eWorky in den USA zu entwickeln. Er hat gerade Frankreich verlassen, um in San Francisco zu leben, die Stadt von der er träumt seitdem er für das erste Mal die Stimme von Janis Joplin gehört hat. Das einzige Problem, das er jetzt erleben wird, ist, sich trotz des musikalischen, filmischen, und technologischen Angebots der kalifornischen Region zu konzentrieren. Aber das macht die ganze Vorstellung über Coworking aus : vielseitige Interessenbereiche für Zusammenlaufen zu fördern.</value>
+  </data>
+  <data name="FindTheBesPlace" xml:space="preserve">
+    <value>Finden Sie den besten Arbeitsplatz, unter {0: # # # # # # # # #} Orte</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
   </data>
 </root>

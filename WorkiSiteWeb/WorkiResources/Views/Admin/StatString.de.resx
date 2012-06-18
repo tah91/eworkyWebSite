@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Biblio" xml:space="preserve">
-    <value>Biblio / Musée</value>
+    <value>Bibliothek / Museum</value>
   </data>
   <data name="BuisnessCenter" xml:space="preserve">
-    <value>Centre d'aff.</value>
+    <value>Business Centers</value>
   </data>
   <data name="CoffeeResto" xml:space="preserve">
-    <value>Cafe / Restaurant</value>
+    <value>Café / Restaurant</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Pays</value>
+    <value>Land</value>
   </data>
   <data name="CoworkingSpace" xml:space="preserve">
-    <value>Esp. cowork.</value>
+    <value>Coworking Space</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Création</value>
+    <value>Erstellung</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date / Heure</value>
+    <value>Datum / Uhrzeit</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edition</value>
+    <value>Bearbeitung</value>
   </data>
   <data name="EworkerName" xml:space="preserve">
     <value>eWorker</value>
@@ -148,48 +148,48 @@
     <value>eWorkers</value>
   </data>
   <data name="Hotel" xml:space="preserve">
-    <value>Hôtel</value>
+    <value>Hotels</value>
   </data>
   <data name="LastCreate" xml:space="preserve">
-    <value>Créations</value>
+    <value>Erstellungen</value>
   </data>
   <data name="LastModif" xml:space="preserve">
-    <value>Modifications</value>
+    <value>Änderungen</value>
   </data>
   <data name="NbByCountry" xml:space="preserve">
-    <value>Total par pays</value>
+    <value>Summe per Land</value>
   </data>
   <data name="PlaceName" xml:space="preserve">
-    <value>Nom du lieu</value>
+    <value>Name des Ortes</value>
   </data>
   <data name="PrivateArea" xml:space="preserve">
-    <value>Lieu privé</value>
+    <value>Privater Ort</value>
   </data>
   <data name="PublicSpace" xml:space="preserve">
-    <value>EPN / Cyber</value>
+    <value>Internetcafé</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Partage</value>
+    <value>Shared office</value>
   </data>
   <data name="StatTitle" xml:space="preserve">
-    <value>Statistiques</value>
+    <value>Statistiken</value>
   </data>
   <data name="Status" xml:space="preserve">
-    <value>Type</value>
+    <value>Typ</value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value>Télécentre</value>
+    <value>Telecentro</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>Summe</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value>Esp. voyag.</value>
+    <value>Travelers' lounge</value>
   </data>
   <data name="Wifi" xml:space="preserve">
     <value>Hot Spot</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value>Hôtel d'ent.</value>
+    <value>Inkubator</value>
   </data>
 </root>

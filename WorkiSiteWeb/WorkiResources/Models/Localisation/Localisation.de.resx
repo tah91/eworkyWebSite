@@ -137,10 +137,10 @@
     <value>Coworking Space</value>
   </data>
   <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Breite</value>
   </data>
   <data name="Post" xml:space="preserve">
-    <value>Commentaire</value>
+    <value>Kommentare</value>
     <comment>Comment_Validation</comment>
   </data>
   <data name="PostalCode" xml:space="preserve">
@@ -168,26 +168,8 @@
     <value>Inkubator</value>
     <comment>?</comment>
   </data>
-  <data name="SeminarRoom" xml:space="preserve">
-    <value>Caractéristiques des salles de conférence / séminaire</value>
-  </data>
-  <data name="Mlle" xml:space="preserve">
-    <value>Mlle</value>
-  </data>
-  <data name="Mme" xml:space="preserve">
-    <value>Mme</value>
-  </data>
-  <data name="Mr" xml:space="preserve">
-    <value>M.</value>
-  </data>
-  <data name="VisioRoom" xml:space="preserve">
-    <value>Caractéristiques des salles de visio / téléprésence</value>
-  </data>
   <data name="WorkingPlace" xml:space="preserve">
     <value>Angebotene Dienstleistungen</value>
-  </data>
-  <data name="SendLocalisationMail" xml:space="preserve">
-    <value>Bonjour, je viens de découvrir un lieu de travail très sympathique sur eWorky.com : {0}. A bientôt !</value>
   </data>
   <data name="Adress" xml:space="preserve">
     <value>Straßennummer</value>
@@ -223,24 +205,9 @@
     <value>Travel Lounge</value>
     <comment>?</comment>
   </data>
-  <data name="RatingDispo" xml:space="preserve">
-    <value>Disponibilité / calme</value>
-  </data>
   <data name="RatingPrice" xml:space="preserve">
-    <value>Rapport qualité / prix</value>
+    <value>Preis-Leistungs-Verhältnis</value>
     <comment>?</comment>
-  </data>
-  <data name="RatingWelcome" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="RatingWifi" xml:space="preserve">
-    <value>Qualité du wifi</value>
-  </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Appréciation générale</value>
-  </data>
-  <data name="MeetingRoom" xml:space="preserve">
-    <value>Caractéristiques des salle de réunion / formation</value>
   </data>
   <data name="WorkCity" xml:space="preserve">
     <value>Stadt</value>
@@ -254,11 +221,8 @@
   <data name="GiveYourAdvice" xml:space="preserve">
     <value>Donnez votre avis</value>
   </data>
-  <data name="To" xml:space="preserve">
-    <value> à </value>
-  </data>
   <data name="Bookable" xml:space="preserve">
-    <value>Je souhaite proposer la réservation ligne sur eworky.com !</value>
+    <value>Online-Reservierung auf eworky.com anbieten</value>
     <comment>?</comment>
   </data>
   <data name="Facebook" xml:space="preserve">
@@ -267,111 +231,12 @@
   <data name="Twitter" xml:space="preserve">
     <value>Twitter</value>
   </data>
-  <data name="Coffee" xml:space="preserve">
-    <value>Cafe</value>
-  </data>
   <data name="UsefulHandicap" xml:space="preserve">
-    <value>Adapté pour personnes à mobilité réduite</value>
+    <value>Behindertengerechter Zugang</value>
     <comment>?</comment>
-  </data>
-  <data name="FriCloseAfter" xml:space="preserve">
-    <value>Fermeture Vendredi soir</value>
-  </data>
-  <data name="FriCloseMorning" xml:space="preserve">
-    <value>Fermeture Vendredi  matin</value>
-  </data>
-  <data name="FriOpenAfter" xml:space="preserve">
-    <value>Ouverture Vendredi soir</value>
-  </data>
-  <data name="FriOpenMorning" xml:space="preserve">
-    <value>Ouverture Vendredi  matin</value>
-  </data>
-  <data name="MonCloseAfter" xml:space="preserve">
-    <value>Fermeture Lundi soir</value>
-  </data>
-  <data name="MonCloseMorning" xml:space="preserve">
-    <value>Fermeture Lundi  matin</value>
-  </data>
-  <data name="MonOpenAfter" xml:space="preserve">
-    <value>Ouverture Lundi soir</value>
-  </data>
-  <data name="MonOpenMorning" xml:space="preserve">
-    <value>Ouverture Lundi matin</value>
-  </data>
-  <data name="SatCloseAfter" xml:space="preserve">
-    <value>Fermeture Samedi soir</value>
-  </data>
-  <data name="SatCloseMorning" xml:space="preserve">
-    <value>Fermeture Samedi  matin</value>
-  </data>
-  <data name="SatOpenAfter" xml:space="preserve">
-    <value>Ouverture Samedi soir</value>
-  </data>
-  <data name="SatOpenMorning" xml:space="preserve">
-    <value>Ouverture Samedi  matin</value>
-  </data>
-  <data name="SunCloseAfter" xml:space="preserve">
-    <value>Fermeture Dimanche soir</value>
-  </data>
-  <data name="SunCloseMorning" xml:space="preserve">
-    <value>Fermeture Dimanche  matin</value>
-  </data>
-  <data name="SunOpenAfter" xml:space="preserve">
-    <value>Ouverture Dimanche soir</value>
-  </data>
-  <data name="SunOpenMorning" xml:space="preserve">
-    <value>Ouverture Dimanche  matin</value>
-  </data>
-  <data name="ThuCloseAfter" xml:space="preserve">
-    <value>Fermeture Jeudi soir</value>
-  </data>
-  <data name="ThuCloseMorning" xml:space="preserve">
-    <value>Fermeture Jeudi  matin</value>
-  </data>
-  <data name="ThuOpenAfter" xml:space="preserve">
-    <value>Ouverture Jeudi soir</value>
-  </data>
-  <data name="ThuOpenMorning" xml:space="preserve">
-    <value>Ouverture Jeudi  matin</value>
-  </data>
-  <data name="TueCloseAfter" xml:space="preserve">
-    <value>Fermeture Mardi soir</value>
-  </data>
-  <data name="TueCloseMorning" xml:space="preserve">
-    <value>Fermeture Mardi  matin</value>
-  </data>
-  <data name="TueOpenAfter" xml:space="preserve">
-    <value>Ouverture Mardi soir</value>
-  </data>
-  <data name="TueOpenMorning" xml:space="preserve">
-    <value>Ouverture Mardi  matin</value>
-  </data>
-  <data name="WedCloseAfter" xml:space="preserve">
-    <value>Fermeture Mercredi soir</value>
-  </data>
-  <data name="WedCloseMorning" xml:space="preserve">
-    <value>Fermeture Mercredi  matin</value>
-  </data>
-  <data name="WedOpenAfter" xml:space="preserve">
-    <value>Ouverture Mercredi soir</value>
-  </data>
-  <data name="WedOpenMorning" xml:space="preserve">
-    <value>Ouverture Mercredi  matin</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Raumbeschreibung</value>
-  </data>
-  <data name="DisplayName" xml:space="preserve">
-    <value>{0}, {1} in {2}</value>
-  </data>
-  <data name="SharedOffice" xml:space="preserve">
-    <value>Bureau à partager</value>
-  </data>
-  <data name="FreeAreas" xml:space="preserve">
-    <value>Lieux gratuits</value>
-  </data>
-  <data name="OtherTypes" xml:space="preserve">
-    <value>Autres lieux</value>
   </data>
   <data name="BookingCom" xml:space="preserve">
     <value>Provision (%)</value>
@@ -379,55 +244,206 @@
   <data name="QuotationPrice" xml:space="preserve">
     <value>Preis der Kostenanfrage</value>
   </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Kaffee</value>
+  </data>
+  <data name="FriCloseAfter" xml:space="preserve">
+    <value>Freitag abend geschlossen</value>
+  </data>
+  <data name="FriCloseMorning" xml:space="preserve">
+    <value>Freitag Vormittag geschlossen</value>
+  </data>
+  <data name="FriOpenAfter" xml:space="preserve">
+    <value>Freitag abend geöffnet</value>
+  </data>
+  <data name="FriOpenMorning" xml:space="preserve">
+    <value>Freitag Vormittag geöffnet</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>{0}, {1} zu {2}</value>
+  </data>
+  <data name="FreeAreas" xml:space="preserve">
+    <value>Kostenlose Räume</value>
+  </data>
   <data name="CompanyName" xml:space="preserve">
-    <value>Nom de l’entreprise</value>
+    <value>Name des Unternehmens</value>
   </data>
   <data name="CompanyType" xml:space="preserve">
-    <value>Type d’entreprise</value>
+    <value>Unternehmenstyp</value>
   </data>
   <data name="Association" xml:space="preserve">
-    <value>Association</value>
+    <value>Nonprofitorganisation</value>
   </data>
   <data name="BigCompany" xml:space="preserve">
-    <value>Grande entreprise</value>
+    <value>Großunternehmen</value>
   </data>
   <data name="Consulting" xml:space="preserve">
-    <value>Cabinet de conseil</value>
+    <value>Beratungsunternehmen</value>
   </data>
   <data name="CreativeAgency" xml:space="preserve">
-    <value>Agence de création</value>
+    <value>Design Agentur</value>
   </data>
   <data name="InAssociation" xml:space="preserve">
-    <value>dans une association</value>
+    <value>in einer Nonprofitorganisation</value>
   </data>
   <data name="InBigCompany" xml:space="preserve">
-    <value>dans une grande entreprise</value>
+    <value>in einem Großunternehmen</value>
   </data>
   <data name="InCompany" xml:space="preserve">
-    <value>chez  {0}</value>
+    <value>bei {0}</value>
   </data>
   <data name="InConsulting" xml:space="preserve">
-    <value>dans un cabinet de conseil</value>
+    <value>in einem Beratungsunternehmen</value>
   </data>
   <data name="InCreativeAgency" xml:space="preserve">
-    <value>dans une agence de création</value>
+    <value>in einer Design Agentur</value>
   </data>
   <data name="Independent" xml:space="preserve">
-    <value>Indépendant</value>
+    <value>Selbständiger</value>
   </data>
   <data name="InIndependent" xml:space="preserve">
-    <value>chez un indépendant</value>
+    <value>bei einem Selbständiger</value>
   </data>
   <data name="InSmallBusiness" xml:space="preserve">
-    <value>dans une PME</value>
+    <value>in einem kleinen und mittleren Unternehmen</value>
+  </data>
+  <data name="Attorney" xml:space="preserve">
+    <value>Anwaltskanzlei</value>
+  </data>
+  <data name="InAttorney" xml:space="preserve">
+    <value>in einer Anwaltskanzlei</value>
+  </data>
+  <data name="InMedical" xml:space="preserve">
+    <value>in einer Arztpraxis</value>
+  </data>
+  <data name="Mlle" xml:space="preserve">
+    <value>Fr.</value>
+  </data>
+  <data name="Mme" xml:space="preserve">
+    <value>Fr.</value>
+  </data>
+  <data name="Mr" xml:space="preserve">
+    <value>Hr.</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Gesamtbewertung</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Eigenschaften der Meeting- und Ausbildungsräume</value>
+  </data>
+  <data name="MonCloseAfter" xml:space="preserve">
+    <value>Montag abend geschlossen</value>
+  </data>
+  <data name="MonCloseMorning" xml:space="preserve">
+    <value>Montag Vormittag geschlossen</value>
+  </data>
+  <data name="MonOpenAfter" xml:space="preserve">
+    <value>Montag abend geöffnet</value>
+  </data>
+  <data name="MonOpenMorning" xml:space="preserve">
+    <value>Montag Vormittag geöffnet</value>
+  </data>
+  <data name="OtherTypes" xml:space="preserve">
+    <value>Andere Räume</value>
   </data>
   <data name="InStartUp" xml:space="preserve">
-    <value>dans une start-up </value>
+    <value>in einem Start-up</value>
   </data>
+  <data name="Medical" xml:space="preserve">
+    <value>Arztpraxis</value>
+  </data>
+  <data name="SeminarRoom" xml:space="preserve">
+    <value>Eigenschaften der Konferenz- und Seminarräume</value>
+  </data>
+  <data name="SendLocalisationMail" xml:space="preserve">
+    <value>Guten Tag, ich habe gerade einen sympathischen Arbeitsplatz auf eworky.com entdeckt: {0}. Bis bald!</value>
+  </data>
+  <data name="RatingDispo" xml:space="preserve">
+    <value>Verfügbarkeit / Ruhe</value>
+  </data>
+  <data name="RatingWelcome" xml:space="preserve">
+    <value>Empfang</value>
+  </data>
+  <data name="RatingWifi" xml:space="preserve">
+    <value>Wifi-Qualität</value>
+  </data>
+  <data name="SatCloseAfter" xml:space="preserve">
+    <value>Samstag abend geschlossen</value>
+  </data>
+  <data name="SatCloseMorning" xml:space="preserve">
+    <value>Samstag Vormittag geschlossen</value>
+  </data>
+  <data name="SatOpenAfter" xml:space="preserve">
+    <value>Samstag abend geöffnet</value>
+  </data>
+  <data name="SatOpenMorning" xml:space="preserve">
+    <value>Samstag Vormittag geöffnet</value>
+  </data>
+  <data name="VisioRoom" xml:space="preserve">
+    <value>Eigenschaften der Visio- und Telepräsenzräume</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="SunCloseAfter" xml:space="preserve">
+    <value>Sonntag abend geschlossen</value>
+  </data>
+  <data name="SunCloseMorning" xml:space="preserve">
+    <value>Sonntag Vormittag geschlossen</value>
+  </data>
+  <data name="SunOpenAfter" xml:space="preserve">
+    <value>Sonntag abend geöffnet</value>
+  </data>
+  <data name="SunOpenMorning" xml:space="preserve">
+    <value>Sonntag Vormittag geöffnet</value>
+  </data>
+  <data name="ThuCloseAfter" xml:space="preserve">
+    <value>Donnerstag abend geschlossen</value>
+  </data>
+  <data name="ThuCloseMorning" xml:space="preserve">
+    <value>Donnerstag Vormittag geschlossen</value>
+  </data>
+  <data name="ThuOpenAfter" xml:space="preserve">
+    <value>Donnerstag abend geöffnet</value>
+  </data>
+  <data name="ThuOpenMorning" xml:space="preserve">
+    <value>Donnerstag Vormittag geöffnet</value>
+  </data>
+  <data name="TueCloseAfter" xml:space="preserve">
+    <value>Dienstag abend geschlossen</value>
+  </data>
+  <data name="TueCloseMorning" xml:space="preserve">
+    <value>Dienstag Vormittag geschlossen</value>
+  </data>
+  <data name="TueOpenAfter" xml:space="preserve">
+    <value>Dienstag abend geöffnet</value>
+  </data>
+  <data name="TueOpenMorning" xml:space="preserve">
+    <value>Dienstag Vormittag geschlossen</value>
+  </data>
+  <data name="WedCloseAfter" xml:space="preserve">
+    <value>Mittwoch abend geschlossen</value>
+  </data>
+  <data name="WedCloseMorning" xml:space="preserve">
+    <value>Mittwoch Vormittag geschlossen</value>
+  </data>
+  <data name="WedOpenAfter" xml:space="preserve">
+    <value>Mittwoch abend geöffnet</value>
+  </data>
+  <data name="WedOpenMorning" xml:space="preserve">
+    <value>Mittwoch Vormittag geöffnet</value>
+  </data>
+    <value>{0}, {1} in {2}</value>
   <data name="SmallBusiness" xml:space="preserve">
-    <value>PME</value>
+    <value>Klein- und Mittelunternehmen</value>
   </data>
   <data name="StartUp" xml:space="preserve">
-    <value>Start-up </value>
+    <value>Start-up</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Willkommen-Email zu dieser Adresse zuschicken</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Shared office</value>
   </data>
 </root>

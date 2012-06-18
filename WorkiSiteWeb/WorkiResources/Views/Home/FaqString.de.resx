@@ -326,4 +326,13 @@
   <data name="SearchPage" xml:space="preserve">
     <value>Rechercheseite</value>
   </data>
+  <data name="AddPage" xml:space="preserve">
+    <value>Arbeitsplatz anbieten</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Alle Antworten auf die Fragen, die Sie sich auf eWorky stellen.</value>
+  </data>
 </root>

@@ -118,81 +118,81 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Confirmed" xml:space="preserve">
-    <value>Confirmation</value>
+    <value>Bestätigung</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
+    <value>Email-Adresse</value>
   </data>
   <data name="FavoritePlaceId" xml:space="preserve">
-    <value>Espace de coworking favori</value>
+    <value>Lieblings-Coworking Space</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
+    <value>Vorname</value>
   </data>
   <data name="FromDate" xml:space="preserve">
-    <value>Début souhaité</value>
+    <value>gewünschter Anfang</value>
   </data>
   <data name="Handled" xml:space="preserve">
-    <value>Prise en charge</value>
+    <value>Übernahme</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Nom</value>
+    <value>Name</value>
   </data>
   <data name="LocalisationName" xml:space="preserve">
-    <value>Etablissement</value>
+    <value>Ort</value>
   </data>
   <data name="MemberId" xml:space="preserve">
-    <value>Client</value>
+    <value>Kunde</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Message</value>
+    <value>Nachticht</value>
   </data>
   <data name="Offer" xml:space="preserve">
-    <value>Besoin</value>
+    <value>Verbrauch</value>
   </data>
   <data name="OfferId" xml:space="preserve">
-    <value>Offre</value>
+    <value>Angebot</value>
   </data>
   <data name="OfferName" xml:space="preserve">
-    <value>Offre </value>
+    <value>Angebot</value>
   </data>
   <data name="PaymentMail" xml:space="preserve">
-    <value>Adresse URL de paiement PayPal</value>
+    <value>URL Adresse für die Paypal-Zahlung</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
-    <value>Moyen de paiement</value>
+    <value>Zahlungsart</value>
   </data>
   <data name="PhoneInfo" xml:space="preserve">
-    <value>vous serez contacté à ce numéro</value>
+    <value>Sie werden unter diese Nummer kontaktiert</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefon</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Preis</value>
   </data>
   <data name="Response" xml:space="preserve">
-    <value>Réponse</value>
+    <value>Antwort</value>
   </data>
   <data name="StatusId" xml:space="preserve">
-    <value>Statut</value>
+    <value>Status</value>
   </data>
   <data name="Surface" xml:space="preserve">
-    <value>Surface de bureaux souhaitée (en m2)</value>
+    <value>Fläche der gewünschten Arbeitsplätze (in m²)</value>
   </data>
   <data name="TimeType" xml:space="preserve">
-    <value>Facturation</value>
+    <value>Rechnungsstellung</value>
   </data>
   <data name="TimeUnits" xml:space="preserve">
-    <value>Quantité</value>
+    <value>Quantität</value>
   </data>
   <data name="ToDate" xml:space="preserve">
-    <value>Fin souhaitée</value>
+    <value>gewünschtes Ende</value>
   </data>
   <data name="VisitNeeded" xml:space="preserve">
-    <value>Demande de visite</value>
+    <value>Besuchanfrage</value>
   </data>
 </root>

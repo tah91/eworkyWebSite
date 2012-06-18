@@ -269,5 +269,5 @@
   </data>
   <data name="PendingBO" xml:space="preserve">
     <value>Pending BO</value>
-  </data>
+  <comment>Steeve</comment></data>
 </root>

@@ -124,7 +124,7 @@
     <value>Zurück</value>
   </data>
   <data name="BookingIntro" xml:space="preserve">
-    <value>Füllen Sie die Felder für eine Reservierung aus, eine E-Mail wird Ihnen zugeschickt.</value>
+    <value>Um zu reservieren, füllen Sie die Felder aus, eine E-Mail wird Ihnen zugeschickt.</value>
   </data>
   <data name="BookingDetails" xml:space="preserve">
     <value>Details der Reservierung</value>
@@ -133,31 +133,31 @@
     <value>Bestätigen</value>
   </data>
   <data name="HandleIt" xml:space="preserve">
-    <value>übernehmen</value>
+    <value>Übernehmen</value>
   </data>
   <data name="RefuseIt" xml:space="preserve">
     <value>Ablehnen</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
-    <value>Ihr Reservierungsantrag wurde richtig berücksichtigt. Preis und Verfügbarkeit werden von dem Manager bestätigt.</value>
+    <value>Ihr Reservierungsantrag wurde berücksichtigt. Preis und Verfügbarkeit werden von dem Manager bestätigt.</value>
   </data>
   <data name="Quotation" xml:space="preserve">
     <value>Kostenanfrage</value>
   </data>
   <data name="BookSpeech" xml:space="preserve">
-    <value>Um einen Reservierungsantrag zu beginnen, füllen Sie die folgenden Felder aus.</value>
+    <value>Um eine Reservierungsanfrage anzufangen, füllen Sie die folgenden Felder aus.</value>
   </data>
   <data name="QuotationSpeech" xml:space="preserve">
-    <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
+    <value>Um eine Kostenanfrage anzufangen, füllen Sie die folgenden Felder aus.</value>
   </data>
   <data name="BeginSpeech" xml:space="preserve">
     <value>Bitte geben Sie die Beginn- und Endezeiten Ihrer Reservierung an.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
-    <value>Kostenvorschlag bestätigen</value>
+    <value>Kostenanfrage bestätigen</value>
   </data>
   <data name="AskQuotation" xml:space="preserve">
-    <value>Kostenanschlag nachfragen</value>
+    <value>Kostenanfrage nachfragen</value>
   </data>
   <data name="Surface" xml:space="preserve">
     <value>Fläche</value>
@@ -166,7 +166,7 @@
     <value>Am  {date} nachgefragt</value>
   </data>
   <data name="Customer" xml:space="preserve">
-    <value>Kunde</value>
+    <value>Kunde(In)</value>
   </data>
   <data name="End" xml:space="preserve">
     <value>Ende</value>
@@ -199,16 +199,16 @@
     <value>Die Reservierung für den Ort {0} wurde bezahlt.</value>
   </data>
   <data name="AskingQuotation" xml:space="preserve">
-    <value>Kostenanschlag für {0}</value>
+    <value>Kostenanfrage für {0}</value>
   </data>
   <data name="PayFail" xml:space="preserve">
     <value>Die Zahlung wurde nicht erfasst !</value>
   </data>
   <data name="BookingRefused" xml:space="preserve">
-    <value>Der Reservierungsantrag wurde abgelehnt.</value>
+    <value>Die Reservierungsanfrage wurde abgelehnt.</value>
   </data>
   <data name="QuotationConfirmed" xml:space="preserve">
-    <value>Ihr Kostenvorschlag wurde richtig berücksichtigt.</value>
+    <value>Ihre Kostenanfrage wurde richtig berücksichtigt.</value>
   </data>
   <data name="BookingAccepted" xml:space="preserve">
     <value>Der Reservierungsantrag wurde bestätigt.</value>
@@ -217,31 +217,31 @@
     <value>Ihr Reservierungsantrag wurde abgelehnt.</value>
   </data>
   <data name="QuotationCanceled" xml:space="preserve">
-    <value>Ihr Kostenvorschlag wurde storniert.</value>
+    <value>Ihre Kostenanfrage wurde storniert.</value>
   </data>
   <data name="BookingBeforeToday" xml:space="preserve">
-    <value>Ihre Reservierung kann nicht vor Heute anfangen.</value>
+    <value>Ihre Reservierung kann nicht vor Heute beginnen.</value>
   </data>
   <data name="EndBookingBeforeStart" xml:space="preserve">
     <value>Das Enddatum Ihrer Reservierung muss nach dem Startdatum sein.</value>
   </data>
   <data name="EndQuotationSpeech" xml:space="preserve">
-    <value>Sie werden in kürzer Zeit von dem Manager dieses Ortes kontaktiert. </value>
+    <value>Sie werden in kürzer Zeit von dem Ortmanager kontaktiert. </value>
   </data>
   <data name="QuotationRefused" xml:space="preserve">
-    <value>Der Kostenanschlag wurde abgelehnt.</value>
+    <value>Die Kostenanfrage wurde abgelehnt.</value>
   </data>
   <data name="EndSpeech" xml:space="preserve">
     <value>Die Verfügbarkeit und der Preis Ihrer Anfrage werden Ihnen von dem Manager in Ihrem Konto bestätigt. Sobald die Reservierung bestätigt ist, wird es für Sie möglich sein, Ihre Reservierung online zu zahlen.</value>
   </data>
   <data name="Achieved" xml:space="preserve">
-    <value>Achevée le </value>
+    <value>Fertiggestellt am</value>
   </data>
   <data name="CancelStatus" xml:space="preserve">
     <value>Storniert am</value>
   </data>
   <data name="ContactStatus" xml:space="preserve">
-    <value>Contact établi le </value>
+    <value>Kontaktiert am</value>
   </data>
   <data name="HasAcceptBooking" xml:space="preserve">
     <value>{0} hat den Reservierungsantrag für {1} akzeptiert</value>
@@ -250,34 +250,34 @@
     <value>{0} hat einen Reservierungsantrag für {1} gemacht</value>
   </data>
   <data name="HasAskQuotation" xml:space="preserve">
-    <value>{0} hat einen Kostenanschlag für {1} nachgefragt</value>
+    <value>{0} hat eine Kostenanfrage für {1} nachgefragt</value>
   </data>
   <data name="HasCancelBooking" xml:space="preserve">
     <value>{0} hat den Reservierungsantrag für {1} storniert</value>
   </data>
   <data name="HasCancelQuotation" xml:space="preserve">
-    <value>{0} hat den Kostenanschlag für {1} storniert</value>
+    <value>{0} hat die Kostenanfrage für {1} storniert</value>
   </data>
   <data name="HasPaidBooking" xml:space="preserve">
     <value>{0} hat den Reservierungsantrag für {1} bezahlt</value>
   </data>
   <data name="HasPaidQuotation" xml:space="preserve">
-    <value>{0} hat den Kostenanschlag für {1} bezahlt</value>
+    <value>{0} hat die Kostenanfrage für {1} bezahlt</value>
   </data>
   <data name="HasRefuseBooking" xml:space="preserve">
     <value>{0} hat den Reservierungsantrag für {1} abgelehnt</value>
   </data>
   <data name="HasRefuseQuotation" xml:space="preserve">
-    <value>{0} hat den Kostenanschlag für {1} abgelehnt</value>
+    <value>{0} hat die Kostenanfrage für {1} abgelehnt</value>
   </data>
   <data name="PaidStatus" xml:space="preserve">
     <value>Bezahlt am</value>
   </data>
   <data name="QuotationCancel" xml:space="preserve">
-    <value>Kostenanschlag am {date} storniert </value>
+    <value>Kostenanfrage am {date} storniert </value>
   </data>
   <data name="QuotationRefuse" xml:space="preserve">
-    <value>Kostenanschlag am {date} abgelehnt</value>
+    <value>Kostenanfrage am {date} abgelehnt</value>
   </data>
   <data name="RefuseStatus" xml:space="preserve">
     <value>Abgelehnt am</value>
@@ -319,7 +319,7 @@
     <value>Anzahl der Jahre auswählen</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>Wie funktioniert es?</value>
+    <value>How it works</value>
   </data>
   <data name="HowItWorks1" xml:space="preserve">
     <value>Bitte geben Sie die Details Ihrer Reservierung an</value>
@@ -346,7 +346,7 @@
     <value>Reservierung</value>
   </data>
   <data name="HowItWorksQuotation1" xml:space="preserve">
-    <value>Geben Sie Ihren Kostenvorschlag an und stellen Sie Ihre Fragen.</value>
+    <value>Geben Sie Ihre Kostenanfrage an und stellen Sie Ihre Fragen.</value>
   </data>
   <data name="HowItWorksQuotation2" xml:space="preserve">
     <value>Ihr Antrag wurde bereits dem Manager zugeschickt.</value>
@@ -355,24 +355,18 @@
   <data name="HowItWorksQuotation3" xml:space="preserve">
     <value>Sie bekommen eine Antwort in kürzer Zeit.</value>
   </data>
-  <data name="HowItWorksParty1" xml:space="preserve">
-    <value>Cet évènement networking est l’occasion pour tous les coworkaholics, indépendants et entrepreneurs de se rencontrer, de tisser des liens et découvrir les espaces de coworking parisiens.</value>
-  </data>
-  <data name="HowItWorksParty2" xml:space="preserve">
-    <value>Durant cette soirée vous aurez la possibilité de faire un pitch de 45 secondes pour vous présenter et parler de vos projets.</value>
-  </data>
   <data name="HowItWorksParty3" xml:space="preserve">
-    <value>La soirée est organisée par eworky.com et par les espaces de coworkings {0}. </value>
+    <value>Der Abend wurde von eworky.com und den Coworking Spaces {0}organisiert.</value>
   </data>
   <data name="HowItWorksParty4" xml:space="preserve">
-    <value>L'entrée est gratuite, {0} a le plaisir de vous accueillir et eWorky de payer sa tournée ;) 
-Inscrivez-vous rapidement, les places sont limitées !</value>
+    <value>Der Eintritt ist kostenlos, {0} freut sich Sie begrüssen zu dürfen und eWorky eine Runde auszugeben ;) Schreiben Sie sich schnell ein, Plätze sind begrenzt !</value>
   </data>
   <data name="RegisterParty" xml:space="preserve">
     <value>Registrieren</value>
   </data>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
-    <value>Votre inscription a été prise en compte, la date de l'évenement vous sera communiquée par mail.</value>
+    <value>Ihr Eintrag wurde richtig erfasst. Das Datum des Ereignisses wird Ihnen später per Email kommuniziert.
+</value>
   </data>
   <data name="StatusAccepted" xml:space="preserve">
     <value>Akzeptiert</value>
@@ -387,6 +381,18 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
     <value>Abgelehnt</value>
   </data>
   <data name="StatusUnknown" xml:space="preserve">
-    <value>Inconnu</value>
+    <value>Unbekannt</value>
+  </data>
+  <data name="StatusPending" xml:space="preserve">
+    <value>Nicht validiert</value>
+  </data>
+  <data name="ContactAvailable" xml:space="preserve">
+    <value>Die Kontaktdaten der Kunde für das Angebot {0} sind verfügbar !</value>
+  </data>
+  <data name="HowItWorksParty1" xml:space="preserve">
+    <value>Dieses Networking Event ist die Möglichkeit für alle Coworkaholics, Selbständige und Unternehmer sich zu treffen, Kontakt aufzubauen und Pariser Coworking Spaces zu entdecken.</value>
+  </data>
+  <data name="HowItWorksParty2" xml:space="preserve">
+    <value>Zu diesem Abend haben Sie die Möglichkeit ein Pitch von 45 Sekunden zu machen, damit Sie sich und Ihre Projekte vorstellen können.</value>
   </data>
 </root>

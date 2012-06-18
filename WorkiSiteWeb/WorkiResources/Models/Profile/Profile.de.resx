@@ -121,74 +121,17 @@
     <value>Adresse</value>
   </data>
   <data name="BirthDate" xml:space="preserve">
-    <value>Date de naissance</value>
-  </data>
-  <data name="Civility" xml:space="preserve">
-    <value>Civilité</value>
-  </data>
-  <data name="Company" xml:space="preserve">
-    <value>Grand compte</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Nom de l'entreprise</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Décrivez-vous en 140 caractères</value>
+    <value>Geburtsdatum</value>
   </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
   </data>
-  <data name="FavoritePlaces" xml:space="preserve">
-    <value>Où j'aime travailler</value>
-  </data>
-  <data name="Independant" xml:space="preserve">
-    <value>Indépendant</value>
-  </data>
   <data name="Linkedin" xml:space="preserve">
     <value>LinkedIn</value>
   </data>
-  <data name="LocalisationOwner" xml:space="preserve">
-    <value>Propriétaire d'un lieu</value>
-  </data>
-  <data name="Nomad" xml:space="preserve">
-    <value>Travailleur nomade</value>
-  </data>
-  <data name="NotSelected" xml:space="preserve">
-    <value>Sélectionnez votre profil</value>
-  </data>
-  <data name="Other" xml:space="preserve">
-    <value>Autre</value>
-  </data>
-  <data name="PaymentAddress" xml:space="preserve">
-    <value>Adresse URL de paiement PayPal</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Téléphone portable</value>
-  </data>
-  <data name="ProfileString" xml:space="preserve">
-    <value>Profil</value>
-  </data>
   <data name="PunctualUser" xml:space="preserve">
-    <value>Utilisateur du dimanche</value>
+    <value>Ich fahre nur vorbei</value>
     <comment>?</comment>
-  </data>
-  <data name="SiretNumber" xml:space="preserve">
-    <value>N° SIRET</value>
-  </data>
-  <data name="Startup" xml:space="preserve">
-    <value>Entrepreneur / TPE</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Etudiant</value>
-  </data>
-  <data name="TaxNumber" xml:space="preserve">
-    <value>N° TVA intracommunautaire</value>
-  </data>
-  <data name="TaxRate" xml:space="preserve">
-    <value>Taux de TVA applicable dans le pays de facturation (%)</value>
-  </data>
-  <data name="Teleworker" xml:space="preserve">
-    <value>Télétravailleur</value>
   </data>
   <data name="Twitter" xml:space="preserve">
     <value>Twitter</value>
@@ -198,5 +141,59 @@
   </data>
   <data name="Website" xml:space="preserve">
     <value>Internetseite</value>
+  </data>
+  <data name="Civility" xml:space="preserve">
+    <value>Anrede</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Name des Unternehmens</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreiben Sie sich (max. 140 Schriftzeichen)</value>
+  </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value>Wo ich arbeite</value>
+  </data>
+  <data name="Independant" xml:space="preserve">
+    <value>Selbständiger</value>
+  </data>
+  <data name="LocalisationOwner" xml:space="preserve">
+    <value>Raumeigentümer </value>
+  </data>
+  <data name="Nomad" xml:space="preserve">
+    <value>Nomad</value>
+  </data>
+  <data name="NotSelected" xml:space="preserve">
+    <value>Wählen Sie Ihr Profil aus</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="PaymentAddress" xml:space="preserve">
+    <value>URL Adresse für Paypal-Zahlung</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="ProfileString" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>D-U-N-S</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Unternehmer / kleine Unternehmen</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="TaxNumber" xml:space="preserve">
+    <value>USt-IdNr (steuerfreie innergemeinschaftliche Lieferung)</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>Einschlägiger Mehrwertsteuersatz in dem Rechnungsland</value>
+  </data>
+  <data name="Teleworker" xml:space="preserve">
+    <value>Telearbeiter</value>
   </data>
 </root>

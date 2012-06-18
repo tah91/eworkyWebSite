@@ -117,120 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Access" xml:space="preserve">
-    <value>Zugang</value>
+  <data name="From" xml:space="preserve">
+    <value>Von :</value>
   </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Moderationsfunktionalitäten</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Guten Tag {0}</value>
   </data>
-  <data name="AvoidPeriods" xml:space="preserve">
-    <value>Zeiträume vermeiden</value>
+  <data name="Message" xml:space="preserve">
+    <value>Nachricht :</value>
   </data>
-  <data name="Comfort" xml:space="preserve">
-    <value>Confort</value>
+  <data name="MP" xml:space="preserve">
+    <value>Private Nachricht</value>
   </data>
-  <data name="EquipementsServices" xml:space="preserve">
-    <value>Equipements &amp; Services</value>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>Bis bald auf eWorky ,&lt;br /&gt;Das eWorky Team&lt;br /&gt;</value>
   </data>
-  <data name="Facilities" xml:space="preserve">
-    <value>Ausstattung</value>
+  <data name="To" xml:space="preserve">
+    <value>An :</value>
   </data>
-  <data name="FreeWorkplace" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+  <data name="Friend" xml:space="preserve">
+    <value>Einem Freund zuschicken</value>
   </data>
-  <data name="Friday" xml:space="preserve">
-    <value>Freitag</value>
+  <data name="ConsultHere" xml:space="preserve">
+    <value>Anzeige hier anschauen ==&gt;</value>
   </data>
-  <data name="GlobalInformations" xml:space="preserve">
-    <value>Allgemeine Informationen</value>
-    <comment>LocalisationForm</comment>
+  <data name="Concern" xml:space="preserve">
+    <value>Bezüglich der Anzeige :</value>
   </data>
-  <data name="GoogleMapsLocalisation" xml:space="preserve">
-    <value>Localisation Google Maps</value>
+  <data name="Info" xml:space="preserve">
+    <value>Informationen - {0}</value>
   </data>
-  <data name="LinkToFB" xml:space="preserve">
-    <value>Lien vers la page Facebook</value>
+  <data name="Ownership" xml:space="preserve">
+    <value>Sie haben uns gekündigt, dass Sie der Manager von {0} sind, willkommen auf eWorky ! Als Manager dieses Ortes werden Sie die deskriptive Seite bearbeiten und die Informationsqualität verbessern können, indem Sie hier klicken {1} ; Sie werden auch die Möglichkeit haben  ein eWorky-Sticker an dem Eintritt Ihrer Büros anzukleben ! Dieses Sticker wird Ihnen kostenlos zugeschikt, bitte fragen Sie danach per Email. Es bedeutet nämlich, dass Ihre Büros zum Arbeiten günstig und von eWorky empfohlen sind.
+
+Vergessen Sie nicht Ihre Kunden anzubieten, dass Sie Ihren Ort auf eWorky kommentieren und benoten. Dies wird Ihre Suchmaschine und Ihre Sichtbarkeit auf eWorky verbessern.
+</value>
   </data>
-  <data name="LinkToTwitter" xml:space="preserve">
-    <value>Lien vers le profil Twitter</value>
+  <data name="Welcome" xml:space="preserve">
+    <value>Willkommen auf eWorky !</value>
   </data>
-  <data name="MandatoryFields" xml:space="preserve">
-    <value>Pflichtfelder</value>
+  <data name="Contact" xml:space="preserve">
+    <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Folgen Sie uns auf Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Folgen Sie uns auf Twitter&lt;/a&gt;</value>
   </data>
-  <data name="Monday" xml:space="preserve">
-    <value>Montag</value>
+  <data name="FollowFacebook" xml:space="preserve">
+    <value>Folgen Sie uns auf Facebook</value>
   </data>
-  <data name="MondayAfterClose" xml:space="preserve">
-    <value>Ex : 18:00</value>
+  <data name="FollowTwitter" xml:space="preserve">
+    <value>Folgen Sie uns auf Twitter</value>
   </data>
-  <data name="MondayAfterOpen" xml:space="preserve">
-    <value>Ex : 14:00</value>
+  <data name="Hey" xml:space="preserve">
+    <value>Guten Tag</value>
   </data>
-  <data name="MondayMorningClose" xml:space="preserve">
-    <value>Ex : 12:30</value>
+  <data name="OwnershipSubject" xml:space="preserve">
+    <value>Glückwünsche ! Sie sind jetzt Manager von {0} !</value>
   </data>
-  <data name="MondayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
-  </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Offre</value>
-  </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Fonctionnalités réservées au gérant du lieu</value>
-  </data>
-  <data name="PlaceDetails" xml:space="preserve">
-    <value>Raumeigenschaft</value>
-  </data>
-  <data name="PlacesExample" xml:space="preserve">
-    <value>z. B. : Regus Hamburg, Club Office Berlin, The Hub Vienna </value>
-  </data>
-  <data name="ProfessionalServices" xml:space="preserve">
-    <value>Services professionnels</value>
-  </data>
-  <data name="ProposedTechnology" xml:space="preserve">
-    <value>Technologie proposée</value>
-  </data>
-  <data name="RefineLocation" xml:space="preserve">
-    <value>Pour affiner la localisation, déplacer le repère</value>
-  </data>
-  <data name="ResetPosition" xml:space="preserve">
-    <value>Neue Lage</value>
-  </data>
-  <data name="RoadExample" xml:space="preserve">
-    <value>z. B. : Straßenzugang A6</value>
-  </data>
-  <data name="RoomCapacity" xml:space="preserve">
-    <value>Capacité des salles proposées</value>
-  </data>
-  <data name="Saturday" xml:space="preserve">
-    <value>Samstag</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>Services</value>
-  </data>
-  <data name="Sunday" xml:space="preserve">
-    <value>Sonntag</value>
-  </data>
-  <data name="Tariffs" xml:space="preserve">
-    <value>Preise</value>
-  </data>
-  <data name="Thursday" xml:space="preserve">
-    <value>Donnerstag</value>
-  </data>
-  <data name="TimeExample2" xml:space="preserve">
-    <value></value>
-    <comment>Problème des pm en Angleterre</comment>
-  </data>
-  <data name="Tuesday" xml:space="preserve">
-    <value>Dienstag</value>
-  </data>
-  <data name="UserServices" xml:space="preserve">
-    <value>Benutzer Service</value>
-  </data>
-  <data name="Wednesday" xml:space="preserve">
-    <value>Mittwoch</value>
-  </data>
-  <data name="Sectors" xml:space="preserve">
-    <value>Berufsfeld</value>
+  <data name="Twitter" xml:space="preserve">
+    <value>http://www.twitter.com/#!/eWorky_de</value>
   </data>
 </root>

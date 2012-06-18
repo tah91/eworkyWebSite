@@ -293,7 +293,7 @@
     <value>Sustainable development is a priority… not tomorrow, but today. For this reason, our new workspaces and work habits must inherently take into account respect for our planet and environment.</value>
   </data>
   <data name="WeThinkThat_Text8" xml:space="preserve">
-    <value>The word is changing at an accelerating pace fueled by new technologies and faster exchanges of information.</value>
+    <value>The world is changing at an accelerating pace fueled by new technologies and faster exchanges of information.</value>
   </data>
   <data name="WeThinkThat_Text9" xml:space="preserve">
     <value>In rethinking the workspace thanks largely to the idea of co-working spaces and shared workspaces, we can transform daily work life, our interaction with others and the world. The workspace must not only be a platform for change, but also the impulse behind change.</value>
@@ -302,8 +302,7 @@
     <value>eWorky was created in 2011 by 3 young entrepreneurs in response to a simple need: the ability to access a wifi connection and renting a meeting room for precise times and in different cities. The idea of a collaborative search platform for workspaces, thus rapidly took off.</value>
   </data>
   <data name="WhoAreWe_Text2" xml:space="preserve">
-    <value>eWorky is thus the enjoyment of all types of shared workspaces and an exchange of experiences in these workspaces. Our community is made up of passionate users willing to discover or propose a diverse set of workspaces adapted to specific needs.
-</value>
+    <value>eWorky is thus the enjoyment of all types of shared workspaces and an exchange of experiences in these workspaces. Our community is made up of passionate users willing to discover or propose a diverse set of workspaces adapted to specific needs.</value>
   </data>
   <data name="WhoAreWe_Text3" xml:space="preserve">
     <value>Now it’s your turn. Join the eWorky community now!</value>
@@ -388,5 +387,8 @@
   </data>
   <data name="Team_Member_5_Text" xml:space="preserve">
     <value>Jonathan is currently helping eWorky to develop on the west coast of the US. He just left France to live in San Francisco, the city he's been dreaming of since the first time he heard Janis Joplin's voice. The only problem he's going to have now is to focus despite the many musical, filmic, technological, and outdoors experiences the Bay Area has to offer. But hey, that's what the whole coworking idea is about : encouraging eclectic areas of interest to converge !</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
   </data>
 </root>

@@ -121,21 +121,18 @@
     <value>E-Mail-Adresse</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
+    <value>Vorname</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Nom</value>
+    <value>Name</value>
   </data>
   <data name="Link" xml:space="preserve">
-    <value>Lien</value>
+    <value>Link</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Sujet</value>
+    <value>Objekt</value>
   </data>
   <data name="ToEmail" xml:space="preserve">
-    <value>A l'adresse électronique</value>
-  </data>
-  <data name="ToName" xml:space="preserve">
-    <value>To Name</value>
+    <value>Email-Adresse</value>
   </data>
 </root>
