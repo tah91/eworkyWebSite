@@ -316,4 +316,7 @@
   <data name="PayPalCGULink" xml:space="preserve">
     <value>https://cms.paypal.com/es/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=es_ES</value>
   </data>
+  <data name="DiscoverBO" xml:space="preserve">
+    <value>Descubrir el Acceso Gerente</value>
+  </data>
 </root>

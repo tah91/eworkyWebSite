@@ -303,4 +303,10 @@
   <data name="SharedOfficeFr" xml:space="preserve">
     <value>Ofi. compartida</value>
   </data>
+  <data name="ActivatedBO" xml:space="preserve">
+    <value>BO activado</value>
+  </data>
+  <data name="MemberWithApi" xml:space="preserve">
+    <value>Miembro con Api</value>
+  </data>
 </root>

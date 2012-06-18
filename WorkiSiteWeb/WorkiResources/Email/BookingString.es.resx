@@ -306,4 +306,11 @@ Tu usuario es "&lt;b&gt;{5}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;
 
 Por otra parte, te invitamos a completar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{8}&lt;/b&gt; </value>
   </data>
+  <data name="CreateQuotationAndBOOwner" xml:space="preserve">
+    <value>Has recibido una solicitud de contacto para un(a) {0} en {1} ({2}).
+
+La consulta de la primera solicitud de contacto es gratuita. Entra en tu Acceso Gerente que permitirá que tu espacio gane en visibilidad y beneficia de herramientas de gestión tan simples como indispensables (Reservas, Pago seguro, Agenda, Facturas automáticas, CRM, etc.).
+
+Entra en tu {3} para consultar esta solicitud y contestar o rechazarla lo antes posible. </value>
+  </data>
 </root>

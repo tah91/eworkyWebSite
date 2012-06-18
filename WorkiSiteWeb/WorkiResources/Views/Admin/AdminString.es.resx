@@ -369,4 +369,7 @@
   <data name="Translate" xml:space="preserve">
     <value>Traducción</value>
   </data>
+  <data name="QuotationEdited" xml:space="preserve">
+    <value>La solicitud de presupuesto ha sido editada</value>
+  </data>
 </root>

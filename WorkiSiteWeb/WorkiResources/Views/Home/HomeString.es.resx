@@ -371,7 +371,7 @@
     <value>un mes</value>
   </data>
   <data name="TimeAgo_months" xml:space="preserve">
-    <value>&amp;d meses</value>
+    <value>%d meses</value>
   </data>
   <data name="TimeAgo_prefixAgo" xml:space="preserve">
     <value>Hace</value>
@@ -386,7 +386,7 @@
     <value>un año</value>
   </data>
   <data name="TimeAgo_years" xml:space="preserve">
-    <value>&amp;d años</value>
+    <value>%d años</value>
   </data>
   <data name="Team_Member_5" xml:space="preserve">
     <value>Jonathan Bourguignon</value>

@@ -257,4 +257,7 @@
   <data name="Wednesday" xml:space="preserve">
     <value>Miércoles</value>
   </data>
+  <data name="Sectors" xml:space="preserve">
+    <value>Sector de actividad</value>
+  </data>
 </root>

@@ -229,7 +229,7 @@
     <value>Soy gerente de este espacio</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
-    <value>¡Ya eres gerente de este espacio!</value>
+    <value>¡Ahora eres gerente de este espacio!</value>
   </data>
   <data name="Offline" xml:space="preserve">
     <value>Desconectado</value>

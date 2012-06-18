@@ -388,4 +388,10 @@
   <data name="StatusUnknown" xml:space="preserve">
     <value>Desconocido</value>
   </data>
+  <data name="StatusPending" xml:space="preserve">
+    <value>No validado</value>
+  </data>
+  <data name="ContactAvailable" xml:space="preserve">
+    <value>¡Los datos de contacto del cliente potencial para la oferta {0} están disponibles!</value>
+  </data>
 </root>

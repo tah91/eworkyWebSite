@@ -117,53 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActivationContent" xml:space="preserve">
-    <value>Una vez activada tu cuenta, serás oficialmente miembro de la comunidad eWorky... y tenemos el placer de anunciarte que ¡casi hemos terminado!
-
-Para validar tu inscripción en eWorky, sólo necesitas hacer clic sobre el enlace siguiente: {0}
-
-A continuación te podrás conectar con tu usuario " {1} "</value>
+  <data name="AboutEworky" xml:space="preserve">
+    <value>Sobre eWorky</value>
   </data>
-  <data name="ActivationSubject" xml:space="preserve">
-    <value>¡Bienvenid@ a la comunidad eWorky !</value>
-  </data>
-  <data name="BOAskContent" xml:space="preserve">
-    <value>Tu solicitud de autorización de acceso como gerente ha sido registrada. 
-
-Será validada en las proximas 48h. Podrás entonces acceder a la interfase de gestión de tu espacio conectándote a www.eworky.es con tus datos de conexión habituales.
-Para cualquier pregunta relativa a las funcionalidades de la herramienta o su manejo, no dudes en ponerte en contacto con nostros a contacto@eworky.es.
-
-Te invitamos a proponer a tus clientes puntuar y dejar un comentario sobre tu establecimiento ya que mejorará tu posición y visibilidad en nuestra página.</value>
-  </data>
-  <data name="BOAskSubject" xml:space="preserve">
-    <value>Tu solicitud de acceso como gerente ha sido registrada</value>
-  </data>
-  <data name="BOConfirmContent" xml:space="preserve">
-    <value>¡Enhorabuena! Es un placer comunicarte que tu acceso como gerente ha sido validado por el equipo de eWorky.
-
-A partir de ahora puedes acceder a {0} conectándote a www.eworky.es con tus datos de conexion habituales y empezar a gestionar tu espacio online.
-El primer paso para empezar a familiarizarte con la herramienta será introducir tus datos Paypal para poder cobrar los servicios y dejar que tus ofertas se puedan reservar online.
-Para cualquier pregunta sobre las funcionalidades de la herramienta o su manejo, no dudes en ponerte en contacto con nosotros a contacto@eworky.es.
-
-Te invitamos a proponer a tus clientes puntuar y dejar un comentario sobre tu establecimiento ya que mejorará tu posición y visibilidad en nuestra página.</value>
-  </data>
-  <data name="BOConfirmSubject" xml:space="preserve">
-    <value>¡Tu acceso como gerente de espacio ha sido aceptado!</value>
-  </data>
-  <data name="BOLink" xml:space="preserve">
-    <value>la interfase de gestión de tu espacio</value>
-  </data>
-  <data name="BOTeamAsk" xml:space="preserve">
-    <value>Nombre: &lt;b&gt;{0}&lt;/b&gt;
-Dirección de correo:  &lt;b&gt;{1}&lt;/b&gt;</value>
-  </data>
-  <data name="BOTeamAskSubject" xml:space="preserve">
-    <value>Solicitud del Acceso Gerente</value>
-  </data>
-  <data name="LocalisationCreate" xml:space="preserve">
-    <value>{0}, ¡Bienvenido a eWorky !</value>
-  </data>
-  <data name="LocalisationCreateContent" xml:space="preserve">
-    <value>¡Enhorabuena! &lt;b&gt;{0} ha sido añadido en eWorky como {1} en {2} ! Puedes hacer clic en el enlace siguiente para acceder a tu perfíl en eWorky: {3} </value>
+  <data name="WidgetTitle" xml:space="preserve">
+    <value>Widget eWorky</value>
   </data>
 </root>
