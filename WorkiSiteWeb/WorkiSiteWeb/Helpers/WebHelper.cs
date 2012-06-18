@@ -301,6 +301,9 @@ namespace Worki.Web.Helpers
                 case Worki.Infrastructure.Culture.es:
                     fbCulture = "es_ES";
                     break;
+                case Worki.Infrastructure.Culture.de:
+                    fbCulture = "de_DE";
+                    break;
             }
             return fbCulture;
         }

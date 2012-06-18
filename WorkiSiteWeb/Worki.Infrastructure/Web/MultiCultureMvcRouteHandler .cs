@@ -13,8 +13,6 @@ namespace Worki.Infrastructure
 {
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
-		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
-
 		public static Culture DefaultCulture = Culture.en;
 
 		/// <summary>
@@ -32,6 +30,8 @@ namespace Worki.Infrastructure
 					return Culture.fr;
 				case ".es":
 					return Culture.es;
+                case ".de":
+                    return Culture.de;
 				case ".com":
 					return Culture.en;
 				default:
@@ -55,6 +55,8 @@ namespace Worki.Infrastructure
                     return ".fr";
                 case Culture.es:
                     return ".es";
+                case Culture.de:
+                    return ".de";
                 case Culture.en:
                 default:
                     return ".com";
@@ -220,7 +222,8 @@ namespace Worki.Infrastructure
     {
         fr,
         en,
-		es
+		es,
+        de
     }
 
     public class SingleCultureMvcRouteHandler

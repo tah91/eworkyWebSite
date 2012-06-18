@@ -351,6 +351,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DescriptionEn" Type="nvarchar(max)" />
           <Property Name="DescriptionEs" Type="nvarchar(max)" />
+          <Property Name="DescriptionDe" Type="nvarchar(max)" />
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="OwnerID" Type="int" />
@@ -2224,6 +2225,7 @@
           <NavigationProperty Name="MemberEditions" Relationship="WorkiDBModel.FK_MemberEdition_Localisation" FromRole="Localisation" ToRole="MemberEdition" />
           <NavigationProperty Name="Invoices" Relationship="WorkiDBModel.FK_Invoice_Localisation" FromRole="Localisation" ToRole="Invoice" />
           <NavigationProperty Name="Offers" Relationship="WorkiDBModel.FK_Offer_Localisation" FromRole="Localisation" ToRole="Offer" />
+          <Property Type="String" Name="DescriptionDe" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LocalisationData">
           <Key>
@@ -3046,6 +3048,7 @@
           <EntitySetMapping Name="Localisations">
             <EntityTypeMapping TypeName="WorkiDBModel.Localisation">
               <MappingFragment StoreEntitySet="Localisation">
+                <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
                 <ScalarProperty Name="QuotationPrice" ColumnName="QuotationPrice" />
                 <ScalarProperty Name="BookingCom" ColumnName="BookingCom" />
                 <ScalarProperty Name="RoadAccess" ColumnName="RoadAccess" />

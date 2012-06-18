@@ -1545,7 +1545,6 @@ namespace Worki.Web.Controllers {
             public readonly string _MapItemSummary = "~/Views/Localisation/_MapItemSummary.cshtml";
             public readonly string _MapScript = "~/Views/Localisation/_MapScript.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
-            public readonly string _SearchMap = "~/Views/Localisation/_SearchMap.cshtml";
             public readonly string _SearchOrderSelector = "~/Views/Localisation/_SearchOrderSelector.cshtml";
             public readonly string _SearchPanel = "~/Views/Localisation/_SearchPanel.cshtml";
             public readonly string _SearchResults = "~/Views/Localisation/_SearchResults.cshtml";

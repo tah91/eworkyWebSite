@@ -610,6 +610,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 			public string FrValue { get; set; }
 			public string EnValue { get; set; }
 			public string EsValue { get; set; }
+            public string DeValue { get; set; }
 
 			public void SetValue(string culture, string value)
 			{
@@ -624,6 +625,9 @@ namespace Worki.Web.Areas.Admin.Controllers
 					case "es":
 						EsValue = value;
 						break;
+                    case "de":
+                        DeValue = value;
+                        break;
 
 				}
 			}
@@ -636,6 +640,8 @@ namespace Worki.Web.Areas.Admin.Controllers
 						return string.Compare(FrValue, EnValue, false) == 0;
 					case "es":
 						return string.Compare(FrValue, EsValue, false) == 0;
+                    case "de":
+                        return string.Compare(FrValue, DeValue, false) == 0;
 					default:
 						return false;
 				}
@@ -684,6 +690,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 				FillOutput(ref output, t, "fr");
 				FillOutput(ref output, t, "en");
 				FillOutput(ref output, t, "es");
+                FillOutput(ref output, t, "de");
 			}
 
 			var builder = new StringBuilder();
@@ -699,6 +706,14 @@ namespace Worki.Web.Areas.Admin.Controllers
 			builder.AppendLine("Espagnol : ");
 			builder.AppendLine();
 			WriteDuplicates(output, builder, "es");
+
+            builder.AppendLine();
+            builder.AppendLine();
+            builder.AppendLine();
+
+            builder.AppendLine("Allemand : ");
+            builder.AppendLine();
+            WriteDuplicates(output, builder, "de");
 
 			var content = MiscHelpers.Nl2Br(builder.ToString());
 			return Content(content);

@@ -80,6 +80,7 @@ namespace Worki.Infrastructure.Helpers
 					break;
 				case "fr":
 				case "es":
+                case "de":
 				default:
 					{
 						if (format == TimeFormat.Date)
@@ -105,6 +106,7 @@ namespace Worki.Infrastructure.Helpers
 					return 1 / 1.609F;
 				case "fr":
 				case "es":
+                case "de":
 				default:
 					return 1;
 			}

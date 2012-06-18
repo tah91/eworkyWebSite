@@ -4,13 +4,16 @@
     switch(Url.GetCulture())
     {
         case Worki.Infrastructure.Culture.en:
-            Current = "flags royaume-uni";
+            Current = "flags etats-unis";
             break;
         case Worki.Infrastructure.Culture.fr:
             Current = "flags france";
             break;
         case Worki.Infrastructure.Culture.es:
             Current = "flags espagne";
+            break;
+        case Worki.Infrastructure.Culture.de:
+            Current = "flags allemagne";
             break;
     }
     
@@ -23,8 +26,15 @@
 		{
 			new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.French,  Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
             new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.English,  Link = Url.Action(MVC.Home.ChangeCulture("en")) },
-            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Spanish,  Link = Url.Action(MVC.Home.ChangeCulture("es")) },
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Spanish,  Link = Url.Action(MVC.Home.ChangeCulture("es")) }
 		}
+        
+
     };
-    @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)
+    if(Request.IsAuthenticated && User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+    {
+        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German,  Link = Url.Action(MVC.Home.ChangeCulture("de")) })
+    }
 }
+
+@Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)

@@ -754,6 +754,8 @@ namespace Worki.Data.Models
 					return DescriptionEn;
 				case "es":
 					return DescriptionEs;
+                case "de":
+                    return DescriptionDe;
 				case "fr":
 				default:
 					return Description;
