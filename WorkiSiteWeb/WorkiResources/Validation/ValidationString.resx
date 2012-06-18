@@ -217,7 +217,7 @@
     <value>Votre adresse électronique n'est pas valide. Veuillez réessayer.</value>
   </data>
   <data name="PictureTooBig" xml:space="preserve">
-    <value>&lt;br/&gt;1 Mo max</value>
+    <value>&lt;br/&gt;10 Mo max</value>
   </data>
   <data name="PictureTooMuch" xml:space="preserve">
     <value>&lt;br/&gt;Maximun&lt;br/&gt;Atteint</value>

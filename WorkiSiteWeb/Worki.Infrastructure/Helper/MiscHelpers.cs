@@ -191,7 +191,7 @@ namespace Worki.Infrastructure.Helpers
 			public const int MinRange = 1;
 			public const int MaxRange = 10000;
 			public const int MaxLengh = 256;
-			public const int MaxFileSize = 3145728;
+            public const int MaxFileSize = 10485760;
 			public const int MinRequiredPasswordLength = 6;
 			public const int UnselectedItem = -1;
 			public const int OneMo = 1048576;

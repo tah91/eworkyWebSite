@@ -448,8 +448,12 @@
       <LastGenOutput>SearchCriteria.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Validation\ValidationString.en.resx" />
-    <EmbeddedResource Include="Validation\ValidationString.es.resx" />
+    <EmbeddedResource Include="Validation\ValidationString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validation\ValidationString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Validation\ValidationString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationString.Designer.cs</LastGenOutput>
