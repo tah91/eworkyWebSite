@@ -314,4 +314,10 @@
   <data name="Description" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
+  <data name="DiscoverBO" xml:space="preserve">
+    <value>Das Office Manager entdecken</value>
+  </data>
+  <data name="PricingHeaderTitle" xml:space="preserve">
+    <value>Entdecken Sie unser Office Manager</value>
+  </data>
 </root>

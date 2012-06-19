@@ -127,16 +127,16 @@
     <value>Zeiträume vermeiden</value>
   </data>
   <data name="Comfort" xml:space="preserve">
-    <value>Confort</value>
+    <value>Bequemlichkeit</value>
   </data>
   <data name="EquipementsServices" xml:space="preserve">
-    <value>Equipements &amp; Services</value>
+    <value>Ausstattungen und Dienstleistungen</value>
   </data>
   <data name="Facilities" xml:space="preserve">
-    <value>Ausstattung</value>
+    <value>Ausstattungen</value>
   </data>
   <data name="FreeWorkplace" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+    <value>Kostenloser Arbeitsplatz</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Freitag</value>
@@ -146,13 +146,13 @@
     <comment>LocalisationForm</comment>
   </data>
   <data name="GoogleMapsLocalisation" xml:space="preserve">
-    <value>Localisation Google Maps</value>
+    <value>Google Maps Lokalisierung</value>
   </data>
   <data name="LinkToFB" xml:space="preserve">
-    <value>Lien vers la page Facebook</value>
+    <value>Link zu der Facebook Seite</value>
   </data>
   <data name="LinkToTwitter" xml:space="preserve">
-    <value>Lien vers le profil Twitter</value>
+    <value>Link zu dem Twitter Profil</value>
   </data>
   <data name="MandatoryFields" xml:space="preserve">
     <value>Pflichtfelder</value>
@@ -173,10 +173,10 @@
     <value>Ex : 9:00</value>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value>Offre</value>
+    <value>Angebot</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value>Fonctionnalités réservées au gérant du lieu</value>
+    <value>Bestimmte Eigenschaften für den Manager des Ortes</value>
   </data>
   <data name="PlaceDetails" xml:space="preserve">
     <value>Raumeigenschaft</value>
@@ -185,13 +185,13 @@
     <value>z. B. : Regus Hamburg, Club Office Berlin, The Hub Vienna </value>
   </data>
   <data name="ProfessionalServices" xml:space="preserve">
-    <value>Services professionnels</value>
+    <value>Profesionelle Dienstleistungen</value>
   </data>
   <data name="ProposedTechnology" xml:space="preserve">
-    <value>Technologie proposée</value>
+    <value>Angebotene Technologie</value>
   </data>
   <data name="RefineLocation" xml:space="preserve">
-    <value>Pour affiner la localisation, déplacer le repère</value>
+    <value>Um die Lokalisierung zu verfeinern, Bewegen Sie den Marker</value>
   </data>
   <data name="ResetPosition" xml:space="preserve">
     <value>Neue Lage</value>
@@ -200,7 +200,7 @@
     <value>z. B. : Straßenzugang A6</value>
   </data>
   <data name="RoomCapacity" xml:space="preserve">
-    <value>Capacité des salles proposées</value>
+    <value>Raumauslastung</value>
   </data>
   <data name="Saturday" xml:space="preserve">
     <value>Samstag</value>
@@ -218,7 +218,7 @@
     <value>Donnerstag</value>
   </data>
   <data name="TimeExample2" xml:space="preserve">
-    <value></value>
+    <value>Geben Sie bitte eine Zeit in dem Format hh:mm, zum Beispiel : 19:30</value>
     <comment>Problème des pm en Angleterre</comment>
   </data>
   <data name="Tuesday" xml:space="preserve">
@@ -232,5 +232,32 @@
   </data>
   <data name="Sectors" xml:space="preserve">
     <value>Berufsfeld</value>
+  </data>
+  <data name="SharedOfficeExemple" xml:space="preserve">
+    <value>z.B. : Luxuriöse Büros, Arbeitsplätze mit einem Start-up zu teilen, Arbeitsplatz in Open Space, usw.</value>
+  </data>
+  <data name="SncfExample" xml:space="preserve">
+    <value>z.B. : Frankfurt (Main) Hbf</value>
+  </data>
+  <data name="SubwayExample" xml:space="preserve">
+    <value>z.B. : 3 Minuten von der Bushaltestelle, U6</value>
+  </data>
+  <data name="ThePlace1" xml:space="preserve">
+    <value>Der Arbeitsplatz "</value>
+  </data>
+  <data name="ThePlace2" xml:space="preserve">
+    <value>" ist der gleichen Adresse als der Ort, den sie hinzufügen möchten</value>
+  </data>
+  <data name="SharedOfficeDesc" xml:space="preserve">
+    <value>z.B. : Zwei Arbeitsplätze in einem Open Space sind von einem KMU in der Lebensmittelbranche angeboten. Wir arbeiten in einem ruhigem und leuchtendem Arbeitsplatz mit gastlicher Stimmung und sind für Austäusche und gegenseitige Hilfe offen. Zugang zu zwei Meetingräumen und einer Nespresso-Machine in dem Aufenthaltsraum. Langfristige Laufzeiten vorgezogen (ab 6 Monate).</value>
+  </data>
+  <data name="TimeExample1" xml:space="preserve">
+    <value>Geben Sie bitte eine Zeit in dem Format hh:mm, zum Beispiel : 9:30</value>
+  </data>
+  <data name="TuesdayAfterClose" xml:space="preserve">
+    <value>z.B. : 22:00</value>
+  </data>
+  <data name="TuesdayMorningOpen" xml:space="preserve">
+    <value>z.B. : 9:00</value>
   </data>
 </root>
