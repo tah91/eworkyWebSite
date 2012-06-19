@@ -171,4 +171,28 @@
   <data name="ShareOfficeMenu" xml:space="preserve">
     <value>Desk-Sharing</value>
   </data>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Office Manager bekommen</value>
+  </data>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Bieten Sie kostenlos und einfach Ihren Ort oder Ihren Arbeitsplatz auf eWorky an</value>
+  </data>
+  <data name="LegallyTitle" xml:space="preserve">
+    <value>Wie sieht es gerechtlich aus ?</value>
+  </data>
+  <data name="Legally1" xml:space="preserve">
+    <value>Das Sharing ist in der Regel ein &lt;b&gt;Untervermietung&lt;/b&gt; : eine Firma vermietet ihre Büros und untervermietet dann anderen Unternehmen. Eine Firma, die eine Untervermietung anbieten möchte muss eine schriftliche Vereinbarung von ihrem Vermieter haben, falls es in ihrem Mietvertrag nicht vereinbart ist.</value>
+  </data>
+  <data name="Legally2" xml:space="preserve">
+    <value>Aber mit eWorky fördern wir eine einfache und flexible Lösung : &lt;b&gt;der Dienstleistungsvertrag&lt;/b&gt;. Dieser Vertrag bedeutet, dass eine Person sich gegen eine Vergütung einsetzt, für eine andere Person eine Dienstleistung durchzuführen.</value>
+  </data>
+  <data name="Legally3" xml:space="preserve">
+    <value>In diesem Fall geht es um die Bereitstellung eines Lokals, seiner Ausstattung oder anderer Dienstleistungen. Und um Ihnen zu helfen &lt;b&gt;eWorky&lt;/b&gt; stellt für Sie &lt;b&gt;Vertragsmuster&lt;/b&gt; bereit, und bietet Sie an, sie &lt;b&gt;online zu managen&lt;/b&gt;.</value>
+  </data>
+  <data name="Legally4" xml:space="preserve">
+    <value>Hinweis : die zwei Vertragsarten können auch mit der Domizilierung des Unternehmens verbunden sein.</value>
+  </data>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Desk-Sharing : warum und wie ?</value>
+  </data>
 </root>

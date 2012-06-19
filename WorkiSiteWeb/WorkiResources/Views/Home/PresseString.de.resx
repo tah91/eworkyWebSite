@@ -118,15 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Articles" xml:space="preserve">
-    <value></value>
+    <value>Die sprechen über uns.</value>
   <comment>Modif Jm L8</comment></data>
   <data name="Description" xml:space="preserve">
-    <value></value>
+    <value>Sie werden hier einen Pressebericht über eWorky finden.</value>
   <comment>?</comment></data>
   <data name="OnJT" xml:space="preserve">
-    <value></value>
+    <value>eWorky auf die französisichen Fernsehnachrichten von France 3</value>
   <comment>Il faudra mettre que la presse anglophone</comment></data>
   <data name="VideoDesc" xml:space="preserve">
     <value></value>
   <comment>Il faudra mettre que la presse anglophone</comment></data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Kontaktieren Sie uns !</value>
+  </data>
 </root>
