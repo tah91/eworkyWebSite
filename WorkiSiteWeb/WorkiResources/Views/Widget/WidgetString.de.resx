@@ -117,52 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OfferCharacteristics" xml:space="preserve">
-    <value>Angebotseigenschaften</value>
+  <data name="AboutEworky" xml:space="preserve">
+    <value>Über eWorky</value>
   </data>
-  <data name="Prices" xml:space="preserve">
-    <value>Preise</value>
-  </data>
-  <data name="AddPrice" xml:space="preserve">
-    <value>Preis hinzufügen</value>
-  </data>
-  <data name="AskRemoveOffer" xml:space="preserve">
-    <value>Möchten dieses Angebot löschen : {0}</value>
-  </data>
-  <data name="AddOffer" xml:space="preserve">
-    <value>Angebot hinzufügen</value>
-  </data>
-  <data name="RemoveOffer" xml:space="preserve">
-    <value>Angebot löschen</value>
-  </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Angebot bearbeiten</value>
-  </data>
-  <data name="OfferRemoved" xml:space="preserve">
-    <value>Das Angebot wurde erfolgreich gelöscht.</value>
-  </data>
-  <data name="OfferCreated" xml:space="preserve">
-    <value>Das Angebot wurde erfolgreich hinzugefügt.</value>
-  </data>
-  <data name="OfferEdited" xml:space="preserve">
-    <value>Die neuen Eigenschaften wurden berücksichtigt.</value>
-  </data>
-  <data name="AskDevis" xml:space="preserve">
-    <value>Kostenanfrage</value>
-  </data>
-  <data name="InfoUnknown" xml:space="preserve">
-    <value>Die Eigenschaften dieses Angebots wurden nicht eingegeben.</value>
-  </data>
-  <data name="BackToLocalisation" xml:space="preserve">
-    <value>Zurück zu der Ort-Seite</value>
-  </data>
-  <data name="OffersDetail" xml:space="preserve">
-    <value>Details der Angebote</value>
-  </data>
-  <data name="SelectOffer" xml:space="preserve">
-    <value>Angebot :</value>
-  </data>
-  <data name="Availability" xml:space="preserve">
-    <value>Verfügbarkeit</value>
+  <data name="WidgetTitle" xml:space="preserve">
+    <value>eWorkys Widget </value>
   </data>
 </root>

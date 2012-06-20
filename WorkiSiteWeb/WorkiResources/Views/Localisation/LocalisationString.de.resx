@@ -131,7 +131,7 @@
     <value>Arbeitsplatz löschen</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Détails</value>
+    <value>Details</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -158,14 +158,186 @@
     <value>Tweet</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value></value>
+    <value>Auf der Titelseite</value>
     <comment>?</comment>
   </data>
   <data name="NotMain" xml:space="preserve">
-    <value></value>
+    <value>Nicht auf der Titelseite</value>
     <comment>?</comment>
   </data>
   <data name="Distance" xml:space="preserve">
     <value>{0:0.##} km</value>
+  </data>
+  <data name="PleaseConfirmDelete" xml:space="preserve">
+    <comment> </comment>
+    <value>Bitte bestätigen Sie die Löschung Ihres Arbeitsplatzes:</value>
+  </data>
+  <data name="WorkplaceDeleted" xml:space="preserve">
+    <value>Leider existiert der ausgewählte Arbeitsplatz nicht oder er wurde gelösche.</value>
+  </data>
+  <data name="WorkplaceNotFound" xml:space="preserve">
+    <value>Arbeitsplatz nicht gefunden.</value>
+  </data>
+  <data name="WorkplaceWellDeleted" xml:space="preserve">
+    <value>Ihr Arbeitsplatz wurde erfolgreich gelösche</value>
+  </data>
+  <data name="AboutPlace" xml:space="preserve">
+    <value>Über den Ort</value>
+  </data>
+  <data name="AddBy" xml:space="preserve">
+    <value>Hinzugefügt von :</value>
+  </data>
+  <data name="MustAddOffer" xml:space="preserve">
+    <value>Hinweis : Sie haben kein Angebot für diesen Ort hinzugefügt. Bitte fügen Sie mindestens ein Angebot hinzu.</value>
+  </data>
+  <data name="ShowContactInfo" xml:space="preserve">
+    <value>Informationen anzeigen</value>
+  </data>
+  <data name="NoPictureAvailable" xml:space="preserve">
+    <value>Kein Photo verfügbar</value>
+  </data>
+  <data name="BookingAvailableSoon" xml:space="preserve">
+    <value>Dieser Ort wird bald Angebote für die Reservierung inkludieren.</value>
+  </data>
+  <data name="GeneralOpinion" xml:space="preserve">
+    <value>Gesamte Meinung</value>
+  </data>
+  <data name="NeedThisSpace" xml:space="preserve">
+    <value>Haben Sie Interesse in diesem Ort ?</value>
+  </data>
+  <data name="NeedContactOfPlace" xml:space="preserve">
+    <value>Haben Sie Interesse in diesem Ort ?</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Gemeinschaft</value>
+  </data>
+  <data name="LastEditBy" xml:space="preserve">
+    <value>Letzte Bearbeitung von :</value>
+  </data>
+  <data name="NeedContactOfPlaceAction" xml:space="preserve">
+    <value>Den Manaager kontaktieren</value>
+  </data>
+  <data name="BookingForm" xml:space="preserve">
+    <value>Reservierungsantrag</value>
+  </data>
+  <data name="ContactThisSpaceAction" xml:space="preserve">
+    <value>Diesen Ort kontaktieren</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax :</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Ausstattungen</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="NoSuggestions" xml:space="preserve">
+    <value>eWorky kann Ihnen keine ähnliche Orte in der Umgebung vorschlagen.</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Ich empfehle Ihnen diesen Ort zu entdecken : {0}</value>
+  </data>
+  <data name="AreYouOwner" xml:space="preserve">
+    <value>Ich bin der Manager dieses Ortes</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="OwnerIdentity" xml:space="preserve">
+    <value>Identität des Managers :</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>Ich arbeitet hier</value>
+  </data>
+  <data name="LocHaveBeenCreate" xml:space="preserve">
+    <value>Die Seite für diesen Ort wurde hergestellt.</value>
+  </data>
+  <data name="EworkersOpinion" xml:space="preserve">
+    <value>eWorkers Meinungen</value>
+  </data>
+  <data name="TheDate" xml:space="preserve">
+    <value>am :</value>
+  </data>
+  <data name="ListLocSent" xml:space="preserve">
+    <value>Die Liste der Orten wurde zugeschickt.</value>
+  </data>
+  <data name="LocList" xml:space="preserve">
+    <value>Gesamtliste der Orten</value>
+  </data>
+  <data name="LocHaveBeenDel" xml:space="preserve">
+    <value>Der Ort wurde gelöscht.</value>
+  </data>
+  <data name="LocHaveBeenEdit" xml:space="preserve">
+    <value>Der Ort wurde bearbeitet.</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Geographische Lage</value>
+  </data>
+  <data name="ModifiedThe" xml:space="preserve">
+    <value>Update am {0}</value>
+  </data>
+  <data name="FacebookPage" xml:space="preserve">
+    <value>Facebook Page</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Angebote</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>Nein danke</value>
+  </data>
+  <data name="ShareOnFb" xml:space="preserve">
+    <value>Auf Facebook teilen</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Mehr Details</value>
+  </data>
+  <data name="YouKnowContactUs" xml:space="preserve">
+    <value>Wenn Sie die Kontaktdaten dieses Arbeitsortes kennen, füllen Sie sie bitte dank des Bearbeitungsformulars aus oder kontaktieren Sie uns : contact@eworky.com</value>
+  </data>
+  <data name="BookIt" xml:space="preserve">
+    <value>Reservieren</value>
+  </data>
+  <data name="Suggestion" xml:space="preserve">
+    <value>Empfehlung(en)</value>
+  </data>
+  <data name="execError" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten.</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Reservierung</value>
+  </data>
+  <data name="NeedThisSpaceAction" xml:space="preserve">
+    <value>Online reservieren</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Soziale Netzwerke</value>
+  </data>
+  <data name="YouAreOwner" xml:space="preserve">
+    <value>Sie sind jetzt Manager dieses Ortes !</value>
+  </data>
+  <data name="BookingFormHelp" xml:space="preserve">
+    <value>Bitte präzisieren Sie Ihren Antrag sowie Ihre Kontaktdaten. Ihre Nachricht wird direkt dem Vermieter zugeschickt.</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Überblick</value>
+  </data>
+  <data name="ImproveVisibility" xml:space="preserve">
+    <value>Möchten Sie dies mit Ihren Freunden auf Facebook teilen, um seine Sichtbarkeit zu verbessern ?</value>
+  </data>
+  <data name="SuccessfullyAdded" xml:space="preserve">
+    <value>Ihr Ort wurde erfolgreich hinzugefügt !</value>
+  </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Ihre Facebook Timeline wurde aktualisiert</value>
   </data>
 </root>
