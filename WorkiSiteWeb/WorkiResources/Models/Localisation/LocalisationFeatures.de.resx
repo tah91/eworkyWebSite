@@ -204,7 +204,7 @@
     <comment>?</comment>
   </data>
   <data name="Picturesque" xml:space="preserve">
-    <value>Malerischen Rahmen</value>
+    <value>Malerischer Rahmen</value>
     <comment>?</comment>
   </data>
   <data name="Pressing" xml:space="preserve">
@@ -247,10 +247,10 @@
     <value>Business Lounge</value>
   </data>
   <data name="FreeArea" xml:space="preserve">
-    <value>Kostenloser Raum (Hot Spot, Cafe, usw.)</value>
+    <value>Kostenloser Platz (Hot Spot, Café, usw.)</value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Räume</value>
+    <value>Büros</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
     <value>Meetingraum</value>
@@ -259,7 +259,7 @@
     <value>Seminarraum</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Raum</value>
+    <value>Büros</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
     <value>Raum für Visiokonferenzen</value>
@@ -328,7 +328,7 @@
     <value>Catering</value>
   </data>
   <data name="AllOffers" xml:space="preserve">
-    <value>Alle Räume</value>
+    <value>Alle Plätze</value>
   </data>
   <data name="Accountants" xml:space="preserve">
     <value>Buchhalter</value>
@@ -361,7 +361,7 @@
     <value>Unternehmer</value>
   </data>
   <data name="DesktopSearch" xml:space="preserve">
-    <value>Büros (Business Centers, Inkubators, usw.)</value>
+    <value>Büros (Business Center, Inkubator, usw.)</value>
   </data>
   <data name="Designers" xml:space="preserve">
     <value>Designers</value>

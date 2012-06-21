@@ -130,7 +130,7 @@
     <value>Private Nachricht</value>
   </data>
   <data name="SeeYouSoon" xml:space="preserve">
-    <value>Bis bald auf eWorky ,&lt;br /&gt;Das eWorky Team&lt;br /&gt;</value>
+    <value>Bis bald auf eWorky ,&lt;br /&gt;Das eWorky-Team&lt;br /&gt;</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>An :</value>
@@ -148,9 +148,9 @@
     <value>Informationen - {0}</value>
   </data>
   <data name="Ownership" xml:space="preserve">
-    <value>Sie haben uns gekündigt, dass Sie der Manager von {0} sind, willkommen auf eWorky ! Als Manager dieses Ortes werden Sie die deskriptive Seite bearbeiten und die Informationsqualität verbessern können, indem Sie hier klicken {1} ; Sie werden auch die Möglichkeit haben  ein eWorky-Sticker an dem Eintritt Ihrer Büros anzukleben ! Dieses Sticker wird Ihnen kostenlos zugeschikt, bitte fragen Sie danach per Email. Es bedeutet nämlich, dass Ihre Büros zum Arbeiten günstig und von eWorky empfohlen sind.
+    <value>Sie haben uns angekündigt, dass Sie der Manager von {0} sind, willkommen auf eWorky ! Als Manager dieses Platzes werden Sie die deskriptive Seite bearbeiten und die Informationsqualität verbessern können, indem Sie hier klicken {1} ; Sie werden auch die Möglichkeit haben ein eWorky-Sticker zu dem Eintritt Ihres Platzes anzukleben ! Dieses Sticker wird Ihnen kostenlos zugeschikt, bitte fragen Sie danach per Email. Es bedeutet nämlich, dass Ihre Büros zum Arbeiten günstig und von eWorky empfohlen sind.
 
-Vergessen Sie nicht Ihre Kunden anzubieten, dass Sie Ihren Ort auf eWorky kommentieren und benoten. Dies wird Ihre Suchmaschine und Ihre Sichtbarkeit auf eWorky verbessern.
+Vergessen Sie nicht Ihre Kunden anzubieten, dass Sie Ihren Platz auf eWorky kommentieren und benoten können. Dies wird Ihre Suchmaschine und Ihre Sichtbarkeit auf eWorky verbessern.
 </value>
   </data>
   <data name="Welcome" xml:space="preserve">

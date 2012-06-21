@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivationContent" xml:space="preserve">
-    <value>Sobald Ihr Konto aktiviert wurde werden Sie offiziell Mitglied der eWorky Gemeinschaft... und wir freuen uns Sie zu sagen, dass Sie es bald geschafft haben !
+    <value>Sobald Ihr Konto aktiviert wurde werden Sie offiziell Mitglied der eWorky-Gemeinschaft... und wir freuen uns Sie zu sagen, dass Sie es bald geschafft haben !
 
 Um Ihre Registrierung bei eWorky zu bestätigen, bitte klicken Sie auf den folgenden Link : {0}
 
-Sie werden sich dann einfach mit Ihrem Benutzernamen " {1} " einloggen.</value>
+Sie werden sich dann einfach mit Ihrem Benutzernamen " {1} " anmelden können.</value>
   </data>
   <data name="ActivationSubject" xml:space="preserve">
     <value>Willkommen in der Gemeinschaft !</value>
   </data>
   <data name="BOAskContent" xml:space="preserve">
-    <value>Ihre Anfrage für einen Office Manager Zugang wurde berücksichtigt.
+    <value>Ihre Anfrage für einen Zugang zu dem Office Manager wurde berücksichtigt.
 
-Die Anfrage wird in den nächsten 48 Stunden bestätigt und Sie werden dann einen Zugang zu dem Management Tool haben, wenn Sie sich an www.eworky.de mit ihren gewöhnlichen Benutzerdaten einloggen werden.
+Die Anfrage wird in den nächsten 48 Stunden bestätigt und Sie werden dann einen Zugang zu dem Management Tool haben, wenn Sie sich an www.eworky.de mit ihren gewöhnlichen Benutzerdaten anmelden werden.
 
-Wenn Sie Fragen bezüglich den Eigenschaften oder der Verwendung dieses Tools haben, bitte kontaktieren Sie uns per Telefon (+33 1 77 17 04 21).
+Wenn Sie Fragen bezüglich den Eigenschaften oder der Verwendung dieses Tools haben, bitte kontaktieren Sie uns telefonisch unter +33 1 77 17 04 21.
 
 Dazu sollten Sie Ihre Kunden fördern, dass Sie Ihren Arbeitsplatz benoten und kommentieren. Dies wird das Ranking und die Sichtbarkeit Ihres Arbeitsplatzes verbessern.</value>
   </data>
@@ -142,12 +142,11 @@ Dazu sollten Sie Ihre Kunden fördern, dass Sie Ihren Arbeitsplatz benoten und k
   <data name="BOConfirmContent" xml:space="preserve">
     <value>Glückwünsche ! Ihr Zugang zu Ihrem Office Manager wurde von dem eWorky-Team bestätigt.
 
-Sie haben jetzt einen Zugang zu {0}, dafür müssen sie Sich einfach auf www.eworky.de mit Ihren gewöhnlichen Benutzerdaten einloggen. Sie können jetzt Ihr Space online managen.
-
-Um die Verwendung zu erleichtern ist der erste Schritt die Eingabe Ihrer Paypal-Benutzerdaten.
+Sie haben jetzt einen Zugang zu {0}, dafür müssen sie Sich einfach auf www.eworky.de mit Ihren gewöhnlichen Benutzerdaten anmelden. Sie können jetzt Ihren Platz online managen.
+Der erste Schritt für eine vereinfachte Verwendung ist die Eingabe Ihrer Paypal-Benutzerdaten.
 So können Sie bezahlt werden und Ihre Angebote werden online reservierbar sein. 
 
-Wenn Sie Fragen bezüglich den Eigenschaften oder der Verwendung dieses Tools haben, bitte kontaktieren Sie uns per Telefon (+33 1 77 17 04 21).
+Wenn Sie Fragen bezüglich den Eigenschaften oder der Verwendung dieses Tools haben, bitte kontaktieren Sie uns per Telefon unter +33 1 77 17 04 21.
 
 Sie sollten Ihre Kunden fördern, dass Sie Ihren Arbeitsplatz benoten und kommentieren. Dies wird das Ranking und die Sichtbarkeit Ihres Arbeitsplatzes verbessern.</value>
   </data>
@@ -155,7 +154,7 @@ Sie sollten Ihre Kunden fördern, dass Sie Ihren Arbeitsplatz benoten und kommen
     <value>Der Zugang zu Ihrem eWorky Office Manager wurde akzeptiert.</value>
   </data>
   <data name="BOLink" xml:space="preserve">
-    <value>your office manager interface </value>
+    <value>Die Benutzeroberfläche Ihres Office Managers</value>
   </data>
   <data name="BOTeamAsk" xml:space="preserve">
     <value>Name : &lt;b&gt;{0}&lt;/b&gt;
@@ -173,11 +172,11 @@ Email-Adresse : &lt;b&gt;{1}&lt;/b&gt;</value>
 
 &lt;u&gt;&lt;b&gt;Wie funktionniert es ?&lt;/b&gt;&lt;/u&gt;
 
-eWorky ist ein gemeinsamer Markt für Arbeitsplätze : wir helfen unserer Users den besten Arbeitsplatz zu finden. Ab jetzt, werden die eWorkers {4} finden, wenn sie einen Arbeitsplatz suchen werden. eWorky ist 100% kostenlos.
+eWorky ist ein gemeinsamer Markt für Arbeitsplätze : wir helfen unserer Users den besten Arbeitsplatz zu finden. Ab jetzt, werden die eWorkers {4} finden, wenn sie einen Arbeitsplatz suchen. eWorky ist 100% kostenlos.
 
 &lt;u&gt;&lt;b&gt;Was soll ich tun ?&lt;/b&gt;&lt;/u&gt;
 
-&lt;b&gt;Werden Sie Administrator Ihrer Seite !&lt;/b&gt; So werden Sie einen Zugriff auf ortgeschrittene Funtkionen Zugriff haben, um Ihren Arbeitsplatz zu fördern.
+&lt;b&gt;Werden Sie Administrator Ihrer Seite !&lt;/b&gt; So werden Sie einen Zugriff auf fortgeschrittene Funtkionen haben, um Ihren Arbeitsplatz zu fördern.
 
 &lt;b&gt;Aktualisieren Sie Ihre Informationen !&lt;/b&gt; 
 Bieten Sie neue Fotos an, stellen Sie Ihre Angebote eWorkers vor und gewinnen Sie an Sichtbarkeit !
@@ -185,7 +184,7 @@ Bieten Sie neue Fotos an, stellen Sie Ihre Angebote eWorkers vor und gewinnen Si
 &lt;b&gt;Fragen Sie nach Bewertungen !&lt;/b&gt; 
 Zeigen Sie den eWorkers wie {5} großartig ist ! Noten und Kommentare verbessern Ihr Ranking in den Suchergebnissen.
 
-Wenn Sie ein Kommentar machen möchten oder eine Frage haben, bitte kontaktieren Sie uns per Email an support@eworky.com, wir helfen Ihnen gerne !
+Wenn Sie ein Kommentar machen möchten oder eine Fr*age haben, bitte kontaktieren Sie uns per Email an support@eworky.com, wir helfen Ihnen gerne !
 
 Willkommen bei eWorky !</value>
   </data>

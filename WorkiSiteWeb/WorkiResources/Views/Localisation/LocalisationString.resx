@@ -144,7 +144,7 @@
   </data>
   <data name="PleaseConfirmDelete" xml:space="preserve">
     <value>Veuillez confirmer la supression du lieu de travail:</value>
-  </data>
+  <comment> </comment></data>
   <data name="WorkplaceDeleted" xml:space="preserve">
     <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
   </data>

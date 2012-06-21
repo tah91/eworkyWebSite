@@ -144,7 +144,7 @@
   </data>
   <data name="PleaseConfirmDelete" xml:space="preserve">
     <value>Please confirm you want to delete the workplace:</value>
-  </data>
+  <comment> </comment></data>
   <data name="WorkplaceDeleted" xml:space="preserve">
     <value>We are sorry, the selected workplace does not exist or was deleted.</value>
   </data>

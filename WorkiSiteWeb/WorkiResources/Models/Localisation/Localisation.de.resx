@@ -144,7 +144,7 @@
     <comment>Comment_Validation</comment>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value>Postleitzahl</value>
+    <value>PLZ</value>
   </data>
   <data name="PrivateArea" xml:space="preserve">
     <value>Privater Raum</value>
@@ -154,7 +154,7 @@
     <comment>?</comment>
   </data>
   <data name="SpotWifi" xml:space="preserve">
-    <value>Hot spot</value>
+    <value>Hot Spot</value>
     <comment>SearchCriteria</comment>
   </data>
   <data name="TypeValue" xml:space="preserve">
@@ -172,7 +172,7 @@
     <value>Angebotene Dienstleistungen</value>
   </data>
   <data name="Adress" xml:space="preserve">
-    <value>Straßennummer</value>
+    <value>Straße und Straßennummer</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>Stadt</value>
@@ -184,7 +184,7 @@
     <value>Hotel</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name des Raumes</value>
+    <value>Name des Platzes</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefon</value>
@@ -199,7 +199,7 @@
     <value>Bahnhof(¨-e)</value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value>Telecentre</value>
+    <value>Telezentrum</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
     <value>Travel Lounge</value>
@@ -216,10 +216,10 @@
     <value>Land</value>
   </data>
   <data name="WorkPostalCode" xml:space="preserve">
-    <value>Postleitzahl</value>
+    <value>PLZ</value>
   </data>
   <data name="GiveYourAdvice" xml:space="preserve">
-    <value>Donnez votre avis</value>
+    <value>Geben Sie Ihre Meinung</value>
   </data>
   <data name="Bookable" xml:space="preserve">
     <value>Online-Reservierung auf eworky.com anbieten</value>
@@ -263,7 +263,7 @@
     <value>{0}, {1} zu {2}</value>
   </data>
   <data name="FreeAreas" xml:space="preserve">
-    <value>Kostenlose Räume</value>
+    <value>Kostenlose Plätze</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Name des Unternehmens</value>
@@ -344,7 +344,7 @@
     <value>Montag Vormittag geöffnet</value>
   </data>
   <data name="OtherTypes" xml:space="preserve">
-    <value>Andere Räume</value>
+    <value>Andere Plätze</value>
   </data>
   <data name="InStartUp" xml:space="preserve">
     <value>in einem Start-up</value>
@@ -433,7 +433,7 @@
   <data name="WedOpenMorning" xml:space="preserve">
     <value>Mittwoch Vormittag geöffnet</value>
   </data>
-    <value>{0}, {1} in {2}</value>
+  <value>{0}, {1} in {2}</value>
   <data name="SmallBusiness" xml:space="preserve">
     <value>Klein- und Mittelunternehmen</value>
   </data>

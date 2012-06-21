@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptBookingClient" xml:space="preserve">
-    <value>Ihr Reservierungsantrag für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Ort &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde für den Betrag von &lt;b&gt;{5}&lt;/b&gt; € bestätigt.
+    <value>Ihr Reservierungsantrag für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Platz &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde für den Betrag von &lt;b&gt;{5}&lt;/b&gt; € bestätigt.
 
 Um Ihre Reservierung definitiv zu bestätigen, begeben Sie sich in Ihrem {6} und zahlen Sie Ihre Reservierung.</value>
   </data>
@@ -126,15 +126,15 @@ Um Ihre Reservierung definitiv zu bestätigen, begeben Sie sich in Ihrem {6} und
     <value>Ihr Reservierungsantrag wurde von dem Manager bestätigt.</value>
   </data>
   <data name="AcceptBookingOwner" xml:space="preserve">
-    <value>Sie haben die Reservierung für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Ort &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) für den Betrag von &lt;b&gt;{5}&lt;/b&gt; € akzeptiert.</value>
+    <value>Sie haben die Reservierung für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Platz &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) für den Betrag von &lt;b&gt;{5}&lt;/b&gt; € akzeptiert.</value>
   </data>
   <data name="AlertBookingNeed" xml:space="preserve">
-    <value>Bitte kontaktieren Sie diesen Ort, eine Reservierungsanfrage wurde gemacht, obwohl der Ort noch keine Reservierung anbietet :
-Name des Ortes : &lt;b&gt;{0}&lt;/b&gt;</value>
+    <value>Bitte kontaktieren Sie diesen Platz, ein Reservierungsantrag wurde gemacht, obwohl der Platz noch keine Reservierung anbietet :
+Name des Platzes : &lt;b&gt;{0}&lt;/b&gt;</value>
     <comment>jm</comment>
   </data>
   <data name="AlertBookingNeedSubject" xml:space="preserve">
-    <value>Möglichkeit für eine Reservierungsanfrage</value>
+    <value>Möglichkeit für einen Reservierungsantrag</value>
     <comment>jm</comment>
   </data>
   <data name="BookingMailBody" xml:space="preserve">
@@ -148,13 +148,13 @@ Ende : &lt;b&gt;{6}&lt;/b&gt;
 Text : &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="BookingMailSubject" xml:space="preserve">
-    <value>eWorky Alarm - Reservierungsanfrage</value>
+    <value>eWorky-Alarm - Reservierungsantrag</value>
   </data>
   <data name="BookingNewMemberSubject" xml:space="preserve">
     <value>Mit Bezug auf Ihren Reservierungsantrag wurde ein Konto hergestellt.</value>
   </data>
   <data name="BookingOwnerBody" xml:space="preserve">
-    <value>Sie haben einen Reservierungsantrag bekommen für ein(e/en) {0} in dem Ort {1} ({2}). 
+    <value>Sie haben einen Reservierungsantrag bekommen für ein(en) {0} in dem Platz {1} ({2}). 
 
 Gehen Sie zu Ihrem {3} um diesen Reservierungsantrag so bald wie möglich zu bestätigen oder abzulehnen.</value>
   </data>
@@ -163,27 +163,27 @@ Gehen Sie zu Ihrem {3} um diesen Reservierungsantrag so bald wie möglich zu bes
     <comment>jm</comment>
   </data>
   <data name="BookingNewMember" xml:space="preserve">
-    <value>Mit Bezug auf Ihren Reservierungsantrag für &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Ort &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde ein eWorky-Konto hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen.
+    <value>Mit Bezug auf Ihren Reservierungsantrag für &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Platz &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde ein eWorky-Konto hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen folgen können.
 
-Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&gt;"{6}"&lt;/b&gt;. Um Ihr Passwort zu ändern, gehen Sie auf "Mein Progil" : &lt;b&gt;{7}&lt;/b&gt;
+Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&gt;"{6}"&lt;/b&gt;. Um Ihr Passwort zu ändern, gehen Sie auf "Mein Profil" : &lt;b&gt;{7}&lt;/b&gt;
 
-Dazu laden wir Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
+WIr laden Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value>Reservierungsantrag - {0}</value>
   </data>
   <data name="CalandarBookingCreation" xml:space="preserve">
-    <value>Der Manager von &lt;b&gt;{0}&lt;/b&gt; hat Ihre Reservierungs für ein(e/en) &lt;b&gt;{1}&lt;/b&gt; von den &lt;b&gt;{2}&lt;/b&gt; bis zu dem &lt;b&gt;{3}&lt;/b&gt; auf seinem eWorky Zeitplan hinzugefügt.
+    <value>Der Manager von &lt;b&gt;{0}&lt;/b&gt; hat Ihre Reservierung für einen &lt;b&gt;{1}&lt;/b&gt; von den &lt;b&gt;{2}&lt;/b&gt; bis zu dem &lt;b&gt;{3}&lt;/b&gt; auf seinem eWorky-Zeitplan hinzugefügt.
 
 Ab jetzt können Sie diese Reservierung in Ihrem User Space abrufen.
 
 Der Betrag Ihrer Reservierung ist von &lt;b&gt;{5} €&lt;/b&gt;, wir laden Sie ein, diesen Betrag online über die Paypal-Plattform zu zahlen.
-Für Einfachkeit, verwenden Sie bitte einfach eworky.com für ihre nächste Reservierung.
+Für Einfachkeit, verwenden Sie bitte einfach www.eworky.com für ihre nächste Reservierung.
 
 Wenn diesen Arbeitsplatz Ihnen gefällt hat, benoten Sie bitte seine eWorky Seite &lt;b&gt;{6}&lt;/b&gt;.</value>
   </data>
   <data name="CalandarBookingModification" xml:space="preserve">
-    <value>Der Manager von &lt;b&gt;{0}&lt;/b&gt; hat Ihre Reservierung auf seinem eWorky Zeitplan geändert !
+    <value>Der Manager von &lt;b&gt;{0}&lt;/b&gt; hat Ihre Reservierung auf seinem eWorky-Zeitplan geändert !
 Ihre Reservierung ist jetzt von den &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; gespeichert.
 
 Sie können Ihre Reservierungen in Ihrem User Space anschauen &lt;b&gt;{3}&lt;/b&gt;.
@@ -195,17 +195,17 @@ Wenn diesen Arbeitsplatz Ihnen gefällt hat, benoten Sie bitte seine eWorky Seit
     <value>Ihre Reservierung {0} wurde geändert.</value>
   </data>
   <data name="ClientCreationAccount" xml:space="preserve">
-    <value>Ein Manager hat Ihnen auf seiner Kunden-Datei hinzugefügt und ein eWorky Konto wurde hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen folgen können.
+    <value>Ein Manager hat Ihnen auf seiner Kunden-Datei hinzugefügt und ein eWorky-Konto wurde hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen folgen können.
 
-Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&gt;"{6}"&lt;/b&gt;. Um Ihr Passwort zu ändern, gehen Sie auf "Mein Progil" : &lt;b&gt;{7}&lt;/b&gt;
+Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&gt;"{6}"&lt;/b&gt;. Um Ihr Passwort zu ändern, gehen Sie auf "Mein Profil" : &lt;b&gt;{7}&lt;/b&gt;
 
-Dazu laden wir Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
+Wir laden Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="ClientCreationAccountSubject" xml:space="preserve">
     <value>Um Ihre Reservierungen zu managen wurde ein Konto hergestellt.</value>
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
-    <value>Ihr Reservierungsantrag für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Ort &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde berücksichtigt.
+    <value>Ihr Reservierungsantrag für ein(en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Platz &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) wurde berücksichtigt.
 Der Manager wird Ihnen Ihre Reservierung so schnell wie möglich bestätigen.</value>
   </data>
   <data name="CreateBookingClientSubject" xml:space="preserve">
@@ -215,9 +215,9 @@ Der Manager wird Ihnen Ihre Reservierung so schnell wie möglich bestätigen.</v
     <value>&lt;b&gt;Herstellung&lt;/b&gt;
 
 Name : &lt;b&gt;{0}&lt;/b&gt;
-Telephon : &lt;b&gt;{1}&lt;/b&gt;
+Telefon : &lt;b&gt;{1}&lt;/b&gt;
 Email-Adresse : &lt;b&gt;{2}&lt;/b&gt;
-Name des Ortes : &lt;b&gt;{3}&lt;/b&gt;
+Name des Platzes : &lt;b&gt;{3}&lt;/b&gt;
 Verbrauch : &lt;b&gt;{4}&lt;/b&gt;
 Anfang : &lt;b&gt;{5}&lt;/b&gt;
 Ende : &lt;b&gt;{6}&lt;/b&gt;
@@ -225,20 +225,20 @@ Text : &lt;b&gt;{7}&lt;/b&gt;
 Url : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationAndBOOwner" xml:space="preserve">
-    <value>Ein potentieller Kunde möchte mit Ihnen für ein(e/en) {0} in dem Ort {1} ({2}) Kontakt aufnehmen.
-Die Konsultation Ihrer ersten Kontaktaufnahme ist kostenlos. Gehen so also so schnell wie möglich in Ihrem Office Manager, das Sie ermöglicht, Ihre Arbeitsplätze sichtbarer zu machen und mit Hilfe von einfachen und notwendigen Management Tools Vorteile zu ziehen (Reservierungen, gesicherte Zahlung, Planning, automatisierte Rechnungen, CRM).
+    <value>Ein potentieller Kunde möchte mit Ihnen für ein(en) {0} in dem Ort {1} ({2}) Kontakt aufnehmen.
+Die Konsultation Ihrer ersten Kontaktaufnahme ist kostenlos. Gehen so also so schnell wie möglich in Ihrem Office Manager, das Sie ermöglicht, Ihre Arbeitsplätze sichtbarer zu machen und mit Hilfe von einfachen und notwendigen Management Tools Vorteile zu ziehen (Reservierungen, gesicherte Zahlung, Zeitplan, automatisierte Rechnungen, CRM).
 
 Gehen Sie in  Ihrem(r) {3} um diese Anfrage so schnell wie möglich anzuschauen, sie zu antworten oder abzulehnen.</value>
   </data>
   <data name="CreateQuotationClient" xml:space="preserve">
-    <value>Ihre Kostenanfrage für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von &lt;b&gt;{1}&lt;/b&gt; m² in dem Ort &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) wurde berücksichtigt.
+    <value>Ihre Kostenanfrage für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von &lt;b&gt;{1}&lt;/b&gt; m² in dem Platz &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) wurde berücksichtigt.
 Der Manager wird Ihre Kostenanfrage so schnell wie möglich bestätigen.</value>
   </data>
   <data name="CreateQuotationClientSubject" xml:space="preserve">
     <value>Ihre Kostenanfrage wurde berücksichtigt.</value>
   </data>
   <data name="CreateQuotationOwner" xml:space="preserve">
-    <value>Ein potentieller Kunde möchte mit Ihnen für ein(e/en) {0} in dem Ort {1} ({2}) Kontakt aufnehmen.
+    <value>Ein potentieller Kunde möchte mit Ihnen für ein(e/en) {0} in dem Platz {1} ({2}) Kontakt aufnehmen.
 
 Gehen Sie in  Ihrem(r) {3} um diese Anfrage so schnell wie möglich anzuschauen, sie zu antworten oder abzulehnen.</value>
   </data>
@@ -246,14 +246,14 @@ Gehen Sie in  Ihrem(r) {3} um diese Anfrage so schnell wie möglich anzuschauen,
     <value>Kontaktaufnahme - {0}</value>
   </data>
   <data name="PartyCreateAccount" xml:space="preserve">
-    <value>Mit Bezug auf Ihre Einschreibung zu dem Coworkers Networking wir freuen uns, Ihnen mitteilen zu dürfen, dass ein eWorky Konto hergestellt wurde.
+    <value>Mit Bezug auf Ihre Einschreibung zu dem Coworkers Networking freuen wir uns, Ihnen mitteilen zu dürfen, dass ein eWorky-Konto erstellt wurde.
 
 Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&gt;"{6}"&lt;/b&gt;. Um Ihr Passwort zu ändern, gehen Sie auf "Mein Progil" : &lt;b&gt;{7}&lt;/b&gt;
 
-Dazu laden wir Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
+Wir laden Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="PartyCreateAccountSubject" xml:space="preserve">
-    <value>Ihr eWorky Konto wurde hergestellt !</value>
+    <value>Ihr eWorky-Konto wurde erstellt !</value>
   </data>
   <data name="PartyRegister" xml:space="preserve">
     <value>Ihre Einschreibung zu dem Coworkers Networking wurde erfolgreich gespeichert !
@@ -266,31 +266,31 @@ Bewerten und kommentieren Sie Ihre Lieblingsarbeitsplätze auf eWorky.</value>
   </data>
   <data name="PartyRegisterTeam" xml:space="preserve">
     <value>Name : &lt;b&gt;{0}&lt;/b&gt;
-Telephon : &lt;b&gt;{1}&lt;/b&gt;
+Telefon : &lt;b&gt;{1}&lt;/b&gt;
 Email-Adresse : &lt;b&gt;{2}&lt;/b&gt;
-Name des Ortes : &lt;b&gt;{3}&lt;/b&gt;</value>
+Name des Platzes : &lt;b&gt;{3}&lt;/b&gt;</value>
   </data>
   <data name="PartyRegisterTeamSubject" xml:space="preserve">
-    <value>eWorky Alarm - Networking Einschreibung</value>
+    <value>eWorky-Alarm - Networking Einschreibung</value>
   </data>
   <data name="PayementOwner" xml:space="preserve">
-    <value>Die Reservierung n°{0} wurde von dem Kunden bezahlt. Sie können die bestätigten Reservierungen in Ihrem Office Manager anschauen.</value>
+    <value>Die Reservierung Nr. {0} wurde von dem Kunden bezahlt. Sie können die bestätigten Reservierungen in Ihrem Office Manager anschauen.</value>
   </data>
   <data name="PayementSubject" xml:space="preserve">
-    <value>Die Reservierung n°{0} wurde bezahlt. </value>
+    <value>Die Reservierung Nr. {0} wurde bezahlt. </value>
   </data>
   <data name="QuotationMailBody" xml:space="preserve">
     <value>Name : &lt;b&gt;{0}&lt;/b&gt;
-Telephon : &lt;b&gt;{1}&lt;/b&gt;
+Telefon : &lt;b&gt;{1}&lt;/b&gt;
 Email-Adresse : &lt;b&gt;{2}&lt;/b&gt;
-Name des Ortes : &lt;b&gt;{3}&lt;/b&gt;
+Name des Platzes : &lt;b&gt;{3}&lt;/b&gt;
 Verbrauch : &lt;b&gt;{4}&lt;/b&gt;
 Fläche : &lt;b&gt;{5}&lt;/b&gt;
 Text : &lt;b&gt;{6}&lt;/b&gt;
 Url : &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
-    <value>eWorky Alarm - Kostenanfrage</value>
+    <value>eWorky-Alarm - Kostenanfrage</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
     <value>Mit Bezug auf Ihre Kostenanfrage für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von &lt;b&gt;{1}&lt;/b&gt; m² in dem Ort &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), ein eWorky Konto wurde hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen und Kostenanfragen folgen können.
@@ -300,10 +300,10 @@ Ihr Login ist "&lt;b&gt;{5}&lt;/b&gt;" und Ihr vorläufiges Passwort ist  &lt;b&
 Dazu laden wir Ihnen ein, Ihr Profil zu ergänzen. Dafür gehen Sie auf diesen Link : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
-    <value>eWorky - Nach Ihrem Wunsch wurde ein Konto hergestellt.</value>
+    <value>eWorky - Nach Ihrem Wunsch wurde ein Konto erstellt.</value>
   </data>
   <data name="RefuseBookingClient" xml:space="preserve">
-    <value>Leider wurde Ihr Reservierungsantrag für ein(e/en) {0} von den {1} bis zu dem {2} in dem Ort {3} ({4}) wegen mangelnder Verfügbarkeit abgelehnt.
+    <value>Leider wurde Ihr Reservierungsantrag für ein(en) {0} von den {1} bis zu dem {2} in dem Platz {3} ({4}) wegen mangelnder Verfügbarkeit abgelehnt.
 
 Der Manager lädt Ihnen ein, Ihren Reservierungsantrag für einen anderen Zeitpunkt oder ein anderes Angebot zu machen.</value>
   </data>
@@ -311,10 +311,10 @@ Der Manager lädt Ihnen ein, Ihren Reservierungsantrag für einen anderen Zeitpu
     <value>Ihr Reservierungsantrag wurde von dem Manager abgelehnt.</value>
   </data>
   <data name="RefuseBookingOwner" xml:space="preserve">
-    <value>Sie haben die Reservierung für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Ort &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) für die folgende Ursache abgelehnt : &lt;b&gt;{5}&lt;/b&gt;</value>
+    <value>Sie haben die Reservierung für ein(en) &lt;b&gt;{0}&lt;/b&gt; von dem &lt;b&gt;{1}&lt;/b&gt; bis zu dem &lt;b&gt;{2}&lt;/b&gt; in dem Platz &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) für die folgende Ursache abgelehnt : &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="RefuseQuotationClient" xml:space="preserve">
-    <value>Ihre Kostenanfrage für ein(e/en) &lt;b&gt;{0}&lt;/b&gt; in dem Ort &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) wurde für die folgende Ursache abgelehnt : {3}</value>
+    <value>Ihre Kostenanfrage für ein(en) &lt;b&gt;{0}&lt;/b&gt; in dem Platz &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) wurde für die folgende Ursache abgelehnt : {3}</value>
   </data>
   <data name="BookingNewMemberBody" xml:space="preserve">
     <value>Mit Bezug auf Ihren Reservierungsantrag für ein(e/en) {0}  von dem {1} bis zu dem {2} in dem Ort {3} ({4}) wurde ein eWorky Konto hergestellt. So werden Sie den Verlauf und den Zustand Ihrer Reservierungen folgen könenn.
