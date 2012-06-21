@@ -169,20 +169,20 @@
     <value>{0:0.##} km</value>
   </data>
   <data name="PleaseConfirmDelete" xml:space="preserve">
-    <comment> </comment>
+    
     <value>Bitte bestätigen Sie die Löschung Ihres Arbeitsplatzes:</value>
   </data>
   <data name="WorkplaceDeleted" xml:space="preserve">
-    <value>Leider existiert der ausgewählte Arbeitsplatz nicht oder er wurde gelösche.</value>
+    <value>Leider existiert der ausgewählte Arbeitsplatz nicht oder er wurde gelöscht.</value>
   </data>
   <data name="WorkplaceNotFound" xml:space="preserve">
     <value>Arbeitsplatz nicht gefunden.</value>
   </data>
   <data name="WorkplaceWellDeleted" xml:space="preserve">
-    <value>Ihr Arbeitsplatz wurde erfolgreich gelösche</value>
+    <value>Ihr Arbeitsplatz wurde erfolgreich gelöscht</value>
   </data>
   <data name="AboutPlace" xml:space="preserve">
-    <value>Über den Ort</value>
+    <value>Über den Platz</value>
   </data>
   <data name="AddBy" xml:space="preserve">
     <value>Hinzugefügt von :</value>
@@ -221,7 +221,7 @@
     <value>Reservierungsantrag</value>
   </data>
   <data name="ContactThisSpaceAction" xml:space="preserve">
-    <value>Diesen Ort kontaktieren</value>
+    <value>Diesen Platz kontaktieren</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
@@ -245,10 +245,10 @@
     <value>eWorkers</value>
   </data>
   <data name="Recommendation" xml:space="preserve">
-    <value>Ich empfehle Ihnen diesen Ort zu entdecken : {0}</value>
+    <value>Ich empfehle Ihnen diesen Platz zu entdecken : {0}</value>
   </data>
   <data name="AreYouOwner" xml:space="preserve">
-    <value>Ich bin der Manager dieses Ortes</value>
+    <value>Ich bin der Manager dieses Platzes</value>
   </data>
   <data name="Offline" xml:space="preserve">
     <value>Offline</value>
@@ -260,7 +260,7 @@
     <value>Ich arbeitet hier</value>
   </data>
   <data name="LocHaveBeenCreate" xml:space="preserve">
-    <value>Die Seite für diesen Ort wurde hergestellt.</value>
+    <value>Die Seite für diesen Platz wurde erstellt.</value>
   </data>
   <data name="EworkersOpinion" xml:space="preserve">
     <value>eWorkers Meinungen</value>
@@ -269,16 +269,16 @@
     <value>am :</value>
   </data>
   <data name="ListLocSent" xml:space="preserve">
-    <value>Die Liste der Orten wurde zugeschickt.</value>
+    <value>Die Liste der Plätzen wurde zugeschickt.</value>
   </data>
   <data name="LocList" xml:space="preserve">
-    <value>Gesamtliste der Orten</value>
+    <value>Gesamtliste der Plätze</value>
   </data>
   <data name="LocHaveBeenDel" xml:space="preserve">
-    <value>Der Ort wurde gelöscht.</value>
+    <value>Der Platz wurde gelöscht.</value>
   </data>
   <data name="LocHaveBeenEdit" xml:space="preserve">
-    <value>Der Ort wurde bearbeitet.</value>
+    <value>Der Platz wurde bearbeitet.</value>
   </data>
   <data name="Localisation" xml:space="preserve">
     <value>Geographische Lage</value>
@@ -302,7 +302,7 @@
     <value>Mehr Details</value>
   </data>
   <data name="YouKnowContactUs" xml:space="preserve">
-    <value>Wenn Sie die Kontaktdaten dieses Arbeitsortes kennen, füllen Sie sie bitte dank des Bearbeitungsformulars aus oder kontaktieren Sie uns : contact@eworky.com</value>
+    <value>Wenn Sie die Kontaktdaten dieses Arbeitsplatzes kennen, füllen Sie sie bitte dank des Bearbeitungsformulars aus oder kontaktieren Sie uns : contact@eworky.com</value>
   </data>
   <data name="BookIt" xml:space="preserve">
     <value>Reservieren</value>
@@ -323,7 +323,7 @@
     <value>Soziale Netzwerke</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
-    <value>Sie sind jetzt Manager dieses Ortes !</value>
+    <value>Sie sind jetzt Manager dieses Platzes !</value>
   </data>
   <data name="BookingFormHelp" xml:space="preserve">
     <value>Bitte präzisieren Sie Ihren Antrag sowie Ihre Kontaktdaten. Ihre Nachricht wird direkt dem Vermieter zugeschickt.</value>

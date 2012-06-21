@@ -136,7 +136,7 @@
     <value>und</value>
   </data>
   <data name="Area" xml:space="preserve">
-    <value>FLähce</value>
+    <value>FLäche</value>
   </data>
   <data name="AreaUnit" xml:space="preserve">
     <value>(m²)</value>
@@ -172,7 +172,7 @@
     <value>Vertragsart </value>
   </data>
   <data name="CreateAlert" xml:space="preserve">
-    <value>Email Alert einsetzen</value>
+    <value>Email-Alert einsetzen</value>
   </data>
   <data name="DateDrop" xml:space="preserve">
     <value>Veröffentlicht am :</value>
@@ -187,13 +187,13 @@
     <value>Details</value>
   </data>
   <data name="DiagnosticRate" xml:space="preserve">
-    <value>Rating :</value>
+    <value>Bewertung : </value>
   </data>
   <data name="EditRental" xml:space="preserve">
     <value>Anzeige bearbeiten</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email adresse :</value>
+    <value>Email-Adresse :</value>
   </data>
   <data name="EndResultAnswer" xml:space="preserve">
     <value>gefundene Anzeigen</value>
@@ -268,7 +268,7 @@
     <value>Telefonnummer</value>
   </data>
   <data name="Place" xml:space="preserve">
-    <value>Ort</value>
+    <value>Platz</value>
   </data>
   <data name="PlaceExemple" xml:space="preserve">
     <value>z.B. : Berlin, Marienplatz Suttgart, usw.</value>
@@ -286,7 +286,7 @@
     <value>Referenz</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>eWorky Referenz</value>
+    <value>eWorky-Referenz</value>
   </data>
   <data name="Rental" xml:space="preserve">
     <value>Anzeige</value>

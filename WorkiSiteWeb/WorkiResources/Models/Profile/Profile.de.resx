@@ -196,4 +196,7 @@
   <data name="Company" xml:space="preserve">
     <value>Großunternehmen</value>
   </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value>Wo ich gerne arbeite</value>
+  </data>
 </root>

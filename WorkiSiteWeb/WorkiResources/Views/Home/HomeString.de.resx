@@ -227,7 +227,7 @@
     <value>Reservierung</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- Business centers, business lounges&lt;br /&gt;- Coworking Space&lt;br /&gt;- Telecentro, usw.</value>
+    <value>- Business centers, business lounges&lt;br /&gt;- Coworking Space&lt;br /&gt;- Telezentren, usw.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Suche</value>
@@ -236,7 +236,7 @@
     <value>Suchen</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>- WiFi Cafes, WiFi Hot Spots&lt;br /&gt;- Public digital space&lt;br /&gt;- Bibliothek, Museum, usw.</value>
+    <value>- WiFi Cafés, Hot Spots&lt;br /&gt;- Public digital space&lt;br /&gt;- Bibliothek, Museum, usw.</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>Und bald viel andere Funktionalitäten.</value>
@@ -272,10 +272,10 @@
     <value>Ein Shared Office</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>Mehr als &lt;em&gt;{0:### ### ###}&lt;/em&gt; Coworking Spaces, Cafe WiFi, Business Centers, Shared Offices</value>
+    <value>Mehr als &lt;em&gt;{0:### ### ###}&lt;/em&gt; Coworking Spaces, Café WiFi, Business Centers, Shared Offices</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>Sie haben unbenutzten Arbeitsplätze in Ihrem Unternehmen ? Teilen Sie sie auf auf eWorky und genießen Sie ein zusätzliches Einkommen !</value>
+    <value>Sie haben unbenutzten Arbeitsplätze in Ihrem Unternehmen ? Teilen Sie sie auf eWorky und genießen Sie ein zusätzliches Einkommen !</value>
   </data>
   <data name="SliderItemDesc" xml:space="preserve">
     <value> {0} in {1}</value>
@@ -290,7 +290,7 @@
     <value>Wir denken, dass :</value>
   </data>
   <data name="WeThinkThat_Text1" xml:space="preserve">
-    <value>Der Arbeitsplatz von Morgen wird sich mehr auf die Menschlichkeit als auf das Unternehmen konzentrieren und wird ein gastfreundlicher, zum Austäusche geeigneter Ort sein. Wir werden uns an die Arbeit erfreuen.</value>
+    <value>Der Arbeitsplatz von Morgen wird sich mehr auf die Menschlichkeit als auf das Unternehmen konzentrieren und wird ein gastfreundlicher, zum Austäusche geeigneter Platz sein. Wir werden uns an die Arbeit erfreuen.</value>
   </data>
   <data name="WeThinkThat_Text10" xml:space="preserve">
     <value>Wenn Sie der gleichen Meinung sind, kommen Sie zu uns !</value>
@@ -305,26 +305,25 @@
     <value>Die Öffnung zu den Anderen, der Austausch und die Zusammenarbeit sind für die persönliche Entwicklung und ein gutes Gleichgewicht zu der Arbeit unerlässlich.</value>
   </data>
   <data name="WeThinkThat_Text5" xml:space="preserve">
-    <value>Arbeiter brauchen tägliche soziale Erfahrungen und menschliche Austäusche. Unser Arbeitleben muss offener sein, Beschränkungen müssen durch Zusammenarbeit und Co-Creation ersetzen mit der Erstellung virtuellen Arbeitsgruppen.</value>
+    <value>Arbeiter brauchen tägliche soziale Erfahrungen und menschliche Austäusche. Unser Arbeitleben muss offener sein, Beschränkungen müssen durch Zusammenarbeit und Co-Creation mit der Erstellung virtuellen Arbeitsgruppen ersetzt werden.</value>
   </data>
   <data name="WeThinkThat_Text6" xml:space="preserve">
     <value>Die morgige Arbeit wird nicht mehr eigenständig sondern vielfältig und kollaborativ sein, manchmal entmaterialisert und oft aufgaben-, sektor- und personenorientiert.</value>
   </data>
   <data name="WeThinkThat_Text7" xml:space="preserve">
-    <value>Nachhaltige Entwicklung ist die Priorität von heute. Aus diesem Grund müssen unsere neuen Arbeitsplätze und Arbeitsarten unseren Planet natürlichlich berücksichtigen und respektieren. </value>
+    <value>Nachhaltige Entwicklung ist die Priorität von heute. Aus diesem Grund müssen unsere neuen Arbeitsplätze und Arbeitsarten unseren Planet natürlich berücksichtigen und respektieren. </value>
   </data>
   <data name="WeThinkThat_Text8" xml:space="preserve">
-    <value>Die Welt entwickelt sich immer schneller mit dem Impuls neuer Technologien.  
-Unsere Arbeitsorganisation, die seit Jahrzehnten unverändert ist, muss heute auch seine Revolution erleben.</value>
+    <value>Mit dem Impuls neuer Technologien entwickelt sich die Welt immer schneller. Unsere Arbeitsorganisation, die seit Jahrzehnten unverändert ist, muss heute auch seine Revolution erleben.</value>
   </data>
   <data name="WeThinkThat_Text9" xml:space="preserve">
-    <value>Mit Hilfe einer neuen Organisation der Arbeitsplätze dank Coworking Spaces und Shared Spaces ist es möglich, die tägliche Arbeit sowie unser Verhältnis zu den Anderen und der Welt zu verwandeln. Der Arbeitsplatz muss nicht nur die Rolle einer Plattform für Veränderung sonder des Impuls für diesen Wandel spielen.</value>
+    <value>Mit Hilfe einer neuen Organisation der Arbeitsplätze dank Coworking Spaces und Shared Spaces ist es möglich, die tägliche Arbeit sowie unser Verhältnis zu den Anderen und der Welt zu verwandeln. Der Arbeitsplatz muss nicht nur die Rolle einer Plattform für Veränderung sondern des Impuls für diesen Wandel spielen.</value>
   </data>
   <data name="WhoAreWe_Text1" xml:space="preserve">
-    <value>eWorky wurde 2011 von drei jungen Unternehmer als Antworkt auf einen einfachen Bedarf gegründet : die Möglichkeit einen Hot Spot, einen Meetingraum oder einen Raum für Ausbildungen für festgelegte Zeiten und in verschiedenen Städten zu erreichen. Die Idee einer kollaborativen Suchplattform für Arbeitsplätze hat sich dann schnell entwickelt.</value>
+    <value>eWorky wurde 2011 von drei jungen Unternehmer als Antwort auf einen einfachen Bedarf gegründet : die Möglichkeit einen Hot Spot, einen Meetingraum oder einen Raum für Ausbildungen für festgelegte Zeiten und in verschiedenen Städten zu erreichen. Die Idee einer kollaborativen Suchplattform für Arbeitsplätze hat sich dann schnell entwickelt.</value>
   </data>
   <data name="WhoAreWe_Text2" xml:space="preserve">
-    <value>eWorky ist damit den Genuss aller Arten von Arbeitsplätzen aufzuteilen und über verschiedene Erfahrungen in diesen Orten auszutauschen. Unsere Gemeinschaft besteht aus begeisterten Anwendern, die diverse Arbeitsplätze entdecken oder anbieten möchten,  die an spezifischen Bedürfnissen eingepasst sind.</value>
+    <value>eWorky ist damit den Genuss aller Arten von Arbeitsplätzen aufzuteilen und über verschiedene Erfahrungen in diesen Plätzen auszutauschen. Unsere Gemeinschaft besteht aus begeisterten Anwendern, die diverse Arbeitsplätze entdecken oder anbieten möchten, die an spezifischen Bedürfnissen eingepasst sind.</value>
   </data>
   <data name="WhoAreWe_Text3" xml:space="preserve">
     <value>Jetzt sind Sie dran, schließen Sie sich der eWorky Gemeinschaft !</value>
@@ -333,13 +332,13 @@ Unsere Arbeitsorganisation, die seit Jahrzehnten unverändert ist, muss heute au
     <value>Der Pariser Olivier ist für eWorkys Strategie und Storyboards verantwortlich. In dem Open Space und während Austäusche ist er nicht nur diskret wie einen Fischhändler Samstagmorgen um 5 Uhr in Rungis. Olivier ist ein großer Adept von Wanderung und ein überzeugter Vegetarier. Vor allem betont aber Olivier pures Design und ist spezialisiert auf die Beseitigung unnötiger Tasten und Rechtschreibfehler.</value>
   </data>
   <data name="Team_Member_2_Text" xml:space="preserve">
-    <value>Cécilia kümmert sich um eWorkys Geschäftsentwicklung, PR, und Finanzierung. Sie arbeitet von Grenoble und passen Sie auf, sie erträgt keine negativen Kommentare über ihr Bergland ! Optimistisch, hyperaktiv und ein großer Fan von vollen Agenden und knappen Deadlines ist Cécilia stark in der Förderung der Digitaltechnik und des Unternehmergeists, als Ko-Präsidentin des Young Entrepreneurs Circle (auf französisch "Cerle des Jeunes Entrepreneurs") involviert. Wenn Sie Freizeit hat mag sie in ihren Straßenschuhen bummeln, klettern und reiten.</value>
+    <value>Cécilia kümmert sich um eWorkys Geschäftsentwicklung, PR, und Finanzierung. Sie arbeitet von Grenoble und passen Sie auf, sie erträgt keine negativen Kommentare über ihr Bergland ! Optimistisch, hyperaktiv und ein großer Fan von vollen Zeitplänen und knappen Deadlines ist Cécilia stark in der Förderung der Digitaltechnik und des Unternehmergeists, als Ko-Präsidentin des Young Entrepreneurs Circle (auf französisch "Cerle des Jeunes Entrepreneurs") involviert. Wenn Sie Freizeit hat mag sie in ihren Straßenschuhen wander, klettern und reiten.</value>
   </data>
   <data name="Team_Member_3_Text" xml:space="preserve">
     <value>Tahir ist DER Softwareentwickler Spezialist, so sehr, dass es manchmal schwierig ist zu verstehen, was er uns alles erzählt. Als eifriger Leser von Dostoïevski und Camus fühlt er sich wohl in der Programmierung sowie in dem Verschlingen von Kaffees, Kuchen und alle Arten von Schokoriegeln. Ursprünglich aus Ulis (wie Thierry Henry), hat er bereits Capoeira gemacht und ist in verschiedenen Meeren getaucht. Seine Konsumneigung Rechtschreibfehler sowie leere Kekspackungen hinter sich zu säen kompensiert den Eifer, mit dem Olivier seine Fehler korrigiert.</value>
   </data>
   <data name="Team_Member_4_Text" xml:space="preserve">
-    <value>Marc ist unser Business Developer für den spanischsprachigen Raum. „Marco“ wohnt in Saragossa und genießt den Lebensstil und die außergewöhnliche Dichte von Tapas-Bars, die die Stadt anzubieten hat. Marc gleicht dem Land, in dem er seine Koffer abgestellt hat : er ist freundlich, schlemmer, sportlich und feierwütig. Wir haben noch nicht herausfinden, welche Drogen er konsummert, um so viel Energie ins Team zu bringen. Wir vermuten aber eine geheime Mischung aus Cacique, Olivenöl und Chorizo.</value>
+    <value>Marc ist unser Business Developer für den spanischsprachigen Raum. „Marco“ wohnt in Saragossa und genießt den Lebensstil und die außergewöhnliche Dichte von Tapas-Bars, die die Stadt anzubieten hat. Marc gleicht dem Land, in dem er seine Koffer abgestellt hat : er ist freundlich, schlemmer, sportlich und feierwütig. Wir haben noch nicht herausgefunden, welche Drogen er konsummert, um so viel Energie ins Team mitzubringen. Wir vermuten aber eine geheime Mischung aus Cacique, Olivenöl und Chorizo.</value>
   </data>
   <data name="TimeAgo_day" xml:space="preserve">
     <value>Ein Tag</value>
@@ -390,7 +389,7 @@ Unsere Arbeitsorganisation, die seit Jahrzehnten unverändert ist, muss heute au
     <value>Jonathan Bourguignon</value>
   </data>
   <data name="Team_Member_5_Text" xml:space="preserve">
-    <value>Jonathan hilft uns zurzeit von der amerikanischen Westküste, um eWorky in den USA zu entwickeln. Er hat gerade Frankreich verlassen, um in San Francisco zu leben, die Stadt von der er träumt seitdem er für das erste Mal die Stimme von Janis Joplin gehört hat. Das einzige Problem, das er jetzt erleben wird, ist, sich trotz des musikalischen, filmischen, und technologischen Angebots der kalifornischen Region zu konzentrieren. Aber das macht die ganze Vorstellung über Coworking aus : vielseitige Interessenbereiche für Zusammenlaufen zu fördern.</value>
+    <value>Jonathan hilft uns zurzeit von der amerikanischen Westküste, um eWorky in den USA zu entwickeln. Er hat gerade Frankreich verlassen, um in San Francisco zu leben, die Stadt von der er träumt seitdem er für das erste Mal die Stimme von Janis Joplin gehört hat. Das einzige Problem, das er jetzt erleben wird, ist, sich trotz des musikalischen, filmischen, und technologischen Angebots der kalifornischen Region zu konzentrieren. Aber das macht die ganze Vorstellung über Coworking aus : vielseitige Interessenbereiche für Zusammenlaufen fördern.</value>
   </data>
   <data name="FindTheBesPlace" xml:space="preserve">
     <value>Finden Sie den besten Arbeitsplatz, unter {0: # # # # # # # # #} Orte</value>

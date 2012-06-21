@@ -127,7 +127,7 @@
     <value>Zurück zu dem Office Manager</value>
   </data>
   <data name="Booking" xml:space="preserve">
-    <value>Buchung</value>
+    <value>Resevierung</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontaktieren</value>
@@ -163,7 +163,7 @@
     <value>Aktuelle Nachrichten</value>
   </data>
   <data name="ManagementTitle" xml:space="preserve">
-    <value>{0}s Schnittstellenmanagement</value>
+    <value>Schnittstellenmanagement von {0}</value>
   </data>
   <data name="Member" xml:space="preserve">
     <value>Mitglied</value>
@@ -175,7 +175,7 @@
     <value>Identität</value>
   </data>
   <data name="NoCurrentBooking" xml:space="preserve">
-    <value>Sie haben keine ausstehende Buchungsanforderung. Um Ihre archivierten Buchungen zu befragen begeben Sie sich zu Angebote.</value>
+    <value>Sie haben keinen ausstehenden Reservierungsantrag. Um Ihre archivierten Buchungen zu befragen begeben Sie sich zu Angebote.</value>
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
     <value>Sie haben keine ausstehende Kostenanfrage. Um Ihre archivierten Kostenanfragen zu befragen begeben Sie sich zu Angebote.</value>
@@ -185,7 +185,7 @@
     <value>Nicht fixiert</value>
   </data>
   <data name="NoWorkingBooking" xml:space="preserve">
-    <value>Keine Buchungsanforderungen wurden archiviert</value>
+    <value>Kein Reservierungsantrag wurden archiviert</value>
   </data>
   <data name="NoWorkingQuotation" xml:space="preserve">
     <value>Keine Kostenanfragen wurden archiviert</value>
@@ -212,13 +212,13 @@
     <value>Zahlungsinformationen wurden aktualisiert</value>
   </data>
   <data name="PlaceDoNotHaveOffer" xml:space="preserve">
-    <value>Dieser Raum hat noch keine Angebote</value>
+    <value>Dieser Platz hat noch keine Angebote</value>
   </data>
   <data name="Refuse" xml:space="preserve">
     <value>Ablehnen</value>
   </data>
   <data name="RefuseBooking" xml:space="preserve">
-    <value>Wollen Sie wirklich diese Buchungsanforderung ablehnen ?</value>
+    <value>Wollen Sie wirklich diesen Reservierungsantrag ablehnen ?</value>
   </data>
   <data name="RefuseQuotation" xml:space="preserve">
     <value>Wollen Sie wirklich diese Kostenanfrage ablehnen ? Es wird dann unmöglich, die Kontaktdaten des potentiellen Kunden zu befragen</value>
@@ -263,10 +263,10 @@
     <value>Funktionsprinzip</value>
   </data>
   <data name="DoNotHaveOnlineBooking" xml:space="preserve">
-    <value>Dieser Raum hat noch kein Angebot, das Online-Buchungen bieten kann</value>
+    <value>Dieser Platz hat noch kein Angebot, das Online-Buchungen bieten kann</value>
   </data>
   <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
-    <value>Dieser Raum hat noch kein Angebot, das Online-Kostenanfragen bieten kann</value>
+    <value>Dieser Platz hat noch kein Angebot, das Online-Kostenanfragen bieten kann</value>
   </data>
   <data name="PriceConfiguration" xml:space="preserve">
     <value>Einstellung der Preisparameter</value>
@@ -281,7 +281,7 @@
     <value>Erstellen</value>
   </data>
   <data name="CreateBooking" xml:space="preserve">
-    <value>Buchung erstellen</value>
+    <value>Resevierung erstellen</value>
   </data>
   <data name="Period" xml:space="preserve">
     <value>Zeitraum</value>
@@ -311,7 +311,7 @@
     <value>Sie haben schon diesen Kunden</value>
   </data>
   <data name="InvoiceOffer" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -323,10 +323,10 @@
     <value>Office Manager Antrag</value>
   </data>
   <data name="EmptyBookHistoric" xml:space="preserve">
-    <value>Sie haben keine Reservierung. Um einen Reservierungsantrag zu machen, bitte gehen Sie zu der Seite des gewünschten Ortes.</value>
+    <value>Sie haben keine Reservierung. Um einen Reservierungsantrag zu machen, bitte gehen Sie zu der Seite des gewünschten Platzes.</value>
   </data>
   <data name="EmptyQuotationHistoric" xml:space="preserve">
-    <value>Sie haben keine Kostenanfrage. Um eine Kostenanfrage zu machen, bitte gehen Sie zu der Seite des gewünschten Ortes.</value>
+    <value>Sie haben keine Kostenanfrage. Um eine Kostenanfrage zu machen, bitte gehen Sie zu der Seite des gewünschten Platzes.</value>
   </data>
   <data name="InvoiceDate" xml:space="preserve">
     <value>Datum</value>
@@ -335,7 +335,7 @@
     <value>Nr.</value>
   </data>
   <data name="NeedInfoPaypal" xml:space="preserve">
-    <value>Um eine Reservierung anzubieten, müssen Sie zuerst Ihre Paypal Email-Adresse im Tab "Optionen" von Ihrem Office Manager</value>
+    <value>Um eine Reservierung anzubieten, müssen Sie zuerst Ihre Paypal-Email-Adresse im Tab "Optionen" von Ihrem Office Manager angeben.</value>
   </data>
   <data name="OffersDirectAccess" xml:space="preserve">
     <value>Direkter Zugang zu dem Angebotsmanagement</value>
@@ -344,7 +344,7 @@
     <value>Tel.</value>
   </data>
   <data name="Place" xml:space="preserve">
-    <value>Ort</value>
+    <value>Platz</value>
   </data>
   <data name="TariffByPeriod" xml:space="preserve">
     <value>&lt;b&gt;{0} {1}&lt;/b&gt; pro &lt;b&gt;{2}&lt;/b&gt;</value>
@@ -353,7 +353,7 @@
     <value>Kontaktdaten anschauen</value>
   </data>
   <data name="PayQuotationDesc" xml:space="preserve">
-    <value>Unser Management und SEO Service ist 100% kostenlos. Rechnungen entstehen nur, wenn der Kontaktaufbau sich zu neuen Kunden entwickelt hat. So bezahlen Sie nur, wenn unser Service Ihnen geholfen hat. Wenn Sie auf "Kontaktdaten anschauen" klicken, werden Sie auf eine Paypal Seite weitergeleitet werden, um den Zahlungsprozess zu sichern.
+    <value>Unser Management und SEO-Service ist 100% kostenlos. Rechnungen entstehen nur, wenn der Kontaktaufbau sich zu neuen Kunden entwickelt hat. So bezahlen Sie nur, wenn unser Service Ihnen geholfen hat. Wenn Sie auf "Kontaktdaten anschauen" klicken, werden Sie auf eine Paypal-Seite weitergeleitet, um den Zahlungsprozess zu sichern.
 Die erste Anzeige ist Ihnen geschenkt !</value>
   </data>
 </root>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlertSearch" xml:space="preserve">
-    <value>Versuchen Sie zu suchen durch die Angabe eines Ortes</value>
+    <value>Versuchen Sie durch die Angabe eines Platzes zu suchen</value>
   <comment>?</comment></data>
   <data name="Go" xml:space="preserve">
     <value>Go !</value>
@@ -169,6 +169,6 @@
     <value>Karte</value>
   </data>
   <data name="OrViaFB" xml:space="preserve">
-    <value>Oder mit Ihrem Facebook Account</value>
+    <value>Oder mit Ihrem Facebook-Konto</value>
   </data>
 </root>

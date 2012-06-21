@@ -139,7 +139,7 @@
     <value>Schon eingeschrieben</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Zurück zur Liste</value>
+    <value>Zurück zu der Liste</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
     <value>Bitte bestätigen Sie die Löschung :</value>
@@ -211,10 +211,10 @@
     <value>Lokalisierung</value>
   </data>
   <data name="LocalisationPicture" xml:space="preserve">
-    <value>Foto des Ortes</value>
+    <value>Foto des Platzes</value>
   </data>
   <data name="LocalisationsAdmin" xml:space="preserve">
-    <value>Workplace Management</value>
+    <value>Arbeitsplätze-Management</value>
   </data>
   <data name="ManagerRole" xml:space="preserve">
     <value>Administrator</value>
@@ -262,7 +262,7 @@
     <value>Benutzer</value>
   </data>
   <data name="UserAdmin" xml:space="preserve">
-    <value>Users Managemen</value>
+    <value>Users Management</value>
   </data>
   <data name="UserAdministration" xml:space="preserve">
     <value>Users Verwaltung</value>
@@ -307,10 +307,10 @@
     <value>Der Topunternehmen wurde gelöscht.</value>
   </data>
   <data name="WelcomePeopleHaveBeenEdit" xml:space="preserve">
-    <value>Der Topunternehmen wurde bearbeitet</value>
+    <value>Der Topunternehmen wurde bearbeitet.</value>
   </data>
   <data name="PressHaveBeenCreate" xml:space="preserve">
-    <value>Das Presseartikel wurde erschafft</value>
+    <value>Das Presseartikel wurde erschafft.</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Benutzer nicht gefunden.</value>
@@ -355,7 +355,7 @@
     <value>Sticker</value>
   </data>
   <data name="BackOfficeRoleUpdated" xml:space="preserve">
-    <value>Backoffice Rolle aktualisiert</value>
+    <value>Backoffice Rolle aktualisiert.</value>
   </data>
   <data name="OwnersHasChanged" xml:space="preserve">
     <value>Managers wurden geändert.</value>

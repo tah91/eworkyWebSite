@@ -196,7 +196,7 @@
     <value>Manager</value>
   </data>
   <data name="OwnerTutorial" xml:space="preserve">
-    <value>Ich möchte meinen Arbeitsraum auflisten</value>
+    <value>Ich möchte meinen Arbeitsplätze auflisten</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Sobald der Raummanager Ihre Buchung bestätigt hat, können Sie direkt mit Ihrer Kreditkarte online zahlen.</value>
@@ -257,19 +257,19 @@
     <value>Nachweisen</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
-    <value>Um einen Raum auf eWorky zu managen müssen Sie sich kostenlos {0}, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
+    <value>Um einen Raum auf eWorky zu managen, müssen Sie sich kostenlos {0}, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
   </data>
   <data name="RegisterOwnerTitle" xml:space="preserve">
-    <value>Registrieren</value>
+    <value>Sich einschreiben</value>
   </data>
   <data name="RegisterUser" xml:space="preserve">
-    <value>Profitieren Sie von allen Vorteilen von eWorky, registrieren Sie sich kostenlos, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
+    <value>Profitieren Sie von allen Vorteilen von eWorky, schreiben Sie sich kostenlos ein, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
   </data>
   <data name="RegisterUserTitle" xml:space="preserve">
-    <value>Registrieren</value>
+    <value>Sich einschreiben</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Suchen Sie einen Hotspot, einen Konferenzraum oder einen Arbeitsplatz in einem Coworking Space in der größten Datenbank für Arbeitsplätze Europas</value>
+    <value>Suchen Sie einen Hot Spot, einen Konferenzraum oder einen Arbeitsplatz in einem Coworking Space in der größten Datenbank für Arbeitsplätze Europas</value>
   </data>
   <data name="SearchTitle" xml:space="preserve">
     <value>Suchen</value>
@@ -306,10 +306,10 @@
     <value>Managen Sie kostenlos Ihre Reservierungen, Ihre Plannungen, zusätzliche Services, Preise und Abonnements, {0}.</value>
   </data>
   <data name="ReferenceLink" xml:space="preserve">
-    <value>Eine Seite für Ihren Ort</value>
+    <value>Eine Seite für Ihren Platz</value>
   </data>
   <data name="RegisterLink" xml:space="preserve">
-    <value>Registrieren Sie sich kostenlos</value>
+    <value>Schreiben Sie sich kostenlos ein</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschreibung</value>

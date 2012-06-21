@@ -121,9 +121,9 @@
     <value>Erstellen Sie ein Konto in Sekunden und genießen Sie alle Funktionalitäten von eWorky.</value>
   </data>
   <data name="ErrorSave" xml:space="preserve">
-    <value>Ein Fehler ist während der Speicherung aufgetretten.</value>
+    <value>Ein Fehler ist während der Speicherung aufgetreten.</value>
   </data>
   <data name="RegisterEworky" xml:space="preserve">
-    <value>Sie sind jetzt bei eWorky registriert !</value>
+    <value>Sie sind jetzt an eWorky eingeschrieben !</value>
   </data>
 </root>

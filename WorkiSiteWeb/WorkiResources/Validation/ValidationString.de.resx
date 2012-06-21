@@ -121,7 +121,7 @@
     <value>Die angegebene Email-Adresse trifft nicht genau das richtige Format.</value>
   <comment>?</comment></data>
   <data name="PictureTooBig" xml:space="preserve">
-    <value>&lt;br/&gt;1 Mo max</value>
+    <value>&lt;br/&gt;Max. 1 Mo</value>
   </data>
   <data name="PictureTooMuch" xml:space="preserve">
     <value>&lt;br/&gt;Maximun&lt;br/&gt;erreicht</value>
@@ -148,7 +148,7 @@
     <value>Bitte prüfen Sie Ihre Kriterien nach.</value>
   </data>
   <data name="EmptyFileUpload" xml:space="preserve">
-    <value>leere Datei-Upload</value>
+    <value>Leere hochgeladene Datei</value>
   </data>
   <data name="FileTooBig" xml:space="preserve">
     <value>Datei ist zu groß</value>
@@ -199,7 +199,7 @@
     <value>Das Feld "{0}" muss zwischen {1} und {2} liegen.</value>
   </data>
   <data name="GivenPasswordNotValide" xml:space="preserve">
-    <value>Das angegebene Passworkt ist ungültig. Geben Sie bitte ein richtiges Passwort-Format ein.</value>
+    <value>Das angegebene Passwort ist ungültig. Geben Sie bitte ein richtiges Passwort-Format ein.</value>
   </data>
   <data name="NoValideDate" xml:space="preserve">
     <value>Das Feld "{0}" enspricht kein gültiges Datum.</value>
@@ -214,7 +214,7 @@
     <value>Sie müssen ein Profil auswählen.</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value>Sie müssen ein(e/e) "{0}" eingeben.</value>
+    <value>Sie müssen ein(e/en) "{0}" eingeben.</value>
   </data>
   <data name="AccountInactive" xml:space="preserve">
     <value>Sie werden eine Bestätigung per Email bekommen. Bitte klicken Sie auf den angegeben Link dieser Email, um Ihr Konto zu bestätigen.</value>
@@ -247,7 +247,7 @@
     <value>Achten Sie darauf, dass Sie ein anderes Bestätigungspasswort eingegeben haben. Bitte versuchen Sie es wieder. </value>
   </data>
   <data name="MustAgreeCGU" xml:space="preserve">
-    <value>Um ein eWorky-Konto herzustellen müssen Sie die AGB akzeptieren.</value>
+    <value>Um ein eWorky-Konto zu erstellen, müssen Sie die AGB akzeptieren.</value>
   </data>
   <data name="SelectOne" xml:space="preserve">
     <value>Sie müssen einen Wert für das Feld "{0}" auswählen.</value>
@@ -268,19 +268,19 @@
     <value>Das Datei-Upload wurde wegen Datennamenerweiterung abgebrochen</value>
   </data>
   <data name="GetBackPasswordMailNotValide" xml:space="preserve">
-    <value>Die angegebene Antwort, um Ihr Passwort abzusetzen ist ungültig. Bitte überprüfen Sie Ihre Geltung und versuchen Sie es noch einmal.</value>
+    <value>Die angegebene Antwort, um Ihr Passwort abzusetzen ist ungültig. Bitte überprüfen Sie ihre Geltung und versuchen Sie es noch einmal.</value>
   </data>
   <data name="ReturnErrorTryAgain" xml:space="preserve">
     <value>Das Authentifizierung-Service hat einen Fehler  ausgewiesen. Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es noch einmal. Wenn das Problem andauert, bitte kontaktieren Sie Ihren Systemadministrator.</value>
   </data>
   <data name="GetBackPasswordQuestionNotValide" xml:space="preserve">
-    <value>Die angegebene Antwort, um Ihr Passwort abzusetzen ist ungültig. Bitte üerprüfen Sie Ihre Geltung und versuchen Sie es noch einmal.</value>
+    <value>Die angegebene Antwort, um Ihr Passwort abzusetzen ist ungültig. Bitte üerprüfen Sie ihre Geltung und versuchen Sie es noch einmal.</value>
   </data>
   <data name="CannotBeEmpty" xml:space="preserve">
-    <value>Der Betrag und das Feld können nicht null Fel oder leer sein.</value>
+    <value>Der Betrag und das Feld können nicht null oder leer sein.</value>
   </data>
   <data name="CreateUsernameFail" xml:space="preserve">
-    <value>Die Anfrage für die Benutzerherstellung wurde abgebrochen. Bitte versuchen Sie es noch einmal. Wenn das Problem andauert, bitte kontaktieren Sie Ihren Systemadmnistrator.</value>
+    <value>Die Anfrage für die Benutzererstellung wurde abgebrochen. Bitte versuchen Sie es noch einmal. Wenn das Problem andauert, bitte kontaktieren Sie Ihren Systemadmnistrator.</value>
   </data>
   <data name="UsernameNotValide" xml:space="preserve">
     <value>Der angegebene Benutzername ist ungültig. Bitte überprüfen Sie Ihre Geltung und versuchen Sie es noch einmal.</value>

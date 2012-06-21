@@ -160,10 +160,10 @@
     <value>Nach geographischer Lage</value>
   </data>
   <data name="SearchByPlaceName" xml:space="preserve">
-    <value>Nach Ortsname</value>
+    <value>Nach Platzsname</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Nach Arten der Orte</value>
+    <value>Nach Arten der Platz</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
     <value>Nach Verbrauch</value>
@@ -178,7 +178,7 @@
     <value>Suche verfeinern</value>
   </data>
   <data name="ResultOfSearch" xml:space="preserve">
-    <value>Ihre Suchergebnisse</value>
+    <value>Ihr(e) Suchergebnis(se)</value>
   </data>
   <data name="ResultOnMap" xml:space="preserve">
     <value>Ihre Ergebnisse auf der Karte</value>
@@ -190,7 +190,7 @@
     <value>Suchergebnis(se)</value>
   </data>
   <data name="SearchType" xml:space="preserve">
-    <value>Welche Art von Orten suchen Sie ?</value>
+    <value>Welche Art von Plätzen suchen Sie ?</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
@@ -205,6 +205,6 @@
     <value>Wo ist dieser Ort ? (optional)</value>
   </data>
   <data name="YourSearchResult" xml:space="preserve">
-    <value>Ihre Suchergebnisse : {0} gefundene Orte</value>
+    <value>Ihr(e) Suchergebnis(se) : {0} gefundene Plätze</value>
   </data>
 </root>
