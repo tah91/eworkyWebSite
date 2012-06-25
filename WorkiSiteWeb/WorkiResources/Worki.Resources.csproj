@@ -552,6 +552,7 @@
     <EmbeddedResource Include="Views\Home\AProposString.de.resx" />
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\AProposString.es.resx" />
+    <EmbeddedResource Include="Views\Home\CguString.de.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.es.resx">
       <SubType>Designer</SubType>
@@ -708,6 +709,8 @@
       <LastGenOutput>SharedString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Widget\WidgetString.de.resx" />
+    <EmbeddedResource Include="Views\Widget\WidgetString.es.resx" />
     <EmbeddedResource Include="Views\Widget\WidgetString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>WidgetString.Designer.cs</LastGenOutput>
