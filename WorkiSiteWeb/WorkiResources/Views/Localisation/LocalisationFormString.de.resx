@@ -130,7 +130,7 @@
     <value>Bequemlichkeit</value>
   </data>
   <data name="EquipementsServices" xml:space="preserve">
-    <value>Ausstattungen und Dienstleistungen</value>
+    <value>Dienstleistungen und Ausstattungen</value>
   </data>
   <data name="Facilities" xml:space="preserve">
     <value>Ausstattungen</value>
@@ -246,7 +246,7 @@
     <value>Der Arbeitsplatz "</value>
   </data>
   <data name="ThePlace2" xml:space="preserve">
-    <value>" ist der gleichen Adresse als der Ort, den sie hinzufügen möchten</value>
+    <value>" ist der gleichen Adresse als der Platz, den sie hinzufügen möchten</value>
   </data>
   <data name="SharedOfficeDesc" xml:space="preserve">
     <value>z.B. : Zwei Arbeitsplätze in einem Open Space sind von einem KMU in der Lebensmittelbranche angeboten. Wir arbeiten in einem ruhigem und leuchtendem Arbeitsplatz mit gastlicher Stimmung und sind für Austäusche und gegenseitige Hilfe offen. Zugang zu zwei Meetingräumen und einer Nespresso-Machine in dem Aufenthaltsraum. Langfristige Laufzeiten vorgezogen (ab 6 Monate).</value>

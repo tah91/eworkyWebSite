@@ -142,13 +142,13 @@
     <value>Name</value>
   </data>
   <data name="LocalisationName" xml:space="preserve">
-    <value>Ort</value>
+    <value>Platz</value>
   </data>
   <data name="MemberId" xml:space="preserve">
     <value>Kunde</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Nachticht</value>
+    <value>Nachricht</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Verbrauch</value>

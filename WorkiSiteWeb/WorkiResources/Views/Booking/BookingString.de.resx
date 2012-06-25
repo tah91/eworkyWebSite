@@ -163,7 +163,7 @@
     <value>Fläche</value>
   </data>
   <data name="Asked" xml:space="preserve">
-    <value>Am  {date} nachgefragt</value>
+    <value>Nachgefragt am</value>
   </data>
   <data name="Customer" xml:space="preserve">
     <value>Kunde(In)</value>
@@ -172,7 +172,7 @@
     <value>Ende</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value>Ort</value>
+    <value>Platz</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Angebot</value>
@@ -187,7 +187,7 @@
     <value>Kundenprofil anschauen</value>
   </data>
   <data name="SeeLocSheet" xml:space="preserve">
-    <value>Ort-Seite anschauen</value>
+    <value>Platz-Seite anschauen</value>
   </data>
   <data name="Start" xml:space="preserve">
     <value>Anfang</value>
@@ -196,7 +196,7 @@
     <value>In Erwartung der Zahlung</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
-    <value>Die Reservierung für den Ort {0} wurde bezahlt.</value>
+    <value>Die Reservierung für den Platz {0} wurde bezahlt.</value>
   </data>
   <data name="AskingQuotation" xml:space="preserve">
     <value>Kostenanfrage für {0}</value>
@@ -226,7 +226,7 @@
     <value>Das Enddatum Ihrer Reservierung muss nach dem Startdatum sein.</value>
   </data>
   <data name="EndQuotationSpeech" xml:space="preserve">
-    <value>Sie werden in kürzer Zeit von dem Ortmanager kontaktiert. </value>
+    <value>Sie werden in kürzer Zeit von dem Platzmanager kontaktiert. </value>
   </data>
   <data name="QuotationRefused" xml:space="preserve">
     <value>Die Kostenanfrage wurde abgelehnt.</value>
@@ -274,10 +274,10 @@
     <value>Bezahlt am</value>
   </data>
   <data name="QuotationCancel" xml:space="preserve">
-    <value>Kostenanfrage am {date} storniert </value>
+    <value>Kostenanfrage storniert am</value>
   </data>
   <data name="QuotationRefuse" xml:space="preserve">
-    <value>Kostenanfrage am {date} abgelehnt</value>
+    <value>Kostenanfrage abgelehnt am</value>
   </data>
   <data name="RefuseStatus" xml:space="preserve">
     <value>Abgelehnt am</value>
@@ -319,7 +319,7 @@
     <value>Anzahl der Jahre auswählen</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>How it works</value>
+    <value>Wie funktionniert es</value>
   </data>
   <data name="HowItWorks1" xml:space="preserve">
     <value>Bitte geben Sie die Details Ihrer Reservierung an</value>
@@ -356,13 +356,13 @@
     <value>Sie bekommen eine Antwort in kürzer Zeit.</value>
   </data>
   <data name="HowItWorksParty3" xml:space="preserve">
-    <value>Der Abend wurde von eworky.com und den Coworking Spaces {0}organisiert.</value>
+    <value>Der Abend wurde von eworky.com und den Coworking Spaces {0} organisiert.</value>
   </data>
   <data name="HowItWorksParty4" xml:space="preserve">
     <value>Der Eintritt ist kostenlos, {0} freut sich Sie begrüssen zu dürfen und eWorky eine Runde auszugeben ;) Schreiben Sie sich schnell ein, Plätze sind begrenzt !</value>
   </data>
   <data name="RegisterParty" xml:space="preserve">
-    <value>Registrieren</value>
+    <value>Sich einschreiben</value>
   </data>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
     <value>Ihr Eintrag wurde richtig erfasst. Das Datum des Ereignisses wird Ihnen später per Email kommuniziert.

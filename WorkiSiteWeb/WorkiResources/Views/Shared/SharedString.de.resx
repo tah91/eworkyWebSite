@@ -130,7 +130,7 @@
     <value>Öffnungszeiten</value>
   </data>
   <data name="KnowHouly" xml:space="preserve">
-    <value>Wenn Ihnen die Öffnungszeiten dieses Ortes bekannt sind, bitte erfassen Sie sie anhand des Bearbeitungsformulars oder kontaktieren Sie uns : </value>
+    <value>Wenn Ihnen die Öffnungszeiten dieses Platzes bekannt sind, bitte erfassen Sie sie anhand des Bearbeitungsformulars oder kontaktieren Sie uns : </value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
@@ -157,7 +157,7 @@
     <value>Abmelden</value>
   </data>
   <data name="Workplace" xml:space="preserve">
-    <value>Arbeitsörter</value>
+    <value>Arbeitsplätze</value>
   </data>
   <data name="ImportLocalisations" xml:space="preserve">
     <value>Importieren</value>
@@ -193,7 +193,7 @@
     <value>Angebote</value>
   </data>
   <data name="Services" xml:space="preserve">
-    <value>Professional Services</value>
+    <value>Professionelle Dienstleistungen</value>
   </data>
   <data name="AddToFav" xml:space="preserve">
     <value>Zu den Favoriten hinufügen</value>
@@ -205,7 +205,7 @@
     <value>Hinzufügen</value>
   </data>
   <data name="Connect" xml:space="preserve">
-    <value>Anmelden</value>
+    <value>Anmeldung</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Sich Anmelden</value>
@@ -292,7 +292,7 @@
     <value>Bitte bestätigen Sie den Preis (einschl. Steuern) für eine Reservierung von dem {0} um {1} bis zum {3} um {4}</value>
   </data>
   <data name="PleaseChangeInfos" xml:space="preserve">
-    <value>Bitte ändern Sie die folgenden Informationen:</value>
+    <value>Bitte ändern Sie die folgenden Informationen :</value>
   </data>
   <data name="SpaceUser" xml:space="preserve">
     <value>Mein Konto</value>
@@ -308,5 +308,8 @@
   </data>
   <data name="ContactMail" xml:space="preserve">
     <value>contact@eworky.com</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
   </data>
 </root>

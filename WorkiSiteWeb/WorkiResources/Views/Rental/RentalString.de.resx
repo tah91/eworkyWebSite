@@ -117,4 +117,214 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Access" xml:space="preserve">
+    <value>Geographische Lage</value>
+  </data>
+  <data name="AccurateSearch" xml:space="preserve">
+    <value>Suche verfeinern</value>
+  </data>
+  <data name="AddAnother" xml:space="preserve">
+    <value>Fügen Sie einen Zugang zu den öffentlichen Verkehrsmitteln hinzu</value>
+  </data>
+  <data name="AddRental" xml:space="preserve">
+    <value>Anzeige hinzufügen</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse :</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>und</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>FLäche</value>
+  </data>
+  <data name="AreaUnit" xml:space="preserve">
+    <value>(m²)</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Verfügbarkeit</value>
+  </data>
+  <data name="AvailableDate" xml:space="preserve">
+    <value>Verfügbarkeitsdatum</value>
+  </data>
+  <data name="BeginResultAnswer" xml:space="preserve">
+    <value>Suchergebnis(se) :</value>
+  </data>
+  <data name="Between" xml:space="preserve">
+    <value>zwischen :</value>
+  </data>
+  <data name="CheckProfile" xml:space="preserve">
+    <value>Profil anzeigen :</value>
+  </data>
+  <data name="CheckThisOut" xml:space="preserve">
+    <value>Ich empfehle Ihnen diese Anzeige zu entdecken</value>
+  </data>
+  <data name="ChooseDate" xml:space="preserve">
+    <value>Datum auswählen</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stadt :</value>
+  </data>
+  <data name="CommonTransportAccess" xml:space="preserve">
+    <value>Zugang zu den öffentlichen Verkehrsmitteln</value>
+  </data>
+  <data name="ContractType" xml:space="preserve">
+    <value>Vertragsart </value>
+  </data>
+  <data name="CreateAlert" xml:space="preserve">
+    <value>Email-Alert einsetzen</value>
+  </data>
+  <data name="DateDrop" xml:space="preserve">
+    <value>Veröffentlicht am :</value>
+  </data>
+  <data name="DateExample" xml:space="preserve">
+    <value>z.B. : 31/12/2011</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DiagnosticRate" xml:space="preserve">
+    <value>Bewertung : </value>
+  </data>
+  <data name="EditRental" xml:space="preserve">
+    <value>Anzeige bearbeiten</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email-Adresse :</value>
+  </data>
+  <data name="EndResultAnswer" xml:space="preserve">
+    <value>gefundene Anzeigen</value>
+  </data>
+  <data name="ExMaxArea" xml:space="preserve">
+    <value>z.B. : 150</value>
+  </data>
+  <data name="ExMaxRate" xml:space="preserve">
+    <value>z.B. : 5000</value>
+  </data>
+  <data name="ExMinArea" xml:space="preserve">
+    <value>z.B. : 25</value>
+  </data>
+  <data name="ExMinRate" xml:space="preserve">
+    <value>z.B. : 400</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Eigenschaften</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Vorname :</value>
+  </data>
+  <data name="HeatingType" xml:space="preserve">
+    <value>Energie</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="InfoAdmin" xml:space="preserve">
+    <value>Admin Informationen</value>
+  </data>
+  <data name="Infos" xml:space="preserve">
+    <value>Allgemeine Informationen</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nachname : </value>
+  </data>
+  <data name="LeaseType" xml:space="preserve">
+    <value>Art des Mietvertrags</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>geographische Lage</value>
+  </data>
+  <data name="MaxArea" xml:space="preserve">
+    <value>Maximale Fläche</value>
+  </data>
+  <data name="MaxPrice" xml:space="preserve">
+    <value>Maximaler Preis</value>
+  </data>
+  <data name="MinArea" xml:space="preserve">
+    <value>Minimale Fläche</value>
+  </data>
+  <data name="MinPrice" xml:space="preserve">
+    <value>Minimaler Preis</value>
+  </data>
+  <data name="MoneyUnit" xml:space="preserve">
+    <value>(€ warm)</value>
+  </data>
+  <data name="MoreDetail" xml:space="preserve">
+    <value>Mehr Details</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Sofort</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Vermieter</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Platz</value>
+  </data>
+  <data name="PlaceExemple" xml:space="preserve">
+    <value>z.B. : Berlin, Marienplatz Suttgart, usw.</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>PLZ :</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Anzeige ausdrucken</value>
+  </data>
+  <data name="Ref" xml:space="preserve">
+    <value>Referenz</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>eWorky-Referenz</value>
+  </data>
+  <data name="Rental" xml:space="preserve">
+    <value>Anzeige</value>
+  </data>
+  <data name="RentalEdit" xml:space="preserve">
+    <value>Anzeige bearbeiten</value>
+  </data>
+  <data name="RentalHaveBeenCreate" xml:space="preserve">
+    <value>Die Anzeige wurde hergestellt.</value>
+  </data>
+  <data name="RentalHaveBeenDel" xml:space="preserve">
+    <value>Die Anzeige wurde gelöscht.</value>
+  </data>
+  <data name="RentalHaveBeenEdit" xml:space="preserve">
+    <value>Die Anzeige wurde bearbeitet.</value>
+  </data>
+  <data name="RentalSuppress" xml:space="preserve">
+    <value>Anzeige löschen.</value>
+  </data>
+  <data name="RentalType" xml:space="preserve">
+    <value>Art der Anzeige</value>
+  </data>
+  <data name="SaveSearch" xml:space="preserve">
+    <value>Suche speichern</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Dem Vermieter eine Email zuschicken</value>
+  </data>
+  <data name="SendToFriend" xml:space="preserve">
+    <value>Einem Freund empfehlen</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>Anzeige aktualisiert am</value>
+  </data>
+  <data name="Usefull" xml:space="preserve">
+    <value>Praktisch</value>
+  </data>
 </root>

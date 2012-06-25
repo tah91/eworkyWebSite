@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Erstellen Sie ein Konto in Sekunden und genießen Sie alle Funktionalitäten von eWorky.</value>
+  <data name="AboutEworky" xml:space="preserve">
+    <value>Über eWorky</value>
   </data>
-  <data name="ErrorSave" xml:space="preserve">
-    <value>Ein Fehler ist während der Speicherung aufgetreten.</value>
-  </data>
-  <data name="RegisterEworky" xml:space="preserve">
-    <value>Sie sind jetzt an eWorky eingeschrieben !</value>
+  <data name="WidgetTitle" xml:space="preserve">
+    <value>eWorkys Widget </value>
   </data>
 </root>

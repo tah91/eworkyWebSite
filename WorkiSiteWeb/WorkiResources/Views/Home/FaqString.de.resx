@@ -121,10 +121,10 @@
     <value>Bugs</value>
   </data>
   <data name="ClickEdit" xml:space="preserve">
-    <value>Sie können die eWorky-Seite von allen Räumen ändern, indem sie auf die Taste „Bearbeiten“ unten rechts der detaillierten Seite drücken. Um Vandalismus zu vermeidern sind die Änderungen auf 15 pro Tag limitiert.</value>
+    <value>Sie können die eWorky-Seite von allen Orten ändern, indem sie auf die Taste „Bearbeiten“ unten rechts der detaillierten Seite drücken. Um Vandalismus zu vermeidern sind die Änderungen auf 15 pro Tag limitiert.</value>
   </data>
   <data name="CouldNotIncludePicture" xml:space="preserve">
-    <value>Ich kann keine Fotos der Seite des Arbeitsortes, den ich eintragen möchte, hinzufügen</value>
+    <value>Ich kann keine Fotos der Seite des Arbeitsplatzes, den ich eintragen möchte, hinzufügen</value>
   </data>
   <data name="EncounterBugs" xml:space="preserve">
     <value>Wenn Sie auf einen Bug stoßen oder Navigationsprobleme auf der Internetseite haben, bitte kontaktieren Sie uns via Email (support@eworky.com).</value>
@@ -134,11 +134,11 @@
     <comment>FAQ</comment>
   </data>
   <data name="FormForSearch" xml:space="preserve">
-    <value>Das Formular auf der Startseite ermöglicht eine einfache Suche nach Ort und Art der gewünschten Stelle (öffentlicher Raum, Cafe, usw.). Eine detailliertere Suche kann über „Mehr Kriterien“ gestartet werden. Da können Sie Ihre Wahl auf mehrere Kriterien wie auf die Dienstleistungen (WiFi, Catering, Parkplätze, usw.), die Art des Ortes (freie Arbeitsfläche, ein Business Center, usw.) erweitern oder Ihre Suche auf Ihr Profil fokussieren (Student, Selbständig, Heimarbeiter, usw.).</value>
+    <value>Das Formular auf der Startseite ermöglicht eine einfache Suche nach Ort und Art der gewünschten Stelle (öffentlicher Raum, Café, usw.). Eine detailliertere Suche kann über „Mehr Kriterien“ gestartet werden. Da können Sie Ihre Wahl auf mehrere Kriterien wie auf die Dienstleistungen (WiFi, Catering, Parkplätze, usw.), die Art des Platzes (freie Arbeitsfläche, ein Business Center, usw.) erweitern oder Ihre Suche auf Ihr Profil fokussieren (Student, Selbständig, Heimarbeiter, usw.).</value>
     <comment>toujours identique ?</comment>
   </data>
   <data name="ForRateComment" xml:space="preserve">
-    <value>Um einen Arbreitsraum zu kommentieren und zu benoten, können Sie auf Ihrem eWorky-Konto eingeloggt werden. Sobald Sie eingeloggt sind können Sie einfach auf die Raumseite gehen und den kommentieren bzw. benoten.</value>
+    <value>Um einen Arbreitsraum zu kommentieren und zu benoten, können Sie auf Ihrem eWorky-Konto eingeloggt werden. Sobald Sie eingeloggt sind können Sie einfach auf die Seite des Platzes gehen und den kommentieren bzw. benoten.</value>
   <comment>Jm modif L25</comment></data>
   <data name="Glossary" xml:space="preserve">
     <value>Lexikon</value>
@@ -147,10 +147,10 @@
     <value>Wie fügen Sie einen Arbeitsraum hinzu ?</value>
   </data>
   <data name="HowCreateAccount" xml:space="preserve">
-    <value>Wie erstelle ich ein Konto ? Warum sollte ich mich registrieren ?</value>
+    <value>Wie erstelle ich ein Konto ? Warum sollte ich mich einschreiben ?</value>
   </data>
   <data name="HowEdit" xml:space="preserve">
-    <value>Die eWorky-Seite eines Arbeitsraums enthält falsche Informationen, wie können sie korrigiert werden ?</value>
+    <value>Die eWorky-Seite eines Arbeitsplatzes enthält falsche Informationen, wie können sie korrigiert werden ?</value>
   </data>
   <data name="HowFindWorkplace" xml:space="preserve">
     <value>Wie finden Sie einen Arbeitsplatz ?</value>
@@ -159,10 +159,10 @@
     <value>Wie kommentiere und benote ich einen Arbeitsraum ?</value>
   </data>
   <data name="HowSuggestWorkplace" xml:space="preserve">
-    <value>Wie biete ich einen Arbeitsraum für die Reservierung an ?</value>
+    <value>Wie biete ich einen Arbeitsplatz für die Reservierung an ?</value>
   </data>
   <data name="Inscription" xml:space="preserve">
-    <value>registrieren</value>
+    <value>sich einschreiben</value>
   </data>
   <data name="InviteFriends" xml:space="preserve">
     <value>Wie können Sie Ihre Freunde zu der eWorky-Gemeinschaft einladen ?</value>
@@ -171,13 +171,13 @@
     <value>Auf eWorky ist ein Business Center ein voll ausgestattetes Bürogebäude, das die einzelnen Büros für einen begrenzten Zeitraum vermietet. Die angebotenen Mietverträge sind flexibler und kurzfristiger als traditionnelle Mietverträge.</value>
   </data>
   <data name="OnEWBuisnessHotel" xml:space="preserve">
-    <value>Auf eWorky ist ein Inkubator ein Ort, der Jungunternehmen zu niedrigen Kosten beherbergt und der ein paar Dienstleistungen anbietet. Unternehmen werden während Ihrer Gründungs-, Wachstums- und Reifephase begleitet. </value>
+    <value>Auf eWorky ist ein Inkubator ein Platz, der Jungunternehmen zu niedrigen Kosten beherbergt und der ein paar Dienstleistungen anbietet. Unternehmen werden während Ihrer Gründungs-, Wachstums- und Reifephase begleitet. </value>
   </data>
   <data name="OnEWBuisnessLounge" xml:space="preserve">
     <value>Auf eWorky ist eine Business Lounge ein mit Sofas und Sesseln möbliertes sowie mit WLAN-Zugang ausgestattes Zimmer.</value>
   </data>
   <data name="OnEWConferenceRoom" xml:space="preserve">
-    <value>Auf eWorky ist ein Konferenz- oder ein Seminarraum ein Raum mit einer Kapazität von 20 bis über 1.000 Personen hat. Diese Räume sind für Konferenzen, Dinnercocktails, Seminare, Symposien, usw. ideal.</value>
+    <value>Auf eWorky ist ein Konferenz- oder ein Seminarraum ein Raum mit einer Kapazität von 20 bis über 1.000 Personen. Diese Räume sind für Konferenzen, Dinnercocktails, Seminare, Symposien, usw. ideal.</value>
   </data>
   <data name="OnEWCoworking" xml:space="preserve">
     <value>Auf eWorky ist ein Coworking Space ein Arbeitsraum, der verschiedene Selbständige versammelt. Offenheit, Zusammenarbeit, Accessibility, Community und Nachhaltigkeit sind Coworkings zentrale Werte.</value>
@@ -187,7 +187,7 @@
     <comment>Existe dans les autres pays ?</comment>
   </data>
   <data name="OnEWOffice" xml:space="preserve">
-    <value>Auf eWorky ist ein Büro ein geschlossener Raum mit einem oder mehreren Arbeitsplätzen. Der Begriff „Büro“ bezeichnet angebotene Büro mit flexiblen oder mittelfristigen Verträgen, ohne Mietvertrag, in einem Business Center, einem Telecentre oder einem Inkubator. </value>
+    <value>Auf eWorky ist ein Büro ein geschlossener Raum mit einem oder mehreren Arbeitsplätzen. Der Begriff „Büro“ bezeichnet angebotene Büro mit flexiblen oder mittelfristigen Verträgen, ohne Mietvertrag, in einem Business Center, einem Telezentrum oder einem Inkubator. </value>
   </data>
   <data name="OnEWorkyMeetingRoom" xml:space="preserve">
     <value>Auf eWorky ist ein Meetingraum ein Raum, der mindestens zwei Sitzplätze anbietet. Die angebotene Ausstattung (Beamer, Paperboard, Mikrophon, usw.) sind unterschiedlich von einem Raum zu dem anderen und sind in „Dienstleistungen und Ausstattungen des Meetingsraums“ klargestellt.</value>
@@ -196,7 +196,7 @@
     <value>Auf eWorky ist ein privater Raum Privateigentum, das für verschiedene Zeiträume gemietet werden kann.</value>
   </data>
   <data name="OnEWTelecenter" xml:space="preserve">
-    <value>Auf eWorky ist ein Telecentre ein Arbeitsraum für Telearbeiter, der Büros sowie Arbeitsplätze mit WLAN-Zugang und manchmal andere Dienstleistungen anbietet. In der Regel werden solche Räume tagesweise gemietet.</value>
+    <value>Auf eWorky ist ein Telezentrum ein Arbeitsraum für Telearbeiter, der Büros sowie Arbeitsplätze mit WLAN-Zugang und manchmal andere Dienstleistungen anbietet. In der Regel werden solche Räume tagesweise gemietet.</value>
   </data>
   <data name="OnEWVisioRoom" xml:space="preserve">
     <value>Auf eWorky ist ein Video-Konferenzraum ein Raum, der alle technischen Mitteln (Audio sowie auch Video) für Fernkommunikation zwischen zwei oder mehrere Ansprechpartner anbietet.</value>
@@ -217,7 +217,7 @@
     <value>Wenn Sie Ihr Password vergessen haben, bitte klicken Sie hier. Das Password wird Ihnen per Email automatisch zugeschickt.</value>
   </data>
   <data name="ProposeWorkplaceAfterInscription" xml:space="preserve">
-    <value>Wenn Sie einen Arbeitsraum anbieten oder sich einfach unsere Gemeinschaft anschließen möchten, können Sie sich registrieren. Als eWorky-Mitglied wird es für Sie möglich Ihre Arbeitsräume hinzuzufügen sowie vorhandene Räume zu kommentieren und zu benoten.</value>
+    <value>Wenn Sie einen Arbeitsraum anbieten oder sich einfach unsere Gemeinschaft anschließen möchten, können Sie sich einschreiben. Als eWorky-Mitglied wird es für Sie möglich Ihre Arbeitsplätze hinzuzufügen sowie vorhandene Räume zu kommentieren und zu benoten.</value>
   </data>
   <data name="ReportBug" xml:space="preserve">
     <value>Wie gebe ich einen Bug an ?</value>
@@ -229,7 +229,7 @@
     <value>Der Tab „Schlagen Sie einen Raum vor“ ermöglicht Ihnen, einen Arbeitsbereich für eWorky-Benutzer anzubieten. Nur wenige Felder sind Pflichtfelder, um Ihren Arbeitsraum auf eWorky anzubieten. Wir empfehlen Ihnen aber die Tabs so gut wie möglich zu detaillieren, um den Zugriff zu den Benutzerinformationen zu erleichtern. Darüber hinaus, da die Fotos auf der eWorky-Seiten besonders betonnt werden, sollten Sie mindestens vier Bilder von guter Qualität hinzufügen. Um Fotos hochzuladen, ziehen Sie Ihre Bilder auf „Bilder hinzufügen“ oder klicken Sie auf die Taste und wählen Sie Ihr Hauptfoto aus.</value>
   </data>
   <data name="TheInscription" xml:space="preserve">
-    <value>Registrieren</value>
+    <value>Einschreibung</value>
   </data>
   <data name="WhatIsBuisnessCenter" xml:space="preserve">
     <value>Was ist ein Business Center ?</value>
@@ -263,7 +263,7 @@
     <value>Was ist ein privater Raum ?</value>
   </data>
   <data name="WhatIsTelecenter" xml:space="preserve">
-    <value>Was ist ein Telecentre ?</value>
+    <value>Was ist ein Telezentrum ?</value>
   </data>
   <data name="WhatIsTelepresenceRoom" xml:space="preserve">
     <value>Was ist ein „Telepräsenzraum“ ?</value>
@@ -279,19 +279,19 @@
     <value>Was ist ein Arbeitsplatz ?</value>
   </data>
   <data name="WorkplaceManager" xml:space="preserve">
-    <value>Sie managen ein Business Center oder ein Smart Work Center und möchten eine Reservierung auf eWorky online anbieten ? Sie können das eWorky-Team kontaktieren, indem Sie eine Email an contact@eworky.com zuschicken.</value>
+    <value>Sie managen ein Business Center oder ein Telezentrum und möchten eine Reservierung auf eWorky online anbieten ? Sie können das eWorky-Team kontaktieren, indem Sie eine Email an contact@eworky.com zuschicken.</value>
   </data>
   <data name="YouCanFindAll" xml:space="preserve">
-    <value>Ob Sie Business Centers, Hotels, Cafes, Smart Work Centers oder Büros finden, reservieren, kaufen, mieten, verkaufen oder teilen möchten, steht Ihnen eWorky bei. Da können Sie den Arbeitsplatz finden, der Ihnen passt, und ihn benoten, online buchen, Ihre Lieblingsarbeitsplätze hinzufügen, oder auch Gewerbeobjekte finden. Durch die Anpassung an Ihre neue Art zu arbeiten ist eWorky definitiv der beste Arbeitsort !</value>
+    <value>Ob Sie Business Centers, Hotels, Cafes, Telezentren oder Büros finden, reservieren, kaufen, mieten, verkaufen oder teilen möchten, steht Ihnen eWorky bei. Da können Sie den Arbeitsplatz finden, der Ihnen passt, und ihn benoten, online buchen, Ihre Lieblingsarbeitsplätze hinzufügen, oder auch Gewerbeobjekte finden. Durch die Anpassung an Ihre neue Art zu arbeiten ist eWorky definitiv der beste Arbeitsplatz !</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
     <value>In dem „Arbeitsplatz hinzüfügen“-Formular werden Sie in der Lage sein, Bilder auszuwählen, um die Beschreibung Ihres Arbeitsplatzes zu illustrieren. Dazu müssen Sie einfach Ihre Bilder auf „+ Bilder hinzufügen“ ziehen oder klicken Sie auf diese Taste und wählen Sie Ihre Datei an und dann „Upload“, um uns diese Datei zuzuschicken. Die maximale Größe für jedes Bild ist 3 Mo. Sie können nicht mehr als 10 Fotos herunterladen. Bitte stellen Sie sicher, dass Sie diese Grenzen respektieren. Wenn das Problem weiterhin andauert können Sie uns per Email unter support@eworky.com erreichen.</value>
   <comment>Jm modif L26</comment></data>
   <data name="CouldNotEditLocation" xml:space="preserve">
-    <value>Ich kann einen Raum nicht mehr bearbeiten. </value>
+    <value>Ich kann einen Platz nicht mehr bearbeiten. </value>
   </data>
   <data name="ForEditProfil" xml:space="preserve">
-    <value>Ihr Profil ist über jede Seite durch die Taste „Mein Profil“ oben rechts erreichbar (sie müssen eingeloggt sein). Um Ihr Profil zu bearbeiten, klicken Sie auf dem Link „Mein Profil bearbeiten“ unter Ihrem Namen. Ergänzen Sie es so viel wie möglich, um Austäusche zwischen eWorkers zu fördern und zusätzliche Punkte zu sammeln. </value>
+    <value>Ihr Profil ist über jede Seite durch die Taste „Mein Profil“ oben rechts erreichbar (sie müssen angemeldet sein). Um Ihr Profil zu bearbeiten, klicken Sie auf dem Link „Mein Profil bearbeiten“ unter Ihrem Namen. Ergänzen Sie es so viel wie möglich, um Austäusche zwischen eWorkers zu fördern und zusätzliche Punkte zu sammeln. </value>
   </data>
   <data name="HowEditLocation" xml:space="preserve">
     <value>Ein Raum kann nicht mehr als 15 mal pro Tag geändert werden. Wenn Sie Räume nicht mehr bearbeiten können, bitte prüfen Sie nach, dass Sie die Höchstgrenze nicht erreicht haben. Wenn das Problem andauert können Sie uns per Email kontaktieren : support@eworky.com.</value>
@@ -303,7 +303,7 @@
     <value>Wozu dienen die Punkte auf meiner Profilseite ?</value>
   </data>
   <data name="WhatIsTeleWork" xml:space="preserve">
-    <value>Was ist Heimarbeit ?</value>
+    <value>Was ist Telearbeit ?</value>
   </data>
   <data name="WhyThereArePoint" xml:space="preserve">
     <value>Durch den Beitrag and die eWorky-Gemeinschaft können Sie Punkte sammeln. Diese Punkte ermöglichen Ihnen an Spielen teilzunehmen und von Rabatten zu profitieren. Sie sammeln Punkte, indem Sie Arbeitsräume hinzufügen, bearbeiten, kommentieren oder indem Sie einfach Ihr Profil ausfüllen.</value>

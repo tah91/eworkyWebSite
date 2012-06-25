@@ -140,7 +140,7 @@
     <value>Viadeo</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>Internetseite</value>
+    <value>Website</value>
   </data>
   <data name="Civility" xml:space="preserve">
     <value>Anrede</value>
@@ -151,17 +151,14 @@
   <data name="Description" xml:space="preserve">
     <value>Beschreiben Sie sich (max. 140 Schriftzeichen)</value>
   </data>
-  <data name="FavoritePlaces" xml:space="preserve">
-    <value>Wo ich arbeite</value>
-  </data>
   <data name="Independant" xml:space="preserve">
     <value>Selbständiger</value>
   </data>
   <data name="LocalisationOwner" xml:space="preserve">
-    <value>Raumeigentümer </value>
+    <value>Platzeigentümer </value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value>Nomad</value>
+    <value>Nomade</value>
   </data>
   <data name="NotSelected" xml:space="preserve">
     <value>Wählen Sie Ihr Profil aus</value>
@@ -195,5 +192,11 @@
   </data>
   <data name="Teleworker" xml:space="preserve">
     <value>Telearbeiter</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Großunternehmen</value>
+  </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value>Wo ich gerne arbeite</value>
   </data>
 </root>

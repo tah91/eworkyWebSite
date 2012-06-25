@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmationMail" xml:space="preserve">
-    <value>Vielen Dank, Sie werden jetzt eine Email für die Bestätigung Ihrer Anmeldung bekommen !</value>
+    <value>Vielen Dank, Sie werden jetzt eine Email für die Bestätigung Ihrer Einschreibung bekommen !</value>
   </data>
   <data name="EWorkyRegister" xml:space="preserve">
     <value>Schreiben Sie sich zu eWorky ein</value>
@@ -145,13 +145,13 @@
     <value>Geben Sie Ihr aktuelles und Ihr gewünschtes neues Passwort ein.</value>
   </data>
   <data name="QualityOfProfils" xml:space="preserve">
-    <value>Um die Profilqualität unserer Gemeinschaftsmitglieder zu gewährleisten wird eWorky Sie wahrscheinlich bald fragen Ihr</value>
+    <value>Um die Profilqualität unserer Gemeinschaftsmitglieder zu gewährleisten wird eWorky Sie wahrscheinlich bald fragen</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
     <value>* Pflichtfelder</value>
   </data>
   <data name="SetMailInscription" xml:space="preserve">
-    <value>Geben Sie die Email-Adresse ein, die Sie für Ihre Anmeldung benutzt haben. Ihre Zugangsdaten werden an diese Emailadresse zugeschickt.</value>
+    <value>Geben Sie die Email-Adresse ein, die Sie für Ihre Anmeldung benutzt haben. Ihre Zugangsdaten werden an diese Email-Adresse zugeschickt.</value>
   </data>
   <data name="SocialNetworkSoon" xml:space="preserve">
     <value>Profil durch ein soziales Netzwerk identifizieren</value>

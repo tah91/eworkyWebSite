@@ -202,7 +202,7 @@
     <value>Monat</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
-    <value>angeboten Zahlungsart</value>
+    <value>angebotene Zahlungsart</value>
   </data>
   <data name="Period" xml:space="preserve">
     <value>Zeiteinheit</value>

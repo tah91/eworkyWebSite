@@ -124,7 +124,7 @@
     <value>Archiv {0}</value>
   </data>
   <data name="BeforeCreateInvoice" xml:space="preserve">
-    <value>Bevor eine Rechnung hergestellt wird können Sie die Rechnungsinformationen ergänzen {0}.</value>
+    <value>Bevor eine Rechnung erstellt wird, können Sie die Rechnungsinformationen ergänzen {0}.</value>
   </data>
   <data name="BeforeCreateInvoiceLink" xml:space="preserve">
     <value>hier.</value>

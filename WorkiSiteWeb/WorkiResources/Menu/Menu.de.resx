@@ -129,7 +129,7 @@
     <comment>Mika</comment>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value>Raum-Administrator</value>
+    <value>Administrator Space</value>
     <comment>Mika</comment>
   </data>
   <data name="BOHome" xml:space="preserve">
@@ -144,7 +144,7 @@
     <comment>Mika</comment>
   </data>
   <data name="BusinessCenterFr" xml:space="preserve">
-    <value>Business Centers</value>
+    <value>Business Center</value>
   </data>
   <data name="Clients" xml:space="preserve">
     <value>Kunden</value>
@@ -196,7 +196,7 @@
     <comment>Mika</comment>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Zahlungsinformatinen</value>
+    <value>Zahlungsinformationen</value>
     <comment>Mika</comment>
   </data>
   <data name="News" xml:space="preserve">
@@ -260,7 +260,7 @@
     <comment>Steeve</comment>
   </data>
   <data name="Places" xml:space="preserve">
-    <value>Meine online Räume</value>
+    <value>Meine online Arbeitsplätze</value>
   </data>
   <data name="RefreshBlog" xml:space="preserve">
     <value>Blog auffrischen</value>
@@ -272,7 +272,7 @@
     <value>Kunde hinzufügen</value>
   </data>
   <data name="Schedule" xml:space="preserve">
-    <value>Planung</value>
+    <value>Zeitplan</value>
   </data>
   <data name="MyClients" xml:space="preserve">
     <value>Meine Kunde</value>
@@ -284,7 +284,7 @@
     <value>Bearbeitung</value>
   </data>
   <data name="EditPlace" xml:space="preserve">
-    <value>Ortbearbeitung</value>
+    <value>Platzbearbeitung</value>
   </data>
   <data name="Billing" xml:space="preserve">
     <value>Rechnungsdaten</value>
@@ -293,10 +293,10 @@
     <value>Kundenrechnung</value>
   </data>
   <data name="CreateInvoice" xml:space="preserve">
-    <value>Rechnung herstellen</value>
+    <value>Rechnung erstellen</value>
   </data>
   <data name="LocalisationSchedule" xml:space="preserve">
-    <value>Gesamte Planung</value>
+    <value>Gesamter Zeitplan</value>
   </data>
   <data name="OfferSchedule" xml:space="preserve">
     <value>Planung nach Angeboten</value>

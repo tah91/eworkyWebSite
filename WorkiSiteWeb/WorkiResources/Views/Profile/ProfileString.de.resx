@@ -118,9 +118,126 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Edit24Hours" xml:space="preserve">
-    <value></value>
+    <value>Sie können nicht mehr alr {0} innerhalb von 24 Stunden bearbeiten</value>
   <comment>times ? fois ?</comment></data>
   <data name="YourCompanyFunction" xml:space="preserve">
-    <value></value>
+    <value>z.B. : Funktion, Unternehmen, usw.</value>
   <comment>? etc. =&gt; ?</comment></data>
+  <data name="AddedSpacesEmptyPublic" xml:space="preserve">
+    <value>hat noch keinen Platz der eWorkers-Gemeinschaft vorgeschlagen</value>
+  </data>
+  <data name="AddedSpacesEmpy" xml:space="preserve">
+    <value>Sie haben noch keinen Platz der eWorkers Gemeinschaft vorgeschlagen. Um ein Platz hinzuzufügen, {0}.</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="CommentsEmpy" xml:space="preserve">
+    <value>Sie haben keinen Platz kommentiert. Um Ihre Meinung über einen Arbeitsplatz zu verteilen, gehen Sie am Ende seiner Beschreibungsseite.</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Mein Profil bearbeiten</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Liebslingsplëtze</value>
+  </data>
+  <data name="FavoriteSpacesEmpty" xml:space="preserve">
+    <value>Sie haben noch keinen Lieblingsplatz ausgewählt. Um einen Platz zu Ihrer Lieblingsliste, klicken Sie auf die eWorky+ Taste ober auf seiner Beschreigungsseite.</value>
+  </data>
+  <data name="FavoriteSpacesEmptyPublic" xml:space="preserve">
+    <value>hat noch keinen Platz zu der Lieblingsliste hinzugefügt.</value>
+  </data>
+  <data name="FBProfile" xml:space="preserve">
+    <value>Facebook Profil</value>
+  </data>
+  <data name="InfosEmpty" xml:space="preserve">
+    <value>Um Ihr Profil auszufüllen, {0}.</value>
+  </data>
+  <data name="LinkedInProfile" xml:space="preserve">
+    <value>LinkedIn Profil</value>
+  </data>
+  <data name="MemberNotFound" xml:space="preserve">
+    <value>Benutzer nicht gefunden.</value>
+  </data>
+  <data name="MyCommentedSpaces" xml:space="preserve">
+    <value>Meine kommentierten Plätze</value>
+  </data>
+  <data name="MyComments" xml:space="preserve">
+    <value>Meine Komentare</value>
+  </data>
+  <data name="MyCompany" xml:space="preserve">
+    <value>Professionelle Aktivität</value>
+  </data>
+  <data name="MyCompanyPublic" xml:space="preserve">
+    <value>hat diese Information nicht ausgefüllt.</value>
+  </data>
+  <data name="MyFavoritePlaces" xml:space="preserve">
+    <value>Arbeitsstimmung gesucht</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Mein Profil</value>
+  </data>
+  <data name="MySpaces" xml:space="preserve">
+    <value>Addierte Plätze</value>
+  </data>
+  <data name="MyWebsite" xml:space="preserve">
+    <value>Meine Website</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Meine persönlichen Informationen</value>
+  </data>
+  <data name="ProfessionalInfo" xml:space="preserve">
+    <value>Meine professionellen Informationen</value>
+  </data>
+  <data name="ProfilHaveBeenEdit" xml:space="preserve">
+    <value>Ihr Profil wurde erfolgreich hinzugefügt.</value>
+  </data>
+  <data name="RelCommentsEmpty" xml:space="preserve">
+    <value>Kein Platz, den Sie hinzugefügt haben wurde kommentiert.</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>eWorker {0} - {1:### ### ###} Punkte</value>
+  </data>
+  <data name="SocialNetwork" xml:space="preserve">
+    <value>Soziale Netzwerke</value>
+  </data>
+  <data name="TwitterProfile" xml:space="preserve">
+    <value>Twitter Profil</value>
+  </data>
+  <data name="ViadeoProfile" xml:space="preserve">
+    <value>Viadeo Profil</value>
+  </data>
+  <data name="Wait2Days" xml:space="preserve">
+    <value>Sie müssen 48 Std warten, bis Sie den Platz bearbeiten können.</value>
+  </data>
+  <data name="YourFacebook" xml:space="preserve">
+    <value>Ihre Facebook Seite</value>
+  </data>
+  <data name="YourLinkedIn" xml:space="preserve">
+    <value>Ihre LinkedIn Seite</value>
+  </data>
+  <data name="YourTwitter" xml:space="preserve">
+    <value>Ihr Twitter Benutzername</value>
+  </data>
+  <data name="YourViadeo" xml:space="preserve">
+    <value>Ihre Viadeo Seite</value>
+  </data>
+  <data name="YourWebsite" xml:space="preserve">
+    <value>Ihre Website</value>
+  </data>
+  <data name="MyComActivities" xml:space="preserve">
+    <value>Meine gemeinschaftliche Aktivität</value>
+  </data>
+  <data name="HeadModifyPayment" xml:space="preserve">
+    <value>Ihre Kunden werden über die Paypal Plattform bezahlen müssen. Um diese Zahlungen einkassieren zu können müssen Sie ein Paypal-Konto haben (um ein Konto zu eröffnen, klicken Sie &lt;a href="{0}" target="_blank"&gt;hier&lt;/a&gt;).</value>
+  </data>
+  <data name="EndModifyPayment" xml:space="preserve">
+    <value>Wie erinnern Sie daran, dass für jede Paypal-Transaktion eine Provision von Paypal erhoben wird. Wenn Sie Fragen zu diesem Thema haben, kontaktieren Sie uns : contact@eworky.com</value>
+  </data>
+  <data name="MailPayment" xml:space="preserve">
+    <value>Email-Adresse, die zu Ihrem Paypal Konto assoziiert ist</value>
+  </data>
+  <data name="PasswordEworky" xml:space="preserve">
+    <value>eWorky Passwort</value>
+  </data>
 </root>

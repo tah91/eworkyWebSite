@@ -117,4 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Erweiterte Suche</value>
+  </data>
+  <data name="DistanceOrdered" xml:space="preserve">
+    <value>Entfernung</value>
+  </data>
+  <data name="Entrepreneur" xml:space="preserve">
+    <value>Unternehmer</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Ausstattung</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Eigenschaften</value>
+  </data>
+  <data name="Independant" xml:space="preserve">
+    <value>Selbständig</value>
+  </data>
+  <data name="KindOfLocation" xml:space="preserve">
+    <value>Arten der Orte</value>
+  </data>
+  <data name="Nomad" xml:space="preserve">
+    <value>Nomade</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>Meinung</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Sortiert nach :</value>
+  </data>
+  <data name="PlaceExamples" xml:space="preserve">
+    <value>z.B. : Unter den Linden Berlin, Frankfurt am Main, 80995, usw.</value>
+  </data>
+  <data name="RateOrdered" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="ReturnToResult" xml:space="preserve">
+    <value>Zurück zu den Ergebnissen</value>
+  </data>
+  <data name="SearchByPlace" xml:space="preserve">
+    <value>Nach geographischer Lage</value>
+  </data>
+  <data name="SearchByPlaceName" xml:space="preserve">
+    <value>Nach Platzsname</value>
+  </data>
+  <data name="SearchByPlaceType" xml:space="preserve">
+    <value>Nach Arten der Platz</value>
+  </data>
+  <data name="SearchByServiceType" xml:space="preserve">
+    <value>Nach Verbrauch</value>
+  </data>
+  <data name="VenueNameExample" xml:space="preserve">
+    <value>z.B. : Betahaus Berlin, Lilienhof Coworking Office Hamburg , usw.</value>
+  </data>
+  <data name="PlaceFound" xml:space="preserve">
+    <value>Gefundene Arbeitsplätze</value>
+  </data>
+  <data name="RefineSearch" xml:space="preserve">
+    <value>Suche verfeinern</value>
+  </data>
+  <data name="ResultOfSearch" xml:space="preserve">
+    <value>Ihr(e) Suchergebnis(se)</value>
+  </data>
+  <data name="ResultOnMap" xml:space="preserve">
+    <value>Ihre Ergebnisse auf der Karte</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Surche</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Suchergebnis(se)</value>
+  </data>
+  <data name="SearchType" xml:space="preserve">
+    <value>Welche Art von Plätzen suchen Sie ?</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="TypeOfService" xml:space="preserve">
+    <value>Dienstleistungsart</value>
+  </data>
+  <data name="VenueName" xml:space="preserve">
+    <value>Wie heißt der Ort ?</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Wo ist dieser Ort ? (optional)</value>
+  </data>
+  <data name="YourSearchResult" xml:space="preserve">
+    <value>Ihr(e) Suchergebnis(se) : {0} gefundene Plätze</value>
+  </data>
 </root>

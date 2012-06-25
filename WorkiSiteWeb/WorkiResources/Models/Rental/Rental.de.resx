@@ -157,7 +157,7 @@
     <value>Parkplatz</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value>Postleitzahl</value>
+    <value>PLZ</value>
   </data>
   <data name="RentalAccessType" xml:space="preserve">
     <value>Verkehrsmittel</value>
@@ -269,5 +269,8 @@
   </data>
   <data name="Train" xml:space="preserve">
     <value>Zug</value>
+  </data>
+  <data name="StartUpFriendly" xml:space="preserve">
+    <value>Start-up friendly</value>
   </data>
 </root>
