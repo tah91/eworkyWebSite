@@ -163,7 +163,7 @@
     <value>Nach Platzsname</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Nach Arten der Platz</value>
+    <value>Nach Arbeitsplatztyp</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
     <value>Nach Verbrauch</value>
