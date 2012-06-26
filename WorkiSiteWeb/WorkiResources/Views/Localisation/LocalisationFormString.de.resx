@@ -161,16 +161,16 @@
     <value>Montag</value>
   </data>
   <data name="MondayAfterClose" xml:space="preserve">
-    <value>Ex : 18:00</value>
+    <value>z.B. : 18:00</value>
   </data>
   <data name="MondayAfterOpen" xml:space="preserve">
-    <value>Ex : 14:00</value>
+    <value>z.B. : 14:00</value>
   </data>
   <data name="MondayMorningClose" xml:space="preserve">
-    <value>Ex : 12:30</value>
+    <value>z.B. : 12:30</value>
   </data>
   <data name="MondayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
+    <value>z.B. : 9:00</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Angebot</value>
@@ -182,7 +182,7 @@
     <value>Raumeigenschaft</value>
   </data>
   <data name="PlacesExample" xml:space="preserve">
-    <value>z. B. : Regus Hamburg, Club Office Berlin, The Hub Vienna </value>
+    <value>z.B. : Regus Hamburg, Club Office Berlin, The Hub Vienna </value>
   </data>
   <data name="ProfessionalServices" xml:space="preserve">
     <value>Profesionelle Dienstleistungen</value>
@@ -197,7 +197,7 @@
     <value>Neue Lage</value>
   </data>
   <data name="RoadExample" xml:space="preserve">
-    <value>z. B. : Straßenzugang A6</value>
+    <value>z.B. : Straßenzugang A6</value>
   </data>
   <data name="RoomCapacity" xml:space="preserve">
     <value>Raumauslastung</value>
