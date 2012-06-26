@@ -124,7 +124,7 @@
     <value>Kontaktieren Sie uns</value>
   </data>
   <data name="ExampleLocation" xml:space="preserve">
-    <value>z. B. : Regus Hamburg, Club Office Berlin, The Hub Vienna...</value>
+    <value>z.B. : Regus Hamburg, Club Office Berlin, The Hub Vienna...</value>
   </data>
   <data name="ImprintDescription" xml:space="preserve">
     <value>Diese Website wird angeboten von&lt;br /&gt;
@@ -269,7 +269,7 @@
     <value>Wählen Sie den Arbeitsplatztyp aus, den Sie hinzufügen möchten.</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Ein Shared Office</value>
+    <value>Shared Office</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>Mehr als &lt;em&gt;{0:### ### ###}&lt;/em&gt; Coworking Spaces, Café WiFi, Business Centers, Shared Offices</value>

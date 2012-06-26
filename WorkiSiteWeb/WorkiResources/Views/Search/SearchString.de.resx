@@ -145,7 +145,7 @@
     <value>Meinung</value>
   </data>
   <data name="OrderBy" xml:space="preserve">
-    <value>Sortiert nach :</value>
+    <value>Nach :</value>
   </data>
   <data name="PlaceExamples" xml:space="preserve">
     <value>z.B. : Unter den Linden Berlin, Frankfurt am Main, 80995, usw.</value>
@@ -163,7 +163,7 @@
     <value>Nach Platzsname</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Nach Arten der Platz</value>
+    <value>Nach Arbeitsplatztyp</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
     <value>Nach Verbrauch</value>
@@ -184,7 +184,7 @@
     <value>Ihre Ergebnisse auf der Karte</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Surche</value>
+    <value>Suche</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Suchergebnis(se)</value>

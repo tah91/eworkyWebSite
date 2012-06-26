@@ -196,7 +196,7 @@
     <value>Manager</value>
   </data>
   <data name="OwnerTutorial" xml:space="preserve">
-    <value>Ich möchte meinen Arbeitsplätze auflisten</value>
+    <value>Meine Arbeitsplätze auflisten</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Sobald der Raummanager Ihre Buchung bestätigt hat, können Sie direkt mit Ihrer Kreditkarte online zahlen.</value>
@@ -232,44 +232,44 @@
     <value>Zahlungen wurden über Paypal eingelöst. Weitere Informationen über die Verkaufsbedingungen erhalten Sie {0}.</value>
   </data>
   <data name="PrincingFeature_4" xml:space="preserve">
-    <value>Automatische Rechnungserstellung</value>
+    <value>Aut. Rechnungserstellung</value>
   </data>
   <data name="PrincingFeature_4_Text" xml:space="preserve">
     <value>Ihre Rechnungen werden für jede bezahlte Reservierung automatisch erstellt und in Ihrem Office Manager gespeichert.</value>
   </data>
   <data name="PrincingFeature_5" xml:space="preserve">
-    <value>Hotline von 9:00 bis 20:00, 7 Tage die Woche</value>
+    <value>Hotline jeden Tag von 9:00 bis 20:00</value>
   </data>
   <data name="PrincingFeature_5_Text" xml:space="preserve">
     <value>Unser Kundenservice ist 7 Tage die Woche von 9:00 bis 20:00 für Sie erreichbar, um Probleme zu lösen oder um Fragen zu beantworten. </value>
   </data>
   <data name="PrincingFeature_6" xml:space="preserve">
-    <value>Gesicherte Zahlung mit SSL-Verschlüsselung</value>
+    <value>Ges. Zahlung mit SSL-Verschlüsselung</value>
   </data>
   <data name="PrincingFeature_6_Text" xml:space="preserve">
     <value>Alle Informationen werden mittels SSL verschlüsselt. Niemand außer Ihnen hat Zugang zu Ihren Informationen.</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Erstellen Sie kostenlos eine {0} für Ihren Raum und geben Sie an, dass Sie der Eigentümer sind</value>
+    <value>Erstellen Sie kostenlos {0} für Ihren Raum und geben Sie an, dass Sie der Eigentümer sind</value>
     <comment>JM Modif l.22</comment>
   </data>
   <data name="RefererenceTitle" xml:space="preserve">
     <value>Nachweisen</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
-    <value>Um einen Raum auf eWorky zu managen, müssen Sie sich kostenlos {0}, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
+    <value>Um einen Raum auf eWorky zu managen, müssen Sie {0}, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login anmelden.</value>
   </data>
   <data name="RegisterOwnerTitle" xml:space="preserve">
     <value>Sich einschreiben</value>
   </data>
   <data name="RegisterUser" xml:space="preserve">
-    <value>Profitieren Sie von allen Vorteilen von eWorky, schreiben Sie sich kostenlos ein, indem Sie ein Konto erstellen oder indem Sie sich mit Ihren Facebook-Login identifizieren.</value>
+    <value>Um von allen Vorteilen von eWorky zu profitieren, müssen Sie {0}, indem Sie ein Konto erstellen oder sich mit Ihren Facebook-Login anmelden.</value>
   </data>
   <data name="RegisterUserTitle" xml:space="preserve">
     <value>Sich einschreiben</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Suchen Sie einen Hot Spot, einen Konferenzraum oder einen Arbeitsplatz in einem Coworking Space in der größten Datenbank für Arbeitsplätze Europas</value>
+    <value>Suchen Sie einen Hot Spot oder einen Arbeitsplatz in einem Coworking Space in der größten Datenbank für Arbeitsplätze Europas</value>
   </data>
   <data name="SearchTitle" xml:space="preserve">
     <value>Suchen</value>
@@ -284,7 +284,7 @@
     <value>User</value>
   </data>
   <data name="UserTutorial" xml:space="preserve">
-    <value>Ich suche einen Arbeitsraum</value>
+    <value>Einen Arbeitsraum suchen</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>eWorky hilft Ihnen einen Arbeitsplatz zu managen aber wird nie Ihre Gastlichkeit und Ihren Empfang ersetzen</value>
