@@ -238,13 +238,13 @@
     <value>Ihre Rechnungen werden für jede bezahlte Reservierung automatisch erstellt und in Ihrem Office Manager gespeichert.</value>
   </data>
   <data name="PrincingFeature_5" xml:space="preserve">
-    <value>Hotline jeden Tag von 9:00 bis 20:00</value>
+    <value>Hotline 7 Tage die Woche</value>
   </data>
   <data name="PrincingFeature_5_Text" xml:space="preserve">
     <value>Unser Kundenservice ist 7 Tage die Woche von 9:00 bis 20:00 für Sie erreichbar, um Probleme zu lösen oder um Fragen zu beantworten. </value>
   </data>
   <data name="PrincingFeature_6" xml:space="preserve">
-    <value>Ges. Zahlung mit SSL-Verschlüsselung</value>
+    <value>Ges. Zahlung mit SSL</value>
   </data>
   <data name="PrincingFeature_6_Text" xml:space="preserve">
     <value>Alle Informationen werden mittels SSL verschlüsselt. Niemand außer Ihnen hat Zugang zu Ihren Informationen.</value>
