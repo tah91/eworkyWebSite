@@ -135,48 +135,17 @@
 	    </div>
         <div class="float-left">
             <div class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</div>
-            <div id="contactContent">
-		        <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
-		        <script type="text/javascript">
-				    $("#showContactContent").click(function () {
-					    $.ajax({
-						    url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
-						    data: { 'id': @Model.ID },
-						    success: function (data) {
-							    $("#contactContent").hide().html(data).fadeIn();
-						    }
-					    });
-				    });
-		        </script>
-	        </div>
         </div>
 	    <div class="clear">
 	    </div>    
     }
     else
     {
-         <div id="contactContent">
-		    <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
-		    <script type="text/javascript">
-				$("#showContactContent").click(function () {
-					$.ajax({
-						url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
-						data: { 'id': @Model.ID },
-						success: function (data) {
-							$("#contactContent").hide().html(data).fadeIn();
-						}
-					});
-				});
-		    </script>
-	    </div>
-        if (!Model.HasOwner())
-	    {
-            <div class="bookingCallAction margint10">
-                <div class="bigButtonStd buttonStd buttonBlue linkImg">
-                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID))
-                </div>
+        <div class="bookingCallAction margint10">
+            <div class="bigButtonStd buttonStd buttonBlue linkImg">
+                @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID))
             </div>
-        }
+        </div>
     }
 
 </div>
@@ -187,23 +156,23 @@
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 		@{
-    var lastEdition = Model.GetLastEdition();
-    var creation = Model.GetCreation();
+            var lastEdition = Model.GetLastEdition();
+            var creation = Model.GetCreation();
 		}
 		@if (creation != null)
-  {
+        {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
-  }
-  else
-  { 
+        }
+        else
+        { 
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
-  }
+        }
 		@if (lastEdition != null)
-  {
+        {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
-  }
+        }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
