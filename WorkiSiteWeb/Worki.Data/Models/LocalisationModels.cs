@@ -907,22 +907,6 @@ namespace Worki.Data.Models
             return AcceptBooking() || AcceptQuotation();
         }
 
-        public string NeedTheLocalisation()
-        {
-            if (AcceptBooking())
-            {
-                return Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction;
-            }
-            else if (AcceptQuotation())
-            {
-                return Worki.Resources.Views.Booking.BookingString.AskQuotation;
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-
         #endregion
 
         #region Quotation
