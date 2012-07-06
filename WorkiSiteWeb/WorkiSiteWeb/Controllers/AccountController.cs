@@ -122,6 +122,7 @@ namespace Worki.Web.Controllers
         [ActionName("register")]
         public virtual ActionResult Register()
         {
+            ViewData["PasswordLength"] = MiscHelpers.Constants.MinRequiredPasswordLength;
             return View(new RegisterModel());
         }
 
