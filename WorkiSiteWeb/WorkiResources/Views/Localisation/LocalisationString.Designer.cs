@@ -322,6 +322,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hôte.
+        /// </summary>
+        public static string Host {
+            get {
+                return ResourceManager.GetString("Host", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?.
         /// </summary>
         public static string ImproveVisibility {

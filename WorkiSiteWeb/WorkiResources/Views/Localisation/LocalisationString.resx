@@ -342,4 +342,7 @@
   <data name="SeeOffers" xml:space="preserve">
     <value>Voir les offres</value>
   </data>
+  <data name="Host" xml:space="preserve">
+    <value>Hôte</value>
+  </data>
 </root>
