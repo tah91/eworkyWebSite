@@ -333,7 +333,7 @@
                     <tr>
                         <td class="verticalAlignTop">
                             <div class="editor-label">
-                                @Html.LabelFor(model => model.Localisation.Description)
+                                @Html.LabelFor(model => model.Localisation.Description)<span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -342,6 +342,8 @@
                     </tr>
                 </table>
 
+                @if (Model.IsFreeLocalisation == false)
+                {
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h3>
                 <div class="serviceContainer">
                     <div class="subserviceContainer float-left">
@@ -409,6 +411,7 @@
                     <div class="clear">
                     </div>
                 </div>
+                }
             </div>
 			@if (!Url.IsInArea("Backoffice"))
    {
