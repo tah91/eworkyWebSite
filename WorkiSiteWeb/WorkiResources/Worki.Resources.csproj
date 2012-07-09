@@ -321,8 +321,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Email\Activation.de.resx" />
     <EmbeddedResource Include="Email\Activation.es.resx" />
-    <EmbeddedResource Include="Email\BookingString.de.resx" />
-    <EmbeddedResource Include="Email\BookingString.es.resx" />
+    <EmbeddedResource Include="Email\BookingString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\BookingString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\Common.de.resx" />
     <EmbeddedResource Include="Email\Common.es.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.de.resx" />

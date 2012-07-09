@@ -127,14 +127,13 @@ namespace Worki.Web.Controllers
 
 							newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
-                                                                    Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberQuotation.Surface,
-                                                                    offer.Localisation.Name,
-                                                                    offer.Localisation.Adress,
-                                                                    formData.Email,
-                                                                    _MembershipService.GetPassword(formData.Email, null),
-                                                                    editpasswordLink,
-                                                                    editprofilLink);
+                                                                    Localisation.GetOfferType(offer.Type), //0
+                                                                    offer.Localisation.Name, //1
+                                                                    offer.Localisation.Adress, //2
+                                                                    formData.Email, //3
+                                                                    _MembershipService.GetPassword(formData.Email, null), //4
+                                                                    editpasswordLink, //5
+                                                                    editprofilLink); //6
 						}
 
 						//send mail to team
@@ -144,14 +143,14 @@ namespace Worki.Web.Controllers
 						teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
 						teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
-														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-														 formData.PhoneNumber,
-														 member.Email,
-														 locName,
-														 Localisation.GetOfferType(offer.Type),
-														 formData.MemberQuotation.Surface,
-														 formData.MemberQuotation.Message,
-                                                         locUrl);
+														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName), //0
+														 formData.PhoneNumber, //1
+														 member.Email, //2
+														 locName, //3
+														 Localisation.GetOfferType(offer.Type), //4
+														 //formData.MemberQuotation.Surface,
+														 formData.MemberQuotation.Message, //5
+                                                         locUrl); //6
 
 						//send mail to quoation client
                         dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -160,10 +159,10 @@ namespace Worki.Web.Controllers
                         clientMail.Subject = Worki.Resources.Email.BookingString.CreateQuotationClientSubject;
                         clientMail.ToName = member.MemberMainData.FirstName;
                         clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
-                                                         Localisation.GetOfferType(offer.Type),
-                                                         formData.MemberQuotation.Surface,
-                                                         locName,
-                                                         offer.Localisation.Adress);
+                                                         Localisation.GetOfferType(offer.Type), //0
+                                                         //formData.MemberQuotation.Surface,
+                                                         locName, //1
+                                                         offer.Localisation.Adress); //2
 
 						context.Commit();
 
