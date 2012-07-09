@@ -193,6 +193,6 @@
     <value>Medio de pago</value>
   </data>
   <data name="StatusId" xml:space="preserve">
-    <value>Status</value>
+    <value>Estado</value>
   </data>
 </root>
