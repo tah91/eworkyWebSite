@@ -31,8 +31,11 @@
 			<div class="featureTag">
 				<ul>
 				@foreach (var item in offer.OfferFeatures)
-				{
+                {
+                    if (item.Feature != Feature.Heater)
+                    {
 					<li>@FeatureHelper.Display(item)</li>
+                    }
 				}
 				</ul>
 			</div> 
