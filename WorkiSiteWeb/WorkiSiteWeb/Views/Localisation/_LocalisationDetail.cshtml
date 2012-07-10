@@ -90,15 +90,16 @@
 	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
 	var fullName = Model.GetFullName();
     var link = Model.GetDetailFullUrl(Url);
-    var canEdit = false;
-    if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+    //var canEdit = false;
+    var isOwner = false;
+    /*if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
     {
         canEdit = true;
-    }
-    else if (Request.IsAuthenticated)
+    }*/
+    if (Request.IsAuthenticated)
     {
         var memberId = WebHelper.GetIdentityId(User.Identity);
-        canEdit = Model.IsOwner(memberId);
+        isOwner = Model.IsOwner(memberId);
     }
 }
 
@@ -448,18 +449,31 @@
 </div>
 
 <div class="margint10 float-right">
-	@if (!Model.HasOwner() || canEdit)
+    @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) || isOwner == true)
     {
-	<div class="buttonStd buttonBlue linkImg float-left">
-	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
-	</div>
+    <div class="buttonStd buttonBlue linkImg float-left">
+    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
+    </div>
+    }
+	else if (!Model.HasOwner())
+    {
+        if (Model.IsPaidLocalisation() || Model.IsSharedOffice()) 
+        {
+            
+        }
+        else
+        {
+            <div class="buttonStd buttonBlue linkImg float-left">
+            @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
+            </div>
+        }
     }
 	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
-    {
+ {
 	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
 	</div>
-    }
+ }
     <div class="buttonStd buttonOrange linkImg float-left">
         <a href="#" id="addToFavorite">@Worki.Resources.Views.Localisation.LocalisationString.IWorkHere</a>
         <script type="text/javascript">
