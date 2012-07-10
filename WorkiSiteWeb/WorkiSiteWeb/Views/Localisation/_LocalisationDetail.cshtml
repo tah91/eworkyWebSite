@@ -47,7 +47,10 @@
 					    <ul>
                         @if (!string.IsNullOrEmpty(offer.GetAvailabilityDisplay()))
                         {
-                            <li>@offer.GetAvailabilityDisplay()</li>   
+                            if(offer.AvailabilityDate>=DateTime.Now)
+                            {
+                            <li>@offer.GetAvailabilityDisplay()</li>
+                            }   
                         }
 					    @foreach (var price in offer.OfferPrices.OrderBy(op => op.Price))
 					    {
