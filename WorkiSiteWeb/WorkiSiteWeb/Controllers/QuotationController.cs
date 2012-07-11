@@ -304,7 +304,7 @@ namespace Worki.Web.Controllers
 
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
 
-            decimal eworkyAmount = localisation.GetQuotationPrice() == 0 ? 5 : localisation.GetQuotationPrice();
+            decimal eworkyAmount = localisation.GetQuotationPrice();
             var payments = new List<PaymentItem>
             {
                 new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},

@@ -1050,10 +1050,20 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Get price of a quotation
 		/// </summary>
-		public decimal GetQuotationPrice()
-		{
-			return QuotationPrice;
-		}
+        public decimal GetQuotationPrice()
+        {
+            if (QuotationPrice != 0)
+                return QuotationPrice;
+
+            switch ((LocalisationType)TypeValue)
+            {
+                case LocalisationType.BuisnessCenter:
+                    return 20;
+                case LocalisationType.CoworkingSpace:
+                default:
+                    return 5;
+            }
+        }
 
 		#endregion
 
