@@ -225,6 +225,7 @@ namespace Worki.Web.Areas.Api.Controllers
         /// <param name="maxCount"></param>
         /// <returns></returns>
         public virtual ActionResult Search(string place,
+                                            string name = "",
                                             float latitude = 0,
                                             float longitude = 0,
                                             float boundary = 50,
@@ -235,11 +236,13 @@ namespace Worki.Web.Areas.Api.Controllers
                                             int maxCount = 30)
         {
             //validate
-            if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0))
-                return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or latitude/longitude\" parameters must be filled");
+            if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0) && string.IsNullOrEmpty(name))
+                return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or name or latitude/longitude\" parameters must be filled");
 
             //fill from parameter
-            var criteria = new SearchCriteria { OrderBy = (eOrderBy)orderBy };
+            eSearchType searchType = string.IsNullOrEmpty(name) ? eSearchType.ePerOffer : eSearchType.ePerName;
+            eOrderBy order = string.IsNullOrEmpty(name) ? (eOrderBy)orderBy : eOrderBy.Rating;
+            var criteria = new SearchCriteria { SearchType = searchType, OrderBy = order };
 
             criteria.Boundary = boundary;
 
@@ -253,7 +256,7 @@ namespace Worki.Web.Areas.Api.Controllers
             }
 
             //place
-            if (latitude == 0 || longitude == 0)
+            if (!string.IsNullOrEmpty(place))
             {
                 criteria.Place = place;
                 _GeocodeService.GeoCode(place, out latitude, out longitude);
@@ -262,6 +265,8 @@ namespace Worki.Web.Areas.Api.Controllers
             }
             criteria.LocalisationData.Latitude = latitude;
             criteria.LocalisationData.Longitude = longitude;
+
+            criteria.LocalisationData.Name = name;
 
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
