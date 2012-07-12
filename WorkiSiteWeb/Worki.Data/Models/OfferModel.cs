@@ -77,12 +77,24 @@ namespace Worki.Data.Models
 	}
 
 	[MetadataType(typeof(Offer_Validation))]
-	public partial class Offer : IPictureDataProvider, IFeatureProvider
+	public partial class Offer : IPictureDataProvider, IFeatureProvider, IJsonProvider<OfferJson>
 	{
 		partial void OnInitialized()
 		{
 			IsOnline = true;
 		}
+
+        #region IJsonProvider
+
+        public OfferJson GetJson()
+        {
+            return new OfferJson
+            {
+                id = Id
+            };
+        }
+
+        #endregion
 
 		#region IPictureDataProvider
 

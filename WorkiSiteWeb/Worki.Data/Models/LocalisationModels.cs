@@ -386,6 +386,11 @@ namespace Worki.Data.Models
             return Offers.Where(o => o.IsOnline &&  o.Type == (int)offer).Count();
 		}
 
+        public IEnumerable<Offer> GetAllOffers()
+        {
+            return Offers.Where(o => o.IsOnline);
+        }
+
 		public IEnumerable<Offer> GetOffers(LocalisationOffer offerType)
 		{
 			return Offers.Where(o => o.IsOnline && o.Type == (int)offerType);

@@ -16,6 +16,7 @@ namespace Worki.Data.Models
             fans = new List<MemberJson>();
 			amenities = new List<string>();
             prices = new PricesJson();
+            offers = new List<OfferJson>();
         }
 
 		public int id { get; set; }
@@ -33,6 +34,7 @@ namespace Worki.Data.Models
         public double rating { get; set; }
 		public List<string> amenities { get; set; }
         public PricesJson prices { get; set; }
+        public List<OfferJson> offers { get; set; }
 		public List<CommentJson> comments { get; set; }
         public List<MemberJson> fans { get; set; }
 	}
@@ -75,6 +77,11 @@ namespace Worki.Data.Models
         public string seminarRoom { get; set; }
         public string visioRoom { get; set; }
 
+    }
+
+    public class OfferJson
+    {
+        public int id { get; set; }
     }
 
 	public class ImageJson

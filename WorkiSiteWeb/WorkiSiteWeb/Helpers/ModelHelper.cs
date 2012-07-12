@@ -91,6 +91,12 @@ namespace Worki.Web.Helpers
 
             }
 
+            //get offers
+            foreach (var item in localisation.GetAllOffers())
+            {
+                json.offers.Add(item.GetJson());
+            }
+
 			//get amenities
 			foreach (var item in localisation.LocalisationFeatures)
 			{
