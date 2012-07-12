@@ -224,6 +224,8 @@ namespace Worki.Data.Models
 		public float SouthWestLat { get; set; }
 		public float SouthWestLng { get; set; }
 
+        public float Boundary { get; set; }
+
         #endregion
     }
 

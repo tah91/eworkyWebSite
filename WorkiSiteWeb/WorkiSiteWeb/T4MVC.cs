@@ -3323,6 +3323,21 @@ namespace Worki.Web.Areas.Api.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Connect() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Comment() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetToken() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetToken);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Details() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
         }
@@ -3344,6 +3359,9 @@ namespace Worki.Web.Areas.Api.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
+            public readonly string Connect = "Connect";
+            public readonly string Comment = "Comment";
+            public readonly string GetToken = "GetToken";
             public readonly string Details = "Details";
             public readonly string Search = "Search";
         }
@@ -3361,17 +3379,38 @@ namespace Worki.Web.Areas.Api.Controllers {
     public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
+        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Comment(int id, Worki.Data.Models.LogOnModel model, Worki.Data.Models.Comment com) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("model", model);
+            callInfo.RouteValueDictionary.Add("com", com);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetToken(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetToken);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Search(string place, float latitude, float longitude, int offerType, string types, string features, int maxCount) {
+        public override System.Web.Mvc.ActionResult Search(string place, float latitude, float longitude, float boundary, int offerType, string types, string features, int maxCount) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("place", place);
             callInfo.RouteValueDictionary.Add("latitude", latitude);
             callInfo.RouteValueDictionary.Add("longitude", longitude);
+            callInfo.RouteValueDictionary.Add("boundary", boundary);
             callInfo.RouteValueDictionary.Add("offerType", offerType);
             callInfo.RouteValueDictionary.Add("types", types);
             callInfo.RouteValueDictionary.Add("features", features);

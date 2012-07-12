@@ -224,46 +224,49 @@ namespace Worki.Web.Areas.Api.Controllers
         /// <param name="features"></param>
         /// <param name="maxCount"></param>
         /// <returns></returns>
-        public virtual ActionResult Search( string place,
-											float latitude = 0,
-											float longitude = 0,
-                                            int offerType = -1, 
+        public virtual ActionResult Search(string place,
+                                            float latitude = 0,
+                                            float longitude = 0,
+                                            float boundary = 50,
+                                            int offerType = -1,
                                             string types = null,
                                             string features = null,
                                             int maxCount = 30)
         {
             //validate
             if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0))
-				return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or latitude/longitude\" parameters must be filled");
+                return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or latitude/longitude\" parameters must be filled");
 
             //fill from parameter
             var criteria = new SearchCriteria();
 
-			try
-			{
-				FillCriteria(ref  criteria, types, features, offerType);
-			}
-			catch (Exception ex)
-			{
-				return new ObjectResult<List<LocalisationJson>>(null, 400, ex.Message);
-			}
+            criteria.Boundary = boundary;
 
-			//place
-			if (latitude == 0 || longitude == 0)
-			{
-				criteria.Place = place;
+            try
+            {
+                FillCriteria(ref  criteria, types, features, offerType);
+            }
+            catch (Exception ex)
+            {
+                return new ObjectResult<List<LocalisationJson>>(null, 400, ex.Message);
+            }
+
+            //place
+            if (latitude == 0 || longitude == 0)
+            {
+                criteria.Place = place;
                 _GeocodeService.GeoCode(place, out latitude, out longitude);
-				if (latitude == 0 || longitude == 0)
-					return new ObjectResult<List<LocalisationJson>>(null, 404, "The \"place\" can not be geocoded");
-			}
-			criteria.LocalisationData.Latitude = latitude;
-			criteria.LocalisationData.Longitude = longitude;
+                if (latitude == 0 || longitude == 0)
+                    return new ObjectResult<List<LocalisationJson>>(null, 404, "The \"place\" can not be geocoded");
+            }
+            criteria.LocalisationData.Latitude = latitude;
+            criteria.LocalisationData.Longitude = longitude;
 
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
 
             //take the json
-			var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
+            var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
         }
     }
