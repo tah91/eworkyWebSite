@@ -7,6 +7,8 @@ using Worki.Infrastructure.Logging;
 using Worki.Rest;
 using Worki.Service;
 using Worki.Web.Helpers;
+using Worki.Memberships;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
@@ -17,14 +19,61 @@ namespace Worki.Web.Areas.Api.Controllers
         ILogger _Logger;
         ISearchService _SearchService;
         IGeocodeService _GeocodeService;
+        IMembershipService _MembershipService;
 
-        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService, IGeocodeService geocodeService)
+        public LocalisationController(ILocalisationRepository localisationRepository,
+                                      IMemberRepository memberRepository,
+                                      ILogger logger,
+                                      ISearchService searchService,
+                                      IGeocodeService geocodeService,
+                                      IMembershipService membershipService)
         {
             _LocalisationRepository = localisationRepository;
             _MemberRepository = memberRepository;
             _Logger = logger;
             _SearchService = searchService;
             _GeocodeService = geocodeService;
+            _MembershipService = membershipService;
+        }
+
+
+        public virtual ActionResult Connect(LogOnModel model)
+        {
+            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            {
+                return new ObjectResult<LocalisationJson>(null, 200, "Ok");
+            }
+            else
+            {
+                return new ObjectResult<LocalisationJson>(null, 400, "Not found");
+            }
+        }
+
+        public virtual ActionResult Comment(int id, LogOnModel model, Comment com)
+        {
+            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var localisation = lRepo.Get(id);
+
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var member = mRepo.GetMember(model.Login);
+                var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+                com.Localisation = localisation;
+                com.PostUserID = member.MemberId;
+                com.Date = System.DateTime.UtcNow;
+                com.Validate(ref  error);
+
+                localisation.Comments.Add(com);
+
+                context.Commit();
+                return new ObjectResult<LocalisationJson>(null, 200, "Ok");
+            }
+            else
+            {
+                return new ObjectResult<LocalisationJson>(null, 400, "Not found");
+            }
         }
 
         /// <summary>
