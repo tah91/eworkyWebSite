@@ -229,6 +229,7 @@ namespace Worki.Web.Areas.Api.Controllers
                                             float longitude = 0,
                                             float boundary = 50,
                                             int offerType = -1,
+                                            int orderBy = 1,
                                             string types = null,
                                             string features = null,
                                             int maxCount = 30)
@@ -238,7 +239,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or latitude/longitude\" parameters must be filled");
 
             //fill from parameter
-            var criteria = new SearchCriteria();
+            var criteria = new SearchCriteria { OrderBy = (eOrderBy)orderBy };
 
             criteria.Boundary = boundary;
 

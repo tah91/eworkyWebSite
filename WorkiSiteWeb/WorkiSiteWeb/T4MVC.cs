@@ -3405,13 +3405,14 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Search(string place, float latitude, float longitude, float boundary, int offerType, string types, string features, int maxCount) {
+        public override System.Web.Mvc.ActionResult Search(string place, float latitude, float longitude, float boundary, int offerType, int orderBy, string types, string features, int maxCount) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("place", place);
             callInfo.RouteValueDictionary.Add("latitude", latitude);
             callInfo.RouteValueDictionary.Add("longitude", longitude);
             callInfo.RouteValueDictionary.Add("boundary", boundary);
             callInfo.RouteValueDictionary.Add("offerType", offerType);
+            callInfo.RouteValueDictionary.Add("orderBy", orderBy);
             callInfo.RouteValueDictionary.Add("types", types);
             callInfo.RouteValueDictionary.Add("features", features);
             callInfo.RouteValueDictionary.Add("maxCount", maxCount);
