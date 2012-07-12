@@ -78,7 +78,6 @@ namespace Worki.Web.Areas.Api.Controllers
 
         public virtual ActionResult GetToken(LogOnModel model)
         {
-            return new ObjectResult<LocalisationJson>(null, 200, _MembershipService.GetToken(model.Login));
             if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
             {
                 return new ObjectResult<LocalisationJson>(null, 200, _MembershipService.GetToken(model.Login));

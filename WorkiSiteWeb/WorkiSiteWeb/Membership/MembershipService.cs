@@ -263,6 +263,33 @@ namespace Worki.Memberships
             }
             return true;
         }
+
+        public string GetToken(string username)
+        {
+            string ret = "";
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+                Member m = mRepo.GetMember(username);
+
+                if (string.IsNullOrEmpty(m.MemberMainData.Token))
+                {
+                    m.MemberMainData.Token = m.MemberId.ToString() + "-" + Guid.NewGuid().ToString();
+                    ret = m.MemberMainData.Token;
+                    context.Commit();
+                }
+                else
+                    return m.MemberMainData.Token;
+            }
+            catch (Exception)
+            {
+                ret = null;
+                context.Complete();
+            }
+
+            return ret;
+        }
 	}
 
 	public class FormsAuthenticationService : IFormsAuthenticationService
@@ -292,33 +319,6 @@ namespace Worki.Memberships
 		{
 			FormsAuthentication.SignOut();
 		}
-
-        public string GetToken(string username)
-        {
-            string ret = "";
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            try
-            {
-                Member m = mRepo.GetMember(username);
-
-                if (string.IsNullOrEmpty(m.MemberMainData.Token))
-                {
-                    m.MemberMainData.Token = m.MemberId.ToString() + "-" + Guid.NewGuid().ToString();
-                    ret = m.MemberMainData.Token;
-                    context.Commit();
-                }
-                else
-                    return m.MemberMainData.Token;
-            }
-            catch (Exception)
-            {
-                ret = null;
-                context.Complete();
-            }
-
-            return ret;
-        }
 	}
 	#endregion
 
