@@ -23,6 +23,7 @@ namespace Worki.Data.Models
 		public double longitude { get; set; }
 		public string description { get; set; }
 		public string image { get; set; }
+        public string imageThumb { get; set; }
 		public string address { get; set; }
         public string postalCode { get; set; }
 		public string city { get; set; }
