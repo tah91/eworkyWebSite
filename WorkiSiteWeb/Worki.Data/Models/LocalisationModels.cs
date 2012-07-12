@@ -32,6 +32,7 @@ namespace Worki.Data.Models
                 name = Name,
 				description = GetDescription(),
                 address = Adress,
+                postalCode = PostalCode,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
 				type = Localisation.GetLocalisationType(TypeValue)

@@ -24,6 +24,7 @@ namespace Worki.Data.Models
 		public string description { get; set; }
 		public string image { get; set; }
 		public string address { get; set; }
+        public string postalCode { get; set; }
 		public string city { get; set; }
 		public string type { get; set; }
 		public string url { get; set; }
