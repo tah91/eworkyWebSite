@@ -19,7 +19,6 @@ namespace Worki.Data.Models
         {
         }
     
-        public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public DbSet<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<LocalisationFeature> LocalisationFeatures { get; set; }
