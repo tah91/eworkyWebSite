@@ -210,8 +210,6 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            int memberId = 0;
-            var member = mRepo.Get(memberId);
 
             if (ModelState.IsValid)
             {
@@ -220,12 +218,12 @@ namespace Worki.Web.Areas.Admin.Controllers
                 maindata.LastName = model.Name;
                 maindata.PhoneNumber = model.Telephone;
 
-
+                int memberId;
 
                 var sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId);
                 if (memberId != 0)
                 {
-                    member = mRepo.Get(memberId);
+                    var member = mRepo.Get(memberId);
 
                     Localisation loc = null;
                     try
@@ -233,15 +231,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                         loc = lRepo.Get(l => l.ID == model.PlaceId);
                         loc.OwnerID = memberId;
                         context.Commit();
-                    }
 
-                    catch
-                    {
-                        ModelState.AddModelError("PlaceId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
-                    }
-
-                    if (loc != null)
-                    {
                         dynamic ownerMail = null;
 
                         ownerMail = new Email(MVC.Emails.Views.Email);
@@ -256,10 +246,12 @@ namespace Worki.Web.Areas.Admin.Controllers
 
                         ownerMail.Send();
                     }
+                    catch
+                    {
+                        ModelState.AddModelError("PlaceId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
+                    }  
                 }
-
             }
-
             return View(model);
         }
 
