@@ -82,6 +82,12 @@ namespace Worki.Data.Models
     public class OfferJson
     {
         public int id { get; set; }
+        public string name { get; set; }
+        public List<string> pictures { get; set; }
+        public List<string> prices { get; set; }
+        public List<string> amenities { get; set; }
+        public string availability { get; set; }
+        public int type { get; set; }
     }
 
 	public class ImageJson

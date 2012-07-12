@@ -88,9 +88,37 @@ namespace Worki.Data.Models
 
         public OfferJson GetJson()
         {
+            List<string> Pictures = new List<string>();
+            int i = 0;
+            string s = GetMainPic();
+            while (!string.IsNullOrEmpty(s))
+            {
+                Pictures.Add(s);
+                s = GetPic(i);
+                i++;
+            }
+
+            List<string> Prices = new List<string>();
+            foreach (var offer in OfferPrices)
+            {
+                Prices.Add(offer.GetPriceDisplay());
+            }
+
+            List<string> Amenities = new List<string>();
+            foreach (var feature in OfferFeatures)
+            {
+                Amenities.Add(feature.StringValue);
+            }
+
             return new OfferJson
             {
-                id = Id
+                id = Id,
+                name = GetDisplayName(),
+                pictures = Pictures,
+                availability = GetAvailabilityDisplay(),
+                prices = Prices,
+                amenities = Amenities,
+                type = Type
             };
         }
 
