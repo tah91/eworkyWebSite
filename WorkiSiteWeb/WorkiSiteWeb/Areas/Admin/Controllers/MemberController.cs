@@ -197,6 +197,72 @@ namespace Worki.Web.Areas.Admin.Controllers
 
 		#region Admin Members
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult AddOwnerPlace()
+        {
+            var model = new OwnerLocalisationModel();
+            return View(model);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult AddOwnerPlace(OwnerLocalisationModel model)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            int memberId = 0;
+            var member = mRepo.Get(memberId);
+
+            if (ModelState.IsValid)
+            {
+                MemberMainData maindata = new MemberMainData();
+                maindata.FirstName = model.Firstname;
+                maindata.LastName = model.Name;
+                maindata.PhoneNumber = model.Telephone;
+
+
+
+                var sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId);
+                if (memberId != 0)
+                {
+                    member = mRepo.Get(memberId);
+
+                    Localisation loc = null;
+                    try
+                    {
+                        loc = lRepo.Get(l => l.ID == model.PlaceId);
+                        loc.OwnerID = memberId;
+                        context.Commit();
+                    }
+
+                    catch
+                    {
+                        ModelState.AddModelError("PlaceId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
+                    }
+
+                    if (loc != null)
+                    {
+                        dynamic ownerMail = null;
+
+                        ownerMail = new Email(MVC.Emails.Views.Email);
+                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        ownerMail.To = model.Email;
+                        ownerMail.ToName = model.Firstname;
+
+                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.Ownership,
+                                                                        loc.Name,
+                                                                        loc.GetDetailFullUrl(Url));
+
+                        ownerMail.Send();
+                    }
+                }
+
+            }
+
+            return View(model);
+        }
+
 		public virtual ActionResult IndexOwner(int? page)
 		{
 			var context = ModelFactory.GetUnitOfWork();

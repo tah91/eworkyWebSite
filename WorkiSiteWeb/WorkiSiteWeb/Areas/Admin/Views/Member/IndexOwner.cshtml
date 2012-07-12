@@ -9,7 +9,6 @@
 @Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Member)
 
 <div class="detailContent">
-
 	<div class="blockContainer float-left adminLeftMenu">
     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
@@ -24,6 +23,7 @@
 	</div>
 
 	<div class="blockContainer float-left adminPanel">
+    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.AddOwner, MVC.Admin.Member.AddOwnerPlace())</h3>
         <table>
             <thead>
                 <tr>

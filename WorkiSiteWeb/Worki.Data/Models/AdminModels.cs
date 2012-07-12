@@ -16,6 +16,31 @@ namespace Worki.Data.Models
 		public string UserName { get; set; }
 	}
 
+    public class OwnerLocalisationModel
+    {
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        public string Name { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Firstname", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        public string Firstname { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Telephone", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        [StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Telephone { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Email { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "PlaceId", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        public int PlaceId { get; set; }
+    }
+
     public class MemberAdminModel
     {
         public int MemberId { get; set; }

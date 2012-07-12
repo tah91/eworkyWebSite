@@ -445,4 +445,7 @@
   <data name="SendMailToOwner" xml:space="preserve">
     <value>Envoyer un message de bienvenue à cette adresse</value>
   </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <value>Le Lieu correspondant n'as pas pu être trouvé</value>
+  </data>
 </root>

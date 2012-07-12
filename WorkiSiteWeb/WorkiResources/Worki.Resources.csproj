@@ -111,6 +111,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Admin\Admin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Booking\Booking.Designer.cs">
       <DependentUpon>Booking.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -384,6 +389,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountModels.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Admin\Admin.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Admin.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Booking\Booking.de.resx" />
     <EmbeddedResource Include="Models\Booking\Booking.en.resx" />
