@@ -225,7 +225,7 @@ namespace Worki.Web.Areas.Api.Controllers
         /// <param name="maxCount"></param>
         /// <returns></returns>
         public virtual ActionResult Search(string place,
-                                            string name = "",
+                                            string name,
                                             float latitude = 0,
                                             float longitude = 0,
                                             float boundary = 50,
@@ -266,7 +266,8 @@ namespace Worki.Web.Areas.Api.Controllers
             criteria.LocalisationData.Latitude = latitude;
             criteria.LocalisationData.Longitude = longitude;
 
-            criteria.LocalisationData.Name = name;
+            if (!string.IsNullOrEmpty(name))
+                criteria.LocalisationData.Name = name;
 
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
