@@ -60,6 +60,37 @@ namespace Worki.Web.Helpers
 				json.fans.Add(item.Member.GetJson());
 			}
 
+            //get all offer types
+            foreach(var item in localisation.GetOfferTypes())
+            {
+                OfferPrice price = localisation.GetMinPrice((int)item);
+                if (price != null)
+                {
+                    switch(item)
+                    {
+                        case LocalisationOffer.Desktop:
+                            json.prices.desktop = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.MeetingRoom:
+                            json.prices.meetingRoom = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.Workstation:
+                            json.prices.workStation = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.BuisnessLounge:
+                            json.prices.buisnessLounge = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.SeminarRoom:
+                            json.prices.seminarRoom = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.VisioRoom:
+                            json.prices.visioRoom = price.GetPriceDisplay();
+                            break;
+                    }
+                }
+
+            }
+
 			//get amenities
 			foreach (var item in localisation.LocalisationFeatures)
 			{

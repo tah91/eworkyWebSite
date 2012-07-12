@@ -396,6 +396,11 @@ namespace Worki.Data.Models
             return Offers.Where(o => o.IsOnline && o.IsReallyBookable());
         }
 
+        public IEnumerable<LocalisationOffer> GetOfferTypes()
+        {
+            return Offers.Where(o => o.IsOnline).GroupBy(o => o.Type).Select(g => (LocalisationOffer)g.Key);
+        }
+
 		public IEnumerable<string> GetOfferTypeList()
 		{
 			return Offers.Where(o => o.IsOnline).GroupBy(o => o.Type).Select(g => Localisation.GetOfferType(g.Key));
