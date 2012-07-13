@@ -189,6 +189,12 @@
   <data name="LegallyTitle" xml:space="preserve">
     <value>Et juridiquement, ça se passe comment ?</value>
   </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Trouver et partager un bureau, une salle de réunion, une salle de conférence, un local en colocation et sous-location ou proposer vos bureaux et salles à louer</value>
+  </data>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Partager un bureau | eWorky, toutes les offres de bureaux partagés</value>
+  </data>
   <data name="ShareOfficeMenu" xml:space="preserve">
     <value>Partager un bureau</value>
   </data>

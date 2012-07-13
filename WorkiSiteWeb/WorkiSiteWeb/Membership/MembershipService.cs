@@ -180,9 +180,9 @@ namespace Worki.Memberships
 		/// <param name="memberData">member data of the account</param>
 		/// <param name="memberId">filled by the fectched account</param>
 		/// <returns>true if account created</returns>
-		public bool TryCreateAccount(string email, MemberMainData memberData, out int memberId)
+		public bool TryCreateAccount(string email, MemberMainData memberData, out int memberId, bool forceActivation = true)
 		{
-			//check if email match an account
+			//check if email match an accounte
 			var createAccountContext = ModelFactory.GetUnitOfWork();
 			var createAccountmRepo = ModelFactory.GetRepository<IMemberRepository>(createAccountContext);
 			try
@@ -196,20 +196,35 @@ namespace Worki.Memberships
 				else
 				{
 					//if not create an account from memberdata
-					var status = CreateUser(email, MiscHelpers.AdminConstants.DummyPassword, email, true);
+                    var status = CreateUser(email, MiscHelpers.AdminConstants.DummyPassword, email, true);
 					if (status != System.Web.Security.MembershipCreateStatus.Success)
 					{
 						var error = AccountValidation.ErrorCodeToString(status);
 						throw new Exception(error);
 					}
-					var created = createAccountmRepo.GetMember(email);
-					created.MemberMainData = memberData;
-					createAccountContext.Commit();
 
-					if (!ResetPassword(email))
-					{
-						throw new Exception("ResetPassword failed");
-					}
+                    var created = createAccountmRepo.GetMember(email);
+                    created.MemberMainData = memberData;
+                    createAccountContext.Commit();
+                    
+                    if (!ResetPassword(email))
+                    {
+                        throw new Exception("ResetPassword failed");
+                    }
+
+                    var unactivateAccountContext = ModelFactory.GetUnitOfWork();
+                    try
+                    {
+                        var unactivateAccountRepo = ModelFactory.GetRepository<IMemberRepository>(unactivateAccountContext);
+                        var toUnactiavte = unactivateAccountRepo.GetMember(email);
+                        toUnactiavte.IsApproved = forceActivation;
+                        unactivateAccountContext.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        unactivateAccountContext.Complete();
+                        throw ex;
+                    }
 
 					memberId = created.MemberId;
 					return true;

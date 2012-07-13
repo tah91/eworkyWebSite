@@ -100,8 +100,8 @@
                 <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                 <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                 <table class="generalInfosTable editionTable">
-                    @if (Model.Localisation.ID == 0)
-					{ 
+                    @if (Model.Localisation.ID == 0 && (Model.IsFreeLocalisation || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)))
+                    { 
                     <tr>
                         <td>
                         </td>
@@ -112,7 +112,12 @@
                             </div>
                         </td>
                     </tr>
-					}
+                    }
+                    else
+                    {
+                        Model.IsOwner = true;
+                        @Html.HiddenFor(m => m.IsOwner)
+                    }
 					@if (!Model.IsSharedOffice || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 	                {
                     <tr>
@@ -333,7 +338,7 @@
                     <tr>
                         <td class="verticalAlignTop">
                             <div class="editor-label">
-                                @Html.LabelFor(model => model.Localisation.Description)
+                                @Html.LabelFor(model => model.Localisation.Description)<span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -342,6 +347,8 @@
                     </tr>
                 </table>
 
+                @if (!Model.IsFreeLocalisation)
+                {
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h3>
                 <div class="serviceContainer">
                     <div class="subserviceContainer float-left">
@@ -409,6 +416,7 @@
                     <div class="clear">
                     </div>
                 </div>
+                }
             </div>
 			@if (!Url.IsInArea("Backoffice"))
    {
@@ -533,9 +541,6 @@
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
                     }
-                    <li>
-                        @Html.FeatureChecboxLabel(Feature.Heater, Model.Localisation)
-                    </li>
                 </ul>
             </div>
             <div class="clear">

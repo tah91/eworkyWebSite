@@ -328,7 +328,7 @@
     <value>Salles de séminaire</value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Bureaux</value>
+    <value>Bureaux privatifs</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
     <value>Salles de visioconférence</value>
@@ -349,7 +349,7 @@
     <value>Salle de séminaire</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Bureau</value>
+    <value>Bureau privatif</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
     <value>Salle de visioconférence</value>
@@ -421,7 +421,7 @@
     <value>Salle de réunion</value>
   </data>
   <data name="DesktopSearch" xml:space="preserve">
-    <value>Bureaux (centre d'affaires, pépinière, etc.)</value>
+    <value>Bureaux privatifs (centre d'affaires, pépinière, etc.)</value>
   </data>
   <data name="WorkstationSearch" xml:space="preserve">
     <value>Poste de travail (coworking, partage, etc.)</value>

@@ -35,7 +35,7 @@
 		    }
 			@if(!Url.IsInArea("Backoffice"))
 			{
-				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, '#Localisation_City','#Localisation_PostalCode');
+				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, '#Localisation_City','#Localisation_PostalCode','#Localisation_CountryId');
 				@:var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
 				@:var latitude = @Model.Localisation.Latitude;
 				@:var longitude = @Model.Localisation.Longitude;
@@ -44,10 +44,13 @@
 				@:FindAddress = function (evt) {
 					@:var addressValue = jQuery.trim($("#Localisation_Adress").val());
 					@:var postalCodeValue = jQuery.trim($("#Localisation_PostalCode").val());
+
 					@:var cityValue = jQuery.trim($("#Localisation_City").val());
+                    @:var countryValue = jQuery.trim($("#Localisation_CountryId :selected").text());
+
 					@:if( addressValue === "" || cityValue === "" )
 						@:return;
-					@:var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue;
+					@:var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue + ' ' + countryValue;
 					@:if (address.length < 1)
 						@:return;
 				
@@ -65,6 +68,9 @@
 		    });
 		    $("#Localisation_City").blur(function (evt) {
 			    FindAddress(evt);
+		    });
+            $("#Localisation_CountryId").blur(function (evt) {
+			    //FindAddress(evt);
 		    });
 
 		    $('#resetPos').click(function() {

@@ -259,7 +259,8 @@ namespace Worki.Data.Models
             PLN,
             RUB,
             SEK,
-            ZAR
+            ZAR,
+            AUD,
         }
 
         public enum PaymentTypeEnum
@@ -300,7 +301,8 @@ namespace Worki.Data.Models
             (int)CurrencyEnum.PLN,
             (int)CurrencyEnum.RUB,
             (int)CurrencyEnum.SEK,
-            (int)CurrencyEnum.ZAR
+            (int)CurrencyEnum.ZAR,
+            (int)CurrencyEnum.AUD,
         };
 
         public static List<int> PaymentTypeEnumTypes = new List<int>()

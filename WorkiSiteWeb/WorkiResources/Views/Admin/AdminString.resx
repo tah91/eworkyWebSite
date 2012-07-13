@@ -372,4 +372,10 @@
   <data name="QuotationEdited" xml:space="preserve">
     <value>La demande de devis a été éditée</value>
   </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="AddOwner" xml:space="preserve">
+    <value>Ajouter un gérant</value>
+  </data>
 </root>

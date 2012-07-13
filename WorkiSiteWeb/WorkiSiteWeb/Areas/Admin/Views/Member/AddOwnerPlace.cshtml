@@ -1,0 +1,109 @@
+﻿@model Worki.Data.Models.OwnerLocalisationModel
+
+@section HeadContent 
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace)</title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Activity)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem>
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.ActivatedBO, MVC.Admin.Member.ActivatedBO())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.MemberWithApi, MVC.Admin.Member.MemberWithApi())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+     <table>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.Name)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.Name)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                           @Html.LabelFor(m => m.Firstname)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.Firstname)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                           @Html.LabelFor(m => m.PhoneNumber)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.PhoneNumber)
+                        </div>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.Email)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.Email)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.LocalisationId)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.LocalisationId)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.CountryId)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.CountryId, Model.Countries)
+                            </div>
+                        </td>
+                    </tr>
+        </table>
+    <input type="submit" value="@Worki.Resources.Views.Admin.AdminString.Validate" />     
+}
+    </div>
+	<div class="clear"></div>   
+</div>

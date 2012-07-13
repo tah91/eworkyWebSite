@@ -88,12 +88,13 @@ function WorkiAutoComplete(textField) {
     this.SetAutocomplete = SetAutocomplete;
 }
 
-function WorkiGeocoder(latitudeField, longitudeField, addressField, cityField, postalCodeField) {
+function WorkiGeocoder(latitudeField, longitudeField, addressField, cityField, postalCodeField, countryField) {
     //properties
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
     var _addressField = addressField;
     var _cityField = cityField;
+    var _countryField = countryField;
     var _postalCodeField = postalCodeField;
     var _geocoder = new google.maps.Geocoder();
     var _handler = null;
@@ -145,6 +146,9 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, cityField, p
                         }
                         else if (component.types[typeIndex] == 'locality') {
                             $(_cityField).val(component.long_name);
+                        }
+                        else if (component.types[typeIndex] == 'country') {
+                            $(_countryField).val(component.short_name);
                         }
                     }
                 }

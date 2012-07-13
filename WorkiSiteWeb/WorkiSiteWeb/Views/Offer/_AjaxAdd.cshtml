@@ -68,29 +68,6 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Offer.AvailabilityPeriod)
-                    </div>
-                </td>
-                <td>
-                    <table class="offerAvailTable">
-                        <tr>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(model => model.Offer.AvailabilityPeriod)
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.DropDownListFor(model => model.Offer.AvailabilityPeriodType, Model.Periods)
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
         </table>
     </div> 
     }

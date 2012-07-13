@@ -197,6 +197,88 @@ namespace Worki.Web.Areas.Admin.Controllers
 
 		#region Admin Members
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult AddOwnerPlace()
+        {
+            var model = new OwnerLocalisationModel();
+            return View(model);
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult AddOwnerPlace(OwnerLocalisationModel model)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            if (ModelState.IsValid)
+            {
+                MemberMainData maindata = new MemberMainData();
+                maindata.FirstName = model.Firstname;
+                maindata.LastName = model.Name;
+                maindata.PhoneNumber = model.PhoneNumber;
+
+                try
+                {
+                    var loc = lRepo.Get(model.LocalisationId);
+                    if (loc.OwnerID != 1)
+                    {
+                        ModelState.AddModelError("", Worki.Resources.Models.Localisation.Localisation.OwnerAllreadyExist);
+                    }
+                    else
+                    {
+                        int memberId;
+                        bool sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId, false);
+
+                        if (memberId != 0)
+                        {
+                            var member = mRepo.Get(memberId);
+                            loc.OwnerID = memberId;
+                            context.Commit();
+                            if (sendNewAccountMail)
+                            {
+                                var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                                var activationLink = urlHelper.ActionAbsolute(MVC.Account.Activate(member.Email, member.EmailKey));
+                                TagBuilder link = new TagBuilder("a");
+                                link.MergeAttribute("href", activationLink);
+                                link.InnerHtml = activationLink;
+
+                                dynamic ownerMail = null;
+
+                                ownerMail = new Email(MVC.Emails.Views.Email);
+                                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                                ownerMail.To = model.Email;
+                                ownerMail.ToName = model.Firstname;
+
+                                ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                                ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
+                                                                                loc.Name,
+                                                                                activationLink.ToString(),
+                                                                                loc.GetDetailFullUrl(Url),
+                                                                                model.Email,
+                                                                                _MembershipService.GetPassword(model.Email, null));
+
+                                ownerMail.Send();
+                            }
+
+                            return RedirectToAction(MVC.Admin.Member.IndexOwner());
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("Name", "Utilisateur non crée");
+                        }
+                    }
+                }
+                catch
+                {
+                    ModelState.AddModelError("LocalisationId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
+                }
+            }
+
+            return View(model);
+        }
+
 		public virtual ActionResult IndexOwner(int? page)
 		{
 			var context = ModelFactory.GetUnitOfWork();

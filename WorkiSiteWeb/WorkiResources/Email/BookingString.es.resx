@@ -131,10 +131,12 @@ Entrando a {6} podrás realizar el pago y así confirmar definitivamente tu rese
   <data name="AlertBookingNeed" xml:space="preserve">
     <value>Contactar con el espacio siguiente porque una reserva ha sido realizada mientras que este espacio no propone aún esa posibilidad:
 Nombre del espacio: &lt;b&gt;{0}&lt;/b&gt;</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="AlertBookingNeedSubject" xml:space="preserve">
     <value>Solicitud de posibilidad de reserva</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nombre: &lt;b&gt;{0}&lt;/b&gt;
 Teléfono: &lt;b&gt;{1}&lt;/b&gt;
@@ -171,7 +173,8 @@ Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su
   </data>
   <data name="CalandarBookingCreationSubject" xml:space="preserve">
     <value>Tu reserva en {0} ha sido grabada en eWorky</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="CalandarBookingModification" xml:space="preserve">
     <value>El gerente de &lt;b&gt;{0}&lt;/b&gt; a modificado tu reserva en su agenda eWorky !
 Tu reserva está registrada del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt;.
@@ -216,7 +219,7 @@ Mensaje: &lt;b&gt;{7}&lt;/b&gt;</value>
   <data name="CreateQuotationClient" xml:space="preserve">
     <value>
 
-Tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² en el establecimiento &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) ha sido tomada en cuenta.
+Tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; en el establecimiento &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) ha sido tomada en cuenta.
 El gerente del espacio confirmará tu solicitud de presupuesto en cuanto le sea posible.</value>
   </data>
   <data name="CreateQuotationClientSubject" xml:space="preserve">
@@ -269,18 +272,17 @@ Teléfono: &lt;b&gt;{1}&lt;/b&gt;
 Correo electrónico: &lt;b&gt;{2}&lt;/b&gt;
 Nombre del espacio: &lt;b&gt;{3}&lt;/b&gt;
 Necesidad: &lt;b&gt;{4}&lt;/b&gt;
-Superficie: &lt;b&gt;{5}&lt;/b&gt;
-Mensaje: &lt;b&gt;{6}&lt;/b&gt;</value>
+Mensaje: &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
     <value>Alerta eWorky – Solicitud de presupuesto</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
-    <value>A raíz de tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 en el establecimiento &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permitirá seguir el historial y el estado de tus solicitudes de presupuesto y reservas. 
+    <value>A raíz de tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; en el establecimiento &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permitirá seguir el historial y el estado de tus solicitudes de presupuesto y reservas. 
 
-Tu usuario es &lt;b&gt;{4}&lt;/b&gt; y tu contraseña provisional es &lt;b&gt;{5}&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{6}&lt;/b&gt;
+Tu usuario es &lt;b&gt;{3}&lt;/b&gt; y tu contraseña provisional es &lt;b&gt;{4}&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{5}&lt;/b&gt;
 
-Te invitamos acompletar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{7}&lt;/b&gt;</value>
+Te invitamos acompletar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{6}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
     <value>eWorky – Una cuenta ha sido creada trás tu solicitud de presupuesto</value>

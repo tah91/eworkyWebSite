@@ -176,7 +176,7 @@ End: &lt;b&gt;{6}&lt;/b&gt;
 Message: &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationClient" xml:space="preserve">
-    <value>Your booking request for a &lt;b&gt;{0}&lt;/b&gt; of &lt;b&gt;{1}&lt;/b&gt; m² in the workplace &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) was taken into account. 
+    <value>Your booking request for a &lt;b&gt;{0}&lt;/b&gt;  in the workplace &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) was taken into account. 
 The workspace manager will confirm your booking request as soon as possible.</value>
   </data>
   <data name="CreateQuotationClientSubject" xml:space="preserve">
@@ -202,18 +202,17 @@ Phone number: &lt;b&gt;{1}&lt;/b&gt;
 Email address: &lt;b&gt;{2}&lt;/b&gt;
 Workplace name: &lt;b&gt;{3}&lt;/b&gt;
 Need: &lt;b&gt;{4}&lt;/b&gt;
-Surface: &lt;b&gt;{5}&lt;/b&gt;
-Message: &lt;b&gt;{6}&lt;/b&gt;</value>
+Message: &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
     <value>eWorky alert - Quote request</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
-    <value>Following your quote request for a &lt;b&gt;{0}&lt;/b&gt; of &lt;b&gt;{1}&lt;/b&gt; square meters in the workplace &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), an eWorky account was created. It will enable you to follow the history and news about your booking requests and your bookings.
+    <value>Following your quote request for a &lt;b&gt;{0}&lt;/b&gt;  in the workplace &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;), an eWorky account was created. It will enable you to follow the history and news about your booking requests and your bookings.
 
-Your login is &lt;b&gt;{4}&lt;/b&gt; and your temporary password is &lt;b&gt;{5}&lt;/b&gt;. You can change your password by visiting your profile: &lt;b&gt;{6}&lt;/b&gt;
+Your login is &lt;b&gt;{3}&lt;/b&gt; and your temporary password is &lt;b&gt;{4}&lt;/b&gt;. You can change your password by visiting your profile: &lt;b&gt;{5}&lt;/b&gt;
 
-Moreover we invite you to complete your profile details by going to this address: &lt;b&gt;{7}&lt;/b&gt;</value>
+Moreover we invite you to complete your profile details by going to this address: &lt;b&gt;{6}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
     <value>eWorky - An account was created following your price request</value>
@@ -241,16 +240,16 @@ The manager invites you to try again at another period or for another offer.</va
 See you in your {3} to confirm/refuse this booking request as soon as possible.</value>
   </data>
   <data name="AlertBookingNeed" xml:space="preserve">
-    <comment>jm</comment>
     <value>Please contact the following place as the place you requested a bookingfor does not offer this possibility yet: name of the place : &lt;b&gt;{0}&lt;/b&gt; </value>
+    <comment>jm</comment>
   </data>
   <data name="AlertBookingNeedSubject" xml:space="preserve">
-    <comment>jm</comment>
     <value>Request possibility of reservation</value>
+    <comment>jm</comment>
   </data>
   <data name="CalandarBookingCreationSubject" xml:space="preserve">
-    <comment>jm</comment>
     <value>Your booking at {0} has been successfully saved on eWorky</value>
+    <comment>jm</comment>
   </data>
   <data name="CalandarBookingModificationSubject" xml:space="preserve">
     <value>Your booking to {0} was modified</value>

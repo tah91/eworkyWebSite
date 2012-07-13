@@ -9,7 +9,7 @@
 			@{
 				var score = Model.ComputeScore();
 			}
-            <h2 class="blue bold">@Model.GetFullDisplayName()</h2>
+            <h2 class="blue bold">@Model.GetAnonymousDisplayName()</h2>
             <span class="profilType bold">@Model.MemberMainData.GetProfile()</span><br />
             @string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.GetMemberScoreStatus(score), score)
         </div>

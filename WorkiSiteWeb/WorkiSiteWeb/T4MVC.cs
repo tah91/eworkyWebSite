@@ -2782,6 +2782,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string ChangeUserRole = "ChangeUserRole";
             public readonly string DeleteUser = "supprimer-utilisateur";
             public readonly string AdminList = "AdminList";
+            public readonly string AddOwnerPlace = "AddOwnerPlace";
             public readonly string IndexOwner = "IndexOwner";
             public readonly string SetBackoffice = "SetBackoffice";
             public readonly string Leaderboard = "Leaderboard";
@@ -2799,6 +2800,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ActivatedBO = "~/Areas/Admin/Views/Member/ActivatedBO.cshtml";
+            public readonly string AddOwnerPlace = "~/Areas/Admin/Views/Member/AddOwnerPlace.cshtml";
             public readonly string Admins = "~/Areas/Admin/Views/Member/Admins.cshtml";
             public readonly string CreateMemberApi = "~/Areas/Admin/Views/Member/CreateMemberApi.cshtml";
             public readonly string IndexOwner = "~/Areas/Admin/Views/Member/IndexOwner.cshtml";
@@ -2851,6 +2853,17 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public override System.Web.Mvc.ActionResult AdminList(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AdminList);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddOwnerPlace() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddOwnerPlace);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddOwnerPlace(Worki.Data.Models.OwnerLocalisationModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddOwnerPlace);
+            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 
