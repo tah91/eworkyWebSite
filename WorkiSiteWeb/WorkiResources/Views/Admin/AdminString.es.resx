@@ -277,7 +277,7 @@
     <value>Gestión de la beta privada</value>
   </data>
   <data name="WaitInscription" xml:space="preserve">
-    <value>En espera de registro</value>
+    <value>Pendiente de registro</value>
   </data>
   <data name="WorkspaceNotFound" xml:space="preserve">
     <value>Espacio de trabajo no encontrado</value>

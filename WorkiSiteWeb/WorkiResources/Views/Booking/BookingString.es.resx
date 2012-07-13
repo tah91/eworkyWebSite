@@ -193,7 +193,7 @@
     <value>Inicio</value>
   </data>
   <data name="WaitingForPayement" xml:space="preserve">
-    <value>En espera del pago</value>
+    <value>Pendiente de pago</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
     <value>¡La reserva para el espacio {0} ha sido pagada!</value>
@@ -283,13 +283,13 @@
     <value>Denegada el</value>
   </data>
   <data name="WaitingConfirm" xml:space="preserve">
-    <value>En espera de confirmación</value>
+    <value>Pendiente de confirmación</value>
   </data>
   <data name="WaitingPayment" xml:space="preserve">
-    <value>En espera de pago</value>
+    <value>Pendiente de pago</value>
   </data>
   <data name="WaitingStatus" xml:space="preserve">
-    <value>En espera de cargo</value>
+    <value>Pendiente de cargo</value>
   </data>
   <data name="PaymentError" xml:space="preserve">
     <value>Un error impide la realización del pago, por favor ponte en contacto con nosotros a support@eworky.com</value>
