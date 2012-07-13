@@ -26,6 +26,25 @@ namespace Worki.Web.Helpers
             return absoluteAction;
         }
 
+        public static OfferJson GetJson(this Offer offer, Controller controller)
+        {
+            //get data from model
+            var json = offer.GetJson();
+            json.pictures = new List<String>();
+
+            //get image
+            foreach (var image in (from item in offer.OfferFiles orderby item.Id select item.FileName).ToList())
+            {
+                var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image);
+                if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
+                    json.pictures.Add(WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true));
+                else
+                    json.pictures.Add(imageUrl);
+            }
+
+            return json;
+        }
+
 		public static LocalisationJson GetJson(this Localisation localisation, Controller controller)
 		{
 			//get data from model

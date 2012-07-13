@@ -63,11 +63,10 @@ namespace Worki.Web.Areas.Api.Controllers
 
 					try
 					{
-
+                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						dynamic newMemberMail = null;
 						if (sendNewAccountMail)
 						{
-                            member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
 							TagBuilder profilLink = new TagBuilder("a");

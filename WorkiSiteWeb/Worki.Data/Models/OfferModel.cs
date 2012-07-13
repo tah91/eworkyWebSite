@@ -88,16 +88,6 @@ namespace Worki.Data.Models
 
         public OfferJson GetJson()
         {
-            List<string> Pictures = new List<string>();
-            int i = 0;
-            string s = GetMainPic();
-            while (!string.IsNullOrEmpty(s))
-            {
-                Pictures.Add(s);
-                s = GetPic(i);
-                i++;
-            }
-
             List<string> Prices = new List<string>();
             foreach (var offer in OfferPrices)
             {
@@ -114,7 +104,6 @@ namespace Worki.Data.Models
             {
                 id = Id,
                 name = GetDisplayName(),
-                pictures = Pictures,
                 availability = GetAvailabilityDisplay(),
                 prices = Prices,
                 amenities = Amenities,

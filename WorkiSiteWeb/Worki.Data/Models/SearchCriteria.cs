@@ -76,6 +76,7 @@ namespace Worki.Data.Models
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
             toRet[MiscHelpers.SeoConstants.Search] = (int)SearchType;
             toRet[MiscHelpers.SeoConstants.View] = (int)ResultView;
+            toRet[MiscHelpers.SeoConstants.Boundary] = (float)Boundary;
 
             if (FreeAreas)
             {
