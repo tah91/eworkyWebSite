@@ -90,17 +90,6 @@
 	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
 	var fullName = Model.GetFullName();
     var link = Model.GetDetailFullUrl(Url);
-    //var canEdit = false;
-    var isOwner = false;
-    /*if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
-    {
-        canEdit = true;
-    }*/
-    if (Request.IsAuthenticated)
-    {
-        var memberId = WebHelper.GetIdentityId(User.Identity);
-        isOwner = Model.IsOwner(memberId);
-    }
 }
 
 <div itemscope itemtype="http://schema.org/LocalBusiness">
@@ -449,31 +438,41 @@
 </div>
 
 <div class="margint10 float-right">
-    @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) || isOwner == true)
+    @{
+        var canEdit = false;
+        var canDelete = false;
+        if (Request.IsAuthenticated)
+        {
+            if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+            {
+                canEdit = true;
+                canDelete = true;
+            }
+            else if(Model.HasOwner())
+            {
+                var memberId = WebHelper.GetIdentityId(User.Identity);
+                canEdit = Model.IsOwner(memberId);
+            }
+            else if(Model.IsFreeLocalisation())
+            {
+                canEdit = true;
+            }
+           
+        }
+    }
+    @if (canEdit)
     {
     <div class="buttonStd buttonBlue linkImg float-left">
     @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
     </div>
     }
-	else if (!Model.HasOwner())
+	@if (canDelete)
     {
-        if (Model.IsPaidLocalisation() || Model.IsSharedOffice()) 
-        {
-            
-        }
-        else
-        {
-            <div class="buttonStd buttonBlue linkImg float-left">
-            @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
-            </div>
-        }
-    }
-	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
- {
 	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
 	</div>
- }
+    }
+    
     <div class="buttonStd buttonOrange linkImg float-left">
         <a href="#" id="addToFavorite">@Worki.Resources.Views.Localisation.LocalisationString.IWorkHere</a>
         <script type="text/javascript">

@@ -100,8 +100,8 @@
                 <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                 <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                 <table class="generalInfosTable editionTable">
-                    @if (Model.Localisation.ID == 0)
-					{ 
+                    @if (Model.Localisation.ID == 0 && (Model.IsFreeLocalisation || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)))
+                    { 
                     <tr>
                         <td>
                         </td>
@@ -112,7 +112,12 @@
                             </div>
                         </td>
                     </tr>
-					}
+                    }
+                    else
+                    {
+                        Model.IsOwner = true;
+                        @Html.HiddenFor(m => m.IsOwner)
+                    }
 					@if (!Model.IsSharedOffice || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 	                {
                     <tr>
