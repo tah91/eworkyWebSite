@@ -1,7 +1,9 @@
 ﻿@model Worki.Data.Models.OwnerLocalisationModel
 
-@section HeadContent {
-   
+@section HeadContent 
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace)</title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
 @Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Activity)
@@ -54,16 +56,16 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                           @Html.LabelFor(m => m.Telephone)
+                           @Html.LabelFor(m => m.PhoneNumber)
                         </div>
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Telephone)
+                            @Html.TextBoxFor(m => m.PhoneNumber)
                         </div>
                     </td>
                 </tr>
-                <tr>
+                 <tr>
                     <td>
                         <div class="editor-label">
                             @Html.LabelFor(m => m.Email)
@@ -78,15 +80,27 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @Html.LabelFor(m => m.PlaceId)
+                            @Html.LabelFor(m => m.LocalisationId)
                         </div>
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.PlaceId)
+                            @Html.TextBoxFor(m => m.LocalisationId)
                         </div>
                     </td>
                 </tr>
+                <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.CountryId)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.CountryId, Model.Countries)
+                            </div>
+                        </td>
+                    </tr>
         </table>
     <input type="submit" value="@Worki.Resources.Views.Admin.AdminString.Validate" />     
 }

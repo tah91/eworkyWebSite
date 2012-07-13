@@ -391,7 +391,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Admin\Admin.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Admin.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Booking\Booking.de.resx" />
@@ -419,9 +419,15 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.de.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.de.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.en.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.es.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\LocalisationCountry.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalisationCountry.Designer.cs</LastGenOutput>
@@ -613,7 +619,9 @@
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.de.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.es.resx" />
-    <EmbeddedResource Include="Views\Localisation\LocalisationString.de.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

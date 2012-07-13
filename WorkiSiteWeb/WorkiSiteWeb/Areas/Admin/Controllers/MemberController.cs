@@ -204,6 +204,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult AddOwnerPlace(OwnerLocalisationModel model)
         {
@@ -216,42 +217,65 @@ namespace Worki.Web.Areas.Admin.Controllers
                 MemberMainData maindata = new MemberMainData();
                 maindata.FirstName = model.Firstname;
                 maindata.LastName = model.Name;
-                maindata.PhoneNumber = model.Telephone;
+                maindata.PhoneNumber = model.PhoneNumber;
 
-                int memberId;
-
-                var sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId);
-                if (memberId != 0)
+                try
                 {
-                    var member = mRepo.Get(memberId);
-
-                    Localisation loc = null;
-                    try
+                    var loc = lRepo.Get(model.LocalisationId);
+                    if (loc.OwnerID != 1)
                     {
-                        loc = lRepo.Get(l => l.ID == model.PlaceId);
-                        loc.OwnerID = memberId;
-                        context.Commit();
-
-                        dynamic ownerMail = null;
-
-                        ownerMail = new Email(MVC.Emails.Views.Email);
-                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        ownerMail.To = model.Email;
-                        ownerMail.ToName = model.Firstname;
-
-                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
-                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.Ownership,
-                                                                        loc.Name,
-                                                                        loc.GetDetailFullUrl(Url));
-
-                        ownerMail.Send();
+                        ModelState.AddModelError("", Worki.Resources.Models.Localisation.Localisation.OwnerAllreadyExist);
                     }
-                    catch
+                    else
                     {
-                        ModelState.AddModelError("PlaceId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
-                    }  
+                        int memberId;
+                        bool sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId, false);
+
+                        if (memberId != 0)
+                        {
+                            var member = mRepo.Get(memberId);
+                            loc.OwnerID = memberId;
+                            context.Commit();
+                            if (sendNewAccountMail)
+                            {
+                                var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                                var activationLink = urlHelper.ActionAbsolute(MVC.Account.Activate(member.Email, member.EmailKey));
+                                TagBuilder link = new TagBuilder("a");
+                                link.MergeAttribute("href", activationLink);
+                                link.InnerHtml = activationLink;
+
+                                dynamic ownerMail = null;
+
+                                ownerMail = new Email(MVC.Emails.Views.Email);
+                                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                                ownerMail.To = model.Email;
+                                ownerMail.ToName = model.Firstname;
+
+                                ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                                ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
+                                                                                loc.Name,
+                                                                                activationLink.ToString(),
+                                                                                loc.GetDetailFullUrl(Url),
+                                                                                model.Email,
+                                                                                _MembershipService.GetPassword(model.Email, null));
+
+                                ownerMail.Send();
+                            }
+
+                            return RedirectToAction(MVC.Admin.Member.IndexOwner());
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("Name", "Utilisateur non crée");
+                        }
+                    }
+                }
+                catch
+                {
+                    ModelState.AddModelError("LocalisationId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
                 }
             }
+
             return View(model);
         }
 

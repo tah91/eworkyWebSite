@@ -18,27 +18,42 @@ namespace Worki.Data.Models
 
     public class OwnerLocalisationModel
     {
+        public OwnerLocalisationModel()
+        {
+            Countries = new SelectList(Localisation.GetCountries(), "Key", "Value");
+        }
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        [StringLength(256, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Name { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Firstname", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        [StringLength(256, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Firstname { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "Telephone", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
         [StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        public string Telephone { get; set; }
+        public string PhoneNumber { get; set; }
+
+        [SelectStringValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "CountryId", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        public string CountryId { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Email { get; set; }
 
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "PlaceId", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
-        public int PlaceId { get; set; }
+        [Display(Name = "LocalisationId", ResourceType = typeof(Worki.Resources.Models.Admin.Admin))]
+        public int LocalisationId { get; set; }
+
+        public SelectList Countries { get; private set; }
     }
 
     public class MemberAdminModel

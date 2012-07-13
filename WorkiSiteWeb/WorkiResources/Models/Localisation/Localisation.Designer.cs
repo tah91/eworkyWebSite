@@ -538,6 +538,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Il existe déja un gérant pour ce Lieu.
+        /// </summary>
+        public static string OwnerAllreadyExist {
+            get {
+                return ResourceManager.GetString("OwnerAllreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Téléphone.
         /// </summary>
         public static string PhoneNumber {

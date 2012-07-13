@@ -117,19 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CountryId" xml:space="preserve">
+    <value>Pays</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="Firstname" xml:space="preserve">
     <value>Prénom</value>
   </data>
+  <data name="LocalisationId" xml:space="preserve">
+    <value>Id du Lieu</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nom</value>
   </data>
-  <data name="PlaceId" xml:space="preserve">
-    <value>Id du Lieu</value>
-  </data>
-  <data name="Telephone" xml:space="preserve">
+  <data name="PhoneNumber" xml:space="preserve">
     <value>Téléphone</value>
   </data>
 </root>

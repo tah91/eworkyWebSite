@@ -448,4 +448,7 @@
   <data name="LocalisationError" xml:space="preserve">
     <value>Le Lieu correspondant n'as pas pu être trouvé</value>
   </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <value>Il existe déja un gérant pour ce Lieu</value>
+  </data>
 </root>
