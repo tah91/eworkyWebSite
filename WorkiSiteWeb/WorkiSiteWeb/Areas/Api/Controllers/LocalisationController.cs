@@ -9,6 +9,9 @@ using Worki.Service;
 using Worki.Web.Helpers;
 using Worki.Memberships;
 using Worki.Infrastructure.Repository;
+using System.Web.Security;
+using Worki.Infrastructure.Helpers;
+using Postal;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
@@ -37,15 +40,94 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
 
-        public virtual ActionResult Register(LogOnModel model)
+        public virtual ActionResult Register(MemberBookingFormViewModel formData)
         {
-            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            if (ModelState.IsValid)
             {
-                return new ObjectResult<LocalisationJson>(null, 200, "Ok");
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                var memberId = WebHelper.GetIdentityId(User.Identity);
+                var member = mRepo.Get(memberId);
+                var sendNewAccountMail = false;
+				try
+				{
+					var memberData = new MemberMainData
+					{
+						FirstName = formData.FirstName,
+						LastName = formData.LastName,
+						PhoneNumber = formData.PhoneNumber,
+					};
+					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+					member = mRepo.Get(memberId);
+
+					try
+					{
+
+						dynamic newMemberMail = null;
+						if (sendNewAccountMail)
+						{
+                            member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+							TagBuilder profilLink = new TagBuilder("a");
+							profilLink.MergeAttribute("href", editprofilUrl);
+							profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
+
+                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder passwordLink = new TagBuilder("a");
+                            passwordLink.MergeAttribute("href", editpasswordUrl);
+                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
+
+							newMemberMail = new Email(MVC.Emails.Views.Email);
+							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+							newMemberMail.To = formData.Email;
+							newMemberMail.ToName = formData.FirstName;
+
+							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
+                            /*
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
+                                                                    Localisation.GetOfferType(offer.Type),
+                                                                    formData.MemberBooking.GetStartDate(),
+                                                                    formData.MemberBooking.GetEndDate(),
+                                                                    locName,
+                                                                    offer.Localisation.Adress,
+                                                                    formData.Email,
+                                                                    _MembershipService.GetPassword(formData.Email, null),
+                                                                    passwordLink,
+                                                                    profilLink);
+                             */
+                            newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
+                                _MembershipService.GetPassword(formData.Email, null) + " (" + passwordLink + ").";
+						}
+						context.Commit();
+
+						if (sendNewAccountMail)
+						{
+							newMemberMail.Send();
+						}
+
+                        TokenJson ret = new TokenJson();
+                        ret.token = _MembershipService.GetToken(formData.Email);
+                        return new ObjectResult<TokenJson>(ret);
+					}
+					catch (Exception ex)
+					{
+						_Logger.Error(ex.Message);
+						context.Complete();
+						throw ex;
+					}
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Create", ex);
+					ModelState.AddModelError("", ex.Message);
+                    return new ObjectResult<TokenJson>(null, 400, "Error in attempting to create.");
+				}
             }
             else
             {
-                return new ObjectResult<LocalisationJson>(null, 400, "Not found");
+                return new ObjectResult<TokenJson>(null, 400, "More aguments needed.");
             }
         }
 
