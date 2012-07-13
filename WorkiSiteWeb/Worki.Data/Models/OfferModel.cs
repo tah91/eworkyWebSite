@@ -107,7 +107,7 @@ namespace Worki.Data.Models
             List<string> Amenities = new List<string>();
             foreach (var feature in OfferFeatures)
             {
-                Amenities.Add(feature.StringValue);
+                Amenities.Add(FeatureHelper.Display(feature));
             }
 
             return new OfferJson
