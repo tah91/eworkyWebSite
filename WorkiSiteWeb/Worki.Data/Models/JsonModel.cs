@@ -17,6 +17,7 @@ namespace Worki.Data.Models
 			amenities = new List<string>();
             prices = new PricesJson();
             offers = new List<OfferJson>();
+            openingTimes = new OpeningTimesJson();
         }
 
 		public int id { get; set; }
@@ -35,6 +36,7 @@ namespace Worki.Data.Models
 		public List<string> amenities { get; set; }
         public PricesJson prices { get; set; }
         public List<OfferJson> offers { get; set; }
+        public OpeningTimesJson openingTimes { get; set; }
 		public List<CommentJson> comments { get; set; }
         public List<MemberJson> fans { get; set; }
 	}
@@ -108,4 +110,15 @@ namespace Worki.Data.Models
 		public string is_default { get; set; }
 		public string is_logo { get; set; }
 	}
+
+    public class OpeningTimesJson
+    {
+        public string monday { get; set; }
+        public string tuesday { get; set; }
+        public string wednesday { get; set; }
+        public string thursday { get; set; }
+        public string friday { get; set; }
+        public string saturday { get; set; }
+        public string sunday { get; set; }
+    }
 }

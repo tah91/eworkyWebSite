@@ -102,6 +102,15 @@ namespace Worki.Web.Helpers
 			{
 				json.amenities.Add(FeatureHelper.GetFeatureDisplayName((Feature)item.FeatureID));
 			}
+
+            //get openning time
+            json.openingTimes.monday = localisation.GetOpenningTime(DayOfWeek.Monday);
+            json.openingTimes.tuesday = localisation.GetOpenningTime(DayOfWeek.Tuesday);
+            json.openingTimes.wednesday = localisation.GetOpenningTime(DayOfWeek.Wednesday);
+            json.openingTimes.thursday = localisation.GetOpenningTime(DayOfWeek.Thursday);
+            json.openingTimes.friday = localisation.GetOpenningTime(DayOfWeek.Friday);
+            json.openingTimes.saturday = localisation.GetOpenningTime(DayOfWeek.Saturday);
+            json.openingTimes.sunday = localisation.GetOpenningTime(DayOfWeek.Sunday);
 			return json;
 		}
 
