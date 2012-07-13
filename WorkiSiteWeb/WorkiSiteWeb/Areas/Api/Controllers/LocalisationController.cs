@@ -37,7 +37,7 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
 
-        public virtual ActionResult Connect(LogOnModel model)
+        public virtual ActionResult Register(LogOnModel model)
         {
             if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
             {
@@ -76,14 +76,16 @@ namespace Worki.Web.Areas.Api.Controllers
             }
         }
 
-        public virtual ActionResult GetToken(LogOnModel model)
+        public virtual ActionResult Connect(LogOnModel model)
         {
             if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
             {
-                return new ObjectResult<LocalisationJson>(null, 200, _MembershipService.GetToken(model.Login));
+                TokenJson ret = new TokenJson();
+                ret.token = _MembershipService.GetToken(model.Login);
+                return new ObjectResult<TokenJson>(ret);
             }
             else
-                return new ObjectResult<LocalisationJson>(null, 400, "Error");
+                return new ObjectResult<TokenJson>(null, 400, "Wrong login or password.");
         }
 
         /// <summary>

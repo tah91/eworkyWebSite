@@ -3323,8 +3323,8 @@ namespace Worki.Web.Areas.Api.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Connect() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+        public System.Web.Mvc.ActionResult Register() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Register);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3333,8 +3333,8 @@ namespace Worki.Web.Areas.Api.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult GetToken() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.GetToken);
+        public System.Web.Mvc.ActionResult Connect() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3359,9 +3359,9 @@ namespace Worki.Web.Areas.Api.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Connect = "Connect";
+            public readonly string Register = "Register";
             public readonly string Comment = "Comment";
-            public readonly string GetToken = "GetToken";
+            public readonly string Connect = "Connect";
             public readonly string Details = "Details";
             public readonly string Search = "Search";
         }
@@ -3379,8 +3379,8 @@ namespace Worki.Web.Areas.Api.Controllers {
     public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
@@ -3393,8 +3393,8 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult GetToken(Worki.Data.Models.LogOnModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetToken);
+        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
