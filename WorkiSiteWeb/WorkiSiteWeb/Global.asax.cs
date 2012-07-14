@@ -126,9 +126,6 @@ namespace Worki.Web
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();
-			ILogger logger = Kernel.Get<ILogger>();
-
-			logger.Info("Application Started");
 		}
 	}
 
@@ -504,22 +501,28 @@ namespace Worki.Web
             );
         }
 
-		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());
+		private IKernel _Kernel = new StandardKernel(new WorkiInjectModule());
+
+        private ILogger _Logger;
 
         protected void Application_Start()
         {
-            // Inject account repository into our custom membership & role providers.
-			_kernel.Inject(Membership.Provider);
-			_kernel.Inject(Roles.Provider);
+            _Logger = _Kernel.Get<ILogger>();
 
-			LocalisationDynamicNodeProvider.RegisterKernel(_kernel);
-			ModelFactory.RegisterKernel(_kernel);
-            PaymentHandlerFactory.RegisterKernel(_kernel);
+            _Logger.Info("Application Started");
+
+            // Inject account repository into our custom membership & role providers.
+			_Kernel.Inject(Membership.Provider);
+			_Kernel.Inject(Roles.Provider);
+
+			LocalisationDynamicNodeProvider.RegisterKernel(_Kernel);
+			ModelFactory.RegisterKernel(_Kernel);
+            PaymentHandlerFactory.RegisterKernel(_Kernel);
 
 			InitialiseAdmin();
 
 			//Inject
-			ControllerBuilder.Current.SetControllerFactory(new NinjectControlerFactory(_kernel));
+			ControllerBuilder.Current.SetControllerFactory(new NinjectControlerFactory(_Kernel));
 
 			//routes
             AreaRegistration.RegisterAllAreas();
@@ -585,8 +588,9 @@ namespace Worki.Web
                 }
                 context.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _Logger.Error("InitialiseAdmin", ex);
                 context.Complete();
                 return;
             }
