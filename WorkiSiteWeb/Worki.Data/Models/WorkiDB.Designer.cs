@@ -1,4 +1,4 @@
-﻿// Default code generation is disabled for model 'C:\Users\TI\eworkyWebSite\WorkiSiteWeb\Worki.Data\Models\WorkiDB.edmx'. 
-// To enable default code generation, change the value of the 'Code Generation Strategy' designer
-// property to an alternate value. This property is available in the Properties Window when the model is
-// open in the designer.
+﻿// La génération de code par défaut est désactivée pour le modèle 'C:\Users\Shaac\Documents\GitHub\eworkyWebSite\WorkiSiteWeb\Worki.Data\Models\WorkiDB.edmx'. 
+// Pour l'activer, modifiez la valeur du concepteur 'Stratégie de génération de code'.
+// Cette propriété est disponible dans la fenêtre Propriétés, lorsque le modèle est ouvert
+// dans le concepteur.

@@ -32,6 +32,7 @@ namespace Worki.Data.Models
                 name = Name,
 				description = GetDescription(),
                 address = Adress,
+                postalCode = PostalCode,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
 				type = Localisation.GetLocalisationType(TypeValue)
@@ -385,6 +386,11 @@ namespace Worki.Data.Models
             return Offers.Where(o => o.IsOnline &&  o.Type == (int)offer).Count();
 		}
 
+        public IEnumerable<Offer> GetAllOffers()
+        {
+            return Offers.Where(o => o.IsOnline);
+        }
+
 		public IEnumerable<Offer> GetOffers(LocalisationOffer offerType)
 		{
 			return Offers.Where(o => o.IsOnline && o.Type == (int)offerType);
@@ -393,6 +399,11 @@ namespace Worki.Data.Models
         public IEnumerable<Offer> GetBookableOffers()
         {
             return Offers.Where(o => o.IsOnline && o.IsReallyBookable());
+        }
+
+        public IEnumerable<LocalisationOffer> GetOfferTypes()
+        {
+            return Offers.Where(o => o.IsOnline).GroupBy(o => o.Type).Select(g => (LocalisationOffer)g.Key);
         }
 
 		public IEnumerable<string> GetOfferTypeList()

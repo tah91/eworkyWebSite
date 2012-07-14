@@ -7,6 +7,11 @@ using Worki.Infrastructure.Logging;
 using Worki.Rest;
 using Worki.Service;
 using Worki.Web.Helpers;
+using Worki.Memberships;
+using Worki.Infrastructure.Repository;
+using System.Web.Security;
+using Worki.Infrastructure.Helpers;
+using Postal;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
@@ -17,14 +22,151 @@ namespace Worki.Web.Areas.Api.Controllers
         ILogger _Logger;
         ISearchService _SearchService;
         IGeocodeService _GeocodeService;
+        IMembershipService _MembershipService;
 
-        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService, IGeocodeService geocodeService)
+        public LocalisationController(ILocalisationRepository localisationRepository,
+                                      IMemberRepository memberRepository,
+                                      ILogger logger,
+                                      ISearchService searchService,
+                                      IGeocodeService geocodeService,
+                                      IMembershipService membershipService)
         {
             _LocalisationRepository = localisationRepository;
             _MemberRepository = memberRepository;
             _Logger = logger;
             _SearchService = searchService;
             _GeocodeService = geocodeService;
+            _MembershipService = membershipService;
+        }
+
+
+        public virtual ActionResult Register(MemberBookingFormViewModel formData)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                var memberId = WebHelper.GetIdentityId(User.Identity);
+                var member = mRepo.Get(memberId);
+                var sendNewAccountMail = false;
+				try
+				{
+					var memberData = new MemberMainData
+					{
+						FirstName = formData.FirstName,
+						LastName = formData.LastName,
+						PhoneNumber = formData.PhoneNumber,
+					};
+					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+					member = mRepo.Get(memberId);
+
+					try
+					{
+                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+						dynamic newMemberMail = null;
+						if (sendNewAccountMail)
+						{
+							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+							TagBuilder profilLink = new TagBuilder("a");
+							profilLink.MergeAttribute("href", editprofilUrl);
+							profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
+
+                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder passwordLink = new TagBuilder("a");
+                            passwordLink.MergeAttribute("href", editpasswordUrl);
+                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
+
+							newMemberMail = new Email(MVC.Emails.Views.Email);
+							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+							newMemberMail.To = formData.Email;
+							newMemberMail.ToName = formData.FirstName;
+
+							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
+                            /*
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
+                                                                    Localisation.GetOfferType(offer.Type),
+                                                                    formData.MemberBooking.GetStartDate(),
+                                                                    formData.MemberBooking.GetEndDate(),
+                                                                    locName,
+                                                                    offer.Localisation.Adress,
+                                                                    formData.Email,
+                                                                    _MembershipService.GetPassword(formData.Email, null),
+                                                                    passwordLink,
+                                                                    profilLink);
+                             */
+                            newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
+                                _MembershipService.GetPassword(formData.Email, null) + " (" + passwordLink + ").";
+						}
+						context.Commit();
+
+						if (sendNewAccountMail)
+						{
+							newMemberMail.Send();
+						}
+
+                        TokenJson ret = new TokenJson();
+                        ret.token = _MembershipService.GetToken(formData.Email);
+                        return new ObjectResult<TokenJson>(ret);
+					}
+					catch (Exception ex)
+					{
+						_Logger.Error(ex.Message);
+						context.Complete();
+						throw ex;
+					}
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Create", ex);
+					ModelState.AddModelError("", ex.Message);
+                    return new ObjectResult<TokenJson>(null, 400, "Error in attempting to create.");
+				}
+            }
+            else
+            {
+                return new ObjectResult<TokenJson>(null, 400, "More aguments needed.");
+            }
+        }
+
+        public virtual ActionResult Comment(int id, LogOnModel model, Comment com)
+        {
+            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var localisation = lRepo.Get(id);
+
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var member = mRepo.GetMember(model.Login);
+                var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+                com.Localisation = localisation;
+                com.PostUserID = member.MemberId;
+                com.Date = System.DateTime.UtcNow;
+                com.Validate(ref  error);
+
+                localisation.Comments.Add(com);
+
+                context.Commit();
+                return new ObjectResult<LocalisationJson>(null, 200, "Ok");
+            }
+            else
+            {
+                return new ObjectResult<LocalisationJson>(null, 400, "Not found");
+            }
+        }
+
+        public virtual ActionResult Connect(LogOnModel model)
+        {
+            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            {
+                TokenJson ret = new TokenJson();
+                ret.token = _MembershipService.GetToken(model.Login);
+                return new ObjectResult<TokenJson>(ret);
+            }
+            else
+                return new ObjectResult<TokenJson>(null, 400, "Wrong login or password.");
         }
 
         /// <summary>
@@ -165,46 +307,56 @@ namespace Worki.Web.Areas.Api.Controllers
         /// <param name="features"></param>
         /// <param name="maxCount"></param>
         /// <returns></returns>
-        public virtual ActionResult Search( string place,
-											float latitude = 0,
-											float longitude = 0,
-                                            int offerType = -1, 
+        public virtual ActionResult Search(string place,
+                                            string name,
+                                            float latitude = 0,
+                                            float longitude = 0,
+                                            float boundary = 50,
+                                            int offerType = -1,
+                                            int orderBy = 1,
                                             string types = null,
                                             string features = null,
                                             int maxCount = 30)
         {
             //validate
-            if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0))
-				return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or latitude/longitude\" parameters must be filled");
+            if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0) && string.IsNullOrEmpty(name))
+                return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"place or name or latitude/longitude\" parameters must be filled");
 
             //fill from parameter
-            var criteria = new SearchCriteria();
+            eSearchType searchType = string.IsNullOrEmpty(name) ? eSearchType.ePerOffer : eSearchType.ePerName;
+            eOrderBy order = string.IsNullOrEmpty(name) ? (eOrderBy)orderBy : eOrderBy.Rating;
+            var criteria = new SearchCriteria { SearchType = searchType, OrderBy = order };
 
-			try
-			{
-				FillCriteria(ref  criteria, types, features, offerType);
-			}
-			catch (Exception ex)
-			{
-				return new ObjectResult<List<LocalisationJson>>(null, 400, ex.Message);
-			}
+            criteria.Boundary = boundary;
 
-			//place
-			if (latitude == 0 || longitude == 0)
-			{
-				criteria.Place = place;
+            try
+            {
+                FillCriteria(ref  criteria, types, features, offerType);
+            }
+            catch (Exception ex)
+            {
+                return new ObjectResult<List<LocalisationJson>>(null, 400, ex.Message);
+            }
+
+            //place
+            if (!string.IsNullOrEmpty(place))
+            {
+                criteria.Place = place;
                 _GeocodeService.GeoCode(place, out latitude, out longitude);
-				if (latitude == 0 || longitude == 0)
-					return new ObjectResult<List<LocalisationJson>>(null, 404, "The \"place\" can not be geocoded");
-			}
-			criteria.LocalisationData.Latitude = latitude;
-			criteria.LocalisationData.Longitude = longitude;
+                if (latitude == 0 || longitude == 0)
+                    return new ObjectResult<List<LocalisationJson>>(null, 404, "The \"place\" can not be geocoded");
+            }
+            criteria.LocalisationData.Latitude = latitude;
+            criteria.LocalisationData.Longitude = longitude;
+
+            if (!string.IsNullOrEmpty(name))
+                criteria.LocalisationData.Name = name;
 
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
 
             //take the json
-			var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
+            var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
         }
     }

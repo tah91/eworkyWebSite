@@ -141,9 +141,6 @@
     </Compile>
     <Compile Include="Models\QuotationModel.cs" />
     <Compile Include="Models\FeatureModel.cs" />
-    <Compile Include="Models\C__RefactorLog.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\MemberBooking.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>

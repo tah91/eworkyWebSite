@@ -6,7 +6,6 @@
 		<edmx:StorageModels>
 		<Schema Namespace="WorkiDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="WorkiDBModelStoreContainer">
-          <EntitySet Name="__RefactorLog" EntityType="WorkiDBModel.Store.__RefactorLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiClient" EntityType="WorkiDBModel.Store.ApiClient" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiClientAuthorization" EntityType="WorkiDBModel.Store.ApiClientAuthorization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiNonce" EntityType="WorkiDBModel.Store.ApiNonce" store:Type="Tables" Schema="dbo" />
@@ -217,12 +216,6 @@
             <End Role="WelcomePeople" EntitySet="WelcomePeople" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="__RefactorLog">
-          <Key>
-            <PropertyRef Name="OperationKey" />
-          </Key>
-          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
         <EntityType Name="ApiClient">
           <Key>
             <PropertyRef Name="Id" />
@@ -547,6 +540,7 @@
           <Property Name="TaxRate" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="BOStatus" Type="int" Nullable="false" />
           <Property Name="ApiKey" Type="nvarchar" MaxLength="256" />
+          <Property Name="Token" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="MemberQuotation">
           <Key>
@@ -1337,7 +1331,6 @@
 		<edmx:ConceptualModels>
 			<Schema Namespace="WorkiDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
 				<EntityContainer Name="WorkiDBEntities" annotation:LazyLoadingEnabled="true">
-					<EntitySet Name="C__RefactorLog" EntityType="WorkiDBModel.C__RefactorLog" />
 					<EntitySet Name="FavoriteLocalisations" EntityType="WorkiDBModel.FavoriteLocalisation" />
 					<EntitySet Name="Groups" EntityType="WorkiDBModel.Group" />
 					<EntitySet Name="LocalisationFeatures" EntityType="WorkiDBModel.LocalisationFeature" />
@@ -1548,12 +1541,6 @@
             <End Role="WelcomePeople" EntitySet="WelcomePeoples" />
           </AssociationSet>
           </EntityContainer>
-				<EntityType Name="C__RefactorLog">
-					<Key>
-						<PropertyRef Name="OperationKey" />
-					</Key>
-					<Property Type="Guid" Name="OperationKey" Nullable="false" />
-				</EntityType>
 				<EntityType Name="FavoriteLocalisation">
 					<Key>
 						<PropertyRef Name="RelationId" />
@@ -1670,6 +1657,7 @@
           <Property Type="Int32" Name="BOStatus" Nullable="false" />
           <Property Type="String" Name="Address" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ApiKey" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Token" MaxLength="256" FixedLength="false" Unicode="true" />
 				</EntityType>
 				<EntityType Name="MembersInGroup">
 					<Key>
@@ -2678,13 +2666,6 @@
 		<edmx:Mappings>
 			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
 				<EntityContainerMapping StorageEntityContainer="WorkiDBModelStoreContainer" CdmEntityContainer="WorkiDBEntities">
-					<EntitySetMapping Name="C__RefactorLog">
-						<EntityTypeMapping TypeName="WorkiDBModel.C__RefactorLog">
-							<MappingFragment StoreEntitySet="__RefactorLog">
-								<ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
 					<EntitySetMapping Name="FavoriteLocalisations">
 						<EntityTypeMapping TypeName="WorkiDBModel.FavoriteLocalisation">
 							<MappingFragment StoreEntitySet="FavoriteLocalisation">
@@ -2764,7 +2745,8 @@
 					<EntitySetMapping Name="MemberMainDatas">
 						<EntityTypeMapping TypeName="WorkiDBModel.MemberMainData">
 							<MappingFragment StoreEntitySet="MemberMainData">
-								<ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+								<ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="BOStatus" ColumnName="BOStatus" />
                 <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
@@ -3245,7 +3227,6 @@
 		<!-- Diagram content (shape and connector positions) -->
 		<Diagrams>
 			<Diagram Name="Model1" ZoomLevel="94">
-				<EntityTypeShape EntityType="WorkiDBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2110807291666674" />
 				<EntityTypeShape EntityType="WorkiDBModel.FavoriteLocalisation" Width="1.5" PointX="8.25" PointY="30.125" Height="1.9802864583333388" />
 				<EntityTypeShape EntityType="WorkiDBModel.Group" Width="1.5" PointX="0.75" PointY="40.5" Height="1.7879850260416674" />
 				<EntityTypeShape EntityType="WorkiDBModel.LocalisationFeature" Width="1.5" PointX="5.25" PointY="24.125" Height="2.3648893229166674" />
