@@ -47,7 +47,8 @@
 
 					@:var cityValue = jQuery.trim($("#Localisation_City").val());
                     @:var countryValue = jQuery.trim($("#Localisation_CountryId :selected").text());
-
+                    @:if(countryValue.length != 2)
+                        @:countryValue = '';
 					@:if( addressValue === "" || cityValue === "" )
 						@:return;
 					@:var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue + ' ' + countryValue;
