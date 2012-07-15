@@ -14,7 +14,7 @@ using System.Threading;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider// : IDataErrorInfo
+    public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider, IValidatableObject// : IDataErrorInfo
     {
         #region Ctor
 
@@ -1214,6 +1214,15 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrEmpty(Description) && string.IsNullOrEmpty(DescriptionEn) && string.IsNullOrEmpty(DescriptionEs))
+            {
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { "Description" });
+            }
+        }
+
     }
 
 	[Bind(Exclude = "Id,OwnerId")]

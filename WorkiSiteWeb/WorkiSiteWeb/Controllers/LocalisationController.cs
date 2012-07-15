@@ -260,6 +260,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post), Authorize]
         [ActionName("edit")]
         [ValidateAntiForgeryToken]
+        [ValidateCultureSpecificValuesAttribute(Prefix = "Localisation")]
         public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id)
         {
             var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
@@ -323,7 +324,7 @@ namespace Worki.Web.Controllers
                             throw new Exception(editionAccess);
                         }
                         var loc = lRepo.Get(id.Value);
-                        UpdateModel(loc, LocalisationPrefix);
+                        TryUpdateModel(loc, LocalisationPrefix);
                         loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
                         offerCount = loc.Offers.Count;
                     }
