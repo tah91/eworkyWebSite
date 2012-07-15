@@ -275,7 +275,7 @@
     <Compile Include="Areas\Widget\Controllers\IntermediateController.cs" />
     <Compile Include="Areas\Widget\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Widget\WidgetAreaRegistration.cs" />
-    <Compile Include="ConfigurationSection\PaymentSection.cs" />
+    <Compile Include="Infrastructure\ConfigurationSection\PaymentSection.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
@@ -291,29 +291,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Capatchahelper.cs" />
-    <Compile Include="Helpers\ControllerHelpers.cs" />
-    <Compile Include="Helpers\WebHelper.cs" />
-    <Compile Include="Helpers\ModelHelper.cs" />
-    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\Helpers\Capatchahelper.cs" />
+    <Compile Include="Infrastructure\Helpers\ControllerHelpers.cs" />
+    <Compile Include="Infrastructure\Helpers\WebHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\ModelHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\HtmlHelpers.cs" />
     <Compile Include="Infrastructure\OAuth2AuthorizationServer.cs" />
-    <Compile Include="PaymentHandler\BookingPaymentHandler.cs" />
-    <Compile Include="Model\MenuItem.cs" />
-    <Compile Include="Logging\AzureAppender.cs" />
-    <Compile Include="Logging\Log4NetLogger.cs" />
-    <Compile Include="Membership\MembershipService.cs" />
-    <Compile Include="ModelBinder\OfferBinder.cs" />
-    <Compile Include="ModelBinder\RentalBinder.cs" />
-    <Compile Include="ModelBinder\LocalisationBinder.cs" />
-    <Compile Include="Membership\IFormAuthentication.cs" />
-    <Compile Include="Membership\IMembershipService.cs" />
+    <Compile Include="Infrastructure\PaymentHandler\BookingPaymentHandler.cs" />
+    <Compile Include="Infrastructure\Model\MenuItem.cs" />
+    <Compile Include="Infrastructure\Logging\AzureAppender.cs" />
+    <Compile Include="Infrastructure\Logging\Log4NetLogger.cs" />
+    <Compile Include="Infrastructure\Membership\MembershipService.cs" />
+    <Compile Include="Infrastructure\ModelBinder\OfferBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinder\RentalBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinder\LocalisationBinder.cs" />
+    <Compile Include="Infrastructure\Membership\IFormAuthentication.cs" />
+    <Compile Include="Infrastructure\Membership\IMembershipService.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Membership\WorkiRoleProvider.cs" />
-    <Compile Include="Membership\WorkiMembershipProvider.cs" />
-    <Compile Include="PaymentHandler\QuotationPaymentHandler.cs" />
+    <Compile Include="Infrastructure\Membership\WorkiRoleProvider.cs" />
+    <Compile Include="Infrastructure\Membership\WorkiMembershipProvider.cs" />
+    <Compile Include="Infrastructure\PaymentHandler\QuotationPaymentHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Singletons\Singletons.cs" />
-    <Compile Include="SiteMap\LocalisationDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\Singletons\Singletons.cs" />
+    <Compile Include="Infrastructure\SiteMap\LocalisationDynamicNodeProvider.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
