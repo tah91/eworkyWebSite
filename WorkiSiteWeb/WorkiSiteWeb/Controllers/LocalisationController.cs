@@ -260,7 +260,6 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post), Authorize]
         [ActionName("edit")]
         [ValidateAntiForgeryToken]
-        [ValidateCultureSpecificValuesAttribute(Prefix = "Localisation")]
         public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id)
         {
             var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
