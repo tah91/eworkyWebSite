@@ -156,6 +156,9 @@
   <data name="Day" xml:space="preserve">
     <value>Jour</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
   </data>

@@ -165,4 +165,10 @@
   <data name="AddPrice" xml:space="preserve">
     <value>Ajouter un tarif</value>
   </data>
+  <data name="DescriptionOffer" xml:space="preserve">
+    <value>Indiquez une description pour l'offre</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description de l'offre</value>
+  </data>
 </root>

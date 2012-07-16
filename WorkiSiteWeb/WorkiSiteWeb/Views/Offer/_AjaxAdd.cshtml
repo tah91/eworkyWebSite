@@ -1,4 +1,40 @@
 ﻿@model OfferFormViewModel
+      
+@helper DescritptionField(Worki.Infrastructure.Culture culture)
+	{
+		switch (culture)
+		{
+			case Worki.Infrastructure.Culture.es:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionEs, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+            case Worki.Infrastructure.Culture.de:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionDe, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+			case Worki.Infrastructure.Culture.en:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionEn, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+			case Worki.Infrastructure.Culture.fr:
+			default:
+				{ 
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.Description, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+        }
+}
 		
 <div id="offerFormContainer">   
 @using (Html.BeginForm())
@@ -32,6 +68,16 @@
 					</div>
 				</td>
 			</tr>
+            <tr>
+                 <td class="verticalAlignTop">
+                     <div class="editor-label">
+                       @Html.LabelFor(model => model.Offer.Description)<span class="blue">*</span>
+                     </div>
+                  </td>
+                  <td>
+					@DescritptionField(Url.GetCulture())
+                 </td>
+           </tr>
 		</table>
     </div>
 	if (!Url.IsInArea("Backoffice"))

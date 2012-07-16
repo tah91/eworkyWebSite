@@ -16,6 +16,10 @@
     [AvailabilityPeriod]		INT NOT NULL DEFAULT 0, 
     [AvailabilityPeriodType]	INT NOT NULL DEFAULT 0, 
     [ProductType]				INT NOT NULL DEFAULT 0, 
+    [Description] NVARCHAR(MAX) NULL, 
+    [DescriptionEn] NVARCHAR(MAX) NULL, 
+    [DescriptionEs] NVARCHAR(MAX) NULL, 
+    [DescriptionDe] NVARCHAR(MAX) NULL, 
     CONSTRAINT [FK_Offer_Localisation] FOREIGN KEY (LocalisationId) REFERENCES [dbo].[Localisation] ([ID]) ON DELETE CASCADE ON UPDATE NO ACTION, 
     CONSTRAINT [PK_Offer] PRIMARY KEY ([Id])
 )

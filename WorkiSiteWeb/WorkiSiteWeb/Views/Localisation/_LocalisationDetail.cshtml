@@ -10,6 +10,13 @@
             { 
             <h3 class="blue">@offer.Name</h3>
             }
+            @if (!string.IsNullOrEmpty(offer.GetDescription()))
+            {
+                                    <h4 class="blue servicesBlock margint10">@Worki.Resources.Models.Offer.Offer.Description</h4>
+							        <div class="localisationDesc" itemprop="description">
+								        @Html.Nl2Br(offer.GetDescription())
+							        </div> 
+            }
 			@if (offer.OfferFiles.Count > 0)
 			{
 			<div class="offerGallery">

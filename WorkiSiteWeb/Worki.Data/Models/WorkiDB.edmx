@@ -609,6 +609,10 @@
           <Property Name="AvailabilityPeriod" Type="int" Nullable="false" />
           <Property Name="AvailabilityPeriodType" Type="int" Nullable="false" />
           <Property Name="ProductType" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="DescriptionEs" Type="nvarchar(max)" />
+          <Property Name="DescriptionDe" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="OfferFeature">
           <Key>
@@ -2575,6 +2579,10 @@
           <NavigationProperty Name="OfferFiles" Relationship="WorkiDBModel.FK_OfferFile_Offer" FromRole="Offer" ToRole="OfferFile" />
           <NavigationProperty Name="OfferPrices" Relationship="WorkiDBModel.FK_OfferPrice_Offer" FromRole="Offer" ToRole="OfferPrice" />
           <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Offer" FromRole="Offer" ToRole="WelcomePeople" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionEn" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionEs" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionDe" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Offer_Localisation">
           <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
@@ -3186,6 +3194,10 @@
           <EntitySetMapping Name="Offers">
             <EntityTypeMapping TypeName="WorkiDBModel.Offer">
               <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductType" ColumnName="ProductType" />
                 <ScalarProperty Name="AvailabilityPeriodType" ColumnName="AvailabilityPeriodType" />
                 <ScalarProperty Name="AvailabilityPeriod" ColumnName="AvailabilityPeriod" />
