@@ -362,6 +362,13 @@ namespace Worki.Infrastructure
 			// handle modelStateException
 			if (filterContext.Exception != null && typeof(ModelStateException).IsInstanceOfType(filterContext.Exception) && !filterContext.ExceptionHandled)
 			{
+                string contentString = "";
+
+                foreach(String s in (filterContext.Exception as ModelStateException).Errors.Values)
+                {
+                    contentString += s +  "<br />";
+                }
+
 				filterContext.ExceptionHandled = true;
 				filterContext.HttpContext.Response.Clear();
 				filterContext.HttpContext.Response.ContentEncoding = Encoding.UTF8;
@@ -370,8 +377,8 @@ namespace Worki.Infrastructure
 				filterContext.HttpContext.Response.StatusCode = 400;
 				filterContext.Result = new ContentResult
 				{
-					Content = (filterContext.Exception as ModelStateException).Message,
-					ContentEncoding = Encoding.UTF8,
+                        Content = contentString,
+					    ContentEncoding = Encoding.UTF8
 				};
 			}
 		}

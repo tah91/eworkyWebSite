@@ -1,4 +1,17 @@
 ﻿@model IEnumerable<OfferPrice>
+           
+ <ul class="paymentPeriodType">
+    @{
+        Dictionary<int, string> paymentPeriodTypes = Offer.GetPaymentPeriodTypes();   
+        foreach(KeyValuePair<int, string> pair in paymentPeriodTypes)
+        {
+            <li>
+            @Html.Label(pair.Value)
+            @Html.CheckBox(pair.Key.ToString())
+            </li>
+        }
+    }
+</ul>
 
 <div class="offerPricesRows">
 	@foreach (var item in Model)
@@ -6,21 +19,56 @@
 		@Html.Partial(MVC.Offer.Views._OfferPrice , item)
 	}
 </div>
-@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Offer.AddOfferPrice(), new { @class = "orange", id = "addItem" })
 
 <script type="text/javascript">
-	$("#addItem").click(function () {
-		$.ajax({
-			url: this.href,
-			cache: false,
-			success: function (html) {
-				$(".offerPricesRows").append(html);
-			}
-		});
-		return false;
-	});
+    $("#addItem").click(function () {
+        $.ajax({
+            url: this.href,
+            cache: false,
+            success: function (html) {
+                    $(".offerPricesRows").append(html);
+            }
+        });
+        return false;
+    });
 
-	$("button.deleteRow").live("click", function () {
+    $('.paymentPeriodType input[type="checkbox"]').click(function () {
+
+        var value = $(this).attr("name");
+        var labelvalue = $(this).prev().text();
+
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: "/Offer/AddOfferPrice",
+                cache: false,
+                success: function (html) {
+
+                    var row = $(html);
+                    row.find('input[type="hidden"]').eq(1).val(value);
+                    row.find("label").eq(0).text(labelvalue);
+                    row = '<div class="offerPricesRow">' + row.html(); +'</div>';
+
+                    $(".offerPricesRows").append(row);
+                }
+            });
+        }
+
+        else {
+            $(".offerPricesRow label").each(function () {
+                var currentvalue = $(this).text();
+
+                if (currentvalue == labelvalue) {
+                    $(this).parent().remove();
+                    return true;
+                }
+            });
+
+            /*var row = $(".offerPricesRow label:contains('" + value + "')").parent();
+            alert(row.attr("class"));*/
+        }
+    });
+
+    $("button.deleteRow").live("click", function () {
 		$(this).parents(".offerPricesRow:first").remove();
 		return false;
 	});

@@ -313,6 +313,28 @@ namespace Worki.Data.Models
 			(int)PaymentTypeEnum.Transfert
         };
 
+        public static string GetOriginalPaymentPeriodType(int type)
+        {
+            var enumType = (PaymentPeriod)type;
+            switch (enumType)
+            {
+                case PaymentPeriod.Hour:
+                    return PaymentPeriod.Hour.ToString();
+                case PaymentPeriod.HalfDay:
+                    return PaymentPeriod.HalfDay.ToString();
+                case PaymentPeriod.Day:
+                    return PaymentPeriod.Day.ToString();
+                case PaymentPeriod.Week:
+                    return PaymentPeriod.Week.ToString();
+                case PaymentPeriod.Month:
+                    return PaymentPeriod.Month.ToString();
+                case PaymentPeriod.Year:
+                    return PaymentPeriod.Year.ToString();
+                default:
+                    return string.Empty;
+            }
+        }
+
         public static string GetPaymentPeriodType(int type)
         {
             var enumType = (PaymentPeriod)type;
@@ -655,6 +677,102 @@ namespace Worki.Data.Models
             else
                 return 1;
         }
+
+        public static decimal GetHourlyPrice(OfferPrice offer)
+        {
+            string periodType = Offer.GetOriginalPaymentPeriodType(offer.PriceType);
+            decimal hourlyPrice = 0;
+
+            if (periodType == Offer.PaymentPeriod.Day.ToString())
+            {
+                hourlyPrice = offer.Price / 24;
+            }
+
+            if (periodType == Offer.PaymentPeriod.HalfDay.ToString())
+            {
+                hourlyPrice = offer.Price / 12;
+            }
+
+            if (periodType == Offer.PaymentPeriod.Hour.ToString())
+            {
+                hourlyPrice = offer.Price;
+            }
+
+            if (periodType == Offer.PaymentPeriod.Month.ToString())
+            {
+                hourlyPrice = offer.Price / (28 * 24);
+            }
+
+            if (periodType == Offer.PaymentPeriod.Week.ToString())
+            {
+                hourlyPrice = offer.Price / (7 * 24);
+            }
+
+            if (periodType == Offer.PaymentPeriod.Year.ToString())
+            {
+                hourlyPrice = offer.Price / (12 * 28 * 24);
+            }
+
+            return hourlyPrice;
+        }
+
+        public static bool ComparePrice(decimal hourlyPrice, OfferPrice offer)
+        {
+            string debug = Offer.GetPaymentPeriodType(offer.PriceType);
+
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.Day.ToString())
+            {
+                if (offer.Price / 24 != hourlyPrice)
+                {
+                    return false;
+                }
+            }
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.HalfDay.ToString())
+            {
+                if (offer.Price / 12 != hourlyPrice)
+                {
+                    return false;
+                }
+            }
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.Hour.ToString())
+            {
+                if (offer.Price != hourlyPrice)
+                {
+                    return false;
+                }
+            }
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.Month.ToString())
+            {
+                if (offer.Price / (28 * 24) != hourlyPrice)
+                {
+                    return false; 
+                }
+            }
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.Week.ToString())
+            {
+                if (offer.Price / (7 * 24) != hourlyPrice)
+                {
+                    return false;
+                }
+
+            }
+
+            if (Offer.GetOriginalPaymentPeriodType(offer.PriceType) == Offer.PaymentPeriod.Year.ToString())
+            {
+                if (offer.Price / (12 * 28 * 24) != hourlyPrice)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
     }
 
 	[Bind(Exclude = "Id,OfferId")]

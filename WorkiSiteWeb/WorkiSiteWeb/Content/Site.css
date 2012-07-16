@@ -2643,3 +2643,14 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	text-align: center;
 	margin: 15px auto;*/
 }
+
+.paymentPeriodType
+{
+    margin-top: 5px;  
+}
+
+.paymentPeriodType li
+{
+    display:inline;
+    margin-right: 5%;  
+}

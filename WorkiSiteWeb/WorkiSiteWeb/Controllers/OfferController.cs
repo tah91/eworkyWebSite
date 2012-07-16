@@ -213,6 +213,8 @@ namespace Worki.Web.Controllers
 		/// Action result to return offerprice item for edition
 		/// </summary>
 		/// <returns>a partial view</returns>
+        
+        [AcceptVerbs(HttpVerbs.Get)]
 		public virtual PartialViewResult AddOfferPrice()
 		{
 			return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice());
@@ -260,6 +262,28 @@ namespace Worki.Web.Controllers
 		{
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
 
+            if (offerFormViewModel.Offer.OfferPrices.Count < 1)
+            {
+                ModelState.AddModelError("", string.Format(Worki.Resources.Validation.ValidationString.SelectOne, "Prix"));
+            }
+
+            else
+            {
+                OfferPrice firstOffer = offerFormViewModel.Offer.OfferPrices.ElementAt(0);
+                decimal hourlyPrice = OfferPrice.GetHourlyPrice(firstOffer);
+                Boolean comparison = true;
+
+                foreach (OfferPrice p in offerFormViewModel.Offer.OfferPrices)
+                {
+                    comparison = OfferPrice.ComparePrice(hourlyPrice, p);
+                    if ( comparison == false)
+                    {
+                        ModelState.AddModelError("", string.Format(Worki.Resources.Validation.ValidationString.OfferMismatch, new string[] { Offer.GetPaymentPeriodType(p.PriceType), Offer.GetPaymentPeriodType(firstOffer.PriceType) }));
+                    }
+                }
+            }
+
+
 			if (ModelState.IsValid)
 			{
 				try
@@ -303,7 +327,7 @@ namespace Worki.Web.Controllers
 				{
                     _Logger.Error("AjaxAdd", ex);
 					ModelState.AddModelError("", ex.Message);
-					throw new ModelStateException(ModelState);
+                    throw new ModelStateException(ModelState);
 				}
 			}
 			throw new ModelStateException(ModelState);
@@ -332,7 +356,6 @@ namespace Worki.Web.Controllers
         public virtual PartialViewResult AjaxEdit(int id, OfferFormViewModel offerFormViewModel)
         {
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
-
             if (ModelState.IsValid)
             {
                 try
