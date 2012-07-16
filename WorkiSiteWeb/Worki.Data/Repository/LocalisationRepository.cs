@@ -86,10 +86,11 @@ namespace Worki.Data.Models
             {
                 var critLat = (float)criteria.LocalisationData.Latitude;
                 var critLng = (float)criteria.LocalisationData.Longitude;
+                var boundary = criteria.Boundary != 0 ? criteria.Boundary : 50;
                 if (critLat != 0 && critLng != 0)
                     localisations = from loc
                                          in localisations
-                                    where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < criteria.Boundary * factor
+                                    where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < boundary * factor
                                     select loc;
             }
 
