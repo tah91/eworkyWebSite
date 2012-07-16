@@ -76,6 +76,7 @@ namespace Worki.Data.Models
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
             toRet[MiscHelpers.SeoConstants.Search] = (int)SearchType;
             toRet[MiscHelpers.SeoConstants.View] = (int)ResultView;
+            toRet[MiscHelpers.SeoConstants.Boundary] = (float)Boundary;
 
             if (FreeAreas)
             {
@@ -223,6 +224,8 @@ namespace Worki.Data.Models
 		public float NorthEastLng { get; set; }
 		public float SouthWestLat { get; set; }
 		public float SouthWestLng { get; set; }
+
+        public float Boundary { get; set; }
 
         #endregion
     }

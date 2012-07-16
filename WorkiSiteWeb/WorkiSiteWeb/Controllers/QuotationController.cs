@@ -268,7 +268,7 @@ namespace Worki.Web.Controllers
 
             //case of first quotation, give it for free, or if it is shared office
             var first = qRepo.GetOwnerProducts(memberId).OrderBy(q => q.CreationDate).FirstOrDefault();
-            if ((first != null && first.Id == id) || quotation.Offer.Localisation.IsSharedOffice())
+            if ((first == null || first.Id == id) || quotation.Offer.Localisation.IsSharedOffice())
             {
                 try
                 {
@@ -303,7 +303,7 @@ namespace Worki.Web.Controllers
 
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
 
-            decimal eworkyAmount = localisation.GetQuotationPrice() == 0 ? 5 : localisation.GetQuotationPrice();
+            decimal eworkyAmount = localisation.GetQuotationPrice();
             var payments = new List<PaymentItem>
             {
                 new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},

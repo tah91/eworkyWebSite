@@ -14,7 +14,7 @@ using System.Threading;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider// : IDataErrorInfo
+    public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider, IValidatableObject// : IDataErrorInfo
     {
         #region Ctor
 
@@ -32,6 +32,7 @@ namespace Worki.Data.Models
                 name = Name,
 				description = GetDescription(),
                 address = Adress,
+                postalCode = PostalCode,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
 				type = Localisation.GetLocalisationType(TypeValue)
@@ -385,6 +386,11 @@ namespace Worki.Data.Models
             return Offers.Where(o => o.IsOnline &&  o.Type == (int)offer).Count();
 		}
 
+        public IEnumerable<Offer> GetAllOffers()
+        {
+            return Offers.Where(o => o.IsOnline);
+        }
+
 		public IEnumerable<Offer> GetOffers(LocalisationOffer offerType)
 		{
 			return Offers.Where(o => o.IsOnline && o.Type == (int)offerType);
@@ -393,6 +399,11 @@ namespace Worki.Data.Models
         public IEnumerable<Offer> GetBookableOffers()
         {
             return Offers.Where(o => o.IsOnline && o.IsReallyBookable());
+        }
+
+        public IEnumerable<LocalisationOffer> GetOfferTypes()
+        {
+            return Offers.Where(o => o.IsOnline).GroupBy(o => o.Type).Select(g => (LocalisationOffer)g.Key);
         }
 
 		public IEnumerable<string> GetOfferTypeList()
@@ -1034,10 +1045,20 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Get price of a quotation
 		/// </summary>
-		public decimal GetQuotationPrice()
-		{
-			return QuotationPrice;
-		}
+        public decimal GetQuotationPrice()
+        {
+            if (QuotationPrice != 0)
+                return QuotationPrice;
+
+            switch ((LocalisationType)TypeValue)
+            {
+                case LocalisationType.BuisnessCenter:
+                    return 20;
+                case LocalisationType.CoworkingSpace:
+                default:
+                    return 5;
+            }
+        }
 
 		#endregion
 
@@ -1193,6 +1214,15 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrEmpty(Description) && string.IsNullOrEmpty(DescriptionEn) && string.IsNullOrEmpty(DescriptionEs))
+            {
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { "Description" });
+            }
+        }
+
     }
 
 	[Bind(Exclude = "Id,OwnerId")]

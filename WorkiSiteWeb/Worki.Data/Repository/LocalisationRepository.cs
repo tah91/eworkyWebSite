@@ -16,7 +16,6 @@ namespace Worki.Data.Models
 {
 	public interface ILocalisationRepository : IRepository<Localisation>
 	{
-		IList<Localisation> FindByLocation(float latitude, float longitude);
 		IList<Localisation> FindSimilarLocalisation(float latitude, float longitude);
         IList<Localisation> FindByCriteria(SearchCriteria criteria);
         void FillCriteriaProjection(SearchCriteria criteria);
@@ -35,20 +34,10 @@ namespace Worki.Data.Models
 
 		#region ILocalisationRepository
 
-		//the radius of circle within which the results of the seach must be (in km)
-		public const float BoundDistance = 50;
 		//the radius of circle within which two localisation are considered same (in km)
 		public const float SeparationDistance = 0.01F;
 
 		public const float EarthRadius = 6376.5F;
-
-		public IList<Localisation> FindByLocation(float latitude, float longitude)
-		{
-			var factor = CultureHelpers.GetDistanceFactor();
-			return (from localisation in _Context.Localisations
-					where EdmMethods.DistanceBetween(latitude, longitude, (float)localisation.Latitude, (float)localisation.Longitude, EarthRadius * factor) < BoundDistance * factor
-					select localisation).ToList();
-		}
 
 		public IList<Localisation> FindSimilarLocalisation(float latitude, float longitude)
 		{
@@ -97,10 +86,11 @@ namespace Worki.Data.Models
             {
                 var critLat = (float)criteria.LocalisationData.Latitude;
                 var critLng = (float)criteria.LocalisationData.Longitude;
+                var boundary = criteria.Boundary != 0 ? criteria.Boundary : 50;
                 if (critLat != 0 && critLng != 0)
                     localisations = from loc
                                          in localisations
-                                    where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < BoundDistance * factor
+                                    where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < boundary * factor
                                     select loc;
             }
 

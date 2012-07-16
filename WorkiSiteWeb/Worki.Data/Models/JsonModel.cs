@@ -15,6 +15,9 @@ namespace Worki.Data.Models
             comments = new List<CommentJson>();
             fans = new List<MemberJson>();
 			amenities = new List<string>();
+            prices = new PricesJson();
+            offers = new List<OfferJson>();
+            openingTimes = new OpeningTimesJson();
         }
 
 		public int id { get; set; }
@@ -23,12 +26,17 @@ namespace Worki.Data.Models
 		public double longitude { get; set; }
 		public string description { get; set; }
 		public string image { get; set; }
+        public string imageThumb { get; set; }
 		public string address { get; set; }
+        public string postalCode { get; set; }
 		public string city { get; set; }
 		public string type { get; set; }
 		public string url { get; set; }
         public double rating { get; set; }
 		public List<string> amenities { get; set; }
+        public PricesJson prices { get; set; }
+        public List<OfferJson> offers { get; set; }
+        public OpeningTimesJson openingTimes { get; set; }
 		public List<CommentJson> comments { get; set; }
         public List<MemberJson> fans { get; set; }
 	}
@@ -62,6 +70,28 @@ namespace Worki.Data.Models
         public string viadeo { get; set; }
     }
 
+    public class PricesJson
+    {
+        public string desktop { get; set; }
+        public string workStation { get; set; }
+        public string meetingRoom { get; set; }
+        public string buisnessLounge { get; set; }
+        public string seminarRoom { get; set; }
+        public string visioRoom { get; set; }
+
+    }
+
+    public class OfferJson
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public List<string> pictures { get; set; }
+        public List<string> prices { get; set; }
+        public List<string> amenities { get; set; }
+        public string availability { get; set; }
+        public int type { get; set; }
+    }
+
 	public class ImageJson
 	{
 		const string DeleteType = "POST";
@@ -80,4 +110,20 @@ namespace Worki.Data.Models
 		public string is_default { get; set; }
 		public string is_logo { get; set; }
 	}
+
+    public class OpeningTimesJson
+    {
+        public string monday { get; set; }
+        public string tuesday { get; set; }
+        public string wednesday { get; set; }
+        public string thursday { get; set; }
+        public string friday { get; set; }
+        public string saturday { get; set; }
+        public string sunday { get; set; }
+    }
+
+    public class TokenJson
+    {
+        public string token { get; set; }
+    }
 }

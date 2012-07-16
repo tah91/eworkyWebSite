@@ -169,6 +169,11 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.View, ref value) && int.TryParse(value, out intVal))
 				criteria.ResultView = (eResultView)intVal;
 
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Boundary, ref value))
+                criteria.Boundary = float.Parse(value);
+            else
+                criteria.Boundary = 50;
+
             float floatVal;
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Latitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Latitude = floatVal;

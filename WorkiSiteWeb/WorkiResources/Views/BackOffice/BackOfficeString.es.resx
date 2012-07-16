@@ -248,7 +248,7 @@
     <value>Ver el perfíl del cliente</value>
   </data>
   <data name="Status" xml:space="preserve">
-    <value>Estatus</value>
+    <value>Estado</value>
   </data>
   <data name="Surface" xml:space="preserve">
     <value>Superficie</value>
