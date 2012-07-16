@@ -715,4 +715,32 @@ namespace Worki.Data.Models
     }
 
     #endregion
+
+    public class MemberApiModel
+    {
+        public MemberApiModel()
+        {
+
+        }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string Email { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "BirthDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public DateTime BirthDate { get; set; }
+    }
 }

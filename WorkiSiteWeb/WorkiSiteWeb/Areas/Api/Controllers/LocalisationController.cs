@@ -40,7 +40,7 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
 
-        public virtual ActionResult Register(MemberBookingFormViewModel formData)
+        public virtual ActionResult Register(MemberApiModel formData)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +57,7 @@ namespace Worki.Web.Areas.Api.Controllers
 						FirstName = formData.FirstName,
 						LastName = formData.LastName,
 						PhoneNumber = formData.PhoneNumber,
+                        BirthDate = formData.BirthDate
 					};
 					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
 					member = mRepo.Get(memberId);
