@@ -122,8 +122,11 @@ namespace Worki.Data.Models
         public string sunday { get; set; }
     }
 
-    public class TokenJson
+    public class AuthJson
     {
         public string token { get; set; }
+        public string name { get; set; }
+        public string firstname { get; set; }
+        public string email { get; set; }
     }
 }
