@@ -290,4 +290,7 @@
   <data name="OfferMismatch" xml:space="preserve">
     <value>Votre prix "{0}" ne correspond pas à la valeur indiqué par votre prix par "{1}"</value>
   </data>
+  <data name="OfferPriceType" xml:space="preserve">
+    <value>Vous devez choisir un type de facturation pour le champ {0}</value>
+  </data>
 </root>

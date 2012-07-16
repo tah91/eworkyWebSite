@@ -349,6 +349,15 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous devez choisir un type de facturation pour le champ {0}.
+        /// </summary>
+        public static string OfferPriceType {
+            get {
+                return ResourceManager.GetString("OfferPriceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le fichier a été seulement partiellement téléchargé.
         /// </summary>
         public static string PartialUpload {

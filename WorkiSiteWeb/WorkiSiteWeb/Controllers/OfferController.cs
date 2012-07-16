@@ -264,7 +264,7 @@ namespace Worki.Web.Controllers
 
             if (offerFormViewModel.Offer.OfferPrices.Count < 1)
             {
-                ModelState.AddModelError("", string.Format(Worki.Resources.Validation.ValidationString.SelectOne, "Prix"));
+                ModelState.AddModelError("", string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, "Prix"));
             }
 
             else
