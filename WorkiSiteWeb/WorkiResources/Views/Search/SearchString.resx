@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdvancedSearch" xml:space="preserve">
-    <value>Recherche avancée</value>
+    <value>Rechercher par</value>
   </data>
   <data name="DistanceOrdered" xml:space="preserve">
     <value>Distance</value>
