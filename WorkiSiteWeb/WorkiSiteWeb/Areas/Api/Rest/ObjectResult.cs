@@ -49,23 +49,23 @@ namespace Worki.Rest
 
         public override void ExecuteResult(ControllerContext context)
         {
-            // If ContentType is not expected to be application/json, then return XML
             if (context.HttpContext.Request["jsoncallback"] != null)
             {
                 SerializeToJsonp(context);
-            }
-            else if (context.HttpContext.Request["json"] != null)
-            {
-                SerializeToJson(context);
             }
             else if ((context.HttpContext.Request.ContentType ?? string.Empty).Contains("application/json"))
             {
                 SerializeToJson(context);
             }
-            else
+            else if (context.HttpContext.Request["xml"] != null)
             {
                 SerializeToXml(context);
             }
+            else
+            {
+                SerializeToJson(context);
+            }
+            
         }
 
         private void SerializeToJson(ControllerContext context)
