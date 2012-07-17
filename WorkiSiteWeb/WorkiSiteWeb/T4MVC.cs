@@ -3418,7 +3418,7 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Search(string place, string name, float latitude, float longitude, float boundary, int offerType, int orderBy, string types, string features, int maxCount) {
+        public override System.Web.Mvc.ActionResult Search(string place, string name, float latitude, float longitude, float boundary, string offerType, int orderBy, string types, string features, int maxCount) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("place", place);
             callInfo.RouteValueDictionary.Add("name", name);

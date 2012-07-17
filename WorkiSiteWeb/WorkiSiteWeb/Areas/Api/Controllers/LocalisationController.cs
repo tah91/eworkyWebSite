@@ -211,7 +211,7 @@ namespace Worki.Web.Areas.Api.Controllers
 
         static char[] _arrayTrim = { '[', ']' };
 
-		void FillCriteria(ref SearchCriteria criteria, string types, string features, int offerType)
+		void FillCriteria(ref SearchCriteria criteria, string types, string features)
 		{
 			//types
 			if (!string.IsNullOrEmpty(types))
@@ -310,7 +310,7 @@ namespace Worki.Web.Areas.Api.Controllers
 				}
 			}
 
-			criteria.OfferData.Type = offerType;
+			criteria.OfferData.Type = -1;
 		}
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Worki.Web.Areas.Api.Controllers
                                             float latitude = 0,
                                             float longitude = 0,
                                             float boundary = 50,
-                                            int offerType = -1,
+                                            string offerType = null,
                                             int orderBy = 1,
                                             string types = null,
                                             string features = null,
@@ -346,7 +346,7 @@ namespace Worki.Web.Areas.Api.Controllers
 
             try
             {
-                FillCriteria(ref  criteria, types, features, offerType);
+                FillCriteria(ref  criteria, types, features);
             }
             catch (Exception ex)
             {
@@ -370,8 +370,16 @@ namespace Worki.Web.Areas.Api.Controllers
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
 
+            //get the wanted offer types
+
             //take the json
-            var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
+            var list = results.List;
+            if (offerType != null)
+            {
+                string[] offerTypeArray = offerType.Trim(_arrayTrim).Split(',');
+                list = list.Where(p => p.GetOfferTypes().ToList().Any(x => offerTypeArray.Contains(((int) x).ToString()))).ToList();
+            }
+            var neededLocs = (from item in list.Take(maxCount) select item.GetJson(this)).ToList();
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
         }
     }
