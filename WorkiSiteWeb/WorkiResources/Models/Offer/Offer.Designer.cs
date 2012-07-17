@@ -349,6 +349,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prix TTC par.
+        /// </summary>
+        public static string PriceBy {
+            get {
+                return ResourceManager.GetString("PriceBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A partir de {0}.
         /// </summary>
         public static string PriceFrom {

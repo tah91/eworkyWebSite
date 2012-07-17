@@ -1,17 +1,40 @@
 ﻿@model OfferPrice
 		   
 @{
-	var select = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Model.PriceType);
+    var select = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Model.PriceType);
     var bciName = Url.IsInArea("Backoffice", true) ? "InnerModel.Offer.OfferPrices" : "Offer.OfferPrices";
 }
 
-<div class="offerPricesRow">
-	@using (Html.BeginCollectionItem(bciName))
-	{
-		@Html.LabelFor(m => m.PriceType)
-		@Html.DropDownListFor(m => m.PriceType, select)
-		@Html.LabelFor(m => m.Price)
-		@Html.TextBoxFor(m => m.Price)
-		<button class="deleteRow crossButton cross"></button>
-	}
-</div>
+<tr class="offerPricesRow">
+@{
+    @*if the model is empty display offerprice with basic information else get the information from the model and display it*@
+    if (ViewData["existingItems"] != null && (Boolean)ViewData["existingItems"] == true)
+    {
+        using (Html.BeginCollectionItem(bciName))
+        {
+            
+                <td>
+                @Html.HiddenFor(m => m.PriceType)
+                @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(Model.PriceType))
+                </td>
+                <td>
+		        @Html.TextBoxFor(m => m.Price)
+                </td>
+        }
+    }
+
+    else
+    {
+        using (Html.BeginCollectionItem(bciName))
+        {
+                <td>
+                @Html.HiddenFor(m => m.PriceType)
+                @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy)
+                </td>
+                <td>
+		        @Html.TextBoxFor(m => m.Price)
+                </td>
+         }
+    }
+}
+</tr>

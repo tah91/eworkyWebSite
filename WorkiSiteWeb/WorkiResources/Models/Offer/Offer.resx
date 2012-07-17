@@ -213,6 +213,9 @@
   <data name="Price" xml:space="preserve">
     <value>Prix TTC</value>
   </data>
+  <data name="PriceBy" xml:space="preserve">
+    <value>Prix TTC par</value>
+  </data>
   <data name="PriceFrom" xml:space="preserve">
     <value>A partir de {0}</value>
   </data>

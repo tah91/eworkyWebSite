@@ -85,6 +85,21 @@ namespace Worki.Data.Models
 			IsOnline = true;
 		}
 
+        public static Boolean existingOfferPrice(IEnumerable<OfferPrice> list, int PriceType)
+        {
+            Boolean existingOffer = false;
+
+            foreach (OfferPrice offer in list)
+            {
+                if (offer.PriceType == PriceType)
+                {
+                    return true;
+                }
+            }
+
+            return existingOffer;
+        }
+
         #region IJsonProvider
 
         public OfferJson GetJson()
@@ -586,6 +601,11 @@ namespace Worki.Data.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            if (OfferPrices.Count < 1)
+            {
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.Price, Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration));
+            }
+
             if (string.IsNullOrEmpty(Description) && string.IsNullOrEmpty(DescriptionEn) && string.IsNullOrEmpty(DescriptionEs) && string.IsNullOrEmpty(DescriptionDe))
             {
                 yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Offer.Offer.Description), new[] { "Description" });
