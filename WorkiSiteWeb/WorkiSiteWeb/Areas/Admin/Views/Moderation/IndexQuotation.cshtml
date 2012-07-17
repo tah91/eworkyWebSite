@@ -32,6 +32,9 @@
                     </th> 
 					<th>
                          @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th>
+                    <th>
+                         @Worki.Resources.Views.Admin.AdminString.Name
                     </th> 
                     <th>
                          @Worki.Resources.Models.Booking.Booking.Handled
@@ -50,6 +53,9 @@
                 </td>
                 <td align="center">
                     @Html.ActionLink(item.Member.Email, MVC.Account.Public(item.MemberId))
+                </td>
+                <td align="center">
+                    <a href="@item.Offer.Localisation.GetDetailFullUrl(Url))">@item.Offer.Localisation.Name</a>
                 </td>
 				<td align="center">
                     @item.GetStatus()
