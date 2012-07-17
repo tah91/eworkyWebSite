@@ -40,7 +40,7 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
 
-        public virtual ActionResult Register(MemberBookingFormViewModel formData)
+        public virtual ActionResult Register(MemberApiModel formData)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +57,7 @@ namespace Worki.Web.Areas.Api.Controllers
 						FirstName = formData.FirstName,
 						LastName = formData.LastName,
 						PhoneNumber = formData.PhoneNumber,
+                        BirthDate = formData.BirthDate
 					};
 					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
 					member = mRepo.Get(memberId);
@@ -106,9 +107,15 @@ namespace Worki.Web.Areas.Api.Controllers
 							newMemberMail.Send();
 						}
 
-                        TokenJson ret = new TokenJson();
-                        ret.token = _MembershipService.GetToken(formData.Email);
-                        return new ObjectResult<TokenJson>(ret);
+                        Member m = mRepo.GetMember(formData.Email);
+                        AuthJson ret = new AuthJson
+                        {
+                            token = _MembershipService.GetToken(formData.Email),
+                            email = m.Email,
+                            name = m.MemberMainData.LastName,
+                            firstname = m.MemberMainData.FirstName
+                        };
+                        return new ObjectResult<AuthJson>(ret);
 					}
 					catch (Exception ex)
 					{
@@ -121,12 +128,12 @@ namespace Worki.Web.Areas.Api.Controllers
 				{
 					_Logger.Error("Create", ex);
 					ModelState.AddModelError("", ex.Message);
-                    return new ObjectResult<TokenJson>(null, 400, "Error in attempting to create.");
+                    return new ObjectResult<AuthJson>(null, 400, "Error in attempting to create.");
 				}
             }
             else
             {
-                return new ObjectResult<TokenJson>(null, 400, "More aguments needed.");
+                return new ObjectResult<AuthJson>(null, 400, "More aguments needed.");
             }
         }
 
@@ -161,12 +168,20 @@ namespace Worki.Web.Areas.Api.Controllers
         {
             if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
             {
-                TokenJson ret = new TokenJson();
-                ret.token = _MembershipService.GetToken(model.Login);
-                return new ObjectResult<TokenJson>(ret);
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                Member m = mRepo.GetMember(model.Login);
+                AuthJson ret = new AuthJson
+                {
+                    token = _MembershipService.GetToken(model.Login),
+                    email = m.Email,
+                    name = m.MemberMainData.LastName,
+                    firstname = m.MemberMainData.FirstName
+                };
+                return new ObjectResult<AuthJson>(ret);
             }
             else
-                return new ObjectResult<TokenJson>(null, 400, "Wrong login or password.");
+                return new ObjectResult<AuthJson>(null, 400, "Wrong login or password.");
         }
 
         /// <summary>

@@ -3392,7 +3392,7 @@ namespace Worki.Web.Areas.Api.Controllers {
     public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.MemberBookingFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.MemberApiModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;

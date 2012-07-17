@@ -1,7 +1,7 @@
 ﻿InitOpenGraph = function (callback) {
 	//check if user has athorized the app
-	FB.getLoginStatus(function (response) {
-		if (response.status != 'connected') {
+	/*FB.getLoginStatus(function (response) {
+		if (response.status != 'connected') {*/
 			//get authorization
 			FB.login(function (response) {
 				if (response.authResponse) {
@@ -12,10 +12,10 @@
 			},
 			{ scope: 'publish_actions' }
 			);
-		} else {
+		/*} else {
 			callback.call();
 		}
-	});
+	});*/
 }
 
 AppAjax = function (url, type, datagetter, onsuccess, onerror) {
