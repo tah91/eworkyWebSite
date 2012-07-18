@@ -172,42 +172,43 @@ namespace Worki.Memberships
 			return _Provider.GetPassword(username, answer);
 		}
 
-		/// <summary>
-		/// Try to create an account for the given mail and data, already activated
-		/// if account aleady exists, do nothing
-		/// </summary>
-		/// <param name="email">email of the account to create</param>
-		/// <param name="memberData">member data of the account</param>
-		/// <param name="memberId">filled by the fectched account</param>
-		/// <returns>true if account created</returns>
-		public bool TryCreateAccount(string email, MemberMainData memberData, out int memberId, bool forceActivation = true)
-		{
-			//check if email match an accounte
-			var createAccountContext = ModelFactory.GetUnitOfWork();
-			var createAccountmRepo = ModelFactory.GetRepository<IMemberRepository>(createAccountContext);
-			try
-			{
-				var member = createAccountmRepo.GetMember(email);
-				if (member != null)
-				{
-					memberId = member.MemberId;
-					return false;
-				}
-				else
-				{
-					//if not create an account from memberdata
-                    var status = CreateUser(email, MiscHelpers.AdminConstants.DummyPassword, email, true);
-					if (status != System.Web.Security.MembershipCreateStatus.Success)
-					{
-						var error = AccountValidation.ErrorCodeToString(status);
-						throw new Exception(error);
-					}
+        /// <summary>
+        /// Try to create an account for the given mail and data, already activated
+        /// if account aleady exists, do nothing
+        /// </summary>
+        /// <param name="email">email of the account to create</param>
+        /// <param name="memberData">member data of the account</param>
+        /// <param name="memberId">filled by the fectched account</param>
+        /// <returns>true if account created</returns>
+        bool TryCreateAccount(string email, string password, bool dummyPassword, MemberMainData memberData, out int memberId, bool forceActivation)
+        {
+            //check if email match an accounte
+            var createAccountContext = ModelFactory.GetUnitOfWork();
+            var createAccountmRepo = ModelFactory.GetRepository<IMemberRepository>(createAccountContext);
+            try
+            {
+                var member = createAccountmRepo.GetMember(email);
+                if (member != null)
+                {
+                    memberId = member.MemberId;
+                    return false;
+                }
+                else
+                {
+                    //if not create an account from memberdata
+                    var status = CreateUser(email, password, email, true);
+                    if (status != System.Web.Security.MembershipCreateStatus.Success)
+                    {
+                        var error = AccountValidation.ErrorCodeToString(status);
+                        throw new Exception(error);
+                    }
 
                     var created = createAccountmRepo.GetMember(email);
                     created.MemberMainData = memberData;
                     createAccountContext.Commit();
-                    
-                    if (!ResetPassword(email))
+
+                    //try reset password if not dummy
+                    if (dummyPassword && !ResetPassword(email))
                     {
                         throw new Exception("ResetPassword failed");
                     }
@@ -220,22 +221,49 @@ namespace Worki.Memberships
                         toUnactiavte.IsApproved = forceActivation;
                         unactivateAccountContext.Commit();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         unactivateAccountContext.Complete();
                         throw ex;
                     }
 
-					memberId = created.MemberId;
-					return true;
-				}
-			}
-			catch (Exception ex)
-			{
-				createAccountContext.Complete();
-				throw ex;
-			}
+                    memberId = created.MemberId;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                createAccountContext.Complete();
+                throw ex;
+            }
+        }
+
+		/// <summary>
+		/// Try to create an account for the given mail and data, already activated
+		/// if account aleady exists, do nothing
+		/// </summary>
+		/// <param name="email">email of the account to create</param>
+		/// <param name="memberData">member data of the account</param>
+		/// <param name="memberId">filled by the fectched account</param>
+		/// <returns>true if account created</returns>
+		public bool TryCreateAccount(string email, MemberMainData memberData, out int memberId, bool forceActivation = true)
+		{
+            return TryCreateAccount(email, MiscHelpers.AdminConstants.DummyPassword, true, memberData, out  memberId, forceActivation);
 		}
+
+        /// <summary>
+        /// Try to create an account for the given mail and data, already activated
+        /// if account aleady exists, do nothing
+        /// </summary>
+        /// <param name="email">email of the account to create</param>
+        /// <param name="password">account password</param>
+        /// <param name="memberData">member data of the account</param>
+        /// <param name="memberId">filled by the fectched account</param>
+        /// <returns>true if account created</returns>
+        public bool TryCreateAccount(string email, string password, MemberMainData memberData, out int memberId, bool forceActivation = true)
+        {
+            return TryCreateAccount(email, password, false, memberData, out  memberId, forceActivation);
+        }
 
         public bool ActivateMember(string username, string key)
         {

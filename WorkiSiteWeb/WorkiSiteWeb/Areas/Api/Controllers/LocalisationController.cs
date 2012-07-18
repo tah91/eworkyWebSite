@@ -39,6 +39,13 @@ namespace Worki.Web.Areas.Api.Controllers
             _MembershipService = membershipService;
         }
 
+        static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
+        {
+            Width = 250,
+            Height = 250,
+            TWidth = 80,
+            THeight = 80
+        };
 
         public virtual ActionResult Register(MemberApiModel formData)
         {
@@ -46,27 +53,36 @@ namespace Worki.Web.Areas.Api.Controllers
             {
                 var context = ModelFactory.GetUnitOfWork();
                 var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-                var memberId = WebHelper.GetIdentityId(User.Identity);
-                var member = mRepo.Get(memberId);
+                var sendNewAccountMailPass = false; 
                 var sendNewAccountMail = false;
 				try
 				{
+                    int memberId;
+                    var uploadedFileName = this.UploadFile(string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, formData.FacebookId), _ImageSize, Member.AvatarFolder);
 					var memberData = new MemberMainData
 					{
 						FirstName = formData.FirstName,
 						LastName = formData.LastName,
 						PhoneNumber = formData.PhoneNumber,
-                        BirthDate = formData.BirthDate
+                        BirthDate = formData.BirthDate,
+                        Avatar = uploadedFileName,
+                        Facebook = formData.FacebookLink
 					};
-					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
-					member = mRepo.Get(memberId);
+                    if (string.IsNullOrEmpty(formData.Password))
+                    {
+                        sendNewAccountMailPass = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+                    }
+                    else
+                    {
+                        sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, formData.Password, memberData, out memberId);
+                    }
+					var member = mRepo.Get(memberId);
 
 					try
 					{
                         member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						dynamic newMemberMail = null;
-						if (sendNewAccountMail)
+						if (sendNewAccountMailPass)
 						{
 							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
@@ -100,6 +116,34 @@ namespace Worki.Web.Areas.Api.Controllers
                             newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
                                 _MembershipService.GetPassword(formData.Email, null) + " (" + passwordLink + ").";
 						}
+                        if (sendNewAccountMail)
+                        {
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder profilLink = new TagBuilder("a");
+                            profilLink.MergeAttribute("href", editprofilUrl);
+                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
+
+                            newMemberMail = new Email(MVC.Emails.Views.Email);
+                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            newMemberMail.To = formData.Email;
+                            newMemberMail.ToName = formData.FirstName;
+
+                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
+                            /*
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
+                                                                    Localisation.GetOfferType(offer.Type),
+                                                                    formData.MemberBooking.GetStartDate(),
+                                                                    formData.MemberBooking.GetEndDate(),
+                                                                    locName,
+                                                                    offer.Localisation.Adress,
+                                                                    formData.Email,
+                                                                    _MembershipService.GetPassword(formData.Email, null),
+                                                                    passwordLink,
+                                                                    profilLink);
+                             */
+                            newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\n";
+                        }
 						context.Commit();
 
 						if (sendNewAccountMail)
@@ -107,6 +151,8 @@ namespace Worki.Web.Areas.Api.Controllers
 							newMemberMail.Send();
 						}
 
+                        var newContext = ModelFactory.GetUnitOfWork();
+                        mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
                         Member m = mRepo.GetMember(formData.Email);
                         AuthJson ret = new AuthJson
                         {
@@ -137,6 +183,26 @@ namespace Worki.Web.Areas.Api.Controllers
             }
         }
 
+        public virtual ActionResult Connect(LogOnModel model)
+        {
+            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                Member m = mRepo.GetMember(model.Login);
+                AuthJson ret = new AuthJson
+                {
+                    token = _MembershipService.GetToken(model.Login),
+                    email = m.Email,
+                    name = m.MemberMainData.LastName,
+                    firstname = m.MemberMainData.FirstName
+                };
+                return new ObjectResult<AuthJson>(ret);
+            }
+            else
+                return new ObjectResult<AuthJson>(null, 400, "Wrong login or password.");
+        }
+
         public virtual ActionResult Comment(int id, LogOnModel model, Comment com)
         {
             if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
@@ -162,26 +228,6 @@ namespace Worki.Web.Areas.Api.Controllers
             {
                 return new ObjectResult<LocalisationJson>(null, 400, "Not found");
             }
-        }
-
-        public virtual ActionResult Connect(LogOnModel model)
-        {
-            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
-            {
-                var context = ModelFactory.GetUnitOfWork();
-                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                Member m = mRepo.GetMember(model.Login);
-                AuthJson ret = new AuthJson
-                {
-                    token = _MembershipService.GetToken(model.Login),
-                    email = m.Email,
-                    name = m.MemberMainData.LastName,
-                    firstname = m.MemberMainData.FirstName
-                };
-                return new ObjectResult<AuthJson>(ret);
-            }
-            else
-                return new ObjectResult<AuthJson>(null, 400, "Wrong login or password.");
         }
 
         /// <summary>

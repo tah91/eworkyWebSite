@@ -724,23 +724,19 @@ namespace Worki.Data.Models
         }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string FirstName { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string LastName { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Email { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "BirthDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string Password { get; set; }
+
         public DateTime BirthDate { get; set; }
+        public string PhoneNumber { get; set; }
+        public long FacebookId { get; set; }
+        public string FacebookLink { get; set; }
     }
 }
