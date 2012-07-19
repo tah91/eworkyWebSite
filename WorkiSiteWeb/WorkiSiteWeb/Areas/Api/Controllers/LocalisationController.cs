@@ -425,7 +425,13 @@ namespace Worki.Web.Areas.Api.Controllers
                 string[] offerTypeArray = offerType.Trim(_arrayTrim).Split(',');
                 list = list.Where(p => p.GetOfferTypes().ToList().Any(x => offerTypeArray.Contains(((int) x).ToString()))).ToList();
             }
-            var neededLocs = (from item in list.Take(maxCount) select item.GetJson(this, criteria)).ToList();
+
+            List<LocalisationJson> neededLocs;
+            if (string.IsNullOrEmpty(place)) // compute the distance, or not
+                neededLocs = (from item in list.Take(maxCount) select item.GetJson(this)).ToList();
+            else
+                neededLocs = (from item in list.Take(maxCount) select item.GetJson(this, criteria)).ToList();
+
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
         }
     }
