@@ -592,8 +592,8 @@
             <div class="serviceContainer">
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
-				    @if (Model.IsSharedOffice)
-        {
+				 @if (Model.IsSharedOffice)
+                 {
                     <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -614,9 +614,9 @@
                             @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
-        }
-        else
-        {
+                 }
+                else
+                 {
 				    <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -637,7 +637,7 @@
                             @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
-        }
+                }
                 </div>
                 @if (!Model.IsSharedOffice)
                 {

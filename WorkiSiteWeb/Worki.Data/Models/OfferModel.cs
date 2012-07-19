@@ -86,18 +86,6 @@ namespace Worki.Data.Models
 			IsOnline = true;
 		}
 
-        public static Boolean HasPriceOfType(IEnumerable<OfferPrice> list, int priceType)
-        {
-            if (list.Count() > 0)
-            {
-                return list.Count(op => op.PriceType == priceType) > 0;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         #region IJsonProvider
 
         public OfferJson GetJson()
@@ -517,6 +505,23 @@ namespace Worki.Data.Models
                 return string.Empty;
 
             return firstPrice.GetPriceDisplay();
+        }
+
+        public bool HasPriceOfType(int priceType)
+        {
+            return OfferPrices.Count(op => op.PriceType == priceType) > 0;
+        }
+
+        public bool ForceHasPriceOfType(int priceType)
+        {
+            if (OfferPrices.Count() > 0)
+            {
+                return HasPriceOfType(priceType);
+            }
+            else
+            {
+                return true;
+            }
         }
 
         #endregion

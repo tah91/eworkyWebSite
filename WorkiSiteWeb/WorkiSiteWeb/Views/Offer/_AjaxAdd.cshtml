@@ -92,7 +92,7 @@
                                 {
                                     <li>
                                     @Html.Label(pair.Value)
-                                    @Html.CheckBox(pair.Key.ToString(), Offer.HasPriceOfType(Model.Offer.OfferPrices, pair.Key))
+                                    @Html.CheckBox(pair.Key.ToString(), Model.Offer.ForceHasPriceOfType(pair.Key))
                                     </li>
                                 }
                             }
@@ -116,12 +116,7 @@
 			        <td>
 				        @Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
 			        </td>
-		        </tr>
-            </table>
-		    @Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
-            <table class="configCurrency">
-                <tr>
-			        <td>
+                    <td>
 				        @Html.LabelFor(m => m.Offer.AllInclusive) <span class="blue">*</span>
 			        </td>
 			        <td>
@@ -129,6 +124,7 @@
 			        </td>
 		        </tr>
             </table>
+		    @Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
         </div> 
         }
         if (Model.IsSharedOffice)

@@ -324,14 +324,16 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .li_Sector{width:266px}
 .li_MinimalPeriod{width:307px}
 .li_AllInclusive{width:271px}
-#offerFormContainer .configCurrency td:first-child{padding-right:5px;width:auto}
 .configOffer select,.configOffer input[type="text"]{width:100px}
 .configoffertable td:first-child{width:180px}
 .configoffertable td{height:30px}
 .configCurrency td:first-child{width:100px}
+#offerFormContainer .configCurrency select{margin-right:10px}
+#offerFormContainer .configCurrency td:first-child{padding-right:5px;width:auto}
+.paymentPeriodType li{display:block;float:left;padding-right:10px}
 .offerPricesRow td{padding-top:5px}
 .offerPricesRow{margin:10px 0}
-.paymentPeriodType li{display:block;float:left;padding-right:10px}
+.configCurrency td:first-child{width:100px}
 .horizontalMenu{text-align:center}
 .horizontalMenu a,.verticalMenu a{text-decoration:none;display:block;font-weight:bold;color:#aaa}
 .horizontalMenu ul{width:100%;display:table;table-layout:fixed}
