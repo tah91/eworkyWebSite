@@ -30,6 +30,7 @@ namespace Worki.Data.Models
 		public string address { get; set; }
         public string postalCode { get; set; }
 		public string city { get; set; }
+        public double distance { get; set; }
 		public string type { get; set; }
         public bool isFree { get; set; }
 		public string url { get; set; }

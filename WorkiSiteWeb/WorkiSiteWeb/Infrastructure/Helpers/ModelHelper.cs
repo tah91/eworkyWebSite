@@ -133,6 +133,16 @@ namespace Worki.Web.Helpers
 			return json;
 		}
 
+        public static LocalisationJson GetJson(this Localisation localisation, Controller controller, SearchCriteria criteria)
+        {
+            var json = GetJson(localisation, controller);
+
+            //get distance
+            json.distance = MiscHelpers.GetDistanceBetween(criteria.LocalisationData.Latitude, criteria.LocalisationData.Longitude, localisation.Latitude, localisation.Longitude);
+            return json;
+        }
+
+
         public static MetaData GetMetaData(this IPictureDataProvider provider)
         {
             if (provider == null)
