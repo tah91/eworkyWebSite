@@ -371,7 +371,7 @@ td { vertical-align: top; }
 
 .verticalAlignTop
 {
-	vertical-align:top;
+	vertical-align:top!important;
 }
 
 .verticalAlignMiddle

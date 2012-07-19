@@ -2111,10 +2111,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	width:100px;
 }
 
-.configoffertable
-{
-    
-}
 
 .configoffertable td:first-child
 {
@@ -2125,20 +2121,11 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 {
     height : 30px;
 }
-.configCurrency td:first-child
-{
-    width:100px;
-}
 
-#offerFormContainer .configCurrency select
+.configPrice td:first-child
 {
-    margin-right: 10px;
-}
-
-#offerFormContainer .configCurrency td:first-child
-{
-    padding-right: 5px;
-    width: auto;
+    width: 180px;
+    height: 30px;
 }
 
 .paymentPeriodType li
@@ -2157,13 +2144,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 {
     margin:10px 0;
 }
-
-.configCurrency td:first-child
-{
-    width:100px;
-}
-
-
 
 /* MENU LAYOUT
 ----------------------------------------------------------*/

@@ -32,6 +32,7 @@ namespace Worki.Data.Models
             IsSharedOffice = isShared;
             Offer = new Offer();
             Offer.AllInclusive = true;
+            Offer.WithTax = true;
         }
 
 		public Offer Offer { get; set; }
@@ -722,6 +723,10 @@ namespace Worki.Data.Models
         [Display(Name = "AllInclusive", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public bool AllInclusive { get; set; }
+
+        [Display(Name = "WithTax", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public bool WithTax { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer

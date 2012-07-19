@@ -614,6 +614,7 @@
           <Property Name="DescriptionEs" Type="nvarchar(max)" />
           <Property Name="DescriptionDe" Type="nvarchar(max)" />
           <Property Name="AllInclusive" Type="bit" Nullable="false" />
+          <Property Name="WithTax" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OfferFeature">
           <Key>
@@ -2585,6 +2586,7 @@
           <Property Type="String" Name="DescriptionEs" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DescriptionDe" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="AllInclusive" Nullable="false" />
+          <Property Type="Boolean" Name="WithTax" Nullable="false" />
         </EntityType>
         <Association Name="FK_Offer_Localisation">
           <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
@@ -3196,6 +3198,7 @@
           <EntitySetMapping Name="Offers">
             <EntityTypeMapping TypeName="WorkiDBModel.Offer">
               <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="WithTax" ColumnName="WithTax" />
                 <ScalarProperty Name="AllInclusive" ColumnName="AllInclusive" />
                 <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
                 <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />

@@ -70,6 +70,24 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Non.
+        /// </summary>
+        public static string AllInclusive_false {
+            get {
+                return ResourceManager.GetString("AllInclusive_false", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oui.
+        /// </summary>
+        public static string AllInclusive_true {
+            get {
+                return ResourceManager.GetString("AllInclusive_true", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date de disponibilité.
         /// </summary>
         public static string AvailabilityDate {
@@ -367,7 +385,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prix TTC par.
+        ///   Looks up a localized string similar to Prix par.
         /// </summary>
         public static string PriceBy {
             get {
@@ -507,6 +525,33 @@ namespace Worki.Resources.Models.Offer {
         public static string Week {
             get {
                 return ResourceManager.GetString("Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avec Taxe.
+        /// </summary>
+        public static string WithTax {
+            get {
+                return ResourceManager.GetString("WithTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non.
+        /// </summary>
+        public static string WithTax_false {
+            get {
+                return ResourceManager.GetString("WithTax_false", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oui.
+        /// </summary>
+        public static string WithTax_true {
+            get {
+                return ResourceManager.GetString("WithTax_true", resourceCulture);
             }
         }
         

@@ -120,6 +120,12 @@
   <data name="AllInclusive" xml:space="preserve">
     <value>Toutes charges incluses</value>
   </data>
+  <data name="AllInclusive_false" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="AllInclusive_true" xml:space="preserve">
+    <value>Oui</value>
+  </data>
   <data name="AvailabilityDate" xml:space="preserve">
     <value>Date de disponibilité</value>
   </data>
@@ -220,7 +226,7 @@
     <value>Prix TTC</value>
   </data>
   <data name="PriceBy" xml:space="preserve">
-    <value>Prix TTC par</value>
+    <value>Prix par</value>
   </data>
   <data name="PriceFrom" xml:space="preserve">
     <value>A partir de {0}</value>
@@ -266,6 +272,15 @@
   </data>
   <data name="Week" xml:space="preserve">
     <value>Semaine</value>
+  </data>
+  <data name="WithTax" xml:space="preserve">
+    <value>Avec Taxe</value>
+  </data>
+  <data name="WithTax_false" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="WithTax_true" xml:space="preserve">
+    <value>Oui</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Année</value>

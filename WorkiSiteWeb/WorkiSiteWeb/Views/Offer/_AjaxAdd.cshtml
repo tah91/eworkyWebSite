@@ -83,7 +83,7 @@
 						    @Html.Label(Worki.Resources.Models.Offer.Offer.LeaseTerm)<span class="blue">*</span>
 					    </div>
 				    </td>
-                    <td class="verticalAlignTop">
+                    <td>
 					    <div class="editor-field">
                            <ul class="paymentPeriodType">
 						    @{
@@ -108,7 +108,7 @@
 	    { 
         <div class="contentBlock configOffer">
             <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.Tariff</h3>
-            <table class="configCurrency">
+            <table class="configPrice">
                 <tr>
 			        <td>
 				        @Html.LabelFor(m => m.Offer.Currency)
@@ -116,11 +116,27 @@
 			        <td>
 				        @Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
 			        </td>
+		        </tr>
+                <tr>
                     <td>
 				        @Html.LabelFor(m => m.Offer.AllInclusive) <span class="blue">*</span>
 			        </td>
 			        <td>
-                        @Html.CheckBoxFor(m => m.Offer.AllInclusive)
+                        <label for="AllInclusive_true">@Worki.Resources.Models.Offer.Offer.AllInclusive_true</label>
+                        @Html.RadioButtonFor(m => m.Offer.AllInclusive, true, new { id = "AllInclusive_true" })
+                        <label for="AllInclusive_false">@Worki.Resources.Models.Offer.Offer.AllInclusive_false</label>
+                        @Html.RadioButtonFor(m => m.Offer.AllInclusive, false, new { id = "AllInclusive_false" }) 
+			        </td>
+                </tr>
+                <tr>
+			        <td>
+				        @Html.LabelFor(m => m.Offer.WithTax) <span class="blue">*</span>
+			        </td>
+			        <td>
+				        <label for="WithTax_true">@Worki.Resources.Models.Offer.Offer.WithTax_true</label>
+                        @Html.RadioButtonFor(m => m.Offer.WithTax, true, new { id = "WithTax_true" })
+                        <label for="WithTax_false">@Worki.Resources.Models.Offer.Offer.WithTax_false</label>
+                        @Html.RadioButtonFor(m => m.Offer.WithTax, false, new { id = "WithTax_false" }) 
 			        </td>
 		        </tr>
             </table>
