@@ -31,6 +31,7 @@ namespace Worki.Data.Models
         public string postalCode { get; set; }
 		public string city { get; set; }
 		public string type { get; set; }
+        public bool isFree { get; set; }
 		public string url { get; set; }
         public double rating { get; set; }
 		public List<string> amenities { get; set; }

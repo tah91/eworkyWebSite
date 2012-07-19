@@ -35,7 +35,8 @@ namespace Worki.Data.Models
                 postalCode = PostalCode,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
-				type = Localisation.GetLocalisationType(TypeValue)
+				type = Localisation.GetLocalisationType(TypeValue),
+                isFree = IsFreeLocalisation()
             };
         }
 
