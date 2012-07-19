@@ -31,6 +31,7 @@ namespace Worki.Data.Models
             ProductTypes = new SelectList(Offer.GetProductTypes(), "Key", "Value", Offer.eProductType.Quotation);
             IsSharedOffice = isShared;
             Offer = new Offer();
+            Offer.AllInclusive = true;
         }
 
 		public Offer Offer { get; set; }
@@ -85,19 +86,16 @@ namespace Worki.Data.Models
 			IsOnline = true;
 		}
 
-        public static Boolean existingOfferPrice(IEnumerable<OfferPrice> list, int PriceType)
+        public static Boolean HasPriceOfType(IEnumerable<OfferPrice> list, int priceType)
         {
-            Boolean existingOffer = false;
-
-            foreach (OfferPrice offer in list)
+            if (list.Count() > 0)
             {
-                if (offer.PriceType == PriceType)
-                {
-                    return true;
-                }
+                return list.Count(op => op.PriceType == priceType) > 0;
             }
-
-            return existingOffer;
+            else
+            {
+                return true;
+            }
         }
 
         #region IJsonProvider
@@ -603,8 +601,18 @@ namespace Worki.Data.Models
         {
             if (OfferPrices.Count < 1)
             {
-                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.Price, Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration));
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.LeaseTerm));
             }
+
+            foreach (OfferPrice offer in OfferPrices)
+            {
+                if (offer.Price > 0 == false)
+                {
+                    string inputName = Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(offer.PriceType);
+                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.SuperiorTo, inputName, 0) + "<br />");
+                }
+            }
+            
 
             if (string.IsNullOrEmpty(Description) && string.IsNullOrEmpty(DescriptionEn) && string.IsNullOrEmpty(DescriptionEs) && string.IsNullOrEmpty(DescriptionDe))
             {
@@ -705,6 +713,10 @@ namespace Worki.Data.Models
         [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Views.Offer.OfferString))]
         [StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string DescriptionDe { get; set; }
+
+        [Display(Name = "AllInclusive", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public bool AllInclusive { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer
@@ -717,8 +729,8 @@ namespace Worki.Data.Models
 
 	[MetadataType(typeof(OfferPrice_Validation))]
     public partial class OfferPrice : IComparable<OfferPrice>
-	{
-		/// <summary>
+    {
+        /// <summary>
 		/// Get price display : price / period
 		/// </summary>
 		/// <returns>the display</returns>

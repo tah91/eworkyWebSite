@@ -1864,6 +1864,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AddOfferPrice() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult AjaxAdd() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
         }
@@ -1971,8 +1976,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AddOfferPrice() {
+        public override System.Web.Mvc.PartialViewResult AddOfferPrice(int priceType) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
+            callInfo.RouteValueDictionary.Add("priceType", priceType);
             return callInfo;
         }
 

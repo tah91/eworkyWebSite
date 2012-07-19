@@ -1,90 +1,61 @@
 ﻿@model IEnumerable<OfferPrice>
-
-<ul class="paymentPeriodType">
-    @{
-        @*intialie the checkbox to true if the offer has allready been subscribed*@
-        Dictionary<int, string> paymentPeriodTypes = Offer.GetPaymentPeriodTypes();
-        foreach (KeyValuePair<int, string> pair in paymentPeriodTypes)
-        {
-            Boolean existing = false;
-            existing = Offer.existingOfferPrice(Model, pair.Key);
-
-            if (existing == true)
-            {
-            <li>
-            @Html.Label(pair.Value)
-            @Html.CheckBox(pair.Key.ToString(), true)
-            </li>
-            }
-
-            else
-            {
-            <li>
-            @Html.Label(pair.Value)
-            @Html.CheckBox(pair.Key.ToString())
-            </li>
-            }
-
-        }
-    }
-</ul>
+@{
+    Dictionary<int, string> paymentPeriodTypes = Offer.GetPaymentPeriodTypes();
+}
 
 <table class="offerPricesRows">
-	@foreach (var item in Model)
- {
-       
-        @Html.Partial(MVC.Offer.Views._OfferPrice, item, new ViewDataDictionary { { "existingItems", true } })
- }
+    @if (Model.Count() == 0)
+    {
+        foreach(var pair in paymentPeriodTypes)
+        {
+        @Html.Partial(MVC.Offer.Views._OfferPrice, new OfferPrice(){PriceType = pair.Key}) 
+        }
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+        @Html.Partial(MVC.Offer.Views._OfferPrice, item)
+        }
+    }
 </table>
 
 <script type="text/javascript">
-	$("#addItem").click(function () {
-		$.ajax({
-			url: this.href,
-			cache: false,
-			success: function (html) {
-				$(".offerPricesRows").append(html);
-			}
-		});
-		return false;
-});
-
-$('.paymentPeriodType input[type="checkbox"]').click(function () {
-
-    var value = $(this).attr("name");
-    var labelvalue = $(this).prev().text();
-
-    if ($(this).is(':checked')) {
+    $("#addItem").click(function () {
         $.ajax({
-            url: "/Offer/AddOfferPrice",
+            url: this.href,
             cache: false,
             success: function (html) {
-
-                var row = $(html);
-                row.find('input[type="hidden"]').eq(1).val(value);
-                var labeltext = row.find("label").eq(0).text() + " " + labelvalue;
-                row.find("label").eq(0).text(labeltext);
-                row = '<tr class="offerPricesRow">' + row.html(); +'</tr>';
-
-                $(".offerPricesRows").append(row);
+                $(".offerPricesRows").append(html);
             }
         });
-    }
+        return false;
+    });
 
-    else {
-        $(".offerPricesRow").each(function () {
-            var currentvalue = $(this).find('input[type="hidden"]').eq(1).val();
-            if (currentvalue == value) {
-                $(this).remove();
-                return true;
-            }
-        });
-    }
-});
+    $('.paymentPeriodType input[type="checkbox"]').click(function (){
+        var priceType = $(this).attr("name");
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: "@Url.Action(MVC.Offer.AddOfferPrice())",
+                data: ({ priceType: priceType }),
+                cache: false,
+                success: function (html) {
+                    $(".offerPricesRows").append(html);
+                }
+            });
+        } else {
+            $(".offerPricesRow").each(function () {
+                var currentPriceType = $(this).find('input[type="hidden"]').eq(1).val();
+                if (currentPriceType == priceType) {
+                    $(this).remove();
+                    return true;
+                }
+            });
+        }
+    });
 
-	$("button.deleteRow").live("click", function () {
-		$(this).parents(".offerPricesRow:first").remove();
-		return false;
-	});
-
+    $("button.deleteRow").live("click", function () {
+        $(this).parents(".offerPricesRow:first").remove();
+        return false;
+    });
 </script>

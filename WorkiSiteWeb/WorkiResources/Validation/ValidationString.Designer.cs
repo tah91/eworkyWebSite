@@ -466,6 +466,15 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to le champ &quot;{0}&quot; doit être supéreur à {1}.
+        /// </summary>
+        public static string SuperiorTo {
+            get {
+                return ResourceManager.GetString("SuperiorTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Missing temporary folder.
         /// </summary>
         public static string TempFolderMissing {

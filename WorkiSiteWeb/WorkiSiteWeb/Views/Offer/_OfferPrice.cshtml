@@ -7,34 +7,15 @@
 
 <tr class="offerPricesRow">
 @{
-    @*if the model is empty display offerprice with basic information else get the information from the model and display it*@
-    if (ViewData["existingItems"] != null && (Boolean)ViewData["existingItems"] == true)
-    {
-        using (Html.BeginCollectionItem(bciName))
-        {
-            
-                <td>
-                @Html.HiddenFor(m => m.PriceType)
-                @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(Model.PriceType))
-                </td>
-                <td>
-		        @Html.TextBoxFor(m => m.Price)
-                </td>
-        }
-    }
-
-    else
-    {
-        using (Html.BeginCollectionItem(bciName))
-        {
-                <td>
-                @Html.HiddenFor(m => m.PriceType)
-                @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy)
-                </td>
-                <td>
-		        @Html.TextBoxFor(m => m.Price)
-                </td>
-         }
+    using (Html.BeginCollectionItem(bciName))
+    { 
+        <td>
+            @Html.HiddenFor(m => m.PriceType)
+            @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(Model.PriceType))
+        </td>
+        <td>
+		    @Html.TextBoxFor(m => m.Price)
+        </td>
     }
 }
 </tr>

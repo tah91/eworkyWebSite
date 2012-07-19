@@ -61,6 +61,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toutes charges incluses.
+        /// </summary>
+        public static string AllInclusive {
+            get {
+                return ResourceManager.GetString("AllInclusive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date de disponibilité.
         /// </summary>
         public static string AvailabilityDate {
@@ -241,6 +250,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Durée(s) de location.
+        /// </summary>
+        public static string LeaseTerm {
+            get {
+                return ResourceManager.GetString("LeaseTerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mois.
         /// </summary>
         public static string Month {
@@ -399,6 +417,15 @@ namespace Worki.Resources.Models.Offer {
         public static string Quotation {
             get {
                 return ResourceManager.GetString("Quotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombres d&apos;offres identiques.
+        /// </summary>
+        public static string SameOffersCount {
+            get {
+                return ResourceManager.GetString("SameOffersCount", resourceCulture);
             }
         }
         

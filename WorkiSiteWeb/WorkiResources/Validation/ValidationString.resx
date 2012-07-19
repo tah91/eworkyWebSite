@@ -290,4 +290,7 @@
   <data name="OfferPriceType" xml:space="preserve">
     <value>Vous devez choisir une période pour le champ {0}</value>
   </data>
+  <data name="SuperiorTo" xml:space="preserve">
+    <value>le champ "{0}" doit être supéreur à {1}</value>
+  </data>
 </root>

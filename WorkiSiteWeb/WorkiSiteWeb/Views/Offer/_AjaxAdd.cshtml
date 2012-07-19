@@ -35,117 +35,149 @@
 				break;
         }
 }
-		
-<div id="offerFormContainer">   
-@using (Html.BeginForm())
-{
-	@Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.IsSharedOffice)
-    @Html.HiddenFor(m => m.LocId)
-    <div class="contentBlock">
-		<table class="offerTable">
-			<tr>
-				<td>
-					<div class="editor-label">
-						@Html.LabelFor(m => m.Offer.Type) <span class="blue">*</span>
-					</div>
-				</td>
-				<td>
-					<div class="editor-field">
-						@Html.DropDownListFor(m => m.Offer.Type, Model.Offers)
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="editor-label">
-						@Html.LabelFor(m => m.Offer.Name) <span class="blue">*</span>
-					</div>
-				</td>
-				<td>
-					<div class="editor-field">
-						@Html.TextBoxFor(m => m.Offer.Name)
-					</div>
-				</td>
-			</tr>
-            <tr>
-                 <td class="verticalAlignTop">
-                     <div class="editor-label">
-                       @Html.LabelFor(model => model.Offer.Description)<span class="blue">*</span>
-                     </div>
-                  </td>
-                  <td>
-					@DescritptionField(Url.GetCulture())
-                 </td>
-           </tr>
-		</table>
-    </div>
-	if (!Url.IsInArea("Backoffice"))
-	{ 
-    <div class="contentBlock configOffer">
-        <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
-        <table class="configCurrency">
-            <tr>
-			    <td>
-				    @Html.LabelFor(m => m.Offer.Currency)
-			    </td>
-			    <td>
-				    @Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
-			    </td>
-		    </tr>
-        </table>
-		@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
-    </div> 
-    }
-    if (Model.IsSharedOffice)
+    <div id="offerFormContainer">   
+    @using (Html.BeginForm())
     {
-    <div class="contentBlock">
-        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Availability</h3>
-        <table class="offerTable">
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Offer.AvailabilityDate)
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        @Html.TextBox("Offer.AvailabilityDate", CultureHelpers.GetSpecificFormat(Model.Offer.AvailabilityDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div> 
+	    @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.IsSharedOffice)
+        @Html.HiddenFor(m => m.LocId)
+        <div class="contentBlock">
+		    <table class="offerTable">
+			    <tr>
+				    <td>
+					    <div class="editor-label">
+						    @Html.LabelFor(m => m.Offer.Type) <span class="blue">*</span>
+					    </div>
+				    </td>
+				    <td>
+					    <div class="editor-field">
+						    @Html.DropDownListFor(m => m.Offer.Type, Model.Offers)
+					    </div>
+				    </td>
+			    </tr>
+			    <tr>
+				    <td>
+					    <div class="editor-label">
+						    @Html.LabelFor(m => m.Offer.Name) <span class="blue">*</span>
+					    </div>
+				    </td>
+				    <td>
+					    <div class="editor-field">
+						    @Html.TextBoxFor(m => m.Offer.Name)
+					    </div>
+				    </td>
+			    </tr>
+                <tr>
+                     <td class="verticalAlignTop">
+                         <div class="editor-label">
+                           @Html.LabelFor(model => model.Offer.Description)<span class="blue">*</span>
+                         </div>
+                      </td>
+                      <td>
+					    @DescritptionField(Url.GetCulture())
+                     </td>
+               </tr>
+               <tr>
+                    <td>
+					    <div class="editor-label">
+						    @Html.Label(Worki.Resources.Models.Offer.Offer.LeaseTerm)<span class="blue">*</span>
+					    </div>
+				    </td>
+                    <td class="verticalAlignTop">
+					    <div class="editor-field">
+                           <ul class="paymentPeriodType">
+						    @{
+                                Dictionary<int, string> paymentPeriodTypes = Offer.GetPaymentPeriodTypes();
+                                foreach (var pair in paymentPeriodTypes)
+                                {
+                                    <li>
+                                    @Html.Label(pair.Value)
+                                    @Html.CheckBox(pair.Key.ToString(), Offer.HasPriceOfType(Model.Offer.OfferPrices, pair.Key))
+                                    </li>
+                                }
+                            }
+                            <div class="clear">
+                            </div>
+                            </ul>
+					    </div>
+				    </td>
+               </tr>
+		    </table>
+        </div>
+	    if (!Url.IsInArea("Backoffice"))
+	    { 
+        <div class="contentBlock configOffer">
+            <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.Tariff</h3>
+            <table class="configCurrency">
+                <tr>
+			        <td>
+				        @Html.LabelFor(m => m.Offer.Currency)
+			        </td>
+			        <td>
+				        @Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
+			        </td>
+		        </tr>
+            </table>
+		    @Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
+            <table class="configCurrency">
+                <tr>
+			        <td>
+				        @Html.LabelFor(m => m.Offer.AllInclusive) <span class="blue">*</span>
+			        </td>
+			        <td>
+                        @Html.CheckBoxFor(m => m.Offer.AllInclusive)
+			        </td>
+		        </tr>
+            </table>
+        </div> 
+        }
+        if (Model.IsSharedOffice)
+        {
+        <div class="contentBlock">
+            <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Availability</h3>
+            <table class="offerTable">
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Offer.AvailabilityDate)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBox("Offer.AvailabilityDate", CultureHelpers.GetSpecificFormat(Model.Offer.AvailabilityDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div> 
+        }
+	    <div class="contentBlock">
+		    <h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
+		    <div id="@PictureData.GetFileUploaderId(ProviderType.Offer)" class="fileupload borderRadius">
+			    <div class="fileupload-buttonbar">
+				    <label class="fileinput-button">
+					    <span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+					    <input type="file" name="files[]" accept="image/*"/>
+				    </label>
+			    </div>
+			    <div class="fileupload-content">
+				    <table class="files"></table>
+				    <div class="fileupload-progressbar"></div>
+			    </div>
+		    </div>
+	    </div>
+	    <div id="offerFeaturesForm">
+	    </div>
+	    <div class="editor-field float-right">
+		    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+	    </div>
+	    <div class="clear"></div>
     }
-	<div class="contentBlock">
-		<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
-		<div id="@PictureData.GetFileUploaderId(ProviderType.Offer)" class="fileupload borderRadius">
-			<div class="fileupload-buttonbar">
-				<label class="fileinput-button">
-					<span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
-					<input type="file" name="files[]" accept="image/*"/>
-				</label>
-			</div>
-			<div class="fileupload-content">
-				<table class="files"></table>
-				<div class="fileupload-progressbar"></div>
-			</div>
-		</div>
-	</div>
-	<div id="offerFeaturesForm">
-	</div>
-	<div class="editor-field float-right">
-		<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
-	</div>
-	<div class="clear"></div>
-}
 
-</div>
-
+    </div>
 @Html.Partial(MVC.Offer.Views._CreateOfferScript)
 @Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
 @Html.Partial(MVC.Shared.Views._DatePickerScript)
-
 <script type="text/javascript">
 
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
