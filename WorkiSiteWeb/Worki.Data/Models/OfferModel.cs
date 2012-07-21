@@ -750,7 +750,16 @@ namespace Worki.Data.Models
 				return string.Empty;
 
             var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
-			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
+
+            if (this.Offer.WithTax == true)
+            {
+                return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " TTC");
+            }
+
+            else
+            {
+                return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " HT");
+            }
 		}
 
         public int CompareTo(OfferPrice other)
