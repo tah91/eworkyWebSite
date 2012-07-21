@@ -290,8 +290,8 @@ namespace Worki.Web.Controllers
                             offerList = new OfferFormListModel { IsSharedOffice = offerFormViewModel.IsSharedOffice };
                         //negative id to set the order
 
-                        var minId = offerList.Offers.Min(o => (int?)o.Id) ?? -1;
-                        offerFormViewModel.Offer.Id = minId;
+                        var minId = offerList.Offers.Count() + 1;
+                        offerFormViewModel.Offer.Id = - minId;
 
 						offerList.Offers.Add(offerFormViewModel.Offer);
                         _ObjectStore.Store<OfferFormListModel>("OfferList", offerList);
