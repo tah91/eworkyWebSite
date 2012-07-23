@@ -3341,13 +3341,13 @@ namespace Worki.Web.Areas.Api.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Comment() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+        public System.Web.Mvc.ActionResult Connect() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Connect() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+        public System.Web.Mvc.ActionResult Comment() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3373,8 +3373,8 @@ namespace Worki.Web.Areas.Api.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Register = "Register";
-            public readonly string Comment = "Comment";
             public readonly string Connect = "Connect";
+            public readonly string Comment = "Comment";
             public readonly string Details = "Details";
             public readonly string Search = "Search";
         }
@@ -3398,17 +3398,17 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult Comment(int id, Worki.Data.Models.LogOnModel model, Worki.Data.Models.Comment com) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("model", model);
             callInfo.RouteValueDictionary.Add("com", com);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
-            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 

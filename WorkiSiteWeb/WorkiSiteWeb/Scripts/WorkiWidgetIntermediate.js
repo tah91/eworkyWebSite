@@ -31,7 +31,7 @@ var socket = new easyXDM.Socket({
 
         computeHeight = function (d) {
             var height = d.body.clientHeight || d.body.offsetHeight || d.body.scrollHeight;
-            return height + 10;
+            return height;// +10;
         }
         var timer;
         iframe.onload = function () {

@@ -223,7 +223,8 @@ namespace Worki.Infrastructure.Helpers
             public const string Type = "filter-type";
             public const string Country = "filter-country";
             public const string ItemId = "item-id";
-            public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id";
+            public const string PlaceHolder = "placeholder";
+            public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id,placeholder";
 
             #endregion
 
