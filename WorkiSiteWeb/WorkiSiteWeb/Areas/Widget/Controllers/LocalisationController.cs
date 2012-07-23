@@ -84,7 +84,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>redirect to results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
         public virtual ActionResult Search(SearchCriteria criteria)
         {
@@ -167,7 +167,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>json containing results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
         [HandleModelStateException]
         public virtual ActionResult AjaxSearch(SearchCriteria criteria)

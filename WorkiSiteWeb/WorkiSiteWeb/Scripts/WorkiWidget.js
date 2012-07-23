@@ -1,4 +1,4 @@
-﻿var root = 'http://www.eworky.fr';
+﻿var root = 'http://taff2.coworky.fr';
 var eworkyClass = function () {
     this.initialize.apply(this, arguments)
 };
@@ -98,7 +98,7 @@ eworkyUtilsClass.prototype = {
         } else {
             if (document.attachEvent) {
                 document.attachEvent("onreadystatechange", DOMContentLoaded);
-                window.attachEvent("onload", jQuery.ready);
+                //window.attachEvent("onload", jQuery.ready);
                 var hasFrame = false;
                 try {
                     hasFrame = window.frameElement == null
