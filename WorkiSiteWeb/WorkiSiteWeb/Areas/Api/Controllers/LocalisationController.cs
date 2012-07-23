@@ -185,22 +185,32 @@ namespace Worki.Web.Areas.Api.Controllers
 
         public virtual ActionResult Connect(LogOnModel model)
         {
-            if (ModelState.IsValid && _MembershipService.ValidateUser(model.Login, model.Password))
+            if (ModelState.IsValid)
             {
-                var context = ModelFactory.GetUnitOfWork();
-                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                Member m = mRepo.GetMember(model.Login);
-                AuthJson ret = new AuthJson
+                try
                 {
-                    token = _MembershipService.GetToken(model.Login),
-                    email = m.Email,
-                    name = m.MemberMainData.LastName,
-                    firstname = m.MemberMainData.FirstName
-                };
-                return new ObjectResult<AuthJson>(ret);
+                    _MembershipService.ValidateUser(model.Login, model.Password);
+                    var context = ModelFactory.GetUnitOfWork();
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    Member m = mRepo.GetMember(model.Login);
+                    AuthJson ret = new AuthJson
+                    {
+                        token = _MembershipService.GetToken(model.Login),
+                        email = m.Email,
+                        name = m.MemberMainData.LastName,
+                        firstname = m.MemberMainData.FirstName
+                    };
+                    return new ObjectResult<AuthJson>(ret);
+                }
+                catch (Exception ex)
+                {
+                    return new ObjectResult<AuthJson>(null, 400, ex.Message);
+                }
             }
             else
+            {
                 return new ObjectResult<AuthJson>(null, 400, "Wrong login or password.");
+            }
         }
 
         public virtual ActionResult Comment(int id, LogOnModel model, Comment com)

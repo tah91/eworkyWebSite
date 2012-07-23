@@ -436,6 +436,7 @@ namespace Worki.Memberships
                 ret = false;
                 Logger.Error("ValidateUser", ex);
                 context.Complete();
+                throw ex;
             }
 
             return ret;
