@@ -421,6 +421,15 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Les addresses Email ou numéro de téléphone sont interdites dans le champ &quot;{0}&quot;.
+        /// </summary>
+        public static string prohibitedString {
+            get {
+                return ResourceManager.GetString("prohibitedString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le champ &quot;{0}&quot; doit être compris entre {1} et {2}..
         /// </summary>
         public static string Range {

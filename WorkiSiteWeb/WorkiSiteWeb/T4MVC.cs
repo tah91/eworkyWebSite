@@ -4884,9 +4884,9 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Member member) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.ProfilFormViewModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("member", member);
+            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 

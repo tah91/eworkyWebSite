@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 using Worki.Infrastructure.Helpers;
 using System.Reflection;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace Worki.Data.Models
 {
@@ -767,10 +768,24 @@ namespace Worki.Data.Models
 					return DescriptionEs;
                 case "de":
                     return DescriptionDe;
-				case "fr":
 				default:
 					return Description;
 			}
+        }
+
+        public string GetDescriptionName()
+        {
+            switch (Thread.CurrentThread.CurrentUICulture.Name)
+            {
+                case "en":
+                    return "DescriptionEn";
+                case "es":
+                    return "DescriptionEs";
+                case "de":
+                    return "DescriptionDe";
+                default:
+                    return "Description";
+            }
         }
 
         #endregion
@@ -1217,10 +1232,31 @@ namespace Worki.Data.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(Description) && string.IsNullOrEmpty(DescriptionEn) && string.IsNullOrEmpty(DescriptionEs))
+            if (string.IsNullOrEmpty(this.GetDescription()))
             {
-                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { "Description" });
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { this.GetDescriptionName() });
             }
+            else
+            {
+
+                string emailPattern = FormValidation.emailPattern;
+                string phonePattern = FormValidation.phonePattern;
+
+                string[] pattern = { emailPattern, phonePattern };
+                int nbrMatch = 0;
+
+                foreach (string s in pattern)
+                {
+                    Regex regex = new Regex(s);
+                    nbrMatch += regex.Matches(this.GetDescription().Replace(" ", "")).Count;
+                }
+
+                if (nbrMatch > 0)
+                {
+                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.prohibitedString, Worki.Resources.Models.Localisation.Localisation.Description, new[] { this.GetDescriptionName() }));
+                }
+            }
+
         }
 
     }

@@ -14,6 +14,13 @@ using Worki.Infrastructure.Helpers;
 
 namespace Worki.Infrastructure
 {
+
+    public static class FormValidation
+    {
+        public static string emailPattern = @"[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}";
+        public static string phonePattern = @"[0-9-_()]{10,}"; 
+    }
+
     public static class AttributeHelpers
     {
         public static string GetAreaToken(this RouteBase r)

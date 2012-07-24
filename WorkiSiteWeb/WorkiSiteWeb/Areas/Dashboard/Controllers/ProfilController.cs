@@ -12,6 +12,7 @@ using Worki.Infrastructure.Helpers;
 using System.Web.Security;
 using Worki.Memberships;
 using Facebook;
+using System.ComponentModel.DataAnnotations;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {
@@ -74,60 +75,67 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		[ValidateAntiForgeryToken]
 		[ActionName("editer")]
 		[RequireHttpsRemote]
-		public virtual ActionResult Edit(Member member)
+		public virtual ActionResult Edit(ProfilFormViewModel model)
 		{
+            var member = model.Member;
 			var id = WebHelper.GetIdentityId(User.Identity);
 			if (id == 0)
 				return View(MVC.Shared.Views.Error);
-
 			member.MemberId = id;
-			if (ModelState.IsValid)
-			{
-				var context = ModelFactory.GetUnitOfWork();
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				try
-				{
-					//upload images and set image paths
-					foreach (string name in Request.Files)
-					{
-						try
-						{
-							var postedFile = Request.Files[name];
-							if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
-								continue;
-							var uploadedFileName = this.UploadFile(postedFile, _ImageSize, Member.AvatarFolder);
-							switch (name)
-							{
-								case "Avatar":
-									member.MemberMainData.Avatar = uploadedFileName;
-									break;
-								default:
-									break;
-							}
-						}
-						catch (Exception ex)
-						{
-							ModelState.AddModelError("", ex.Message);
-						}
-					}
-					var m = mRepo.Get(id);
-					UpdateModel(m, "Member");
-					if (!string.IsNullOrEmpty(member.MemberMainData.Avatar))
-						m.MemberMainData.Avatar = member.MemberMainData.Avatar;
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                try
+                {
+                    //upload images and set image paths
+                    foreach (string name in Request.Files)
+                    {
+                        try
+                        {
+                            var postedFile = Request.Files[name];
+                            if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
+                                continue;
+                            var uploadedFileName = this.UploadFile(postedFile, _ImageSize, Member.AvatarFolder);
+                            switch (name)
+                            {
+                                case "Avatar":
+                                    member.MemberMainData.Avatar = uploadedFileName;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ModelState.AddModelError("", ex.Message);
+                        }
+                    }
+                    var m = mRepo.Get(id);
+                    UpdateModel(m, "Member");
+                    if (!string.IsNullOrEmpty(member.MemberMainData.Avatar))
+                        m.MemberMainData.Avatar = member.MemberMainData.Avatar;
 
-					context.Commit();
+                    context.Commit();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
 
-					return RedirectToAction(MVC.Dashboard.Home.Index());
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("EditProfil", ex);
-					context.Complete();
-					ModelState.AddModelError("EditProfil", ex);
-				}
-			}
+                    return RedirectToAction(MVC.Dashboard.Home.Index());
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("EditProfil", ex);
+                    context.Complete();
+                    ModelState.AddModelError("EditProfil", ex);
+                }
+            }
+            else
+            {
+                var errors = model.Validate(new ValidationContext(model, null, null));
+                foreach (var error in errors)
+                    foreach (var memberName in error.MemberNames)
+                        ModelState.AddModelError(memberName, error.ErrorMessage);
+            }
 			return View(new ProfilFormViewModel { Member = member });
 		}
 
