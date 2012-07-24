@@ -156,7 +156,7 @@ namespace Worki.Web.Areas.Api.Controllers
                         }
 						context.Commit();
 
-						if (sendNewAccountMail)
+                        if (sendNewAccountMail || sendNewAccountMailPass)
 						{
 							newMemberMail.Send();
 						}
