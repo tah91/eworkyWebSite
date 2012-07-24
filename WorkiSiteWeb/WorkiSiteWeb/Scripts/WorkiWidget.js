@@ -1,4 +1,4 @@
-﻿var root = 'http://taff2.coworky.fr';
+﻿var root = 'http://www.eworky.fr';
 var eworkyClass = function () {
     this.initialize.apply(this, arguments)
 };
