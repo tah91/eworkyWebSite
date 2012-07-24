@@ -440,10 +440,19 @@ namespace Worki.Web.Areas.Api.Controllers
 
             //take the json
             var list = results.List;
-            if (offerType != null)
+            if (!string.IsNullOrEmpty(offerType))
             {
-                string[] offerTypeArray = offerType.Trim(_arrayTrim).Split(',');
-                list = list.Where(p => p.GetOfferTypes().ToList().Any(x => offerTypeArray.Contains(((int) x).ToString()))).ToList();
+                var offerTypeArray = offerType.Trim(_arrayTrim).Split(',').Select(ot =>
+                {
+                    int value;
+                    bool success = int.TryParse(ot, out value);
+                    return new { value, success };
+                })
+                  .Where(pair => pair.success)
+                  .Select(pair => pair.value).ToList();
+
+                if (offerTypeArray.Count > 0)
+                    list = list.Where(p => p.GetOfferTypes().Any(x => offerTypeArray.Contains((int)x))).ToList();
             }
 
             List<LocalisationJson> neededLocs;
