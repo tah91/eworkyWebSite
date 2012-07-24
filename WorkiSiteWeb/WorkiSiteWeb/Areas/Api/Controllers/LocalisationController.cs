@@ -58,16 +58,26 @@ namespace Worki.Web.Areas.Api.Controllers
 				try
 				{
                     int memberId;
-                    var uploadedFileName = this.UploadFile(string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, formData.FacebookId), _ImageSize, Member.AvatarFolder);
+                    
 					var memberData = new MemberMainData
 					{
 						FirstName = formData.FirstName,
 						LastName = formData.LastName,
-						PhoneNumber = formData.PhoneNumber,
-                        BirthDate = formData.BirthDate,
-                        Avatar = uploadedFileName,
-                        Facebook = formData.FacebookLink
+						PhoneNumber = formData.PhoneNumber
 					};
+                    if (formData.FacebookId != 0)
+                    {
+                        memberData.Avatar = this.UploadFile(string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, formData.FacebookId), _ImageSize, Member.AvatarFolder);
+                    }
+                    if (formData.BirthDate > DateTime.MinValue)
+                    {
+                        memberData.BirthDate = formData.BirthDate;
+                    }
+                    if (!string.IsNullOrEmpty(formData.FacebookLink))
+                    {
+                        memberData.Facebook = formData.FacebookLink;
+                    }
+
                     if (string.IsNullOrEmpty(formData.Password))
                     {
                         sendNewAccountMailPass = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
@@ -174,7 +184,7 @@ namespace Worki.Web.Areas.Api.Controllers
 				{
 					_Logger.Error("Create", ex);
 					ModelState.AddModelError("", ex.Message);
-                    return new ObjectResult<AuthJson>(null, 400, "Error in attempting to create.");
+                    return new ObjectResult<AuthJson>(null, 400, ex.Message);
 				}
             }
             else
