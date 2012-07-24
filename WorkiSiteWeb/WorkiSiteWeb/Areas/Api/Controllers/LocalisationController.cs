@@ -110,7 +110,7 @@ namespace Worki.Web.Areas.Api.Controllers
 							newMemberMail.To = formData.Email;
 							newMemberMail.ToName = formData.FirstName;
 
-							newMemberMail.Subject = "Bienvenue sur eWorky";
+							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
                             /*
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
@@ -139,7 +139,7 @@ namespace Worki.Web.Areas.Api.Controllers
                             newMemberMail.To = formData.Email;
                             newMemberMail.ToName = formData.FirstName;
 
-                            newMemberMail.Subject = "Bienvenue sur eWorky";
+                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
                             /*
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
@@ -156,7 +156,7 @@ namespace Worki.Web.Areas.Api.Controllers
                         }
 						context.Commit();
 
-                        if (sendNewAccountMail || sendNewAccountMailPass)
+						if (sendNewAccountMail)
 						{
 							newMemberMail.Send();
 						}
