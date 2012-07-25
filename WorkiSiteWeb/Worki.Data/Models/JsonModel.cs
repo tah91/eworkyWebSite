@@ -14,7 +14,7 @@ namespace Worki.Data.Models
         {
             comments = new List<CommentJson>();
             fans = new List<MemberJson>();
-			amenities = new List<string>();
+            features = new List<FeatureJson>();
             prices = new PricesJson();
             offers = new List<OfferJson>();
             openingTimes = new OpeningTimesJson();
@@ -25,8 +25,6 @@ namespace Worki.Data.Models
 		public double latitude { get; set; }
 		public double longitude { get; set; }
 		public string description { get; set; }
-		public string image { get; set; }
-        public string imageThumb { get; set; }
 		public string address { get; set; }
         public string postalCode { get; set; }
 		public string city { get; set; }
@@ -35,10 +33,12 @@ namespace Worki.Data.Models
         public bool isFree { get; set; }
 		public string url { get; set; }
         public double rating { get; set; }
-		public List<string> amenities { get; set; }
-        public PricesJson prices { get; set; }
-        public List<OfferJson> offers { get; set; }
         public OpeningTimesJson openingTimes { get; set; }
+        public PricesJson prices { get; set; }
+        public AccessJson access { get; set; }
+        public List<ImageJson> images { get; set; }
+        public List<FeatureJson> features { get; set; }
+        public List<OfferJson> offers { get; set; }
 		public List<CommentJson> comments { get; set; }
         public List<MemberJson> fans { get; set; }
 	}
@@ -80,16 +80,22 @@ namespace Worki.Data.Models
         public string buisnessLounge { get; set; }
         public string seminarRoom { get; set; }
         public string visioRoom { get; set; }
+    }
 
+    public class AccessJson
+    {
+        public string publicTransport { get; set; }
+        public string station { get; set; }
+        public string roadAccess { get; set; }
     }
 
     public class OfferJson
     {
         public int id { get; set; }
         public string name { get; set; }
-        public List<string> pictures { get; set; }
+        public List<ImageJson> images { get; set; }
         public List<string> prices { get; set; }
-        public List<string> amenities { get; set; }
+        public List<FeatureJson> features { get; set; }
         public string availability { get; set; }
         public int type { get; set; }
     }
@@ -130,5 +136,11 @@ namespace Worki.Data.Models
         public string name { get; set; }
         public string firstname { get; set; }
         public string email { get; set; }
+    }
+
+    public class FeatureJson
+    {
+        public int featureId { get; set; }
+        public string featureDisplay { get; set; }
     }
 }

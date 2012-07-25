@@ -24,7 +24,7 @@ namespace Worki.Data.Models
 
         public LocalisationJson GetJson()
         {
-            return new LocalisationJson
+            var json = new LocalisationJson
             {
                 id = ID,
                 latitude = Latitude,
@@ -38,6 +38,81 @@ namespace Worki.Data.Models
 				type = Localisation.GetLocalisationType(TypeValue),
                 isFree = IsFreeLocalisation()
             };
+
+            //get comments
+            foreach (var item in Comments)
+            {
+                json.comments.Add(item.GetJson());
+            }
+
+            //get fans
+            foreach (var item in FavoriteLocalisations)
+            {
+                json.fans.Add(item.Member.GetJson());
+            }
+
+            //get all offer types
+            foreach (var item in GetOfferTypes())
+            {
+                OfferPrice price = GetMinPrice((int)item);
+                if (price != null)
+                {
+                    switch (item)
+                    {
+                        case LocalisationOffer.Desktop:
+                            json.prices.desktop = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.MeetingRoom:
+                            json.prices.meetingRoom = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.Workstation:
+                            json.prices.workStation = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.BuisnessLounge:
+                            json.prices.buisnessLounge = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.SeminarRoom:
+                            json.prices.seminarRoom = price.GetPriceDisplay();
+                            break;
+                        case LocalisationOffer.VisioRoom:
+                            json.prices.visioRoom = price.GetPriceDisplay();
+                            break;
+                    }
+                }
+            }
+
+            //get offers
+            foreach (var item in GetAllOffers())
+            {
+                json.offers.Add(item.GetJson());
+            }
+
+            //get amenities
+            foreach (var item in LocalisationFeatures)
+            {
+                json.features.Add(new FeatureJson { featureId = item.FeatureID, featureDisplay = FeatureHelper.GetFeatureDisplayName((Feature)item.FeatureID) });
+            }
+
+            //get openning time
+            json.openingTimes = new OpeningTimesJson
+            {
+                monday = GetOpenningTime(DayOfWeek.Monday),
+                tuesday = GetOpenningTime(DayOfWeek.Tuesday),
+                wednesday = GetOpenningTime(DayOfWeek.Wednesday),
+                thursday = GetOpenningTime(DayOfWeek.Thursday),
+                friday = GetOpenningTime(DayOfWeek.Friday),
+                saturday = GetOpenningTime(DayOfWeek.Saturday),
+                sunday = GetOpenningTime(DayOfWeek.Sunday)
+            };
+
+            json.access = new AccessJson
+            {
+                publicTransport = PublicTransportation,
+                roadAccess = RoadAccess,
+                station = Station
+            };
+
+            return json;
         }
 
 		#endregion

@@ -88,16 +88,16 @@ namespace Worki.Data.Models
 
         public OfferJson GetJson()
         {
-            List<string> Prices = new List<string>();
+            List<string> prices = new List<string>();
             foreach (var offer in OfferPrices)
             {
-                Prices.Add(offer.GetPriceDisplay());
+                prices.Add(offer.GetPriceDisplay());
             }
 
-            List<string> Amenities = new List<string>();
+            var features = new List<FeatureJson>();
             foreach (var feature in OfferFeatures)
             {
-                Amenities.Add(FeatureHelper.Display(feature));
+                features.Add(new FeatureJson { featureId = feature.FeatureId, featureDisplay = FeatureHelper.Display(feature) });
             }
 
             return new OfferJson
@@ -105,8 +105,8 @@ namespace Worki.Data.Models
                 id = Id,
                 name = GetDisplayName(),
                 availability = GetAvailabilityDisplay(),
-                prices = Prices,
-                amenities = Amenities,
+                prices = prices,
+                features = features,
                 type = Type
             };
         }

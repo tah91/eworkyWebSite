@@ -26,20 +26,31 @@ namespace Worki.Web.Helpers
             return absoluteAction;
         }
 
+
+        static string GetImageUrl(string image)
+        {
+            if (string.IsNullOrEmpty(image))
+                return image;
+            if (!string.IsNullOrEmpty(image) && VirtualPathUtility.IsAppRelative(image))
+                image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), true);
+
+            return image;
+        }
+
         public static OfferJson GetJson(this Offer offer, Controller controller)
         {
             //get data from model
             var json = offer.GetJson();
-            json.pictures = new List<String>();
 
-            //get image
-            foreach (var image in (from item in offer.OfferFiles orderby item.Id select item.FileName).ToList())
+            //get images
+            var images = offer.OfferFiles.OrderBy(f => f.IsDefault);
+            foreach (var item in images)
             {
-                var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image);
-                if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
-                    json.pictures.Add(WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true));
-                else
-                    json.pictures.Add(imageUrl);
+                json.images.Add(new ImageJson
+                {
+                    url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName)),
+                    thumbnail_url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName))
+                });
             }
 
             return json;
@@ -54,82 +65,17 @@ namespace Worki.Web.Helpers
 			var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
             json.url = localisation.GetDetailFullUrl(urlHelper);
 
-			//get image
-			var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
-			var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName);
-			if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
-				json.image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
-			else
-				json.image = imageUrl;
-            imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
-            if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
-                json.imageThumb = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
-            else
-                json.imageThumb = imageUrl;
-
-			//get comments
-			foreach (var item in localisation.Comments)
-			{
-				json.comments.Add(item.GetJson());
-			}
-
-			//get fans
-			foreach (var item in localisation.FavoriteLocalisations)
-			{
-				json.fans.Add(item.Member.GetJson());
-			}
-
-            //get all offer types
-            foreach(var item in localisation.GetOfferTypes())
+			//get images
+			var images = localisation.LocalisationFiles.OrderBy(f => f.IsDefault);
+            foreach (var item in images)
             {
-                OfferPrice price = localisation.GetMinPrice((int)item);
-                if (price != null)
+                json.images.Add(new ImageJson
                 {
-                    switch(item)
-                    {
-                        case LocalisationOffer.Desktop:
-                            json.prices.desktop = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.MeetingRoom:
-                            json.prices.meetingRoom = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.Workstation:
-                            json.prices.workStation = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.BuisnessLounge:
-                            json.prices.buisnessLounge = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.SeminarRoom:
-                            json.prices.seminarRoom = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.VisioRoom:
-                            json.prices.visioRoom = price.GetPriceDisplay();
-                            break;
-                    }
-                }
-
+                    url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName)),
+                    thumbnail_url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName))
+                });
             }
 
-            //get offers
-            foreach (var item in localisation.GetAllOffers())
-            {
-                json.offers.Add(item.GetJson());
-            }
-
-			//get amenities
-			foreach (var item in localisation.LocalisationFeatures)
-			{
-				json.amenities.Add(FeatureHelper.GetFeatureDisplayName((Feature)item.FeatureID));
-			}
-
-            //get openning time
-            json.openingTimes.monday = localisation.GetOpenningTime(DayOfWeek.Monday);
-            json.openingTimes.tuesday = localisation.GetOpenningTime(DayOfWeek.Tuesday);
-            json.openingTimes.wednesday = localisation.GetOpenningTime(DayOfWeek.Wednesday);
-            json.openingTimes.thursday = localisation.GetOpenningTime(DayOfWeek.Thursday);
-            json.openingTimes.friday = localisation.GetOpenningTime(DayOfWeek.Friday);
-            json.openingTimes.saturday = localisation.GetOpenningTime(DayOfWeek.Saturday);
-            json.openingTimes.sunday = localisation.GetOpenningTime(DayOfWeek.Sunday);
 			return json;
 		}
 
