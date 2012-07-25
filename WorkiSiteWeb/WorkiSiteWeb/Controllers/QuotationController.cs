@@ -96,14 +96,8 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberQuotation.MemberId = memberId;
 						formData.MemberQuotation.OfferId = id;
-                        if (localisation.DirectlyReceiveQuotation == true)
-                        {
-                            formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Unknown;
-                        }
-                        else
-                        {
-                            formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Pending;
-                        }
+
+                        formData.MemberQuotation.StatusId =  (localisation.DirectlyReceiveQuotation == true) ? (int)MemberQuotation.Status.Unknown : (int)MemberQuotation.Status.Pending;
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;

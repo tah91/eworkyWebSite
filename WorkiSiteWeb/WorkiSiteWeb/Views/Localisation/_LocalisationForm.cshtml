@@ -104,21 +104,6 @@
         </table>
     </div>
 	}
-   else if (!Model.IsFreeLocalisation)
-    {
-        <div class="contentBlock">
-            <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Admin</h3>
-            <div class="adminBlock float-left">
-                @Html.LabelFor(m => m.Localisation.DirectlyReceiveQuotation)
-                <label for="DirectlyReceiveQuotation_true">@Worki.Resources.Models.Localisation.Localisation.Yes</label>
-                @Html.RadioButtonFor(m => m.Localisation.DirectlyReceiveQuotation, true, new { id = "DirectlyReceiveQuotation_true" })
-                <label for="DirectlyReceiveQuotation_false">@Worki.Resources.Models.Localisation.Localisation.No</label>
-                @Html.RadioButtonFor(m => m.Localisation.DirectlyReceiveQuotation, false, new { id = "DirectlyReceiveQuotation_false" }) 
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-    }
     <div class="contentBlock">
         <div class="dataEdition">
             <div class="generalInfos float-left">
