@@ -642,21 +642,11 @@ namespace Worki.Data.Models
 
             else
             {
-                string emailPattern = FormValidation.emailPattern;
-                string phonePattern = FormValidation.phonePattern;
 
-                string[] pattern = {emailPattern, phonePattern};
-                int nbrMatch = 0;
-
-                foreach(string s in pattern)
+                var validateDescription = FormValidation.ValidateDescription(GetDescription(), string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), GetDescriptionName());
+                if (validateDescription != null)
                 {
-                    Regex regex = new Regex(s);
-                    nbrMatch += regex.Matches(this.GetDescription().Replace(" ", "")).Count;
-                }
-
-                if (nbrMatch > 0)
-                {
-                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.prohibitedString, Worki.Resources.Models.Offer.Offer.Description, new [] { this.GetDescriptionName() }));
+                    yield return (ValidationResult)validateDescription;
                 }
             }
         }

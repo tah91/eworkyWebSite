@@ -1232,29 +1232,17 @@ namespace Worki.Data.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(this.GetDescription()))
+            if (string.IsNullOrEmpty(GetDescription()))
             {
-                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { this.GetDescriptionName() });
+                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Localisation.Localisation.Description), new[] { GetDescriptionName() });
             }
             else
             {
-
-                string emailPattern = FormValidation.emailPattern;
-                string phonePattern = FormValidation.phonePattern;
-
-                string[] pattern = { emailPattern, phonePattern };
-                int nbrMatch = 0;
-
-                foreach (string s in pattern)
-                {
-                    Regex regex = new Regex(s);
-                    nbrMatch += regex.Matches(this.GetDescription().Replace(" ", "")).Count;
-                }
-
-                if (nbrMatch > 0)
-                {
-                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.prohibitedString, Worki.Resources.Models.Localisation.Localisation.Description, new[] { this.GetDescriptionName() }));
-                }
+               var validateDescription = FormValidation.ValidateDescription(GetDescription(), string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Localisation.Localisation.Description), GetDescriptionName());
+               if (validateDescription != null)
+               {
+                   yield return (ValidationResult)validateDescription;
+               }
             }
 
         }

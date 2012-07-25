@@ -423,9 +423,9 @@ namespace Worki.Resources.Validation {
         /// <summary>
         ///   Looks up a localized string similar to Les addresses Email ou numéro de téléphone sont interdites dans le champ &quot;{0}&quot;.
         /// </summary>
-        public static string prohibitedString {
+        public static string ProhibitedString {
             get {
-                return ResourceManager.GetString("prohibitedString", resourceCulture);
+                return ResourceManager.GetString("ProhibitedString", resourceCulture);
             }
         }
         

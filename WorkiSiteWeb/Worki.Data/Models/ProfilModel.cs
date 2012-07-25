@@ -641,24 +641,10 @@ namespace Worki.Data.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!string.IsNullOrEmpty(this.Member.MemberMainData.Description))
+            var validateDescription = FormValidation.ValidateDescription(Member.MemberMainData.Description, string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), "Member.MemberMainData.Description");
+            if (validateDescription != null)
             {
-                string emailPattern = FormValidation.emailPattern;
-                string phonePattern = FormValidation.phonePattern;
-
-                string[] pattern = { emailPattern, phonePattern };
-                int nbrMatch = 0;
-
-                foreach (string s in pattern)
-                {
-                    Regex regex = new Regex(s);
-                    nbrMatch += regex.Matches(this.Member.MemberMainData.Description.Replace(" ", "")).Count;
-                }
-
-                if (nbrMatch > 0)
-                {
-                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.prohibitedString, Worki.Resources.Models.Profile.Profile.Description, new[] { "Description" }));
-                }
+                yield return (ValidationResult)validateDescription;
             }
         }
 

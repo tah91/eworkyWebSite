@@ -129,13 +129,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                     ModelState.AddModelError("EditProfil", ex);
                 }
             }
-            else
-            {
-                var errors = model.Validate(new ValidationContext(model, null, null));
-                foreach (var error in errors)
-                    foreach (var memberName in error.MemberNames)
-                        ModelState.AddModelError(memberName, error.ErrorMessage);
-            }
 			return View(new ProfilFormViewModel { Member = member });
 		}
 
