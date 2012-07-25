@@ -786,11 +786,10 @@ namespace Worki.Data.Models
 
             var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
 
-            if (this.Offer.WithTax == true)
+            if (Offer.WithTax == true)
             {
                 return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " TTC");
             }
-
             else
             {
                 return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " HT");
