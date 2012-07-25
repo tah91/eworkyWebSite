@@ -69,9 +69,12 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var member = mRepo.Get(memberId);
 			var offer = oRepo.Get(id);
+            var localisation = lRepo.Get(offer.LocalisationId);
 
 			if (ModelState.IsValid)
 			{
@@ -93,7 +96,14 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberQuotation.MemberId = memberId;
 						formData.MemberQuotation.OfferId = id;
-						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Pending;
+                        if (localisation.DirectlyReceiveQuotation == true)
+                        {
+                            formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Unknown;
+                        }
+                        else
+                        {
+                            formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Pending;
+                        }
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;

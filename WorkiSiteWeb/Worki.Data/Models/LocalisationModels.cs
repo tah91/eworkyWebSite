@@ -1357,6 +1357,9 @@ namespace Worki.Data.Models
 
         [Display(Name = "QuotationPrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public decimal QuotationPrice { get; set; }
+
+         [Display(Name = "DirectlyReceiveQuotation", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Boolean DirectlyReceiveQuotation { get; set; }
 	}
 
     public class CommentProjection

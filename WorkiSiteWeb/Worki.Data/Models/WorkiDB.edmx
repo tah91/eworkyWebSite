@@ -353,6 +353,7 @@
           <Property Name="RoadAccess" Type="nvarchar" MaxLength="256" />
           <Property Name="BookingCom" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="QuotationPrice" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="DirectlyReceiveQuotation" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="LocalisationClient">
           <Key>
@@ -2220,6 +2221,7 @@
           <NavigationProperty Name="Invoices" Relationship="WorkiDBModel.FK_Invoice_Localisation" FromRole="Localisation" ToRole="Invoice" />
           <NavigationProperty Name="Offers" Relationship="WorkiDBModel.FK_Offer_Localisation" FromRole="Localisation" ToRole="Offer" />
           <Property Type="String" Name="DescriptionDe" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="DirectlyReceiveQuotation" Nullable="false" />
         </EntityType>
         <EntityType Name="LocalisationData">
           <Key>
@@ -3042,6 +3044,7 @@
           <EntitySetMapping Name="Localisations">
             <EntityTypeMapping TypeName="WorkiDBModel.Localisation">
               <MappingFragment StoreEntitySet="Localisation">
+                <ScalarProperty Name="DirectlyReceiveQuotation" ColumnName="DirectlyReceiveQuotation" />
                 <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
                 <ScalarProperty Name="QuotationPrice" ColumnName="QuotationPrice" />
                 <ScalarProperty Name="BookingCom" ColumnName="BookingCom" />
