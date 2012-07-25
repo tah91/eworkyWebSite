@@ -456,9 +456,9 @@ namespace Worki.Web.Areas.Api.Controllers
             }
 
             List<LocalisationJson> neededLocs;
-            if (string.IsNullOrEmpty(place)) // compute the distance, or not
+            if (string.IsNullOrEmpty(place) && latitude == 0 && longitude == 0) // don't compute the distance
                 neededLocs = (from item in list.Take(maxCount) select item.GetJson(this)).ToList();
-            else
+            else // compute the distance
                 neededLocs = (from item in list.Take(maxCount) select item.GetJson(this, criteria)).ToList();
 
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
