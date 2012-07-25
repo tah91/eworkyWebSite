@@ -20,7 +20,7 @@ namespace Worki.Infrastructure
         public static string EmailPattern = @"[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}";
         public static string PhonePattern = @"[0-9-_()]{10,}";
 
-        public static Object ValidateDescription(string description, string errorMessage, string fieldName)
+        public static ValidationResult ValidateDescription(string description, string errorMessage, string fieldName)
         {
             string[] pattern = { EmailPattern, PhonePattern };
             int nbrMatch = 0;

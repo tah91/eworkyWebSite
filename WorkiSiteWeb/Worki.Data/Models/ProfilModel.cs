@@ -644,7 +644,7 @@ namespace Worki.Data.Models
             var validateDescription = FormValidation.ValidateDescription(Member.MemberMainData.Description, string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), "Member.MemberMainData.Description");
             if (validateDescription != null)
             {
-                yield return (ValidationResult)validateDescription;
+                yield return validateDescription;
             }
         }
 
