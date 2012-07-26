@@ -26,6 +26,7 @@
     [RoadAccess]           NVARCHAR (256) NULL, 
     [BookingCom]		   DECIMAL(18, 2) NOT NULL DEFAULT 0, 
     [QuotationPrice]	   DECIMAL(18, 2) NOT NULL DEFAULT 0, 
+    [DirectlyReceiveQuotation] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [PK_Localisation] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_Localisation_Member] FOREIGN KEY ([OwnerID]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

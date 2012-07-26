@@ -213,9 +213,9 @@ namespace Worki.Web.Controllers
 		/// Action result to return offerprice item for edition
 		/// </summary>
 		/// <returns>a partial view</returns>
-		public virtual PartialViewResult AddOfferPrice()
+		public virtual PartialViewResult AddOfferPrice(int priceType)
 		{
-			return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice());
+            return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice { PriceType = priceType });
 		}
 
 		#region Ajax Offer
@@ -244,7 +244,7 @@ namespace Worki.Web.Controllers
 		/// <returns>a partial view</returns>
 		public virtual PartialViewResult AjaxAdd(int id, bool isShared)
 		{
-			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { LocId = id });
+			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { LocId = id});
 		}
 
 		/// <summary>
@@ -289,8 +289,9 @@ namespace Worki.Web.Controllers
 						if (offerList == null)
                             offerList = new OfferFormListModel { IsSharedOffice = offerFormViewModel.IsSharedOffice };
                         //negative id to set the order
-                        var minId = offerList.Offers.Min(o => (int?)o.Id) ?? -1;
-                        offerFormViewModel.Offer.Id = minId;
+
+                        var minId = offerList.Offers.Count() + 1;
+                        offerFormViewModel.Offer.Id = - minId;
 
 						offerList.Offers.Add(offerFormViewModel.Offer);
                         _ObjectStore.Store<OfferFormListModel>("OfferList", offerList);

@@ -60,6 +60,7 @@ namespace Worki.Data.Models
         public decimal BookingCom { get; set; }
         public decimal QuotationPrice { get; set; }
         public string DescriptionDe { get; set; }
+        public bool DirectlyReceiveQuotation { get; set; }
     
         // Navigation properties
     

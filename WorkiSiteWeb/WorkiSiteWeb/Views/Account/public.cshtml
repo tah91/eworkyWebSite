@@ -31,7 +31,7 @@
 					}
                     else
                     {
-                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmptyPublic</span>
+                        <span class="italic">@Model.Member.GetAnonymousDisplayName() @Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmptyPublic</span>
                     }
                 </div> 
                 <div id="addedLocalisationTab" class="tab_content localisationsTagContainer visuallyhidden">
@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                    <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
+                    <span class="italic">@Model.Member.GetAnonymousDisplayName() @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
                     }
                 </div> 
             </div>
@@ -65,7 +65,7 @@
                     }
                     else
                     {
-                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
+                        <span class="italic">@Model.Member.GetAnonymousDisplayName() @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
                     }                    
                 </div> 
                 <div id="favPlacesTab" class="tab_content visuallyhidden">
@@ -75,7 +75,7 @@
                     }
                     else
                     {
-                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
+                        <span class="italic">@Model.Member.GetAnonymousDisplayName() @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
                     }
                 </div> 
             </div>

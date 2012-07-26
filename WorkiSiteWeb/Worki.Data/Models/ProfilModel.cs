@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Worki.Infrastructure.Helpers;
+using System.Text.RegularExpressions;
 
 namespace Worki.Data.Models
 {
@@ -614,7 +615,7 @@ namespace Worki.Data.Models
 
     #region ProfilFormViewModel
 
-    public class ProfilFormViewModel
+    public class ProfilFormViewModel : IValidatableObject
     {
         #region Properties
 
@@ -632,6 +633,19 @@ namespace Worki.Data.Models
             ProfileSelectTypes = new SelectList(MemberMainData.GetProfileTypes(), "Key", "Value", ProfileType.LocalisationOwner);
             Member = new Member();
             Member.MemberMainData = new MemberMainData();
+        }
+
+        #endregion
+
+        #region Validation
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var validateDescription = FormValidation.ValidateDescription(Member.MemberMainData.Description, string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), "Member.MemberMainData.Description");
+            if (validateDescription != null)
+            {
+                yield return validateDescription;
+            }
         }
 
         #endregion

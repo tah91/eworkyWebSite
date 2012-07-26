@@ -14,6 +14,34 @@ using Worki.Infrastructure.Helpers;
 
 namespace Worki.Infrastructure
 {
+
+    public static class FormValidation
+    {
+        public static string EmailPattern = @"[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}";
+        public static string PhonePattern = @"[0-9-_()]{10,}";
+
+        public static ValidationResult ValidateDescription(string description, string errorMessage, string fieldName)
+        {
+            string[] pattern = { EmailPattern, PhonePattern };
+            int nbrMatch = 0;
+
+            foreach (string s in pattern)
+            {
+                Regex regex = new Regex(s);
+                nbrMatch += regex.Matches(description.Replace(" ", "")).Count;
+            }
+
+            if (nbrMatch > 0)
+            {
+                return new ValidationResult(errorMessage, new[] { fieldName });
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+
     public static class AttributeHelpers
     {
         public static string GetAreaToken(this RouteBase r)

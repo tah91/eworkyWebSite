@@ -145,9 +145,15 @@
     margin:5px;
 }
 
+.offerTable td
+{
+    vertical-align: middle;
+}
+
 .offerTable td:first-child
 {
     width:130px;
+    height: 30px;
 }
 
 .offerAvailTable td
@@ -160,4 +166,5 @@
 {
     width:95px!important;
 }
+
 

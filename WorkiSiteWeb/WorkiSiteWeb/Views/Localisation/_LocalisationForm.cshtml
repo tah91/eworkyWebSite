@@ -65,6 +65,16 @@
             @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.HasSticker)
 			@Html.Label(Worki.Resources.Views.Admin.AdminString.Stickers)
         </div>
+        @if(!Model.IsFreeLocalisation)
+        {
+        <div class="adminBlock float-left">
+            @Html.LabelFor(m => m.Localisation.DirectlyReceiveQuotation)
+            <label for="DirectlyReceiveQuotation_true">@Worki.Resources.Models.Localisation.Localisation.Yes</label>
+            @Html.RadioButtonFor(m => m.Localisation.DirectlyReceiveQuotation, true, new { id = "DirectlyReceiveQuotation_true" })
+            <label for="DirectlyReceiveQuotation_false">@Worki.Resources.Models.Localisation.Localisation.No</label>
+            @Html.RadioButtonFor(m => m.Localisation.DirectlyReceiveQuotation, false, new { id = "DirectlyReceiveQuotation_false" }) 
+         </div>
+        }
         <div class="clear"></div>
         <table class="">
             <tr>
@@ -347,8 +357,74 @@
                     </tr>
                 </table>
 
-                @if (!Model.IsFreeLocalisation)
-                {
+                </div>
+               
+                
+			@if (!Url.IsInArea("Backoffice"))
+            {
+			<div class="editPlace float-right borderRadius">
+				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
+				<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
+				<div id="editMapDiv">
+				</div>
+				<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
+			</div>
+            }	
+           </div>
+
+           <div class="clear">
+                </div>
+
+                <div id="@PictureData.GetFileUploaderId(ProviderType.Localisation)" class="fileupload borderRadius">
+                <div class="fileupload-buttonbar">
+                    <label class="fileinput-button">
+                        <span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+                        <input type="file" name="files[]" accept="image/*" />
+                    </label>
+                </div>
+                <div class="fileupload-content">
+                    <table class="files">
+                    </table>
+                    <div class="fileupload-progressbar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    if (!Model.IsFreeLocalisation)
+        {
+	<div class="contentBlock">
+		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
+		<div class="marginb5">
+            @Html.Partial(MVC.Offer.Views._OfferList, new OfferFormListModel { Offers = Model.Localisation.Offers.ToList(), IsSharedOffice = Model.IsSharedOffice })
+		</div>
+        <div class="buttonStd buttonBlue linkImg float-left">
+            @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddOffer, MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
+		</div>
+        <div class="clear"></div>
+        <script type="text/javascript">
+            $(".deleteOffer").live('click', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: this.href,
+                    cache: false,
+                    success: function (html) {
+                        $(".offersTable").replaceWith(html);
+                        $(".editOffer").colorbox({ width: "50%" });
+                    }
+                });
+                return false;
+            });
+
+            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
+                $(".editOffer").colorbox({ width: "50%" });
+                $("#addOffer").colorbox({ width: "50%" });
+            });
+        </script>
+	</div>
+        }
+    <div class="contentBlock">
+         @if (!Model.IsFreeLocalisation)
+         {
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h3>
                 <div class="serviceContainer">
                     <div class="subserviceContainer float-left">
@@ -416,37 +492,7 @@
                     <div class="clear">
                     </div>
                 </div>
-                }
-            </div>
-			@if (!Url.IsInArea("Backoffice"))
-   {
-			<div class="editPlace float-right borderRadius">
-				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
-				<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
-				<div id="editMapDiv">
-				</div>
-				<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
-			</div>
-   }	
-            <div class="clear">
-            </div>
-            <div id="@PictureData.GetFileUploaderId(ProviderType.Localisation)" class="fileupload borderRadius">
-                <div class="fileupload-buttonbar">
-                    <label class="fileinput-button">
-                        <span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
-                        <input type="file" name="files[]" accept="image/*" />
-                    </label>
-                </div>
-                <div class="fileupload-content">
-                    <table class="files">
-                    </table>
-                    <div class="fileupload-progressbar">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="contentBlock">
+         }
         @if (Model.IsFreeLocalisation)
         {
         <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
@@ -536,11 +582,11 @@
                         @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
                     </li>
 					@if (!Model.IsSharedOffice)
-                    { 
+     { 
 		            <li>
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
-                    }
+     }
                 </ul>
             </div>
             <div class="clear">
@@ -556,8 +602,8 @@
             <div class="serviceContainer">
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
-				    @if (Model.IsSharedOffice)
-                    {
+				 @if (Model.IsSharedOffice)
+                 {
                     <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -578,9 +624,9 @@
                             @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
-                    }
-                    else
-                    {
+                 }
+                else
+                 {
 				    <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -601,7 +647,7 @@
                             @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
-                    }
+                }
                 </div>
                 @if (!Model.IsSharedOffice)
                 {
@@ -874,41 +920,7 @@
                 </tr>
             </table>
         </div>
-    </div>
- 
-        if (!Model.IsFreeLocalisation)
-        {
-	<div class="contentBlock">
-		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
-		<div class="marginb5">
-            @Html.Partial(MVC.Offer.Views._OfferList, new OfferFormListModel { Offers = Model.Localisation.Offers.ToList(), IsSharedOffice = Model.IsSharedOffice })
-		</div>
-        <div class="buttonStd buttonBlue linkImg float-left">
-            @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddOffer, MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
-		</div>
-        <div class="clear"></div>
-        <script type="text/javascript">
-            $(".deleteOffer").live('click', function () {
-                $.ajax({
-                    type: 'POST',
-                    url: this.href,
-                    cache: false,
-                    success: function (html) {
-                        $(".offersTable").replaceWith(html);
-                        $(".editOffer").colorbox({ width: "50%" });
-                    }
-                });
-                return false;
-            });
-
-            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
-                $(".editOffer").colorbox({ width: "50%" });
-                $("#addOffer").colorbox({ width: "50%" });
-            });
-        </script>
-	</div>
-        }
-        
+    </div> 
     <div class="float-right">
         <input  type="submit" class="buttonStd buttonBlue imageBtn" 
 				name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>

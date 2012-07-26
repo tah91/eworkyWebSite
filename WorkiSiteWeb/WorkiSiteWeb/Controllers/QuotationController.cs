@@ -69,6 +69,8 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var member = mRepo.Get(memberId);
 			var offer = oRepo.Get(id);
@@ -93,7 +95,9 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberQuotation.MemberId = memberId;
 						formData.MemberQuotation.OfferId = id;
-						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Pending;
+
+                        var localisation = lRepo.Get(offer.LocalisationId);
+                        formData.MemberQuotation.StatusId =  (localisation.DirectlyReceiveQuotation == true) ? (int)MemberQuotation.Status.Unknown : (int)MemberQuotation.Status.Pending;
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
@@ -163,13 +167,48 @@ namespace Worki.Web.Controllers
                                                          //formData.MemberQuotation.Surface,
                                                          locName, //1
                                                          offer.Localisation.Adress); //2
-
+       
 						context.Commit();
+
 
 						if (sendNewAccountMail)
 						{
 							newMemberMail.Send();
 						}
+
+                        if (formData.MemberQuotation.StatusId == (int)MemberQuotation.Status.Unknown)
+                        {
+                            //we set the information for the mail after commit in order to get the id of the MemberQuotation that have been inserted
+                            var context2 = ModelFactory.GetUnitOfWork();
+
+                            var oRepo2 = ModelFactory.GetRepository<IOfferRepository>(context2);
+                            var lRepo2 = ModelFactory.GetRepository<ILocalisationRepository>(context2);
+                            var mRepo2 = ModelFactory.GetRepository<IMemberRepository>(context2);
+
+                            var offer2 = oRepo2.Get(id);
+                            var localisation2 = lRepo2.Get(offer.LocalisationId);
+                            var member2 = mRepo2.Get(localisation2.OwnerID);
+                            
+
+                            dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+                            var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                            //we get the ownerUrl from the id of the created MemberQuotation
+                            var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(formData.MemberQuotation.Id));
+                            TagBuilder ownerLink = new TagBuilder("a");
+                            ownerLink.MergeAttribute("href", ownerUrl);
+                            ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
+
+                            ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            ownerMail.To = member2.Email;
+                            ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation2.Name);
+                            ownerMail.ToName = localisation2.Member.MemberMainData.FirstName;
+                            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
+                                                            Localisation.GetOfferType(offer.Type),
+                                                            localisation2.Name,
+                                                            localisation2.Adress,
+                                                            ownerLink);
+                            ownerMail.Send();
+                        }
 						clientMail.Send();
 						teamMail.Send();
 					}

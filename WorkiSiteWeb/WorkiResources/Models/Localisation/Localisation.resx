@@ -451,4 +451,13 @@
   <data name="OwnerAllreadyExist" xml:space="preserve">
     <value>Il existe déja un gérant pour ce Lieu</value>
   </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <value>Recevoir directement les devis : </value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
 </root>

@@ -47,6 +47,11 @@ namespace Worki.Data.Models
         public int AvailabilityPeriod { get; set; }
         public int AvailabilityPeriodType { get; set; }
         public int ProductType { get; set; }
+        public string Description { get; set; }
+        public string DescriptionEn { get; set; }
+        public string DescriptionEs { get; set; }
+        public string DescriptionDe { get; set; }
+        public bool AllInclusive { get; set; }
     
         // Navigation properties
     

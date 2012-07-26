@@ -71,7 +71,7 @@ td{vertical-align:top}
 .italic{font-style:italic}
 .noUnderline,.noUnderline a{text-decoration:none}
 .halfContainer{width:50%;height:100%}
-.verticalAlignTop{vertical-align:top}
+.verticalAlignTop{vertical-align:top!important}
 .verticalAlignMiddle{vertical-align:middle}
 .centerAlign{text-align:center}
 .linkImg a{display:block;width:100%;height:100%;text-decoration:none}

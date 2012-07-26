@@ -710,7 +710,9 @@
       <LastGenOutput>ProfileString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Search\SearchString.de.resx" />
+    <EmbeddedResource Include="Views\Search\SearchString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Search\SearchString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
