@@ -54,31 +54,12 @@ namespace Worki.Data.Models
             //get all offer types
             foreach (var item in GetOfferTypes())
             {
-                OfferPrice price = GetMinPrice((int)item);
-                if (price != null)
+                var minPrice = GetMinPrice((int)item);
+                json.prices.Add(new PriceJson
                 {
-                    switch (item)
-                    {
-                        case LocalisationOffer.Desktop:
-                            json.prices.desktop = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.MeetingRoom:
-                            json.prices.meetingRoom = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.Workstation:
-                            json.prices.workStation = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.BuisnessLounge:
-                            json.prices.buisnessLounge = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.SeminarRoom:
-                            json.prices.seminarRoom = price.GetPriceDisplay();
-                            break;
-                        case LocalisationOffer.VisioRoom:
-                            json.prices.visioRoom = price.GetPriceDisplay();
-                            break;
-                    }
-                }
+                    offerType = (int)item,
+                    price = minPrice != null ? minPrice.GetPriceDisplay() : string.Empty
+                });
             }
 
             //get offers

@@ -15,9 +15,9 @@ namespace Worki.Data.Models
             comments = new List<CommentJson>();
             fans = new List<MemberJson>();
             features = new List<FeatureJson>();
-            prices = new PricesJson();
             offers = new List<OfferJson>();
-            openingTimes = new OpeningTimesJson();
+            images = new List<ImageJson>();
+            prices = new List<PriceJson>();
         }
 
 		public int id { get; set; }
@@ -34,8 +34,8 @@ namespace Worki.Data.Models
 		public string url { get; set; }
         public double rating { get; set; }
         public OpeningTimesJson openingTimes { get; set; }
-        public PricesJson prices { get; set; }
         public AccessJson access { get; set; }
+        public List<PriceJson> prices { get; set; }
         public List<ImageJson> images { get; set; }
         public List<FeatureJson> features { get; set; }
         public List<OfferJson> offers { get; set; }
@@ -72,14 +72,10 @@ namespace Worki.Data.Models
         public string viadeo { get; set; }
     }
 
-    public class PricesJson
+    public class PriceJson
     {
-        public string desktop { get; set; }
-        public string workStation { get; set; }
-        public string meetingRoom { get; set; }
-        public string buisnessLounge { get; set; }
-        public string seminarRoom { get; set; }
-        public string visioRoom { get; set; }
+        public int offerType { get; set; }
+        public string price { get; set; }
     }
 
     public class AccessJson
