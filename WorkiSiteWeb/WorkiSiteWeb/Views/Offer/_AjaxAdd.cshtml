@@ -128,17 +128,6 @@
                         @Html.RadioButtonFor(m => m.Offer.AllInclusive, false, new { id = "AllInclusive_false" }) 
 			        </td>
                 </tr>
-                <tr>
-			        <td>
-				        @Html.LabelFor(m => m.Offer.WithTax) <span class="blue">*</span>
-			        </td>
-			        <td>
-				        <label for="WithTax_true">@Worki.Resources.Models.Offer.Offer.WithTax_true</label>
-                        @Html.RadioButtonFor(m => m.Offer.WithTax, true, new { id = "WithTax_true" })
-                        <label for="WithTax_false">@Worki.Resources.Models.Offer.Offer.WithTax_false</label>
-                        @Html.RadioButtonFor(m => m.Offer.WithTax, false, new { id = "WithTax_false" }) 
-			        </td>
-		        </tr>
             </table>
 		    @Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
         </div> 

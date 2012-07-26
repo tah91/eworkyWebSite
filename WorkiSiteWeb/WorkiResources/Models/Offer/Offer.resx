@@ -273,15 +273,6 @@
   <data name="Week" xml:space="preserve">
     <value>Semaine</value>
   </data>
-  <data name="WithTax" xml:space="preserve">
-    <value>Avec Taxe</value>
-  </data>
-  <data name="WithTax_false" xml:space="preserve">
-    <value>Non</value>
-  </data>
-  <data name="WithTax_true" xml:space="preserve">
-    <value>Oui</value>
-  </data>
   <data name="Year" xml:space="preserve">
     <value>Année</value>
   </data>

@@ -33,7 +33,6 @@ namespace Worki.Data.Models
             IsSharedOffice = isShared;
             Offer = new Offer();
             Offer.AllInclusive = true;
-            Offer.WithTax = true;
         }
 
 		public Offer Offer { get; set; }
@@ -748,10 +747,6 @@ namespace Worki.Data.Models
         [Display(Name = "AllInclusive", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public bool AllInclusive { get; set; }
-
-        [Display(Name = "WithTax", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        public bool WithTax { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer
@@ -776,14 +771,7 @@ namespace Worki.Data.Models
 
             var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
 
-            if (Offer.WithTax == true)
-            {
-                return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " TTC");
-            }
-            else
-            {
-                return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType) + " HT");
-            }
+            return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
 		}
 
         public int CompareTo(OfferPrice other)

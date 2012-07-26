@@ -52,7 +52,6 @@ namespace Worki.Data.Models
         public string DescriptionEs { get; set; }
         public string DescriptionDe { get; set; }
         public bool AllInclusive { get; set; }
-        public bool WithTax { get; set; }
     
         // Navigation properties
     
