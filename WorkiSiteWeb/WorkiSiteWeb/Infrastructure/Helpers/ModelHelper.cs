@@ -31,8 +31,8 @@ namespace Worki.Web.Helpers
         {
             if (string.IsNullOrEmpty(image))
                 return image;
-            if (!string.IsNullOrEmpty(image) && VirtualPathUtility.IsAppRelative(image))
-                image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), true);
+            if (!string.IsNullOrEmpty(image) /*&& VirtualPathUtility.IsAppRelative(image)*/)
+                image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), false);
 
             return image;
         }
