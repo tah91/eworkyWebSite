@@ -31,10 +31,11 @@ namespace Worki.Web.Helpers
         {
             if (string.IsNullOrEmpty(image))
                 return image;
-            if (!string.IsNullOrEmpty(image) /*&& VirtualPathUtility.IsAppRelative(image)*/)
-                image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), false);
 
-            return image;
+            if (image.StartsWith("http://") || image.StartsWith("https://"))
+                return image;
+
+            return WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), false);
         }
 
         public static OfferJson GetJson(this Offer offer, Controller controller)
