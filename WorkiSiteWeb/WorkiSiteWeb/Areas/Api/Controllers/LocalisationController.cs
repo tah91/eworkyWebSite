@@ -266,118 +266,90 @@ namespace Worki.Web.Areas.Api.Controllers
             return new ObjectResult<LocalisationJson>(json);
         }
 
-        enum ApiFeatures
-        {
-            Wifi,
-            Cofee,
-            Resto,
-            Parking,
-            Handicap
-        }
-
         static char[] _arrayTrim = { '[', ']' };
 
-		void FillCriteria(ref SearchCriteria criteria, string types, string features)
-		{
-			//types
-			if (!string.IsNullOrEmpty(types))
-			{
-				try
-				{
-					string[] typesArray = types.Trim(_arrayTrim).Split(',');
-					foreach (var item in typesArray)
-					{
-						var intType = (LocalisationType)Int32.Parse(item);
-						switch (intType)
-						{
-							case LocalisationType.SpotWifi:
-								criteria.SpotWifi = true;
-								break;
-							case LocalisationType.CoffeeResto:
-								criteria.CoffeeResto = true;
-								break;
-							case LocalisationType.Biblio:
-								criteria.Biblio = true;
-								break;
-							case LocalisationType.PublicSpace:
-								criteria.PublicSpace = true;
-								break;
-							case LocalisationType.TravelerSpace:
-								criteria.TravelerSpace = true;
-								break;
-							case LocalisationType.Hotel:
-								criteria.Hotel = true;
-								break;
-							case LocalisationType.Telecentre:
-								criteria.Telecentre = true;
-								break;
-							case LocalisationType.BuisnessCenter:
-								criteria.BuisnessCenter = true;
-								break;
-							case LocalisationType.CoworkingSpace:
-								criteria.CoworkingSpace = true;
-								break;
-							case LocalisationType.WorkingHotel:
-								criteria.WorkingHotel = true;
-								break;
-							case LocalisationType.PrivateArea:
-								criteria.PrivateArea = true;
-								break;
-							case LocalisationType.SharedOffice:
-								criteria.SharedOffice = true;
-								break;
-							default:
-								break;
-						}
-					}
-					criteria.Everything = false;
-				}
-				catch (Exception)
-				{
-					throw new Exception("The \"types\" parameter is not correctly filled");
-				}
-			}
+        void FillCriteria(ref SearchCriteria criteria, string types, string features)
+        {
+            //types
+            if (!string.IsNullOrEmpty(types))
+            {
+                try
+                {
+                    string[] typesArray = types.Trim(_arrayTrim).Split(',');
+                    foreach (var item in typesArray)
+                    {
+                        var intType = (LocalisationType)Int32.Parse(item);
+                        switch (intType)
+                        {
+                            case LocalisationType.SpotWifi:
+                                criteria.SpotWifi = true;
+                                break;
+                            case LocalisationType.CoffeeResto:
+                                criteria.CoffeeResto = true;
+                                break;
+                            case LocalisationType.Biblio:
+                                criteria.Biblio = true;
+                                break;
+                            case LocalisationType.PublicSpace:
+                                criteria.PublicSpace = true;
+                                break;
+                            case LocalisationType.TravelerSpace:
+                                criteria.TravelerSpace = true;
+                                break;
+                            case LocalisationType.Hotel:
+                                criteria.Hotel = true;
+                                break;
+                            case LocalisationType.Telecentre:
+                                criteria.Telecentre = true;
+                                break;
+                            case LocalisationType.BuisnessCenter:
+                                criteria.BuisnessCenter = true;
+                                break;
+                            case LocalisationType.CoworkingSpace:
+                                criteria.CoworkingSpace = true;
+                                break;
+                            case LocalisationType.WorkingHotel:
+                                criteria.WorkingHotel = true;
+                                break;
+                            case LocalisationType.PrivateArea:
+                                criteria.PrivateArea = true;
+                                break;
+                            case LocalisationType.SharedOffice:
+                                criteria.SharedOffice = true;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    criteria.Everything = false;
+                }
+                catch (Exception)
+                {
+                    throw new Exception("The \"types\" parameter is not correctly filled");
+                }
+            }
 
-			//features
-			if (!string.IsNullOrEmpty(features))
-			{
-				try
-				{
-					//var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
-					string[] featuresArray = features.Trim(_arrayTrim).Split(',');
-					foreach (var item in featuresArray)
-					{
-						var intType = (ApiFeatures)Int32.Parse(item);
-						switch (intType)
-						{
-							case ApiFeatures.Wifi:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-								break;
-							case ApiFeatures.Cofee:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Coffee });
-								break;
-							case ApiFeatures.Resto:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Restauration });
-								break;
-							case ApiFeatures.Parking:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Parking });
-								break;
-							case ApiFeatures.Handicap:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Handicap });
-								break;
-							default:
-								break;
-						}
-					}
-				}
-				catch (Exception)
-				{
-					throw new Exception("The \"features\" parameter is not correctly filled");
-				}
-			}
-
-			criteria.OfferData.Type = -1;
-		}
+            //features
+            if (!string.IsNullOrEmpty(features))
+            {
+                try
+                {
+                    //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
+                    string[] featuresArray = features.Trim(_arrayTrim).Split(',');
+                    foreach (var item in featuresArray)
+                    {
+                        var intType = Int32.Parse(item);
+                        criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = intType });
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception("The \"features\" parameter is not correctly filled");
+                }
+            }
+                
+            criteria.OfferData.Type = -1;
+        }
 
         /// <summary>
         /// get action result to search for localisation, for given criteria
