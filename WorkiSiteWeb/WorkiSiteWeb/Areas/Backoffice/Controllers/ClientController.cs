@@ -120,6 +120,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         [ValidateOnlyIncomingValues]
 		public virtual ActionResult Add(int id, LocalisationModel<ProfilFormViewModel> formData)
         {
+            //the other page that use the same models don't require the phonenumber, so we check only in this method if it's required
+            if (String.IsNullOrEmpty(formData.InnerModel.Member.MemberMainData.PhoneNumber))
+            {
+                ModelState.AddModelError("InnerModel.Member.MemberMainData.PhoneNumber", string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Profile.Profile.PhoneNumber));
+            }
+
             if (ModelState.IsValid)
             {
                 var memberId = WebHelper.GetIdentityId(User.Identity);
