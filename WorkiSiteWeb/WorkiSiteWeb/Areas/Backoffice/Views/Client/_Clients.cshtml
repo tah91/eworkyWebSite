@@ -44,7 +44,7 @@
 				@if (locId != -1)
 				{
 					<span> | </span>
-					@Html.ActionLink("Editer", MVC.Backoffice.Client.Edit(locId, item.MemberId), new { @class = "blue" });
+					@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Edit, MVC.Backoffice.Client.Edit(locId, item.MemberId), new { @class = "blue" });
 				}
             </td>
         </tr>

@@ -18,6 +18,7 @@ using System.Net;
 using Worki.Web.Helpers;
 using Postal;
 using System.Web.Security;
+using System.Data;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -249,10 +250,22 @@ namespace Worki.Web.Areas.Admin.Controllers
         public virtual ActionResult DeleteQuotation(int id, int page)
         {
             var context = ModelFactory.GetUnitOfWork();
+            WorkiDBEntities entities = (WorkiDBEntities)context;
             var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var qLogRepo = ModelFactory.GetRepository<IQuotationLogRepository>(context);
+            var quotation = qRepo.Get(id);
 
             try
             {
+                if (quotation.MemberQuotationLogs.Count() > 0)
+                {
+                    quotation.MemberQuotationLogs.ToList().ForEach(delegate(MemberQuotationLog log)
+                    {
+                        entities.MemberQuotationLogs.Remove(log);
+                        entities.SaveChanges();
+                    });
+                }
+
                 qRepo.Delete(id);
                 context.Commit();
                 TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a bien été effacée";
