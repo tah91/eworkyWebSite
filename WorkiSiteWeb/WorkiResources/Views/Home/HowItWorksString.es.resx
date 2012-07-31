@@ -211,7 +211,7 @@
     <value>Añadir tu espacio</value>
   </data>
   <data name="RegisterLink" xml:space="preserve">
-    <value>regístrarte gratuitamente</value>
+    <value>registrarte gratuitamente</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
     <value>Para gestionar un espacio en eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>
@@ -299,7 +299,7 @@
     <value>Edición automática de las facturas</value>
   </data>
   <data name="PrincingFeature_4_Text" xml:space="preserve">
-    <value>Tus facturas se editan automaticamente para cada reserva abonada y se archivan en tu perfíl de gerente.</value>
+    <value>Tus facturas se editan automaticamente para cada reserva abonada y se archivan en tu perfil de gerente.</value>
   </data>
   <data name="PrincingFeature_5" xml:space="preserve">
     <value>Atención al cliente 9h-20h, 7d/7</value>
@@ -318,5 +318,8 @@
   </data>
   <data name="DiscoverBO" xml:space="preserve">
     <value>Descubrir el Acceso Gerente</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
   </data>
 </root>

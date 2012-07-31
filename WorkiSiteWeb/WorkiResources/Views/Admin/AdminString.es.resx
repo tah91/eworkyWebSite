@@ -151,7 +151,7 @@
     <value>Añadir un artículo nuevo</value>
   </data>
   <data name="CreateNewWelcomePeople" xml:space="preserve">
-    <value>Crear un perfíl nuevo</value>
+    <value>Crear un perfil nuevo</value>
   </data>
   <data name="CreateWelcomePeople" xml:space="preserve">
     <value>Crear una página de inicio de perfil</value>
@@ -371,5 +371,11 @@
   </data>
   <data name="QuotationEdited" xml:space="preserve">
     <value>La solicitud de presupuesto ha sido editada</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Validar</value>
+  </data>
+  <data name="AddOwner" xml:space="preserve">
+    <value>Añadir un gerente</value>
   </data>
 </root>

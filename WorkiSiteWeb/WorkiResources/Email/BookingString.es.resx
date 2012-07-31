@@ -164,7 +164,7 @@ Ve a tu {3} para confirmar/denegar esta solicitud de reserva cuanto antes.</valu
   <data name="CalandarBookingCreation" xml:space="preserve">
     <value>El gerente de &lt;b&gt;{0}&lt;/b&gt; ha añadido tu reserva para un(a) &lt;b&gt;{1}&lt;/b&gt; del &lt;b&gt;{2}&lt;/b&gt; al &lt;b&gt;{3}&lt;/b&gt; a su agenda eWorky. 
 
-Ya puedes consultar esta reserva en tu perfíl de usuario &lt;b&gt;{4}&lt;/b&gt;. 
+Ya puedes consultar esta reserva en tu perfil de usuario &lt;b&gt;{4}&lt;/b&gt;. 
 
 El importe de tu reserva es de &lt;b&gt;{5} €&lt;/b&gt;, te invitamos a realizar el pago online directamente vía Paypal.
 Para tu proxima reserva, ¡simplificate la vida y pasa directamente por eworky.com!
@@ -179,7 +179,7 @@ Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su
     <value>El gerente de &lt;b&gt;{0}&lt;/b&gt; a modificado tu reserva en su agenda eWorky !
 Tu reserva está registrada del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt;.
 
-Puedes consultar tus distintas reservas en tu perfíl de usuario &lt;b&gt;{3}&lt;/b&gt;.
+Puedes consultar tus distintas reservas en tu perfil de usuario &lt;b&gt;{3}&lt;/b&gt;.
 Para tu proxima reserva, ¡simplificate la vida y pasa directamente por eworky.com!
 
 Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su ficha en eWorky &lt;b&gt;{4}&lt;/b&gt;.</value>
@@ -190,9 +190,9 @@ Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su
   <data name="ClientCreationAccount" xml:space="preserve">
     <value>Un gerente te ha agregado a su base de clientes y una cuenta eWorky ha sido creada. Te permitirá seguir el historial y estado de tus reservas. 
 
-Tu usuario es "&lt;b&gt;{0}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{1}"&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl de usuario: &lt;b&gt;{2}&lt;/b&gt;
+Tu usuario es "&lt;b&gt;{0}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{1}"&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfil de usuario: &lt;b&gt;{2}&lt;/b&gt;
 
-Te invitamos a completar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{3}&lt;/b&gt;</value>
+Te invitamos a completar tu perfil a la dirección que te indicamos a continuación: &lt;b&gt;{3}&lt;/b&gt;</value>
   </data>
   <data name="ClientCreationAccountSubject" xml:space="preserve">
     <value>Una cuenta ha sido creada para gestionar tus reservas</value>
@@ -236,9 +236,9 @@ Accediendo a tu {3} podrás confirmar / denegar esta solicitud de reserva en cua
   <data name="PartyCreateAccount" xml:space="preserve">
     <value>A raíz de tu registro al Networking de los coworkers, ¡Nos alegramos anunciarte que te hemos creado una cuenta eWorky!
 
-Tu usuario es "&lt;b&gt;{0}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{1}"&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{2}&lt;/b&gt;
+Tu usuario es "&lt;b&gt;{0}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{1}"&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfil: &lt;b&gt;{2}&lt;/b&gt;
 
-Te invitamos a completar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{3}&lt;/b&gt;</value>
+Te invitamos a completar tu perfil a la dirección que te indicamos a continuación: &lt;b&gt;{3}&lt;/b&gt;</value>
   </data>
   <data name="PartyCreateAccountSubject" xml:space="preserve">
     <value>¡Tu cuenta eWorky ha sido creada!</value>
@@ -261,7 +261,7 @@ Nombre del espacio: &lt;b&gt;{3}&lt;/b&gt;</value>
     <value>Alerta eWorky – Inscripción networking</value>
   </data>
   <data name="PayementOwner" xml:space="preserve">
-    <value>La reserva n°{0} ha sido abonada por el cliente. Puedes consultar las reservas confirmadas en tu perfíl de gerente.</value>
+    <value>La reserva n°{0} ha sido abonada por el cliente. Puedes consultar las reservas confirmadas en tu perfil de gerente.</value>
   </data>
   <data name="PayementSubject" xml:space="preserve">
     <value>La reserva n°{0} ha sido abonada</value>
@@ -280,9 +280,9 @@ Mensaje: &lt;b&gt;{5}&lt;/b&gt;</value>
   <data name="QuotationNewMemberBody" xml:space="preserve">
     <value>A raíz de tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; en el establecimiento &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permitirá seguir el historial y el estado de tus solicitudes de presupuesto y reservas. 
 
-Tu usuario es &lt;b&gt;{3}&lt;/b&gt; y tu contraseña provisional es &lt;b&gt;{4}&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{5}&lt;/b&gt;
+Tu usuario es &lt;b&gt;{3}&lt;/b&gt; y tu contraseña provisional es &lt;b&gt;{4}&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfil: &lt;b&gt;{5}&lt;/b&gt;
 
-Te invitamos acompletar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{6}&lt;/b&gt;</value>
+Te invitamos acompletar tu perfil a la dirección que te indicamos a continuación: &lt;b&gt;{6}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
     <value>eWorky – Una cuenta ha sido creada trás tu solicitud de presupuesto</value>
@@ -293,10 +293,10 @@ Te invitamos acompletar tu perfíl a la dirección que te indicamos a continuaci
 El gerente te invita a reiterar tu solicitud en otro momento o para otra oferta.</value>
   </data>
   <data name="RefuseBookingClientSubject" xml:space="preserve">
-    <value>Tu solicitud ha sido denegada por el gerente</value>
+    <value>Tu solicitud ha sido rechazada por el gerente</value>
   </data>
   <data name="RefuseBookingOwner" xml:space="preserve">
-    <value>Has denegado la reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el establecimiento &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) por la razón siguiente: &lt;b&gt;{5}&lt;/b&gt;</value>
+    <value>Has rechazado la reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el establecimiento &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) por la razón siguiente: &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="RefuseQuotationClient" xml:space="preserve">
     <value>Tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; en el establecimiento &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) ha sido denegada por la razón siguiente: {3}</value>
@@ -304,9 +304,9 @@ El gerente te invita a reiterar tu solicitud en otro momento o para otra oferta.
   <data name="BookingNewMember" xml:space="preserve">
     <value>A raíz de tu solicitud de reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el espacio &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permetira seguir el historial y el estado de tus reservas.
 
-Tu usuario es "&lt;b&gt;{5}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{6}"&lt;/b&gt;. Puedes cambiar la contraseña en tu perfíl: &lt;b&gt;{7}&lt;/b&gt;
+Tu usuario es "&lt;b&gt;{5}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{6}"&lt;/b&gt;. Puedes cambiar la contraseña en tu perfil: &lt;b&gt;{7}&lt;/b&gt;
 
-Por otra parte, te invitamos a completar tu perfíl a la dirección que te indicamos a continuación: &lt;b&gt;{8}&lt;/b&gt; </value>
+Por otra parte, te invitamos a completar tu perfil a la dirección que te indicamos a continuación: &lt;b&gt;{8}&lt;/b&gt; </value>
   </data>
   <data name="CreateQuotationAndBOOwner" xml:space="preserve">
     <value>Has recibido una solicitud de contacto para un(a) {0} en {1} ({2}).

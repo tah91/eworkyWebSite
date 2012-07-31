@@ -117,196 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Activity" xml:space="preserve">
-    <value>Actualidad</value>
+  <data name="CountryId" xml:space="preserve">
+    <value>País</value>
   </data>
-  <data name="AddedPlaces" xml:space="preserve">
-    <value>Espacios añadidos</value>
-    <comment>Mika</comment>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Administradores</value>
-    <comment>Mika</comment>
+  <data name="Firstname" xml:space="preserve">
+    <value>Nombre</value>
   </data>
-  <data name="AdminSpace" xml:space="preserve">
-    <value>Acceso admin.</value>
-    <comment>Mika</comment>
+  <data name="LocalisationId" xml:space="preserve">
+    <value>Id del espacio</value>
   </data>
-  <data name="BOHome" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="Name" xml:space="preserve">
+    <value>Apellidos</value>
   </data>
-  <data name="BONews" xml:space="preserve">
-    <value>Bienvenido</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Bookings" xml:space="preserve">
-    <value>Solicitudes de reserva</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="BusinessCenterFr" xml:space="preserve">
-    <value>Centros negocio</value>
-  </data>
-  <data name="Clients" xml:space="preserve">
-    <value>Clientes</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="CommentedPlaces" xml:space="preserve">
-    <value>Espacios comentados</value>
-  </data>
-  <data name="Community" xml:space="preserve">
-    <value>Actividad comunitaria</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Configure" xml:space="preserve">
-    <value>Configuración</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="CoworkingSpaceFr" xml:space="preserve">
-    <value>Coworking</value>
-  </data>
-  <data name="CurrentBookings" xml:space="preserve">
-    <value>Reservas</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="EditPassword" xml:space="preserve">
-    <value>Contraseña</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="EditProfil" xml:space="preserve">
-    <value>Edición</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="FavoritePlaces" xml:space="preserve">
-    <value>Espacios favoritos</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Historic" xml:space="preserve">
-    <value>Histórico</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Inicio</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Members" xml:space="preserve">
-    <value>eWorkers</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Moderation" xml:space="preserve">
-    <value>Moderación</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="ModifyPayement" xml:space="preserve">
-    <value>Información sobre pagos</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="News" xml:space="preserve">
-    <value>Actualidad</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Ofertas</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="OnlineRental" xml:space="preserve">
-    <value>Anuncion online</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="OwnerSpace" xml:space="preserve">
-    <value>Acceso gerente</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Places" xml:space="preserve">
-    <value>Mis espacios online</value>
-  </data>
-  <data name="Profil" xml:space="preserve">
-    <value>Perfil</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Quoations" xml:space="preserve">
-    <value>Solicitudes de presupuesto</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="RefreshBlog" xml:space="preserve">
-    <value>Refrescar blog</value>
-  </data>
-  <data name="Rentals" xml:space="preserve">
-    <value>Anuncios</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Sheet" xml:space="preserve">
-    <value>Páginas</value>
-  </data>
-  <data name="Subscription" xml:space="preserve">
-    <value>Suscripciones</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="TopMember" xml:space="preserve">
-    <value>50 mejores</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="UserSpace" xml:space="preserve">
-    <value>Acceso usuario</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="WorkingBook" xml:space="preserve">
-    <value>Reserva en curso</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="WorkingQuotation" xml:space="preserve">
-    <value>Solicitudes de ppto en curso</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Mi cuenta</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Gerentes</value>
-    <comment>Mika</comment>
-  </data>
-  <data name="Schedule" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="AddClient" xml:space="preserve">
-    <value>Añadir un cliente</value>
-  </data>
-  <data name="MyClients" xml:space="preserve">
-    <value>Mis clientes</value>
-  </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Edición</value>
-  </data>
-  <data name="EditPlace" xml:space="preserve">
-    <value>Edición del espacio</value>
-  </data>
-  <data name="Billing" xml:space="preserve">
-    <value>Facturación</value>
-  </data>
-  <data name="Invoices" xml:space="preserve">
-    <value>Facturas de clientes</value>
-  </data>
-  <data name="CreateInvoice" xml:space="preserve">
-    <value>Crear una factura</value>
-  </data>
-  <data name="LocalisationSchedule" xml:space="preserve">
-    <value>Agenda general</value>
-  </data>
-  <data name="OfferSchedule" xml:space="preserve">
-    <value>Agenda por oferta</value>
-  </data>
-  <data name="Prices" xml:space="preserve">
-    <value>Tarifas</value>
-  </data>
-  <data name="PendingBO" xml:space="preserve">
-    <value>BO pendiente</value>
-  <comment>Steeve</comment></data>
-  <data name="SharedOfficeFr" xml:space="preserve">
-    <value>Ofi. compartida</value>
-  </data>
-  <data name="ActivatedBO" xml:space="preserve">
-    <value>BO activado</value>
-  </data>
-  <data name="MemberWithApi" xml:space="preserve">
-    <value>Miembro con Api</value>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
   </data>
 </root>

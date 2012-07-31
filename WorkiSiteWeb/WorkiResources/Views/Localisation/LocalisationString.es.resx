@@ -338,4 +338,10 @@
   <data name="Distance" xml:space="preserve">
     <value>{0:0.##} km</value>
   </data>
+  <data name="SeeOffers" xml:space="preserve">
+    <value>Ver las ofertas</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Anfitrión</value>
+  </data>
 </root>

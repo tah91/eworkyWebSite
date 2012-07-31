@@ -255,4 +255,25 @@
   <data name="Quotation" xml:space="preserve">
     <value>Solicitud de presupuesto</value>
   </data>
+  <data name="AllInclusive" xml:space="preserve">
+    <value>Todo incluido</value>
+  </data>
+  <data name="AllInclusive_false" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="AllInclusive_true" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="LeaseTerm" xml:space="preserve">
+    <value>Duración del alquiler</value>
+  </data>
+  <data name="PriceBy" xml:space="preserve">
+    <value>Precio por</value>
+  </data>
+  <data name="SameOffersCount" xml:space="preserve">
+    <value>Número de ofertas idénticas</value>
+  </data>
 </root>

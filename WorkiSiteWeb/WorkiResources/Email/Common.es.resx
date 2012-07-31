@@ -175,4 +175,17 @@ No olvides recordar a tus clientes que pueden comentar y puntuar tu espacio. ¡M
   <data name="Twitter" xml:space="preserve">
     <value>http://www.twitter.com/#!/eWorky_es</value>
   </data>
+  <data name="AdminOwnership" xml:space="preserve">
+    <value>¡Enhorabuena!, Acaban de indicar que eres gerente de {0} en eWorky.
+ 
+Para confirmar que eres propietario o gerente de este espacio, sólo tienes que hacer clic sobre el enlace siguiente:
+{1}
+ 
+A continución, podrás conectarte a eWorky 
+para modificar el perfil de {0} : {2}
+
+con:
+- Usuario {3}
+- Contrasela {4}</value>
+  </data>
 </root>

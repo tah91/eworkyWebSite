@@ -195,4 +195,10 @@
   <data name="ForTenantHead2" xml:space="preserve">
     <value>¿Estás buscando un espacio para tu actividad?</value>
   </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Encontrar y compartir un despacho, una sala de reunión, una sala de conferencia, un espacio compartido y sub-alquileres o proponer tus oficinas y salas para el alquiler</value>
+  </data>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Compartir una oficina | eWorky, todas las ofertas de oficinas compartidas</value>
+  </data>
 </root>

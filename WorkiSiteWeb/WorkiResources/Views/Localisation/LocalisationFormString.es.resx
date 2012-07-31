@@ -152,7 +152,7 @@
     <value>Enlace a la página de Facebook</value>
   </data>
   <data name="LinkToTwitter" xml:space="preserve">
-    <value>Enlace al perfíl Twitter</value>
+    <value>Enlace al perfil Twitter</value>
   </data>
   <data name="MandatoryFields" xml:space="preserve">
     <value>Campos obligatorios</value>

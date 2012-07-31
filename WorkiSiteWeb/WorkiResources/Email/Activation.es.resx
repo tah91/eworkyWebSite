@@ -164,6 +164,22 @@ Dirección de correo:  &lt;b&gt;{1}&lt;/b&gt;</value>
     <value>{0}, ¡Bienvenido a eWorky !</value>
   </data>
   <data name="LocalisationCreateContent" xml:space="preserve">
-    <value>¡Enhorabuena! &lt;b&gt;{0} ha sido añadido en eWorky como {1} en {2} ! Puedes hacer clic en el enlace siguiente para acceder a tu perfíl en eWorky: {3} </value>
+    <value>¡Enhorabuena! &lt;b&gt;{0} ha sido añadido en eWorky como {1} en {2} ! Puedes hacer clic en el enlace siguiente para acceder a tu perfil en eWorky: {3} 
+
+&lt;u&gt;&lt;b&gt;¿Cómo funciona?&lt;/b&gt;&lt;/u&gt;
+
+eWorky es una plataforma colaborativa de espacios de trabajo: ayudamos a nuestros colaboradores a encontrar el mejor sitio para trabajar. A partir de ahora, los eWorkers van a poder encontrar {4} cuando busquen un espacio de trabajo.
+
+&lt;u&gt;&lt;b&gt;¿Qué tengo que hacer?&lt;/b&gt;&lt;/u&gt;
+
+&lt;b&gt;¡Hacerte gerente de tu espacio!&lt;/b&gt; Así, accederás a funcionalidades avanzadas que te permitirán promover tu espacio.
+
+&lt;b&gt;¡Actualiza tus datos!&lt;/b&gt; Pon fotos nuevas y presenta tus ofertas a los eWorkers, así ganarás visibilidad.
+
+&lt;b&gt;¡Que te puntúen!&lt;/b&gt; ¡Indica a los eWorkers hasta qué punto {5} es maravilloso! Las notas y comentarios mejorarán tu posicionamiento en los resultados de búsqueda.
+
+Para cualquier duda o pregunta, no dudes en ponerte en contacto con nosotros a support@eworky.com y te ayudaremos en todo lo que podamos.
+
+¡Bienvenid@ a eWorky!</value>
   </data>
 </root>

@@ -445,4 +445,19 @@
   <data name="Medical" xml:space="preserve">
     <value>Consulta médica</value>
   </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <value>El espacio correspondiente no ha sido encontrado</value>
+  </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <value>Ya existe un gerente para este espacio</value>
+  </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <value>Recibir directamente los presupuestos</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
 </root>

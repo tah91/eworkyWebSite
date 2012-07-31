@@ -133,7 +133,7 @@
     <value>No puedes editar más de {0} en menos de 24h</value>
   <comment>times ? fois ?</comment></data>
   <data name="EditProfile" xml:space="preserve">
-    <value>Editar mi perfíl</value>
+    <value>Editar mi perfil</value>
   </data>
   <data name="Favorite" xml:space="preserve">
     <value>Espacios favoritos</value>
@@ -145,13 +145,13 @@
     <value>no ha añadido espacio a sus favoritos.</value>
   </data>
   <data name="FBProfile" xml:space="preserve">
-    <value>Perfíl Facebook</value>
+    <value>Perfil Facebook</value>
   </data>
   <data name="InfosEmpty" xml:space="preserve">
-    <value>Para completar tu perfíl, {0}.</value>
+    <value>Para completar tu perfil, {0}.</value>
   </data>
   <data name="LinkedInProfile" xml:space="preserve">
-    <value>Perfíl LinkedIn</value>
+    <value>Perfil LinkedIn</value>
   </data>
   <data name="MemberNotFound" xml:space="preserve">
     <value>Usuario no encontrado.</value>
@@ -172,7 +172,7 @@
     <value>Ambiente de trabajo deseada</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
-    <value>Mi perfíl</value>
+    <value>Mi perfil</value>
   </data>
   <data name="MySpaces" xml:space="preserve">
     <value>Espacios añadidos</value>
@@ -187,7 +187,7 @@
     <value>Mis datos profesionales</value>
   </data>
   <data name="ProfilHaveBeenEdit" xml:space="preserve">
-    <value>Tu perfíl ha sido editado correctamente.</value>
+    <value>Tu perfil ha sido editado correctamente.</value>
   </data>
   <data name="RelCommentsEmpty" xml:space="preserve">
     <value>Ningún espacio que has añadido ha sido comentado aún.</value>
@@ -199,10 +199,10 @@
     <value>Redes sociales</value>
   </data>
   <data name="TwitterProfile" xml:space="preserve">
-    <value>Perfíl Twitter</value>
+    <value>Perfil Twitter</value>
   </data>
   <data name="ViadeoProfile" xml:space="preserve">
-    <value>Perfíl Viadeo</value>
+    <value>Perfil Viadeo</value>
   </data>
   <data name="Wait2Days" xml:space="preserve">
     <value>Tienes que esperar 48h antes de poder editar un espacio</value>

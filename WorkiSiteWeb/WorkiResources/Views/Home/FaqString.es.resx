@@ -140,7 +140,7 @@
     <comment>FAQ</comment>
   </data>
   <data name="FormForSearch" xml:space="preserve">
-    <value>El formulario situado a la {0} de la página web permite efectuar búsquedas sencillas a partir del lugar y del tipo de espacio buscado (espacio público, café Wifi, etc.). Una búsqueda más detallada puede realizarse a través del enlace {1}. Se pueden seleccionar más criterios tal y como los servicios propuestos en el espacio (Wifi, restauración, aparcamiento, etc.), el tipo de espacio (gratuito, centro de negocios, etc.) o utilizar búsquedas ya ya parametrizadas según tu perfíl (estudiante, trabajador nomada, etc.).</value>
+    <value>El formulario situado a la {0} de la página web permite efectuar búsquedas sencillas a partir del lugar y del tipo de espacio buscado (espacio público, café Wifi, etc.). Una búsqueda más detallada puede realizarse a través del enlace {1}. Se pueden seleccionar más criterios tal y como los servicios propuestos en el espacio (Wifi, restauración, aparcamiento, etc.), el tipo de espacio (gratuito, centro de negocios, etc.) o utilizar búsquedas ya ya parametrizadas según tu perfil (estudiante, trabajador nomada, etc.).</value>
     <comment>toujours identique ?</comment>
   </data>
   <data name="ForRateComment" xml:space="preserve">
@@ -338,6 +338,6 @@ Estar registrado en eWorky te permite añadir espacios, así como puntuar y come
     <value>Que se trate de centros de negocio, de hoteles, de cafés, de centros de teletrabajo o de inmuebles de oficinas, si quieres encontrar, reservar, comprar, alquilar, vender o compartir, eWorky te ayudará. Puedes encontrar en nuestra página el espacio de trabajo que te conviene, puntuarlo, reservarlo online, añadir tus espacios de trabajo favoritos o incluso encontrar oficinas para alquilar o comprar. Adaptándose a tu nueva forma de trabajar, ¡eWorky es sin duda el mejor sitio para trabajar!</value>
   </data>
   <data name="ForEditProfil" xml:space="preserve">
-    <value>Puedes acceder a tu perfíl desde cualquier página de nuestra web pulsando « Mi perfíl » en la barra de enlaces arriba a la derecha (tienes que estar conectado). Para editar tu perfíl, haz clic en el enlace « Editar mi perfíl » debajo de tu nombre en la parte izquiera de tu perfíl. Cuanto más lo completes, más favorecerás los intercambios con los demás eWorkers y más puntos obtendrás.</value>
+    <value>Puedes acceder a tu perfil desde cualquier página de nuestra web pulsando « Mi perfil » en la barra de enlaces arriba a la derecha (tienes que estar conectado). Para editar tu perfil, haz clic en el enlace « Editar mi perfil » debajo de tu nombre en la parte izquiera de tu perfil. Cuanto más lo completes, más favorecerás los intercambios con los demás eWorkers y más puntos obtendrás.</value>
   </data>
 </root>

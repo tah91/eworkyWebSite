@@ -229,7 +229,7 @@
     <value>Extensión&lt;br/&gt;errónea&lt;br/&gt;</value>
   </data>
   <data name="PleaseSelectProfile" xml:space="preserve">
-    <value>Tienes que seleccionar un perfíl.</value>
+    <value>Tienes que seleccionar un perfil.</value>
   </data>
   <data name="Range" xml:space="preserve">
     <value>El campo "{0}" tiene que estar entre {1} y {2}.</value>
@@ -284,5 +284,14 @@
   </data>
   <data name="AccountLocked" xml:space="preserve">
     <value>Cuidado, Tu cuenta ha sido objeto de numerosos intentos fallidos de conexión. Para preservar la seguridad de tu cuenta, eWorky lo ha bloqueado temporalmente. Para volver a activarlo, ponte en contacto con nosotros.</value>
+  </data>
+  <data name="OfferPriceType" xml:space="preserve">
+    <value>Tienes que elegir un periodo para el campo {0}</value>
+  </data>
+  <data name="SuperiorTo" xml:space="preserve">
+    <value>el campo "{0}" tiene que ser superior a {1}</value>
+  </data>
+  <data name="ProhibitedString" xml:space="preserve">
+    <value>Les direcciones de email o los números de teléfono están prohibidos en el campo "{0}"</value>
   </data>
 </root>

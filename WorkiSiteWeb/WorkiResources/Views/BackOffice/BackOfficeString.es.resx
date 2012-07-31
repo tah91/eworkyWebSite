@@ -245,7 +245,7 @@
     <value>Puntuación</value>
   </data>
   <data name="SeeClientProfile" xml:space="preserve">
-    <value>Ver el perfíl del cliente</value>
+    <value>Ver el perfil del cliente</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Estado</value>
@@ -305,7 +305,7 @@
     <value>Periodo</value>
   </data>
   <data name="NeedInfoPaypal" xml:space="preserve">
-    <value>Para proponer una oferta, tienes que indicar previamente la dirección de correo electrónico asociada a tu cuenta PayPal en el apartado Opción de tu perfíl de gerente.</value>
+    <value>Para proponer una oferta, tienes que indicar previamente la dirección de correo electrónico asociada a tu cuenta PayPal en el apartado Opción de tu perfil de gerente.</value>
   </data>
   <data name="BillingInfo" xml:space="preserve">
     <value>Información de facturación</value>
