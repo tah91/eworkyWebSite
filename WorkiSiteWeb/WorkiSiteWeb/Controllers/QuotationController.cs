@@ -276,12 +276,13 @@ namespace Worki.Web.Controllers
                 try
                 {
                     var quotation = qRepo.Get(id);
-                    UpdateModel(quotation);
+                    TryUpdateModel(quotation);
 
                     context.Commit();
                 }
                 catch (Exception ex)
                 {
+                    _Logger.Error("Edit", ex);
                     context.Complete();
                     ModelState.AddModelError("", ex.Message);
                 }
