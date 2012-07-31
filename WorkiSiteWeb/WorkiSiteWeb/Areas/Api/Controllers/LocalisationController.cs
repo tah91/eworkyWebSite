@@ -411,6 +411,7 @@ namespace Worki.Web.Areas.Api.Controllers
             //get the wanted offer types
 
             //take the json
+            //TODO fix it for free place offer = -1
             var list = results.List;
             if (!string.IsNullOrEmpty(offerType))
             {
