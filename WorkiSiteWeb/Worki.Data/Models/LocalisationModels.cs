@@ -1287,6 +1287,8 @@ namespace Worki.Data.Models
 
         #endregion
 
+        #region IValidatableObject
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (string.IsNullOrEmpty(GetDescription()))
@@ -1295,14 +1297,15 @@ namespace Worki.Data.Models
             }
             else
             {
-               var validateDescription = FormValidation.ValidateDescription(GetDescription(), string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Localisation.Localisation.Description), GetDescriptionName());
-               if (validateDescription != null)
-               {
-                   yield return validateDescription;
-               }
+                if (FormValidation.ValidateDescription(GetDescription()))
+                {
+                    var error = string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Localisation.Localisation.Description);
+                    yield return new ValidationResult(error, new[] { GetDescriptionName() });
+                }
             }
-
         }
+
+        #endregion
 
     }
 

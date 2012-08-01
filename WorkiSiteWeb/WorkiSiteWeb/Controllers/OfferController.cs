@@ -32,20 +32,16 @@ namespace Worki.Web.Controllers
             _MembershipService = membershipService;
 		}
 
-		/// <summary>
-		/// GET Action result to show offer form
-		/// </summary>
-		/// <param name="id">id of the offer localisation</param>
-		/// <returns>View containing offer form</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult Create(int id, int type, string returnUrl=null)
-		{
-            var context = ModelFactory.GetUnitOfWork();
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var loc = lRepo.Get(id);
-
-			return View(new OfferFormViewModel(loc.IsSharedOffice()) { Offer = new Offer { LocalisationId = id, Type = type } });
-		}
+        /// <summary>
+        /// GET Action result to show offer form
+        /// </summary>
+        /// <param name="id">id of the offer localisation</param>
+        /// <returns>View containing offer form</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        public virtual ActionResult Create(int id, int type, string returnUrl = null)
+        {
+            throw new NotImplementedException("Deprecated");
+        }
 
 		/// <summary>
 		/// Post Action result to add offer

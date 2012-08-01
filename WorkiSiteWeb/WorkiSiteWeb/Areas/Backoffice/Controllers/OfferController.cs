@@ -124,6 +124,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View containing localisation data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
+        [ValidateOnlyIncomingValues]
 		public virtual ActionResult Edit(int id, int offerId, OfferFormViewModel formData)
 		{
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(formData.Offer));
@@ -204,6 +205,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View containing localisation data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
+        [ValidateOnlyIncomingValues]
 		public virtual ActionResult Configure(int id, OfferModel<OfferFormViewModel> formData)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
@@ -222,7 +224,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 					var o = oRepo.Get(formData.OfferModelId);
 					UpdateModel(o, "InnerModel.Offer");
-					o.Validate();
 					context.Commit();
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Backoffice.Offer.Configure(o.LocalisationId, o.Id));

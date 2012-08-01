@@ -20,7 +20,7 @@ namespace Worki.Infrastructure
         public static string EmailPattern = @"[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}";
         public static string PhonePattern = @"[0-9-_()]{10,}";
 
-        public static ValidationResult ValidateDescription(string description, string errorMessage, string fieldName)
+        public static bool ValidateDescription(string description)
         {
             string[] pattern = { EmailPattern, PhonePattern };
             int nbrMatch = 0;
@@ -31,14 +31,7 @@ namespace Worki.Infrastructure
                 nbrMatch += regex.Matches(description.Replace(" ", "")).Count;
             }
 
-            if (nbrMatch > 0)
-            {
-                return new ValidationResult(errorMessage, new[] { fieldName });
-            }
-            else
-            {
-                return null;
-            }
+            return nbrMatch > 0;
         }
     }
 
@@ -398,8 +391,8 @@ namespace Worki.Infrastructure
 				filterContext.HttpContext.Response.StatusCode = 400;
 				filterContext.Result = new ContentResult
 				{
-					Content = (filterContext.Exception as ModelStateException).Message,
-					ContentEncoding = Encoding.UTF8,
+                    Content = MiscHelpers.Nl2Br((filterContext.Exception as ModelStateException).Message),
+					ContentEncoding = Encoding.UTF8
 				};
 			}
 		}

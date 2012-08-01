@@ -604,25 +604,14 @@ namespace Worki.Data.Models
 
 		#region Validation
 
-		/// <summary>
-		/// Validate offer, thow exception if not valid
-		/// </summary>
-		public void Validate()
-		{
-			string commentError = Worki.Resources.Validation.ValidationString.AlreadyRateThis;
-			var group = OfferPrices.ToLookup(op => op.PriceType);
-			foreach (var item in group)
-			{
-				if (item.Count() > 1)
-					throw new Exception("Vous ne pouvez indiquer qu'un prix par periode");
-			}
-		}
-
+        const string _PricesField = "PricesField";
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            string error = "";
             if (OfferPrices.Count < 1)
             {
-                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.LeaseTerm));
+                error = string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.LeaseTerm);
+                yield return new ValidationResult(error, new[] { _PricesField });
             }
 
             foreach (OfferPrice offer in OfferPrices)
@@ -630,22 +619,22 @@ namespace Worki.Data.Models
                 if (offer.Price > 0 == false)
                 {
                     string inputName = Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(offer.PriceType);
-                    yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.SuperiorTo, inputName, 0) + "<br />");
+                    error = string.Format(Worki.Resources.Validation.ValidationString.SuperiorTo, inputName, 0);
+                    yield return new ValidationResult(error, new[] { _PricesField });
                 }
             }
 
             if (string.IsNullOrEmpty(this.GetDescription()))
             {
-                yield return new ValidationResult(string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Offer.Offer.Description), new[] { this.GetDescriptionName() });
+                error = string.Format(Worki.Resources.Validation.ValidationString.Required, Worki.Resources.Models.Offer.Offer.Description);
+                yield return new ValidationResult(error, new[] { GetDescriptionName() });
             }
-
             else
             {
-
-                var validateDescription = FormValidation.ValidateDescription(GetDescription(), string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), GetDescriptionName());
-                if (validateDescription != null)
+                if (FormValidation.ValidateDescription(GetDescription()))
                 {
-                    yield return validateDescription;
+                    error = string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description);
+                    yield return new ValidationResult(error, new[] { GetDescriptionName() });
                 }
             }
         }
