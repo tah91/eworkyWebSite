@@ -1,10 +1,46 @@
 ﻿@model OfferFormViewModel
-		   
+           
+@helper DescritptionField(Worki.Infrastructure.Culture culture)
+{
+		switch (culture)
+		{
+			case Worki.Infrastructure.Culture.es:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionEs, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+           case Worki.Infrastructure.Culture.de:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionDe, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+			case Worki.Infrastructure.Culture.en:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.DescriptionEn, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+			case Worki.Infrastructure.Culture.fr:
+			default:
+				{ 
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Offer.Description, new { placeHolder = Worki.Resources.Views.Offer.OfferString.DescriptionOffer})
+					</div>
+				}
+				break;
+       }
+}		   
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.IsSharedOffice)
     @Html.HiddenFor(m => m.LocId)
+     
     <div class="contentBlock">
 		<table class="offerTable">
 			<tr>
@@ -31,13 +67,23 @@
 					</div>
 				</td>
 			</tr>
+            <tr>
+                    <td class="verticalAlignTop">
+                        <div class="editor-label">
+                          @Html.LabelFor(model => model.Offer.Description)<span class="blue">*</span>
+                        </div>
+                     </td>
+                     <td>
+					    @DescritptionField(Url.GetCulture())
+                    </td>
+              </tr>
 		</table>
     </div>
-	if (!Url.IsInArea("Backoffice"))
-	{
+    if (!Url.IsInArea("Backoffice"))
+    {
     <div class="contentBlock configOffer">
         <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
-        <table class="configCurrency">
+        <table>
             <tr>
 			    <td>
 				    @Html.LabelFor(m => m.Offer.Currency)
@@ -55,18 +101,6 @@
     <div class="contentBlock">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Availability</h3>
         <table class="offerTable">
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Offer.AvailabilityDate)
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        @Html.TextBox("Offer.AvailabilityDate", CultureHelpers.GetSpecificFormat(Model.Offer.AvailabilityDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
-                    </div>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <div class="editor-label">
@@ -91,7 +125,7 @@
                 </td>
             </tr>
         </table>
-    </div> 
+    </div>
     }
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>

@@ -640,16 +640,16 @@ namespace Worki.Data.Models
 
         #endregion
 
-        #region Validation
+        #region IValidatableObject
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if(!String.IsNullOrEmpty(Member.MemberMainData.Description))
+            if (!String.IsNullOrEmpty(Member.MemberMainData.Description))
             {
-                var validateDescription = FormValidation.ValidateDescription(Member.MemberMainData.Description, string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description), "Member.MemberMainData.Description");
-                if (validateDescription != null)
+                if (FormValidation.ValidateDescription(Member.MemberMainData.Description))
                 {
-                    yield return validateDescription;
+                    var error = string.Format(Worki.Resources.Validation.ValidationString.ProhibitedString, Worki.Resources.Models.Offer.Offer.Description);
+                    yield return new ValidationResult(error, new[] { "Member.MemberMainData.Description" });
                 }
             }
         }

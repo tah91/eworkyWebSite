@@ -327,6 +327,7 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .configOffer select,.configOffer input[type="text"]{width:100px}
 .configoffertable td:first-child{width:180px}
 .configoffertable td{height:30px}
+.configPrice td{vertical-align:middle}
 .configPrice td:first-child{width:180px;height:30px}
 .paymentPeriodType li{display:block;float:left;padding-right:10px}
 .offerPricesRow td{padding-top:5px}

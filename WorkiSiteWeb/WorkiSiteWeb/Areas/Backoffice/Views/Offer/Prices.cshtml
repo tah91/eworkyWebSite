@@ -26,7 +26,27 @@
 			@Html.HiddenFor(m => m.InnerModel.IsSharedOffice)
 			<div class="contentBlock configOffer">
                 <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
-                <table class="configCurrency">
+                <table class="configPrice">
+                    <tr>
+                        <td>
+					        <div class="editor-label">
+						        @Html.Label(Worki.Resources.Models.Offer.Offer.LeaseTerm)<span class="blue">*</span>
+					        </div>
+				        </td>
+                        <td>
+					        <div class="editor-field">
+                                <ul class="paymentPeriodType">
+						        @foreach (var pair in Offer.GetPaymentPeriodTypes())
+                                {
+                                <li>
+                                @Html.Label(pair.Value)
+                                @Html.CheckBox(pair.Key.ToString(), Model.InnerModel.Offer.ForceHasPriceOfType(pair.Key))
+                                </li>
+                                }
+                                </ul>
+					        </div>
+				        </td>
+                    </tr>
                     <tr>
 						<td>
 							@Html.LabelFor(m => m.InnerModel.Offer.Currency)
@@ -35,6 +55,17 @@
 							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
 						</td>
 					</tr>
+                 <tr>
+                   <td>
+				        @Html.LabelFor(m => m.InnerModel.Offer.AllInclusive)<span class="blue">*</span>
+			        </td>
+			        <td>
+                       <label for="AllInclusive_true">@Worki.Resources.Models.Offer.Offer.AllInclusive_true</label>
+                       @Html.RadioButtonFor(m => m.InnerModel.Offer.AllInclusive, true, new { id = "AllInclusive_true" })
+                       <label for="AllInclusive_false">@Worki.Resources.Models.Offer.Offer.AllInclusive_false</label>
+                       @Html.RadioButtonFor(m => m.InnerModel.Offer.AllInclusive, false, new { id = "AllInclusive_false" }) 
+			        </td>
+                </tr>
                 </table>
 				@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.InnerModel.Offer.OfferPrices)
 			</div> 
