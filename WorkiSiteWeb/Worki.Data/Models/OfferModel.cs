@@ -602,16 +602,16 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		#region Validation
+        #region IValidatableObject
 
-        const string _PricesField = "PricesField";
+        public const string PricesField = "PricesField";
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             string error = "";
             if (OfferPrices.Count < 1)
             {
                 error = string.Format(Worki.Resources.Validation.ValidationString.OfferPriceType, Worki.Resources.Models.Offer.Offer.LeaseTerm);
-                yield return new ValidationResult(error, new[] { _PricesField });
+                yield return new ValidationResult(error, new[] { PricesField });
             }
 
             foreach (OfferPrice offer in OfferPrices)
@@ -620,7 +620,7 @@ namespace Worki.Data.Models
                 {
                     string inputName = Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(offer.PriceType);
                     error = string.Format(Worki.Resources.Validation.ValidationString.SuperiorTo, inputName, 0);
-                    yield return new ValidationResult(error, new[] { _PricesField });
+                    yield return new ValidationResult(error, new[] { PricesField });
                 }
             }
 

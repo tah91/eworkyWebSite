@@ -182,6 +182,11 @@ namespace Worki.Infrastructure
         public string Exclude { get; set; }
 
         /// <summary>
+        /// Gets or sets a comma-delimited list of property names for which validation is forced
+        /// </summary>
+        public string Include { get; set; }
+
+        /// <summary>
         /// Gets or sets a prefix for properties to exclude
         /// </summary>
         public string Prefix { get; set; }
@@ -191,8 +196,16 @@ namespace Worki.Infrastructure
             var modelState = filterContext.Controller.ViewData.ModelState;
             var incomingValues = filterContext.Controller.ValueProvider;
             var excludedProperties = !string.IsNullOrEmpty(Exclude) ? Exclude.Split(',').Select(e => Prefix + "." + e).ToList() : null;
+            var includedProperties = !string.IsNullOrEmpty(Include) ? Include.Split(',').Select(e => Prefix + "." + e).ToList() : null;
 
-            var keys = modelState.Keys.Where(x => (!incomingValues.ContainsPrefix(x) || (!string.IsNullOrEmpty(Exclude) && excludedProperties.Contains(x))));
+            var keys = modelState.Keys.Where(x =>
+                {
+                    var forceValidateIt = includedProperties != null && includedProperties.Contains(x);
+                    var incomming = incomingValues.ContainsPrefix(x);
+                    var excluded = excludedProperties != null && excludedProperties.Contains(x);
+                    return (!forceValidateIt && !incomming) || excluded;
+                });
+
             foreach (var key in keys) // These keys don't match any incoming value
                 modelState[key].Errors.Clear();
         }

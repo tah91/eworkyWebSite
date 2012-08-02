@@ -143,7 +143,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				try
 				{
-					UpdateModel(offer, "Offer");
+					TryUpdateModel(offer, "Offer");
 					context.Commit();
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
@@ -223,7 +223,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					}
 
 					var o = oRepo.Get(formData.OfferModelId);
-					UpdateModel(o, "InnerModel.Offer");
+                    TryUpdateModel(o, "InnerModel.Offer");
 					context.Commit();
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Backoffice.Offer.Configure(o.LocalisationId, o.Id));
@@ -288,7 +288,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="offerId">offer id</param>
 		/// <returns>View containing offer prices</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
-		[ValidateOnlyIncomingValues]
+        [ValidateOnlyIncomingValues(Include = Offer.PricesField, Prefix = "InnerModel.Offer")]
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Prices(int id, int offerId, OfferModel<OfferFormViewModel> formData)
 		{
@@ -301,7 +301,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
 					var offer = oRepo.Get(formData.OfferModelId);
-					UpdateModel(offer, "InnerModel.Offer");
+                    TryUpdateModel(offer, "InnerModel.Offer");
 					context.Commit();
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Backoffice.Offer.Prices(id, offer.Id));
