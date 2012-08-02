@@ -146,7 +146,7 @@ namespace Worki.Web.Controllers
 						dynamic teamMail = new Email(MVC.Emails.Views.Email);
 						teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-						teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
+                        teamMail.Subject = hasOwner ? Worki.Resources.Email.BookingString.QuotationMailSubject : Worki.Resources.Email.BookingString.QuotationMailSubject + " (sans gérant)";
 						teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
 														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName), //0
