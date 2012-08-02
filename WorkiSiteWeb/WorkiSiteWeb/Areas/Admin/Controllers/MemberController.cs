@@ -222,81 +222,84 @@ namespace Worki.Web.Areas.Admin.Controllers
                 try
                 {
                     var loc = lRepo.Get(model.LocalisationId);
+                    if (loc == null)
+                    {
+                        throw new Exception(Worki.Resources.Models.Localisation.Localisation.LocalisationError);
+                    }
                     if (loc.OwnerID != 1)
                     {
-                        ModelState.AddModelError("", Worki.Resources.Models.Localisation.Localisation.OwnerAllreadyExist);
+                        throw new Exception(Worki.Resources.Models.Localisation.Localisation.OwnerAllreadyExist);
+                    }
+
+                    int memberId;
+                    bool sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId, false);
+
+                    if (memberId == 0)
+                    {
+                        throw new Exception("Utilisateur non crée");
+                    }
+
+                    var member = mRepo.Get(memberId);
+                    member.MemberMainData.BOStatus = (int)eBOStatus.Done;
+                    Roles.AddUserToRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                    loc.OwnerID = memberId;
+                    context.Commit();
+
+                    if (sendNewAccountMail)
+                    {
+                        var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                        var activationLink = urlHelper.ActionAbsolute(MVC.Account.Activate(member.Email, member.EmailKey));
+                        TagBuilder link = new TagBuilder("a");
+                        link.MergeAttribute("href", activationLink);
+                        link.InnerHtml = activationLink;
+
+                        dynamic ownerMail = null;
+
+                        ownerMail = new Email(MVC.Emails.Views.Email);
+                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        ownerMail.To = model.Email;
+                        ownerMail.ToName = model.Firstname;
+
+                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnershipAndAccount,
+                                                            loc.Name,
+                                                            activationLink.ToString(),
+                                                            loc.GetDetailFullUrl(Url),
+                                                            model.Email,
+                                                            _MembershipService.GetPassword(model.Email, null));
+
+                        ownerMail.Send();
                     }
                     else
                     {
-                        int memberId;
-                        bool sendNewAccountMail = _MembershipService.TryCreateAccount(model.Email.ToString(), maindata, out memberId, false);
+                        var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                        var boLink = urlHelper.ActionAbsolute(MVC.Backoffice.Localisation.Index(loc.ID));
+                        TagBuilder link = new TagBuilder("a");
+                        link.MergeAttribute("href", boLink);
+                        link.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                        if (memberId != 0)
-                        {
-                            var member = mRepo.Get(memberId);
-                            member.MemberMainData.BOStatus = (int)eBOStatus.Done;
-                            Roles.AddUserToRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
-                            loc.OwnerID = memberId;
-                            context.Commit();
-                            if (sendNewAccountMail)
-                            {
-                                var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                                var activationLink = urlHelper.ActionAbsolute(MVC.Account.Activate(member.Email, member.EmailKey));
-                                TagBuilder link = new TagBuilder("a");
-                                link.MergeAttribute("href", activationLink);
-                                link.InnerHtml = activationLink;
+                        dynamic ownerMail = null;
 
-                                dynamic ownerMail = null;
+                        ownerMail = new Email(MVC.Emails.Views.Email);
+                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        ownerMail.To = model.Email;
+                        ownerMail.ToName = model.Firstname;
 
-                                ownerMail = new Email(MVC.Emails.Views.Email);
-                                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                                ownerMail.To = model.Email;
-                                ownerMail.ToName = model.Firstname;
+                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
+                                                            loc.Name,
+                                                            boLink.ToString());
 
-                                ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
-                                ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnershipAndAccount,
-                                                                    loc.Name,
-                                                                    activationLink.ToString(),
-                                                                    loc.GetDetailFullUrl(Url),
-                                                                    model.Email,
-                                                                    _MembershipService.GetPassword(model.Email, null));
-
-                                ownerMail.Send();
-                            }
-                            else
-                            {
-                                var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                                var boLink = urlHelper.ActionAbsolute(MVC.Backoffice.Localisation.Index(loc.ID));
-                                TagBuilder link = new TagBuilder("a");
-                                link.MergeAttribute("href", boLink);
-                                link.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
-
-                                dynamic ownerMail = null;
-
-                                ownerMail = new Email(MVC.Emails.Views.Email);
-                                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                                ownerMail.To = model.Email;
-                                ownerMail.ToName = model.Firstname;
-
-                                ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
-                                ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
-                                                                    loc.Name,
-                                                                    boLink.ToString());
-
-                                ownerMail.Send();
-                            }
-
-                            return RedirectToAction(MVC.Admin.Member.IndexOwner());
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("Name", "Utilisateur non crée");
-                        }
+                        ownerMail.Send();
                     }
+
+                    return RedirectToAction(MVC.Admin.Member.IndexOwner());
                 }
-                catch
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("LocalisationId", Worki.Resources.Models.Localisation.Localisation.LocalisationError);
+                    _Logger.Error("", ex);
+                    ModelState.AddModelError("", ex.Message);
+                    context.Complete();
                 }
             }
 
