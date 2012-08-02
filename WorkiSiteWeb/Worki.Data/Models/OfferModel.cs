@@ -93,7 +93,7 @@ namespace Worki.Data.Models
         {
             List<string> prices = new List<string>();
             foreach (var offer in OfferPrices)
-            {
+            {   
                 prices.Add(offer.GetPriceDisplay());
             }
 
@@ -110,7 +110,7 @@ namespace Worki.Data.Models
                 availability = GetAvailabilityDisplay(),
                 prices = prices,
                 features = features,
-                type = Type
+                offerType = Type
             };
         }
 

@@ -93,7 +93,7 @@ namespace Worki.Data.Models
         public List<string> prices { get; set; }
         public List<FeatureJson> features { get; set; }
         public string availability { get; set; }
-        public int type { get; set; }
+        public int offerType { get; set; }
     }
 
 	public class ImageJson
