@@ -62,7 +62,6 @@ namespace Worki.Web.Controllers
 		/// Post Action result to add Quotation request
 		/// </summary>
 		/// <returns>View containing Quotation form</returns>
-        //[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[AcceptVerbs(HttpVerbs.Post)]
 		public virtual ActionResult Create(int id, MemberQuotationFormViewModel formData)
 		{
@@ -93,23 +92,26 @@ namespace Worki.Web.Controllers
                     var locUrl = offer.Localisation.GetDetailFullUrl(Url);
 					try
 					{
-						formData.MemberQuotation.MemberId = memberId;
-						formData.MemberQuotation.OfferId = id;
-
                         var localisation = lRepo.Get(offer.LocalisationId);
-                        formData.MemberQuotation.StatusId =  (localisation.DirectlyReceiveQuotation == true) ? (int)MemberQuotation.Status.Unknown : (int)MemberQuotation.Status.Pending;
+                        var hasOwner = localisation.HasOwner();
 
+                        if (hasOwner)
+                        {
+                            formData.MemberQuotation.MemberId = memberId;
+                            formData.MemberQuotation.OfferId = id;
+                            formData.MemberQuotation.StatusId = (localisation.DirectlyReceiveQuotation == true) ? (int)MemberQuotation.Status.Unknown : (int)MemberQuotation.Status.Pending;
+                            member.MemberQuotations.Add(formData.MemberQuotation);
+
+                            formData.MemberQuotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                            {
+                                CreatedDate = DateTime.UtcNow,
+                                Event = "Quotation Created",
+                                EventType = (int)MemberQuotationLog.QuotationEvent.Creation,
+                                LoggerId = memberId
+                            });
+                        }
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-						member.MemberQuotations.Add(formData.MemberQuotation);
-
-                        formData.MemberQuotation.MemberQuotationLogs.Add(new MemberQuotationLog
-                        {
-                            CreatedDate = DateTime.UtcNow,
-                            Event = "Quotation Created",
-                            EventType = (int)MemberQuotationLog.QuotationEvent.Creation,
-							LoggerId = memberId
-                        });
 
 						dynamic newMemberMail = null;
 						if (sendNewAccountMail)
@@ -152,7 +154,6 @@ namespace Worki.Web.Controllers
 														 member.Email, //2
 														 locName, //3
 														 Localisation.GetOfferType(offer.Type), //4
-														 //formData.MemberQuotation.Surface,
 														 formData.MemberQuotation.Message, //5
                                                          locUrl); //6
 
@@ -164,19 +165,12 @@ namespace Worki.Web.Controllers
                         clientMail.ToName = member.MemberMainData.FirstName;
                         clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
                                                          Localisation.GetOfferType(offer.Type), //0
-                                                         //formData.MemberQuotation.Surface,
                                                          locName, //1
                                                          offer.Localisation.Adress); //2
        
 						context.Commit();
 
-
-						if (sendNewAccountMail)
-						{
-							newMemberMail.Send();
-						}
-
-                        if (formData.MemberQuotation.StatusId == (int)MemberQuotation.Status.Unknown)
+                        if (hasOwner && formData.MemberQuotation.StatusId == (int)MemberQuotation.Status.Unknown)
                         {
                             //we set the information for the mail after commit in order to get the id of the MemberQuotation that have been inserted
                             var context2 = ModelFactory.GetUnitOfWork();
@@ -208,6 +202,10 @@ namespace Worki.Web.Controllers
                                                             localisation2.Adress,
                                                             ownerLink);
                             ownerMail.Send();
+                        }
+                        if (sendNewAccountMail)
+                        {
+                            newMemberMail.Send();
                         }
 						clientMail.Send();
 						teamMail.Send();

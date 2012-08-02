@@ -28,36 +28,13 @@
         </ul>
         }
 	    <div class="bookingCallAction">
-		    @if (Model.AcceptProduct())
+		    @if (Model.HasOffer())
 		    {
 		    <div class="bigButtonStd buttonStd buttonBlue linkImg">
                 <a href="#offers" id="bookItNow">@Worki.Resources.Views.Localisation.LocalisationString.SeeOffers</a>
             </div>
 		    }
-		    else
-		    {
-		    <div class="bigButtonStd buttonStd buttonBlue linkImg">
-                @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID), new { id = "askBooking" })
-            </div>
-            }
 	    </div>
-        @if (Request.IsAuthenticated)
-        { 
-        <script type="text/javascript">
-            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
-                $("#askBooking").colorbox({ width: "700px" });
-            });
-        </script>
-        }
-        else
-        { 
-        <script type="text/javascript">
-            $("#askBooking").click(function () {
-                window.location.href = '@Url.Action(MVC.Account.LogOn(null, Request.RawUrl))';
-                return false;
-            });
-        </script> 
-        }
     </div>
 }
 
