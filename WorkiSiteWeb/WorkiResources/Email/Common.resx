@@ -176,7 +176,7 @@ N'oubliez pas de proposer à vos clients de commenter et noter votre lieu, cela 
   <data name="Twitter" xml:space="preserve">
     <value>http://www.twitter.com/#!/eWorky_fr</value>
   </data>
-  <data name="AdminOwnership" xml:space="preserve">
+  <data name="AdminOwnershipAndAccount" xml:space="preserve">
     <value>Félicitations, vous venez d’être désigné gérant de {0} sur eWorky !
 
 Pour confirmer que vous êtes bien propriétaire ou gérant de ce lieu, 
@@ -190,5 +190,10 @@ pour modifier la fiche de {0}  : {2}
 avec :
 - votre identifiant {3}
 - votre mot de passe {4}</value>
+  </data>
+  <data name="AdminOwnership" xml:space="preserve">
+    <value>Félicitations, vous venez d’être désigné gérant de {0} sur eWorky ! 
+
+Rendez vous donc au plus vite dans votre {1}, grâce auquel vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM). </value>
   </data>
 </root>

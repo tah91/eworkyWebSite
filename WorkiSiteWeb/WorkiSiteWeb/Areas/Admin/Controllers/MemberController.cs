@@ -234,6 +234,8 @@ namespace Worki.Web.Areas.Admin.Controllers
                         if (memberId != 0)
                         {
                             var member = mRepo.Get(memberId);
+                            member.MemberMainData.BOStatus = (int)eBOStatus.Done;
+                            Roles.AddUserToRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
                             loc.OwnerID = memberId;
                             context.Commit();
                             if (sendNewAccountMail)
@@ -252,12 +254,34 @@ namespace Worki.Web.Areas.Admin.Controllers
                                 ownerMail.ToName = model.Firstname;
 
                                 ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
+                                ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnershipAndAccount,
+                                                                    loc.Name,
+                                                                    activationLink.ToString(),
+                                                                    loc.GetDetailFullUrl(Url),
+                                                                    model.Email,
+                                                                    _MembershipService.GetPassword(model.Email, null));
+
+                                ownerMail.Send();
+                            }
+                            else
+                            {
+                                var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                                var boLink = urlHelper.ActionAbsolute(MVC.Backoffice.Localisation.Index(loc.ID));
+                                TagBuilder link = new TagBuilder("a");
+                                link.MergeAttribute("href", boLink);
+                                link.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
+
+                                dynamic ownerMail = null;
+
+                                ownerMail = new Email(MVC.Emails.Views.Email);
+                                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                                ownerMail.To = model.Email;
+                                ownerMail.ToName = model.Firstname;
+
+                                ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
                                 ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
-                                                                                loc.Name,
-                                                                                activationLink.ToString(),
-                                                                                loc.GetDetailFullUrl(Url),
-                                                                                model.Email,
-                                                                                _MembershipService.GetPassword(model.Email, null));
+                                                                    loc.Name,
+                                                                    boLink.ToString());
 
                                 ownerMail.Send();
                             }
