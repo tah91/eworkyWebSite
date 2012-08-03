@@ -91,10 +91,14 @@ namespace Worki.Data.Models
 
         public OfferJson GetJson()
         {
-            List<string> prices = new List<string>();
-            foreach (var offer in OfferPrices)
-            {   
-                prices.Add(offer.GetPriceDisplay());
+            var prices = new List<PriceJson>();
+            foreach (var p in OfferPrices)
+            {
+                prices.Add(new PriceJson
+                {
+                    price = p.GetAbsolute(),
+                    frequency = p.GetFrequency()
+                });
             }
 
             var features = new List<FeatureJson>();
@@ -758,10 +762,32 @@ namespace Worki.Data.Models
 			if (Price == 0)
 				return string.Empty;
 
-            var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
-
-            return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
+            return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, GetAbsolute(), GetFrequency());
 		}
+
+        /// <summary>
+        /// return price with currency but without frequency
+        /// </summary>
+        /// <returns></returns>
+        public string GetAbsolute()
+        {
+            if (Price == 0)
+                return "";
+
+            return Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
+        }
+
+        /// <summary>
+        /// return frequency
+        /// </summary>
+        /// <returns></returns>
+        public string GetFrequency()
+        {
+            if (Price == 0)
+                return "";
+
+            return Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType);
+        }
 
         public int CompareTo(OfferPrice other)
         {

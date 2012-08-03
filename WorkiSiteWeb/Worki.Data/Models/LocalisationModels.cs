@@ -56,10 +56,14 @@ namespace Worki.Data.Models
             foreach (var item in GetOfferTypes())
             {
                 var minPrice = GetMinPrice((int)item);
-                json.prices.Add(new PriceJson
+                json.minPrices.Add(new MinPriceJson
                 {
                     offerType = (int)item,
-                    price = minPrice != null ? minPrice.GetPriceDisplay() : string.Empty
+                    price = new PriceJson
+                    {
+                        price = minPrice != null ? minPrice.GetAbsolute() : "",
+                        frequency = minPrice != null ? minPrice.GetFrequency() : ""
+                    }
                 });
             }
 

@@ -17,7 +17,7 @@ namespace Worki.Data.Models
             features = new List<FeatureJson>();
             offers = new List<OfferJson>();
             images = new List<ImageJson>();
-            prices = new List<PriceJson>();
+            minPrices = new List<MinPriceJson>();
         }
 
 		public int id { get; set; }
@@ -35,7 +35,7 @@ namespace Worki.Data.Models
         public double rating { get; set; }
         public OpeningTimesJson openingTimes { get; set; }
         public AccessJson access { get; set; }
-        public List<PriceJson> prices { get; set; }
+        public List<MinPriceJson> minPrices { get; set; }
         public List<ImageJson> images { get; set; }
         public List<FeatureJson> features { get; set; }
         public List<OfferJson> offers { get; set; }
@@ -74,8 +74,14 @@ namespace Worki.Data.Models
 
     public class PriceJson
     {
-        public int offerType { get; set; }
         public string price { get; set; }
+        public string frequency { get; set; }
+    }
+
+    public class MinPriceJson
+    {
+        public int offerType { get; set; }
+        public PriceJson price { get; set; }
     }
 
     public class AccessJson
@@ -90,7 +96,7 @@ namespace Worki.Data.Models
         public int id { get; set; }
         public string name { get; set; }
         public List<ImageJson> images { get; set; }
-        public List<string> prices { get; set; }
+        public List<PriceJson> prices { get; set; }
         public List<FeatureJson> features { get; set; }
         public string availability { get; set; }
         public int offerType { get; set; }
