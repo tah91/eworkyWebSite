@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>eWorky | Espacios de coworking, Cafés Wifi, Centros de negocio, alquiler y reservas de salas de reunión /formación</value>
+    <value>coworking, desk sharing, cafés met wifi</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>¿Cómo funciona eWorky?</value>
