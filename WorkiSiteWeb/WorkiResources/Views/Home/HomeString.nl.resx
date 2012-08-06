@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BestWorkspace" xml:space="preserve">
+    <value>eWorky | Espacios de coworking, Cafés Wifi, Centros de negocio, alquiler y reservas de salas de reunión /formación</value>
+  </data>
+  <data name="UsingOfEWorky" xml:space="preserve">
+    <value>¿Cómo funciona eWorky?</value>
+    <comment>?</comment>
+  </data>
+  <data name="RentSpeech" xml:space="preserve">
+    <value>    - oficinas profesionales&lt;br /&gt;- local comercial, etc.</value>
+    <comment>A compléter</comment>
+  </data>
+  <data name="CostSpace" xml:space="preserve">
+    <value>Un sitio de pago</value>
+    <comment>?</comment>
+  </data>
+  <data name="TalkAboutUs" xml:space="preserve">
+    <value>Visto en </value>
+    <comment>Jm Modif l.17</comment>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contacta con nosotros</value>
+  </data>
+  <data name="ExampleLocation" xml:space="preserve">
+    <value>Ejemplo: Madrid, Aragón, Plaza mayor, etc.</value>
+  </data>
+  <data name="Imprint" xml:space="preserve">
+    <value>Aviso legal</value>
+  </data>
+  <data name="ImprintDescription" xml:space="preserve">
+    <value>Esta página es editada por:&lt;br /&gt;
+        Omnicentre SAS&lt;br /&gt;
+        Société par actions simplifiée au capital de 20 740 € - RCS NANTERRE 529 309 668&lt;br /&gt;
+        Sede social : 57 rue de Lille, 75007 PARIS, FRANCE&lt;br /&gt;
+        &lt;br /&gt;
+        Contacto :&lt;br /&gt;
+        {0}&lt;br /&gt;
+        &lt;br /&gt;
+        Hosted by :&lt;br /&gt;
+        Microsoft Windows Azure</value>
+  </data>
+  <data name="MailWellSent" xml:space="preserve">
+    <value>Tu mensaje ha sido enviado con éxito, nuestro equipo te contestará lo antes posible.</value>
+  </data>
+  <data name="MoreCriterias" xml:space="preserve">
+    <value>Más criterios</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Prensa</value>
+  </data>
+  <data name="SpeechForJournalists" xml:space="preserve">
+    <value>¿Eres periodista y te gustaría redactar un artículo o realizar un reportaje sobre eWorky? ¿Necesitas información sobre el desarrollo del teletrabajo? ¿Estás buscando a Directores de RRHH para entrevistarlos sobre estos temas? Contacta con nosotros a {0}.</value>
+  </data>
+  <data name="What" xml:space="preserve">
+    <value>¿Qué estás buscando?</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>¿Dónde estás buscando?</value>
+  </data>
+  <data name="WhoAreWe" xml:space="preserve">
+    <value>¿Quiénes somos?</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Encuentra un lugar de trabajo donde quieras: Despachos compartidos, Centros de negocios, espacios de coworking, café wifi, sala de reunión o de conferencia.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="eWorky" xml:space="preserve">
+    <value>2012 eWorky</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenid@</value>
+  </data>
+  <data name="MailWellSent2" xml:space="preserve">
+    <value>¡Tu mensaje ha sido mandado con éxito!</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Alquiler</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reserva</value>
+  </data>
+  <data name="ReserveSpeech" xml:space="preserve">
+    <value>- Centros de negocios, Salas lounge &lt;br/&gt;- Espacios de coworking &lt;br/&gt;- Centro de teletrabajo, etc.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Búsqueda</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SearchSpeech" xml:space="preserve">
+    <value>- Café wifi, puntos wifi &lt;br/&gt;- Espacio público digital &lt;br/&gt;- Biblioteca, museo, etc.</value>
+  </data>
+  <data name="SoonLotofFeatures" xml:space="preserve">
+    <value>Y pronto muchas otras funcionalidades.</value>
+  </data>
+  <data name="Teamworky" xml:space="preserve">
+    <value>El equipo de eWorky tiene muchos proyectos bajo la manga para simplificar el trabajo! Entonces sigue nuestra actualidad en Facebook, Twitter, Google+, etc.</value>
+  </data>
+  <data name="FindTheBesPlace1" xml:space="preserve">
+    <value>Encuentra el mejor sitio para trabajar</value>
+  </data>
+  <data name="MaxRate" xml:space="preserve">
+    <value>Presupuesto máximo (€)</value>
+  </data>
+  <data name="MinSurface" xml:space="preserve">
+    <value>Superficie mínima (m²)</value>
+  </data>
+  <data name="BlogTitle" xml:space="preserve">
+    <value>El blog eWorky</value>
+  </data>
+  <data name="AddPlaceTitle" xml:space="preserve">
+    <value>Proponer un nuevo espacio de trabajo</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Un sitio grátis</value>
+  </data>
+  <data name="RentalAd" xml:space="preserve">
+    <value>Un anuncio de alquiler de locales</value>
+  </data>
+  <data name="ChooseForm" xml:space="preserve">
+    <value>Selecciona el tipo de espacio que quieres añadir</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Un espacio compartido</value>
+  </data>
+  <data name="SharedOfficeSpeach" xml:space="preserve">
+    <value>¿Tienes mesas sin ocupar en tu oficina? ¡Compártelas en eWorky y consigue ingresos adicionales!</value>
+  </data>
+  <data name="FindTheBesPlace2" xml:space="preserve">
+    <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
+  </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value>{0} en {1}</value>
+  </data>
+  <data name="FindTheBesPlace" xml:space="preserve">
+    <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>El equipo</value>
+  </data>
+  <data name="IntroWhoAreWe" xml:space="preserve">
+    <value>eWorky el portal de los espacios de trabajo</value>
+  </data>
+  <data name="WeThinkThat" xml:space="preserve">
+    <value>Creemos que:</value>
+  </data>
+  <data name="WeThinkThat_Text1" xml:space="preserve">
+    <value>El espacio de trabajo de mañana se centrará en el ser humano más en la empresa y será un lugar agradable y propicio a los intercambios. Nos encantará ir a trabajar allí.</value>
+  </data>
+  <data name="WeThinkThat_Text10" xml:space="preserve">
+    <value>Si piensas así, ¡Únete a nosotros!</value>
+  </data>
+  <data name="WeThinkThat_Text2" xml:space="preserve">
+    <value>Para inventar juntos el espacio de trabajo de mañana, es necesario explorar, probar, intercambiar pero sobre todo tirarse al agua.</value>
+  </data>
+  <data name="WeThinkThat_Text3" xml:space="preserve">
+    <value>La llegada de nuevas formas formas de trabajar es una oportunidad para el contacto social en el que la autonomía sucede a la subordinación, la creatividad a obediencia, la responsabilidad al control jerarquico.</value>
+  </data>
+  <data name="WeThinkThat_Text4" xml:space="preserve">
+    <value>Abrirse hacia los demás, compartir y colabrorar son esenciales para la realización personal y alcanzar el equilibrio en un espacio de trabajo.</value>
+  </data>
+  <data name="WeThinkThat_Text5" xml:space="preserve">
+    <value>Los trabajadores necesitan momentos de contacto y de intercambios durante su jornada. Es necesario romper las barreras entre actividades, reemplazar la coacción por la cooperación y la co-creación creando colectivos de trabajo virtuales.</value>
+  </data>
+  <data name="WeThinkThat_Text6" xml:space="preserve">
+    <value>El lugar de trabajo ya no será único sino múltiple, a veces desmaterializado y a menudo adaptado a la tarea, al sector y a la personalidad del trabajador.</value>
+  </data>
+  <data name="WeThinkThat_Text7" xml:space="preserve">
+    <value>El desarrollo sostenible es una prioridad, no para mañana sino para hoy y por eso nuestros espacios de trabajo y modos de trabajar tienen que tomar en cuenta naturalmente el respeto a nuestro planeta.</value>
+  </data>
+  <data name="WeThinkThat_Text8" xml:space="preserve">
+    <value>El mundo evoluciona a una velocidad vertiginosa bajo el impulso de las tecnologías de la infromación. Así mismo, la organización del trabajo, inmutable desde hace décadas, necesita experimentar su propia revolución.</value>
+  </data>
+  <data name="WeThinkThat_Text9" xml:space="preserve">
+    <value>Replanteándose el lugar de trabajo gracias a los espacios de coworking y a los espacios compartidos, podemos tranformar el trabajo cotidiano, nuestra relación con los demás y nuestro mundo. El espacio de  trabajo ha de ser el teatro pero también el actor de este cambio.</value>
+  </data>
+  <data name="WhoAreWe_Text1" xml:space="preserve">
+    <value>eWorky ha sido creada en 2011 por tres emprendedores jóvenes, en respuesta a una necesidad simple: poder acceder a una red wifi, alquilar una sala de reunión o de formación, de forma puntual y en ciudades distintas. Así es como tuvieron la idea de una plataforma colaborativa de búsqueda de espacios de trabajo.</value>
+  </data>
+  <data name="WhoAreWe_Text2" xml:space="preserve">
+    <value>Por tanto, eWorky es el placer de compartir espacios de trabajo de varios tipos e intercambiar experiencias vividas en ellos. Nuestra comunidad se compone de usuarios apasionados, con ganas de descubrir o proponer una gran diversidad de espacios adaptados a cada necesidad. </value>
+  </data>
+  <data name="WhoAreWe_Text3" xml:space="preserve">
+    <value>A tu vez, ¡Únete a la comunidad eWorky!</value>
+  </data>
+  <data name="Team_Member_1" xml:space="preserve">
+    <value>Olivier Brun</value>
+  </data>
+  <data name="Team_Member_2" xml:space="preserve">
+    <value>Cécilia Durieu</value>
+  </data>
+  <data name="Team_Member_3" xml:space="preserve">
+    <value>Tahir Iftikhar</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Habitante de Paris, Olivier se encarga en eWorky de la estrategia y del storyboarding. A parte de ser igual de discreto en sus intercambios en espacios diáfanos que un pescadero en una lonja, Olivier es un gran aficionado al senderismo y un vegetariano convencido. Pero por encima de todo, Olivier glorifica los diseños depurados e idólatra la supresión de los botones inútiles y de las faltas ortográficas.</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia se encarga del desarrollo comercial, de las relaciones con la prensa y de la financiación de eWorky. Trabaja desde Grenoble (Francia) y ¡ojo!, no soporta que se hable mal de su región montañesa! Optimista, hiperactiva y aficionada a las agendas a rebosar así como de los plazos ajustados, está muy implicada en la promoción de lo digital y del emprendimiento, entre otras, en cualidad de co-presidente del "Cercle des jeunes entrepreneurs". Cuando consigue algún momento de libertad, le gusta pasear con zapatos de vestir, botas de montaña o a caballo.</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="Team_Member_4" xml:space="preserve">
+    <value>Marc Labrude</value>
+  </data>
+  <data name="Team_Member_4_Text" xml:space="preserve">
+    <value>Marc está al cargo del desarrollo de negocios en los paises de habla hispana. "Marco" está ubicado en Zaragoza (España) en esa ciudad que le ha seducido por su calidad de vida y su excepcional densidad de bar de tapas. Marc es a la imagen del país en el que ha decidido establecerse: caluroso, fiestero, aficionado a la buena comida y al deporte. Bueno, y no sabemos exactamente con lo que se dopa para aportar tanto dinamismo al grupo, pero sospechamos una sabia mezcla de Cacique, de aceite de oliva virgen y un toque de chorizo.</value>
+  </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Presentación de las características del acceso para gerentes en eWorkyl</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>¡Página de presentación del equipo!</value>
+  </data>
+  <data name="TimeAgo_day" xml:space="preserve">
+    <value>un día</value>
+  </data>
+  <data name="TimeAgo_days" xml:space="preserve">
+    <value>%d días</value>
+  </data>
+  <data name="TimeAgo_hour" xml:space="preserve">
+    <value>una hora</value>
+  </data>
+  <data name="TimeAgo_hours" xml:space="preserve">
+    <value>%d horas</value>
+  </data>
+  <data name="TimeAgo_minute" xml:space="preserve">
+    <value>un minuto</value>
+  </data>
+  <data name="TimeAgo_minutes" xml:space="preserve">
+    <value>%d minutos</value>
+  </data>
+  <data name="TimeAgo_month" xml:space="preserve">
+    <value>un mes</value>
+  </data>
+  <data name="TimeAgo_months" xml:space="preserve">
+    <value>%d meses</value>
+  </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>Hace</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>dentro de</value>
+  </data>
+  <data name="TimeAgo_seconds" xml:space="preserve">
+    <value>menos de un minuto</value>
+  </data>
+  <data name="TimeAgo_year" xml:space="preserve">
+    <value>un año</value>
+  </data>
+  <data name="TimeAgo_years" xml:space="preserve">
+    <value>%d años</value>
+  </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan contribuye a que eWorky encuentre su sitio en el escenario tecnológico californiano desde San Francisco, ciudad con la que sueña desde el primer día que oyó la voz de Janis Joplin. Y después de todo, ¿qué mejor sitio para el coworking que esta Bahía en la que convergen todos los talentos y todos los centros de interés y en la que se codean las más grandes multinacionales con los estilos de vida los más alternativos?</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+</root>
