@@ -129,36 +129,27 @@
     <comment>A compléter</comment>
   </data>
   <data name="CostSpace" xml:space="preserve">
-    <value>Un sitio de pago</value>
+    <value>Een betalende werkruimte</value>
     <comment>?</comment>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
-    <value>Visto en </value>
+    <value>Men spreek over ons</value>
     <comment>Jm Modif l.17</comment>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contacto</value>
   </data>
   <data name="ContactUs" xml:space="preserve">
-    <value>Contacta con nosotros</value>
+    <value>Contacteer ons</value>
   </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>Ejemplo: Madrid, Aragón, Plaza mayor, etc.</value>
   </data>
   <data name="Imprint" xml:space="preserve">
-    <value>Aviso legal</value>
+    <value>Juridische kennisgeving</value>
   </data>
   <data name="ImprintDescription" xml:space="preserve">
-    <value>Esta página es editada por:&lt;br /&gt;
-        Omnicentre SAS&lt;br /&gt;
-        Société par actions simplifiée au capital de 20 740 € - RCS NANTERRE 529 309 668&lt;br /&gt;
-        Sede social : 57 rue de Lille, 75007 PARIS, FRANCE&lt;br /&gt;
-        &lt;br /&gt;
-        Contacto :&lt;br /&gt;
-        {0}&lt;br /&gt;
-        &lt;br /&gt;
-        Hosted by :&lt;br /&gt;
-        Microsoft Windows Azure</value>
+    <value>Deze website wordt uitgegeven door : &lt;br/&gt; Omnicentre SAS&lt;br/&gt;  Aandelenvennootschap met een kapitaal van 20 740€ - RCS PARIS 529 309 668&lt;br/&gt; Sociale zetel: rue de Lille 57, 75007 Parijs, Frankrijk &lt;br/&gt; &lt;br/&gt; Contact: &lt;br/&gt; {0}&lt;br/&gt;&lt;br/&gt; Accomodatie: Microsoft Windows Azure</value>
   </data>
   <data name="MailWellSent" xml:space="preserve">
     <value>Tu mensaje ha sido enviado con éxito, nuestro equipo te contestará lo antes posible.</value>
@@ -173,16 +164,16 @@
     <value>¿Eres periodista y te gustaría redactar un artículo o realizar un reportaje sobre eWorky? ¿Necesitas información sobre el desarrollo del teletrabajo? ¿Estás buscando a Directores de RRHH para entrevistarlos sobre estos temas? Contacta con nosotros a {0}.</value>
   </data>
   <data name="What" xml:space="preserve">
-    <value>¿Qué estás buscando?</value>
+    <value>Wat zoekt u?</value>
   </data>
   <data name="Where" xml:space="preserve">
-    <value>¿Dónde estás buscando?</value>
+    <value>Waar zoekt u?</value>
   </data>
   <data name="WhoAreWe" xml:space="preserve">
     <value>¿Quiénes somos?</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Encuentra un lugar de trabajo donde quieras: Despachos compartidos, Centros de negocios, espacios de coworking, café wifi, sala de reunión o de conferencia.</value>
+    <value>Vind een werkplaats waar ù het wil: shared office, business center, coworking space, café met wifi, vergader- of conferentiezaal</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
@@ -203,16 +194,16 @@
     <value>Reserva</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- Centros de negocios, Salas lounge &lt;br/&gt;- Espacios de coworking &lt;br/&gt;- Centro de teletrabajo, etc.</value>
+    <value>Zakencetrum, reizigersruimte, coworking plaats, telecenter, ed.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Búsqueda</value>
   </data>
   <data name="Searching" xml:space="preserve">
-    <value>Buscar</value>
+    <value>Zoeken</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>- Café wifi, puntos wifi &lt;br/&gt;- Espacio público digital &lt;br/&gt;- Biblioteca, museo, etc.</value>
+    <value>- internetcafé, hot spot&lt;br /&gt;- digitale publieke ruimte&lt;br /&gt;, bibliotheek, museum, ed.</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>Y pronto muchas otras funcionalidades.</value>
@@ -221,7 +212,7 @@
     <value>El equipo de eWorky tiene muchos proyectos bajo la manga para simplificar el trabajo! Entonces sigue nuestra actualidad en Facebook, Twitter, Google+, etc.</value>
   </data>
   <data name="FindTheBesPlace1" xml:space="preserve">
-    <value>Encuentra el mejor sitio para trabajar</value>
+    <value>Vind de beste locatie om te werken</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
     <value>Presupuesto máximo (€)</value>
@@ -230,28 +221,28 @@
     <value>Superficie mínima (m²)</value>
   </data>
   <data name="BlogTitle" xml:space="preserve">
-    <value>El blog eWorky</value>
+    <value>De eWorky blog</value>
   </data>
   <data name="AddPlaceTitle" xml:space="preserve">
     <value>Proponer un nuevo espacio de trabajo</value>
   </data>
   <data name="FreeSpace" xml:space="preserve">
-    <value>Un sitio grátis</value>
+    <value>Een gratis werkruimte</value>
   </data>
   <data name="RentalAd" xml:space="preserve">
     <value>Un anuncio de alquiler de locales</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>Selecciona el tipo de espacio que quieres añadir</value>
+    <value>Kies het type ruimte dat u wilt toevoegen</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Un espacio compartido</value>
+    <value>Een gedeeld bureau</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>¿Tienes mesas sin ocupar en tu oficina? ¡Compártelas en eWorky y consigue ingresos adicionales!</value>
+    <value>Hebt u ongebruikte werkruimtes in uw onderneming? Deel ze op eWorky en profiteer van de extra inkomsten!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
+    <value>Tussen... coworking ruimtes, cafés met wifi, business centers, shared offices</value>
   </data>
   <data name="SliderItemDesc" xml:space="preserve">
     <value>{0} en {1}</value>

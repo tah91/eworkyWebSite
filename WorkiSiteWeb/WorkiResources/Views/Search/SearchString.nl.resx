@@ -117,58 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AskRemoveOffer" xml:space="preserve">
-    <value>Quieres Eliminar la oferta siguiente : {0}</value>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Uitgebreid zoeken</value>
   </data>
-  <data name="AddOffer" xml:space="preserve">
-    <value>Añadir una oferta</value>
+  <data name="DistanceOrdered" xml:space="preserve">
+    <value>Afstand</value>
   </data>
-  <data name="RemoveOffer" xml:space="preserve">
-    <value>Eliminar una oferta</value>
+  <data name="Entrepreneur" xml:space="preserve">
+    <value>Entrepreneur</value>
   </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Editar una oferta</value>
+  <data name="Equipments" xml:space="preserve">
+    <value>Faciliteiten</value>
   </data>
-  <data name="OfferRemoved" xml:space="preserve">
-    <value>La oferta ha sido eliminada correctamente.</value>
+  <data name="Features" xml:space="preserve">
+    <value>Caractéristiques</value>
   </data>
-  <data name="OfferCreated" xml:space="preserve">
-    <value>La oferta ha sido añadida correctamente.</value>
+  <data name="Independant" xml:space="preserve">
+    <value>Indépendant</value>
   </data>
-  <data name="OfferEdited" xml:space="preserve">
-    <value>Los nuevos parámetros han sido actualizados.</value>
+  <data name="KindOfLocation" xml:space="preserve">
+    <value>Type locatie</value>
   </data>
-  <data name="OfferCharacteristics" xml:space="preserve">
-    <value>Características de la oferta</value>
+  <data name="Nomad" xml:space="preserve">
+    <value>Nomade</value>
   </data>
-  <data name="AskDevis" xml:space="preserve">
-    <value>Solicitud de presupuesto</value>
+  <data name="Opinion" xml:space="preserve">
+    <value>Avis</value>
   </data>
-  <data name="InfoUnknown" xml:space="preserve">
-    <value>De eigenschappen van deze aanbiedingwerden niet opgegeven</value>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Sorteren op :</value>
   </data>
-  <data name="BackToLocalisation" xml:space="preserve">
-    <value>Volver a la ficha del espacio</value>
+  <data name="PlaceExamples" xml:space="preserve">
+    <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, etc.</value>
   </data>
-  <data name="OffersDetail" xml:space="preserve">
-    <value>Detalle de las ofertas</value>
+  <data name="PlaceFound" xml:space="preserve">
+    <value>lieu(x) trouvé(s)</value>
   </data>
-  <data name="SelectOffer" xml:space="preserve">
-    <value>Seleccionar una oferta:</value>
+  <data name="RateOrdered" xml:space="preserve">
+    <value>Tarief</value>
   </data>
-  <data name="Availability" xml:space="preserve">
-    <value>Disponibilidad</value>
+  <data name="RefineSearch" xml:space="preserve">
+    <value>Affiner la recherche</value>
   </data>
-  <data name="Prices" xml:space="preserve">
-    <value>Tarifas</value>
+  <data name="ResultOfSearch" xml:space="preserve">
+    <value>Résultat(s) de votre recherche :</value>
   </data>
-  <data name="AddPrice" xml:space="preserve">
-    <value>Añadir una tarifa</value>
+  <data name="ResultOnMap" xml:space="preserve">
+    <value>Vos résultats sur la carte</value>
   </data>
-  <data name="DescriptionOffer" xml:space="preserve">
-    <value>Indica una descripción de la oferta</value>
+  <data name="ReturnToResult" xml:space="preserve">
+    <value>Retour aux résultats</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Descripción de la oferta</value>
+  <data name="Search" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="SearchByPlace" xml:space="preserve">
+    <value>Par localisation</value>
+  </data>
+  <data name="SearchByPlaceName" xml:space="preserve">
+    <value>Volgens plaatsnaam</value>
+  </data>
+  <data name="SearchByPlaceType" xml:space="preserve">
+    <value>Volgens type ruimte</value>
+  </data>
+  <data name="SearchByServiceType" xml:space="preserve">
+    <value>Volgens behoefte</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Zoekresultaten eWorky</value>
+  </data>
+  <data name="SearchType" xml:space="preserve">
+    <value>Quel type de lieu cherchez-vous ?</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Etudiant</value>
+  </data>
+  <data name="TypeOfService" xml:space="preserve">
+    <value>Type de prestation</value>
+  </data>
+  <data name="VenueName" xml:space="preserve">
+    <value>Quel est le nom du lieu ?</value>
+  </data>
+  <data name="VenueNameExample" xml:space="preserve">
+    <value>Ex : La Cantine, Regus Opéra, ...</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Où est ce lieu ? (facultatif)</value>
+  </data>
+  <data name="YourSearchResult" xml:space="preserve">
+    <value>Uw zoekresultaten: {0} locatie(s) gevonden</value>
   </data>
 </root>

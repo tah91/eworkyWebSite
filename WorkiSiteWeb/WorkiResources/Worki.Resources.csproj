@@ -227,6 +227,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Home\CguString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CguString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\ShareOffice.Designer.cs">
       <DependentUpon>ShareOffice.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -256,11 +261,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AProposString.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Home\CguString.Designer.cs">
-      <DependentUpon>CguString.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Home\ContactString.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -573,8 +573,10 @@
     <EmbeddedResource Include="Views\Home\AProposString.es.resx" />
     <EmbeddedResource Include="Views\Home\CguString.de.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
-    <EmbeddedResource Include="Views\Home\CguString.es.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Views\Home\CguString.es.resx" />
+    <EmbeddedResource Include="Views\Home\CguString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CguString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\ContactString.de.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
@@ -664,11 +666,6 @@
     <EmbeddedResource Include="Views\Home\AProposString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AProposString.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\CguString.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CguString.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\ContactString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

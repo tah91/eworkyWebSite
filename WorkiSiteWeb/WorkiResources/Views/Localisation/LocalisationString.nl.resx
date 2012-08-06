@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Een ruimte toevoegen</value>
+    <comment>Jm modil L.12</comment>
+  </data>
+  <data name="ComfirmDelete" xml:space="preserve">
+    <value>Confirmer la suppression:</value>
+  </data>
+  <data name="DeletedWorkplace" xml:space="preserve">
+    <value>Lieu de travail supprimé</value>
+  </data>
+  <data name="DeletePlace" xml:space="preserve">
+    <value>Plek verwijderen</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editer</value>
+  </data>
+  <data name="EditPlace" xml:space="preserve">
+    <value>Plek aanpassen</value>
+  </data>
+  <data name="NotAccessToWorkplace" xml:space="preserve">
+    <value>Erreur d'acces au lieu de travail</value>
+  </data>
+  <data name="PleaseConfirmDelete" xml:space="preserve">
+    <value>Veuillez confirmer la supression du lieu de travail:</value>
+  </data>
+  <data name="WorkplaceDeleted" xml:space="preserve">
+    <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
+  </data>
+  <data name="WorkplaceNotFound" xml:space="preserve">
+    <value>Lieu de travail non trouvé.</value>
+  </data>
+  <data name="WorkplaceWellDeleted" xml:space="preserve">
+    <value>Votre lieu de travail a été supprimé avec succes</value>
+  </data>
+  <data name="AddPicture" xml:space="preserve">
+    <value>Afbeeldingen toevoegen</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="YouKnowContactUs" xml:space="preserve">
+    <value>Si vous connaissez les coordonnées de contact de cet espace de travail, saisissez-les grâce au formulaire d'édition ou contactez-nous : contact@eworky.com.</value>
+  </data>
+  <data name="BookIt" xml:space="preserve">
+    <value>Reserveren</value>
+  </data>
+  <data name="AboutPlace" xml:space="preserve">
+    <value>à propos du lieu</value>
+  </data>
+  <data name="AddBy" xml:space="preserve">
+    <value>Toegevoegd door</value>
+  </data>
+  <data name="EworkersOpinion" xml:space="preserve">
+    <value>Beoordeling van eWorkers</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax : </value>
+  </data>
+  <data name="GeneralOpinion" xml:space="preserve">
+    <value>Algemene beoordeling</value>
+  </data>
+  <data name="LastEditBy" xml:space="preserve">
+    <value>Laatste aanpassing door</value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Je vous recommande de découvrir ce lieu de travail : {0}</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Uurregeling</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel : </value>
+  </data>
+  <data name="TheDate" xml:space="preserve">
+    <value>op</value>
+  </data>
+  <data name="Tweet" xml:space="preserve">
+    <value>Tweet</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Faciliteiten</value>
+  </data>
+  <data name="ListLocSent" xml:space="preserve">
+    <value>La liste des lieux vous a été envoyée</value>
+  </data>
+  <data name="LocList" xml:space="preserve">
+    <value>Liste complète des lieux</value>
+  </data>
+  <data name="LocHaveBeenCreate" xml:space="preserve">
+    <value>La fiche du lieu a été créée.</value>
+  </data>
+  <data name="LocHaveBeenDel" xml:space="preserve">
+    <value>Le lieu a été supprimé.</value>
+  </data>
+  <data name="LocHaveBeenEdit" xml:space="preserve">
+    <value>Le lieu a été édité.</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="Suggestion" xml:space="preserve">
+    <value>Suggestie(s)</value>
+  </data>
+  <data name="execError" xml:space="preserve">
+    <value>Une erreur est survenue.</value>
+  </data>
+  <data name="AreYouOwner" xml:space="preserve">
+    <value>Je suis le gérant du lieu</value>
+  </data>
+  <data name="YouAreOwner" xml:space="preserve">
+    <value>Vous êtes désormais gérant de ce lieu !</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>En ligne</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Ten eerste</value>
+    <comment>?</comment>
+  </data>
+  <data name="NotMain" xml:space="preserve">
+    <value>Pas à la Une</value>
+    <comment>?</comment>
+  </data>
+  <data name="NoPictureAvailable" xml:space="preserve">
+    <value>Aucune photo disponible</value>
+  </data>
+  <data name="OwnerIdentity" xml:space="preserve">
+    <value>Identiteit van de uitbater</value>
+  </data>
+  <data name="FacebookPage" xml:space="preserve">
+    <value>Page Facebook</value>
+  </data>
+  <data name="NoSuggestions" xml:space="preserve">
+    <value>eWorky n'a aucun lieu similaire à proximité à suggérer.</value>
+  </data>
+  <data name="MustAddOffer" xml:space="preserve">
+    <value>Attention vous n'avez pas précisé d'offre pour cet espace. Veuillez en ajouter au moins une.</value>
+  </data>
+  <data name="ModifiedThe" xml:space="preserve">
+    <value>Mis à jour le {0}</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Réservation</value>
+  </data>
+  <data name="BookingAvailableSoon" xml:space="preserve">
+    <value>Ce lieu proposera bientôt des offres à la réservation</value>
+  </data>
+  <data name="NeedThisSpace" xml:space="preserve">
+    <value>Cet espace vous intéresse ?</value>
+  </data>
+  <data name="NeedContactOfPlace" xml:space="preserve">
+    <value>Cet espace vous intéresse ?</value>
+  </data>
+  <data name="NeedContactOfPlaceAction" xml:space="preserve">
+    <value>Contacter le gérant</value>
+  </data>
+  <data name="NeedThisSpaceAction" xml:space="preserve">
+    <value>Réserver en ligne</value>
+  </data>
+  <data name="BookingForm" xml:space="preserve">
+    <value>Demande de réservation</value>
+  </data>
+  <data name="BookingFormHelp" xml:space="preserve">
+    <value>Veuillez indiquer précisément votre requête, ainsi que vos coordonnées. Votre message sera transmis directement au propriétaire du lieu.</value>
+  </data>
+  <data name="ContactThisSpaceAction" xml:space="preserve">
+    <value>Contacteer deze ruimte</value>
+  </data>
+  <data name="ShowContactInfo" xml:space="preserve">
+    <value>Afficher les informations</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Gemeenschap</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>Ik werk hier</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Aanbiedingen</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Sociale netwerken</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="ImproveVisibility" xml:space="preserve">
+    <value>Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>Non merci</value>
+  </data>
+  <data name="ShareOnFb" xml:space="preserve">
+    <value>Partager sur Facebook</value>
+  </data>
+  <data name="SuccessfullyAdded" xml:space="preserve">
+    <value>Votre espace a été ajouté avec succès !</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Meer details</value>
+  </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Votre Timeline Facebook a été mise à jour</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>{0:0.##} km</value>
+  </data>
+  <data name="SeeOffers" xml:space="preserve">
+    <value>Ga naar de aanbiedingen</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Gastheer / gastvrouw</value>
+  </data>
+</root>

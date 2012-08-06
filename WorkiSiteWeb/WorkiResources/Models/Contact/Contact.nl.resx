@@ -117,58 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AskRemoveOffer" xml:space="preserve">
-    <value>Quieres Eliminar la oferta siguiente : {0}</value>
+  <data name="Email" xml:space="preserve">
+    <value>E-mailadres</value>
   </data>
-  <data name="AddOffer" xml:space="preserve">
-    <value>Añadir una oferta</value>
+  <data name="FirstName" xml:space="preserve">
+    <value>Voornaam</value>
   </data>
-  <data name="RemoveOffer" xml:space="preserve">
-    <value>Eliminar una oferta</value>
+  <data name="LastName" xml:space="preserve">
+    <value>Naam</value>
   </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Editar una oferta</value>
+  <data name="Link" xml:space="preserve">
+    <value>Lien</value>
   </data>
-  <data name="OfferRemoved" xml:space="preserve">
-    <value>La oferta ha sido eliminada correctamente.</value>
+  <data name="Subject" xml:space="preserve">
+    <value>Onderwerp</value>
   </data>
-  <data name="OfferCreated" xml:space="preserve">
-    <value>La oferta ha sido añadida correctamente.</value>
+  <data name="ToEmail" xml:space="preserve">
+    <value>A l'adresse électronique</value>
   </data>
-  <data name="OfferEdited" xml:space="preserve">
-    <value>Los nuevos parámetros han sido actualizados.</value>
-  </data>
-  <data name="OfferCharacteristics" xml:space="preserve">
-    <value>Características de la oferta</value>
-  </data>
-  <data name="AskDevis" xml:space="preserve">
-    <value>Solicitud de presupuesto</value>
-  </data>
-  <data name="InfoUnknown" xml:space="preserve">
-    <value>De eigenschappen van deze aanbiedingwerden niet opgegeven</value>
-  </data>
-  <data name="BackToLocalisation" xml:space="preserve">
-    <value>Volver a la ficha del espacio</value>
-  </data>
-  <data name="OffersDetail" xml:space="preserve">
-    <value>Detalle de las ofertas</value>
-  </data>
-  <data name="SelectOffer" xml:space="preserve">
-    <value>Seleccionar una oferta:</value>
-  </data>
-  <data name="Availability" xml:space="preserve">
-    <value>Disponibilidad</value>
-  </data>
-  <data name="Prices" xml:space="preserve">
-    <value>Tarifas</value>
-  </data>
-  <data name="AddPrice" xml:space="preserve">
-    <value>Añadir una tarifa</value>
-  </data>
-  <data name="DescriptionOffer" xml:space="preserve">
-    <value>Indica una descripción de la oferta</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Descripción de la oferta</value>
+  <data name="ToName" xml:space="preserve">
+    <value>To Name</value>
   </data>
 </root>
