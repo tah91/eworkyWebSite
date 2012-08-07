@@ -235,4 +235,10 @@
   <data name="ApplicalbleLawsValue" xml:space="preserve">
     <value>Deze algemene gebruiksvoorwaaren worden geregeld door de Franse wet. Elk probleem met betrekking tot de geldigheid en/of de toepassing en/of de interpretatie van deze algemene gebruiksvoorwaarden zal, bij het ontbreken van een overeenstemming, onderworpen worden aan de jurisdictie van de Franse rechtbanken aan wie de partijen een exclusieve territoriale bevoegdheid toekennen, ongeacht de plaats van gebruik van de dienst of de woonplaats van de verweerder.</value>
   </data>
+  <data name="cgu" xml:space="preserve">
+    <value>algemene verkoopsvoorwaarden</value>
+  </data>
+  <data name="ReadAndAccept" xml:space="preserve">
+    <value>Ik heb de {0} van de diensten gelezen en goedgekeurd</value>
+  </data>
 </root>
