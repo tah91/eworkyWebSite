@@ -121,38 +121,14 @@
     <value>Een ruimte toevoegen</value>
     <comment>Jm modil L.12</comment>
   </data>
-  <data name="ComfirmDelete" xml:space="preserve">
-    <value>Confirmer la suppression:</value>
-  </data>
-  <data name="DeletedWorkplace" xml:space="preserve">
-    <value>Lieu de travail supprimé</value>
-  </data>
   <data name="DeletePlace" xml:space="preserve">
     <value>Plek verwijderen</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Détails</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Editer</value>
+    <value>Details</value>
   </data>
   <data name="EditPlace" xml:space="preserve">
     <value>Plek aanpassen</value>
-  </data>
-  <data name="NotAccessToWorkplace" xml:space="preserve">
-    <value>Erreur d'acces au lieu de travail</value>
-  </data>
-  <data name="PleaseConfirmDelete" xml:space="preserve">
-    <value>Veuillez confirmer la supression du lieu de travail:</value>
-  </data>
-  <data name="WorkplaceDeleted" xml:space="preserve">
-    <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
-  </data>
-  <data name="WorkplaceNotFound" xml:space="preserve">
-    <value>Lieu de travail non trouvé.</value>
-  </data>
-  <data name="WorkplaceWellDeleted" xml:space="preserve">
-    <value>Votre lieu de travail a été supprimé avec succes</value>
   </data>
   <data name="AddPicture" xml:space="preserve">
     <value>Afbeeldingen toevoegen</value>
@@ -160,14 +136,8 @@
   <data name="Index" xml:space="preserve">
     <value>Index</value>
   </data>
-  <data name="YouKnowContactUs" xml:space="preserve">
-    <value>Si vous connaissez les coordonnées de contact de cet espace de travail, saisissez-les grâce au formulaire d'édition ou contactez-nous : contact@eworky.com.</value>
-  </data>
   <data name="BookIt" xml:space="preserve">
     <value>Reserveren</value>
-  </data>
-  <data name="AboutPlace" xml:space="preserve">
-    <value>à propos du lieu</value>
   </data>
   <data name="AddBy" xml:space="preserve">
     <value>Toegevoegd door</value>
@@ -184,9 +154,6 @@
   <data name="LastEditBy" xml:space="preserve">
     <value>Laatste aanpassing door</value>
   </data>
-  <data name="Recommendation" xml:space="preserve">
-    <value>Je vous recommande de découvrir ce lieu de travail : {0}</value>
-  </data>
   <data name="Schedule" xml:space="preserve">
     <value>Uurregeling</value>
   </data>
@@ -202,41 +169,11 @@
   <data name="Equipments" xml:space="preserve">
     <value>Faciliteiten</value>
   </data>
-  <data name="ListLocSent" xml:space="preserve">
-    <value>La liste des lieux vous a été envoyée</value>
-  </data>
-  <data name="LocList" xml:space="preserve">
-    <value>Liste complète des lieux</value>
-  </data>
-  <data name="LocHaveBeenCreate" xml:space="preserve">
-    <value>La fiche du lieu a été créée.</value>
-  </data>
-  <data name="LocHaveBeenDel" xml:space="preserve">
-    <value>Le lieu a été supprimé.</value>
-  </data>
-  <data name="LocHaveBeenEdit" xml:space="preserve">
-    <value>Le lieu a été édité.</value>
-  </data>
   <data name="Localisation" xml:space="preserve">
     <value>Plaats</value>
   </data>
   <data name="Suggestion" xml:space="preserve">
     <value>Suggestie(s)</value>
-  </data>
-  <data name="execError" xml:space="preserve">
-    <value>Une erreur est survenue.</value>
-  </data>
-  <data name="AreYouOwner" xml:space="preserve">
-    <value>Je suis le gérant du lieu</value>
-  </data>
-  <data name="YouAreOwner" xml:space="preserve">
-    <value>Vous êtes désormais gérant de ce lieu !</value>
-  </data>
-  <data name="Offline" xml:space="preserve">
-    <value>Offline</value>
-  </data>
-  <data name="Online" xml:space="preserve">
-    <value>En ligne</value>
   </data>
   <data name="Main" xml:space="preserve">
     <value>Ten eerste</value>
@@ -246,53 +183,11 @@
     <value>Pas à la Une</value>
     <comment>?</comment>
   </data>
-  <data name="NoPictureAvailable" xml:space="preserve">
-    <value>Aucune photo disponible</value>
-  </data>
   <data name="OwnerIdentity" xml:space="preserve">
     <value>Identiteit van de uitbater</value>
   </data>
-  <data name="FacebookPage" xml:space="preserve">
-    <value>Page Facebook</value>
-  </data>
-  <data name="NoSuggestions" xml:space="preserve">
-    <value>eWorky n'a aucun lieu similaire à proximité à suggérer.</value>
-  </data>
-  <data name="MustAddOffer" xml:space="preserve">
-    <value>Attention vous n'avez pas précisé d'offre pour cet espace. Veuillez en ajouter au moins une.</value>
-  </data>
-  <data name="ModifiedThe" xml:space="preserve">
-    <value>Mis à jour le {0}</value>
-  </data>
-  <data name="Booking" xml:space="preserve">
-    <value>Réservation</value>
-  </data>
-  <data name="BookingAvailableSoon" xml:space="preserve">
-    <value>Ce lieu proposera bientôt des offres à la réservation</value>
-  </data>
-  <data name="NeedThisSpace" xml:space="preserve">
-    <value>Cet espace vous intéresse ?</value>
-  </data>
-  <data name="NeedContactOfPlace" xml:space="preserve">
-    <value>Cet espace vous intéresse ?</value>
-  </data>
-  <data name="NeedContactOfPlaceAction" xml:space="preserve">
-    <value>Contacter le gérant</value>
-  </data>
-  <data name="NeedThisSpaceAction" xml:space="preserve">
-    <value>Réserver en ligne</value>
-  </data>
-  <data name="BookingForm" xml:space="preserve">
-    <value>Demande de réservation</value>
-  </data>
-  <data name="BookingFormHelp" xml:space="preserve">
-    <value>Veuillez indiquer précisément votre requête, ainsi que vos coordonnées. Votre message sera transmis directement au propriétaire du lieu.</value>
-  </data>
   <data name="ContactThisSpaceAction" xml:space="preserve">
     <value>Contacteer deze ruimte</value>
-  </data>
-  <data name="ShowContactInfo" xml:space="preserve">
-    <value>Afficher les informations</value>
   </data>
   <data name="Community" xml:space="preserve">
     <value>Gemeenschap</value>
@@ -318,23 +213,8 @@
   <data name="Description" xml:space="preserve">
     <value>Beschrijving</value>
   </data>
-  <data name="ImproveVisibility" xml:space="preserve">
-    <value>Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?</value>
-  </data>
-  <data name="NoThanks" xml:space="preserve">
-    <value>Non merci</value>
-  </data>
-  <data name="ShareOnFb" xml:space="preserve">
-    <value>Partager sur Facebook</value>
-  </data>
-  <data name="SuccessfullyAdded" xml:space="preserve">
-    <value>Votre espace a été ajouté avec succès !</value>
-  </data>
   <data name="MoreDetails" xml:space="preserve">
     <value>Meer details</value>
-  </data>
-  <data name="FacebookUpdated" xml:space="preserve">
-    <value>Votre Timeline Facebook a été mise à jour</value>
   </data>
   <data name="Distance" xml:space="preserve">
     <value>{0:0.##} km</value>

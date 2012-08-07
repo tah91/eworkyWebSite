@@ -152,9 +152,6 @@
     <value>Jobs</value>
     <comment>JOBS</comment>
   </data>
-  <data name="JuniorDev" xml:space="preserve">
-    <value>Développeur junior pour un stage ou une césure de plus de 3 mois, et &lt;/br&gt; ayant des connaissances en développement web. Le stagiaire sera&lt;/br&gt; rémunéré, le montant dépendra de son profil.</value>
-  </data>
   <data name="LikeDev" xml:space="preserve">
     <value>Hou je ervan dingen te ontwikkelen? Ben je jong, gemotiveerd, zelfstandig en ga je graag uitdagingen aan? Heb je zin om in een avontuur te stappen rond een start-up web? Kom dan bij eWorky! </value>
   </data>
@@ -169,13 +166,6 @@
   </data>
   <data name="SearchInternShip" xml:space="preserve">
     <value>Zoek je een stage? Hou je van communicatie, marketing en commerciële input? Ben je jong, gemotiveerd, zelfstandig en ga je graag uitdagingen aan? Word je verleid door een avontuur in een start-up web? Kom dan bij eWorky! </value>
-  </data>
-  <data name="SendUsCV" xml:space="preserve">
-    <value>Il n’y a pas une seconde à perdre, envoie ton CV et ta lettre de motivation à {0}.</value>
-  </data>
-  <data name="SeniorDev" xml:space="preserve">
-    <value>Développeur senior en free lance (auto entrepreneuriat, etc.).&lt;/br&gt; Rémunération fonction des
-            références.</value>
   </data>
   <data name="SoulBuisnessDev" xml:space="preserve">
     <value>Heb je de spirit van een business developper in jou?</value>

@@ -120,12 +120,6 @@
   <data name="DeleteComment" xml:space="preserve">
     <value>Beoordeling wissen</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Erreur</value>
-  </data>
-  <data name="ErrorWhenYouAsk" xml:space="preserve">
-    <value>Désolé, une erreur s'est produite lors du traitement de votre demande. Vous pouvez retourner sur la page d'accueil : {0} ou nous contacter si le problème persiste : support@eworky.com</value>
-  </data>
   <data name="Hourly" xml:space="preserve">
     <value>Uurregeling</value>
   </data>
@@ -136,16 +130,13 @@
     <value>Tweet</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Utilisateurs</value>
-  </data>
-  <data name="WhatEWorkyCouldDo" xml:space="preserve">
-    <value>Découvrez tout ce que eWorky peut faire pour vous</value>
+    <value>Gebruikers </value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Toevoegen</value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value>Administrateur</value>
+    <value>Beheerder</value>
   </data>
   <data name="CGU" xml:space="preserve">
     <value>Algemene voorwaarden</value>
@@ -153,35 +144,11 @@
   <data name="CorrectThenTryAgain" xml:space="preserve">
     <value>Oeps! Er werd een fout gevonden. Controleer uw gegevens en probeer opnieuw. Als het probleem zich blijft voordoen, neem dan contact met ons op: support@eworky.com</value>
   </data>
-  <data name="Deconnect" xml:space="preserve">
-    <value>Déconnexion</value>
-  </data>
-  <data name="Workplace" xml:space="preserve">
-    <value>Lieux de travail</value>
-  </data>
-  <data name="ImportLocalisations" xml:space="preserve">
-    <value>Importer</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Profil accueil</value>
-  </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+    <value>Reservatie</value>
   </data>
   <data name="Press" xml:space="preserve">
-    <value>Presse</value>
-  </data>
-  <data name="DirectAccess" xml:space="preserve">
-    <value>Accès direct</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="Logo" xml:space="preserve">
-    <value>Logo</value>
-  </data>
-  <data name="Principal" xml:space="preserve">
-    <value>Principal</value>
+    <value>Pers</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschrijving</value>
@@ -195,110 +162,26 @@
   <data name="Services" xml:space="preserve">
     <value>Professionele dienstverlening</value>
   </data>
-  <data name="AddToFav" xml:space="preserve">
-    <value>Ajouter aux favoris eWorky</value>
-  </data>
-  <data name="DelFromFav" xml:space="preserve">
-    <value>Retirer des favoris eWorky</value>
-  </data>
   <data name="Adds" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="Connect" xml:space="preserve">
-    <value>Connexion</value>
+    <value>Toevoegen</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Se connecter</value>
-  </data>
-  <data name="MinChar" xml:space="preserve">
-    <value>caractères min.</value>
-  </data>
-  <data name="Modify" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="NextDesc" xml:space="preserve">
-    <value>Fiche Suivante &gt;</value>
-  </data>
-  <data name="PrevDesc" xml:space="preserve">
-    <value>&lt; Fiche Précédente</value>
+    <value>Inloggen</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Verfijn</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Rechercher</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Verzenden</value>
   </data>
   <data name="Subscribe" xml:space="preserve">
-    <value>S'inscrire</value>
-  </data>
-  <data name="Suppress" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="Valid" xml:space="preserve">
-    <value>Valider</value>
-  </data>
-  <data name="HeaderSearch" xml:space="preserve">
-    <value>Rechercher un espace</value>
+    <value>Inschrijven</value>
   </data>
   <data name="HeaderSuggest" xml:space="preserve">
     <value>Een ruimte voorstellen</value>
   </data>
   <data name="StarPlaces" xml:space="preserve">
-    <value>À la une</value>
-  </data>
-  <data name="FbConnexionText" xml:space="preserve">
-    <value>Nouveau ! Connectez-vous avec Facebook !</value>
-  </data>
-  <data name="SignIn" xml:space="preserve">
-    <value>S'identifier</value>
-  </data>
-  <data name="FastLogonFb" xml:space="preserve">
-    <value>Pour gagner du temps, connectez-vous grâce à votre compte Facebook.</value>
-  </data>
-  <data name="FastLogonFb2" xml:space="preserve">
-    <value>Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !</value>
-  </data>
-  <data name="SignViaFB" xml:space="preserve">
-    <value>Inscrivez-vous avec Facebook</value>
-  </data>
-  <data name="Or" xml:space="preserve">
-    <value>ou</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>Non</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Oui</value>
-  </data>
-  <data name="ActivationCongratz" xml:space="preserve">
-    <value>Votre compte vient d'être activé, félicitations !</value>
-  </data>
-  <data name="Quotations" xml:space="preserve">
-    <value>Devis</value>
-  </data>
-  <data name="AddLocError" xml:space="preserve">
-    <value>Une erreur a eu lieu ({0} lieux de travail ont été ajoutés) =&gt; {1}</value>
-  </data>
-  <data name="LocAdded" xml:space="preserve">
-    <value>{0} lieux ajoutés.</value>
-  </data>
-  <data name="PleaseFillInfos" xml:space="preserve">
-    <value>Veuillez confirmer le prix TTC à régler pour une réservation du {0} à {1} jusqu'au {2} à {3}</value>
-  </data>
-  <data name="PleaseChangeInfos" xml:space="preserve">
-    <value>Veuillez changer les informations suivantes :</value>
-  </data>
-  <data name="SpaceUser" xml:space="preserve">
-    <value>espace utilisateur</value>
-  </data>
-  <data name="Accept" xml:space="preserve">
-    <value>Accepter</value>
+    <value>Ten eerste</value>
   </data>
   <data name="Choose" xml:space="preserve">
     <value>Kies</value>
@@ -308,8 +191,5 @@
   </data>
   <data name="ContactMail" xml:space="preserve">
     <value>contact@eworky.com</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Créer</value>
   </data>
 </root>

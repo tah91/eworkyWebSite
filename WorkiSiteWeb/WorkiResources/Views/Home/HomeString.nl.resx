@@ -151,9 +151,6 @@
   <data name="ImprintDescription" xml:space="preserve">
     <value>Deze website wordt uitgegeven door : &lt;br/&gt; Omnicentre SAS&lt;br/&gt;  Aandelenvennootschap met een kapitaal van 20 740€ - RCS PARIS 529 309 668&lt;br/&gt; Sociale zetel: rue de Lille 57, 75007 Parijs, Frankrijk &lt;br/&gt; &lt;br/&gt; Contact: &lt;br/&gt; {0}&lt;br/&gt;&lt;br/&gt; Accomodatie: Microsoft Windows Azure</value>
   </data>
-  <data name="MailWellSent" xml:space="preserve">
-    <value>Tu mensaje ha sido enviado con éxito, nuestro equipo te contestará lo antes posible.</value>
-  </data>
   <data name="MoreCriterias" xml:space="preserve">
     <value>Meer criteria</value>
   </data>
@@ -184,15 +181,6 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welkom</value>
   </data>
-  <data name="MailWellSent2" xml:space="preserve">
-    <value>¡Tu mensaje ha sido mandado con éxito!</value>
-  </data>
-  <data name="Rent" xml:space="preserve">
-    <value>Alquiler</value>
-  </data>
-  <data name="Reserve" xml:space="preserve">
-    <value>Reserva</value>
-  </data>
   <data name="ReserveSpeech" xml:space="preserve">
     <value>Zakencetrum, reizigersruimte, coworking plaats, telecenter, ed.</value>
   </data>
@@ -205,32 +193,14 @@
   <data name="SearchSpeech" xml:space="preserve">
     <value>- internetcafé, hot spot&lt;br /&gt;- digitale publieke ruimte&lt;br /&gt;, bibliotheek, museum, ed.</value>
   </data>
-  <data name="SoonLotofFeatures" xml:space="preserve">
-    <value>Y pronto muchas otras funcionalidades.</value>
-  </data>
-  <data name="Teamworky" xml:space="preserve">
-    <value>El equipo de eWorky tiene muchos proyectos bajo la manga para simplificar el trabajo! Entonces sigue nuestra actualidad en Facebook, Twitter, Google+, etc.</value>
-  </data>
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Vind de beste locatie om te werken</value>
-  </data>
-  <data name="MaxRate" xml:space="preserve">
-    <value>Presupuesto máximo (€)</value>
-  </data>
-  <data name="MinSurface" xml:space="preserve">
-    <value>Superficie mínima (m²)</value>
   </data>
   <data name="BlogTitle" xml:space="preserve">
     <value>De eWorky blog</value>
   </data>
-  <data name="AddPlaceTitle" xml:space="preserve">
-    <value>Proponer un nuevo espacio de trabajo</value>
-  </data>
   <data name="FreeSpace" xml:space="preserve">
     <value>Een gratis werkruimte</value>
-  </data>
-  <data name="RentalAd" xml:space="preserve">
-    <value>Un anuncio de alquiler de locales</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
     <value>Kies het type ruimte dat u wilt toevoegen</value>
@@ -246,9 +216,6 @@
   </data>
   <data name="SliderItemDesc" xml:space="preserve">
     <value>{0} en {1}</value>
-  </data>
-  <data name="FindTheBesPlace" xml:space="preserve">
-    <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
   </data>
   <data name="Team" xml:space="preserve">
     <value>De ploeg</value>
@@ -339,45 +306,6 @@
   </data>
   <data name="TeamDescription" xml:space="preserve">
     <value>Voorstelling van de eWorky-ploeg!</value>
-  </data>
-  <data name="TimeAgo_day" xml:space="preserve">
-    <value>un día</value>
-  </data>
-  <data name="TimeAgo_days" xml:space="preserve">
-    <value>%d días</value>
-  </data>
-  <data name="TimeAgo_hour" xml:space="preserve">
-    <value>una hora</value>
-  </data>
-  <data name="TimeAgo_hours" xml:space="preserve">
-    <value>%d horas</value>
-  </data>
-  <data name="TimeAgo_minute" xml:space="preserve">
-    <value>un minuto</value>
-  </data>
-  <data name="TimeAgo_minutes" xml:space="preserve">
-    <value>%d minutos</value>
-  </data>
-  <data name="TimeAgo_month" xml:space="preserve">
-    <value>un mes</value>
-  </data>
-  <data name="TimeAgo_months" xml:space="preserve">
-    <value>%d meses</value>
-  </data>
-  <data name="TimeAgo_prefixAgo" xml:space="preserve">
-    <value>Hace</value>
-  </data>
-  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
-    <value>dentro de</value>
-  </data>
-  <data name="TimeAgo_seconds" xml:space="preserve">
-    <value>menos de un minuto</value>
-  </data>
-  <data name="TimeAgo_year" xml:space="preserve">
-    <value>un año</value>
-  </data>
-  <data name="TimeAgo_years" xml:space="preserve">
-    <value>%d años</value>
   </data>
   <data name="Team_Member_5" xml:space="preserve">
     <value>Jonathan Bourguignon</value>

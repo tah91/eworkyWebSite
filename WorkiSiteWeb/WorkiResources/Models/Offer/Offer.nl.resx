@@ -142,28 +142,19 @@
     <value>Beschikbaar op {0} voor {1}</value>
   </data>
   <data name="AvailableFor" xml:space="preserve">
-    <value>Disponible pour {0} {1}</value>
+    <value>Beschikbaar voor {0} {1}</value>
   </data>
   <data name="AvailableFrom" xml:space="preserve">
-    <value>Disponible à partir du {0}</value>
+    <value>Beschikbaar vanaf {0}</value>
   </data>
   <data name="AvailableFromFor" xml:space="preserve">
     <value>Beschikbaar vanaf {0} voor {1}</value>
-  </data>
-  <data name="Booking" xml:space="preserve">
-    <value>Réservation en ligne</value>
-  </data>
-  <data name="Cash" xml:space="preserve">
-    <value>Espèces</value>
-  </data>
-  <data name="Check" xml:space="preserve">
-    <value>Chèque</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>Valuta</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Jour</value>
+    <value>Dag</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschrijving</value>
@@ -172,43 +163,28 @@
     <value>EUR</value>
   </data>
   <data name="HalfDay" xml:space="preserve">
-    <value>Demi-journée</value>
+    <value>Halve-dag</value>
   </data>
   <data name="Hour" xml:space="preserve">
-    <value>Heure</value>
-  </data>
-  <data name="IsBookable" xml:space="preserve">
-    <value>Réservation en ligne</value>
-  </data>
-  <data name="IsOnline" xml:space="preserve">
-    <value>Offre en ligne</value>
-  </data>
-  <data name="IsQuotable" xml:space="preserve">
-    <value>Demande de devis en ligne</value>
+    <value>Tijd</value>
   </data>
   <data name="LeaseTerm" xml:space="preserve">
     <value>Duur van de verhuur</value>
   </data>
   <data name="Month" xml:space="preserve">
-    <value>Mois</value>
+    <value>Maand</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Naam van de aanbieding</value>
   </data>
-  <data name="PaymentType" xml:space="preserve">
-    <value>Moyen de paiement proposé</value>
-  </data>
   <data name="Paypal" xml:space="preserve">
     <value>PayPal</value>
-  </data>
-  <data name="Period" xml:space="preserve">
-    <value>Unité de temps</value>
   </data>
   <data name="PluralDay" xml:space="preserve">
     <value>Dag(en)</value>
   </data>
   <data name="PluralHalfDay" xml:space="preserve">
-    <value>demi-journée(s)</value>
+    <value>Halve-dag(en)</value>
   </data>
   <data name="PluralHour" xml:space="preserve">
     <value>Uur / uren</value>
@@ -222,9 +198,6 @@
   <data name="PluralYear" xml:space="preserve">
     <value>Jaar / jaren</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Prix TTC</value>
-  </data>
   <data name="PriceBy" xml:space="preserve">
     <value>Prijs per</value>
   </data>
@@ -237,43 +210,31 @@
   <data name="PriceType" xml:space="preserve">
     <value>Période</value>
   </data>
-  <data name="ProductType" xml:space="preserve">
-    <value>Gestion des demandes</value>
-  </data>
-  <data name="Quotation" xml:space="preserve">
-    <value>Demande de devis</value>
-  </data>
-  <data name="SameOffersCount" xml:space="preserve">
-    <value>Nombres d'offres identiques</value>
-  </data>
   <data name="SingleDay" xml:space="preserve">
-    <value>jour</value>
+    <value>Dag</value>
   </data>
   <data name="SingleHalfDay" xml:space="preserve">
-    <value>demi-journée</value>
+    <value>Dagdeel</value>
   </data>
   <data name="SingleHour" xml:space="preserve">
-    <value>heure</value>
+    <value>tijd</value>
   </data>
   <data name="SingleMonth" xml:space="preserve">
-    <value>mois</value>
+    <value>maand</value>
   </data>
   <data name="SingleWeek" xml:space="preserve">
-    <value>semaine</value>
+    <value>week</value>
   </data>
   <data name="SingleYear" xml:space="preserve">
-    <value>an</value>
-  </data>
-  <data name="Transfert" xml:space="preserve">
-    <value>Virement</value>
+    <value>jaar</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type van de aanbieding</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value>Semaine</value>
+    <value>week</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Année</value>
+    <value>jaar</value>
   </data>
 </root>

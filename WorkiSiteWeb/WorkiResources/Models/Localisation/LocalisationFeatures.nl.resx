@@ -125,13 +125,13 @@
     <value>Toegankelijk 24u/24, 7d/7</value>
   </data>
   <data name="Accommodation" xml:space="preserve">
-    <value>Hébergement</value>
+    <value>Accomodatie</value>
   </data>
   <data name="Archiving" xml:space="preserve">
     <value>Opslagruimte / archivering</value>
   </data>
   <data name="Audio" xml:space="preserve">
-    <value>Audioconférence</value>
+    <value>Audioconferentie</value>
   </data>
   <data name="AvoidAfternoom" xml:space="preserve">
     <value>Namiddag</value>
@@ -166,17 +166,14 @@
     <comment>?</comment>
   </data>
   <data name="Concierge" xml:space="preserve">
-    <value>Concierge</value>
+    <value>Conciërge</value>
     <comment>?</comment>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschrijving</value>
   </data>
   <data name="Domiciliation" xml:space="preserve">
     <value>Domiciliëring</value>
-  </data>
-  <data name="Drinks" xml:space="preserve">
-    <value>Service de boissons</value>
   </data>
   <data name="ErgonomicFurniture" xml:space="preserve">
     <value>Ergonomisch meubilair</value>
@@ -201,7 +198,7 @@
     <value>Ik ben de eigenaar / uitbater van de locatie</value>
   </data>
   <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+    <value></value>
     <comment>?</comment>
   </data>
   <data name="LunchClose" xml:space="preserve">
@@ -220,15 +217,15 @@
     <value>Paper-board</value>
   </data>
   <data name="Parking" xml:space="preserve">
-    <value>Parking</value>
+    <value>Parkeren</value>
     <comment>?</comment>
   </data>
   <data name="PhoneJack" xml:space="preserve">
-    <value>Prise téléphonique</value>
+    <value></value>
     <comment>?</comment>
   </data>
   <data name="Picturesque" xml:space="preserve">
-    <value>Cadre pittoresque</value>
+    <value></value>
     <comment>?</comment>
   </data>
   <data name="Pressing" xml:space="preserve">
@@ -237,9 +234,6 @@
   <data name="Printer" xml:space="preserve">
     <value>Kopiëren, afdrukken, faxen</value>
   </data>
-  <data name="Projector" xml:space="preserve">
-    <value>Rétroprojecteur</value>
-  </data>
   <data name="RelaxingArea" xml:space="preserve">
     <value>Ontspanningsruimte</value>
   </data>
@@ -247,34 +241,13 @@
     <value>Restauratie</value>
   </data>
   <data name="Room1000_plus" xml:space="preserve">
-    <value>Supérieure à 1000 personnes</value>
-  </data>
-  <data name="Room100_250" xml:space="preserve">
-    <value>De 100 à 250 personnes</value>
+    <value>Meer dan 1000 Mensen</value>
   </data>
   <data name="Room10_Plus" xml:space="preserve">
-    <value>Supérieure à 10 personnes</value>
-  </data>
-  <data name="Room1_4" xml:space="preserve">
-    <value>De 1 à 4 personnes</value>
-  </data>
-  <data name="Room20_100" xml:space="preserve">
-    <value>De 20 à 100 personnes</value>
+    <value>Meer dan 10 Mensen</value>
   </data>
   <data name="Room20_plus" xml:space="preserve">
-    <value>Supérieure à 20 personnes</value>
-  </data>
-  <data name="Room250_1000" xml:space="preserve">
-    <value>De 250 à 1000 personnes</value>
-  </data>
-  <data name="Room2_7" xml:space="preserve">
-    <value>De 2 à 7 personnes</value>
-  </data>
-  <data name="Room5_10" xml:space="preserve">
-    <value>De 5 à 10 personnes</value>
-  </data>
-  <data name="Room7_20" xml:space="preserve">
-    <value>De 8 à 20 personnes</value>
+    <value>Meer dan 20 Mensen</value>
   </data>
   <data name="RoomService" xml:space="preserve">
     <value>Room service aan het bureau</value>
@@ -299,17 +272,8 @@
     <value>TV</value>
   </data>
   <data name="VideoProj" xml:space="preserve">
-    <value>Vidéoprojecteur</value>
+    <value></value>
     <comment>?</comment>
-  </data>
-  <data name="Visio" xml:space="preserve">
-    <value>Visioconférence</value>
-  </data>
-  <data name="VisioHD" xml:space="preserve">
-    <value>Visioconférence HD</value>
-  </data>
-  <data name="Welcoming" xml:space="preserve">
-    <value>Accueil des invités</value>
   </data>
   <data name="Wifi_Free" xml:space="preserve">
     <value>Gratis WiFi</value>
@@ -323,9 +287,6 @@
   </data>
   <data name="FreeArea" xml:space="preserve">
     <value>Gratis ruimte (hot spot, café, ed.)</value>
-  </data>
-  <data name="SeminarRoom" xml:space="preserve">
-    <value>Salles de séminaire</value>
   </data>
   <data name="Desktop" xml:space="preserve">
     <value>Private bureaus</value>
@@ -360,46 +321,19 @@
   <data name="AllOffers" xml:space="preserve">
     <value>Alle ruimtes</value>
   </data>
-  <data name="AllInclusive" xml:space="preserve">
-    <value>Tout compris</value>
-  </data>
-  <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité immédiate</value>
-  </data>
   <data name="CoffeePrice" xml:space="preserve">
     <value>Prijs per koffie</value>
-  </data>
-  <data name="CoworkingVibe" xml:space="preserve">
-    <value>Ambiance coworking</value>
   </data>
   <data name="Desktop100Plus" xml:space="preserve">
     <value>&gt; 100 m2</value>
   </data>
-  <data name="Desktop10_25" xml:space="preserve">
-    <value>De 10 à 25 m2</value>
-  </data>
-  <data name="Desktop25_50" xml:space="preserve">
-    <value>De 25 à 50 m2</value>
-  </data>
-  <data name="Desktop50_100" xml:space="preserve">
-    <value>De 50 à 100 m2</value>
-  </data>
-  <data name="Equipped" xml:space="preserve">
-    <value>Equipé et câblé</value>
-  </data>
   <data name="FlexibleContract" xml:space="preserve">
-    <value>Contrat flexible</value>
+    <value></value>
     <comment>?</comment>
   </data>
   <data name="ForCardOwner" xml:space="preserve">
     <value>Toegang gereserveerd voor houders van een kaart</value>
     <comment>?</comment>
-  </data>
-  <data name="MinimalPeriod" xml:space="preserve">
-    <value>Durée minimale de location</value>
-  </data>
-  <data name="NotSectorial" xml:space="preserve">
-    <value>Non sectoriel</value>
   </data>
   <data name="OpenToAll" xml:space="preserve">
     <value>Open voor iedereen</value>
@@ -408,7 +342,7 @@
     <value>Toegang gereserveerd voor klanten</value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Secteur</value>
+    <value>Sector</value>
     <comment>?</comment>
   </data>
   <data name="Kitchen" xml:space="preserve">
@@ -463,7 +397,7 @@
     <value>Ontwikkelaars (IT)</value>
   </data>
   <data name="Heater" xml:space="preserve">
-    <value>Chauffage</value>
+    <value>Verwarming</value>
   </data>
   <data name="Independent" xml:space="preserve">
     <value>Onafhankelijken (andere)</value>

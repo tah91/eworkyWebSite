@@ -120,9 +120,6 @@
   <data name="AccessBO" xml:space="preserve">
     <value>Ontdek gratis de mogelijkheden van de beheerdersruimte, zodat u uw ruimte eenvoudig kan beheren op eWorky</value>
   </data>
-  <data name="AccessBOLink" xml:space="preserve">
-    <value>espace gérant</value>
-  </data>
   <data name="AccessBOTitle" xml:space="preserve">
     <value>Toegang tot de beheerdersruimte</value>
   </data>
@@ -178,7 +175,7 @@
     <value>Beheer uw ruimte</value>
   </data>
   <data name="Here" xml:space="preserve">
-    <value>ici</value>
+    <value>hier</value>
   </data>
   <data name="HowDoIt" xml:space="preserve">
     <value>Wat te doen?</value>
@@ -262,7 +259,7 @@
     <value>Alle informatie wordt versleuteld door SSL. Enkel u heeft toegang tot de informatie in uw ruimte</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Creëer gratis {0} door aan te duiden dat u eigenaar bent</value>
+    <value></value>
     <comment>JM Modif l.22</comment>
   </data>
   <data name="ReferenceLink" xml:space="preserve">

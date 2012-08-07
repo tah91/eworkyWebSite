@@ -129,14 +129,8 @@
   <data name="Comfort" xml:space="preserve">
     <value>Comfort</value>
   </data>
-  <data name="EquipementsServices" xml:space="preserve">
-    <value>Equipements &amp; Services</value>
-  </data>
   <data name="Facilities" xml:space="preserve">
     <value>Faciliteiten</value>
-  </data>
-  <data name="FreeWorkplace" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Vrijdag</value>
@@ -147,12 +141,6 @@
   </data>
   <data name="GoogleMapsLocalisation" xml:space="preserve">
     <value>Locatie op Google Maps</value>
-  </data>
-  <data name="LinkToFB" xml:space="preserve">
-    <value>Lien vers la page Facebook</value>
-  </data>
-  <data name="LinkToTwitter" xml:space="preserve">
-    <value>Lien vers le profil Twitter</value>
   </data>
   <data name="MandatoryFields" xml:space="preserve">
     <value>Verplichte velden</value>
@@ -172,35 +160,17 @@
   <data name="MondayMorningOpen" xml:space="preserve">
     <value>Ex : 9:00</value>
   </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Offre</value>
-  </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Fonctionnalités réservées au gérant du lieu</value>
-  </data>
   <data name="PlaceDetails" xml:space="preserve">
     <value>Eigenschappen van de locatie</value>
   </data>
-  <data name="PlacesExample" xml:space="preserve">
-    <value>Ex : Café de Flore, Regus Invalides, Novotel Gare de Lyon, ...</value>
-  </data>
   <data name="ProfessionalServices" xml:space="preserve">
     <value>Professionele diensten</value>
-  </data>
-  <data name="ProposedTechnology" xml:space="preserve">
-    <value>Technologie proposée</value>
   </data>
   <data name="RefineLocation" xml:space="preserve">
     <value>Om de locatie te verfijnen, verplaats de muis</value>
   </data>
   <data name="ResetPosition" xml:space="preserve">
     <value>Stel de positie opnieuw in</value>
-  </data>
-  <data name="RoadExample" xml:space="preserve">
-    <value>Ex : Accès par la N118</value>
-  </data>
-  <data name="RoomCapacity" xml:space="preserve">
-    <value>Capacité des salles proposées</value>
   </data>
   <data name="Saturday" xml:space="preserve">
     <value>Zaterdag</value>
@@ -211,38 +181,17 @@
   <data name="Services" xml:space="preserve">
     <value>Diensten</value>
   </data>
-  <data name="SharedOfficeDesc" xml:space="preserve">
-    <value>Ex : Deux postes de travail en open space proposés par une jeune PME du secteur de l'agroalimentaire.  Espace de travail calme et lumineux, ambiance conviviale, nous sommes favorables aux échanges et à l'entraide. Accès à deux salles de réunion, à un espace de détente avec une machine Nespresso. Longue durée souhaitée (à partir de 6 mois).</value>
-  </data>
-  <data name="SharedOfficeExemple" xml:space="preserve">
-    <value>Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc.</value>
-  </data>
-  <data name="SncfExample" xml:space="preserve">
-    <value>Ex : Gare de Lyon</value>
-  </data>
-  <data name="SubwayExample" xml:space="preserve">
-    <value>Ex : A 3 minutes de la station Ecole Militaire, ligne 8</value>
-  </data>
   <data name="Sunday" xml:space="preserve">
     <value>Zondag</value>
   </data>
   <data name="Tariffs" xml:space="preserve">
     <value>Tarieven</value>
   </data>
-  <data name="ThePlace1" xml:space="preserve">
-    <value>Le lieu "</value>
-  </data>
-  <data name="ThePlace2" xml:space="preserve">
-    <value>" est à la même adresse que le lieu que vous tentez d'ajouter</value>
-  </data>
   <data name="Thursday" xml:space="preserve">
     <value>Donderdag</value>
   </data>
-  <data name="TimeExample1" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 9:30</value>
-  </data>
   <data name="TimeExample2" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 19:30</value>
+    <value></value>
     <comment>Problème des pm en Angleterre</comment>
   </data>
   <data name="Tuesday" xml:space="preserve">

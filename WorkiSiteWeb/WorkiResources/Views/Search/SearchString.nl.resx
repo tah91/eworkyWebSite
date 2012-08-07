@@ -123,56 +123,20 @@
   <data name="DistanceOrdered" xml:space="preserve">
     <value>Afstand</value>
   </data>
-  <data name="Entrepreneur" xml:space="preserve">
-    <value>Entrepreneur</value>
-  </data>
   <data name="Equipments" xml:space="preserve">
     <value>Faciliteiten</value>
-  </data>
-  <data name="Features" xml:space="preserve">
-    <value>Caractéristiques</value>
-  </data>
-  <data name="Independant" xml:space="preserve">
-    <value>Indépendant</value>
   </data>
   <data name="KindOfLocation" xml:space="preserve">
     <value>Type locatie</value>
   </data>
-  <data name="Nomad" xml:space="preserve">
-    <value>Nomade</value>
-  </data>
-  <data name="Opinion" xml:space="preserve">
-    <value>Avis</value>
-  </data>
   <data name="OrderBy" xml:space="preserve">
     <value>Sorteren op :</value>
-  </data>
-  <data name="PlaceExamples" xml:space="preserve">
-    <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, etc.</value>
-  </data>
-  <data name="PlaceFound" xml:space="preserve">
-    <value>lieu(x) trouvé(s)</value>
   </data>
   <data name="RateOrdered" xml:space="preserve">
     <value>Tarief</value>
   </data>
-  <data name="RefineSearch" xml:space="preserve">
-    <value>Affiner la recherche</value>
-  </data>
-  <data name="ResultOfSearch" xml:space="preserve">
-    <value>Résultat(s) de votre recherche :</value>
-  </data>
-  <data name="ResultOnMap" xml:space="preserve">
-    <value>Vos résultats sur la carte</value>
-  </data>
-  <data name="ReturnToResult" xml:space="preserve">
-    <value>Retour aux résultats</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Zoeken</value>
-  </data>
-  <data name="SearchByPlace" xml:space="preserve">
-    <value>Par localisation</value>
   </data>
   <data name="SearchByPlaceName" xml:space="preserve">
     <value>Volgens plaatsnaam</value>
@@ -186,23 +150,8 @@
   <data name="SearchResult" xml:space="preserve">
     <value>Zoekresultaten eWorky</value>
   </data>
-  <data name="SearchType" xml:space="preserve">
-    <value>Quel type de lieu cherchez-vous ?</value>
-  </data>
   <data name="Student" xml:space="preserve">
-    <value>Etudiant</value>
-  </data>
-  <data name="TypeOfService" xml:space="preserve">
-    <value>Type de prestation</value>
-  </data>
-  <data name="VenueName" xml:space="preserve">
-    <value>Quel est le nom du lieu ?</value>
-  </data>
-  <data name="VenueNameExample" xml:space="preserve">
-    <value>Ex : La Cantine, Regus Opéra, ...</value>
-  </data>
-  <data name="Where" xml:space="preserve">
-    <value>Où est ce lieu ? (facultatif)</value>
+    <value>Student</value>
   </data>
   <data name="YourSearchResult" xml:space="preserve">
     <value>Uw zoekresultaten: {0} locatie(s) gevonden</value>

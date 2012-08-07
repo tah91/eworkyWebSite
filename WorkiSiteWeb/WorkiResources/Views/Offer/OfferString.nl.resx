@@ -117,56 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AskRemoveOffer" xml:space="preserve">
-    <value>Voulez-vous effacer l'offre suivante : {0}</value>
-  </data>
   <data name="AddOffer" xml:space="preserve">
     <value>Een aanbieding toevoegen</value>
-  </data>
-  <data name="RemoveOffer" xml:space="preserve">
-    <value>Supprimer une offre</value>
-  </data>
-  <data name="EditOffer" xml:space="preserve">
-    <value>Editer une offre</value>
-  </data>
-  <data name="OfferRemoved" xml:space="preserve">
-    <value>L'offre a bien été effacée.</value>
-  </data>
-  <data name="OfferCreated" xml:space="preserve">
-    <value>L'offre a bien été ajoutée.</value>
-  </data>
-  <data name="OfferEdited" xml:space="preserve">
-    <value>Les nouveaux paramètres ont bien été pris en compte.</value>
   </data>
   <data name="OfferCharacteristics" xml:space="preserve">
     <value>Eigenschappen van de aanbieding</value>
   </data>
-  <data name="AskDevis" xml:space="preserve">
-    <value>Demande de devis</value>
-  </data>
   <data name="InfoUnknown" xml:space="preserve">
     <value>De eigenschappen van deze aanbiedingwerden niet opgegeven.</value>
-  </data>
-  <data name="BackToLocalisation" xml:space="preserve">
-    <value>Retour à la fiche du lieu</value>
-  </data>
-  <data name="OffersDetail" xml:space="preserve">
-    <value>Détail des offres</value>
-  </data>
-  <data name="SelectOffer" xml:space="preserve">
-    <value>Offre :</value>
   </data>
   <data name="Availability" xml:space="preserve">
     <value>Beschikbaarheid</value>
   </data>
   <data name="Prices" xml:space="preserve">
-    <value>Tarifs</value>
-  </data>
-  <data name="AddPrice" xml:space="preserve">
-    <value>Ajouter un tarif</value>
-  </data>
-  <data name="DescriptionOffer" xml:space="preserve">
-    <value>Indiquez une description pour l'offre</value>
+    <value>Tarieven</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschrijving van de aanbieding</value>

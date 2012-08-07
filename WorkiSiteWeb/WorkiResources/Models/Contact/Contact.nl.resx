@@ -127,15 +127,12 @@
     <value>Naam</value>
   </data>
   <data name="Link" xml:space="preserve">
-    <value>Lien</value>
+    <value>Link</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Onderwerp</value>
   </data>
-  <data name="ToEmail" xml:space="preserve">
-    <value>A l'adresse électronique</value>
-  </data>
-  <data name="ToName" xml:space="preserve">
-    <value>To Name</value>
+  <data name="Message" xml:space="preserve">
+    <value>Boodschap</value>
   </data>
 </root>

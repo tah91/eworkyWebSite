@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddPage" xml:space="preserve">
-    <value>Proposer un espace</value>
-  </data>
   <data name="Bugs" xml:space="preserve">
     <value>Bugs</value>
   </data>
@@ -152,9 +149,6 @@
   <data name="HomePage" xml:space="preserve">
     <value>homepage</value>
   </data>
-  <data name="HowAddWorkplace" xml:space="preserve">
-    <value>Comment ajouter un lieu de travail ?</value>
-  </data>
   <data name="HowCreateAccount" xml:space="preserve">
     <value>Hoe kan ik een account aanmaken? Waarom zou ik me inschrijven?</value>
   </data>
@@ -176,11 +170,6 @@
   <data name="InviteFriends" xml:space="preserve">
     <value>Hoe kan ik mijn vrienden uitnodigen om zich aan te sluiten bij eWorky?</value>
   </data>
-  <data name="OnEWBuisnessCenter" xml:space="preserve">
-    <value>Sur eWorky, un centre d’affaires est un immeuble de bureaux tout équipé, qui loue ses locaux ou des bureaux
-        individuels pour une période généralement limitée. Les baux proposés sont plus flexibles et de plus courtes
-        durées que les baux traditionnels.</value>
-  </data>
   <data name="OnEWBuisnessHotel" xml:space="preserve">
     <value>Volgens eWorky is een ondernemingshotel een plaats waar verschillende jonge ondernemingen ondergebracht worden tegen een verminderd tarief en waar gedeelde diensten ter beschikking worden gesteld. De ondernemingen worden bijgestaan in hun ontwikkelingsfase, hun groeifase en hun maturiteitsfase.</value>
   </data>
@@ -191,7 +180,7 @@
     <value>Volgens eWorky is een conferentiezaal of een vergaderzaal een zaal die een capaciteit heeft van ten minste 20 personen en die kan gaan tot meer dan 1000 personen. Ideaal voor conferenties, cocktailfeesten, recepties, seminaries, symposia etc.</value>
   </data>
   <data name="OnEWCoworking" xml:space="preserve">
-    <value>WhatIsDigitalPublicSpace</value>
+    <value>Volgens eWorky is een coworkingplaats een werkplaats die verschillende werkers onafhankelijk van elkaar verzamelt. De gebruikers van eenzelfde coworkingplaats delen hun lokalen en vormen een netwerk. Op die manier bevorderen ze de uitwisseling, de openheid en de gebruiksvriendelijkheid.</value>
   </data>
   <data name="OnEWDigitalPublicSpace" xml:space="preserve">
     <value>Volgens eWorky is een digitale open ruimte een ontvangsruimte met een niet-lucratief doel die een internetconnectie aanbiedt en met als belangrijkste doelstelling een toegang te geven tot informatie en tot informatietechnologieën en communicatie.</value>
@@ -210,9 +199,7 @@
     <value>Volgens eWorky is een telecenter een werkruimte bedoeld voor telewerkers, die zowel bureaus als werkposten ter beschikking stelt die zijn uitgerust met informaticatools. Het verhuren van dergelijke bureaus gebeurt over het algemeen overdag.</value>
   </data>
   <data name="OnEWVisioRoom" xml:space="preserve">
-    <value>Sur eWorky, une salle de visioconférence est une salle offrant tous les moyens techniques nécessaires,
-        qu’ils soient audio et vidéo, permettant à ses utilisateurs de communiquer à distance avec un ou plusieurs
-        interlocuteurs.</value>
+    <value>Volgens eWorky is een telepresencezaal een zaal die toelaat dat de deelnemers van een videoconferentie de indruk krijgen in eenzelfde kamer te zijn. Ze is uitgerust met camera’s en micro’s, de aanwezigen hebben op die manier personen van reële grootte rondom hen.</value>
   </data>
   <data name="OnEWTelework1" xml:space="preserve">
     <value>“telewerken is een manier om het werk te organiseren of te realiseren, door informatietechnologieën te gebruiken in het kader van een werkcontract en waar het werk, dat eveneens kan voltrokken worden in de lokalen van de werkgever, op regelmatige basis gerealiseerd wordt buiten deze lokalen”. </value>
@@ -237,24 +224,8 @@
   <data name="RetrivePassword" xml:space="preserve">
     <value>Hoe kan ik een verloren paswoord terugvinden?</value>
   </data>
-  <data name="SearchPage" xml:space="preserve">
-    <value>page Recherche</value>
-  </data>
-  <data name="SuggestWorkplace" xml:space="preserve">
-    <value>L’onglet « {0} » vous permet de proposer un espace de travail aux utilisateurs
-	d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à
-	disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter
-	l’accès aux informations des utilisateurs.
-	De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous
-	conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos,
-	faites glisser vos images sur le champ « Ajouter des images » ou cliquez sur ce même bouton, puis
-	choisissez celle qui sera la photo principale du lieu.</value>
-  </data>
   <data name="TheInscription" xml:space="preserve">
     <value>Inschrijving</value>
-  </data>
-  <data name="WhatIsBuisnessCenter" xml:space="preserve">
-    <value>Qu’est-ce qu’un centre d’affaires ?</value>
   </data>
   <data name="WhatIsBuisnessHotel" xml:space="preserve">
     <value>Wat is een ondernemingshotel?</value>
@@ -287,14 +258,11 @@
   <data name="WhatIsTelecenter" xml:space="preserve">
     <value>Wat is een telecenter?</value>
   </data>
-  <data name="WhatIsTelepresenceRoom" xml:space="preserve">
-    <value>Qu’est-ce qu’une salle de téléprésence ?</value>
-  </data>
   <data name="WhatIsVisioRoom" xml:space="preserve">
     <value>Wat is een telepresencezaal?</value>
   </data>
   <data name="WhatIsWorkOffice" xml:space="preserve">
-    <value>Qu’est-ce qu’un poste de travail ?</value>
+    <value></value>
     <comment>?</comment>
   </data>
   <data name="WhatIsWorkStation" xml:space="preserve">
@@ -343,8 +311,5 @@ het team van eWorky door een mail te sturen naar contact@eworky.com</value>
   </data>
   <data name="ViaViadeo" xml:space="preserve">
     <value>Via Viadeo</value>
-  </data>
-  <data name="OnEWTeleRoom" xml:space="preserve">
-    <value>Sur eWorky, une salle de téléprésence est une salle permettant de donner aux participants d’une vidéoconférence l’impression d’être dans la même pièce. Elle est équipée de caméras et de micros, les participants ont ainsi autour d’eux des personnes à taille réelle.</value>
   </data>
 </root>

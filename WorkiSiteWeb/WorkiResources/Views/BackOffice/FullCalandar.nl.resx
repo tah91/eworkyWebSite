@@ -124,103 +124,100 @@
     <value>HH:mm</value>
   </data>
   <data name="April" xml:space="preserve">
-    <value>Avril</value>
+    <value>April</value>
   </data>
   <data name="AprilShort" xml:space="preserve">
-    <value>Avr</value>
+    <value>Apr</value>
   </data>
   <data name="August" xml:space="preserve">
-    <value>Août</value>
+    <value>Augustus</value>
   </data>
   <data name="AugustShort" xml:space="preserve">
-    <value>Aoû</value>
+    <value>Aou</value>
   </data>
   <data name="AxisFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Jour</value>
+    <value>Dag</value>
   </data>
   <data name="December" xml:space="preserve">
-    <value>Décembre</value>
+    <value>December</value>
   </data>
   <data name="DecemberShort" xml:space="preserve">
     <value>Déc</value>
   </data>
-  <data name="ErrorWhileLoading" xml:space="preserve">
-    <value>Erreur pendant le chargement des données !</value>
-  </data>
   <data name="February" xml:space="preserve">
-    <value>Février</value>
+    <value>Februari</value>
   </data>
   <data name="FebruaryShort" xml:space="preserve">
-    <value>Fév</value>
+    <value>Féb</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Vrijdag</value>
   </data>
   <data name="FridayShort" xml:space="preserve">
-    <value>Ven</value>
+    <value>Vri</value>
   </data>
   <data name="January" xml:space="preserve">
-    <value>Janvier</value>
+    <value>Janiver</value>
   </data>
   <data name="JanuaryShort" xml:space="preserve">
     <value>Jan</value>
   </data>
   <data name="July" xml:space="preserve">
-    <value>Juillet</value>
+    <value>Juli</value>
   </data>
   <data name="JulyShort" xml:space="preserve">
     <value>Jul</value>
   </data>
   <data name="June" xml:space="preserve">
-    <value>Juin</value>
+    <value>Juni</value>
   </data>
   <data name="JuneShort" xml:space="preserve">
     <value>Jun</value>
   </data>
   <data name="March" xml:space="preserve">
-    <value>Mars</value>
+    <value>Maart</value>
   </data>
   <data name="MarchShort" xml:space="preserve">
     <value>Mar</value>
   </data>
   <data name="May" xml:space="preserve">
-    <value>Mai</value>
+    <value>Mei</value>
   </data>
   <data name="MayShort" xml:space="preserve">
-    <value>Mai</value>
+    <value>Mei</value>
   </data>
   <data name="Monday" xml:space="preserve">
     <value>Maandag</value>
   </data>
   <data name="MondayShort" xml:space="preserve">
-    <value>Lun</value>
+    <value>Maa</value>
   </data>
   <data name="Month" xml:space="preserve">
-    <value>Mois</value>
+    <value>Maand</value>
   </data>
   <data name="November" xml:space="preserve">
-    <value>Novembre</value>
+    <value>November</value>
   </data>
   <data name="NovemberShort" xml:space="preserve">
     <value>Nov</value>
   </data>
   <data name="October" xml:space="preserve">
-    <value>Octobre</value>
+    <value>Oktober</value>
   </data>
   <data name="OctoberShort" xml:space="preserve">
-    <value>Oct</value>
+    <value>Okt</value>
   </data>
   <data name="Saturday" xml:space="preserve">
     <value>Zaterdag</value>
   </data>
   <data name="SaturdayShort" xml:space="preserve">
-    <value>Sam</value>
+    <value>Zat</value>
   </data>
   <data name="September" xml:space="preserve">
-    <value>Septembre</value>
+    <value>September</value>
   </data>
   <data name="SeptemberShort" xml:space="preserve">
     <value>Sep</value>
@@ -229,30 +226,30 @@
     <value>Zondag</value>
   </data>
   <data name="SundayShort" xml:space="preserve">
-    <value>Dim</value>
+    <value>Zon</value>
   </data>
   <data name="Thursday" xml:space="preserve">
     <value>Donderdag</value>
   </data>
   <data name="ThursdayShort" xml:space="preserve">
-    <value>Jeu</value>
+    <value>Don</value>
   </data>
   <data name="Today" xml:space="preserve">
-    <value>Aujourd'hui</value>
+    <value>Vaandaag</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Dinsdag</value>
   </data>
   <data name="TuesdayShort" xml:space="preserve">
-    <value>Mar</value>
+    <value>Din</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Woensdag</value>
   </data>
   <data name="WednesdayShort" xml:space="preserve">
-    <value>Mer</value>
+    <value>Woe</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value>Semaine</value>
+    <value>Week</value>
   </data>
 </root>

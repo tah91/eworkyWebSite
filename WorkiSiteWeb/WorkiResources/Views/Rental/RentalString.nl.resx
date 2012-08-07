@@ -121,103 +121,28 @@
     <value>Localisation</value>
   </data>
   <data name="AccurateSearch" xml:space="preserve">
-    <value>Affiner votre recherche</value>
-  </data>
-  <data name="AddAnother" xml:space="preserve">
-    <value>Ajouter un accès en transports en commun</value>
-  </data>
-  <data name="AddRental" xml:space="preserve">
-    <value>Ajouter une annonce</value>
-  </data>
-  <data name="Address" xml:space="preserve">
-    <value>Adresse :</value>
-  </data>
-  <data name="And" xml:space="preserve">
-    <value>et</value>
-  </data>
-  <data name="Area" xml:space="preserve">
-    <value>Surface</value>
+    <value>Verfijning van de zoekopdracht</value>
   </data>
   <data name="AreaUnit" xml:space="preserve">
     <value>(m²)</value>
   </data>
   <data name="Availability" xml:space="preserve">
-    <value>Disponibilité</value>
-  </data>
-  <data name="AvailableDate" xml:space="preserve">
-    <value>Date de disponibilité</value>
-  </data>
-  <data name="BeginResultAnswer" xml:space="preserve">
-    <value>Résultat(s) de votre recherche :</value>
-  </data>
-  <data name="Between" xml:space="preserve">
-    <value>Compris entre :</value>
-  </data>
-  <data name="CheckProfile" xml:space="preserve">
-    <value>Consulter le profil :</value>
-  </data>
-  <data name="CheckThisOut" xml:space="preserve">
-    <value>Je vous recommande de découvrir cette annonce : </value>
-  </data>
-  <data name="ChooseDate" xml:space="preserve">
-    <value>Choisir une Date</value>
+    <value>Beschikbaarheid</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>Ville :</value>
-  </data>
-  <data name="CommonTransportAccess" xml:space="preserve">
-    <value>Accès en transports en commun</value>
-  </data>
-  <data name="ContractType" xml:space="preserve">
-    <value>Type de contrat</value>
-  </data>
-  <data name="CreateAlert" xml:space="preserve">
-    <value>Créer une alerte e-mail</value>
-  </data>
-  <data name="DateDrop" xml:space="preserve">
-    <value>Date de dépôt :</value>
+    <value>Stad : </value>
   </data>
   <data name="DateExample" xml:space="preserve">
     <value>Ex : 31/12/2011</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschrijving</value>
   </data>
   <data name="Detail" xml:space="preserve">
-    <value>Détail</value>
-  </data>
-  <data name="DiagnosticRate" xml:space="preserve">
-    <value>Evaluation :</value>
-  </data>
-  <data name="EditRental" xml:space="preserve">
-    <value>Editer une annonce</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Adresse électronique :</value>
-  </data>
-  <data name="EndResultAnswer" xml:space="preserve">
-    <value>annonce(s) trouvée(s)</value>
-  </data>
-  <data name="ExMaxArea" xml:space="preserve">
-    <value>Ex : 150</value>
-  </data>
-  <data name="ExMaxRate" xml:space="preserve">
-    <value>Ex : 5000</value>
-  </data>
-  <data name="ExMinArea" xml:space="preserve">
-    <value>Ex : 25</value>
-  </data>
-  <data name="ExMinRate" xml:space="preserve">
-    <value>Ex : 400</value>
-  </data>
-  <data name="Features" xml:space="preserve">
-    <value>Caratéristiques</value>
+    <value>Detail</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Prénom :</value>
-  </data>
-  <data name="HeatingType" xml:space="preserve">
-    <value>Energie :</value>
+    <value>Voornaam</value>
   </data>
   <data name="Images" xml:space="preserve">
     <value>Afbeeldingen</value>
@@ -225,106 +150,34 @@
   <data name="InfoAdmin" xml:space="preserve">
     <value>Infos Admin</value>
   </data>
-  <data name="Infos" xml:space="preserve">
-    <value>Informations générales</value>
-  </data>
   <data name="LastName" xml:space="preserve">
-    <value>Nom :</value>
-  </data>
-  <data name="LeaseType" xml:space="preserve">
-    <value>Type de Bail :</value>
-  </data>
-  <data name="Localisation" xml:space="preserve">
-    <value>Localisation</value>
-  </data>
-  <data name="MaxArea" xml:space="preserve">
-    <value>Surface maximum</value>
-  </data>
-  <data name="MaxPrice" xml:space="preserve">
-    <value>Prix maximum</value>
-  </data>
-  <data name="MinArea" xml:space="preserve">
-    <value>Surface minimum</value>
-  </data>
-  <data name="MinPrice" xml:space="preserve">
-    <value>Prix minimum</value>
-  </data>
-  <data name="MoneyUnit" xml:space="preserve">
-    <value>(€ cc)</value>
+    <value>Naam</value>
   </data>
   <data name="MoreDetail" xml:space="preserve">
-    <value>Plus de détail</value>
+    <value>Meer details</value>
   </data>
   <data name="Now" xml:space="preserve">
-    <value>Immédiatement</value>
+    <value>Onmiddellijk</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>Autres</value>
+    <value>Ander</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value>Propriétaire</value>
+    <value>Eigenaar</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>N° téléphone :</value>
+    <value>Telefoonnummer</value>
   </data>
   <data name="Place" xml:space="preserve">
-    <value>Lieu</value>
-  </data>
-  <data name="PlaceExemple" xml:space="preserve">
-    <value>Ex : Paris 5e, Orsay, etc.</value>
+    <value>Plaats</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value>Code Postal :</value>
+    <value>Postcode</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
-  </data>
-  <data name="Print" xml:space="preserve">
-    <value>Imprimer cette annonce</value>
-  </data>
-  <data name="Ref" xml:space="preserve">
-    <value>Référence</value>
-  </data>
-  <data name="Reference" xml:space="preserve">
-    <value>Référence annonce eWorky :</value>
-  </data>
-  <data name="Rental" xml:space="preserve">
-    <value>Annonce</value>
-  </data>
-  <data name="RentalEdit" xml:space="preserve">
-    <value>Editer l'annonce</value>
-  </data>
-  <data name="RentalHaveBeenCreate" xml:space="preserve">
-    <value>L'annonce a été créée.</value>
-  </data>
-  <data name="RentalHaveBeenDel" xml:space="preserve">
-    <value>L'annonce a été supprimée.</value>
-  </data>
-  <data name="RentalHaveBeenEdit" xml:space="preserve">
-    <value>L'annonce a été éditée.</value>
-  </data>
-  <data name="RentalSuppress" xml:space="preserve">
-    <value>Effacer l'annonce</value>
-  </data>
-  <data name="RentalType" xml:space="preserve">
-    <value>Type d'annonce</value>
-  </data>
-  <data name="SaveSearch" xml:space="preserve">
-    <value>Mémoriser cette recherche</value>
-  </data>
-  <data name="SendMailToOwner" xml:space="preserve">
-    <value>Envoyer un e-mail au propriétaire</value>
-  </data>
-  <data name="SendToFriend" xml:space="preserve">
-    <value>Recommander à un ami</value>
+    <value>Prijs</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>Valider</value>
-  </data>
-  <data name="UpdatedAt" xml:space="preserve">
-    <value>Annonce mise à jour le</value>
-  </data>
-  <data name="Usefull" xml:space="preserve">
-    <value>Pratique</value>
+    <value>Bevestigen</value>
   </data>
 </root>

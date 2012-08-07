@@ -118,96 +118,94 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptCGU" xml:space="preserve">
-    <value>5.2 Capacité à accepter les CGU</value>
+    <value>5.2 Mogelijkheid om de algemene gebruiksvoorwaarden te accepteren</value>
   </data>
   <data name="AccuracyInformations" xml:space="preserve">
-    <value>3. Exactitude des informations sur le site Web et disponibilités</value>
+    <value>3. De correctheid en beschikbaarheid van de informatie op de website</value>
   </data>
   <data name="AimsOfTreatment" xml:space="preserve">
-    <value>6.3 Finalités des traitements</value>
+    <value>6.3 Doelstellingen van de behandeling</value>
   </data>
   <data name="AllFonctionality" xml:space="preserve">
-    <value>Aux fins de bénéficier des fonctionnalités du site, vous devez créer un compte au moyen du formulaire en ligne prévu à cet effet. Vous demeurez à tout moment libre de modifier la teneur des données personnelles communiquées à cette occasion. L'accès à votre compte peut s'effectuer par saisie de votre identifiant et mot de passe associé, dont vous assurez seul la confidentialité. L'utilisation du site suivant votre inscription est valable pour une durée indéterminée. Nous nous réservons la possibilité d'y mettre fin à tout moment, par courrier électronique, moyennant un préavis raisonnable. En cas de non-respect des obligations inhérentes à votre responsabilité ci-avant, l'accès à votre espace personnel peut être, immédiatement et sans préavis, temporairement ou définitivement suspendu au moyen de la désactivation de votre compte et ce, sans préjudice de nos autres droits.</value>
+    <value>Om gebruik te kunnen maken van de aangeboden diensten op deze site, moet u een account aanmaken via het online formulier dat hiervoor bedoeld is. U blijft te allen tijde vrij om de inhoud van de persoonljke gegevens aan te passen. De toegang tot uw account kan worden verzekerd door het invoeren van uw gebruikersnaam en bijbehorende wachtwoord, waarvan enkel u de vertrouwelijkheid geniet. Na uw inschrijving is het gebruik van de site geldig voor onbepaalde tijd. Wij behouden ons het recht om dit op elk moment te beëindigen, door middel van een e-mail op een redelijke termijn. In geval de inherentie verplichtingen onder uw verantwoordelijkheid niet worden gerespecteerd, kan de toegang tot uw persoonlijke ruimte onmiddellijk en zonder waarschuwing, tijdelijk of definitief opgeschort worden door middel van een desactivatie van uw account, en dit zonder afbreuk te doen aan onze andere rechten.</value>
   </data>
   <data name="Changes" xml:space="preserve">
-    <value>4. Modifications</value>
+    <value>4. Aanpassingen</value>
   </data>
   <data name="ChangesCgu" xml:space="preserve">
-    <value>Nous pouvons modifier les présentes conditions d’utilisation de ce site à tout moment et sans préavis. Lorsque nous modifions les conditions générales, les termes amendés sont applicables dès leur publication sur ce site. Chaque utilisation de ce site Web sera alors soumise aux conditions d’utilisation applicables à ce moment.</value>
+    <value>Wij kunnen deze gebruiksvoorwaarden van deze site op elk moment zonder voorafgaande kennisgeving aanpassen. Als we de algemene voorwaarden wijzigen, zullen de gewijzigde voorwaarden van kracht zijn vanaf hun publicatie op de site. Elk gebruik van deze website is dus onderworpen aan de bepalingen en voorwaarden die van toepassing zijn op dat moment.</value>
   </data>
   <data name="CollectedDatas" xml:space="preserve">
-    <value>6.2 Données collectées</value>
+    <value>6.2 Verzamelde gegevens</value>
   </data>
   <data name="CommintmentEWorky" xml:space="preserve">
-    <value>Cette rubrique illustre l'engagement de eWorky à l'égard du respect de votre vie privée et à la protection des données personnelles vous concernant, collectées et traitées à l'occasion de votre utilisation du site.</value>
+    <value>Deze rubriek illustreert de verbintenis van eWorky om uw privacy met respect te behandelen en om uw persoonlijke gegevens, die verzameld en verwerkt worden in het kader van uw gebruik van de site, te beschermen.</value>
   </data>
   <data name="CopyrightTrademarks" xml:space="preserve">
-    <value>Gebruik van de website, auteursrechten en handelsmerken</value>
+    <value>2. Gebruik van de website, auteursrechten en handelsmerken</value>
   </data>
   <data name="DataRetention" xml:space="preserve">
-    <value>6.6 Conservation des données</value>
+    <value>6.6 Behoud van de gegevens</value>
   </data>
   <data name="EWorkySupportYourProduct" xml:space="preserve">
-    <value>Donner l'impression de quelque manière que ce soit que eWorky soutient vos produits ou vos services ;</value>
+    <value>Op het even welke manier de indruk te geven dat eWorky uw producten of diensten ondersteunt;</value>
   </data>
   <data name="FakeRevervations" xml:space="preserve">
-    <value>Effectuer des réservations fausses, frauduleuses ou spéculatives, ou des réservations en anticipation d'une demande ;</value>
+    <value>Foute, frauduleuze of speculatieve reservaties uit te voeren, of reservaties voorafgaand aan een vraag;</value>
   </data>
   <data name="FalseInformations" xml:space="preserve">
-    <value>Insérer des informations fausses ou non pertinentes sur notre site Web ;</value>
+    <value>Foute of niet-pertinente gegevens op onze website weer te geven;</value>
   </data>
   <data name="GoodFaithInformation" xml:space="preserve">
-    <value>Les informations figurant sur ce site sont publiées de bonne foi et sont régulièrement vérifiées et mises à jour. Nous ne pouvons cependant garantir qu'elles soient complètes et exactes. Nous ne pouvons vérifier, ni n’avons vérifié l'exactitude des informations fournies par les prestataires. Nous ne pourrons être tenus responsables d'erreurs ou d'omissions sur ce site, ni envers vous, ni envers des tiers. Nous sommes en droit de modifier, mettre à jour ou effacer toute information sur ce site sans avertissement préalable. Nous ne garantissons pas que ce site Web fonctionne de manière ininterrompue et sans erreurs, ni que les informations et tout autre contenu accessibles à partir de ce site Web soient exempts de virus ou d’autres composants dangereux.
-Nous ne garantissons ni ne certifions l'adéquation des informations, produits ou services sur ce site dans un but quelconque. Le site eWorky est mis à disposition en l’état et selon sa disponibilité. Vous assumez tous les risques liés à l'utilisation de ce site Web. Nous ne répondons pas des erreurs, omissions ou informations trompeuses et nous déclinons toute responsabilité concernant ces informations dans les limites admises par la loi.
-Toutes les photographies utilisées sur ce site Web sont présentées uniquement à titre d'illustration et ne pourront être considérées comme des représentations exactes des installations, hébergements ou services réellement proposés.</value>
+    <value>De informatie op deze website is gepubliceerd ter goeder trouw en wordt regelmatig gecontroleerd en geüpdatet. Wij kunnen desalniettemin niet garanderen dat deze volledig en exact is. Wij kunnen de juistheid van de informatie aangeleverd door aanbieders niet nagaan, noch hebben wij die gecontroleerd. Wij kunnen niet verantwoordelijk gehouden worden voor fouten of nalatigheden op deze site, noch tegenover u, noch tegenover derden. Wij hebben het recht alle informatie op deze site aan te passen, te updaten of te verwijderen zonder voorafgaande waarschuwing. Wij garanderen niet dat deze website ononderbroken en zonder fouten functioneert, noch dat de informatie en andere inhoud toegankelijk vanaf deze site vrij is van virussen of andere schadelijke mechanismen. Wij garanderen noch verzekeren de adequaatheid van de informatie, producten of diensten op deze site met om het even welk doel. De site van eWorky wordt ter beschikking gesteld in zijn staat en volgens zijn beschikbaaheid. U aanvaardt alle risico's geassocieerd met het gebruik van deze website. Wij zijn niet aansprakelijk voor fouten, weglatingen of misleidende informatie en we nemen geen enkele aansprakelijkheid voor deze informatie voor zover toegestaan door de wet. Alle foto's gebruikt op deze website worden gepresenteerd alleen voor illustratieve doeleinden en kunnen niet worden beschouwd als een accurate representatie van de faciliteiten, accomodaties of werkelijk voorgestelde diensten.</value>
   </data>
   <data name="Inscription" xml:space="preserve">
-    <value>5. Inscription</value>
+    <value>5. Inschrijving</value>
   </data>
   <data name="InscriptionChild" xml:space="preserve">
-    <value>5.1 Inscription</value>
+    <value>5.1 Inschrijving</value>
   </data>
   <data name="MandatoryInscription" xml:space="preserve">
-    <value>Les données identifiées comme étant obligatoires lors de l'inscription sont nécessaires aux fins de bénéficier des fonctionnalités du site. Les données collectées automatiquement par le Site nous permettent d'effectuer des statistiques quant à la consultation de ses pages web, et d'effectuer une localisation géographique partielle des utilisateurs.</value>
+    <value>De gegevens die als verplicht worden aangeduid bij de inschrijving zijn noodzakelijk om gebruik te kunnen maken van de diensten van de site. De gegevens die automatisch werden verzameld door de site laten ons toe statistieken op te stellen over de raadpleging van de webpages, en een gedeeltelijke geografische locatie van de gebruikers te bepalen.</value>
   </data>
   <data name="NegativeEffectForWebsite" xml:space="preserve">
-    <value>Utiliser ce site Web de manière à ce que, de notre point de vue, les performances ou les fonctionnalités du site, ou de tout autre système informatique ou réseau utilisé par eWorky, soient impactés négativement ou que les utilisateurs ou clients/utilisateurs enregistrés du site de eWorky soient négativement affectés ;</value>
+    <value>Deze website te gebruiken op een manier die, vanuit ons standpunt, de prestaties of de functionaliteit van deze site, of van elk ander informaticasysteem of netwerk gebruikt door eWorky, op een negatieve manier beïnvloedt, of waar de gebruikers of geregistreerde cliënten/gebruikers van de website van eWorky negatief door worden beïnvloed;</value>
   </data>
   <data name="NoHacking" xml:space="preserve">
-    <value>Charger ou transmettre sur le site ou utilisé tout équipement, logiciel ou routine qui contienne des virus, chevaux de Troie, vers, bombes à retardement ou autres programmes et procédés destinés à endommager, interférer ou tenter d’interférer avec le fonctionnement normal de ce site Web, ou s’approprier ce site Web ou tout système, ou encore recourir à n'importe quel moyen pour causer une saturation de nos systèmes ou porter atteinte aux droits de tiers ;</value>
+    <value>Op de site apparatuur of software te uploaden, te verzenden of te gebruiken die virussen, Trojaanse paarden, wormen, tijdbommen of andere programma’s en processen die erop gericht zijn de normale werking van de website te beschadigen, te verstoren of er tussen te komen, of om zich deze website of elk ander systeem toe te eigenen, of ook om om het even welk middel te gebruiken om een verzadiging van onze systemen te veroorzaken of de rechten van derden te schenden;</value>
   </data>
   <data name="NotForChild" xml:space="preserve">
-    <value>Les enfants sous l’âge de 13 ans ne sont pas autorisés à s'inscrire sur le site. Si vous avez moins de 13 ans, merci de ne pas utiliser ou accéder au site en aucune manière. Si vous êtes un parent ou le représentant légal d'un enfant de moins de 13 ans qui se serait enregistré sur le site, merci de nous envoyer un e-mail avec les informations nécessaires à l'annulation de l'inscription de l'enfant. Dans cet e-mail, merci d'inclure votre nom complet et adresse, le nom complet et adresse de l'enfant, la nature de votre relation avec l'enfant, vos coordonnées téléphoniques en journée et en soirée, votre adresse électronique et une attestation signée indiquant que vous êtes un parent ou représentant légal. eWorky se réserve le droit de rechercher des informations complémentaires afin de vérifier votre identité ainsi que la nature de votre relation avec l'enfant. Ces informations ne seront utilisées que dans le but de vérifier que vous êtes bien un parent ou un représentant légal de l'enfant.</value>
+    <value>Het is niet toegestaan aan kinderen onder de 13 jaar om zich in te schrijven op de site. Als u jonger bent dan 13 jaar, bedankt om de website op generlei wijze te gebruiken. Als u de ouder of voogd bent van een kind jonger dan 13 jaar dat zich heeft geregistreerd op deze site, bedankt om ons via e-mail de nodige informatie voor de annulatie van de inschrijving van het kind te bezorgen. Gelieve in deze mail volgende dingen op te nemen: uw volledige naam en adres, de volledige naam en adres van het kind, de aard van uw relatie met het kind, uw telefoonnummer overdag en ’s avonds, uw e-mailadres en een ondertekende verklaring waaruit blijkt dat u de ouder of voogd bent. eWorky behoudt zich het recht om aanvullende informatie op te zoeken om uw identiteit en de aard van uw relatie met het kind te controleren. Deze informatie zal enkel worden gebruikt om na te gaan of u ouder of voogd van het kind bent.</value>
   </data>
   <data name="NotLegalPublication" xml:space="preserve">
-    <value>Publier ou transmettre sur ou par le biais de notre site des contenus, qu’il s’agisse de photographies, de vidéos ou de commentaires, à caractère illicite, menaçant, humiliant, diffamatoire, obscène, haineux, pornographique ou blasphématoire, ou tout autre message qui pourrait constituer un crime ou un délit, engager la responsabilité civile, porter atteinte à la législation ou inciter à le faire, ou encore des contenus qui pourraient être utilisés à toute fin contraire à la loi ou aux présentes conditions d’utilisation ;</value>
+    <value>Inhoud op of via onze site te publiceren of verspreiden, of het nu gaat om foto’s, video’s of commentaren, die illegaal, bedreigend, vernederend, lasterlijk, obsceen, haatdragend, pornografisch of godslasterlijk is, of enig ander materiaal dat een strafbaar feit of burgerlijke aansprakelijkheid ondersteunt, of in strijd is met de wet of aanzet dat de doen, of inhoud die kan worden gebruikt voor welk doel dan ook die in strijd is met de wet of met deze gebruiksvoorwaarden;</value>
   </data>
   <data name="NoUseWithoutYourConsentement" xml:space="preserve">
-    <value>Vos données ne font l'objet d'aucune communication à des tiers sans votre autorisation. Vous êtes toutefois informés qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente ou encore, si cela s'avère nécessaire, aux fins, pour eWorky, de préserver ses droits et intérêts.</value>
+    <value>Uw gegevens zullen niet gecommuniceerd worden naar derden zonder uw toestemming. U wordt echter op de hoogte gesteld dat zij kunnen worden verspreid op grond van een wet, een reglement of op basis van een beslissing van een regelgevende of rechterlijke instantie of, indien noodzakelijk, om de rechten en belangen van eWorky te beschermen.</value>
   </data>
   <data name="Objet" xml:space="preserve">
-    <value>6.1 Objet</value>
+    <value>6.1 Doel</value>
   </data>
   <data name="PersonneDatas" xml:space="preserve">
-    <value>6. Données personnelles</value>
+    <value>6. Persoonlijke gegevens</value>
   </data>
   <data name="ReciptionsOfDatas" xml:space="preserve">
-    <value>6.4 Destinataires des données</value>
+    <value>6.4 Bestemmelingen van de gegevens</value>
   </data>
   <data name="RectificationYourData" xml:space="preserve">
-    <value>Vous disposez d'un droit d'accès et de rectification de vos données en nous adressant une demande en ce sens: {0}</value>
+    <value>U beschikt over het recht om toegang te krijgen tot uw gegevens en deze te corrigeren door ons een verzoek daartoe te sturen: contact@eworky.com</value>
   </data>
   <data name="SafeData" xml:space="preserve">
-    <value>6.5 Sécurité de données</value>
+    <value>6.5 Beveiliging van de gegevens</value>
   </data>
   <data name="SafeDataForEWorky" xml:space="preserve">
-    <value>eWorky attache une importance toute particulière à la sécurité de vos données et met en œuvre toutes mesures appropriées aux fins de restreindre les risques de perte, détérioration ou mauvaise utilisation de celles-ci.</value>
+    <value>eWorky hecht bijzonder veel belang aan de veiligheid van uw gegevens en stelt alles in het werk om de risico’s op verlies, beschadiging of misbruik ervan te beperken.</value>
   </data>
   <data name="SaturationOfTheSite" xml:space="preserve">
-    <value>Utiliser des logiciels, des routines ou équipement empêchant le fonctionnement de ce site Web ou tentant de le faire, prendre toute action qui puisse entraîner une saturation de nos systèmes, ou masquer l'origine des informations fournies sur notre site.</value>
+    <value>Software, routines of apparatuur te gebruiken die de werking van deze website verhinderen of proberen dat te doen, actie te ondernemen die een verzadiging van onze systemen kunnen veroorzaken, of de herkomst van de informatie op onze site te verhullen.</value>
   </data>
   <data name="ServerDataRetention" xml:space="preserve">
-    <value>Les données sont stockées chez l'hébergeur du site identifié au paragraphe 1 et sont conservées pour la durée strictement nécessaire à la réalisation des finalités visées ci-avant. Au-delà de cette durée, elles seront conservées à des fins exclusivement statistiques et ne donneront lieu à aucune exploitation, de quelle que nature que ce soit.</value>
+    <value>De gegevens worden opgeslagen bij de host van de site die in paragraaf 1 werd geïdentificeerd en ze worden bewaard gedurende de tijd die strikt noodzakelijk is om de doeleinden zoals hiervoor aangehaald, te realiseren. Na deze periode worden ze uitsluitend bewaard voor statistische doeleinden en ze zullen geen onderwerp zijn van exploitatie, van welke aard ook.</value>
   </data>
   <data name="SpeechCgu" xml:space="preserve">
     <value>Door deze website te bezoeken en/of te gebruiken, aanvaardt u deze gebruikersvoorwaarden. We raden u aan deze heel aandachtig te lezen. Indien u niet akkoord gaat met één van de bepalingen van de gebruikersvoorwaarden, dient u deze website niet te bezoeken en/of te gebruiken. De naam en het logo van eWorky, alsook alle grafische elementen en slogans die ermee worden geassocieerd, zijn neergelegde merken en onderscheidende tekens van eWorky of van haar dochterondernemingen. Alle andere namen en logo’s en alle productnamen en aanverwante diensten, alsook de grafische elementen en de gebruikte slogans op deze site zijn neergelegde merken en/of onderscheidende tekens van hun eigenaar. Alle rechten zijn voorbehouden voor hen. Alle auteursrechten en andere intellectuele eigendomsrechten aangaande de inhoud van deze site, HTML-codes, teksten, foto’s en andere afbeeldingen inbegrepen, zijn eigendom van eWorky of de eigenaar heeft ons een licentie verleend met het oog op hun gebruik. Indien u informatie of inhoud van onze site wenst te gebruiken, dient u een voorafgaande geschreven toestemming te bekomen, of, indien het geval zich voordoet, die van de eigenaar van de rechten over de inhoud waarvan sprake. Het is verboden de software of informatie van deze site aan te passen, te kopiëren, te verzenden, weer te geven, uit te voeren, te publiceren, goed te keuren onder licentie, alsook om werken afgeleid van bovengenoemde elementen te creëren. In het geval waar het expliciet is toegestaan om kopiën of overdrachten te realiseren, is het verboden om elke vermelding naar de auteur of de intellectuele eigendomsrechten aan te passen of te verwijderen. Elke verwijzing op deze site naar producten, diensten, processen, bijzondere kenmerken, handelsmerken of elke andere informatie met betrekking tot een derde, impliceert noch betekent een goedkeuring, bekrachtiging of aanbeveling van onze kant. Linken naar externe sites die worden uitgebaat door andere entiteiten worden enkel voor uw gemak aangeboden. eWorky is niet verantwoordelijk voor producten, diensten, processen, bijzondere kenmerken, handelsmerken of andere informatie die ter beschikking wordt gesteld door derden op hun website of via elk ander medium. Het feit dat onze website hyperlinks naar andere sites bevat, impliceert op geen enkele wijze onze goedkeuring van de voorgestelde inhoud op deze sites, noch enige vorm van associatie met de exploitant ervan. Het is verboden deze website te gebruiken voor activiteiten die de wetten overtreden, die een inbreuk betekenen op de rechten van derden of een schending betekenen van normen, van eisen omtrent de inhoud of van bepalingen die aangenomen worden door de competente autoriteiten. Het is verboden onze site de gebruiken op een manier die ongewenst, beledigend, lasterlijk of bedreigend is tegenover derden. U vrijwaart ons van elke aansprakelijkheid en garandeert ons dat alle aanvragen, juridische procedures, verplichtingen, vorderingen tot schadevergoeding, kosten en uitgaven die voortvloeien uit het gebruik van de website gebeuren door u of een derde persoon die uw gebruikersnaam of paswoord gebruikt. Indien eWorky u geen expliciete toestemming heeft gegeven of indien de geldige wetgeving eWorky niet verplicht u een dergelijke toestemming te geven, is het, zonder voorafgaande geschreven toestemming van eWorky, verboden om:Door deze website te bezoeken en/of te gebruiken, aanvaardt u deze gebruikersvoorwaarden. We raden u aan deze heel aandachtig te lezen. Indien u niet akkoord gaat met één van de bepalingen van de gebruikersvoorwaarden, dient u deze website niet te bezoeken en/of te gebruiken. De naam en het logo van eWorky, alsook alle grafische elementen en slogans die ermee worden geassocieerd, zijn neergelegde merken en onderscheidende tekens van eWorky of van haar dochterondernemingen. Alle andere namen en logo’s en alle productnamen en aanverwante diensten, alsook de grafische elementen en de gebruikte slogans op deze site zijn neergelegde merken en/of onderscheidende tekens van hun eigenaar. Alle rechten zijn voorbehouden voor hen. Alle auteursrechten en andere intellectuele eigendomsrechten aangaande de inhoud van deze site, HTML-codes, teksten, foto’s en andere afbeeldingen inbegrepen, zijn eigendom van eWorky of de eigenaar heeft ons een licentie verleend met het oog op hun gebruik. Indien u informatie of inhoud van onze site wenst te gebruiken, dient u een voorafgaande geschreven toestemming te bekomen, of, indien het geval zich voordoet, die van de eigenaar van de rechten over de inhoud waarvan sprake. Het is verboden de software of informatie van deze site aan te passen, te kopiëren, te verzenden, weer te geven, uit te voeren, te publiceren, goed te keuren onder licentie, alsook om werken afgeleid van bovengenoemde elementen te creëren. In het geval waar het expliciet is toegestaan om kopiën of overdrachten te realiseren, is het verboden om elke vermelding naar de auteur of de intellectuele eigendomsrechten aan te passen of te verwijderen. Elke verwijzing op deze site naar producten, diensten, processen, bijzondere kenmerken, handelsmerken of elke andere informatie met betrekking tot een derde, impliceert noch betekent een goedkeuring, bekrachtiging of aanbeveling van onze kant. Linken naar externe sites die worden uitgebaat door andere entiteiten worden enkel voor uw gemak aangeboden. eWorky is niet verantwoordelijk voor producten, diensten, processen, bijzondere kenmerken, handelsmerken of andere informatie die ter beschikking wordt gesteld door derden op hun website of via elk ander medium. Het feit dat onze website hyperlinks naar andere sites bevat, impliceert op geen enkele wijze onze goedkeuring van de voorgestelde inhoud op deze sites, noch enige vorm van associatie met de exploitant ervan. Het is verboden deze website te gebruiken voor activiteiten die de wetten overtreden, die een inbreuk betekenen op de rechten van derden of een schending betekenen van normen, van eisen omtrent de inhoud of van bepalingen die aangenomen worden door de competente autoriteiten. Het is verboden onze site de gebruiken op een manier die ongewenst, beledigend, lasterlijk of bedreigend is tegenover derden. U vrijwaart ons van elke aansprakelijkheid en garandeert ons dat alle aanvragen, juridische procedures, verplichtingen, vorderingen tot schadevergoeding, kosten en uitgaven die voortvloeien uit het gebruik van de website gebeuren door u of een derde persoon die uw gebruikersnaam of paswoord gebruikt. Indien eWorky u geen expliciete toestemming heeft gegeven of indien de geldige wetgeving eWorky niet verplicht u een dergelijke toestemming te geven, is het, zonder voorafgaande geschreven toestemming van eWorky, verboden om:</value>
@@ -217,10 +215,10 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
     <comment>CGU</comment>
   </data>
   <data name="TraitedCollectedDatas" xml:space="preserve">
-    <value>Les données collectées et ultérieurement traitées par nos soins sont celles que vous nous transmettez volontairement et concernent, a minima, votre identifiant et une adresse électronique valide. Les données collectées automatiquement par le site sont votre adresse IP (adresse de votre ordinateur), à l'exclusion de toute autre. Vous êtes informés que le site est susceptible de mettre en œuvre un procédé automatique de traçage (cookie), auquel vous pouvez faire obstacle, si vous n'êtes pas un utilisateur inscrit, en modifiant les paramètres concernés de votre navigateur internet.</value>
+    <value>De verzamelde gegevens die uiteindelijk verwerkt zijn door ons, zijn diegene die u vrijwillig aan ons heeft verstrekt en die, ten minste, uw gebruikersnaam en geldig e-mailadres bevatten. De gegevens die automatisch worden verzameld via de site zijn uw IP-adres (adres van uw computer), met uitsluiting van alle andere. U wordt geïnformeerd dat de site een automatische procedure van tracing (cookie) in gang kan zetten, tegen dewelke u zich kan verzetten, indien u geen ingeschreven gebruiker bent, door de betrokken parameters van uw browser aan te passen.</value>
   </data>
   <data name="UseRobots" xml:space="preserve">
-    <value>Utiliser des robots, spiders ou autres procédés automatiques ou manuels pour examiner des pages de ce site Web ;</value>
+    <value>Robots, spiders of andere automatische systemen of handleidingen te gebruiken om de pagina’s van deze website te doorzoeken;</value>
   </data>
   <data name="VendorInformations" xml:space="preserve">
     <value>1. Informatie over de providor</value>
@@ -229,24 +227,12 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
     <value>Deze website wordt uitgebaat door Omnicentre SAS, een naamloze vennootschap naar Frans recht met een kapitaal van 20 740 Euro, waarvan de sociale zetel gelegen is in Rue de Lille 57, 75007 Parijs, ingeschreven in het handels- en bedrijvenregister van Parijs onder nummer 529 309 668. Deze website wordt gehost onder Microsoft Windows Azure.</value>
   </data>
   <data name="YourRight" xml:space="preserve">
-    <value>6.7 Vos droits</value>
+    <value>6.7 Uw rechten</value>
   </data>
   <data name="ApplicalbleLaws" xml:space="preserve">
-    <value>7. Loi applicable</value>
+    <value>7. Wet van toepassing</value>
   </data>
   <data name="ApplicalbleLawsValue" xml:space="preserve">
-    <value>Les présentes Conditions Générales d’Utilisation sont régies par la loi française. Toute difficulté relative à la validité et/ou l’application et/ou l’interprétation des présentes Conditions Générales d’Utilisation sera soumise, à défaut d’accord amiable, à la juridiction des tribunaux français à qui les parties attribuent compétence territoriale exclusive quelque soit le lieu d’utilisation du service ou le domicile du défendeur. Les lois Internationales ne sont pas applicables.</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Conditions générales d'utilisation, c'est à dire ce à quoi vous vous engagez en utilisant eWorky.</value>
-  </data>
-  <data name="cgu" xml:space="preserve">
-    <value>conditions générales de ventes des services</value>
-  </data>
-  <data name="ReadAndAccept" xml:space="preserve">
-    <value>Ik heb de algemene verkoopsvoorwaaren van de diensten gelezen en goedgekeurd</value>
-  </data>
-  <data name="MustAcceptCGU" xml:space="preserve">
-    <value>Vous devez acceptez les conditions d'utilisation.</value>
+    <value>Deze algemene gebruiksvoorwaaren worden geregeld door de Franse wet. Elk probleem met betrekking tot de geldigheid en/of de toepassing en/of de interpretatie van deze algemene gebruiksvoorwaarden zal, bij het ontbreken van een overeenstemming, onderworpen worden aan de jurisdictie van de Franse rechtbanken aan wie de partijen een exclusieve territoriale bevoegdheid toekennen, ongeacht de plaats van gebruik van de dienst of de woonplaats van de verweerder.</value>
   </data>
 </root>

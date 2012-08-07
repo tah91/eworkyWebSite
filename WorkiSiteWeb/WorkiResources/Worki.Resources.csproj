@@ -581,7 +581,9 @@
     <EmbeddedResource Include="Views\Home\ContactString.de.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.es.resx" />
-    <EmbeddedResource Include="Views\Home\HomeString.nl.resx" />
+    <EmbeddedResource Include="Views\Home\HomeString.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.de.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.de.resx">
       <SubType>Designer</SubType>
@@ -692,6 +694,7 @@
     <EmbeddedResource Include="Views\Home\PresseString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PresseString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
