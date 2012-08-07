@@ -145,7 +145,7 @@
     <value>Solicitud de presupuesto</value>
   </data>
   <data name="InfoUnknown" xml:space="preserve">
-    <value>De eigenschappen van deze aanbiedingwerden niet opgegeven</value>
+    <value>Las características de la oferta no han sido informados.</value>
   </data>
   <data name="BackToLocalisation" xml:space="preserve">
     <value>Volver a la ficha del espacio</value>

@@ -117,147 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Access" xml:space="preserve">
-    <value>Bereikbaarheid</value>
+  <data name="Commercial" xml:space="preserve">
+    <value>Commercieel: verkennen van hotels, zakencentra...</value>
+    <comment>pas à traduire ?</comment>
   </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Functies van de moderator</value>
+  <data name="CommunicationIntern" xml:space="preserve">
+    <value>Op dit moment zoekt eWorky een stagiair voor de communicatie, om een resem aan taken uit te voeren, waaronder:</value>
   </data>
-  <data name="AvoidPeriods" xml:space="preserve">
-    <value>Vermijd periodes</value>
+  <data name="CommunityManagement" xml:space="preserve">
+    <value>Community management (Twitter en andere sociale netwerk sites)</value>
   </data>
-  <data name="Comfort" xml:space="preserve">
-    <value>Comfort</value>
+  <data name="Event" xml:space="preserve">
+    <value>Evenementen: organiseren van spelletjes, avonden...</value>
   </data>
-  <data name="EquipementsServices" xml:space="preserve">
-    <value>Equipements &amp; Services</value>
+  <data name="EWProject" xml:space="preserve">
+    <value>Maar eWorky is ook een heel veelbelovend project dat geselecteerd werd door Microsoft om deel uit te maken van het Bizspark-programma, dat innovatieve KMO's ondersteunt, en door het Elysee om deel te nemen aan de lancering van Nationale Digitale Raad in april 2011 en aan de G8 in mei 2011!</value>
   </data>
-  <data name="Facilities" xml:space="preserve">
-    <value>Faciliteiten</value>
+  <data name="EWSearchEveryProfil" xml:space="preserve">
+    <value>Momenteel zoekt eWorky webdeveloppers met elk profiel</value>
   </data>
-  <data name="FreeWorkplace" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+  <data name="EWSearchStudents" xml:space="preserve">
+    <value>Om de groei te ondersteunen, zoekt eWorky jonge (of minder jonge) onwikkelaars en business developpers. Als jij een mooi project vanaf het begin wil ondersteunen, als je een nieuwe weg wilt uitstippelen met ons, solliciteer nu door je CV en motivatiebrief op te sturen naar contact@eworky.com!</value>
   </data>
-  <data name="Friday" xml:space="preserve">
-    <value>Vrijdag</value>
+  <data name="EWSpirit" xml:space="preserve">
+    <value>De eWorky-spirit</value>
   </data>
-  <data name="GlobalInformations" xml:space="preserve">
-    <value>Algemene informatie</value>
-    <comment>LocalisationForm</comment>
+  <data name="EWTeam" xml:space="preserve">
+    <value>eWorky is vooral een supergemotiveerde groep van drie dynamische ondernemers en drie uitzonderlijke werknemers die werken in een stimulerende en gezellige sfeer. Gegarandeerde start-up sfeer en de kans om zelfstandig op uitdagingen in te gaan. Tevreden of terugbetaald! </value>
   </data>
-  <data name="GoogleMapsLocalisation" xml:space="preserve">
-    <value>Locatie op Google Maps</value>
+  <data name="InternGoodUniversity" xml:space="preserve">
+    <value>We zoeken een stagiaire (stage van meer dan 3 maand) met een hogere of universitaire opleiding handel of ingenieur. Autonoom kunnen handelen, een ondernemersspirit, veel creativiteit en een goede vaardigheid op schriftelijk en mondeling vlak zijn onontbeerlijk voor deze aanbieding. De stagiaire zal worden vergoed volgens het minimum gangbare salaris.</value>
   </data>
-  <data name="LinkToFB" xml:space="preserve">
-    <value>Lien vers la page Facebook</value>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
+    <comment>JOBS</comment>
   </data>
-  <data name="LinkToTwitter" xml:space="preserve">
-    <value>Lien vers le profil Twitter</value>
+  <data name="JuniorDev" xml:space="preserve">
+    <value>Développeur junior pour un stage ou une césure de plus de 3 mois, et &lt;/br&gt; ayant des connaissances en développement web. Le stagiaire sera&lt;/br&gt; rémunéré, le montant dépendra de son profil.</value>
   </data>
-  <data name="MandatoryFields" xml:space="preserve">
-    <value>Verplichte velden</value>
+  <data name="LikeDev" xml:space="preserve">
+    <value>Hou je ervan dingen te ontwikkelen? Ben je jong, gemotiveerd, zelfstandig en ga je graag uitdagingen aan? Heb je zin om in een avontuur te stappen rond een start-up web? Kom dan bij eWorky! </value>
   </data>
-  <data name="Monday" xml:space="preserve">
-    <value>Maandag</value>
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing: web-marketing (Adword), viral marketing...</value>
   </data>
-  <data name="MondayAfterClose" xml:space="preserve">
-    <value>Ex : 18:00</value>
+  <data name="MoreThings" xml:space="preserve">
+    <value>En een heleboek andere dingen!</value>
   </data>
-  <data name="MondayAfterOpen" xml:space="preserve">
-    <value>Ex : 14:00</value>
+  <data name="PressRelation" xml:space="preserve">
+    <value>Persrelaties: contact en antwoord</value>
   </data>
-  <data name="MondayMorningClose" xml:space="preserve">
-    <value>Ex : 12:30</value>
+  <data name="SearchInternShip" xml:space="preserve">
+    <value>Zoek je een stage? Hou je van communicatie, marketing en commerciële input? Ben je jong, gemotiveerd, zelfstandig en ga je graag uitdagingen aan? Word je verleid door een avontuur in een start-up web? Kom dan bij eWorky! </value>
   </data>
-  <data name="MondayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
+  <data name="SendUsCV" xml:space="preserve">
+    <value>Il n’y a pas une seconde à perdre, envoie ton CV et ta lettre de motivation à {0}.</value>
   </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Offre</value>
+  <data name="SeniorDev" xml:space="preserve">
+    <value>Développeur senior en free lance (auto entrepreneuriat, etc.).&lt;/br&gt; Rémunération fonction des
+            références.</value>
   </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Fonctionnalités réservées au gérant du lieu</value>
+  <data name="SoulBuisnessDev" xml:space="preserve">
+    <value>Heb je de spirit van een business developper in jou?</value>
   </data>
-  <data name="PlaceDetails" xml:space="preserve">
-    <value>Eigenschappen van de locatie</value>
+  <data name="YouAreDev" xml:space="preserve">
+    <value>Codeer je graag?</value>
   </data>
-  <data name="PlacesExample" xml:space="preserve">
-    <value>Ex : Café de Flore, Regus Invalides, Novotel Gare de Lyon, ...</value>
+  <data name="Description" xml:space="preserve">
+    <value>Om zijn groei te ondersteunen, is eWorky op zoek naar jonge talenten die willen meestappen in het avontuur van een veelbelovende start-up.</value>
   </data>
-  <data name="ProfessionalServices" xml:space="preserve">
-    <value>Professionele diensten</value>
+  <data name="DevReason1" xml:space="preserve">
+    <value>Je houdt van goed gemaakte sites.</value>
   </data>
-  <data name="ProposedTechnology" xml:space="preserve">
-    <value>Technologie proposée</value>
+  <data name="DevReason2" xml:space="preserve">
+    <value>Je houdt ervan de laatste nieuwigheden van CSS3/HTML5 toe te passen.</value>
   </data>
-  <data name="RefineLocation" xml:space="preserve">
-    <value>Om de locatie te verfijnen, verplaats de muis</value>
-  </data>
-  <data name="ResetPosition" xml:space="preserve">
-    <value>Stel de positie opnieuw in</value>
-  </data>
-  <data name="RoadExample" xml:space="preserve">
-    <value>Ex : Accès par la N118</value>
-  </data>
-  <data name="RoomCapacity" xml:space="preserve">
-    <value>Capacité des salles proposées</value>
-  </data>
-  <data name="Saturday" xml:space="preserve">
-    <value>Zaterdag</value>
-  </data>
-  <data name="Sectors" xml:space="preserve">
-    <value>Bedrijfstak</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>Diensten</value>
-  </data>
-  <data name="SharedOfficeDesc" xml:space="preserve">
-    <value>Ex : Deux postes de travail en open space proposés par une jeune PME du secteur de l'agroalimentaire.  Espace de travail calme et lumineux, ambiance conviviale, nous sommes favorables aux échanges et à l'entraide. Accès à deux salles de réunion, à un espace de détente avec une machine Nespresso. Longue durée souhaitée (à partir de 6 mois).</value>
-  </data>
-  <data name="SharedOfficeExemple" xml:space="preserve">
-    <value>Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc.</value>
-  </data>
-  <data name="SncfExample" xml:space="preserve">
-    <value>Ex : Gare de Lyon</value>
-  </data>
-  <data name="SubwayExample" xml:space="preserve">
-    <value>Ex : A 3 minutes de la station Ecole Militaire, ligne 8</value>
-  </data>
-  <data name="Sunday" xml:space="preserve">
-    <value>Zondag</value>
-  </data>
-  <data name="Tariffs" xml:space="preserve">
-    <value>Tarieven</value>
-  </data>
-  <data name="ThePlace1" xml:space="preserve">
-    <value>Le lieu "</value>
-  </data>
-  <data name="ThePlace2" xml:space="preserve">
-    <value>" est à la même adresse que le lieu que vous tentez d'ajouter</value>
-  </data>
-  <data name="Thursday" xml:space="preserve">
-    <value>Donderdag</value>
-  </data>
-  <data name="TimeExample1" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 9:30</value>
-  </data>
-  <data name="TimeExample2" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 19:30</value>
-    <comment>Problème des pm en Angleterre</comment>
-  </data>
-  <data name="Tuesday" xml:space="preserve">
-    <value>Dinsdag</value>
-  </data>
-  <data name="TuesdayAfterClose" xml:space="preserve">
-    <value>Ex : 22:00</value>
-  </data>
-  <data name="TuesdayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
-  </data>
-  <data name="UserServices" xml:space="preserve">
-    <value>Diensten voor de gebruiker</value>
-  </data>
-  <data name="Wednesday" xml:space="preserve">
-    <value>Woensdag</value>
+  <data name="DevReason3" xml:space="preserve">
+    <value>Je bent in staat urenlang een webpage aan te passen tot ze perfect is.</value>
   </data>
 </root>

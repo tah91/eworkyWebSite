@@ -121,7 +121,7 @@
     <value>coworking, desk sharing, cafés met wifi</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
-    <value>¿Cómo funciona eWorky?</value>
+    <value>De werking van eWorky</value>
     <comment>?</comment>
   </data>
   <data name="RentSpeech" xml:space="preserve">
@@ -137,7 +137,7 @@
     <comment>Jm Modif l.17</comment>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contacto</value>
+    <value>Contact</value>
   </data>
   <data name="ContactUs" xml:space="preserve">
     <value>Contacteer ons</value>
@@ -155,13 +155,13 @@
     <value>Tu mensaje ha sido enviado con éxito, nuestro equipo te contestará lo antes posible.</value>
   </data>
   <data name="MoreCriterias" xml:space="preserve">
-    <value>Más criterios</value>
+    <value>Meer criteria</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Prensa</value>
+    <value>Pers</value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
-    <value>¿Eres periodista y te gustaría redactar un artículo o realizar un reportaje sobre eWorky? ¿Necesitas información sobre el desarrollo del teletrabajo? ¿Estás buscando a Directores de RRHH para entrevistarlos sobre estos temas? Contacta con nosotros a {0}.</value>
+    <value>Bent u journalist en wilt u een artikel schrijven of een reportage maken over eWorky? Hebt u een dossier nodig over de evolutie van telewerken in Frankrijk? Zoekt u HR-managers om te interviewen over dergelijke onderwerpen? Contacteer ons op contact@eworky.com.</value>
   </data>
   <data name="What" xml:space="preserve">
     <value>Wat zoekt u?</value>
@@ -170,7 +170,7 @@
     <value>Waar zoekt u?</value>
   </data>
   <data name="WhoAreWe" xml:space="preserve">
-    <value>¿Quiénes somos?</value>
+    <value>Wie zijn wij?</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Vind een werkplaats waar ù het wil: shared office, business center, coworking space, café met wifi, vergader- of conferentiezaal</value>
@@ -182,7 +182,7 @@
     <value>2012 eWorky</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Bienvenid@</value>
+    <value>Welkom</value>
   </data>
   <data name="MailWellSent2" xml:space="preserve">
     <value>¡Tu mensaje ha sido mandado con éxito!</value>
@@ -251,52 +251,52 @@
     <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
   </data>
   <data name="Team" xml:space="preserve">
-    <value>El equipo</value>
+    <value>De ploeg</value>
   </data>
   <data name="IntroWhoAreWe" xml:space="preserve">
-    <value>eWorky el portal de los espacios de trabajo</value>
+    <value>eWorky is de portaalsite voor werkplekken in Frankrijk</value>
   </data>
   <data name="WeThinkThat" xml:space="preserve">
-    <value>Creemos que:</value>
+    <value>Wij geloven dat:</value>
   </data>
   <data name="WeThinkThat_Text1" xml:space="preserve">
-    <value>El espacio de trabajo de mañana se centrará en el ser humano más en la empresa y será un lugar agradable y propicio a los intercambios. Nos encantará ir a trabajar allí.</value>
+    <value>De werkplek van morgen zich meer zal richten op de mens dan op het bedrijf, en dat het een gezellige plek zal zijn, bevorderlijk voor uitwisseling. We zullen er genoegen uit putten om te gaan werken.</value>
   </data>
   <data name="WeThinkThat_Text10" xml:space="preserve">
-    <value>Si piensas así, ¡Únete a nosotros!</value>
+    <value>Als je met deze stellingen akkoord gaat, sluit je dan bij ons aan!</value>
   </data>
   <data name="WeThinkThat_Text2" xml:space="preserve">
-    <value>Para inventar juntos el espacio de trabajo de mañana, es necesario explorar, probar, intercambiar pero sobre todo tirarse al agua.</value>
+    <value>Om samen de werkplek van morgen uit te vinden, moeten we samen ontdekken, testen, uitwisselen, maar vooral samen de sprong wagen.</value>
   </data>
   <data name="WeThinkThat_Text3" xml:space="preserve">
-    <value>La llegada de nuevas formas formas de trabajar es una oportunidad para el contacto social en el que la autonomía sucede a la subordinación, la creatividad a obediencia, la responsabilidad al control jerarquico.</value>
+    <value>De komst van nieuwe manieren van werken is een kans om een nieuw sociaal contract op te stellen waarin ondergeschiktheid plaats maakt voor autonomie, gehoorzaamheid plaats maakt voor creativiteit, hiërarchische controle plaats maakt voor verantwoordelijkheid.</value>
   </data>
   <data name="WeThinkThat_Text4" xml:space="preserve">
-    <value>Abrirse hacia los demás, compartir y colabrorar son esenciales para la realización personal y alcanzar el equilibrio en un espacio de trabajo.</value>
+    <value>Openheid naar anderen, delen en samenwerken zijn essentieel voor persoonlijke onplooiing en een goed evenwicht op de werkplaats.</value>
   </data>
   <data name="WeThinkThat_Text5" xml:space="preserve">
-    <value>Los trabajadores necesitan momentos de contacto y de intercambios durante su jornada. Es necesario romper las barreras entre actividades, reemplazar la coacción por la cooperación y la co-creación creando colectivos de trabajo virtuales.</value>
+    <value>Werknemers hebben contact- en uitwisselingsmomenten nodig met andere mensen gedurende hun dag. We moeten onze activiteiten openstellen, beperkingen vervangen door samenwerking en co-creatie, door het creëren van virtuele werkcollectiviteiten.</value>
   </data>
   <data name="WeThinkThat_Text6" xml:space="preserve">
-    <value>El lugar de trabajo ya no será único sino múltiple, a veces desmaterializado y a menudo adaptado a la tarea, al sector y a la personalidad del trabajador.</value>
+    <value>De werkplek zal niet langer uniek zijn, maar wordt meervoudig, soms gedematerialiseerd en vaker aangepast aan de taak, de sector en de persoonlijkheid van de werknemer.</value>
   </data>
   <data name="WeThinkThat_Text7" xml:space="preserve">
-    <value>El desarrollo sostenible es una prioridad, no para mañana sino para hoy y por eso nuestros espacios de trabajo y modos de trabajar tienen que tomar en cuenta naturalmente el respeto a nuestro planeta.</value>
+    <value>Duurzame ontwikkeling is geen prioriteit van morgen maar van vandaag. Daarom moeten onze nieuwe werkplekken en werkgewoonten uiteraard vorm krijgen met het oog op respect voor onze planeet.</value>
   </data>
   <data name="WeThinkThat_Text8" xml:space="preserve">
-    <value>El mundo evoluciona a una velocidad vertiginosa bajo el impulso de las tecnologías de la infromación. Así mismo, la organización del trabajo, inmutable desde hace décadas, necesita experimentar su propia revolución.</value>
+    <value>De wereld evolueert met een duizelingwekkende snelheid onder de impuls van informatietechnologieën. De organisatie van werk, onveranderd sinds decennia, moet op haar beurt ook een revolutie kennen.</value>
   </data>
   <data name="WeThinkThat_Text9" xml:space="preserve">
-    <value>Replanteándose el lugar de trabajo gracias a los espacios de coworking y a los espacios compartidos, podemos tranformar el trabajo cotidiano, nuestra relación con los demás y nuestro mundo. El espacio de  trabajo ha de ser el teatro pero también el actor de este cambio.</value>
+    <value>Door de werkplek te herdenken in het voordeel van coworkingplaces en gedeelde ruimtes, kunnen we ons dagelijks werk, onze relatie met anderen en onze wereld transformeren. De werkplek moet tegelijk het theater en de acteur zijn in deze verandering.</value>
   </data>
   <data name="WhoAreWe_Text1" xml:space="preserve">
-    <value>eWorky ha sido creada en 2011 por tres emprendedores jóvenes, en respuesta a una necesidad simple: poder acceder a una red wifi, alquilar una sala de reunión o de formación, de forma puntual y en ciudades distintas. Así es como tuvieron la idea de una plataforma colaborativa de búsqueda de espacios de trabajo.</value>
+    <value>eWorky werd in 2011 opgericht door drie jonge ondernemers, als reactie op een simpele behoefte: toegang hebben tot een wifiverbinding, het huren van een vergaderzaal of vormingsruimte, ad-hoc en in verschillende steden. Het idee van een gezamelijk platform voor het zoeken naar werkplekken vond dan snel zijn weg.</value>
   </data>
   <data name="WhoAreWe_Text2" xml:space="preserve">
-    <value>Por tanto, eWorky es el placer de compartir espacios de trabajo de varios tipos e intercambiar experiencias vividas en ellos. Nuestra comunidad se compone de usuarios apasionados, con ganas de descubrir o proponer una gran diversidad de espacios adaptados a cada necesidad. </value>
+    <value>eWorky, dat is dus het plezier van het delen van alle soorten van werkplekken, en van het uitwisselen van ervaringen rond deze plekken. Onze community bestaat uit gepassioneerde gebruikers, die een grote diversiteit aan ruimtes, aangepast aan elke behoefte, willen ontdekken of aanbieden.</value>
   </data>
   <data name="WhoAreWe_Text3" xml:space="preserve">
-    <value>A tu vez, ¡Únete a la comunidad eWorky!</value>
+    <value>Word op jouw beurt lid van de eWorky-community!</value>
   </data>
   <data name="Team_Member_1" xml:space="preserve">
     <value>Olivier Brun</value>
@@ -314,13 +314,13 @@
     <value>Français</value>
   </data>
   <data name="Team_Member_1_Text" xml:space="preserve">
-    <value>Habitante de Paris, Olivier se encarga en eWorky de la estrategia y del storyboarding. A parte de ser igual de discreto en sus intercambios en espacios diáfanos que un pescadero en una lonja, Olivier es un gran aficionado al senderismo y un vegetariano convencido. Pero por encima de todo, Olivier glorifica los diseños depurados e idólatra la supresión de los botones inútiles y de las faltas ortográficas.</value>
+    <value>Olivier woont in Parijs en houdt zich bezig met strategie en storyboarding. Naast het feit dat Oliviers discretie in de handel in open-space vergelijkbaar is met die van een visboer op zaterdagochtend om 5u in Rungis, is hij een grote fan van wandelen en een overtuigd vegetariër. Maar Olivier blinkt bovenal uit in strakke ontwerpen en is steeds op kruistocht tegen overbodige knoppen en spellingsfouten.</value>
   </data>
   <data name="Team_Member_2_Text" xml:space="preserve">
-    <value>Cécilia se encarga del desarrollo comercial, de las relaciones con la prensa y de la financiación de eWorky. Trabaja desde Grenoble (Francia) y ¡ojo!, no soporta que se hable mal de su región montañesa! Optimista, hiperactiva y aficionada a las agendas a rebosar así como de los plazos ajustados, está muy implicada en la promoción de lo digital y del emprendimiento, entre otras, en cualidad de co-presidente del "Cercle des jeunes entrepreneurs". Cuando consigue algún momento de libertad, le gusta pasear con zapatos de vestir, botas de montaña o a caballo.</value>
+    <value>Cécilia houdt zich bezig met de commerciële ontwikkeling, de persrelaties en het financiële luik van eWorky. Ze werkt vanuit Grenoble, en pas op, ze lacht er niet mee wanneer men slecht spreekt van haar bergachtige regio! Ze is optimistisch, hyperactief en een grote fan van volle agenda’s en naderende deadlines. Bovendien is ze steeds bezig met de digitale evolutie en het promoten van ondernemerschap, in het kader van haar functie als co-voorzitter van de Cirkel van Jonge Ondernemers. Wanneer ze er in slaagt een beetje vrije tijd te vinden, gaat ze graag wandelen met stadsschoenen, met wandelschoenen of te paard.</value>
   </data>
   <data name="Team_Member_3_Text" xml:space="preserve">
-    <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
+    <value>Tahir is LE-specialist voor ontwikkeling, hij is zo gespecialiseerd dat we af en toe moeite hebben om hem te volgen in wat hij ons vertelt. Behalve Dostoïevski en Camus, zijn zijn twee grote passies programmatie en het verzwelgen van koffie, taarten en alle soorten chocoladerepen. Hij is afkomstig uit Ulis (ja, zoals Thierry Henry), en heeft dus al aan zowel capoeira als duiken gedaan. Hij verspreidt spellingsfouten aan hetzelfde tempo als waarop hij lege koekjesverpakkingen achterlaat, maar dat wordt gecompenseerd door de passie waarmee Olivier die spellingsfouten verbetert.</value>
   </data>
   <data name="Français" xml:space="preserve">
     <value>Français</value>
@@ -332,13 +332,13 @@
     <value>Marc Labrude</value>
   </data>
   <data name="Team_Member_4_Text" xml:space="preserve">
-    <value>Marc está al cargo del desarrollo de negocios en los paises de habla hispana. "Marco" está ubicado en Zaragoza (España) en esa ciudad que le ha seducido por su calidad de vida y su excepcional densidad de bar de tapas. Marc es a la imagen del país en el que ha decidido establecerse: caluroso, fiestero, aficionado a la buena comida y al deporte. Bueno, y no sabemos exactamente con lo que se dopa para aportar tanto dinamismo al grupo, pero sospechamos una sabia mezcla de Cacique, de aceite de oliva virgen y un toque de chorizo.</value>
+    <value>Marc is verantwoordelijk voor business development op de Spaanstalige markten. Marco werkt vanuit Saragossa, een stad die hem heeft verleid met haar zachte levensritme en haar ongelooflijk vele tapasbars. Marc is een weerspiegeling van het land waar hij zich gevestigd heeft: warm, feestelijk, verzot op lekker eten, en sportief. Bovendien weten we niet zeker welk middel hij neemt om zo’n dynamisme over te brengen op de groep, maar we vermoeden dat het een mengeling van Cacique, olijfolie en chorizo is.</value>
   </data>
   <data name="PricingDescription" xml:space="preserve">
-    <value>Presentación de las características del acceso para gerentes en eWorkyl</value>
+    <value>Beschrijving van de opties van de beheerdersruimte op eWorky</value>
   </data>
   <data name="TeamDescription" xml:space="preserve">
-    <value>¡Página de presentación del equipo!</value>
+    <value>Voorstelling van de eWorky-ploeg!</value>
   </data>
   <data name="TimeAgo_day" xml:space="preserve">
     <value>un día</value>
@@ -383,7 +383,7 @@
     <value>Jonathan Bourguignon</value>
   </data>
   <data name="Team_Member_5_Text" xml:space="preserve">
-    <value>Jonathan contribuye a que eWorky encuentre su sitio en el escenario tecnológico californiano desde San Francisco, ciudad con la que sueña desde el primer día que oyó la voz de Janis Joplin. Y después de todo, ¿qué mejor sitio para el coworking que esta Bahía en la que convergen todos los talentos y todos los centros de interés y en la que se codean las más grandes multinacionales con los estilos de vida los más alternativos?</value>
+    <value>Jonathan helpt eWorky een plaats te veroveren op de Calefornische technologiemarkt vanuit San Francisco, de stad waarvan hij droomt sinds hij voor de eerste keer de stem van Janis Joplin hoorde. En uiteindelijk, welke plek is er beter voor coworking dan de baai waar alle talenten en interessegebieden samenvloeien, en waar de grootste multinationals grenzen aan de meest alternatieve levenswijzen?</value>
   </data>
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>

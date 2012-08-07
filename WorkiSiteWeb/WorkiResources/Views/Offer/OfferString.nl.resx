@@ -145,7 +145,7 @@
     <value>Demande de devis</value>
   </data>
   <data name="InfoUnknown" xml:space="preserve">
-    <value>Les caractéristiques de cette offre n’ont pas été renseignées.</value>
+    <value>De eigenschappen van deze aanbiedingwerden niet opgegeven.</value>
   </data>
   <data name="BackToLocalisation" xml:space="preserve">
     <value>Retour à la fiche du lieu</value>

@@ -130,7 +130,7 @@
     <value>Uurregeling</value>
   </data>
   <data name="KnowHouly" xml:space="preserve">
-    <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
+    <value>Indien u de openingsurgen van deze locatie kent, voer ze in via het formulier, of contacteer ons:</value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
@@ -142,13 +142,13 @@
     <value>Découvrez tout ce que eWorky peut faire pour vous</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Ajout</value>
+    <value>Toevoegen</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Administrateur</value>
   </data>
   <data name="CGU" xml:space="preserve">
-    <value>CGU</value>
+    <value>Algemene voorwaarden</value>
   </data>
   <data name="CorrectThenTryAgain" xml:space="preserve">
     <value>Oeps! Er werd een fout gevonden. Controleer uw gegevens en probeer opnieuw. Als het probleem zich blijft voordoen, neem dan contact met ons op: support@eworky.com</value>
@@ -247,7 +247,7 @@
     <value>Rechercher un espace</value>
   </data>
   <data name="HeaderSuggest" xml:space="preserve">
-    <value>Proposer un espace</value>
+    <value>Een ruimte voorstellen</value>
   </data>
   <data name="StarPlaces" xml:space="preserve">
     <value>À la une</value>
@@ -301,10 +301,10 @@
     <value>Accepter</value>
   </data>
   <data name="Choose" xml:space="preserve">
-    <value>Choisir</value>
+    <value>Kies</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>Chargement...</value>
+    <value>Laden...</value>
   </data>
   <data name="ContactMail" xml:space="preserve">
     <value>contact@eworky.com</value>

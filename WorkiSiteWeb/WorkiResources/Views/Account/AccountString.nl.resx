@@ -130,10 +130,10 @@
     <value>Mot de passe oublié</value>
   </data>
   <data name="Inscription" xml:space="preserve">
-    <value>S'inscrire</value>
+    <value>Inschrijven</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Se connecter</value>
+    <value>Inloggen</value>
   </data>
   <data name="LoginToEWorky" xml:space="preserve">
     <value>Connectez-vous à eWorky</value>

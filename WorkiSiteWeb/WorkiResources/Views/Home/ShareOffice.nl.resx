@@ -117,147 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Access" xml:space="preserve">
-    <value>Bereikbaarheid</value>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Obtenir l'espace gérant</value>
   </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Functies van de moderator</value>
+  <data name="AddSpace" xml:space="preserve">
+    <value>Onmiddellijk mijn bureau's delen</value>
   </data>
-  <data name="AvoidPeriods" xml:space="preserve">
-    <value>Vermijd periodes</value>
+  <data name="ForBoth1" xml:space="preserve">
+    <value>Kies voor een samenwerking en uitwisseling met uw gastheer en geniet zo van de gezamelijke inbreng en van de collectieve verrijking</value>
   </data>
-  <data name="Comfort" xml:space="preserve">
-    <value>Comfort</value>
+  <data name="ForBoth2" xml:space="preserve">
+    <value>Ontdek  via het contact met andere structuren de mogelijkheden van nieuwe markten, deel middelen en vooruitzichten</value>
   </data>
-  <data name="EquipementsServices" xml:space="preserve">
-    <value>Equipements &amp; Services</value>
+  <data name="ForBoth3" xml:space="preserve">
+    <value>Ontwikkel een dynamische en creatieve omgeving voor uw twee structuren</value>
   </data>
-  <data name="Facilities" xml:space="preserve">
-    <value>Faciliteiten</value>
+  <data name="ForBothHead1" xml:space="preserve">
+    <value>Verzeker u van talrijke uitwisselingen!</value>
   </data>
-  <data name="FreeWorkplace" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+  <data name="ForBothHead2" xml:space="preserve">
+    <value>Creëer uw netwerk!</value>
   </data>
-  <data name="Friday" xml:space="preserve">
-    <value>Vrijdag</value>
+  <data name="ForOwner" xml:space="preserve">
+    <value>Eigenaar</value>
   </data>
-  <data name="GlobalInformations" xml:space="preserve">
-    <value>Algemene informatie</value>
-    <comment>LocalisationForm</comment>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Stel uw ruimte gratis en in enkele kliks beschikbaar op eWorky</value>
   </data>
-  <data name="GoogleMapsLocalisation" xml:space="preserve">
-    <value>Locatie op Google Maps</value>
+  <data name="ForOwner2" xml:space="preserve">
+    <value>Verdien enkele duizenden euro's per jaar en per werkplek</value>
   </data>
-  <data name="LinkToFB" xml:space="preserve">
-    <value>Lien vers la page Facebook</value>
+  <data name="ForOwner3" xml:space="preserve">
+    <value>Wij regelen alles! Alles verloopt automatisch, van het zoeken naar gebruikers tot het innen van vergoedingen</value>
   </data>
-  <data name="LinkToTwitter" xml:space="preserve">
-    <value>Lien vers le profil Twitter</value>
+  <data name="ForOwnerHead1" xml:space="preserve">
+    <value>Hebt u een kleine onderneming of bent u zelfstandige?</value>
   </data>
-  <data name="MandatoryFields" xml:space="preserve">
-    <value>Verplichte velden</value>
+  <data name="ForOwnerHead2" xml:space="preserve">
+    <value>Wilt u er liever iets aan verdienen in plaats uw oude facturen er op te stapelen?</value>
   </data>
-  <data name="Monday" xml:space="preserve">
-    <value>Maandag</value>
+  <data name="ForTenant" xml:space="preserve">
+    <value>Huurder</value>
   </data>
-  <data name="MondayAfterClose" xml:space="preserve">
-    <value>Ex : 18:00</value>
+  <data name="ForTenant1" xml:space="preserve">
+    <value>Vind een werkplek die tot 5 keer goedkoper is dan een traditioneel gehuurde bureau of een zakencentrum</value>
   </data>
-  <data name="MondayAfterOpen" xml:space="preserve">
-    <value>Ex : 14:00</value>
+  <data name="ForTenant2" xml:space="preserve">
+    <value>Profiteer van de flexibiliteit van het delen, met mogelijkheid tot huren per dag, per week, per maand... </value>
   </data>
-  <data name="MondayMorningClose" xml:space="preserve">
-    <value>Ex : 12:30</value>
+  <data name="ForTenant3" xml:space="preserve">
+    <value>Reserveer uw ruimte en betaal in enkele kliks!</value>
   </data>
-  <data name="MondayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
+  <data name="ForTenantHead1" xml:space="preserve">
+    <value>Hebt u een kleine onderneming of bent u zelfstandige?</value>
   </data>
-  <data name="Offers" xml:space="preserve">
-    <value>Offre</value>
+  <data name="ForTenantHead2" xml:space="preserve">
+    <value>Zoekt u een locatie om uw activiteit uit te oefenen?</value>
   </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Fonctionnalités réservées au gérant du lieu</value>
+  <data name="Legally1" xml:space="preserve">
+    <value>Het delen vindt doorgaans plaats onder de vorm van onderverhuur: een onderneming huurt het geheel aan bureaus en onderverhuurt die vervolgens aan andere ondernemingen. Een onderneming die een bureau in onderverhuur wil aanbieden, moet hiervoor een schriftelijke toelating van de eigenaar hebben, indien dit niet voorzien is in de huurovereenkomst.</value>
   </data>
-  <data name="PlaceDetails" xml:space="preserve">
-    <value>Eigenschappen van de locatie</value>
+  <data name="Legally2" xml:space="preserve">
+    <value>Maar bij eWorky stellen wij een veel eenvoudigere oplossing voor: het dienstverleningscontract. Dit is een akte waarmee een persoon zich ertoe verbindt om, tegen een vergoeding, bepaalde diensten voor een andere persoon te verlenen.</value>
   </data>
-  <data name="PlacesExample" xml:space="preserve">
-    <value>Ex : Café de Flore, Regus Invalides, Novotel Gare de Lyon, ...</value>
+  <data name="Legally3" xml:space="preserve">
+    <value>In dit geval gaat het om het ter beschikking stellen van een lokaal, alsook het materiaal of andere diensten (schoonmaak etc...) die er aan zijn verbonden. En om u te helpen, stelt eWorky standaardcontracten ter beschikking en biedt u de mogelijkheid deze rechtstreeks te beheren via de site!</value>
   </data>
-  <data name="ProfessionalServices" xml:space="preserve">
-    <value>Professionele diensten</value>
+  <data name="Legally4" xml:space="preserve">
+    <value>Beide standaardcontracten kunnen bovendien vergezeld worden van een domiciliëring van de onderneming</value>
   </data>
-  <data name="ProposedTechnology" xml:space="preserve">
-    <value>Technologie proposée</value>
+  <data name="LegallyTitle" xml:space="preserve">
+    <value>Hoe verloopt dit alles juridisch?</value>
   </data>
-  <data name="RefineLocation" xml:space="preserve">
-    <value>Om de locatie te verfijnen, verplaats de muis</value>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Vind en deel een bureau, vergaderzaal, conferentiezaal, een lokaal om samen te huren of onderverhuren of verhuur uw bureaus en zalen </value>
   </data>
-  <data name="ResetPosition" xml:space="preserve">
-    <value>Stel de positie opnieuw in</value>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Deel een bureau / eWorky, alle aanbiedingen van gedeelde bureauruimtes / eWorky</value>
   </data>
-  <data name="RoadExample" xml:space="preserve">
-    <value>Ex : Accès par la N118</value>
+  <data name="ShareOfficeMenu" xml:space="preserve">
+    <value>Een bureau delen</value>
   </data>
-  <data name="RoomCapacity" xml:space="preserve">
-    <value>Capacité des salles proposées</value>
-  </data>
-  <data name="Saturday" xml:space="preserve">
-    <value>Zaterdag</value>
-  </data>
-  <data name="Sectors" xml:space="preserve">
-    <value>Bedrijfstak</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>Diensten</value>
-  </data>
-  <data name="SharedOfficeDesc" xml:space="preserve">
-    <value>Ex : Deux postes de travail en open space proposés par une jeune PME du secteur de l'agroalimentaire.  Espace de travail calme et lumineux, ambiance conviviale, nous sommes favorables aux échanges et à l'entraide. Accès à deux salles de réunion, à un espace de détente avec une machine Nespresso. Longue durée souhaitée (à partir de 6 mois).</value>
-  </data>
-  <data name="SharedOfficeExemple" xml:space="preserve">
-    <value>Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc.</value>
-  </data>
-  <data name="SncfExample" xml:space="preserve">
-    <value>Ex : Gare de Lyon</value>
-  </data>
-  <data name="SubwayExample" xml:space="preserve">
-    <value>Ex : A 3 minutes de la station Ecole Militaire, ligne 8</value>
-  </data>
-  <data name="Sunday" xml:space="preserve">
-    <value>Zondag</value>
-  </data>
-  <data name="Tariffs" xml:space="preserve">
-    <value>Tarieven</value>
-  </data>
-  <data name="ThePlace1" xml:space="preserve">
-    <value>Le lieu "</value>
-  </data>
-  <data name="ThePlace2" xml:space="preserve">
-    <value>" est à la même adresse que le lieu que vous tentez d'ajouter</value>
-  </data>
-  <data name="Thursday" xml:space="preserve">
-    <value>Donderdag</value>
-  </data>
-  <data name="TimeExample1" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 9:30</value>
-  </data>
-  <data name="TimeExample2" xml:space="preserve">
-    <value>Entrer une heure au format hh:mm, par exemple: 19:30</value>
-    <comment>Problème des pm en Angleterre</comment>
-  </data>
-  <data name="Tuesday" xml:space="preserve">
-    <value>Dinsdag</value>
-  </data>
-  <data name="TuesdayAfterClose" xml:space="preserve">
-    <value>Ex : 22:00</value>
-  </data>
-  <data name="TuesdayMorningOpen" xml:space="preserve">
-    <value>Ex : 9:00</value>
-  </data>
-  <data name="UserServices" xml:space="preserve">
-    <value>Diensten voor de gebruiker</value>
-  </data>
-  <data name="Wednesday" xml:space="preserve">
-    <value>Woensdag</value>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Uw bureau delen, waarom en hoe?</value>
   </data>
 </root>

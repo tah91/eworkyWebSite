@@ -244,7 +244,7 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
     <value>conditions générales de ventes des services</value>
   </data>
   <data name="ReadAndAccept" xml:space="preserve">
-    <value>J’ai lu et j’accepte les {0}.</value>
+    <value>Ik heb de algemene verkoopsvoorwaaren van de diensten gelezen en goedgekeurd</value>
   </data>
   <data name="MustAcceptCGU" xml:space="preserve">
     <value>Vous devez acceptez les conditions d'utilisation.</value>
