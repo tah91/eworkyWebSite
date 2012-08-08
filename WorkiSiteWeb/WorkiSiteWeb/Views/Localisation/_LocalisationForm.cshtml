@@ -390,38 +390,6 @@
                 </div>
             </div>
         </div>
-    if (!Url.IsInArea("Backoffice") && !Model.IsFreeLocalisation)
-        {
-	<div class="contentBlock">
-		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
-		<div class="marginb5">
-            @Html.Partial(MVC.Offer.Views._OfferList, new OfferFormListModel { Offers = Model.Localisation.Offers.ToList(), IsSharedOffice = Model.IsSharedOffice })
-		</div>
-        <div class="buttonStd buttonBlue linkImg float-left">
-            @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddOffer, MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
-		</div>
-        <div class="clear"></div>
-        <script type="text/javascript">
-            $(".deleteOffer").live('click', function () {
-                $.ajax({
-                    type: 'POST',
-                    url: this.href,
-                    cache: false,
-                    success: function (html) {
-                        $(".offersTable").replaceWith(html);
-                        $(".editOffer").colorbox({ width: "50%" });
-                    }
-                });
-                return false;
-            });
-
-            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
-                $(".editOffer").colorbox({ width: "50%" });
-                $("#addOffer").colorbox({ width: "50%" });
-            });
-        </script>
-	</div>
-        }
     <div class="contentBlock">
          @if (!Model.IsFreeLocalisation)
          {
@@ -602,8 +570,8 @@
             <div class="serviceContainer">
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
-				 @if (Model.IsSharedOffice)
-                 {
+				    @if (Model.IsSharedOffice)
+        {
                     <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -624,9 +592,9 @@
                             @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
-                 }
-                else
-                 {
+        }
+        else
+        {
 				    <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -647,7 +615,7 @@
                             @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
-                }
+        }
                 </div>
                 @if (!Model.IsSharedOffice)
                 {

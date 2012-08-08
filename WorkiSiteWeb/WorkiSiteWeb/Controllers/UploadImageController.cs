@@ -27,39 +27,29 @@ namespace Worki.Web.Controllers
             _ObjectStore = objectStore;
 		}
 
-		IPictureDataProvider GetProvider(ProviderType type, int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			switch (type)
-			{
-				case ProviderType.Rental:
-				{
-					var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-					return rRepo.Get(id);
-				}
-				case ProviderType.Offer:
-				{
-                    if (id > 0)
+        IPictureDataProvider GetProvider(ProviderType type, int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            switch (type)
+            {
+                case ProviderType.Rental:
+                    {
+                        var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+                        return rRepo.Get(id);
+                    }
+                case ProviderType.Offer:
                     {
                         var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
                         return oRepo.Get(o => o.Id == id);
                     }
-                    else
+                case ProviderType.Localisation:
+                default:
                     {
-                        var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-                        if (offerList == null)
-                            return null;
-                        return offerList.Offers.FirstOrDefault(o => o.Id == id);
+                        var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                        return lRepo.Get(id);
                     }
-				}
-				case ProviderType.Localisation:
-				default:
-				{
-					var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-					return lRepo.Get(id);
-				}
-			}
-		}
+            }
+        }
 
 		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
 		{

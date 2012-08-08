@@ -1651,19 +1651,6 @@ namespace Worki.Data.Models
 	}
 
 	/// <summary>
-	/// "Grouping" of Offer type, correspond to the field OfferId of LocalisationFeature
-	/// </summary>
-	public enum FeatureType
-	{
-
-		General,
-		WorkingPlace,
-		MeetingRoom,
-		SeminarRoom,
-		VisioRoom
-	}
-
-	/// <summary>
 	/// Feature type, correspond to the field FeatureId of LocalisationFeature
 	/// </summary>
 	//[LocalizedEnum(ResourceType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures))]

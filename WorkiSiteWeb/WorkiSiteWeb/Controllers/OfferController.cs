@@ -215,24 +215,6 @@ namespace Worki.Web.Controllers
 		}
 
 		#region Ajax Offer
-
-        Offer GetOffer(int offerId)
-        {
-            Offer offer = null;
-            if (offerId > 0)
-            {
-                var context = ModelFactory.GetUnitOfWork();
-                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-                offer = oRepo.Get(offerId);
-            }
-            else
-            {
-                var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-                offer = offerList.Offers.FirstOrDefault(o => o.Id == offerId);
-            }
-
-            return offer;
-        }
         
 		/// <summary>
 		/// Action result to return offer creation form
@@ -249,62 +231,45 @@ namespace Worki.Web.Controllers
 		/// <param name="id">localisation id</param>
         /// <param name="offerFormViewModel">offer data</param>
 		/// <returns>exception if error, partial view if added</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize]
-		//[ValidateAntiForgeryToken]
-		[HandleModelStateException]
-		public virtual PartialViewResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
-		{
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        //[ValidateAntiForgeryToken]
+        [HandleModelStateException]
+        public virtual PartialViewResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
+        {
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
 
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					//case loc exists
-					if (id > 0)
-					{
-						var context = ModelFactory.GetUnitOfWork();
-						var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-						var loc = lRepo.Get(id);
-						try
-						{
-							loc.Offers.Add(offerFormViewModel.Offer);
-							context.Commit();
-						}
-						catch (Exception ex)
-						{
-							_Logger.Error(ex.Message);
-							context.Complete();
-							throw ex;
-						}
-					}
-					else
-					//add to temp data, to be processed later
-					{
-                        var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-						if (offerList == null)
-                            offerList = new OfferFormListModel { IsSharedOffice = offerFormViewModel.IsSharedOffice };
-                        //negative id to set the order
+            if (ModelState.IsValid)
+            {
+                try
+                {
 
-                        var minId = offerList.Offers.Count() + 1;
-                        offerFormViewModel.Offer.Id = - minId;
-
-						offerList.Offers.Add(offerFormViewModel.Offer);
-                        _ObjectStore.Store<OfferFormListModel>("OfferList", offerList);
-					}
+                    var context = ModelFactory.GetUnitOfWork();
+                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                    var loc = lRepo.Get(id);
+                    try
+                    {
+                        loc.Offers.Add(offerFormViewModel.Offer);
+                        context.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
+                        context.Complete();
+                        throw ex;
+                    }
 
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
                     return PartialView(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = offerFormViewModel.Offer, IsSharedOffice = offerFormViewModel.IsSharedOffice });
-				}
-				catch (Exception ex)
-				{
+                }
+                catch (Exception ex)
+                {
                     _Logger.Error("AjaxAdd", ex);
-					ModelState.AddModelError("", ex.Message);
-					throw new ModelStateException(ModelState);
-				}
-			}
-			throw new ModelStateException(ModelState);
-		}
+                    ModelState.AddModelError("", ex.Message);
+                    throw new ModelStateException(ModelState);
+                }
+            }
+            throw new ModelStateException(ModelState);
+        }
 
         /// <summary>
         /// Action result to return offer edition form
@@ -313,7 +278,10 @@ namespace Worki.Web.Controllers
         /// <returns>a partial view</returns>
         public virtual PartialViewResult AjaxEdit(int id, bool isShared)
         {
-            Offer offer = GetOffer(id);
+            var context = ModelFactory.GetUnitOfWork();
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var offer = oRepo.Get(id);
+
             return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { Offer = offer });
         }
 
@@ -334,40 +302,29 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    var offers = new OfferFormListModel();
-                    //case loc exists
-                    if (id > 0)
+                    //var offers = new OfferFormListModel();
+                    var context = ModelFactory.GetUnitOfWork();
+                    var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                    var offer = oRepo.Get(id);
+                    try
                     {
-                        var context = ModelFactory.GetUnitOfWork();
-                        var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-                        var offer = oRepo.Get(id);
-                        try
-                        {
-                            var locId = offer.LocalisationId;
-                            UpdateModel(offer, "Offer");
-                            context.Commit();
-                            var newContext = ModelFactory.GetUnitOfWork();
-                            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
-                            var loc = lRepo.Get(locId);
-                            offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = offerFormViewModel.IsSharedOffice };
-                        }
-                        catch (Exception ex)
-                        {
-                            _Logger.Error(ex.Message);
-                            context.Complete();
-                            throw ex;
-                        }
-                    }
-                    else
-                    //add to temp data, to be processed later
-                    {
-                        Offer offer = GetOffer(id);
+                        var locId = offer.LocalisationId;
                         UpdateModel(offer, "Offer");
-                        offers = _ObjectStore.Get<OfferFormListModel>("OfferList");
+                        context.Commit();
+                        var newContext = ModelFactory.GetUnitOfWork();
+                        var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+                        var loc = lRepo.Get(locId);
+                        //offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = offerFormViewModel.IsSharedOffice };
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
+                        context.Complete();
+                        throw ex;
                     }
 
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
-                    return PartialView(MVC.Offer.Views._OfferList, offers);
+                    return PartialView(MVC.Offer.Views._OfferList/*, offers*/);
                 }
                 catch (Exception ex)
                 {
@@ -384,45 +341,33 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id of offer if any</param>
         /// <returns>a partial view</returns>
-		public virtual PartialViewResult AjaxDelete(int id)
-		{
+        public virtual PartialViewResult AjaxDelete(int id)
+        {
             try
             {
-                var offers = new OfferFormListModel();
-                //case loc exists
-                if (id > 0)
+                //var offers = new OfferFormListModel();
+                var context = ModelFactory.GetUnitOfWork();
+                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                try
                 {
-                    var context = ModelFactory.GetUnitOfWork();
-                    var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-                    try
-                    {
-                        var offer = oRepo.Get(id);
-                        var locId = offer.LocalisationId;
-                        var isShared = offer.Localisation.IsSharedOffice();
-                        oRepo.Delete(id);
-                        context.Commit();
-                        var newContext = ModelFactory.GetUnitOfWork();
-                        var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
-                        var loc = lRepo.Get(locId);
-                        offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = isShared };
-                    }
-                    catch (Exception ex)
-                    {
-                        _Logger.Error("AjaxDelete", ex);
-                        context.Complete();
-                        throw ex;
-                    }
+                    var offer = oRepo.Get(id);
+                    var locId = offer.LocalisationId;
+                    var isShared = offer.Localisation.IsSharedOffice();
+                    oRepo.Delete(id);
+                    context.Commit();
+                    var newContext = ModelFactory.GetUnitOfWork();
+                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+                    var loc = lRepo.Get(locId);
+                    //offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = isShared };
                 }
-                else
-                //add to temp data, to be processed later
+                catch (Exception ex)
                 {
-                    var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-                    offerList.Offers = offerList.Offers.Where(o => o.Id != id).ToList();
-                    _ObjectStore.Store<OfferFormListModel>("OfferList", offerList); 
-                    offers = offerList;
+                    _Logger.Error("AjaxDelete", ex);
+                    context.Complete();
+                    throw ex;
                 }
 
-                return PartialView(MVC.Offer.Views._OfferList, offers);
+                return PartialView(MVC.Offer.Views._OfferList/*, offers*/);
             }
             catch (Exception ex)
             {
@@ -430,7 +375,7 @@ namespace Worki.Web.Controllers
                 ModelState.AddModelError("", ex.Message);
                 throw new ModelStateException(ModelState);
             }
-		}
+        }
 
 		#endregion
 	}

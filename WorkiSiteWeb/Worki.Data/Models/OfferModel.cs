@@ -45,15 +45,71 @@ namespace Worki.Data.Models
         public bool IsSharedOffice { get; set; }
 	}
 
-    public class OfferFormListModel
+    public class OfferCounterModel
     {
-        public OfferFormListModel()
+        void Initialize()
         {
-            Offers = new List<Offer>();
+            OfferLists = new Dictionary<LocalisationOffer, IList<Offer>>();
         }
 
-        public IList<Offer> Offers { get; set; }
+        public OfferCounterModel()
+        {
+            Initialize();
+        }
+
+        public OfferCounterModel(Localisation loc)
+        {
+            Initialize();
+
+            Localisation = loc;
+            IsSharedOffice = loc.IsSharedOffice();
+            var groupedOffers = (from item
+                                     in loc.Offers
+                                 group item by item.Type into grp
+                                 where grp.Count() > 0
+                                 select grp);
+
+            foreach (var item in groupedOffers)
+            {
+                OfferLists.Add((LocalisationOffer)item.Key, item.ToList());
+            }
+
+            if (OfferLists.ContainsKey(LocalisationOffer.BuisnessLounge))
+                BuisnessLoungeCount = OfferLists[LocalisationOffer.BuisnessLounge].Count;
+            if (OfferLists.ContainsKey(LocalisationOffer.Workstation))
+                WorkstationCount = OfferLists[LocalisationOffer.Workstation].Count;
+            if (OfferLists.ContainsKey(LocalisationOffer.Desktop))
+                DesktopCount = OfferLists[LocalisationOffer.Desktop].Count;
+            if (OfferLists.ContainsKey(LocalisationOffer.MeetingRoom))
+                MeetingRoomCount = OfferLists[LocalisationOffer.MeetingRoom].Count;
+            if (OfferLists.ContainsKey(LocalisationOffer.SeminarRoom))
+                SeminarRoomCount = OfferLists[LocalisationOffer.SeminarRoom].Count;
+            if (OfferLists.ContainsKey(LocalisationOffer.VisioRoom))
+                VisioRoomCount = OfferLists[LocalisationOffer.VisioRoom].Count;
+
+        }
+
+        public int BuisnessLoungeCount { get; set; }
+        public int WorkstationCount { get; set; }
+        public int DesktopCount { get; set; }
+        public int MeetingRoomCount { get; set; }
+        public int SeminarRoomCount { get; set; }
+        public int VisioRoomCount { get; set; }
+
+        public Localisation Localisation { get; set; }
         public bool IsSharedOffice { get; set; }
+        public IDictionary<LocalisationOffer, IList<Offer>> OfferLists { get; set; }
+
+        public bool NeedBuisnessLounge()
+        {
+            if (BuisnessLoungeCount < 1)
+                return false;
+
+            if (!OfferLists.ContainsKey(LocalisationOffer.BuisnessLounge))
+                return true;
+
+            return BuisnessLoungeCount > OfferLists[LocalisationOffer.BuisnessLounge].Count;
+        }
     }
 
     public class OfferFormListModelItem

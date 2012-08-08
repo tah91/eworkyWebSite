@@ -272,28 +272,6 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-			if (modifType == EditionType.Creation)
-			{
-				var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-				if (offerList != null)
-				{
-					localisationForm.Localisation.Offers.Clear();
-					foreach (var offer in offerList.Offers)
-					{
-						localisationForm.Localisation.Offers.Add(offer);
-					}
-				}
-			}
-			else
-			{
-				var locFromDb = lRepo.Get(id.Value);
-				localisationForm.Localisation.Offers.Clear();
-				foreach (var offer in locFromDb.Offers)
-				{
-					localisationForm.Localisation.Offers.Add(offer);
-				}
-			}
-
             try
             {
                 var member = mRepo.GetMember(User.Identity.Name);
@@ -302,8 +280,7 @@ namespace Worki.Web.Controllers
                 {
                     var localisationToAdd = localisationForm.Localisation;
                     var idToRedirect = 0;
-                    
-                    var offerCount = 0;
+
                     if (modifType == EditionType.Creation)
                     {
                         localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
@@ -312,7 +289,6 @@ namespace Worki.Web.Controllers
                         //save
                         localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
                         lRepo.Add(localisationToAdd);
-                        offerCount = localisationToAdd.Offers.Count;
                     }
                     else
                     {
@@ -325,17 +301,10 @@ namespace Worki.Web.Controllers
                         var loc = lRepo.Get(id.Value);
                         TryUpdateModel(loc, LocalisationPrefix);
                         loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
-                        offerCount = loc.Offers.Count;
                     }
-                    if (!localisationForm.IsFreeLocalisation && offerCount == 0)
-                    {
-                        error = Worki.Resources.Views.Localisation.LocalisationString.MustAddOffer;
-                        field = "NewOfferType";
-                        throw new Exception(error);
-                    }
+
                     context.Commit();
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Localisation));
-                    _ObjectStore.Delete("OfferList");
 
                     idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
                     localisationForm.Localisation.ID = idToRedirect;
@@ -364,6 +333,12 @@ namespace Worki.Web.Controllers
                         }
                         TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = idToRedirect;
                     }
+
+                    if (!localisationForm.IsFreeLocalisation)
+                    {
+                        return RedirectToAction(MVC.Localisation.EditOffers(localisationForm.Localisation.ID));
+                    }
+
                     if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
                         return RedirectToAction(MVC.Home.Pricing());
                     else
@@ -379,6 +354,56 @@ namespace Worki.Web.Controllers
             }
 			localisationForm.Localisation.ID = id ?? 0;
 			return View(new LocalisationFormViewModel(localisationForm.Localisation));
+        }
+
+        /// <summary>
+        /// Return view to edit localisation offers
+        /// </summary>
+        /// <param name="id">loc id</param>
+        /// <returns>view containing offers to edit/add</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        public virtual ActionResult EditOffers(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+            {
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
+            return View(new OfferCounterModel(localisation));
+        }
+
+        /// <summary>
+        /// Return view to edit localisation offers
+        /// </summary>
+        /// <param name="id">loc id</param>
+        /// <returns>view containing offers to edit/add</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [HandleModelStateException]
+        public virtual ActionResult EditOffers(int id, OfferCounterModel formData)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (formData.NeedBuisnessLounge())
+                    {
+                        var helpText = "Tout d’abord, dites nous en plus sur vos offres de salon d'affaire !";
+                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(formData.IsSharedOffice) { LocId = id }); ;
+                        return Json(new { help = helpText, form = newForm });
+                    }
+                    return Content("plop");
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("EditOffers", ex);
+                    ModelState.AddModelError("", ex.Message);
+                    throw new ModelStateException(ModelState);
+                }
+            }
+            throw new ModelStateException(ModelState);
         }
 
         const string returnUrlPostComment = "returnUrlPostComment";

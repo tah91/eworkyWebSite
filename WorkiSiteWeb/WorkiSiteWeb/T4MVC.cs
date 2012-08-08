@@ -1419,6 +1419,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult EditOffers() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditOffers);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult PostComment() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.PostComment);
         }
@@ -1507,6 +1512,7 @@ namespace Worki.Web.Controllers {
             public readonly string CreateNotFree = "add-place";
             public readonly string CreateSharedOffice = "add-shared-office";
             public readonly string Edit = "edit";
+            public readonly string EditOffers = "EditOffers";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
             public readonly string SetOwnership = "set-ownership";
@@ -1553,6 +1559,7 @@ namespace Worki.Web.Controllers {
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
             public readonly string Edit = "~/Views/Localisation/Edit.cshtml";
+            public readonly string EditOffers = "~/Views/Localisation/EditOffers.cshtml";
             public readonly string FullSearchResult = "~/Views/Localisation/FullSearchResult.cshtml";
             public readonly string FullSearchResultDetail = "~/Views/Localisation/FullSearchResultDetail.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
@@ -1645,6 +1652,19 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisationForm", localisationForm);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditOffers(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditOffers);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditOffers(int id, Worki.Data.Models.OfferCounterModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditOffers);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
