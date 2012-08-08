@@ -156,7 +156,7 @@ Mensaje: &lt;b&gt;{7}&lt;/b&gt;</value>
   <data name="BookingOwnerBody" xml:space="preserve">
     <value>Has recibido una solicitud de reserva para un(a) {0} en el establecimiento {1}  ({2}). 
 
-Ve a tu {3} para confirmar/denegar esta solicitud de reserva cuanto antes.</value>
+Ve a tu {3} para confirmar/rechazar esta solicitud de reserva cuanto antes.</value>
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value>Solicitud de reserva - {0}</value>

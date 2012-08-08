@@ -269,7 +269,7 @@
     <value>Tasas incluidas, excepto comisiones</value>
   </data>
   <data name="VisitNeeded" xml:space="preserve">
-    <value>Solicitud de visita</value>
+    <value>Solicitar visita</value>
   </data>
   <data name="WorkplacesDirectAccess" xml:space="preserve">
     <value>Acceso directo a la gestión de los espacios</value>
@@ -353,7 +353,7 @@
     <value>Ver los datos de contacto</value>
   </data>
   <data name="PayQuotationDesc" xml:space="preserve">
-    <value>Nuestro servicio de gestión es 100% gratuito, solamente facturamos la puesta en relación que te aporta nuevos clientes. De esta forma, sólo pagarás si nuestros servicios te son útiles. Haciendo clic sobre "Ver los datos de contacto" te enviaremos hacia una página Paypal para realizar un pago seguro.
+    <value>Nuestro servicio de gestión es 100% gratuito, solamente facturamos la puesta en relación que te aporta nuevos clientes. De esta forma, sólo pagarás si nuestros servicios te son útiles. Haciendo clic sobre "Ver los datos de contacto" te redirigiremos hacia una página Paypal para realizar un pago seguro.
 ¡La primera consulta es gratuita!</value>
   </data>
 </root>
