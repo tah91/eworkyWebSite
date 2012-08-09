@@ -273,16 +273,34 @@ namespace Worki.Web.Controllers
                     {
                         var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(loc.IsSharedOffice(), offerType, currentNeed) { LocId = id });
 
-                        return Json(new { help = helpText, form = newForm, newList = newList });
+                        return Json(new 
+                        { 
+                            help = helpText, 
+                            form = newForm, 
+                            newList = newList,
+                            newBounds = offerCountModel.GetJson()
+                        });
                     }
                     else if (offerCountModel.NeedAddOffer(out offerTypeToAdd, out currentNeed, out helpText))
                     {
                         var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(loc.IsSharedOffice(), offerTypeToAdd, currentNeed) { LocId = id });
-                        return Json(new { help = helpText, form = newForm, newList = newList });
+                        return Json(new
+                        {
+                            help = helpText,
+                            form = newForm,
+                            newList = newList,
+                            newBounds = offerCountModel.GetJson()
+                        });
                     }
                     else
                     {
-                        return Json(new { help = "", form = "", newList = newList });
+                        return Json(new
+                        {
+                            help = "",
+                            form = "",
+                            newList = newList,
+                            newBounds = offerCountModel.GetJson()
+                        });
                     }
                 }
                 catch (Exception ex)
@@ -382,6 +400,7 @@ namespace Worki.Web.Controllers
                     var offer = oRepo.Get(id);
                     var locId = offer.LocalisationId;
                     var isShared = offer.Localisation.IsSharedOffice();
+                    var removedType = (LocalisationOffer)offer.Type;
                     oRepo.Delete(id);
                     context.Commit();
 
@@ -391,7 +410,14 @@ namespace Worki.Web.Controllers
                     var offerCountModel = new OfferCounterModel(loc);
                     var newList = this.RenderRazorViewToString(MVC.Offer.Views._OfferList, offerCountModel);
 
-                    return Json(new { help = "", form = "", newList = newList });
+                    return Json(new 
+                    {
+                        help = "",
+                        form = "", 
+                        newList = newList,
+                        newBounds = offerCountModel.GetJson(),
+                        toDecrement = removedType.ToString()
+                    });
                 }
                 catch (Exception ex)
                 {

@@ -141,7 +141,7 @@
     font-size: inherit;
 }
 
-.fileupload .ui-state-hover .ui-icon, .ui-state-focus .ui-icon,.ui-state-default .ui-icon, .ui-widget-header .ui-icon 
+.fileupload .ui-state-hover .ui-icon, .fileupload .ui-state-focus .ui-icon,.fileupload .ui-state-default .ui-icon,.fileupload .ui-widget-header .ui-icon 
 {
     background-image:none;
     width: 0;

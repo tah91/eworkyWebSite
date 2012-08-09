@@ -342,6 +342,9 @@
     <Content Include="Content\images\iconeMapBig.png" />
     <Content Include="Content\images\iconeMapMedium.png" />
     <Content Include="Content\images\logo-small.png" />
+    <Content Include="Content\jquery.ui.spinner.min.css">
+      <DependentUpon>jquery.ui.spinner.css</DependentUpon>
+    </Content>
     <Content Include="Content\scss\widget-eworky.css">
       <DependentUpon>widget-eworky.scss</DependentUpon>
     </Content>
@@ -361,6 +364,7 @@
       <DependentUpon>widget.css</DependentUpon>
     </Content>
     <Content Include="Content\swf\easyxdm.swf" />
+    <Content Include="Content\jquery.ui.spinner.css" />
     <Content Include="Content\Widget.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\Dashboard.min.css">
@@ -547,6 +551,10 @@
     <Content Include="Scripts\bootstrap-typeahead.js" />
     <Content Include="Scripts\bootstrap-typeahead.min.js">
       <DependentUpon>bootstrap-typeahead.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ui.spinner.js" />
+    <Content Include="Scripts\jquery.ui.spinner.min.js">
+      <DependentUpon>jquery.ui.spinner.js</DependentUpon>
     </Content>
     <Content Include="Scripts\WorkiWidgetIntermediate.js" />
     <Content Include="Scripts\easyXDM.debug.js" />

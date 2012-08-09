@@ -204,6 +204,7 @@
                 $(".helpText").html(data.help);
                 $(".emptyOfferForm").html(data.form);
                 $(".offersGroupedList").html(data.newList); 
+                setNewBounds(data.newBounds.buisnessLoungeCount, data.newBounds.workstationCount, data.newBounds.desktopCount, data.newBounds.meetingRoomCount, data.newBounds.seminarRoomCount, data.newBounds.visioRoomCount);
             }
 
             AppAjax(

@@ -493,6 +493,9 @@ namespace Links {
         public static readonly string jquery_ui_datepicker_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datepicker-fr.min.js") ? Url("jquery.ui.datepicker-fr.min.js") : Url("jquery.ui.datepicker-fr.js");
                       
         public static readonly string jquery_ui_datepicker_fr_min_js = Url("jquery.ui.datepicker-fr.min.js");
+        public static readonly string jquery_ui_spinner_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.spinner.min.js") ? Url("jquery.ui.spinner.min.js") : Url("jquery.ui.spinner.js");
+                      
+        public static readonly string jquery_ui_spinner_min_js = Url("jquery.ui.spinner.min.js");
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
                       
         public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
@@ -700,6 +703,8 @@ namespace Links {
         public static readonly string jquery_fileupload_ui_min_css = Url("jquery.fileupload-ui.min.css");
         public static readonly string jquery_qtip_css = Url("jquery.qtip.css");
         public static readonly string jquery_qtip_min_css = Url("jquery.qtip.min.css");
+        public static readonly string jquery_ui_spinner_css = Url("jquery.ui.spinner.css");
+        public static readonly string jquery_ui_spinner_min_css = Url("jquery.ui.spinner.min.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
         public static readonly string LocalisationDetail_min_css = Url("LocalisationDetail.min.css");
         public static readonly string LocalisationForm_css = Url("LocalisationForm.css");

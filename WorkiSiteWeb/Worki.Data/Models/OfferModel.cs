@@ -84,6 +84,19 @@ namespace Worki.Data.Models
 
         }
 
+        public Object GetJson()
+        {
+            return new
+            {
+                buisnessLoungeCount = BuisnessLoungeCount,
+                workstationCount = WorkstationCount,
+                desktopCount = DesktopCount,
+                meetingRoomCount = MeetingRoomCount,
+                seminarRoomCount = SeminarRoomCount,
+                visioRoomCount = VisioRoomCount
+            };
+        }
+
         public void RefreshData(Localisation loc)
         {
             Localisation = loc;
