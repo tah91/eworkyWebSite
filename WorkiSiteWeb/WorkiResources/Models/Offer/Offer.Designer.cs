@@ -169,6 +169,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre de salon d&apos;affaire.
+        /// </summary>
+        public static string BuisnessLoungeCount {
+            get {
+                return ResourceManager.GetString("BuisnessLoungeCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espèces.
         /// </summary>
         public static string Cash {
@@ -210,6 +219,15 @@ namespace Worki.Resources.Models.Offer {
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre de bureau privatif.
+        /// </summary>
+        public static string DesktopCount {
+            get {
+                return ResourceManager.GetString("DesktopCount", resourceCulture);
             }
         }
         
@@ -273,6 +291,15 @@ namespace Worki.Resources.Models.Offer {
         public static string LeaseTerm {
             get {
                 return ResourceManager.GetString("LeaseTerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre de salle de réunion.
+        /// </summary>
+        public static string MeetingRoomCount {
+            get {
+                return ResourceManager.GetString("MeetingRoomCount", resourceCulture);
             }
         }
         
@@ -448,6 +475,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre de salle de séminaire.
+        /// </summary>
+        public static string SeminarRoomCount {
+            get {
+                return ResourceManager.GetString("SeminarRoomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to jour.
         /// </summary>
         public static string SingleDay {
@@ -520,11 +556,29 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre de salle de visioconférence.
+        /// </summary>
+        public static string VisioRoomCount {
+            get {
+                return ResourceManager.GetString("VisioRoomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Semaine.
         /// </summary>
         public static string Week {
             get {
                 return ResourceManager.GetString("Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre de poste de travail.
+        /// </summary>
+        public static string WorkstationCount {
+            get {
+                return ResourceManager.GetString("WorkstationCount", resourceCulture);
             }
         }
         

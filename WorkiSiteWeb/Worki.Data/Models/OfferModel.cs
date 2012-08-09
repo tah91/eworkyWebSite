@@ -17,14 +17,14 @@ namespace Worki.Data.Models
             Init();
 		}
 
-		public OfferFormViewModel(bool isShared)
-		{
-			Init(isShared);
-		}
-
-		void Init(bool isShared = false)
+        public OfferFormViewModel(bool isShared, LocalisationOffer offerType = LocalisationOffer.AllOffers, int currentNeed = 0)
         {
-			var offers = Localisation.GetOfferTypeDict(isShared);
+            Init(isShared, offerType, currentNeed);
+        }
+
+        void Init(bool isShared = false, LocalisationOffer offerType = LocalisationOffer.Desktop, int currentNeed = 0)
+        {
+            var offers = Localisation.GetOfferTypeDict(isShared);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
@@ -32,7 +32,11 @@ namespace Worki.Data.Models
             ProductTypes = new SelectList(Offer.GetProductTypes(), "Key", "Value", Offer.eProductType.Quotation);
             IsSharedOffice = isShared;
             Offer = new Offer();
+            if (offerType != LocalisationOffer.AllOffers)
+                Offer.Type = (int)offerType;
             Offer.AllInclusive = true;
+            var rangeEnd = currentNeed > 0 ? currentNeed : 1;
+            DuplicateCountSelector = new SelectList(Enumerable.Range(0, rangeEnd).ToDictionary(k => k, k => k), "Key", "Value");
         }
 
 		public Offer Offer { get; set; }
@@ -41,6 +45,8 @@ namespace Worki.Data.Models
         public SelectList PaymentTypes { get; set; }
         public SelectList Currencies { get; set; }
         public SelectList ProductTypes { get; set; }
+        public SelectList DuplicateCountSelector { get; set; }
+        public int DuplicateCount { get; set; }
 		public int LocId { get; set; }
         public bool IsSharedOffice { get; set; }
 	}
@@ -61,18 +67,7 @@ namespace Worki.Data.Models
         {
             Initialize();
 
-            Localisation = loc;
-            IsSharedOffice = loc.IsSharedOffice();
-            var groupedOffers = (from item
-                                     in loc.Offers
-                                 group item by item.Type into grp
-                                 where grp.Count() > 0
-                                 select grp);
-
-            foreach (var item in groupedOffers)
-            {
-                OfferLists.Add((LocalisationOffer)item.Key, item.ToList());
-            }
+            RefreshData(loc);
 
             if (OfferLists.ContainsKey(LocalisationOffer.BuisnessLounge))
                 BuisnessLoungeCount = OfferLists[LocalisationOffer.BuisnessLounge].Count;
@@ -89,26 +84,130 @@ namespace Worki.Data.Models
 
         }
 
+        public void RefreshData(Localisation loc)
+        {
+            Localisation = loc;
+            IsSharedOffice = loc.IsSharedOffice();
+            var groupedOffers = (from item
+                                     in loc.Offers
+                                 group item by item.Type into grp
+                                 where grp.Count() > 0
+                                 select grp);
+
+            foreach (var item in groupedOffers)
+            {
+                OfferLists.Add((LocalisationOffer)item.Key, item.ToList());
+            }
+        }
+
+        [Display(Name = "BuisnessLoungeCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int BuisnessLoungeCount { get; set; }
+
+        [Display(Name = "WorkstationCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int WorkstationCount { get; set; }
+
+        [Display(Name = "DesktopCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int DesktopCount { get; set; }
+
+        [Display(Name = "MeetingRoomCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int MeetingRoomCount { get; set; }
+
+        [Display(Name = "SeminarRoomCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int SeminarRoomCount { get; set; }
+
+        [Display(Name = "VisioRoomCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int VisioRoomCount { get; set; }
 
         public Localisation Localisation { get; set; }
         public bool IsSharedOffice { get; set; }
         public IDictionary<LocalisationOffer, IList<Offer>> OfferLists { get; set; }
 
-        public bool NeedBuisnessLounge()
+        public bool NeedAddThisOffer(LocalisationOffer offerType, out int currentNeed, out string helpText)
         {
-            if (BuisnessLoungeCount < 1)
+            currentNeed = 0;
+            var offerTypeRequiredCount = 0;
+            helpText = "";
+            switch (offerType)
+            {
+                case LocalisationOffer.BuisnessLounge:
+                    offerTypeRequiredCount = BuisnessLoungeCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salon d'affaire !";
+                    break;
+                case LocalisationOffer.Desktop:
+                    offerTypeRequiredCount = DesktopCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de poste de travail !";
+                    break;
+                case LocalisationOffer.Workstation:
+                    offerTypeRequiredCount = WorkstationCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de bureau privatif !";
+                    break;
+                case LocalisationOffer.MeetingRoom:
+                    offerTypeRequiredCount = MeetingRoomCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de réunion !";
+                    break;
+                case LocalisationOffer.SeminarRoom:
+                    offerTypeRequiredCount = SeminarRoomCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de séminaire !";
+                    break;
+                case LocalisationOffer.VisioRoom:
+                    offerTypeRequiredCount = VisioRoomCount;
+                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de visioconférence !";
+                    break;
+                default:
+                    break;
+            }
+
+            if (offerTypeRequiredCount <= 0)
                 return false;
 
-            if (!OfferLists.ContainsKey(LocalisationOffer.BuisnessLounge))
+            if (!OfferLists.ContainsKey(offerType))
+            {
+                currentNeed = offerTypeRequiredCount;
                 return true;
+            }
 
-            return BuisnessLoungeCount > OfferLists[LocalisationOffer.BuisnessLounge].Count;
+            currentNeed = offerTypeRequiredCount - OfferLists[offerType].Count;
+            return currentNeed > 0;
+        }
+
+        public bool NeedAddOffer(out LocalisationOffer offerType, out int currentNeed, out string helpText)
+        {
+            currentNeed = 0;
+            helpText = "";
+            offerType = LocalisationOffer.AllOffers;
+
+            if (NeedAddThisOffer(LocalisationOffer.BuisnessLounge, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.BuisnessLounge;
+                return true;
+            }
+            else if (NeedAddThisOffer(LocalisationOffer.Workstation, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.Workstation;
+                return true;
+            }
+            else if (NeedAddThisOffer(LocalisationOffer.Desktop, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.Desktop;
+                return true;
+            }
+            else if (NeedAddThisOffer(LocalisationOffer.MeetingRoom, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.MeetingRoom;
+                return true;
+            }
+            else if (NeedAddThisOffer(LocalisationOffer.SeminarRoom, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.SeminarRoom;
+                return true;
+            }
+            else if (NeedAddThisOffer(LocalisationOffer.VisioRoom, out currentNeed, out helpText))
+            {
+                offerType = LocalisationOffer.VisioRoom;
+                return true;
+            }
+
+            return false;
         }
     }
 
@@ -722,7 +821,73 @@ namespace Worki.Data.Models
         }
 
 		#endregion
-	}
+
+        #region Replication
+
+        public IEnumerable<Offer> Replicate(int count)
+        {
+            var toRet = new List<Offer>();
+            for (int index = 0; index < count; ++index)
+            {
+                var toAdd = new Offer
+                {
+                    Type = Type,
+                    Name = Name + " " + index.ToString(),
+                    Capacity = Capacity,
+                    Price = Price,
+                    Period = Period,
+                    IsOnline = IsOnline,
+                    IsBookable = IsBookable,
+                    IsQuotable = IsQuotable,
+                    PaymentType = PaymentType,
+                    Currency = Currency,
+                    AvailabilityDate = AvailabilityDate,
+                    AvailabilityPeriod = AvailabilityPeriod,
+                    AvailabilityPeriodType = AvailabilityPeriodType,
+                    ProductType = ProductType,
+                    Description = Description,
+                    DescriptionDe = DescriptionDe,
+                    DescriptionEn = DescriptionEn,
+                    DescriptionEs = DescriptionEs,
+                    AllInclusive = AllInclusive
+                };
+
+                foreach (var feature in OfferFeatures)
+                {
+                    toAdd.OfferFeatures.Add(new OfferFeature
+                    {
+                        FeatureId = feature.FeatureId,
+                        StringValue = feature.StringValue,
+                        DecimalValue = feature.DecimalValue
+                    });
+                }
+
+                foreach (var file in OfferFiles)
+                {
+                    toAdd.OfferFiles.Add(new OfferFile
+                    {
+                        FileName = file.FileName,
+                        IsDefault = file.IsDefault
+                    });
+                }
+
+                foreach (var price in OfferPrices)
+                {
+                    toAdd.OfferPrices.Add(new OfferPrice
+                    {
+                        Price = price.Price,
+                        PriceType = price.PriceType
+                    });
+                }
+
+                toRet.Add(toAdd);
+            }
+
+            return toRet;
+        }
+
+        #endregion
+    }
 
 	[Bind(Exclude = "Id,LocalisationId")]
 	public class Offer_Validation

@@ -167,4 +167,26 @@
     width:95px!important;
 }
 
+/************************************************/
+/* Edit Offer */
+/************************************************/
 
+.offerCounting input[type="text"]
+{
+    width: 50px;
+}
+
+.offerCounting label
+{
+    margin:0 10px;
+}
+
+.helpText
+{
+    color:Green;
+}
+
+#offerFormContainer
+{
+    background-color:whitesmoke;
+}

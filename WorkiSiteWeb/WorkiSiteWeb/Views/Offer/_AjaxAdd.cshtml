@@ -35,7 +35,7 @@
 				break;
         }
 }
-    <div id="offerFormContainer">   
+    <div id="offerFormContainer" class=" contentBlock">   
     @using (Html.BeginForm())
     {
 	    @Html.AntiForgeryToken()
@@ -76,7 +76,19 @@
                       <td>
 					    @DescritptionField(Url.GetCulture())
                      </td>
-               </tr>
+                </tr>
+                <tr>
+				    <td>
+					    <div class="editor-label">
+						    @Html.LabelFor(m => m.DuplicateCount) <span class="blue">*</span>
+					    </div>
+				    </td>
+				    <td>
+					    <div class="editor-field">
+						    @Html.DropDownListFor(m => m.DuplicateCount, Model.DuplicateCountSelector)
+					    </div>
+				    </td>
+			    </tr>
                <tr>
                     <td>
 					    <div class="editor-label">
@@ -86,26 +98,19 @@
                     <td>
 					    <div class="editor-field">
                            <ul class="paymentPeriodType">
-						    @{
-                                Dictionary<int, string> paymentPeriodTypes = Offer.GetPaymentPeriodTypes();
-                                foreach (var pair in paymentPeriodTypes)
+                                @foreach (var pair in Offer.GetPaymentPeriodTypes())
                                 {
                                     <li>
-                                    @Html.Label(pair.Value)
-                                    @Html.CheckBox(pair.Key.ToString(), Model.Offer.ForceHasPriceOfType(pair.Key))
+                                    @Html.LabelFor(pair.Value, pair.Key.ToString())
+                                    @Html.CheckBox(pair.Key.ToString(), Model.Offer.ForceHasPriceOfType(pair.Key), new { id = pair.Key.ToString() })
                                     </li>
                                 }
-                            }
-                            <div class="clear">
-                            </div>
                             </ul>
 					    </div>
 				    </td>
                </tr>
 		    </table>
         </div>
-	    if (!Url.IsInArea("Backoffice"))
-	    { 
         <div class="contentBlock configOffer">
             <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.Tariff</h3>
             <table class="configPrice">
@@ -130,8 +135,7 @@
                 </tr>
             </table>
 		    @Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
-        </div> 
-        }
+        </div>
         if (Model.IsSharedOffice)
         {
         <div class="contentBlock">
@@ -184,25 +188,22 @@
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
         $("#offerFormContainer form").submit( function () {
             var action = "";
-            var succes = $.noop;
 
             @if (Model.Offer.Id == 0)
             {
                 @:action = '@Url.Action(MVC.Offer.AjaxAdd(Model.LocId, null))';
-                @:succes = function (data) { $('.offersTable > tbody:last').append(data); };
             }
             else
             {
                 @:action = '@Url.Action(MVC.Offer.AjaxEdit(Model.Offer.Id, null))';
-                @:succes = function (data) { $('.offersTable').replaceWith(data); };
             }
 
             var errorBuilder = new ErrorBuilder('offerFormContainer', 'offerErrorContainer');
 
             var successFunc = function (data) {
-                succes(data);
-                $.colorbox.close(); 
-                $(".editOffer").colorbox({ width: "50%" });
+                $(".helpText").html(data.help);
+                $(".emptyOfferForm").html(data.form);
+                $(".offersGroupedList").html(data.newList); 
             }
 
             AppAjax(

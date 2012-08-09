@@ -388,13 +388,23 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    if (formData.NeedBuisnessLounge())
+                    int currentNeed;
+                    string helpText;
+                    LocalisationOffer offerType;
+                    var context = ModelFactory.GetUnitOfWork();
+                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                    var localisation = lRepo.Get(id);
+                    formData.RefreshData(localisation);
+
+                    if (formData.NeedAddOffer(out offerType, out currentNeed, out helpText))
                     {
-                        var helpText = "Tout d’abord, dites nous en plus sur vos offres de salon d'affaire !";
-                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(formData.IsSharedOffice) { LocId = id }); ;
+                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(formData.IsSharedOffice, offerType, currentNeed) { LocId = id }); ;
                         return Json(new { help = helpText, form = newForm });
                     }
-                    return Content("plop");
+                    else
+                    {
+                        return Json(new { help = "", form = "" });
+                    }
                 }
                 catch (Exception ex)
                 {

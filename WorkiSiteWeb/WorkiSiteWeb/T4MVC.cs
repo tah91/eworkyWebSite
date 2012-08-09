@@ -1889,18 +1889,18 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult AjaxAdd() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
+        public System.Web.Mvc.ActionResult AjaxAdd() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxAdd);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult AjaxEdit() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+        public System.Web.Mvc.ActionResult AjaxEdit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxEdit);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult AjaxDelete() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDelete);
+        public System.Web.Mvc.ActionResult AjaxDelete() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxDelete);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2002,36 +2002,29 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id, bool isShared) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("isShared", isShared);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
+        public override System.Web.Mvc.ActionResult AjaxAdd(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxAdd);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerFormViewModel", offerFormViewModel);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id, bool isShared) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+        public override System.Web.Mvc.ActionResult AjaxEdit(int id, bool isShared) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxEdit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("isShared", isShared);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+        public override System.Web.Mvc.ActionResult AjaxEdit(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxEdit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerFormViewModel", offerFormViewModel);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxDelete(int id) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDelete);
+        public override System.Web.Mvc.ActionResult AjaxDelete(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxDelete);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }

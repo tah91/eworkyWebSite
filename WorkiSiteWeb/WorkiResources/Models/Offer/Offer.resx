@@ -153,6 +153,9 @@
   <data name="Booking" xml:space="preserve">
     <value>Réservation en ligne</value>
   </data>
+  <data name="BuisnessLoungeCount" xml:space="preserve">
+    <value>Nombre de salon d'affaire</value>
+  </data>
   <data name="Cash" xml:space="preserve">
     <value>Espèces</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="DesktopCount" xml:space="preserve">
+    <value>Nombre de bureau privatif</value>
   </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
@@ -188,6 +194,9 @@
   </data>
   <data name="LeaseTerm" xml:space="preserve">
     <value>Durée(s) de location</value>
+  </data>
+  <data name="MeetingRoomCount" xml:space="preserve">
+    <value>Nombre de salle de réunion</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Mois</value>
@@ -246,6 +255,9 @@
   <data name="SameOffersCount" xml:space="preserve">
     <value>Nombres d'offres identiques</value>
   </data>
+  <data name="SeminarRoomCount" xml:space="preserve">
+    <value>Nombre de salle de séminaire</value>
+  </data>
   <data name="SingleDay" xml:space="preserve">
     <value>jour</value>
   </data>
@@ -270,8 +282,14 @@
   <data name="Type" xml:space="preserve">
     <value>Type d'offre</value>
   </data>
+  <data name="VisioRoomCount" xml:space="preserve">
+    <value>Nombre de salle de visioconférence</value>
+  </data>
   <data name="Week" xml:space="preserve">
     <value>Semaine</value>
+  </data>
+  <data name="WorkstationCount" xml:space="preserve">
+    <value>Nombre de poste de travail</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Année</value>

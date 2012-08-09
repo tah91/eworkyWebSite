@@ -1,5 +1,16 @@
-﻿@model OfferFormListModel
+﻿@model OfferCounterModel
 
-@*<table class="offersTable">*@
+<div class="marginb5">
+@foreach (var offerType in Model.OfferLists.Keys)
+{
+    <h4 class="blue">@Localisation.GetOfferType((int)offerType)</h4>
+    var offersOfType = Model.OfferLists[offerType];
 
-@*</table>*@
+    <table class="offersTable">
+    @foreach (var offer in offersOfType)
+    {
+    @Html.Partial(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = offer, IsSharedOffice = Model.IsSharedOffice })
+    }
+    </table>
+}
+</div>

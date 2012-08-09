@@ -27,3 +27,7 @@
 .offerTable td:first-child{width:130px;height:30px}
 .offerAvailTable td{border:0;width:50px!important}
 .offerAvailTable input,.offerAvailTable select{width:95px!important}
+.offerCounting input[type="text"]{width:50px}
+.offerCounting label{margin:0 10px}
+.helpText{color:Green}
+#offerFormContainer{background-color:whitesmoke}

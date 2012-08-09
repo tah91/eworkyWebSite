@@ -215,15 +215,6 @@ namespace Worki.Web.Controllers
 		}
 
 		#region Ajax Offer
-        
-		/// <summary>
-		/// Action result to return offer creation form
-		/// </summary>
-		/// <returns>a partial view</returns>
-		public virtual PartialViewResult AjaxAdd(int id, bool isShared)
-		{
-			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { LocId = id});
-		}
 
 		/// <summary>
 		/// POST Action result add an offer via ajax
@@ -234,7 +225,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post), Authorize]
         //[ValidateAntiForgeryToken]
         [HandleModelStateException]
-        public virtual PartialViewResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
+        public virtual ActionResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
         {
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
 
@@ -242,13 +233,22 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-
                     var context = ModelFactory.GetUnitOfWork();
                     var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
                     var loc = lRepo.Get(id);
+                    var offerType = (LocalisationOffer)offerFormViewModel.Offer.Type;
+
                     try
                     {
                         loc.Offers.Add(offerFormViewModel.Offer);
+                        if (offerFormViewModel.DuplicateCount > 0)
+                        {
+                            var toAdd = offerFormViewModel.Offer.Replicate(offerFormViewModel.DuplicateCount);
+                            foreach (var offer in toAdd)
+                            {
+                                loc.Offers.Add(offer);
+                            }
+                        }
                         context.Commit();
                     }
                     catch (Exception ex)
@@ -259,7 +259,31 @@ namespace Worki.Web.Controllers
                     }
 
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
-                    return PartialView(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = offerFormViewModel.Offer, IsSharedOffice = offerFormViewModel.IsSharedOffice });
+
+                    var newContext = ModelFactory.GetUnitOfWork();
+                    lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+                    loc = lRepo.Get(id);
+                    var offerCountModel = new OfferCounterModel(loc);
+                    int currentNeed;
+                    string helpText;
+                    LocalisationOffer offerTypeToAdd;
+                    var newList = this.RenderRazorViewToString(MVC.Offer.Views._OfferList, offerCountModel);
+
+                    if (offerCountModel.NeedAddThisOffer(offerType, out currentNeed, out helpText))
+                    {
+                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(loc.IsSharedOffice(), offerType, currentNeed) { LocId = id });
+
+                        return Json(new { help = helpText, form = newForm, newList = newList });
+                    }
+                    else if (offerCountModel.NeedAddOffer(out offerTypeToAdd, out currentNeed, out helpText))
+                    {
+                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(loc.IsSharedOffice(), offerTypeToAdd, currentNeed) { LocId = id });
+                        return Json(new { help = helpText, form = newForm, newList = newList });
+                    }
+                    else
+                    {
+                        return Json(new { help = "", form = "", newList = newList });
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -276,13 +300,16 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id of offer if any</param>
         /// <returns>a partial view</returns>
-        public virtual PartialViewResult AjaxEdit(int id, bool isShared)
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        [HandleModelStateException]
+        public virtual ActionResult AjaxEdit(int id, bool isShared)
         {
             var context = ModelFactory.GetUnitOfWork();
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
             var offer = oRepo.Get(id);
 
-            return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { Offer = offer });
+            var editForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { Offer = offer });
+            return Json(new { help = "", form = editForm }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -294,7 +321,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post), Authorize]
         //[ValidateAntiForgeryToken]
         [HandleModelStateException]
-        public virtual PartialViewResult AjaxEdit(int id, OfferFormViewModel offerFormViewModel)
+        public virtual ActionResult AjaxEdit(int id, OfferFormViewModel offerFormViewModel)
         {
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
 
@@ -302,7 +329,6 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    //var offers = new OfferFormListModel();
                     var context = ModelFactory.GetUnitOfWork();
                     var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
                     var offer = oRepo.Get(id);
@@ -311,10 +337,16 @@ namespace Worki.Web.Controllers
                         var locId = offer.LocalisationId;
                         UpdateModel(offer, "Offer");
                         context.Commit();
+
+                        _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
+
                         var newContext = ModelFactory.GetUnitOfWork();
                         var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
                         var loc = lRepo.Get(locId);
-                        //offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = offerFormViewModel.IsSharedOffice };
+                        var offerCountModel = new OfferCounterModel(loc);
+                        var newList = this.RenderRazorViewToString(MVC.Offer.Views._OfferList, offerCountModel);
+                        
+                        return Json(new { help = "", form = "", newList = newList });
                     }
                     catch (Exception ex)
                     {
@@ -322,9 +354,6 @@ namespace Worki.Web.Controllers
                         context.Complete();
                         throw ex;
                     }
-
-                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
-                    return PartialView(MVC.Offer.Views._OfferList/*, offers*/);
                 }
                 catch (Exception ex)
                 {
@@ -341,11 +370,11 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id of offer if any</param>
         /// <returns>a partial view</returns>
-        public virtual PartialViewResult AjaxDelete(int id)
+        [HandleModelStateException]
+        public virtual ActionResult AjaxDelete(int id)
         {
             try
             {
-                //var offers = new OfferFormListModel();
                 var context = ModelFactory.GetUnitOfWork();
                 var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
                 try
@@ -355,10 +384,14 @@ namespace Worki.Web.Controllers
                     var isShared = offer.Localisation.IsSharedOffice();
                     oRepo.Delete(id);
                     context.Commit();
+
                     var newContext = ModelFactory.GetUnitOfWork();
                     var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
                     var loc = lRepo.Get(locId);
-                    //offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = isShared };
+                    var offerCountModel = new OfferCounterModel(loc);
+                    var newList = this.RenderRazorViewToString(MVC.Offer.Views._OfferList, offerCountModel);
+
+                    return Json(new { help = "", form = "", newList = newList });
                 }
                 catch (Exception ex)
                 {
@@ -366,8 +399,6 @@ namespace Worki.Web.Controllers
                     context.Complete();
                     throw ex;
                 }
-
-                return PartialView(MVC.Offer.Views._OfferList/*, offers*/);
             }
             catch (Exception ex)
             {
