@@ -227,6 +227,8 @@ namespace Worki.Data.Models
 
         public float Boundary { get; set; }
 
+        public string OfferTypes { get; set; }
+
         #endregion
     }
 

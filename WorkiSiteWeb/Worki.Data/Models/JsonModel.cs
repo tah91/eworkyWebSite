@@ -8,6 +8,17 @@ namespace Worki.Data.Models
 		T GetJson();
 	}
 
+    public class LocalisationsContainer
+    {
+        public LocalisationsContainer()
+        {
+            list = new List<LocalisationJson>();
+        }
+
+        public List<LocalisationJson> list;
+        public int maxCount;
+    }
+
 	public class LocalisationJson
 	{
         public LocalisationJson()

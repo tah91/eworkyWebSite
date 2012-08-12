@@ -167,28 +167,47 @@ namespace Worki.Data.Models
                 locProjectionList = locProjectionList.Where(p => nameIds.Contains(p.ID)).ToList();
             }
 
-            //match offer type
-            var offerType = (LocalisationOffer)criteria.OfferData.Type;
-            switch (offerType)
+            //if list of offer types (in api)
+            if (!string.IsNullOrEmpty(criteria.OfferTypes))
             {
-                case LocalisationOffer.FreeArea:
-                    {
-                        locProjectionList = locProjectionList.Where(p => Localisation.FreeLocalisationTypes.Contains(p.LocalisationType)).ToList();
+                var offerTypeArray = criteria.OfferTypes.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',').Select(ot =>
+                {
+                    int value;
+                    bool success = int.TryParse(ot, out value);
+                    return new { value, success };
+                })
+                  .Where(pair => pair.success)
+                  .Select(pair => pair.value).ToList();
+
+                var needFreeArea = offerTypeArray.Contains((int)LocalisationOffer.FreeArea);
+                if (offerTypeArray.Count > 0)
+                    locProjectionList = locProjectionList.Where(p => (p.OfferTypes.Intersect(offerTypeArray).Count() > 0) || (needFreeArea && Localisation.FreeLocalisationTypes.Contains(p.LocalisationType))).ToList();
+            }
+            else
+            {
+                //match offer type
+                var offerType = (LocalisationOffer)criteria.OfferData.Type;
+                switch (offerType)
+                {
+                    case LocalisationOffer.FreeArea:
+                        {
+                            locProjectionList = locProjectionList.Where(p => Localisation.FreeLocalisationTypes.Contains(p.LocalisationType)).ToList();
+                            break;
+                        }
+                    case LocalisationOffer.BuisnessLounge:
+                    case LocalisationOffer.Desktop:
+                    case LocalisationOffer.Workstation:
+                    case LocalisationOffer.MeetingRoom:
+                    case LocalisationOffer.SeminarRoom:
+                    case LocalisationOffer.VisioRoom:
+                        {
+                            locProjectionList = locProjectionList.Where(p => p.OfferTypes.Contains((int)offerType)).ToList();
+                            break;
+                        }
+                    case LocalisationOffer.AllOffers:
+                    default:
                         break;
-                    }
-                case LocalisationOffer.BuisnessLounge:
-                case LocalisationOffer.Desktop:
-                case LocalisationOffer.Workstation:
-                case LocalisationOffer.MeetingRoom:
-                case LocalisationOffer.SeminarRoom:
-                case LocalisationOffer.VisioRoom:
-                    {
-                        locProjectionList = locProjectionList.Where(p => p.OfferTypes.Contains((int)offerType)).ToList();
-                        break;
-                    }
-                case LocalisationOffer.AllOffers:
-                default:
-                    break;
+                }
             }
 
             //match localisation features

@@ -266,16 +266,14 @@ namespace Worki.Web.Areas.Api.Controllers
             return new ObjectResult<LocalisationJson>(json);
         }
 
-        static char[] _arrayTrim = { '[', ']' };
-
-        void FillCriteria(ref SearchCriteria criteria, string types, string features)
+        void FillCriteria(ref SearchCriteria criteria, string types, string features, string offerTypes)
         {
             //types
             if (!string.IsNullOrEmpty(types))
             {
                 try
                 {
-                    string[] typesArray = types.Trim(_arrayTrim).Split(',');
+                    string[] typesArray = types.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
                     foreach (var item in typesArray)
                     {
                         var intType = (LocalisationType)Int32.Parse(item);
@@ -335,7 +333,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 try
                 {
                     //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
-                    string[] featuresArray = features.Trim(_arrayTrim).Split(',');
+                    string[] featuresArray = features.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
                     foreach (var item in featuresArray)
                     {
                         var intType = Int32.Parse(item);
@@ -347,6 +345,9 @@ namespace Worki.Web.Areas.Api.Controllers
                     throw new Exception("The \"features\" parameter is not correctly filled");
                 }
             }
+
+            //offer types
+            criteria.OfferTypes = offerTypes;
                 
             criteria.OfferData.Type = -1;
         }
@@ -369,7 +370,7 @@ namespace Worki.Web.Areas.Api.Controllers
                                             int orderBy = 1,
                                             string types = null,
                                             string features = null,
-                                            int maxCount = 30)
+                                            int page = 1)
         {
             //validate
             if (string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0) && string.IsNullOrEmpty(name))
@@ -384,7 +385,7 @@ namespace Worki.Web.Areas.Api.Controllers
 
             try
             {
-                FillCriteria(ref  criteria, types, features);
+                FillCriteria(ref  criteria, types, features, offerType);
             }
             catch (Exception ex)
             {
@@ -408,33 +409,19 @@ namespace Worki.Web.Areas.Api.Controllers
             //search for matching localisations
             var results = _SearchService.FillSearchResults(criteria);
 
-            //get the wanted offer types
-
             //take the json
-            //TODO fix it for free place offer = -1
             var list = results.List;
-            if (!string.IsNullOrEmpty(offerType))
+
+            var neededLocs = (from item in list.Skip((page - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.ApiConstants.TakeCount) select item.GetJson(this, criteria));
+            var neededLocList = neededLocs.ToList();
+
+            var toRet = new LocalisationsContainer
             {
-                var offerTypeArray = offerType.Trim(_arrayTrim).Split(',').Select(ot =>
-                {
-                    int value;
-                    bool success = int.TryParse(ot, out value);
-                    return new { value, success };
-                })
-                  .Where(pair => pair.success)
-                  .Select(pair => pair.value).ToList();
+                list = neededLocList,
+                maxCount = list.Count
+            };
 
-                if (offerTypeArray.Count > 0)
-                    list = list.Where(p => p.GetOfferTypes().Any(x => offerTypeArray.Contains((int)x))).ToList();
-            }
-
-            List<LocalisationJson> neededLocs;
-            if (string.IsNullOrEmpty(place) && latitude == 0 && longitude == 0) // don't compute the distance
-                neededLocs = (from item in list.Take(maxCount) select item.GetJson(this)).ToList();
-            else // compute the distance
-                neededLocs = (from item in list.Take(maxCount) select item.GetJson(this, criteria)).ToList();
-
-            return new ObjectResult<List<LocalisationJson>>(neededLocs);
+            return new ObjectResult<LocalisationsContainer>(toRet);
         }
     }
 }

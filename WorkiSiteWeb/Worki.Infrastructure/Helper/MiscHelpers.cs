@@ -169,6 +169,12 @@ namespace Worki.Infrastructure.Helpers
 			public const int MaxBlogItem = 4;
 		}
 
+        public static class ApiConstants
+        {
+            public static char[] ArrayTrim = { '[', ']' };
+            public const int TakeCount = 20;
+        }
+
 		public static class AdminConstants
 		{
 			public const string AdminRole = "AdminRole";
