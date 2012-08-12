@@ -167,8 +167,8 @@
   </data>
   <data name="DescriptionOffer" xml:space="preserve">
     <value>Indica una descripción de la oferta</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Description" xml:space="preserve">
     <value>Descripción de la oferta</value>
-  </data>
+  <comment>DE</comment></data>
 </root>

@@ -340,7 +340,7 @@
   </data>
   <data name="SeeOffers" xml:space="preserve">
     <value>Ver las ofertas</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Host" xml:space="preserve">
     <value>Anfitrión</value>
   </data>

@@ -391,4 +391,16 @@
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>There is</value>
+  </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Presentation of eWorky space management tools characteristics</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>Presentation of eWorky team!</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>in</value>
+  </data>
 </root>

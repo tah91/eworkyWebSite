@@ -340,4 +340,10 @@ Your message will be directly  forwarded to the space owner.</value>
   <data name="FacebookUpdated" xml:space="preserve">
     <value>Your Facebook Timeline was updated</value>
   </data>
+  <data name="SeeOffers" xml:space="preserve">
+    <value>See offers</value>
+  <comment>DE</comment></data>
+  <data name="Host" xml:space="preserve">
+    <value>Host</value>
+  </data>
 </root>

@@ -289,11 +289,11 @@
   </data>
   <data name="OfferPriceType" xml:space="preserve">
     <value>Vous devez choisir une période pour le champ {0}</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="SuperiorTo" xml:space="preserve">
     <value>le champ "{0}" doit être supéreur à {1}</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="ProhibitedString" xml:space="preserve">
     <value>Les addresses Email ou numéro de téléphone sont interdites dans le champ "{0}"</value>
-  </data>
+  <comment>DE</comment></data>
 </root>
