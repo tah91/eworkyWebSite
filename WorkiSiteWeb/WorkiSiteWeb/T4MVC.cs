@@ -1429,6 +1429,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult EditOffersEnd() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditOffersEnd);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult PostComment() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.PostComment);
         }
@@ -1518,6 +1523,7 @@ namespace Worki.Web.Controllers {
             public readonly string CreateSharedOffice = "add-shared-office";
             public readonly string Edit = "edit";
             public readonly string EditOffers = "EditOffers";
+            public readonly string EditOffersEnd = "EditOffersEnd";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
             public readonly string SetOwnership = "set-ownership";
@@ -1660,16 +1666,25 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditOffers(int id) {
+        public override System.Web.Mvc.ActionResult EditOffers(int id, Worki.Data.Models.EditionType editionType) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditOffers);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("editionType", editionType);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditOffers(int id, Worki.Data.Models.OfferCounterModel formData) {
+        public override System.Web.Mvc.ActionResult EditOffers(int id, bool isEnd, Worki.Data.Models.OfferCounterModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditOffers);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("isEnd", isEnd);
             callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditOffersEnd(int id, Worki.Data.Models.EditionType editionType) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditOffersEnd);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("editionType", editionType);
             return callInfo;
         }
 

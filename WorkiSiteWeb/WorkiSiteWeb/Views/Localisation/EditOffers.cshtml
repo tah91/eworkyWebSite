@@ -15,49 +15,50 @@
 <div class="detailContent">
 	<div class="blockContainer">
     	<div class="contentBlock">
-		    <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
-            <div class="offerCounting">
+		    <h3 class="blue">Nombre d'offre</h3>
+            <div id="offerCounting">
                 @using (Html.BeginForm())
                 {
-                <table>
+                    @Html.HiddenFor(m => m.EditionType)
+                <table class="marginl10">
                     <tr>
-                        <td>
-                            @Html.LabelFor(m => m.BuisnessLoungeCount)
-                        </td>
                         <td>
                             @Html.TextBoxFor(m => m.BuisnessLoungeCount)
                         </td>
                         <td>
-                            @Html.LabelFor(m => m.WorkstationCount)
+                            @Html.LabelFor(m => m.BuisnessLoungeCount)
                         </td>
                         <td>
                             @Html.TextBoxFor(m => m.WorkstationCount)
                         </td>
                         <td>
-                            @Html.LabelFor(m => m.DesktopCount)
+                            @Html.LabelFor(m => m.WorkstationCount)
                         </td>
                         <td>
                             @Html.TextBoxFor(m => m.DesktopCount)
                         </td>
+                        <td>
+                            @Html.LabelFor(m => m.DesktopCount)
+                        </td>
                     </tr>
                     <tr>
-                        <td>
-                            @Html.LabelFor(m => m.MeetingRoomCount)
-                        </td>
                         <td>
                             @Html.TextBoxFor(m => m.MeetingRoomCount)
                         </td>
                         <td>
-                            @Html.LabelFor(m => m.SeminarRoomCount)
-                        </td>
-                        <td> 
-                            @Html.TextBoxFor(m => m.SeminarRoomCount)
+                            @Html.LabelFor(m => m.MeetingRoomCount)
                         </td>
                         <td>
-                            @Html.LabelFor(m => m.VisioRoomCount)
+                            @Html.TextBoxFor(m => m.SeminarRoomCount)
                         </td>
                         <td> 
+                            @Html.LabelFor(m => m.SeminarRoomCount)
+                        </td>
+                        <td>
                             @Html.TextBoxFor(m => m.VisioRoomCount)
+                        </td>
+                        <td> 
+                            @Html.LabelFor(m => m.VisioRoomCount)
                         </td>
                     </tr>
                 </table>
@@ -69,17 +70,26 @@
             </div>
         </div>
 
-        <div class="offersEdition contentBlock"> 
+        <div class="offersEdition contentBlock">
+            <h3 class="blue">Détail des offres</h3> 
             <div class="offersGroupedList">
                 @Html.Partial(MVC.Offer.Views._OfferList)
             </div>
 
-            <div class="helpText">
+            <div class="helpText bold marginb10">
             </div>
 
             <div class="emptyOfferForm">
             </div>
             
+            <div class="float-right">
+                <div class="buttonStd buttonBlue linkImg">
+                    <a href=# id="finishAll">Terminer</a>
+                </div>
+	        </div>
+            <div class="clear">
+            </div>
+
             <script type="text/javascript">
                 var setNewBounds = function (buisnessLounge,workstation,desktop,meetingRoom,seminarRoom,visioRoom) {
                     $("#BuisnessLoungeCount").spinner({ min: buisnessLounge, max: 100, increment: 1 });
@@ -89,16 +99,46 @@
                     $("#SeminarRoomCount").spinner({ min: seminarRoom, max: 100, increment: 1 });
                     $("#VisioRoomCount").spinner({ min: visioRoom, max: 100, increment: 1 });
                 }
-                require(["@MiscHelpers.UrlConstants.jqueryui","@Url.VersionedContent(Links.Scripts.jquery_ui_spinner_js)"], function () {
-                    setNewBounds('@Model.BuisnessLoungeCount','@Model.WorkstationCount','@Model.DesktopCount','@Model.MeetingRoomCount','@Model.SeminarRoomCount','@Model.VisioRoomCount');
+                require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
+                    require(["@Url.VersionedContent(Links.Scripts.jquery_ui_spinner_js)"], function () {
+                        setNewBounds('@Model.BuisnessLoungeCount','@Model.WorkstationCount','@Model.DesktopCount','@Model.MeetingRoomCount','@Model.SeminarRoomCount','@Model.VisioRoomCount');
+                    });
                 });
                 require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
-                    $(".offerCounting form").submit(function () {
-                        var action = '@Url.Action(MVC.Localisation.EditOffers(Model.Localisation.ID, null))';
+                    $("#finishAll").click(function () {
+                        var action = '@Url.Action(MVC.Localisation.EditOffers(Model.Localisation.ID, true, null))';
+
+                        var finishAllFunc = function (data) {
+                            $('#offerCountingErrorContainer').remove();
+                            InsertHtml(".helpText", data.help);
+                            InsertHtml(".emptyOfferForm", data.form);
+
+                            if (data.completed != undefined) {
+                                var toRedirect = '@Url.Action(MVC.Localisation.EditOffersEnd(Model.Localisation.ID, Model.EditionType))';
+                                window.location.href = toRedirect;
+                            }
+                        }
+
+                        var errorBuilder = new ErrorBuilder('offerCounting', 'offerCountingErrorContainer');
+
+                        AppAjax(
+			                action,
+			                "POST",
+			                $("#offerCounting form").serializeArray(),
+                            finishAllFunc,
+                            errorBuilder.ErrorFunc
+		                );
+
+                        return false;
+                    });
+
+                    $("#offerCounting form").submit(function () {
+                        var action = '@Url.Action(MVC.Localisation.EditOffers(Model.Localisation.ID, false, null))';
 
                         var successFunc = function (data) {
-                            $(".helpText").html(data.help);
-                            $(".emptyOfferForm").html(data.form);
+                            $('#offerCountingErrorContainer').remove();
+                            InsertHtml(".helpText", data.help);
+                            InsertHtml(".emptyOfferForm", data.form);
                         }
 
                         var errorBuilder = new ErrorBuilder('offerCounting', 'offerCountingErrorContainer');
@@ -115,8 +155,8 @@
 
                     $(".editOffer").live('click', function () {
                         var successFunc = function (data) {
-                            $(".helpText").html(data.help);
-                            $(".emptyOfferForm").html(data.form);
+                            InsertHtml(".helpText", data.help);
+                            InsertHtml(".emptyOfferForm", data.form);
                         }
 
                         var errorBuilder = new ErrorBuilder('offerCounting', 'offerCountingErrorContainer');
@@ -134,9 +174,10 @@
 
                     $(".deleteOffer").live('click', function () {
                         var successFunc = function (data) {
-                            $(".helpText").html(data.help);
-                            $(".emptyOfferForm").html(data.form);
-                            $(".offersGroupedList").html(data.newList);
+                            $('#offerCountingErrorContainer').remove();
+                            InsertHtml(".helpText", data.help);
+                            InsertHtml(".emptyOfferForm", data.form);
+                            InsertHtml(".offersGroupedList", data.newList);
                             setNewBounds(data.newBounds.buisnessLoungeCount, data.newBounds.workstationCount, data.newBounds.desktopCount, data.newBounds.meetingRoomCount, data.newBounds.seminarRoomCount, data.newBounds.visioRoomCount);
                             var toDec = '#' + data.toDecrement + 'Count';
                             var old = $(toDec).val();

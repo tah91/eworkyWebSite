@@ -232,6 +232,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre d&apos;offres identiques.
+        /// </summary>
+        public static string DuplicateCount {
+            get {
+                return ResourceManager.GetString("DuplicateCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EUR.
         /// </summary>
         public static string Euro {

@@ -46,6 +46,8 @@ namespace Worki.Data.Models
         public SelectList Currencies { get; set; }
         public SelectList ProductTypes { get; set; }
         public SelectList DuplicateCountSelector { get; set; }
+
+        [Display(Name = "DuplicateCount", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int DuplicateCount { get; set; }
 		public int LocId { get; set; }
         public bool IsSharedOffice { get; set; }
@@ -133,6 +135,7 @@ namespace Worki.Data.Models
 
         public Localisation Localisation { get; set; }
         public bool IsSharedOffice { get; set; }
+        public EditionType EditionType { get; set; }
         public IDictionary<LocalisationOffer, IList<Offer>> OfferLists { get; set; }
 
         public bool NeedAddThisOffer(LocalisationOffer offerType, out int currentNeed, out string helpText)
@@ -228,6 +231,16 @@ namespace Worki.Data.Models
     {
         public Offer Offer { get; set; }
         public bool IsSharedOffice { get; set; }
+
+        public string GetDisplay()
+        {
+            var toRet = Offer.Name;
+            var minPrice = Offer.OfferPrices.Min();
+            if(minPrice==null)
+                return toRet;
+
+            return toRet + " à partir de " + minPrice.GetPriceDisplay();
+        }
     }
 
 	public class OfferFeatureEqualityComparer : IEqualityComparer<OfferFeature>

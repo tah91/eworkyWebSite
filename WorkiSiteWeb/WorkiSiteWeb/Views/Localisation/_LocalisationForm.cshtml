@@ -292,16 +292,6 @@
                             </div>
                         </td>
                     </tr>
-                    @if (Model.Localisation.ID == 0)
-                    { 
-                    <tr>
-                        <td colspan=2>
-                            <div class="editor-label margint5 marginb5">
-                                @Html.CheckBoxFor(model => model.SendMailToOwner) @Html.LabelFor(model => model.SendMailToOwner)
-                            </div>
-                        </td>
-                    </tr>
-                    }
                     <tr>
                         <td>
                             <div class="editor-label">

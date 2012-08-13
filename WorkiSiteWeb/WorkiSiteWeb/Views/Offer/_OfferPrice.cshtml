@@ -11,7 +11,7 @@
     { 
         <td>
             @Html.HiddenFor(m => m.PriceType)
-            @Html.Label(Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(Model.PriceType))
+            @Html.LabelFor(m => m.Price, Worki.Resources.Models.Offer.Offer.PriceBy + " " + Offer.GetPaymentPeriodType(Model.PriceType))<span class="blue">*</span>
         </td>
         <td>
 		    @Html.TextBoxFor(m => m.Price)

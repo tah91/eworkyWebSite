@@ -1,7 +1,7 @@
 ﻿@model OfferFormListModelItem
 
 <tr>
-	<td>@Model.Offer.Name</td>
+	<td>@Model.GetDisplay()</td>
 	<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Offer.AjaxEdit(Model.Offer.Id, Model.IsSharedOffice), new { @class = "editOffer" })</td>
 	<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.AjaxDelete(Model.Offer.Id), new { @class = "deleteOffer" })</div></td>
 </tr>

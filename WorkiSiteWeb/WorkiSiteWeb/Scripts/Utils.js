@@ -18,6 +18,10 @@
 	});*/
 }
 
+InsertHtml = function (elementId, html) {
+    $(elementId).hide().html(html).fadeIn(1000);
+}
+
 AppAjax = function (url, type, datagetter, onsuccess, onerror) {
     /// <summary>jQuery extension that executes Ajax calls and handles errors in application specific ways.</summary>
     /// <param name="url" type="String">URL address where to issue this Ajax call.</param>

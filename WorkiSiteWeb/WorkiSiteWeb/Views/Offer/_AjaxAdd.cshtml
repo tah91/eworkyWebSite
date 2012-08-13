@@ -42,11 +42,11 @@
         @Html.HiddenFor(m => m.IsSharedOffice)
         @Html.HiddenFor(m => m.LocId)
         <div class="contentBlock">
-		    <table class="offerTable">
+		    <table class="offerFormTable">
 			    <tr>
 				    <td>
 					    <div class="editor-label">
-						    @Html.LabelFor(m => m.Offer.Type) <span class="blue">*</span>
+						    @Html.LabelFor(m => m.Offer.Type)<span class="blue">*</span>
 					    </div>
 				    </td>
 				    <td>
@@ -58,7 +58,7 @@
 			    <tr>
 				    <td>
 					    <div class="editor-label">
-						    @Html.LabelFor(m => m.Offer.Name) <span class="blue">*</span>
+						    @Html.LabelFor(m => m.Offer.Name)<span class="blue">*</span>
 					    </div>
 				    </td>
 				    <td>
@@ -80,7 +80,7 @@
                 <tr>
 				    <td>
 					    <div class="editor-label">
-						    @Html.LabelFor(m => m.DuplicateCount) <span class="blue">*</span>
+						    @Html.LabelFor(m => m.DuplicateCount)<span class="blue">*</span>
 					    </div>
 				    </td>
 				    <td>
@@ -124,7 +124,7 @@
 		        </tr>
                 <tr>
                     <td>
-				        @Html.LabelFor(m => m.Offer.AllInclusive) <span class="blue">*</span>
+				        @Html.LabelFor(m => m.Offer.AllInclusive)<span class="blue">*</span>
 			        </td>
 			        <td>
                         <label for="AllInclusive_true">@Worki.Resources.Models.Offer.Offer.AllInclusive_true</label>
@@ -140,7 +140,7 @@
         {
         <div class="contentBlock">
             <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Availability</h3>
-            <table class="offerTable">
+            <table class="offerFormTable">
                 <tr>
                     <td>
                         <div class="editor-label">
@@ -201,9 +201,9 @@
             var errorBuilder = new ErrorBuilder('offerFormContainer', 'offerErrorContainer');
 
             var successFunc = function (data) {
-                $(".helpText").html(data.help);
-                $(".emptyOfferForm").html(data.form);
-                $(".offersGroupedList").html(data.newList); 
+                InsertHtml(".helpText",data.help);
+                InsertHtml(".emptyOfferForm",data.form);
+                InsertHtml(".offersGroupedList",data.newList); 
                 setNewBounds(data.newBounds.buisnessLoungeCount, data.newBounds.workstationCount, data.newBounds.desktopCount, data.newBounds.meetingRoomCount, data.newBounds.seminarRoomCount, data.newBounds.visioRoomCount);
             }
 

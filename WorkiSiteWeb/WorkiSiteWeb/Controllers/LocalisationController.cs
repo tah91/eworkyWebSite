@@ -249,6 +249,40 @@ namespace Worki.Web.Controllers
 
 		const string LocalisationPrefix = "Localisation";
 
+
+        void CompleteEdition(EditionType editionType, Localisation localisation)
+        {
+            TempData[MiscHelpers.TempDataConstants.Info] = editionType == EditionType.Creation ?
+                                                                    Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate :
+                                                                    Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+
+            if (editionType == EditionType.Creation)
+            {
+                //send welcome mail
+                if (!string.IsNullOrEmpty(localisation.Mail))
+                {
+                    dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
+                    newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    newMemberMail.To = localisation.Mail;
+                    newMemberMail.ToName = "";
+
+                    newMemberMail.Subject = string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisation.GetFullName());
+                    newMemberMail.Content = string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
+                                                            localisation.GetFullName(),
+                                                            Localisation.GetOfferType(localisation.TypeValue),
+                                                            localisation.City,
+                                                            localisation.GetDetailFullUrl(Url),
+                                                            localisation.GetFullName(),
+                                                            localisation.GetFullName());
+
+                    newMemberMail.Send();
+                }
+
+                //need for pricing page
+                TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = localisation.ID;
+            }
+        }
+
         /// <summary>
         /// POST action to edit/create a localisation
         /// upload image files or remove files -> do it via js
@@ -279,19 +313,23 @@ namespace Worki.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     var localisationToAdd = localisationForm.Localisation;
-                    var idToRedirect = 0;
 
                     if (modifType == EditionType.Creation)
                     {
+                        //add owner
                         localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
                         //validate
                         _SearchService.ValidateLocalisation(localisationToAdd, ref error);
-                        //save
+                        //add to repo
                         localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
+                        //if paying, offline till no offer added
+                        if (!localisationForm.IsFreeLocalisation)
+                            localisationToAdd.MainLocalisation.IsOffline = true;
                         lRepo.Add(localisationToAdd);
                     }
                     else
                     {
+                        //validate
                         var editionAccess = member.HasEditionAccess(Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole));
                         if (!string.IsNullOrEmpty(editionAccess))
                         {
@@ -299,6 +337,7 @@ namespace Worki.Web.Controllers
                             throw new Exception(editionAccess);
                         }
                         var loc = lRepo.Get(id.Value);
+                        //update repo
                         TryUpdateModel(loc, LocalisationPrefix);
                         loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
                     }
@@ -306,43 +345,22 @@ namespace Worki.Web.Controllers
                     context.Commit();
                     _ObjectStore.Delete(PictureData.GetKey(ProviderType.Localisation));
 
-                    idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
-                    localisationForm.Localisation.ID = idToRedirect;
+                    //set localisation Id
+                    localisationForm.Localisation.ID = modifType == EditionType.Creation ? 
+                                                        localisationToAdd.ID :
+                                                        id.Value;
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
-                    if (modifType == EditionType.Creation)
-                    {
-                        //send welcome mail
-                        if (localisationForm.SendMailToOwner && !string.IsNullOrEmpty(localisationForm.Localisation.Mail))
-                        {
-                            dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
-                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            newMemberMail.To = localisationForm.Localisation.Mail;
-                            newMemberMail.ToName = "";
-
-                            newMemberMail.Subject = string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisationForm.Localisation.GetFullName());
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
-                                                                    localisationForm.Localisation.GetFullName(),
-                                                                    Localisation.GetOfferType(localisationForm.Localisation.TypeValue),
-                                                                    localisationForm.Localisation.City,
-                                                                    localisationForm.Localisation.GetDetailFullUrl(Url),
-                                                                    localisationForm.Localisation.GetFullName(),
-                                                                    localisationForm.Localisation.GetFullName());
-
-                            newMemberMail.Send();
-                        }
-                        TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = idToRedirect;
-                    }
-
+                    //case paying loc => go to offer edition
                     if (!localisationForm.IsFreeLocalisation)
                     {
-                        return RedirectToAction(MVC.Localisation.EditOffers(localisationForm.Localisation.ID));
+                        return RedirectToAction(MVC.Localisation.EditOffers(localisationForm.Localisation.ID, modifType));
                     }
-
-                    if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
-                        return RedirectToAction(MVC.Home.Pricing());
+                    //case paying free loc => go to the edited / created page
                     else
+                    {
+                        CompleteEdition(modifType, localisationForm.Localisation);
                         return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
+                    }
 
                 }
             }
@@ -362,7 +380,7 @@ namespace Worki.Web.Controllers
         /// <param name="id">loc id</param>
         /// <returns>view containing offers to edit/add</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize]
-        public virtual ActionResult EditOffers(int id)
+        public virtual ActionResult EditOffers(int id, EditionType editionType)
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -372,7 +390,7 @@ namespace Worki.Web.Controllers
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
-            return View(new OfferCounterModel(localisation));
+            return View(new OfferCounterModel(localisation) { EditionType = editionType });
         }
 
         /// <summary>
@@ -382,7 +400,7 @@ namespace Worki.Web.Controllers
         /// <returns>view containing offers to edit/add</returns>
         [AcceptVerbs(HttpVerbs.Post), Authorize]
         [HandleModelStateException]
-        public virtual ActionResult EditOffers(int id, OfferCounterModel formData)
+        public virtual ActionResult EditOffers(int id, bool isEnd, OfferCounterModel formData)
         {
             if (ModelState.IsValid)
             {
@@ -403,7 +421,14 @@ namespace Worki.Web.Controllers
                     }
                     else
                     {
-                        return Json(new { help = "", form = "" });
+                        if (isEnd)
+                        {
+                            if (formData.OfferLists.Count == 0)
+                            {
+                                throw new Exception( Worki.Resources.Views.Localisation.LocalisationString.MustAddOffer);
+                            }
+                        }
+                        return Json(new { help = "", form = "", completed = "true", editionType = formData.EditionType });
                     }
                 }
                 catch (Exception ex)
@@ -414,6 +439,41 @@ namespace Worki.Web.Controllers
                 }
             }
             throw new ModelStateException(ModelState);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        public virtual ActionResult EditOffersEnd(int id, EditionType editionType)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var localisation = lRepo.Get(id);
+            var member = mRepo.GetMember(User.Identity.Name);
+            CompleteEdition(editionType, localisation);
+
+            //if creation, put it online as everything is fine
+            if (editionType == EditionType.Creation)
+            {
+                try
+                {
+                    localisation.MainLocalisation.IsOffline = false;
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("EditOffersEnd", ex);
+                    context.Complete();
+                    return RedirectToAction(MVC.Home.Error());
+                }
+            }
+            if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisation.IsSharedOffice())
+            {
+                return RedirectToAction(MVC.Home.Pricing());
+            }
+            else
+            {
+                return Redirect(localisation.GetDetailFullUrl(Url));
+            }
         }
 
         const string returnUrlPostComment = "returnUrlPostComment";

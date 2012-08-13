@@ -135,9 +135,15 @@
     width: 400px;
 }
 
-.offersTable td
+.offersListTable th
+{
+    text-align:left;
+}
+
+.offersListTable td
 {
 	padding:2px 10px;
+	vertical-align: middle;
 }
 
 .adminBlock
@@ -145,12 +151,22 @@
     margin:5px;
 }
 
-.offerTable td
+.offerFormTable td
 {
     vertical-align: middle;
 }
 
-.offerTable td:first-child
+.offerFormTable input[type="text"], .offerFormTable textarea
+{
+	width: 100%;
+}
+
+.offerFormTable select
+{
+	width: 102%;
+}
+
+.offerFormTable td:first-child
 {
     width:130px;
     height: 30px;
@@ -171,12 +187,17 @@
 /* Edit Offer */
 /************************************************/
 
-.offerCounting input[type="text"]
+#offerCounting table td:nth-child(even)
+{
+    width: 220px;
+}
+
+#offerCounting input[type="text"]
 {
     width: 50px;
 }
 
-.offerCounting label
+#offerCounting label
 {
     margin:0 10px;
 }
