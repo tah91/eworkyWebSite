@@ -2,11 +2,11 @@ User-agent: *
 Disallow: /profil/RemoveFromFavorite
 Disallow: /profil/AjaxDashboard
 Disallow: /profil/AddToFavorite
-Disallow: /lieu-de-travail/PostComment/
-Disallow: /lieu-de-travail/resultat-liste/
-Disallow: /lieu-de-travail/resultat-liste?
-Disallow: /lieu-de-travail/resultat-detail/
-Disallow: /lieu-de-travail/resultat-detail?
+Disallow: /workspaces/PostComment/
+Disallow: /workspaces/search-results/
+Disallow: /workspaces/search-results?
+Disallow: /workspaces/search-detail/
+Disallow: /workspaces/search-detail?
 Disallow: /api/
 Disallow: /api?
 
