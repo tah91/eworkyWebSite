@@ -151,12 +151,6 @@ namespace Worki.Data.Models
 				   SouthWestLng != 0;
 		}
 
-		public bool WithinBounds(float lat, float lng)
-		{
-			return SouthWestLat < lat && lat < NorthEastLat
-				&& SouthWestLng < lng && lng < NorthEastLng;
-		}
-
         #endregion
 
         #region Properties

@@ -365,6 +365,10 @@ namespace Worki.Web.Areas.Api.Controllers
                                             string name,
                                             float latitude = 0,
                                             float longitude = 0,
+                                            float neLat = 0,
+                                            float neLng = 0,
+                                            float swLat = 0,
+                                            float swLng = 0,
                                             float boundary = 50,
                                             string offerType = null,
                                             int orderBy = 1,
@@ -402,6 +406,10 @@ namespace Worki.Web.Areas.Api.Controllers
             }
             criteria.LocalisationData.Latitude = latitude;
             criteria.LocalisationData.Longitude = longitude;
+            criteria.NorthEastLat = neLat;
+            criteria.NorthEastLng = neLng;
+            criteria.SouthWestLat = swLat;
+            criteria.SouthWestLng = swLng;
 
             if (!string.IsNullOrEmpty(name))
                 criteria.LocalisationData.Name = name;
@@ -415,10 +423,24 @@ namespace Worki.Web.Areas.Api.Controllers
             var neededLocs = (from item in list.Skip((page - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.ApiConstants.TakeCount) select item.GetJson(this, criteria));
             var neededLocList = neededLocs.ToList();
 
+            double centerLat, centerLng;
+            if (criteria.HasBounds())
+            {
+                centerLat = (criteria.NorthEastLat + criteria.SouthWestLat) / 2;
+                centerLng = (criteria.NorthEastLng + criteria.SouthWestLng) / 2;
+            }
+            else
+            {
+                centerLat = criteria.LocalisationData.Latitude;
+                centerLng = criteria.LocalisationData.Longitude;
+            }
+
             var toRet = new LocalisationsContainer
             {
                 list = neededLocList,
-                maxCount = list.Count
+                maxCount = list.Count,
+                latitude = centerLat,
+                longitude = centerLng
             };
 
             return new ObjectResult<LocalisationsContainer>(toRet);

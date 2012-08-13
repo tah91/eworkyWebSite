@@ -3442,18 +3442,22 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Search(string place, string name, float latitude, float longitude, float boundary, string offerType, int orderBy, string types, string features, int maxCount) {
+        public override System.Web.Mvc.ActionResult Search(string place, string name, float latitude, float longitude, float neLat, float neLng, float swLat, float swLng, float boundary, string offerType, int orderBy, string types, string features, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("place", place);
             callInfo.RouteValueDictionary.Add("name", name);
             callInfo.RouteValueDictionary.Add("latitude", latitude);
             callInfo.RouteValueDictionary.Add("longitude", longitude);
+            callInfo.RouteValueDictionary.Add("neLat", neLat);
+            callInfo.RouteValueDictionary.Add("neLng", neLng);
+            callInfo.RouteValueDictionary.Add("swLat", swLat);
+            callInfo.RouteValueDictionary.Add("swLng", swLng);
             callInfo.RouteValueDictionary.Add("boundary", boundary);
             callInfo.RouteValueDictionary.Add("offerType", offerType);
             callInfo.RouteValueDictionary.Add("orderBy", orderBy);
             callInfo.RouteValueDictionary.Add("types", types);
             callInfo.RouteValueDictionary.Add("features", features);
-            callInfo.RouteValueDictionary.Add("maxCount", maxCount);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 

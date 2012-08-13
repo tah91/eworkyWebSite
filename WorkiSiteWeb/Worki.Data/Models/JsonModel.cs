@@ -17,6 +17,8 @@ namespace Worki.Data.Models
 
         public List<LocalisationJson> list;
         public int maxCount;
+        public double latitude;
+        public double longitude;
     }
 
 	public class LocalisationJson

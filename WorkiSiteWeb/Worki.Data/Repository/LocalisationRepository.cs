@@ -74,7 +74,7 @@ namespace Worki.Data.Models
 
             //matching address
             //if NorthEast and SouthWest given
-            if (criteria.ResultView == eResultView.Map && criteria.HasBounds())
+            if (criteria.HasBounds())
             {
                 localisations = from loc
                                         in localisations
