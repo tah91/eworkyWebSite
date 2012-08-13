@@ -3,6 +3,7 @@ Disallow: /profil/RemoveFromFavorite
 Disallow: /profil/AjaxDashboard
 Disallow: /profil/AddToFavorite
 Disallow: /workspaces/PostComment/
+Disallow: /workspaces/offers/
 Disallow: /workspaces/search-results/
 Disallow: /workspaces/search-results?
 Disallow: /workspaces/search-detail/
