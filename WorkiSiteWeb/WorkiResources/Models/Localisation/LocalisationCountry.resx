@@ -785,7 +785,7 @@
   </data>
   <data name="TV" xml:space="preserve">
     <value>Tuvalu</value>
-  </data>
+  <comment>ES </comment></data>
   <data name="TW" xml:space="preserve">
     <value>Taiwan</value>
   </data>

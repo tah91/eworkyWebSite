@@ -849,4 +849,8 @@
   <data name="ZW" xml:space="preserve">
     <value>Zimbabue</value>
   </data>
+  <data name="TV" xml:space="preserve">
+    <comment>ES </comment>
+    <value>Tuvalu</value>
+  </data>
 </root>

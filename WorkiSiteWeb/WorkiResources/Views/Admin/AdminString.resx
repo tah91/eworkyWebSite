@@ -374,8 +374,8 @@
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Valider</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="AddOwner" xml:space="preserve">
     <value>Ajouter un gérant</value>
-  </data>
+  <comment>DE</comment></data>
 </root>

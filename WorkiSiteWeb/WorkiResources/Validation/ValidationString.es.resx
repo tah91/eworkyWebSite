@@ -287,11 +287,11 @@
   </data>
   <data name="OfferPriceType" xml:space="preserve">
     <value>Tienes que elegir un periodo para el campo {0}</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="SuperiorTo" xml:space="preserve">
     <value>el campo "{0}" tiene que ser superior a {1}</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="ProhibitedString" xml:space="preserve">
     <value>Les direcciones de email o los números de teléfono están prohibidos en el campo "{0}"</value>
-  </data>
+  <comment>DE</comment></data>
 </root>

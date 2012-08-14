@@ -307,4 +307,7 @@
   <data name="ActivatedBO" xml:space="preserve">
     <value>BO aktiviert</value>
   </data>
+  <data name="MemberWithApi" xml:space="preserve">
+    <value>Member with API</value>
+  </data>
 </root>

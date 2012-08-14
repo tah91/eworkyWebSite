@@ -165,4 +165,12 @@
   <data name="Availability" xml:space="preserve">
     <value>Verfügbarkeit</value>
   </data>
+  <data name="DescriptionOffer" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Please enter a description for the offer</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Description of the offer</value>
+  </data>
 </root>

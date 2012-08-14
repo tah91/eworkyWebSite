@@ -372,4 +372,12 @@
   <data name="QuotationEdited" xml:space="preserve">
     <value>Die Kostenanfrage wurde bearbeitet.</value>
   </data>
+  <data name="Validate" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Validate</value>
+  </data>
+  <data name="AddOwner" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Add a manager</value>
+  </data>
 </root>

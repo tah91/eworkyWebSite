@@ -257,4 +257,7 @@
   <data name="TuesdayMorningOpen" xml:space="preserve">
     <value>Ex : 9:00am</value>
   </data>
+  <data name="Sectors" xml:space="preserve">
+    <value>Sectors</value>
+  </data>
 </root>

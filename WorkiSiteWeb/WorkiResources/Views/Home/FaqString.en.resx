@@ -209,7 +209,7 @@
     <value>On eWorky, a visioconference room is a room offering all techical solutions to enable distance communication (audio or video) with one or more people.</value>
   </data>
   <data name="OnEWTelework1" xml:space="preserve">
-    <value>"Telework is way to work using ICT outside your employers' offices"</value>
+    <value>Telework is way to work using ICT outside your employers' offices.</value>
   <comment>Valable ?</comment></data>
   <data name="OnEWTelework2" xml:space="preserve">
     <value>This way to organise work differently concerns all types of workers.</value>

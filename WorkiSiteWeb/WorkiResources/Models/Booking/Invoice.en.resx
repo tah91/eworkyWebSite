@@ -189,4 +189,13 @@
   <data name="Paid" xml:space="preserve">
     <value>Paid</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="GenerateArchive" xml:space="preserve">
+    <value>Bill record</value>
+  </data>
+  <data name="PriceWT" xml:space="preserve">
+    <value>Duty free price</value>
+  </data>
 </root>

@@ -349,4 +349,12 @@
   <data name="BackofficeDemand" xml:space="preserve">
     <value>Manager space request</value>
   </data>
+  <data name="PayQuotation" xml:space="preserve">
+    <value>See the contact details</value>
+  </data>
+  <data name="PayQuotationDesc" xml:space="preserve">
+    <value>Being referenced on eWorky and using our space management tool is 100% free, we bill only when we introduce you to new clients. You pay only if we help you. By clicking on “See the contact details”, you will be redirected to a Paypal page to secure your payment. 
+The first consultation is free, enjoy it! 
+</value>
+  </data>
 </root>

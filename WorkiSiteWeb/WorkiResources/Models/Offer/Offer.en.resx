@@ -240,4 +240,44 @@
   <data name="Check" xml:space="preserve">
     <value>Cheque</value>
   </data>
+  <data name="AllInclusive" xml:space="preserve">
+    <comment>DE</comment>
+    <value>All tax included</value>
+  </data>
+  <data name="AllInclusive_false" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="AllInclusive_true" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Online booking</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="LeaseTerm" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Lease term</value>
+  </data>
+  <data name="PriceBy" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Price per</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Requests management</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Quote request</value>
+  </data>
+  <data name="SameOffersCount" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Number of similar offers</value>
+  </data>
+  <data name="Transfert" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
 </root>
