@@ -390,6 +390,7 @@
       <LastGenOutput>AccountModels.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Admin\Admin.nl.resx" />
     <EmbeddedResource Include="Models\Admin\Admin.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Admin.Designer.cs</LastGenOutput>
@@ -408,6 +409,7 @@
     <EmbeddedResource Include="Models\Contact\Contact.de.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.en.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.es.resx" />
+    <EmbeddedResource Include="Models\Contact\Contact.nl.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Contact.Designer.cs</LastGenOutput>
@@ -419,6 +421,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.de.resx" />
+    <EmbeddedResource Include="Models\Localisation\Localisation.nl.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationCountry.de.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -438,6 +441,7 @@
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.de.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.en.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.es.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.nl.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.de.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.en.resx">
       <SubType>Designer</SubType>
@@ -445,6 +449,7 @@
     <EmbeddedResource Include="Models\Offer\Offer.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Offer\Offer.nl.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Offer.Designer.cs</LastGenOutput>
@@ -491,6 +496,7 @@
     <EmbeddedResource Include="Validation\ValidationString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Validation\ValidationString.nl.resx" />
     <EmbeddedResource Include="Validation\ValidationString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationString.Designer.cs</LastGenOutput>
@@ -499,6 +505,7 @@
     <EmbeddedResource Include="Views\Account\AccountString.de.resx" />
     <EmbeddedResource Include="Views\Account\AccountString.en.resx" />
     <EmbeddedResource Include="Views\Account\AccountString.es.resx" />
+    <EmbeddedResource Include="Views\Account\AccountString.nl.resx" />
     <EmbeddedResource Include="Views\Account\AccountString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountString.Designer.cs</LastGenOutput>
@@ -529,6 +536,7 @@
     <EmbeddedResource Include="Views\Admin\AdminString.de.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.en.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.es.resx" />
+    <EmbeddedResource Include="Views\Admin\AdminString.nl.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminString.Designer.cs</LastGenOutput>
@@ -547,6 +555,7 @@
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.de.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.en.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.es.resx" />
+    <EmbeddedResource Include="Views\BackOffice\BackOfficeString.nl.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BackOfficeString.Designer.cs</LastGenOutput>
@@ -555,6 +564,7 @@
     <EmbeddedResource Include="Views\BackOffice\FullCalandar.de.resx" />
     <EmbeddedResource Include="Views\BackOffice\FullCalandar.en.resx" />
     <EmbeddedResource Include="Views\BackOffice\FullCalandar.es.resx" />
+    <EmbeddedResource Include="Views\BackOffice\FullCalandar.nl.resx" />
     <EmbeddedResource Include="Views\BackOffice\FullCalandar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FullCalandar.Designer.cs</LastGenOutput>
@@ -563,6 +573,7 @@
     <EmbeddedResource Include="Views\Booking\BookingString.de.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.es.resx" />
+    <EmbeddedResource Include="Views\Booking\BookingString.nl.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
@@ -571,9 +582,11 @@
     <EmbeddedResource Include="Views\Home\AProposString.de.resx" />
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\AProposString.es.resx" />
+    <EmbeddedResource Include="Views\Home\AProposString.nl.resx" />
     <EmbeddedResource Include="Views\Home\CguString.de.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.es.resx" />
+    <EmbeddedResource Include="Views\Home\CguString.nl.resx" />
     <EmbeddedResource Include="Views\Home\CguString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CguString.Designer.cs</LastGenOutput>
@@ -581,6 +594,8 @@
     <EmbeddedResource Include="Views\Home\ContactString.de.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.es.resx" />
+    <EmbeddedResource Include="Views\Home\ContactString.nl.resx" />
+    <EmbeddedResource Include="Views\Home\FaqString.nl.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -592,15 +607,20 @@
     <EmbeddedResource Include="Views\Home\HomeString.es.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.de.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.es.resx" />
+    <EmbeddedResource Include="Views\Home\HowItWorksString.nl.resx" />
     <EmbeddedResource Include="Views\Home\JobString.de.resx" />
     <EmbeddedResource Include="Views\Home\JobString.es.resx" />
+    <EmbeddedResource Include="Views\Home\JobString.nl.resx" />
     <EmbeddedResource Include="Views\Home\MentionLegaleString.de.resx" />
     <EmbeddedResource Include="Views\Home\MentionLegaleString.es.resx" />
+    <EmbeddedResource Include="Views\Home\MentionLegaleString.nl.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.de.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.es.resx" />
+    <EmbeddedResource Include="Views\Home\PresseString.nl.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.de.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.en.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.es.resx" />
+    <EmbeddedResource Include="Views\Home\ShareOffice.nl.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ShareOffice.Designer.cs</LastGenOutput>
@@ -624,6 +644,7 @@
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.de.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.es.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationFormString.nl.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationString.de.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -633,12 +654,15 @@
     <EmbeddedResource Include="Views\Localisation\LocalisationString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Localisation\LocalisationString.nl.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.de.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.en.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.es.resx" />
+    <EmbeddedResource Include="Views\Mobile\MobileString.nl.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.de.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.en.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.es.resx" />
+    <EmbeddedResource Include="Views\Offer\OfferString.nl.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OfferString.Designer.cs</LastGenOutput>
@@ -660,6 +684,7 @@
     <EmbeddedResource Include="Views\Rental\RentalString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rental\RentalString.nl.resx" />
     <EmbeddedResource Include="Views\Rental\RentalString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RentalString.Designer.cs</LastGenOutput>
@@ -720,6 +745,7 @@
     <EmbeddedResource Include="Views\Search\SearchString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\SearchString.nl.resx" />
     <EmbeddedResource Include="Views\Search\SearchString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SearchString.Designer.cs</LastGenOutput>
@@ -728,6 +754,7 @@
     <EmbeddedResource Include="Views\Shared\SharedString.de.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.en.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.es.resx" />
+    <EmbeddedResource Include="Views\Shared\SharedString.nl.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedString.Designer.cs</LastGenOutput>

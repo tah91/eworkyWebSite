@@ -46,6 +46,9 @@ namespace Worki.Infrastructure
                 case ".de":
                     culture =  Culture.de;
                     break;
+                case ".nl":
+                    culture = Culture.nl;
+                    break;
 				case ".com":
 					culture =  Culture.en;
                     break;
@@ -75,6 +78,9 @@ namespace Worki.Infrastructure
                     return ".es";
                 case Culture.de:
                     return ".de";
+                //TODO
+                //case Culture.nl:
+                    //return ".nl";
                 case Culture.en:
                 default:
                     return ".com";
@@ -246,7 +252,8 @@ namespace Worki.Infrastructure
         fr,
         en,
 		es,
-        de
+        de,
+        nl
     }
 
     public class SingleCultureMvcRouteHandler

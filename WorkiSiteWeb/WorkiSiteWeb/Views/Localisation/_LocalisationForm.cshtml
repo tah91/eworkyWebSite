@@ -11,6 +11,13 @@
 					</div>
 				}
 				break;
+            case Worki.Infrastructure.Culture.nl:
+				{
+					<div class="editor-field">
+						@Html.TextAreaFor(model => model.Localisation.DescriptionNl, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
+					</div>
+				}
+				break;
             case Worki.Infrastructure.Culture.de:
 				{
 					<div class="editor-field">

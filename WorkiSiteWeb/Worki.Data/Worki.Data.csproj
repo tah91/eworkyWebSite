@@ -108,6 +108,9 @@
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ApiClientModel.cs" />
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\Invoice.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
