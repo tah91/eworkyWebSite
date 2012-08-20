@@ -73,8 +73,19 @@ namespace Worki.Web.Helpers
                 json.images.Add(new ImageJson
                 {
                     url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName)),
-                    thumbnail_url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName))
+                    thumbnail_url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.FileName, true))
                 });
+            }
+
+            foreach (var item in localisation.Comments)
+            {
+                var toAdd = item.GetJson();
+                toAdd.author.avatar = new ImageJson
+                {
+                    url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar, false, Member.AvatarFolder)),
+                    thumbnail_url = GetImageUrl(item == null ? string.Empty : ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar, true, Member.AvatarFolder))
+                };
+                json.comments.Add(toAdd);
             }
 
 			return json;

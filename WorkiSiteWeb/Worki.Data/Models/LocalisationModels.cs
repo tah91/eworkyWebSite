@@ -41,10 +41,10 @@ namespace Worki.Data.Models
             };
 
             //get comments
-            foreach (var item in Comments)
-            {
-                json.comments.Add(item.GetJson());
-            }
+            //foreach (var item in Comments)
+            //{
+            //    json.comments.Add(item.GetJson());
+            //}
 
             //get fans
             foreach (var item in FavoriteLocalisations)

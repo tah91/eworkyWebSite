@@ -74,7 +74,7 @@ namespace Worki.Data.Models
         public int id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-		public string avatar { get; set; }
+        public ImageJson avatar { get; set; }
         public string companyName { get; set; }
         public string city { get; set; }
         public string profile { get; set; }

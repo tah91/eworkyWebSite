@@ -377,8 +377,6 @@ namespace Worki.Data.Models
     [Bind(Exclude = "MemberId,Username")]
     public class Member_Validation
     {
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [DataType(DataType.EmailAddress)]
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
