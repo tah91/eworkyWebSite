@@ -117,7 +117,164 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Biblio" xml:space="preserve">
+    <value>Bibliotheek / Museum</value>
+  </data>
+  <data name="BuisnessCenter" xml:space="preserve">
+    <value>Zakencentrum</value>
+  </data>
+  <data name="CoffeePrice" xml:space="preserve">
+    <value>Koffie prijzen</value>
+    <comment>LocalisationData_Validation</comment>
+  </data>
+  <data name="CoffeeResto" xml:space="preserve">
+    <value>Café / Restaurant</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>land</value>
+  </data>
+  <data name="CoworkingSpace" xml:space="preserve">
+    <value>Coworking ruimte</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Breedte</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Toelichting</value>
+    <comment>Comment_Validation</comment>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="PrivateArea" xml:space="preserve">
+    <value>Evenementenruimte</value>
+  </data>
+  <data name="PublicSpace" xml:space="preserve">
+    <value>Digitale publieke ruimte / Cybercafé</value>
+    <comment>?</comment>
+  </data>
+  <data name="SpotWifi" xml:space="preserve">
+    <value>WiFi Hotspot</value>
+    <comment>SearchCriteria</comment>
+  </data>
+  <data name="TypeValue" xml:space="preserve">
+    <value>Type</value>
+    <comment>Localisation_Validation</comment>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="WorkingHotel" xml:space="preserve">
+    <value>Oefenscholen</value>
+    <comment>?</comment>
+  </data>
+  <data name="WorkingPlace" xml:space="preserve">
+    <value>Aangeboden diensten</value>
+  </data>
+  <data name="Adress" xml:space="preserve">
+    <value>Straat en n°</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stad</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam van de locatie</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefoon</value>
+  </data>
+  <data name="PublicTransportation" xml:space="preserve">
+    <value>Openbaar vervoer</value>
+  </data>
+  <data name="RoadAccess" xml:space="preserve">
+    <value>Toegang per auto</value>
+  </data>
+  <data name="Station" xml:space="preserve">
+    <value>Treinstation(s)</value>
+  </data>
+  <data name="Telecentre" xml:space="preserve">
+    <value>Telecentrum</value>
+  </data>
+  <data name="TravelerSpace" xml:space="preserve">
+    <value>Reizigersruimte</value>
+    <comment>?</comment>
+  </data>
+  <data name="RatingDispo" xml:space="preserve">
+    <value>Beschikbaarheid / kalmte</value>
+  </data>
+  <data name="RatingPrice" xml:space="preserve">
+    <value>Verhouding prijs/kwaliteit</value>
+    <comment>?</comment>
+  </data>
+  <data name="RatingWelcome" xml:space="preserve">
+    <value>Onthaal</value>
+  </data>
+  <data name="RatingWifi" xml:space="preserve">
+    <value>kwaliteit van de wifi-verbinding</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Algemene beoordeling</value>
+  </data>
+  <data name="WorkCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="WorkCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="WorkPostalCode" xml:space="preserve">
+    <value>PostCode</value>
+  </data>
+  <data name="GiveYourAdvice" xml:space="preserve">
+    <value>Geef uw mening</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>naar</value>
+  </data>
+  <data name="Bookable" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Café</value>
+  </data>
+  <data name="UsefulHandicap" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+    <value>Beschrijving van de ruimte</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>{0}, {1} à {2}</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Shared office</value>
+  </data>
+  <data name="FreeAreas" xml:space="preserve">
+    <value>Gratis ruimte (WiFi hotspot, café, etc.)</value>
+  </data>
+  <data name="BookingCom" xml:space="preserve">
+    <value>Commissie (in %)</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Verstuur een verwelkomingsboodschap naar dit adres</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>

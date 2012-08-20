@@ -118,6 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+    <value>eWorky is opgericht door drie ingenieurs uit Supélec en centraal-Lyon. Ze waren allen al bijna-ondernemer (Greenworking), ze hadden regelmatig wifi nodig, en moesten regelmatig een vergaderzaal of vormingszaal huren. Zo hebben ze het idee gekregen om een platform op te zetten dat de zoektocht naar werklocaties vergemakkelijkt.
+</value>
   </data>
 </root>

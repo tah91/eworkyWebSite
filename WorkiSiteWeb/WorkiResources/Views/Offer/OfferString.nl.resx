@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddOffer" xml:space="preserve">
+    <value>Een aanbieding toevoegen</value>
+  </data>
+  <data name="OfferCharacteristics" xml:space="preserve">
+    <value>Eigenschappen van de aanbieding</value>
+  </data>
+  <data name="InfoUnknown" xml:space="preserve">
+    <value>De eigenschappen van deze aanbiedingwerden niet opgegeven.</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Beschikbaarheid</value>
+  </data>
+  <data name="Prices" xml:space="preserve">
+    <value>Tarieven</value>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+    <value>Beschrijving van de aanbieding</value>
   </data>
 </root>

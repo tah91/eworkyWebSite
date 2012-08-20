@@ -117,7 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+  <data name="BookIt" xml:space="preserve">
+    <value>Reserveren</value>
+  </data>
+  <data name="ConfirmIt" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="RefuseIt" xml:space="preserve">
+    <value>Weigeren</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Klant(en)</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Einde</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Bieden</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>Namiddag</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>Ochtend</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>naar</value>
+  </data>
+  <data name="HowItWorksQuotation2" xml:space="preserve">
+    <value></value>
+    <comment>? pas sur</comment>
+  </data>
+  <data name="HowItWorksParty2" xml:space="preserve">
+    <value>Durant cette soirée vous aurez la possibilité de faire un pitch de 45 secondes pour vous présenter et parler de vos projets.</value>
+  </data>
+  <data name="HowItWorksParty3" xml:space="preserve">
+    <value>La soirée est organisée par eworky.com et par les espaces de coworkings {0}. </value>
+  </data>
+  <data name="StatusAccepted" xml:space="preserve">
+    <value>Aanvaard</value>
+  </data>
+  <data name="StatusCancelled" xml:space="preserve">
+    <value>Geannuleerd</value>
+  </data>
+  <data name="StatusPaid" xml:space="preserve">
+    <value>Betaald</value>
   </data>
 </root>

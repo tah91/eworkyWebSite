@@ -117,7 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllInclusive" xml:space="preserve">
+    <value>Alle kosten inclusief</value>
+  </data>
+  <data name="AllInclusive_false" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="AllInclusive_true" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="AvailabilityDate" xml:space="preserve">
+    <value>Datum van beschikbaarheid</value>
+  </data>
+  <data name="AvailabilityPeriod" xml:space="preserve">
+    <value>Durée de disponibilité</value>
+  </data>
+  <data name="AvailabilityPeriodType" xml:space="preserve">
+    <value>Unité de temps</value>
+  </data>
+  <data name="AvailableAt" xml:space="preserve">
+    <value>Disponible le {0}</value>
+  </data>
+  <data name="AvailableAtFor" xml:space="preserve">
+    <value>Beschikbaar op {0} voor {1}</value>
+  </data>
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Beschikbaar voor {0} {1}</value>
+  </data>
+  <data name="AvailableFrom" xml:space="preserve">
+    <value>Beschikbaar vanaf {0}</value>
+  </data>
+  <data name="AvailableFromFor" xml:space="preserve">
+    <value>Beschikbaar vanaf {0} voor {1}</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Dag</value>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+    <value>Beschrijving</value>
+  </data>
+  <data name="Euro" xml:space="preserve">
+    <value>EUR</value>
+  </data>
+  <data name="HalfDay" xml:space="preserve">
+    <value>Halve-dag</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="LeaseTerm" xml:space="preserve">
+    <value>Duur van de verhuur</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam van de aanbieding</value>
+  </data>
+  <data name="Paypal" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="PluralDay" xml:space="preserve">
+    <value>Dag(en)</value>
+  </data>
+  <data name="PluralHalfDay" xml:space="preserve">
+    <value>Halve-dag(en)</value>
+  </data>
+  <data name="PluralHour" xml:space="preserve">
+    <value>Uur / uren</value>
+  </data>
+  <data name="PluralMonth" xml:space="preserve">
+    <value>Maand(en)</value>
+  </data>
+  <data name="PluralWeek" xml:space="preserve">
+    <value>Week / weken</value>
+  </data>
+  <data name="PluralYear" xml:space="preserve">
+    <value>Jaar / jaren</value>
+  </data>
+  <data name="PriceBy" xml:space="preserve">
+    <value>Prijs per</value>
+  </data>
+  <data name="PriceFrom" xml:space="preserve">
+    <value>Vanaf {0}</value>
+  </data>
+  <data name="PricePerPeriod" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="PriceType" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="SingleDay" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="SingleHalfDay" xml:space="preserve">
+    <value>Dagdeel</value>
+  </data>
+  <data name="SingleHour" xml:space="preserve">
+    <value>tijd</value>
+  </data>
+  <data name="SingleMonth" xml:space="preserve">
+    <value>maand</value>
+  </data>
+  <data name="SingleWeek" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="SingleYear" xml:space="preserve">
+    <value>jaar</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type van de aanbieding</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>jaar</value>
   </data>
 </root>

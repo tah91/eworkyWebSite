@@ -117,7 +117,96 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+  <data name="Access" xml:space="preserve">
+    <value>Bereikbaarheid</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Functies van de moderator</value>
+  </data>
+  <data name="AvoidPeriods" xml:space="preserve">
+    <value>Vermijd periodes</value>
+  </data>
+  <data name="Comfort" xml:space="preserve">
+    <value>Comfort</value>
+  </data>
+  <data name="Facilities" xml:space="preserve">
+    <value>Faciliteiten</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Vrijdag</value>
+  </data>
+  <data name="GlobalInformations" xml:space="preserve">
+    <value>Algemene informatie</value>
+    <comment>LocalisationForm</comment>
+  </data>
+  <data name="GoogleMapsLocalisation" xml:space="preserve">
+    <value>Locatie op Google Maps</value>
+  </data>
+  <data name="MandatoryFields" xml:space="preserve">
+    <value>Verplichte velden</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Maandag</value>
+  </data>
+  <data name="MondayAfterClose" xml:space="preserve">
+    <value>Ex : 18:00</value>
+  </data>
+  <data name="MondayAfterOpen" xml:space="preserve">
+    <value>Ex : 14:00</value>
+  </data>
+  <data name="MondayMorningClose" xml:space="preserve">
+    <value>Ex : 12:30</value>
+  </data>
+  <data name="MondayMorningOpen" xml:space="preserve">
+    <value>Ex : 9:00</value>
+  </data>
+  <data name="PlaceDetails" xml:space="preserve">
+    <value>Eigenschappen van de locatie</value>
+  </data>
+  <data name="ProfessionalServices" xml:space="preserve">
+    <value>Professionele diensten</value>
+  </data>
+  <data name="RefineLocation" xml:space="preserve">
+    <value>Om de locatie te verfijnen, verplaats de muis</value>
+  </data>
+  <data name="ResetPosition" xml:space="preserve">
+    <value>Stel de positie opnieuw in</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Zaterdag</value>
+  </data>
+  <data name="Sectors" xml:space="preserve">
+    <value>Bedrijfstak</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Diensten</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Zondag</value>
+  </data>
+  <data name="Tariffs" xml:space="preserve">
+    <value>Tarieven</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Donderdag</value>
+  </data>
+  <data name="TimeExample2" xml:space="preserve">
+    <value></value>
+    <comment>Problème des pm en Angleterre</comment>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Dinsdag</value>
+  </data>
+  <data name="TuesdayAfterClose" xml:space="preserve">
+    <value>Ex : 22:00</value>
+  </data>
+  <data name="TuesdayMorningOpen" xml:space="preserve">
+    <value>Ex : 9:00</value>
+  </data>
+  <data name="UserServices" xml:space="preserve">
+    <value>Diensten voor de gebruiker</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Woensdag</value>
   </data>
 </root>

@@ -117,7 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+  <data name="AgendaDayTimeFormat" xml:space="preserve">
+    <value>HH:mm{ - HH:mm}</value>
+  </data>
+  <data name="AgendaTimeFormat" xml:space="preserve">
+    <value>HH:mm</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="AprilShort" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Augustus</value>
+  </data>
+  <data name="AugustShort" xml:space="preserve">
+    <value>Aou</value>
+  </data>
+  <data name="AxisFormat" xml:space="preserve">
+    <value>HH:mm</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="DecemberShort" xml:space="preserve">
+    <value>Déc</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Februari</value>
+  </data>
+  <data name="FebruaryShort" xml:space="preserve">
+    <value>Féb</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Vrijdag</value>
+  </data>
+  <data name="FridayShort" xml:space="preserve">
+    <value>Vri</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Janiver</value>
+  </data>
+  <data name="JanuaryShort" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Juli</value>
+  </data>
+  <data name="JulyShort" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Juni</value>
+  </data>
+  <data name="JuneShort" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Maart</value>
+  </data>
+  <data name="MarchShort" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Mei</value>
+  </data>
+  <data name="MayShort" xml:space="preserve">
+    <value>Mei</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Maandag</value>
+  </data>
+  <data name="MondayShort" xml:space="preserve">
+    <value>Maa</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="NovemberShort" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Oktober</value>
+  </data>
+  <data name="OctoberShort" xml:space="preserve">
+    <value>Okt</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Zaterdag</value>
+  </data>
+  <data name="SaturdayShort" xml:space="preserve">
+    <value>Zat</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="SeptemberShort" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Zondag</value>
+  </data>
+  <data name="SundayShort" xml:space="preserve">
+    <value>Zon</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Donderdag</value>
+  </data>
+  <data name="ThursdayShort" xml:space="preserve">
+    <value>Don</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Vaandaag</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Dinsdag</value>
+  </data>
+  <data name="TuesdayShort" xml:space="preserve">
+    <value>Din</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Woensdag</value>
+  </data>
+  <data name="WednesdayShort" xml:space="preserve">
+    <value>Woe</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Week</value>
   </data>
 </root>

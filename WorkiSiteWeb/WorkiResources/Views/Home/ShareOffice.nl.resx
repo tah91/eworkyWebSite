@@ -117,7 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+  <data name="AddSpace" xml:space="preserve">
+    <value>Onmiddellijk mijn bureau's delen</value>
+  </data>
+  <data name="ForBoth1" xml:space="preserve">
+    <value>Kies voor een samenwerking en uitwisseling met uw gastheer en geniet zo van de gezamelijke inbreng en van de collectieve verrijking</value>
+  </data>
+  <data name="ForBoth2" xml:space="preserve">
+    <value>Ontdek  via het contact met andere structuren de mogelijkheden van nieuwe markten, deel middelen en vooruitzichten</value>
+  </data>
+  <data name="ForBoth3" xml:space="preserve">
+    <value>Ontwikkel een dynamische en creatieve omgeving voor uw twee structuren</value>
+  </data>
+  <data name="ForBothHead1" xml:space="preserve">
+    <value>Verzeker u van talrijke uitwisselingen!</value>
+  </data>
+  <data name="ForBothHead2" xml:space="preserve">
+    <value>Creëer uw netwerk!</value>
+  </data>
+  <data name="ForOwner" xml:space="preserve">
+    <value>Eigenaar</value>
+  </data>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Stel uw ruimte gratis en in enkele kliks beschikbaar op eWorky</value>
+  </data>
+  <data name="ForOwner2" xml:space="preserve">
+    <value>Verdien enkele duizenden euro's per jaar en per werkplek</value>
+  </data>
+  <data name="ForOwner3" xml:space="preserve">
+    <value>Wij regelen alles! Alles verloopt automatisch, van het zoeken naar gebruikers tot het innen van vergoedingen</value>
+  </data>
+  <data name="ForOwnerHead1" xml:space="preserve">
+    <value>Hebt u een kleine onderneming of bent u zelfstandige?</value>
+  </data>
+  <data name="ForOwnerHead2" xml:space="preserve">
+    <value>Wilt u er liever iets aan verdienen in plaats uw oude facturen er op te stapelen?</value>
+  </data>
+  <data name="ForTenant" xml:space="preserve">
+    <value>Huurder</value>
+  </data>
+  <data name="ForTenant1" xml:space="preserve">
+    <value>Vind een werkplek die tot 5 keer goedkoper is dan een traditioneel gehuurde bureau of een zakencentrum</value>
+  </data>
+  <data name="ForTenant2" xml:space="preserve">
+    <value>Profiteer van de flexibiliteit van het delen, met mogelijkheid tot huren per dag, per week, per maand... </value>
+  </data>
+  <data name="ForTenant3" xml:space="preserve">
+    <value>Reserveer uw ruimte en betaal in enkele kliks!</value>
+  </data>
+  <data name="ForTenantHead1" xml:space="preserve">
+    <value>Hebt u een kleine onderneming of bent u zelfstandige?</value>
+  </data>
+  <data name="ForTenantHead2" xml:space="preserve">
+    <value>Zoekt u een locatie om uw activiteit uit te oefenen?</value>
+  </data>
+  <data name="Legally1" xml:space="preserve">
+    <value>Het delen vindt doorgaans plaats onder de vorm van onderverhuur: een onderneming huurt het geheel aan bureaus en onderverhuurt die vervolgens aan andere ondernemingen. Een onderneming die een bureau in onderverhuur wil aanbieden, moet hiervoor een schriftelijke toelating van de eigenaar hebben, indien dit niet voorzien is in de huurovereenkomst.</value>
+  </data>
+  <data name="Legally2" xml:space="preserve">
+    <value>Maar bij eWorky stellen wij een veel eenvoudigere oplossing voor: het dienstverleningscontract. Dit is een akte waarmee een persoon zich ertoe verbindt om, tegen een vergoeding, bepaalde diensten voor een andere persoon te verlenen.</value>
+  </data>
+  <data name="Legally3" xml:space="preserve">
+    <value>In dit geval gaat het om het ter beschikking stellen van een lokaal, alsook het materiaal of andere diensten (schoonmaak etc...) die er aan zijn verbonden. En om u te helpen, stelt eWorky standaardcontracten ter beschikking en biedt u de mogelijkheid deze rechtstreeks te beheren via de site!</value>
+  </data>
+  <data name="Legally4" xml:space="preserve">
+    <value>Beide standaardcontracten kunnen bovendien vergezeld worden van een domiciliëring van de onderneming</value>
+  </data>
+  <data name="LegallyTitle" xml:space="preserve">
+    <value>Hoe verloopt dit alles juridisch?</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Vind en deel een bureau, vergaderzaal, conferentiezaal, een lokaal om samen te huren of onderverhuren of verhuur uw bureaus en zalen </value>
+  </data>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Deel een bureau / eWorky, alle aanbiedingen van gedeelde bureauruimtes / eWorky</value>
+  </data>
+  <data name="ShareOfficeMenu" xml:space="preserve">
+    <value>Een bureau delen</value>
+  </data>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Uw bureau delen, waarom en hoe?</value>
   </data>
 </root>

@@ -117,7 +117,112 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Een ruimte toevoegen</value>
+    <comment>Jm modil L.12</comment>
+  </data>
+  <data name="DeletePlace" xml:space="preserve">
+    <value>Plek verwijderen</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="EditPlace" xml:space="preserve">
+    <value>Plek aanpassen</value>
+  </data>
+  <data name="AddPicture" xml:space="preserve">
+    <value>Afbeeldingen toevoegen</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="BookIt" xml:space="preserve">
+    <value>Reserveren</value>
+  </data>
+  <data name="AddBy" xml:space="preserve">
+    <value>Toegevoegd door</value>
+  </data>
+  <data name="EworkersOpinion" xml:space="preserve">
+    <value>Beoordeling van eWorkers</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax : </value>
+  </data>
+  <data name="GeneralOpinion" xml:space="preserve">
+    <value>Algemene beoordeling</value>
+  </data>
+  <data name="LastEditBy" xml:space="preserve">
+    <value>Laatste aanpassing door</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Uurregeling</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel : </value>
+  </data>
+  <data name="TheDate" xml:space="preserve">
+    <value>op</value>
+  </data>
+  <data name="Tweet" xml:space="preserve">
+    <value>Tweet</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Faciliteiten</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="Suggestion" xml:space="preserve">
+    <value>Suggestie(s)</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Ten eerste</value>
+    <comment>?</comment>
+  </data>
+  <data name="NotMain" xml:space="preserve">
+    <value>Pas à la Une</value>
+    <comment>?</comment>
+  </data>
+  <data name="OwnerIdentity" xml:space="preserve">
+    <value>Identiteit van de uitbater</value>
+  </data>
+  <data name="ContactThisSpaceAction" xml:space="preserve">
+    <value>Contacteer deze ruimte</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Gemeenschap</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>Ik werk hier</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Aanbiedingen</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Sociale netwerken</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+    <value>Beschrijving</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Meer details</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>{0:0.##} km</value>
+  </data>
+  <data name="SeeOffers" xml:space="preserve">
+    <value>Ga naar de aanbiedingen</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Gastheer / gastvrouw</value>
   </data>
 </root>

@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>eworky ha sido creado por tres ingenieros franceses, casi todos emprendedores ya (Greenworking). A menudo han necesitado tener acceso al Wifi, alquilar una sala de reunión o incluso una sala de formación. Así es cómo se les ocurrio la idea de crear una plataforma de búsqueda de sitios de trabajo.</value>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Uitgebreid zoeken</value>
+  </data>
+  <data name="DistanceOrdered" xml:space="preserve">
+    <value>Afstand</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Faciliteiten</value>
+  </data>
+  <data name="KindOfLocation" xml:space="preserve">
+    <value>Type locatie</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Sorteren op :</value>
+  </data>
+  <data name="RateOrdered" xml:space="preserve">
+    <value>Tarief</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="SearchByPlaceName" xml:space="preserve">
+    <value>Volgens plaatsnaam</value>
+  </data>
+  <data name="SearchByPlaceType" xml:space="preserve">
+    <value>Volgens type ruimte</value>
+  </data>
+  <data name="SearchByServiceType" xml:space="preserve">
+    <value>Volgens behoefte</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Zoekresultaten eWorky</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="YourSearchResult" xml:space="preserve">
+    <value>Uw zoekresultaten: {0} locatie(s) gevonden</value>
   </data>
 </root>
