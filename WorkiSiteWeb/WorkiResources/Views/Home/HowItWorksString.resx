@@ -212,7 +212,7 @@
   </data>
   <data name="PayPalCGULink" xml:space="preserve">
     <value>https://cms.paypal.com/fr/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=fr_FR</value>
-  </data>
+  <comment>?</comment></data>
   <data name="PayTitle" xml:space="preserve">
     <value>Payer en ligne</value>
   </data>
@@ -316,5 +316,10 @@
   <data name="WorkTitle" xml:space="preserve">
     <value>Au travail</value>
     <comment>Jm Modif L13</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <comment>?</comment>
+    <value>
+    </value>
   </data>
 </root>

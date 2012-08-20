@@ -275,7 +275,7 @@ for your next booking do not hesitate, use directly eWorky for your convenience!
 If this space satisfied you, do not hesitate to rate and comment it on its eWorky form &lt;b&gt;{6}&lt;/b&gt;.</value>
   </data>
   <data name="CalandarBookingModification" xml:space="preserve">
-    <value>The manager of &lt;b&gt;{0}&lt;/b&gt; modified your booking of his eWorky schedule !
+    <value>The manager of &lt;b&gt;{0}&lt;/b&gt; modified your booking on his eWorky schedule !
 Your booking is now saved from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt;.
 
 You can consult your different booking on your user space &lt;b&gt;{3}&lt;/b&gt;.
@@ -302,7 +302,7 @@ We invite you to complete your profile  details by visiting this adress : &lt;b&
   </data>
   <data name="PartyRegister" xml:space="preserve">
     <value>Your subscription has been successfully saved !
-We are expecting you in &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) offices to meet up and have a few drinks with the Parisian coworkers. You will also be offered the opportunity to make a quick (45 sec) elevator pitch.
+We are expecting you in &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) offices to meet up and have a few drinks with the other coworkers. You will also be offered the opportunity to make a quick (45 sec) elevator pitch.
 Feel free to rate and comment your favourite spaces on eWorky.</value>
   </data>
   <data name="PartyRegisterSubject" xml:space="preserve">
@@ -317,5 +317,12 @@ Workplace name : &lt;b&gt;{4}&lt;/b&gt;
   </data>
   <data name="PartyRegisterTeamSubject" xml:space="preserve">
     <value>eWorky alert - Join networking</value>
+  </data>
+  <data name="CreateQuotationAndBOOwner" xml:space="preserve">
+    <value>You received a quote request for a {0} in the workplace {1} ({2}). 
+The first consultation of contact details is free, so see you soon in your manager space where you can improve your profile page, and get for free simple and very useful managing tools (bookings, secured payments, schedules, automated bills, CRM).
+
+See you in your {3} to have a look at your quote request, answer to it or refuse it as soon as possible. 
+</value>
   </data>
 </root>

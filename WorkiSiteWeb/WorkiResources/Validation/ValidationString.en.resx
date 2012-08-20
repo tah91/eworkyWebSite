@@ -285,4 +285,16 @@
   <data name="AccountLocked" xml:space="preserve">
     <value>Watch out, there was a large number of attempts to connect to your account. To make sure your account is safe, eWorky temporarily blocked it. To reactive it, please contact us.</value>
   </data>
+  <data name="OfferPriceType" xml:space="preserve">
+    <comment>DE</comment>
+    <value>You must choose a period for {0}</value>
+  </data>
+  <data name="SuperiorTo" xml:space="preserve">
+    <comment>DE</comment>
+    <value>"{0}" must be more than [1}</value>
+  </data>
+  <data name="ProhibitedString" xml:space="preserve">
+    <comment>DE</comment>
+    <value>The email addresses of phone numbers are forbidden in "{0}"</value>
+  </data>
 </root>

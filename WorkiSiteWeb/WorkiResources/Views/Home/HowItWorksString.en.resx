@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Description</value>
+  <comment>?</comment></data>
   <data name="BookTitle" xml:space="preserve">
     <value>Book</value>
   </data>
@@ -311,5 +311,13 @@
   </data>
   <data name="PricingHeaderTitle" xml:space="preserve">
     <value>Discover eWorky Office manager</value>
+  </data>
+  <data name="DiscoverBO" xml:space="preserve">
+    <value>Discover the space management tool</value>
+  </data>
+  <data name="PayPalCGULink" xml:space="preserve">
+    <comment>?</comment>
+    <value>
+    </value>
   </data>
 </root>

@@ -255,4 +255,29 @@
   <data name="Year" xml:space="preserve">
     <value>Jahr</value>
   </data>
+  <data name="AllInclusive" xml:space="preserve">
+    <comment>DE</comment>
+    <value>All tax included</value>
+  </data>
+  <data name="AllInclusive_false" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="AllInclusive_true" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="LeaseTerm" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Lease term</value>
+  </data>
+  <data name="PriceBy" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Price per</value>
+  </data>
+  <data name="SameOffersCount" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Number of similar offers</value>
+  </data>
 </root>

@@ -446,4 +446,22 @@
   <data name="SharedOffice" xml:space="preserve">
     <value>Shared office</value>
   </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <comment>DE</comment>
+    <value>This workplace could not be found</value>
+  </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <comment>DE</comment>
+    <value>There is already a manager for this workplace</value>
+  </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Receive directly quote requests:</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
 </root>

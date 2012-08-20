@@ -180,4 +180,10 @@
   <data name="ShareOfficeTitle" xml:space="preserve">
     <value>Desk sharing : why and how ?</value>
   </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Find a great shared office, a meeting room or a seminar room. </value>
+  </data>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Share a workspace | eWorky, all the shared offices offers</value>
+  </data>
 </root>

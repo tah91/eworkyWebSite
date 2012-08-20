@@ -340,4 +340,11 @@
   <data name="FacebookUpdated" xml:space="preserve">
     <value>Ihre Facebook Timeline wurde aktualisiert</value>
   </data>
+  <data name="Host" xml:space="preserve">
+    <value>Gastgeber</value>
+  </data>
+  <data name="SeeOffers" xml:space="preserve">
+    <comment>DE</comment>
+    <value>See offers</value>
+  </data>
 </root>

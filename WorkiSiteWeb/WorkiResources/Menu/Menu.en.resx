@@ -270,4 +270,13 @@
   <data name="PendingBO" xml:space="preserve">
     <value>Pending BO</value>
   <comment>Steeve</comment></data>
+  <data name="SharedOfficeFr" xml:space="preserve">
+    <value>Shared office</value>
+  </data>
+  <data name="ActivatedBO" xml:space="preserve">
+    <value>Activated BO</value>
+  </data>
+  <data name="MemberWithApi" xml:space="preserve">
+    <value>Member with API</value>
+  </data>
 </root>
