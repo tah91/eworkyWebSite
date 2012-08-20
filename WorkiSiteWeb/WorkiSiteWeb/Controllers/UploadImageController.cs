@@ -51,14 +51,6 @@ namespace Worki.Web.Controllers
             }
         }
 
-		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
-		{
-			Width = 600,
-			Height = 400,
-			TWidth = 180,
-			THeight = 120
-		};
-
         /// <summary>
         /// Action method to handle the json upload of files
         /// </summary>
@@ -76,7 +68,7 @@ namespace Worki.Web.Controllers
                     var postedFile = Request.Files[name];
                     if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                         continue;
-					var uploadedFileName = this.UploadFile(postedFile, _ImageSize, folder);
+                    var uploadedFileName = this.UploadFile(postedFile, MiscHelpers.ImageSize.Localisation, folder);
 					var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true, folder);
                     var deleteUrl = urlHelper.Action(MVC.UploadImage.DeleteImage(uploadedFileName));
 

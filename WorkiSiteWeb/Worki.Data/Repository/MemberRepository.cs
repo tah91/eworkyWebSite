@@ -13,6 +13,7 @@ namespace Worki.Data.Models
 	public interface IMemberRepository : IRepository<Member>
 	{
 		Member GetMember(string key);
+        Member GetMemberFromToken(string token);
 		string GetUserName(string email);
         IList<MemberAdminModel> GetLeaders();
 		IList<Member> GetMembers(string role);
@@ -44,7 +45,15 @@ namespace Worki.Data.Models
 			return member;
 		}
 
-
+        public Member GetMemberFromToken(string token)
+        {
+            Member member = _Context.Members.SingleOrDefault(m => string.Compare(m.MemberMainData.Token, token, StringComparison.InvariantCultureIgnoreCase) == 0);
+            if (member == null)
+            {
+                throw new Exception("No user for the given token");
+            }
+            return member;
+        }
 
 		#endregion
 

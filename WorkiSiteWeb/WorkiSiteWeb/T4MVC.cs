@@ -63,6 +63,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ApiClass {
         public readonly string Name = "Api";
+        public Worki.Web.Areas.Api.Controllers.AccountController Account = new Worki.Web.Areas.Api.Controllers.T4MVC_AccountController();
         public Worki.Web.Areas.Api.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationController();
         public T4MVC.Api.SharedController Shared = new T4MVC.Api.SharedController();
     }
@@ -3363,9 +3364,9 @@ namespace T4MVC.Admin {
 }
 
 namespace Worki.Web.Areas.Api.Controllers {
-    public partial class LocalisationController {
+    public partial class AccountController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected LocalisationController(Dummy d) { }
+        protected AccountController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -3380,14 +3381,91 @@ namespace Worki.Web.Areas.Api.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Connect() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
+        public System.Web.Mvc.ActionResult Login() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Login);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Comment() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+        public System.Web.Mvc.ActionResult EditInfo() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditInfo);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult EditPassword() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditPassword);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public AccountController Actions { get { return MVC.Api.Account; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Api";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Account";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Register = "Register";
+            public readonly string Login = "Login";
+            public readonly string EditInfo = "EditInfo";
+            public readonly string EditPassword = "EditPassword";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_AccountController: Worki.Web.Areas.Api.Controllers.AccountController {
+        public T4MVC_AccountController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.MemberApiModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Login(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditInfo(string id, Worki.Data.Models.MemberApiModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditInfo);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditPassword(string id, Worki.Data.Models.ChangePasswordModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditPassword);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Api.Controllers {
+    public partial class LocalisationController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected LocalisationController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Details() {
@@ -3397,6 +3475,21 @@ namespace Worki.Web.Areas.Api.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Search() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Search);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Comment() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AddToFavorites() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorites);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetFavorites() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetFavorites);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3411,11 +3504,11 @@ namespace Worki.Web.Areas.Api.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Register = "Register";
-            public readonly string Connect = "Connect";
-            public readonly string Comment = "Comment";
             public readonly string Details = "Details";
             public readonly string Search = "Search";
+            public readonly string Comment = "Comment";
+            public readonly string AddToFavorites = "AddToFavorites";
+            public readonly string GetFavorites = "GetFavorites";
         }
 
 
@@ -3431,48 +3524,36 @@ namespace Worki.Web.Areas.Api.Controllers {
     public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.MemberApiModel formData) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
-            callInfo.RouteValueDictionary.Add("formData", formData);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Connect(Worki.Data.Models.LogOnModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Connect);
-            callInfo.RouteValueDictionary.Add("model", model);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Comment(int id, Worki.Data.Models.LogOnModel model, Worki.Data.Models.Comment com) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("model", model);
-            callInfo.RouteValueDictionary.Add("com", com);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Search(string place, string name, float latitude, float longitude, float neLat, float neLng, float swLat, float swLng, float boundary, string offerType, int orderBy, string types, string features, int page) {
+        public override System.Web.Mvc.ActionResult Search(Worki.Data.Models.SearchCriteriaApi critariaApi) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
-            callInfo.RouteValueDictionary.Add("place", place);
-            callInfo.RouteValueDictionary.Add("name", name);
-            callInfo.RouteValueDictionary.Add("latitude", latitude);
-            callInfo.RouteValueDictionary.Add("longitude", longitude);
-            callInfo.RouteValueDictionary.Add("neLat", neLat);
-            callInfo.RouteValueDictionary.Add("neLng", neLng);
-            callInfo.RouteValueDictionary.Add("swLat", swLat);
-            callInfo.RouteValueDictionary.Add("swLng", swLng);
-            callInfo.RouteValueDictionary.Add("boundary", boundary);
-            callInfo.RouteValueDictionary.Add("offerType", offerType);
-            callInfo.RouteValueDictionary.Add("orderBy", orderBy);
-            callInfo.RouteValueDictionary.Add("types", types);
-            callInfo.RouteValueDictionary.Add("features", features);
-            callInfo.RouteValueDictionary.Add("page", page);
+            callInfo.RouteValueDictionary.Add("critariaApi", critariaApi);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Comment(int id, string token, Worki.Data.Models.Comment com) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Comment);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("token", token);
+            callInfo.RouteValueDictionary.Add("com", com);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddToFavorites(int id, string token) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorites);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("token", token);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetFavorites(string token) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetFavorites);
+            callInfo.RouteValueDictionary.Add("token", token);
             return callInfo;
         }
 

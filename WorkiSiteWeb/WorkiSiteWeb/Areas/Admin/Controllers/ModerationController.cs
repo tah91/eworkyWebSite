@@ -551,13 +551,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 			return Content(message);
 		}
 
-		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
-		{
-			Width = 250,
-			Height = 250,
-			TWidth = 80,
-			THeight = 80
-		};	
+			
 
 		public virtual ActionResult MigrateClients()
 		{
@@ -574,7 +568,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 				var count = 0;
 				foreach (var item in memberWithImage)
 				{
-					var uploadedFileName = this.UploadFile(item.MemberMainData.Avatar, _ImageSize, Member.AvatarFolder);
+					var uploadedFileName = this.UploadFile(item.MemberMainData.Avatar, MiscHelpers.ImageSize.MemberAvatar, Member.AvatarFolder);
 					item.MemberMainData.Avatar = uploadedFileName;
 					count++;
 				}

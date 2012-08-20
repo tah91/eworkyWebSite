@@ -245,6 +245,7 @@
     <Compile Include="Areas\Admin\Controllers\ModerationController.cs" />
     <Compile Include="Areas\Admin\Controllers\SheetController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Api\Rest\BasicActionResult.cs" />
     <Compile Include="Areas\Api\Rest\JsonpResult.cs" />

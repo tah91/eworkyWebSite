@@ -70,6 +70,22 @@ namespace Worki.Data.Models
             };
         }
 
+        public AuthJson GetAuthJson()
+        {
+            return new AuthJson
+            {
+                token = MemberMainData.Token,
+                email = Email,
+                firstName = MemberMainData.FirstName,
+                lastName = MemberMainData.LastName,
+                birthDate = MemberMainData.BirthDate,
+                phoneNumber = MemberMainData.PhoneNumber,
+                profile = MemberMainData.Profile,
+                civility = MemberMainData.Civility,
+                description = MemberMainData.Description,
+            };
+        }
+
         #endregion
 
         public static string GenerateKey()
@@ -741,6 +757,17 @@ namespace Worki.Data.Models
 
         }
 
+        public void UpdateMember(Member member)
+        {
+            member.MemberMainData.FirstName = FirstName;
+            member.MemberMainData.LastName = LastName;
+            member.MemberMainData.BirthDate = BirthDate;
+            member.MemberMainData.PhoneNumber = PhoneNumber;
+            member.MemberMainData.Profile = Profile;
+            member.MemberMainData.Civility = Civility;
+            member.MemberMainData.Description = Description;
+        }
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string FirstName { get; set; }
 
@@ -752,8 +779,14 @@ namespace Worki.Data.Models
 
         public string Password { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string PhoneNumber { get; set; }
+        public int Profile { get; set; }
+        public int Civility { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Description { get; set; }
         public long FacebookId { get; set; }
         public string FacebookLink { get; set; }
     }

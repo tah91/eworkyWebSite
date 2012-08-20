@@ -450,6 +450,30 @@ namespace Worki.Infrastructure.Helpers
 			public int Height { get; set; }
 			public int TWidth { get; set; }
 			public int THeight { get; set; }
+
+            public static ImageSize WelcomePeople = new ImageSize
+            {
+                Width = 460,
+                Height = 310,
+                TWidth = 46,
+                THeight = 31
+            };
+
+            public static ImageSize MemberAvatar = new ImageSize
+            {
+                Width = 250,
+                Height = 250,
+                TWidth = 80,
+                THeight = 80
+            };
+
+            public static ImageSize Localisation = new ImageSize
+            {
+                Width = 600,
+                Height = 400,
+                TWidth = 180,
+                THeight = 120
+            };
 		}
 		/// <summary>
 		/// Crop image to fit a rectangle

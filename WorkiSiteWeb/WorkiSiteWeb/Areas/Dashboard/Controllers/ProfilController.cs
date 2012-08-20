@@ -57,14 +57,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			return View(new ProfilFormViewModel { Member = item });
 		}
 
-		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
-		{
-			Width = 250,
-			Height = 250,
-			TWidth = 80,
-			THeight = 80
-		};	
-
 		/// <summary>
 		/// POST Action result to handle the edit of profil
 		/// </summary>
@@ -96,7 +88,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                             var postedFile = Request.Files[name];
                             if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                                 continue;
-                            var uploadedFileName = this.UploadFile(postedFile, _ImageSize, Member.AvatarFolder);
+                            var uploadedFileName = this.UploadFile(postedFile, MiscHelpers.ImageSize.MemberAvatar, Member.AvatarFolder);
                             switch (name)
                             {
                                 case "Avatar":

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
+using System;
 
 namespace Worki.Data.Models
 {
@@ -224,6 +225,131 @@ namespace Worki.Data.Models
         public string OfferTypes { get; set; }
 
         #endregion
+    }
+
+    public class SearchCriteriaApi
+    {
+        public SearchCriteriaApi()
+        {
+            latitude = 0;
+            longitude = 0;
+            neLat = 0;
+            neLng = 0;
+            swLat = 0;
+            swLng = 0;
+            boundary = 50;
+            offerTypes = null;
+            types = null;
+            features = null;
+            orderBy = 1;
+            page = 1;
+        }
+
+        public string place { get; set; }
+        public string name { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public float neLat { get; set; }
+        public float neLng { get; set; }
+        public float swLat { get; set; }
+        public float swLng { get; set; }
+        public float boundary { get; set; }
+        public string offerTypes { get; set; }
+        public string types { get; set; }
+        public string features { get; set; }
+        public int orderBy { get; set; }
+        public int page { get; set; }
+
+        public bool IsEmpty()
+        {
+            return string.IsNullOrEmpty(place) && (latitude == 0 || longitude == 0) && string.IsNullOrEmpty(name);
+        }
+
+        public void FillCriteria(ref SearchCriteria criteria)
+        {
+            //types
+            if (!string.IsNullOrEmpty(types))
+            {
+                try
+                {
+                    string[] typesArray = types.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
+                    foreach (var item in typesArray)
+                    {
+                        var intType = (LocalisationType)Int32.Parse(item);
+                        switch (intType)
+                        {
+                            case LocalisationType.SpotWifi:
+                                criteria.SpotWifi = true;
+                                break;
+                            case LocalisationType.CoffeeResto:
+                                criteria.CoffeeResto = true;
+                                break;
+                            case LocalisationType.Biblio:
+                                criteria.Biblio = true;
+                                break;
+                            case LocalisationType.PublicSpace:
+                                criteria.PublicSpace = true;
+                                break;
+                            case LocalisationType.TravelerSpace:
+                                criteria.TravelerSpace = true;
+                                break;
+                            case LocalisationType.Hotel:
+                                criteria.Hotel = true;
+                                break;
+                            case LocalisationType.Telecentre:
+                                criteria.Telecentre = true;
+                                break;
+                            case LocalisationType.BuisnessCenter:
+                                criteria.BuisnessCenter = true;
+                                break;
+                            case LocalisationType.CoworkingSpace:
+                                criteria.CoworkingSpace = true;
+                                break;
+                            case LocalisationType.WorkingHotel:
+                                criteria.WorkingHotel = true;
+                                break;
+                            case LocalisationType.PrivateArea:
+                                criteria.PrivateArea = true;
+                                break;
+                            case LocalisationType.SharedOffice:
+                                criteria.SharedOffice = true;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    criteria.Everything = false;
+                }
+                catch (Exception)
+                {
+                    throw new Exception("The \"types\" parameter is not correctly filled");
+                }
+            }
+
+            //features
+            if (!string.IsNullOrEmpty(features))
+            {
+                try
+                {
+                    //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
+                    string[] featuresArray = features.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
+                    foreach (var item in featuresArray)
+                    {
+                        var intType = Int32.Parse(item);
+                        criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = intType });
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception("The \"features\" parameter is not correctly filled");
+                }
+            }
+
+            //offer types
+            criteria.OfferTypes = offerTypes;
+
+            criteria.OfferData.Type = -1;
+        }
     }
 
     public enum eSearchType

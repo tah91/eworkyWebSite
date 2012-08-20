@@ -23,15 +23,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             _Logger = logger;
         }
 
-        #region Admin WelcomePeople
-
-		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
-		{
-			Width = 460,
-			Height = 310,
-			TWidth = 46,
-			THeight = 31
-		};		
+        #region Admin WelcomePeople	
 
         /// <summary>
         /// Prepares a web page containing a paginated list of the people on home page
@@ -133,7 +125,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                         var postedFile = Request.Files[name];
                         if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                             continue;
-						var uploadedFileName = this.UploadFile(postedFile, _ImageSize);
+						var uploadedFileName = this.UploadFile(postedFile, MiscHelpers.ImageSize.WelcomePeople);
                         formModel.WelcomePeople.LocalisationPicture = uploadedFileName;
                     }
                     //get localisation
@@ -199,7 +191,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                         var postedFile = Request.Files[name];
                         if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                             continue;
-						var uploadedFileName = this.UploadFile(postedFile, _ImageSize);
+                        var uploadedFileName = this.UploadFile(postedFile, MiscHelpers.ImageSize.WelcomePeople);
                         formModel.WelcomePeople.LocalisationPicture = uploadedFileName;
                     }
 

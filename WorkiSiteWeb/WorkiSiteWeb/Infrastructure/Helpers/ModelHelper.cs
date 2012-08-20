@@ -272,5 +272,20 @@ namespace Worki.Web.Helpers
 				};
 			return toRet;
 		}
+
+        public static string GetErrors(this ModelStateDictionary modelState)
+        {
+            var toRet = "";
+            var errors = modelState.Values.Where(x => x.Errors.Count >= 1);
+            foreach (var error in errors)
+            {
+                foreach (var item in error.Errors)
+                {
+                    toRet += item.ErrorMessage+" ;";
+                }
+            }
+
+            return toRet;
+        }
     }
 }
