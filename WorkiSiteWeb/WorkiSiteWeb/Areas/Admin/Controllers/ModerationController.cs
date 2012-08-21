@@ -641,6 +641,21 @@ namespace Worki.Web.Areas.Admin.Controllers
 						return false;
 				}
 			}
+
+            public bool ValueNotFound(string culture)
+            {
+                switch (culture)
+                {
+                    case "en":
+                        return string.IsNullOrEmpty(EnValue);
+                    case "es":
+                        return string.IsNullOrEmpty(EsValue);
+                    case "de":                             
+                        return string.IsNullOrEmpty(DeValue);
+                    default:
+                        return false;
+                }
+            }
 		}
 
 		void FillOutput(ref Dictionary<string, ResourceValue> output, Type t, string culture)
@@ -670,8 +685,12 @@ namespace Worki.Web.Areas.Admin.Controllers
 			{
 				if (item.Value.CompareValue(culture))
 				{
-					builder.AppendLine(item.Key + " value : " + item.Value.FrValue);
+					builder.AppendLine(item.Key + " textes identiques : " + item.Value.FrValue);
 				}
+                if (item.Value.ValueNotFound(culture))
+                {
+                    builder.AppendLine(item.Key + " texte non trouvé  : " + item.Value.FrValue);
+                }
 			}
 		}
 
