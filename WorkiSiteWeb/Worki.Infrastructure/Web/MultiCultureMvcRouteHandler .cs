@@ -19,24 +19,45 @@ namespace Worki.Infrastructure
 		/// Get culture type from url
 		/// </summary>
 		/// <param name="url">the url</param>
-		/// <returns>the culture type</returns>
-		public static Culture GetCulture(Uri url)
+        /// <param name="culture">culture to be set</param>
+		/// <returns>true if from query string</returns>
+		public static bool GetCulture(Uri url, out Culture culture)
 		{
+            var parameters = HttpUtility.ParseQueryString(url.Query);
+            var fromQuery = parameters[MiscHelpers.WidgetConstants.LocaleCulture];
+            if (!string.IsNullOrEmpty(fromQuery))
+            {
+                if (!Enum.TryParse<Culture>(fromQuery, out culture))
+                    culture = DefaultCulture;
+
+                return true;
+            }
+
 			var suffix = ExtractDomainSuffix(url);
 
 			switch(suffix)
 			{
 				case ".fr":
-					return Culture.fr;
+					culture =  Culture.fr;
+                    break;
 				case ".es":
-					return Culture.es;
+					culture =  Culture.es;
+                    break;
                 case ".de":
-                    return Culture.de;
+                    culture =  Culture.de;
+                    break;
+                case ".nl":
+                    culture = Culture.nl;
+                    break;
 				case ".com":
-					return Culture.en;
+					culture =  Culture.en;
+                    break;
 				default:
-					return DefaultCulture;
+					culture =  DefaultCulture;
+                    break;
 			}
+
+            return false;
 		}
 
         /// <summary>
@@ -57,6 +78,9 @@ namespace Worki.Infrastructure
                     return ".es";
                 case Culture.de:
                     return ".de";
+                //TODO
+                //case Culture.nl:
+                    //return ".nl";
                 case Culture.en:
                 default:
                     return ".com";
@@ -124,8 +148,12 @@ namespace Worki.Infrastructure
 
 		const string _CultureChanged = "CultureChanged";
 
-		bool ShouldSetCulture()
+		bool ShouldGuessCulture(bool fromQuery)
 		{
+            //in query, no need to force any other culture
+            if (fromQuery)
+                return false;
+
 			//already have switched
 			if (HttpContext.Current.Request.Cookies.AllKeys.Contains(_CultureChanged))
 				return false;
@@ -154,10 +182,11 @@ namespace Worki.Infrastructure
 
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-			var urlCulture = GetCulture(HttpContext.Current.Request.Url);
+            Culture urlCulture;
+            var fromQuery = GetCulture(HttpContext.Current.Request.Url, out urlCulture);
 
 			//check has cookie to tell no redirect
-			if (ShouldSetCulture())
+            if (ShouldGuessCulture(fromQuery))
 			{
 				var userCulture = GetCulture(HttpContext.Current.Request.UserLanguages);
 				if (userCulture != urlCulture)
@@ -223,7 +252,8 @@ namespace Worki.Infrastructure
         fr,
         en,
 		es,
-        de
+        de,
+        nl
     }
 
     public class SingleCultureMvcRouteHandler

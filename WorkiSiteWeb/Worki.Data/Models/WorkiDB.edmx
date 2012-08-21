@@ -6,6 +6,7 @@
 		<edmx:StorageModels>
 		<Schema Namespace="WorkiDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="WorkiDBModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="WorkiDBModel.Store.__RefactorLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiClient" EntityType="WorkiDBModel.Store.ApiClient" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiClientAuthorization" EntityType="WorkiDBModel.Store.ApiClientAuthorization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApiNonce" EntityType="WorkiDBModel.Store.ApiNonce" store:Type="Tables" Schema="dbo" />
@@ -216,6 +217,12 @@
             <End Role="WelcomePeople" EntitySet="WelcomePeople" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="ApiClient">
           <Key>
             <PropertyRef Name="Id" />
@@ -345,6 +352,7 @@
           <Property Name="DescriptionEn" Type="nvarchar(max)" />
           <Property Name="DescriptionEs" Type="nvarchar(max)" />
           <Property Name="DescriptionDe" Type="nvarchar(max)" />
+          <Property Name="DescriptionNl" Type="nvarchar(max)" />
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="OwnerID" Type="int" />
@@ -614,6 +622,7 @@
           <Property Name="DescriptionEn" Type="nvarchar(max)" />
           <Property Name="DescriptionEs" Type="nvarchar(max)" />
           <Property Name="DescriptionDe" Type="nvarchar(max)" />
+          <Property Name="DescriptionNl" Type="nvarchar(max)" />
           <Property Name="AllInclusive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OfferFeature">
@@ -1546,6 +1555,7 @@
             <End Role="Offer" EntitySet="Offers" />
             <End Role="WelcomePeople" EntitySet="WelcomePeoples" />
           </AssociationSet>
+          <EntitySet Name="C__RefactorLog" EntityType="WorkiDBModel.C__RefactorLog" />
           </EntityContainer>
 				<EntityType Name="FavoriteLocalisation">
 					<Key>
@@ -2221,6 +2231,7 @@
           <Property Type="String" Name="DescriptionDe" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="DirectlyReceiveQuotation" Nullable="false" />
           <NavigationProperty Name="Offers" Relationship="WorkiDBModel.FK_Offer_Localisation" FromRole="Localisation" ToRole="Offer" />
+          <Property Type="String" Name="DescriptionNl" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LocalisationData">
           <Key>
@@ -2587,6 +2598,7 @@
           <NavigationProperty Name="OfferFiles" Relationship="WorkiDBModel.FK_OfferFile_Offer" FromRole="Offer" ToRole="OfferFile" />
           <NavigationProperty Name="OfferPrices" Relationship="WorkiDBModel.FK_OfferPrice_Offer" FromRole="Offer" ToRole="OfferPrice" />
           <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Offer" FromRole="Offer" ToRole="WelcomePeople" />
+          <Property Type="String" Name="DescriptionNl" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Offer_Localisation">
           <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
@@ -2672,6 +2684,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Type="Guid" Name="OperationKey" Nullable="false" />
+        </EntityType>
         </Schema>
 		</edmx:ConceptualModels>
 		<!-- C-S mapping content -->
@@ -3042,6 +3060,7 @@
           <EntitySetMapping Name="Localisations">
             <EntityTypeMapping TypeName="WorkiDBModel.Localisation">
               <MappingFragment StoreEntitySet="Localisation">
+                <ScalarProperty Name="DescriptionNl" ColumnName="DescriptionNl" />
                 <ScalarProperty Name="DirectlyReceiveQuotation" ColumnName="DirectlyReceiveQuotation" />
                 <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
                 <ScalarProperty Name="QuotationPrice" ColumnName="QuotationPrice" />
@@ -3199,6 +3218,7 @@
           <EntitySetMapping Name="Offers">
             <EntityTypeMapping TypeName="WorkiDBModel.Offer">
               <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="DescriptionNl" ColumnName="DescriptionNl" />
                 <ScalarProperty Name="AllInclusive" ColumnName="AllInclusive" />
                 <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
                 <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
@@ -3220,6 +3240,13 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="WorkiDBModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3692,6 +3719,7 @@
           <ConnectorPoint PointX="7.458333333333333" PointY="35.46875" />
           <ConnectorPoint PointX="7.625" PointY="35.46875" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="WorkiDBModel.C__RefactorLog" Width="1.5" PointX="5.5" PointY="0.75" Height="1.2110807291666674" />
         </Diagram>
 		</Diagrams>
 	</Designer>

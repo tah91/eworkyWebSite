@@ -135,7 +135,8 @@ namespace Worki.Data.Models
 			{ (int)eSiteVersion.fr, "fr" }, 
 			{ (int)eSiteVersion.com, "com" }, 
 			{ (int)eSiteVersion.es, "es" } ,
-            { (int)eSiteVersion.de, "de" } 
+            { (int)eSiteVersion.de, "de" } ,
+            { (int)eSiteVersion.nl, "nl" } 
 		};
 
 		public static eSiteVersion GetVersion(Culture culture)
@@ -146,6 +147,8 @@ namespace Worki.Data.Models
 					return eSiteVersion.fr;
 				case Culture.es:
 					return eSiteVersion.es;
+                case Culture.nl:
+                    return eSiteVersion.nl;
                 case Culture.de:
                     return eSiteVersion.de;
 				case Culture.en:
@@ -166,7 +169,8 @@ namespace Worki.Data.Models
 		fr,
 		com,
 		es,
-        de
+        de,
+        nl
 	}
 
 	public class WelcomePeopleFormViewModel

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Biblio" xml:space="preserve">
+    <value>Bibliotheek / Museum</value>
+  </data>
+  <data name="BuisnessCenter" xml:space="preserve">
+    <value>Zakencentrum</value>
+  </data>
+  <data name="CoffeePrice" xml:space="preserve">
+    <value>Koffie prijzen</value>
+    <comment>LocalisationData_Validation</comment>
+  </data>
+  <data name="CoffeeResto" xml:space="preserve">
+    <value>Café / Restaurant</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>land</value>
+  </data>
+  <data name="CoworkingSpace" xml:space="preserve">
+    <value>Coworking ruimte</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Breedte</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Toelichting</value>
+    <comment>Comment_Validation</comment>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="PrivateArea" xml:space="preserve">
+    <value>Evenementenruimte</value>
+  </data>
+  <data name="PublicSpace" xml:space="preserve">
+    <value>Digitale publieke ruimte / Cybercafé</value>
+    <comment>?</comment>
+  </data>
+  <data name="SpotWifi" xml:space="preserve">
+    <value>WiFi Hotspot</value>
+    <comment>SearchCriteria</comment>
+  </data>
+  <data name="TypeValue" xml:space="preserve">
+    <value>Type</value>
+    <comment>Localisation_Validation</comment>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="WorkingHotel" xml:space="preserve">
+    <value>Oefenscholen</value>
+    <comment>?</comment>
+  </data>
+  <data name="WorkingPlace" xml:space="preserve">
+    <value>Aangeboden diensten</value>
+  </data>
+  <data name="Adress" xml:space="preserve">
+    <value>Straat en n°</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stad</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam van de locatie</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefoon</value>
+  </data>
+  <data name="PublicTransportation" xml:space="preserve">
+    <value>Openbaar vervoer</value>
+  </data>
+  <data name="RoadAccess" xml:space="preserve">
+    <value>Toegang per auto</value>
+  </data>
+  <data name="Station" xml:space="preserve">
+    <value>Treinstation(s)</value>
+  </data>
+  <data name="Telecentre" xml:space="preserve">
+    <value>Telecentrum</value>
+  </data>
+  <data name="TravelerSpace" xml:space="preserve">
+    <value>Reizigersruimte</value>
+    <comment>?</comment>
+  </data>
+  <data name="RatingDispo" xml:space="preserve">
+    <value>Beschikbaarheid / kalmte</value>
+  </data>
+  <data name="RatingPrice" xml:space="preserve">
+    <value>Verhouding prijs/kwaliteit</value>
+    <comment>?</comment>
+  </data>
+  <data name="RatingWelcome" xml:space="preserve">
+    <value>Onthaal</value>
+  </data>
+  <data name="RatingWifi" xml:space="preserve">
+    <value>kwaliteit van de wifi-verbinding</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Algemene beoordeling</value>
+  </data>
+  <data name="WorkCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="WorkCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="WorkPostalCode" xml:space="preserve">
+    <value>PostCode</value>
+  </data>
+  <data name="GiveYourAdvice" xml:space="preserve">
+    <value>Geef uw mening</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>naar</value>
+  </data>
+  <data name="Bookable" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Café</value>
+  </data>
+  <data name="UsefulHandicap" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschrijving van de ruimte</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>{0}, {1} à {2}</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Shared office</value>
+  </data>
+  <data name="FreeAreas" xml:space="preserve">
+    <value>Gratis ruimte (WiFi hotspot, café, etc.)</value>
+  </data>
+  <data name="BookingCom" xml:space="preserve">
+    <value>Commissie (in %)</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Verstuur een verwelkomingsboodschap naar dit adres</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+</root>

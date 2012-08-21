@@ -18,6 +18,7 @@
 	[DescriptionEn]        NVARCHAR (MAX) NULL,
 	[DescriptionEs]        NVARCHAR (MAX) NULL,
 	[DescriptionDe]        NVARCHAR (MAX) NULL,
+	[DescriptionNl]        NVARCHAR (MAX) NULL,
     [Latitude]             FLOAT (53)     NOT NULL,
     [Longitude]            FLOAT (53)     NOT NULL,
     [OwnerID]              INT            CONSTRAINT [DF__Localisat__Owner__5535A963] DEFAULT ((0)) NULL,

@@ -20,6 +20,7 @@
     [DescriptionEn] NVARCHAR(MAX) NULL, 
     [DescriptionEs] NVARCHAR(MAX) NULL, 
     [DescriptionDe] NVARCHAR(MAX) NULL, 
+	[DescriptionNl] NVARCHAR(MAX) NULL, 
     [AllInclusive] BIT NOT NULL DEFAULT 1,
     CONSTRAINT [FK_Offer_Localisation] FOREIGN KEY (LocalisationId) REFERENCES [dbo].[Localisation] ([ID]) ON DELETE CASCADE ON UPDATE NO ACTION, 
     CONSTRAINT [PK_Offer] PRIMARY KEY ([Id])

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bugs" xml:space="preserve">
+    <value>Bugs</value>
+  </data>
+  <data name="ClickEdit" xml:space="preserve">
+    <value>U kan de fiche van elke locatie aanpassen door te klikken op de knop “aanpassen” rechts onderaan van de fiche. Om misbruik tegen te gaan, is het aantal aanpassingen beperkt tot 15 per dag.</value>
+  </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value>klik hier</value>
+  </data>
+  <data name="CouldNotIncludePicture" xml:space="preserve">
+    <value>Ik kan geen foto's toevoegen aan de locatiefiche die ik wil invoeren</value>
+  </data>
+  <data name="EncounterBugs" xml:space="preserve">
+    <value>Indien u een bug tegenkomt of indien u problemen ondervindt met het surfen op de site, aarzel dan niet om die aan ons te melden door een mail te sturen naar support@eworky.com</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+    <comment>FAQ</comment>
+  </data>
+  <data name="FormForSearch" xml:space="preserve">
+    <value>Met het formulier dat u kan terugvinden op de {0} kan u een simpele zoektocht starten volgens plaats of type locatie (publieke ruimte, café...). U kan ook gedetailleerd zoeken via de link "{1}”. U kan vervolgens een keuze maken uit criteria zoals aangeboden diensten per plaats (wifi, eetgelegeheid, parking etc.), het type plaats (een gratis werkplek, zakencentrum etc.) of u kan gebruik maken van de ingestelde zoekcriteria volgens uw profiel (student, reiziger, telewerker, etc.).</value>
+    <comment>toujours identique ?</comment>
+  </data>
+  <data name="ForRateComment" xml:space="preserve">
+    <value>Om een werkplek te becommentariëren of te beoordelen, moet u ingelogd zijn via uw eWorky-account. Eenmaal ingelogd kan u via de fiche van de plek een commentaar of beoordeling toevoegen.</value>
+  <comment>Jm modif L25</comment></data>
+  <data name="Glossary" xml:space="preserve">
+    <value>Lexicon</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>homepage</value>
+  </data>
+  <data name="HowCreateAccount" xml:space="preserve">
+    <value>Hoe kan ik een account aanmaken? Waarom zou ik me inschrijven?</value>
+  </data>
+  <data name="HowEdit" xml:space="preserve">
+    <value>De fiche van een werkplek bevat onjuiste informatie, hoe kan ik dat oplossen?</value>
+  </data>
+  <data name="HowFindWorkplace" xml:space="preserve">
+    <value>Hoe een werkplaats vinden?</value>
+  </data>
+  <data name="HowRateComment" xml:space="preserve">
+    <value>Hoe een werkplek becommentariëren en beoordelen?</value>
+  </data>
+  <data name="HowSuggestWorkplace" xml:space="preserve">
+    <value>Hoe een werkplek voorstellen voor reservatie?</value>
+  </data>
+  <data name="Inscription" xml:space="preserve">
+    <value>Inschrijving</value>
+  </data>
+  <data name="InviteFriends" xml:space="preserve">
+    <value>Hoe kan ik mijn vrienden uitnodigen om zich aan te sluiten bij eWorky?</value>
+  </data>
+  <data name="OnEWBuisnessHotel" xml:space="preserve">
+    <value>Volgens eWorky is een ondernemingshotel een plaats waar verschillende jonge ondernemingen ondergebracht worden tegen een verminderd tarief en waar gedeelde diensten ter beschikking worden gesteld. De ondernemingen worden bijgestaan in hun ontwikkelingsfase, hun groeifase en hun maturiteitsfase.</value>
+  </data>
+  <data name="OnEWBuisnessLounge" xml:space="preserve">
+    <value>Volgens eWorky is een zakensalon een zaal met sofa's en fauteuils, en uitgerust met een wifi-verbinding.</value>
+  </data>
+  <data name="OnEWConferenceRoom" xml:space="preserve">
+    <value>Volgens eWorky is een conferentiezaal of een vergaderzaal een zaal die een capaciteit heeft van ten minste 20 personen en die kan gaan tot meer dan 1000 personen. Ideaal voor conferenties, cocktailfeesten, recepties, seminaries, symposia etc.</value>
+  </data>
+  <data name="OnEWCoworking" xml:space="preserve">
+    <value>Volgens eWorky is een coworkingplaats een werkplaats die verschillende werkers onafhankelijk van elkaar verzamelt. De gebruikers van eenzelfde coworkingplaats delen hun lokalen en vormen een netwerk. Op die manier bevorderen ze de uitwisseling, de openheid en de gebruiksvriendelijkheid.</value>
+  </data>
+  <data name="OnEWDigitalPublicSpace" xml:space="preserve">
+    <value>Volgens eWorky is een digitale open ruimte een ontvangsruimte met een niet-lucratief doel die een internetconnectie aanbiedt en met als belangrijkste doelstelling een toegang te geven tot informatie en tot informatietechnologieën en communicatie.</value>
+    <comment>Existe dans les autres pays ?</comment>
+  </data>
+  <data name="OnEWOffice" xml:space="preserve">
+    <value>Volgens eWorky is een bureau een gesloten zaal met één of meerdere werkposten. De term ‘bureaus’ duidt op aangeboden bureaus via een flexibel contract of een contract van gemiddelde termijn, zonder huurovereenkomst, in een zakencentrum, oefenruimte, een telecentrum of een incubator.</value>
+  </data>
+  <data name="OnEWorkyMeetingRoom" xml:space="preserve">
+    <value>Volgens eWorky is een vergaderzaal een zaal waar minstens 2 zittende mensen kunnen ontvangen worden. De beschikbare toestellen (videoprojector, paperboard, micro etc.) kunnen variëren van de ene zaal tegenover de andere, en worden gespecifieerd in het onderdeel “diensten en uitrusting van de vergaderzaal”.</value>
+  </data>
+  <data name="OnEWPrivatePlace" xml:space="preserve">
+    <value>Volgens eWorky is een evenentruimte een eigendom of een privéruimte bestemd voor verhuur voor variabele duur.</value>
+  </data>
+  <data name="OnEWTelecenter" xml:space="preserve">
+    <value>Volgens eWorky is een telecenter een werkruimte bedoeld voor telewerkers, die zowel bureaus als werkposten ter beschikking stelt die zijn uitgerust met informaticatools. Het verhuren van dergelijke bureaus gebeurt over het algemeen overdag.</value>
+  </data>
+  <data name="OnEWVisioRoom" xml:space="preserve">
+    <value>Volgens eWorky is een telepresencezaal een zaal die toelaat dat de deelnemers van een videoconferentie de indruk krijgen in eenzelfde kamer te zijn. Ze is uitgerust met camera’s en micro’s, de aanwezigen hebben op die manier personen van reële grootte rondom hen.</value>
+  </data>
+  <data name="OnEWTelework1" xml:space="preserve">
+    <value>“telewerken is een manier om het werk te organiseren of te realiseren, door informatietechnologieën te gebruiken in het kader van een werkcontract en waar het werk, dat eveneens kan voltrokken worden in de lokalen van de werkgever, op regelmatige basis gerealiseerd wordt buiten deze lokalen”. </value>
+    <comment>Valable ?</comment>
+  </data>
+  <data name="OnEWTelework2" xml:space="preserve">
+    <value>Deze andere manier van denken over en organiseren van het werk betreft elk type van werknemer, ongeacht of ze sedentair of nomadisch zijn, en biedt tal van voordelen, vanuit economisch, sociaal, ecologisch en maatschappelijk oogpunt. Telewerken is een flexibele manier van werken: werknemers kunnen er voor kiezen voltijds te telewerken, slechts enkele dagen per week, of op ad-hoc basis volgens hun behoeften. Daarenboven kunnen telewerkers bij hun thuis blijven of zich verplaatsen naar een telecenter dicht bij huis, op basis van hun behoeften en verlangens. </value>
+    <comment>A traduire ?</comment>
+  </data>
+  <data name="OnEWWorkStation" xml:space="preserve">
+    <value>Volgens eWorky is een werkpost een plaats van enkele vierkante meters groot waar minstens een bureau en internetverbinding in aanwezig is. Een open zaal groepeert in het algemeen een paar tientallen werkposten.</value>
+  </data>
+  <data name="PasswordLost" xml:space="preserve">
+    <value>Als u uw paswoord vergeten bent, {0} en uw paswoord zal u toegestuurd worden per mail</value>
+  </data>
+  <data name="ProposeWorkplaceAfterInscription" xml:space="preserve">
+    <value>Indien u een werkplek wil voorstellen of gewoon lid wilt worden van onze community, kan u zich inschrijven. Een account op eWorky laat u vervolgens toe om plekker toe te voegen alsook om bestaande plekken te beoordelen en te becommentariëren.</value>
+  </data>
+  <data name="ReportBug" xml:space="preserve">
+    <value>Hoe een bug signaleren?</value>
+  </data>
+  <data name="RetrivePassword" xml:space="preserve">
+    <value>Hoe kan ik een verloren paswoord terugvinden?</value>
+  </data>
+  <data name="TheInscription" xml:space="preserve">
+    <value>Inschrijving</value>
+  </data>
+  <data name="WhatIsBuisnessHotel" xml:space="preserve">
+    <value>Wat is een ondernemingshotel?</value>
+  </data>
+  <data name="WhatIsBuisnessLounge" xml:space="preserve">
+    <value>Wat is een zakensalon?</value>
+  </data>
+  <data name="WhatIsConferenceRoom" xml:space="preserve">
+    <value>Wat is een conferentie- of vergaderzaal?</value>
+  </data>
+  <data name="WhatIsCoworking" xml:space="preserve">
+    <value>Wat is een coworkingruimte?</value>
+  </data>
+  <data name="WhatIsDigitalPublicSpace" xml:space="preserve">
+    <value>Wat is een digitale open ruimte?</value>
+  </data>
+  <data name="WhatIsEWorky" xml:space="preserve">
+    <value>Waarvoor dient eWorky?</value>
+    <comment>?</comment>
+  </data>
+  <data name="WhatIsMeetingRoom" xml:space="preserve">
+    <value>Wat is een vergaderzaal?</value>
+  </data>
+  <data name="WhatIsOffice" xml:space="preserve">
+    <value>Wat zijn bureaus?</value>
+  </data>
+  <data name="WhatIsPrivatePlace" xml:space="preserve">
+    <value>Wat is een evenementenruimte?</value>
+  </data>
+  <data name="WhatIsTelecenter" xml:space="preserve">
+    <value>Wat is een telecenter?</value>
+  </data>
+  <data name="WhatIsVisioRoom" xml:space="preserve">
+    <value>Wat is een telepresencezaal?</value>
+  </data>
+  <data name="WhatIsWorkOffice" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="WhatIsWorkStation" xml:space="preserve">
+    <value>Wat is een werkpost?</value>
+  </data>
+  <data name="WorkplaceManager" xml:space="preserve">
+    <value>U beheert een zakencentrum of een telecentrum en u
+wilt een online reservatie via eWorky voorstellen? U kan contact opnemen met
+het team van eWorky door een mail te sturen naar contact@eworky.com</value>
+  </data>
+  <data name="YouCanFindAll" xml:space="preserve">
+    <value>Of u nu zakencentra, hotels, cafés, telecentra of kantoorgebouwen wilt vinden, reserveren, kopen, huren, verkopen of delen, eWorky kan u helpen. U kan er de werkplaats vinden die het beste bij u past, ze registreren en online reserveren, ze toevoegen aan uw favoriete werkplekken of nog andere bureaus zoeken om te kopen of verkopen. Door zich aan te passen aan uw nieuwe manier van werken, is eWorky zonder enige twijfel de beste plek om te werken!</value>
+  </data>
+  <data name="YourPossiblilitiesOnForm" xml:space="preserve">
+    <value>In het aanvulformulier voor werkplekken hebt u de mogelijkheid om foto’s te kiezen die u wilt toevoegen aan de beschrijving van de werkplek. Hiervoor volstaat het om uw afbeeldingen te verslepen naar “+afbeeldingen toevoegen” of om te klikken op diezelfde knop om uw bestand te selecter, klik vervolgens op downloaden om ons het bestand te versturen. De grootte van elke afbeeldingen mag 3 Mb niet overschrijden en u kan maximaal 10 foto’s toevoegen. Zorg ervoor dat u zich aan deze beperkingen houdt en als het probleem blijft duren, kan u ons contacteren via mail naar support@eworky.com</value>
+  <comment>Jm modif L26</comment></data>
+  <data name="CouldNotEditLocation" xml:space="preserve">
+    <value>Ik kan een plaats niet langer aanpassen</value>
+  </data>
+  <data name="ForEditProfil" xml:space="preserve">
+    <value>Uw profiel is toegankelijk via om het even welke pagina van de site door op de link “mijn profiel” te klikken rechtsboven (u moet ingelogd zijn). Om uw profiel aan te passen, klik op de link “bewerk mijn profiel”, onder uw naam links op de pagina van uw profiel. Vul uw profiel zo volledig mogelijk aan om de uitwisselingen tussen eWorkers te vergemakkelijken en om extra punten te verkrijgen.</value>
+  </data>
+  <data name="HowEditLocation" xml:space="preserve">
+    <value>Het aantal aanpassingen is beperkt tot 15 per dag. Als u er niet meer in slaagt een plaats aan te passen, ga dan na of u die limiet niet overschreden heeft. Als het probleem zich blijft voordoen, kan u ons contacteren per mail naar support@eworky.com.</value>
+  </data>
+  <data name="HowEditProfil" xml:space="preserve">
+    <value>Hoe mijn profiel aanpassen?</value>
+  </data>
+  <data name="WhatAreThosePoint" xml:space="preserve">
+    <value>Waarvoor dienen de punten die op mijn profielpagina verschijnen?</value>
+  </data>
+  <data name="WhatIsTeleWork" xml:space="preserve">
+    <value>Wat is telewerken?</value>
+  </data>
+  <data name="WhyThereArePoint" xml:space="preserve">
+    <value>Via uw bijdragen aan de eWorky-community, verdient u punten waarmee u kan deelnemen aan wedstrijden en waarmee u kan profiteren van kortingen. U kan punten verzamelen door plaatsen toe te voegen, ze te bewerken, ze te becommentariëren of zelfs enkel door uw profiel aan te vullen.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Alle antwoorden op de vragen die u zich stelt in verband met eWorky</value>
+  </data>
+  <data name="ViaFacebook" xml:space="preserve">
+    <value>Via Facebook</value>
+  </data>
+  <data name="ViaTwitter" xml:space="preserve">
+    <value>Via Twitter</value>
+  </data>
+  <data name="ViaViadeo" xml:space="preserve">
+    <value>Via Viadeo</value>
+  </data>
+</root>

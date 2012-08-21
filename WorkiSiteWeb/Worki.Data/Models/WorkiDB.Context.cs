@@ -56,5 +56,6 @@ namespace Worki.Data.Models
         public DbSet<ApiSymmetricCryptoKey> ApiSymmetricCryptoKeys { get; set; }
         public DbSet<InvoiceNumber> InvoiceNumbers { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
     }
 }

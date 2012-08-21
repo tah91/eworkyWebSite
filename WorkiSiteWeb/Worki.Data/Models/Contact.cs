@@ -33,6 +33,7 @@ namespace Worki.Data.Models
         [Display(Name = "Subject", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
         public string Subject { get; set; }
 
+        [Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Message { get; set; }
 

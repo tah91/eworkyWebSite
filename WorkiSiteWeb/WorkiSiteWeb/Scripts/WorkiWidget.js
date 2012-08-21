@@ -223,4 +223,8 @@ var initializeFrames = function () {
     eworkyUtils.bindReady();
 };
 
-loadScript(root + '/Scripts/easyXDM.js', initializeFrames);
+$.getScript(root + '/Scripts/easyXDM.js', function () {
+
+    eworkyUtils.bindReady();
+
+});

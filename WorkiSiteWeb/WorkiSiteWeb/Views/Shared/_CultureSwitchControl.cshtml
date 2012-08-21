@@ -12,6 +12,9 @@
         case Worki.Infrastructure.Culture.es:
             Current = "flags espagne";
             break;
+        case Worki.Infrastructure.Culture.nl:
+            Current = "flags espagne";
+            break;
         case Worki.Infrastructure.Culture.de:
             Current = "flags allemagne";
             break;
@@ -34,6 +37,7 @@
     if(Request.IsAuthenticated && User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
     {
         LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German, Link = Url.Action(MVC.Home.ChangeCulture("de")) });
+        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Dutch, Link = Url.Action(MVC.Home.ChangeCulture("nl")) });
     }
 }
 

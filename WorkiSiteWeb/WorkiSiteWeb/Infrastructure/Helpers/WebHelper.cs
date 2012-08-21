@@ -283,7 +283,9 @@ namespace Worki.Web.Helpers
 
 		public static Worki.Infrastructure.Culture GetCulture(this UrlHelper instance)
 		{
-			return Worki.Infrastructure.MultiCultureMvcRouteHandler.GetCulture(instance.RequestContext.HttpContext.Request.Url);
+            Worki.Infrastructure.Culture culture;
+            Worki.Infrastructure.MultiCultureMvcRouteHandler.GetCulture(instance.RequestContext.HttpContext.Request.Url, out culture);
+            return culture;
 		}
 
         public static string GetFBCulture(this UrlHelper instance)
@@ -303,6 +305,9 @@ namespace Worki.Web.Helpers
                     break;
                 case Worki.Infrastructure.Culture.de:
                     fbCulture = "de_DE";
+                    break;
+                case Worki.Infrastructure.Culture.nl:
+                    fbCulture = "nl_NL";
                     break;
             }
             return fbCulture;
