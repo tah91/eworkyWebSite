@@ -192,6 +192,11 @@ namespace Worki.Infrastructure
 				if (userCulture != urlCulture)
 				{
 					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString());
+                    //avoid loop...
+                    if (correctUrl == HttpContext.Current.Request.Url.AbsoluteUri)
+                    {
+                        TryAddCultureChangedCookie();
+                    }
 					if (!string.IsNullOrEmpty(correctUrl))
 					{
 						HttpContext.Current.Response.Redirect(correctUrl);
