@@ -178,6 +178,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de salon d&apos;affaire !.
+        /// </summary>
+        public static string BuisnessLoungeTellMore {
+            get {
+                return ResourceManager.GetString("BuisnessLoungeTellMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espèces.
         /// </summary>
         public static string Cash {
@@ -228,6 +237,15 @@ namespace Worki.Resources.Models.Offer {
         public static string DesktopCount {
             get {
                 return ResourceManager.GetString("DesktopCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de bureau privatif !.
+        /// </summary>
+        public static string DesktopTellMore {
+            get {
+                return ResourceManager.GetString("DesktopTellMore", resourceCulture);
             }
         }
         
@@ -309,6 +327,15 @@ namespace Worki.Resources.Models.Offer {
         public static string MeetingRoomCount {
             get {
                 return ResourceManager.GetString("MeetingRoomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de salle de réunion !.
+        /// </summary>
+        public static string MeetingRoomTellMore {
+            get {
+                return ResourceManager.GetString("MeetingRoomTellMore", resourceCulture);
             }
         }
         
@@ -493,6 +520,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de salle de séminaire !.
+        /// </summary>
+        public static string SeminarRoomTellMore {
+            get {
+                return ResourceManager.GetString("SeminarRoomTellMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to jour.
         /// </summary>
         public static string SingleDay {
@@ -574,6 +610,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de salle de visioconférence !.
+        /// </summary>
+        public static string VisioRoomTellMore {
+            get {
+                return ResourceManager.GetString("VisioRoomTellMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Semaine.
         /// </summary>
         public static string Week {
@@ -588,6 +633,15 @@ namespace Worki.Resources.Models.Offer {
         public static string WorkstationCount {
             get {
                 return ResourceManager.GetString("WorkstationCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dites-nous en plus sur vos offres de poste de travail !.
+        /// </summary>
+        public static string WorkstationTellMore {
+            get {
+                return ResourceManager.GetString("WorkstationTellMore", resourceCulture);
             }
         }
         

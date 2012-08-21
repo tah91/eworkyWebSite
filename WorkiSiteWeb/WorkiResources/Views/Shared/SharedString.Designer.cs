@@ -169,6 +169,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continuer.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oups ! Une erreur a été rencontrée. Vérifiez votre saisie et réessayez. Si le problème persiste, contactez-nous : support@eworky.com..
         /// </summary>
         public static string CorrectThenTryAgain {

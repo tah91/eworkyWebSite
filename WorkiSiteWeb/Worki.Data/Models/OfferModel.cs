@@ -147,27 +147,27 @@ namespace Worki.Data.Models
             {
                 case LocalisationOffer.BuisnessLounge:
                     offerTypeRequiredCount = BuisnessLoungeCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salon d'affaire !";
+                    helpText = Worki.Resources.Models.Offer.Offer.BuisnessLoungeTellMore;
                     break;
                 case LocalisationOffer.Desktop:
                     offerTypeRequiredCount = DesktopCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de poste de travail !";
+                    helpText = Worki.Resources.Models.Offer.Offer.DesktopTellMore;
                     break;
                 case LocalisationOffer.Workstation:
                     offerTypeRequiredCount = WorkstationCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de bureau privatif !";
+                    helpText = Worki.Resources.Models.Offer.Offer.WorkstationTellMore;
                     break;
                 case LocalisationOffer.MeetingRoom:
                     offerTypeRequiredCount = MeetingRoomCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de réunion !";
+                    helpText = Worki.Resources.Models.Offer.Offer.MeetingRoomTellMore;
                     break;
                 case LocalisationOffer.SeminarRoom:
                     offerTypeRequiredCount = SeminarRoomCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de séminaire !";
+                    helpText = Worki.Resources.Models.Offer.Offer.SeminarRoomTellMore;
                     break;
                 case LocalisationOffer.VisioRoom:
                     offerTypeRequiredCount = VisioRoomCount;
-                    helpText = "Tout d’abord, dites nous en plus sur vos offres de salle de visioconférence !";
+                    helpText = Worki.Resources.Models.Offer.Offer.VisioRoomTellMore;
                     break;
                 default:
                     break;
@@ -239,7 +239,7 @@ namespace Worki.Data.Models
             if(minPrice==null)
                 return toRet;
 
-            return toRet + " à partir de " + minPrice.GetPriceDisplay();
+            return string.Format(Worki.Resources.Views.Offer.OfferString.OfferListDisplay, toRet, minPrice.GetPriceDisplay());
         }
     }
 
@@ -858,7 +858,7 @@ namespace Worki.Data.Models
                 var toAdd = new Offer
                 {
                     Type = Type,
-                    Name = Name + " " + index.ToString(),
+                    Name = Name + " " + (index + 2).ToString(),
                     Capacity = Capacity,
                     Price = Price,
                     Period = Period,
