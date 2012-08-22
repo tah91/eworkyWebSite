@@ -257,7 +257,7 @@
   </data>
   <data name="AllInclusive" xml:space="preserve">
     <value>Todo incluido</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="AllInclusive_false" xml:space="preserve">
     <value>No</value>
   </data>
@@ -269,11 +269,11 @@
   </data>
   <data name="LeaseTerm" xml:space="preserve">
     <value>Duración del alquiler</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="PriceBy" xml:space="preserve">
     <value>Precio por</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="SameOffersCount" xml:space="preserve">
     <value>Número de ofertas idénticas</value>
-  </data>
+  <comment>DE</comment></data>
 </root>

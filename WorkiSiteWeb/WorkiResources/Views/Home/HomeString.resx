@@ -391,4 +391,7 @@
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="Dutch" xml:space="preserve">
+    <value>Nederlands</value>
+  </data>
 </root>

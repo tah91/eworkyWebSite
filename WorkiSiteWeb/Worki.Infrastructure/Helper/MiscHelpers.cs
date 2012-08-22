@@ -230,7 +230,8 @@ namespace Worki.Infrastructure.Helpers
             public const string Country = "filter-country";
             public const string ItemId = "item-id";
             public const string PlaceHolder = "placeholder";
-            public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id,placeholder";
+            public const string LocaleCulture = "locale-culture";
+            public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id,placeholder,locale-culture";
 
             #endregion
 

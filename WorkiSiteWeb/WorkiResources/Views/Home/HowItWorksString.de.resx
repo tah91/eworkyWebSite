@@ -203,7 +203,7 @@
   </data>
   <data name="PayPalCGULink" xml:space="preserve">
     <value>https://cms.paypal.com/fr/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=fr_FR</value>
-  </data>
+  <comment>?</comment></data>
   <data name="PayTitle" xml:space="preserve">
     <value>Online zahlen</value>
   </data>
@@ -313,7 +313,7 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschreibung</value>
-  </data>
+  <comment>?</comment></data>
   <data name="DiscoverBO" xml:space="preserve">
     <value>Das Office Manager entdecken</value>
   </data>

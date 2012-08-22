@@ -119,7 +119,7 @@
   </resheader>
   <data name="AllInclusive" xml:space="preserve">
     <value>Toutes charges incluses</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="AllInclusive_false" xml:space="preserve">
     <value>Non</value>
   </data>
@@ -203,7 +203,7 @@
   </data>
   <data name="LeaseTerm" xml:space="preserve">
     <value>Durée(s) de location</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="MeetingRoomCount" xml:space="preserve">
     <value>Nombre de salle de réunion</value>
   </data>
@@ -248,7 +248,7 @@
   </data>
   <data name="PriceBy" xml:space="preserve">
     <value>Prix par</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="PriceFrom" xml:space="preserve">
     <value>A partir de {0}</value>
   </data>
@@ -266,7 +266,7 @@
   </data>
   <data name="SameOffersCount" xml:space="preserve">
     <value>Nombres d'offres identiques</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="SeminarRoomCount" xml:space="preserve">
     <value>Nombre de salle de séminaire</value>
   </data>

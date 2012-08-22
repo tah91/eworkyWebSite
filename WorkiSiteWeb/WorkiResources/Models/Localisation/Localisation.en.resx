@@ -445,4 +445,22 @@
   <data name="SendMailToOwner" xml:space="preserve">
     <value>Send a welcome message to this space</value>
   </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <comment>DE</comment>
+    <value>This workplace could not be found</value>
+  </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <comment>DE</comment>
+    <value>There is already a manager for this workplace</value>
+  </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Receive directly quote requests:</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

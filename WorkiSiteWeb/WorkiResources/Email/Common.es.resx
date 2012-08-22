@@ -178,6 +178,11 @@ No olvides recordar a tus clientes que pueden comentar y puntuar tu espacio. ¡M
   <data name="AdminOwnership" xml:space="preserve">
     <value>¡Enhorabuena!, Acaban de indicar que eres gerente de {0} en eWorky.
  
+Desde ya puedes conectarte a tu {1}, mediante el cual podrás dar más visibilidad a tu espacio y beneficiar de herramientas de gestión sencillas e indispensables (Reserva, pago seguro, agenda, facturas automatizadas, CRM), sin ningún coste.</value>
+  </data>
+  <data name="AdminOwnershipAndAccount" xml:space="preserve">
+    <value>¡Enhorabuena!, Acaban de indicar que eres gerente de {0} en eWorky.
+ 
 Para confirmar que eres propietario o gerente de este espacio, sólo tienes que hacer clic sobre el enlace siguiente:
 {1}
  

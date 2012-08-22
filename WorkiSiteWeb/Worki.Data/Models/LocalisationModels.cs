@@ -829,6 +829,8 @@ namespace Worki.Data.Models
 					return DescriptionEs;
                 case "de":
                     return DescriptionDe;
+                case "nl":
+                    return DescriptionNl;
 				default:
 					return Description;
 			}
@@ -844,6 +846,8 @@ namespace Worki.Data.Models
                     return "DescriptionEs";
                 case "de":
                     return "DescriptionDe";
+                case "nl":
+                    return "DescriptionNl";
                 default:
                     return "Description";
             }

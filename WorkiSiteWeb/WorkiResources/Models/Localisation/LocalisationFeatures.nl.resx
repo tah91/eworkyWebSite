@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>Airconditioning</value>
+    <comment>Features</comment>
+  </data>
+  <data name="Access24" xml:space="preserve">
+    <value>Toegankelijk 24u/24, 7d/7</value>
+  </data>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Accomodatie</value>
+  </data>
+  <data name="Archiving" xml:space="preserve">
+    <value>Opslagruimte / archivering</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>Audioconferentie</value>
+  </data>
+  <data name="AvoidAfternoom" xml:space="preserve">
+    <value>Namiddag</value>
+  </data>
+  <data name="AvoidEvening" xml:space="preserve">
+    <value>Avond</value>
+  </data>
+  <data name="AvoidLunch" xml:space="preserve">
+    <value>Middag</value>
+  </data>
+  <data name="AvoidMorning" xml:space="preserve">
+    <value>Ochtend</value>
+  </data>
+  <data name="Catering" xml:space="preserve">
+    <value>Traiteur</value>
+  </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Café / Bar</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Maatschappelijke activiteiten</value>
+  </data>
+  <data name="Courier" xml:space="preserve">
+    <value>Postbeheer</value>
+    <comment>?</comment>
+  </data>
+  <data name="ComputerHelp" xml:space="preserve">
+    <value>Informatica bijstand</value>
+  </data>
+  <data name="Computers" xml:space="preserve">
+    <value>Beschikbaarheid van computers</value>
+    <comment>?</comment>
+  </data>
+  <data name="Concierge" xml:space="preserve">
+    <value>Conciërge</value>
+    <comment>?</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="Domiciliation" xml:space="preserve">
+    <value>Domiciliëring</value>
+  </data>
+  <data name="ErgonomicFurniture" xml:space="preserve">
+    <value>Ergonomisch meubilair</value>
+    <comment>?</comment>
+  </data>
+  <data name="FastInternet" xml:space="preserve">
+    <value>High-speed internet</value>
+    <comment>?</comment>
+  </data>
+  <data name="Handicap" xml:space="preserve">
+    <value>Toegang voor mindervaliden</value>
+    <comment>?</comment>
+  </data>
+  <data name="Internet" xml:space="preserve">
+    <value>Connexion Internet</value>
+  </data>
+  <data name="Lighting" xml:space="preserve">
+    <value>Régie lumière</value>
+    <comment>?</comment>
+  </data>
+  <data name="LocalisationOwner" xml:space="preserve">
+    <value>Ik ben de eigenaar / uitbater van de locatie</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="LunchClose" xml:space="preserve">
+    <value>Gesloten voor de lunch</value>
+  </data>
+  <data name="Micro" xml:space="preserve">
+    <value>Micro</value>
+  </data>
+  <data name="Newspaper" xml:space="preserve">
+    <value>Kranten</value>
+  </data>
+  <data name="Outlet" xml:space="preserve">
+    <value>Stopcontact</value>
+  </data>
+  <data name="Paperboard" xml:space="preserve">
+    <value>Paper-board</value>
+  </data>
+  <data name="Parking" xml:space="preserve">
+    <value>Parkeren</value>
+    <comment>?</comment>
+  </data>
+  <data name="PhoneJack" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Picturesque" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Pressing" xml:space="preserve">
+    <value>Stomerij</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>Kopiëren, afdrukken, faxen</value>
+  </data>
+  <data name="RelaxingArea" xml:space="preserve">
+    <value>Ontspanningsruimte</value>
+  </data>
+  <data name="Restauration" xml:space="preserve">
+    <value>Restauratie</value>
+  </data>
+  <data name="Room1000_plus" xml:space="preserve">
+    <value>Meer dan 1000 Mensen</value>
+  </data>
+  <data name="Room10_Plus" xml:space="preserve">
+    <value>Meer dan 10 Mensen</value>
+  </data>
+  <data name="Room20_plus" xml:space="preserve">
+    <value>Meer dan 20 Mensen</value>
+  </data>
+  <data name="RoomService" xml:space="preserve">
+    <value>Room service aan het bureau</value>
+  </data>
+  <data name="SafeStorage" xml:space="preserve">
+    <value>Beveiligde opbergruimte</value>
+  </data>
+  <data name="Scene" xml:space="preserve">
+    <value>Scène</value>
+  </data>
+  <data name="Secretariat" xml:space="preserve">
+    <value>Secretariaat</value>
+    <comment>?</comment>
+  </data>
+  <data name="Shower" xml:space="preserve">
+    <value>Douche</value>
+  </data>
+  <data name="Telepresence" xml:space="preserve">
+    <value>Téléprésence</value>
+  </data>
+  <data name="TV" xml:space="preserve">
+    <value>TV</value>
+  </data>
+  <data name="VideoProj" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="Wifi_Free" xml:space="preserve">
+    <value>Gratis WiFi</value>
+  </data>
+  <data name="Wifi_Not_Free" xml:space="preserve">
+    <value>Betalende WiFi</value>
+    <comment>?</comment>
+  </data>
+  <data name="BuisnessLounge" xml:space="preserve">
+    <value>Zakensalon</value>
+  </data>
+  <data name="FreeArea" xml:space="preserve">
+    <value>Gratis ruimte (hot spot, café, ed.)</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Private bureaus</value>
+  </data>
+  <data name="VisioRoom" xml:space="preserve">
+    <value>Videoconferentieruimtes</value>
+  </data>
+  <data name="Workstation" xml:space="preserve">
+    <value>Werkpost</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Vergaderzalen</value>
+  </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Régie son</value>
+  </data>
+  <data name="SingleMeetingRoom" xml:space="preserve">
+    <value>Vergaderzaal</value>
+  </data>
+  <data name="SingleSeminarRoom" xml:space="preserve">
+    <value>Seminariezaal</value>
+  </data>
+  <data name="SingleDesktop" xml:space="preserve">
+    <value>Privaat bureau</value>
+  </data>
+  <data name="SingleVisioRoom" xml:space="preserve">
+    <value>Videoconferentieruimte</value>
+  </data>
+  <data name="SingleWorkstation" xml:space="preserve">
+    <value>Enkele werkpost</value>
+  </data>
+  <data name="AllOffers" xml:space="preserve">
+    <value>Alle ruimtes</value>
+  </data>
+  <data name="CoffeePrice" xml:space="preserve">
+    <value>Prijs per koffie</value>
+  </data>
+  <data name="Desktop100Plus" xml:space="preserve">
+    <value>&gt; 100 m2</value>
+  </data>
+  <data name="FlexibleContract" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
+  </data>
+  <data name="ForCardOwner" xml:space="preserve">
+    <value>Toegang gereserveerd voor houders van een kaart</value>
+    <comment>?</comment>
+  </data>
+  <data name="OpenToAll" xml:space="preserve">
+    <value>Open voor iedereen</value>
+  </data>
+  <data name="ReservedToClients" xml:space="preserve">
+    <value>Toegang gereserveerd voor klanten</value>
+  </data>
+  <data name="Sector" xml:space="preserve">
+    <value>Sector</value>
+    <comment>?</comment>
+  </data>
+  <data name="Kitchen" xml:space="preserve">
+    <value>Keuken / kitchenette</value>
+  </data>
+  <data name="PhoneLine" xml:space="preserve">
+    <value>Telefoonlijn</value>
+  </data>
+  <data name="SharedMeetingRoom" xml:space="preserve">
+    <value>Vergaderzaal</value>
+  </data>
+  <data name="DesktopSearch" xml:space="preserve">
+    <value>Private bureaus (zakencentrum, oefenschool, etc.)</value>
+  </data>
+  <data name="WorkstationSearch" xml:space="preserve">
+    <value>Werkposten (coworking, shared, etc.)</value>
+  </data>
+  <data name="Lift" xml:space="preserve">
+    <value>Lift</value>
+  </data>
+  <data name="Accountants" xml:space="preserve">
+    <value>Boekhouders</value>
+  </data>
+  <data name="Architects" xml:space="preserve">
+    <value>Architectes</value>
+  </data>
+  <data name="Artists" xml:space="preserve">
+    <value>Artiesten</value>
+  </data>
+  <data name="Associative" xml:space="preserve">
+    <value>Associaties</value>
+  </data>
+  <data name="BusinessDevelopers" xml:space="preserve">
+    <value>Business developpers</value>
+  </data>
+  <data name="Commercial" xml:space="preserve">
+    <value>Commercieel</value>
+  </data>
+  <data name="CommunicationMedia" xml:space="preserve">
+    <value>Communicatie/media</value>
+  </data>
+  <data name="Consultants" xml:space="preserve">
+    <value>Consultants</value>
+  </data>
+  <data name="Contractors" xml:space="preserve">
+    <value>Ondernemers</value>
+  </data>
+  <data name="Designers" xml:space="preserve">
+    <value>Ontwerpers / Designers</value>
+  </data>
+  <data name="Developers" xml:space="preserve">
+    <value>Ontwikkelaars (IT)</value>
+  </data>
+  <data name="Heater" xml:space="preserve">
+    <value>Verwarming</value>
+  </data>
+  <data name="Independent" xml:space="preserve">
+    <value>Onafhankelijken (andere)</value>
+  </data>
+  <data name="Investors" xml:space="preserve">
+    <value>Investeerders</value>
+  </data>
+  <data name="Journalists" xml:space="preserve">
+    <value>Journalisten</value>
+  </data>
+  <data name="Lawyers" xml:space="preserve">
+    <value>Advocaten</value>
+  </data>
+  <data name="Nomads" xml:space="preserve">
+    <value>Mobiele medewerkers</value>
+  </data>
+  <data name="Photographers" xml:space="preserve">
+    <value>Fotografen</value>
+  </data>
+  <data name="Writers" xml:space="preserve">
+    <value>Schrijvers</value>
+  </data>
+</root>

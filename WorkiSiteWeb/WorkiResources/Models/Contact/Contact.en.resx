@@ -129,6 +129,9 @@
   <data name="Link" xml:space="preserve">
     <value>Link</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
   </data>

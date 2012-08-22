@@ -156,7 +156,7 @@ Mensaje: &lt;b&gt;{7}&lt;/b&gt;</value>
   <data name="BookingOwnerBody" xml:space="preserve">
     <value>Has recibido una solicitud de reserva para un(a) {0} en el establecimiento {1}  ({2}). 
 
-Ve a tu {3} para confirmar/denegar esta solicitud de reserva cuanto antes.</value>
+Ve a tu {3} para confirmar/rechazar esta solicitud de reserva cuanto antes.</value>
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value>Solicitud de reserva - {0}</value>
@@ -245,7 +245,7 @@ Te invitamos a completar tu perfil a la dirección que te indicamos a continuaci
   </data>
   <data name="PartyRegister" xml:space="preserve">
     <value>¡Tu inscripción al evento Networking coworkers ha sido grabado!
-Te esperamos en el local de &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) para conocer a los coworkers y lo espacios de coworking parisinos. Además, tendrás tendrás la posibilidad de realizar una presentación de unos 45 segundos.
+Te esperamos en el local de &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) para conocer a los otros coworkers y los espacios de coworking. Además, tendrás tendrás la posibilidad de realizar una presentación de unos 45 segundos.
 No dudes en puntuar y comentar tus espacios de trabajo preferidos en eWorky.</value>
   </data>
   <data name="PartyRegisterSubject" xml:space="preserve">

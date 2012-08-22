@@ -176,4 +176,17 @@ Don't forget to ask your customers to comment and put a mark on your place, this
   <data name="Twitter" xml:space="preserve">
     <value>http://www.twitter.com/#!/eWorky</value>
   </data>
+  <data name="AdminOwnershipAndAccount" xml:space="preserve">
+    <value>Congratulations, you are now host of {0} on eWorky!
+To confirm that you are the manager of this workplace, please click on the following link: {1}
+You will then be able to easily log in to eWorky to modify the profile page of {0}: {2} with:
+- your login {3}
+- your password {4}
+</value>
+  </data>
+  <data name="AdminOwnership" xml:space="preserve">
+    <value>Congratulations, you are now host of {0} on eWorky!
+See you soon in your {1} where you can improve your profile page and get for free very useful managing tools (bookings, secured payments, schedules, automated bills, CRM).
+</value>
+  </data>
 </root>

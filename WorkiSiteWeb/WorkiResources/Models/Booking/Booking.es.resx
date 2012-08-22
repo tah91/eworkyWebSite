@@ -181,7 +181,7 @@
     <value>Hasta</value>
   </data>
   <data name="VisitNeeded" xml:space="preserve">
-    <value>Solicitud de visita</value>
+    <value>Solicitar visita</value>
   </data>
   <data name="MemberId" xml:space="preserve">
     <value>Cliente</value>

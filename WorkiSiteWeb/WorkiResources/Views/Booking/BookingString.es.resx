@@ -154,7 +154,7 @@
     <value>Por favor, indica la fecha y la hora de inicio y fin de tu reserva.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
-    <value>Validar la solicitud de presupuesto</value>
+    <value>enviar la solicitud de presupuesto</value>
   </data>
   <data name="AskQuotation" xml:space="preserve">
     <value>Solicitar un presupuesto</value>
@@ -349,7 +349,7 @@
     <value>Rellenas la solicitud de presupuesto y haces las preguntas que te surgen</value>
   </data>
   <data name="HowItWorksQuotation2" xml:space="preserve">
-    <value>Tu solicitud está enviada al gerente inmediatamente</value>
+    <value>Tu solicitud envia al gerente inmediatamente</value>
   <comment>? pas sur</comment></data>
   <data name="HowItWorksQuotation3" xml:space="preserve">
     <value>Recibirás una respuesta lo antes posible</value>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Ontdek gratis de mogelijkheden van de beheerdersruimte, zodat u uw ruimte eenvoudig kan beheren op eWorky</value>
+  </data>
+  <data name="AccessBOTitle" xml:space="preserve">
+    <value>Toegang tot de beheerdersruimte</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Reserveer en betaal uw reservatie van een vergaderzaal of abonnement op een coworkingruimte online</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Reserveren</value>
+  </data>
+  <data name="BookUser" xml:space="preserve">
+    <value>Elke locatie biedt verschillende formules aan. Raadpleeg ze en boek diegene die je nodig hebt</value>
+  </data>
+  <data name="BookUserTitle" xml:space="preserve">
+    <value>Reserveren</value>
+  </data>
+  <data name="Commercialize" xml:space="preserve">
+    <value>Beantwoord met één klik de reservatie-aanvragen en specificaties van de gebruikers en ontvang de vergoeding rechtstreeks op uw rekening</value>
+  </data>
+  <data name="CommercializeTitle" xml:space="preserve">
+    <value>Lanceren</value>
+  </data>
+  <data name="DiscoverBO" xml:space="preserve">
+    <value>Ontdek de ruimte manager</value>
+  </data>
+  <data name="DiscoveryOffer" xml:space="preserve">
+    <value>Gelezen</value>
+  </data>
+  <data name="Exchange" xml:space="preserve">
+    <value>Wissel ideeën en meningen uit en activeer uw ruimte op de pagina's over coworkinglocaties</value>
+  </data>
+  <data name="ExchangeTitle" xml:space="preserve">
+    <value>Uitwisselen met coworkers</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Diensten</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Zodra uw aanvraag wordt gevalideerd, kunt u gratis genieten van alle functies om uw ruimte te beheren</value>
+  </data>
+  <data name="GoTitle" xml:space="preserve">
+    <value>We zijn vertrokken!</value>
+  </data>
+  <data name="HandleClients" xml:space="preserve">
+    <value>Verzeker een commerciële opvolging, stuur facturen op en leidt de activiteit van uw werkplaats</value>
+  </data>
+  <data name="HandleClientsTitle" xml:space="preserve">
+    <value>Beheer uw klanten</value>
+  </data>
+  <data name="HandleSpace" xml:space="preserve">
+    <value>Beheer gratis de reservaties, planningen, extra consumaties, tarieven an abonnementen van uw aanbiedingen</value>
+  </data>
+  <data name="HandleSpaceTitle" xml:space="preserve">
+    <value>Beheer uw ruimte</value>
+  </data>
+  <data name="Here" xml:space="preserve">
+    <value>hier</value>
+  </data>
+  <data name="HowDoIt" xml:space="preserve">
+    <value>Wat te doen?</value>
+  </data>
+  <data name="HowItWorks" xml:space="preserve">
+    <value>Hoe werkt het</value>
+  </data>
+  <data name="HowItWorksHead" xml:space="preserve">
+    <value>eWorky is een gezamelijke marktplaats voor werkruimten</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Voeg een nieuwe werkplaats toe, beoordeel ze en bespreek ze om zo de hele community te helpen in haar zoektocht</value>
+  </data>
+  <data name="JoinTitle" xml:space="preserve">
+    <value>Lid worden van de community</value>
+  </data>
+  <data name="MakeFamous" xml:space="preserve">
+    <value>Vul de grootste werkplek-database van Europa gratis aan met een ingevulde fiche die uw aanbiedingen en uw diensten beschrijft</value>
+  </data>
+  <data name="MakeFamousTitle" xml:space="preserve">
+    <value>Bekend maken</value>
+  </data>
+  <data name="OwnerTitle" xml:space="preserve">
+    <value>Ik biedt een werkplaats aan</value>
+  </data>
+  <data name="OwnerTutorial" xml:space="preserve">
+    <value>Ik ben uitbater</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Eens uw reservatie-aanvraag werd bevestigd door de uitbater van de ruimte, kunt u direct online betalen met uw creditcard</value>
+  </data>
+  <data name="PayPalCGULink" xml:space="preserve">
+    <value>https://cms.paypal.com/fr/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=fr_FR</value>
+  </data>
+  <data name="PayTitle" xml:space="preserve">
+    <value>Online betalen</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Beheerdersruimte</value>
+  </data>
+  <data name="PricingHeaderTitle" xml:space="preserve">
+    <value>Ontdek onze beheerdersruimte</value>
+  </data>
+  <data name="PricingTitle" xml:space="preserve">
+    <value>U Wilt uw ruimte op een simpele en veilige manier beheren, zonder kosten?</value>
+  </data>
+  <data name="PrincingFeature_1" xml:space="preserve">
+    <value>Beheer van de reservaties</value>
+  </data>
+  <data name="PrincingFeature_1_Text" xml:space="preserve">
+    <value>Uw klanten kunnen rechtstreeks een aanvraag tot informatie of reservatie via uw eWorky-fiche indienen. U ontvangt dan onmiddellijk een melding via e-mail en u moet die aanvraag dan enkel nog aanvaarden of afwijzen.</value>
+  </data>
+  <data name="PrincingFeature_2" xml:space="preserve">
+    <value>Beheer van de planning van de ruimtes</value>
+  </data>
+  <data name="PrincingFeature_2_Text" xml:space="preserve">
+    <value>U beschikt over een agenda per aanbieding zodat u direct de bezetting van uw ruimte kan opvolgen. De agenda wordt automatisch aangevuld met online reservaties maar u kan uiteraard ook alle reservaties die u ontving via andere kanalen (telefoon, fax, website, etc.) aanvullen. Uw klanten worden rechtstreeks per e-mail op de hoogte gebracht van elke aanmaak/aanpassing van reservatie.</value>
+  </data>
+  <data name="PrincingFeature_3" xml:space="preserve">
+    <value>Beveiligde online betaling</value>
+  </data>
+  <data name="PrincingFeature_3_Text" xml:space="preserve">
+    <value>Betalingen worden veilig afgehandeld via het Paypal-betalingsplatform. Om de voorwaarden van verkoop van Paypal te kennen, klik hier </value>
+  </data>
+  <data name="PrincingFeature_4" xml:space="preserve">
+    <value>Automatische aflevering van facturen</value>
+  </data>
+  <data name="PrincingFeature_4_Text" xml:space="preserve">
+    <value>De facturen van uw klanten worden automatisch aangepast bij elke reservatie en worden gearchiveerd in uw beheerdersruimte</value>
+  </data>
+  <data name="PrincingFeature_5" xml:space="preserve">
+    <value>Infolijn van 9u tot 20u, 7 dagen op 7</value>
+  </data>
+  <data name="PrincingFeature_5_Text" xml:space="preserve">
+    <value>Onze klantendienst is 7 dagen op 7 beschikbaar van 9u tot 20u om u te helpen in geval van problemen of om te antwoorden op uw vragen.</value>
+  </data>
+  <data name="PrincingFeature_6" xml:space="preserve">
+    <value>Beveiligde ruimte door SSL</value>
+  </data>
+  <data name="PrincingFeature_6_Text" xml:space="preserve">
+    <value>Alle informatie wordt versleuteld door SSL. Enkel u heeft toegang tot de informatie in uw ruimte</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value></value>
+    <comment>JM Modif l.22</comment>
+  </data>
+  <data name="ReferenceLink" xml:space="preserve">
+    <value>een fiche voor uw locatie</value>
+  </data>
+  <data name="RefererenceTitle" xml:space="preserve">
+    <value>Refereren</value>
+  </data>
+  <data name="RegisterLink" xml:space="preserve">
+    <value> zich gratis inschrijven</value>
+  </data>
+  <data name="RegisterOwner" xml:space="preserve">
+    <value>Om een locatie te kunnen uitbaten op eWorky, moet u zich gratis inschrijven door een account te creëren of door u te identificeren via facebook</value>
+  </data>
+  <data name="RegisterOwnerTitle" xml:space="preserve">
+    <value>Zich inschrijven</value>
+  </data>
+  <data name="RegisterUser" xml:space="preserve">
+    <value>Om te kunnen profiteren van eWorky, moet u {0} door een account te creëren of door u te identificeren via Facebook</value>
+  </data>
+  <data name="RegisterUserTitle" xml:space="preserve">
+    <value>Inschrijven</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Vind een wifi-café, een vergaderzaal of een coworking plaats in de grootste database met werklocaties in Europa</value>
+  </data>
+  <data name="SearchTitle" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="SearchUser" xml:space="preserve">
+    <value>Zoek de werkplek die u nodig heeft, via plaats, via naam, via diensten of via locatietype</value>
+  </data>
+  <data name="SearchUserTitle" xml:space="preserve">
+    <value>Opzoeken</value>
+  </data>
+  <data name="UserTitle" xml:space="preserve">
+    <value>Ik zoek een werkruimte</value>
+  </data>
+  <data name="UserTutorial" xml:space="preserve">
+    <value>Ik ben gebruiker</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>eWorky helpt je bij het beheren van je werkplaats, maar niet bij het onthaal noch bij het gebruiksvriendelijk maken!</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Onthaal</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>eWorky helpt je bij het vinden van een werkplek, maar niet bij het werken zelf: aan de slag dus!</value>
+  </data>
+  <data name="WorkTitle" xml:space="preserve">
+    <value>Aan het werk</value>
+    <comment>Jm Modif L13</comment>
+  </data>
+</root>

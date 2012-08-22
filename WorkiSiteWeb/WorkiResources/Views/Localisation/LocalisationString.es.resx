@@ -285,7 +285,7 @@
     <value>Solicitud de reserva</value>
   </data>
   <data name="BookingFormHelp" xml:space="preserve">
-    <value>Por favor, indica detalladamente tus necesidades. Tu mesaje será transmitido directamente al propietario de este espacio.</value>
+    <value>Por favor, indica detalladamente tus necesidades. Tu mensaje será transmitido directamente al propietario de este espacio.</value>
   </data>
   <data name="ContactThisSpaceAction" xml:space="preserve">
     <value>Contactar con este espacio</value>
@@ -340,7 +340,7 @@
   </data>
   <data name="SeeOffers" xml:space="preserve">
     <value>Ver las ofertas</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Host" xml:space="preserve">
     <value>Anfitrión</value>
   </data>

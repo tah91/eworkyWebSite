@@ -61,6 +61,7 @@ namespace Worki.Data.Models
         public decimal QuotationPrice { get; set; }
         public string DescriptionDe { get; set; }
         public bool DirectlyReceiveQuotation { get; set; }
+        public string DescriptionNl { get; set; }
     
         // Navigation properties
     

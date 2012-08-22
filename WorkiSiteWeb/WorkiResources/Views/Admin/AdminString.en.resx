@@ -369,4 +369,15 @@
   <data name="Translate" xml:space="preserve">
     <value>Translation</value>
   </data>
+  <data name="QuotationEdited" xml:space="preserve">
+    <value>The quote request was edited</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Validate</value>
+  </data>
+  <data name="AddOwner" xml:space="preserve">
+    <comment>DE</comment>
+    <value>Add a manager</value>
+  </data>
 </root>

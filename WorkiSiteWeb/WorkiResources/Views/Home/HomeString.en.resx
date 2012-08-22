@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>Find a workplace wherever you want : offices to rent, business centers, coworking spaces, WiFi cafes, meeting or seminar rooms</value>
+    <value>Find a workplace wherever you want : offices to rent, business centers, coworking spaces, WiFi cafes, meeting or seminar rooms </value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -384,5 +384,17 @@
   </data>
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>
+  </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>There is</value>
+  </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Presentation of eWorky space management tools characteristics</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>Presentation of eWorky team!</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>in</value>
   </data>
 </root>

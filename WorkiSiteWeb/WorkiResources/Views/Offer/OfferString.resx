@@ -167,10 +167,10 @@
   </data>
   <data name="DescriptionOffer" xml:space="preserve">
     <value>Indiquez une description pour l'offre</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Description" xml:space="preserve">
     <value>Description de l'offre</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="DuplicateHelp" xml:space="preserve">
     <value>Sélectionner parmi vos offres restantes de {0}, lesquelles correspondent à la même description, aux mêmes prix et aux mêmes caractéristiques.</value>
   </data>
