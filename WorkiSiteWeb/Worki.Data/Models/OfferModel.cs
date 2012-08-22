@@ -879,6 +879,7 @@ namespace Worki.Data.Models
                     DescriptionDe = DescriptionDe,
                     DescriptionEn = DescriptionEn,
                     DescriptionEs = DescriptionEs,
+                    DescriptionNl = DescriptionNl,
                     AllInclusive = AllInclusive
                 };
 

@@ -657,6 +657,8 @@ namespace Worki.Web.Areas.Admin.Controllers
                         return string.IsNullOrEmpty(EsValue);
                     case "de":                             
                         return string.IsNullOrEmpty(DeValue);
+                    case "nl":
+                        return string.IsNullOrEmpty(NlValue);
                     default:
                         return false;
                 }
