@@ -83,6 +83,9 @@ namespace Worki.Data.Models
                 profile = MemberMainData.Profile,
                 civility = MemberMainData.Civility,
                 description = MemberMainData.Description,
+                avatar = MemberMainData.Avatar,
+                city = MemberMainData.City,
+                postalCode = MemberMainData.PostalCode
             };
         }
 

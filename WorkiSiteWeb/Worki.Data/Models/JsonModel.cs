@@ -155,7 +155,11 @@ namespace Worki.Data.Models
         public string       phoneNumber { get; set; }
         public int          profile { get; set; }
         public int          civility { get; set; }
+        public string       avatar { get; set; }
         public string       description { get; set; }
+        public string       city { get; set; }
+        public string       postalCode { get; set; }
+
     }
 
     public class FeatureJson

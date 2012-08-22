@@ -144,7 +144,7 @@ namespace Worki.Web.Areas.Api.Controllers
                             newMemberMail.Send();
                         }
 
-                        return new ObjectResult<AuthJson>(_MembershipService.GetAuthData(formData.Email));
+                        return new ObjectResult<AuthJson>(ModelHelper.GetAuthData(_MembershipService, formData.Email));
                     }
                     catch (Exception ex)
                     {
@@ -174,7 +174,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 try
                 {
                     _MembershipService.ValidateUser(model.Login, model.Password);
-                    return new ObjectResult<AuthJson>(_MembershipService.GetAuthData(model.Login));
+                    return new ObjectResult<AuthJson>(ModelHelper.GetAuthData(_MembershipService, model.Login));
                 }
                 catch (Exception ex)
                 {
@@ -214,7 +214,7 @@ namespace Worki.Web.Areas.Api.Controllers
                     mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
 
                     m = mRepo.GetMemberFromToken(id);
-                    return new ObjectResult<AuthJson>(m.GetAuthJson());
+                    return new ObjectResult<AuthJson>(m.GetAuthData());
                 }
                 catch (Exception ex)
                 {
@@ -244,7 +244,7 @@ namespace Worki.Web.Areas.Api.Controllers
                         mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
 
                         member = mRepo.GetMemberFromToken(id);
-                        return new ObjectResult<AuthJson>(member.GetAuthJson());
+                        return new ObjectResult<AuthJson>(member.GetAuthData());
                     }
                     else
                     {

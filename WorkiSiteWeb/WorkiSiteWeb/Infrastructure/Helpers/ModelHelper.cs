@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using Worki.Web.Model;
+using Worki.Memberships;
 
 namespace Worki.Web.Helpers
 {
@@ -38,7 +39,7 @@ namespace Worki.Web.Helpers
             return WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(image), false);
         }
 
-        public static OfferJson GetJson(this Offer offer, Controller controller)
+        public static OfferJson GetJson(this Offer offer)
         {
             //get data from model
             var json = offer.GetJson();
@@ -100,6 +101,21 @@ namespace Worki.Web.Helpers
             return json;
         }
 
+        public static AuthJson GetAuthData(this Member member)
+        {
+            var toRet = member.GetAuthJson();
+            toRet.avatar = GetImageUrl(ControllerHelpers.GetUserImagePath(member.MemberMainData.Avatar, true, Member.AvatarFolder));
+
+            return toRet;
+        }
+
+        public static AuthJson GetAuthData(IMembershipService service, string key)
+        {
+            var toRet = service.GetAuthData(key);
+            toRet.avatar = GetImageUrl(ControllerHelpers.GetUserImagePath(toRet.avatar, true, Member.AvatarFolder));
+
+            return toRet;
+        }
 
         public static MetaData GetMetaData(this IPictureDataProvider provider)
         {
