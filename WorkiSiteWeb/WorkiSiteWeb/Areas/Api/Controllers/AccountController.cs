@@ -57,6 +57,10 @@ namespace Worki.Web.Areas.Api.Controllers
                     {
                         memberData.Facebook = formData.FacebookLink;
                     }
+                    if (!string.IsNullOrEmpty(formData.PhoneNumber))
+                    {
+                        memberData.PhoneNumber = formData.PhoneNumber;
+                    }
 
                     if (string.IsNullOrEmpty(formData.Password))
                     {
@@ -70,7 +74,6 @@ namespace Worki.Web.Areas.Api.Controllers
 
                     try
                     {
-                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
                         dynamic newMemberMail = null;
                         if (sendNewAccountMailPass)
                         {
@@ -141,11 +144,7 @@ namespace Worki.Web.Areas.Api.Controllers
                             newMemberMail.Send();
                         }
 
-                        var newContext = ModelFactory.GetUnitOfWork();
-                        mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
-                        Member m = mRepo.GetMember(formData.Email);
-
-                        return new ObjectResult<AuthJson>(m.GetAuthJson());
+                        return new ObjectResult<AuthJson>(_MembershipService.GetAuthData(formData.Email));
                     }
                     catch (Exception ex)
                     {
@@ -175,11 +174,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 try
                 {
                     _MembershipService.ValidateUser(model.Login, model.Password);
-                    var context = ModelFactory.GetUnitOfWork();
-                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    Member m = mRepo.GetMember(model.Login);
-
-                    return new ObjectResult<AuthJson>(m.GetAuthJson());
+                    return new ObjectResult<AuthJson>(_MembershipService.GetAuthData(model.Login));
                 }
                 catch (Exception ex)
                 {

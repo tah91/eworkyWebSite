@@ -147,16 +147,15 @@ namespace Worki.Data.Models
 
     public class AuthJson
     {
-        public string token { get; set; }
-        public string email { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public DateTime? birthDate {get;set;}
-        public string phoneNumber { get; set; }
-        public int profile { get; set; }
-        public int civility { get; set; }
-        public string description { get; set; }
-
+        public string       token { get; set; }
+        public string       email { get; set; }
+        public string       firstName { get; set; }
+        public string       lastName { get; set; }
+        public DateTime?    birthDate {get;set;}
+        public string       phoneNumber { get; set; }
+        public int          profile { get; set; }
+        public int          civility { get; set; }
+        public string       description { get; set; }
     }
 
     public class FeatureJson

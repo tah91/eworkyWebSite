@@ -307,7 +307,8 @@ namespace Worki.Memberships
             return true;
         }
 
-        public string GetToken(string username)
+
+        public AuthJson GetAuthData(string username)
         {
             string ret = "";
             var context = ModelFactory.GetUnitOfWork();
@@ -322,8 +323,6 @@ namespace Worki.Memberships
                     ret = m.MemberMainData.Token;
                     context.Commit();
                 }
-                else
-                    return m.MemberMainData.Token;
             }
             catch (Exception)
             {
@@ -331,7 +330,11 @@ namespace Worki.Memberships
                 context.Complete();
             }
 
-            return ret;
+            var newContext = ModelFactory.GetUnitOfWork();
+            mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
+            var member = mRepo.GetMember(username);
+
+            return member.GetAuthJson();
         }
 	}
 

@@ -26,6 +26,6 @@ namespace Worki.Memberships
         bool TryCreateAccount(string email, string password, MemberMainData memberData, out int memberId, bool forceActivation = true);
         bool ActivateMember(string username, string key);
         bool UnlockMember(string username);
-        string GetToken(string username);
+        AuthJson GetAuthData(string username);
 	}
 }
