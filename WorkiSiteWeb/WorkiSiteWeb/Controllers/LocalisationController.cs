@@ -466,6 +466,9 @@ namespace Worki.Web.Controllers
                     return RedirectToAction(MVC.Home.Error());
                 }
             }
+            var newContext = ModelFactory.GetUnitOfWork();
+            lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+            localisation = lRepo.Get(id);
             if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisation.IsSharedOffice())
             {
                 return RedirectToAction(MVC.Home.Pricing());
