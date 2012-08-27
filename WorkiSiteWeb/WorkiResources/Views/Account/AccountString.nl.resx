@@ -118,18 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EWorkyRegister" xml:space="preserve">
-    <value>Registreer je op eWorky</value>
+    <value>Schrijf je in bij eWorky</value>
   </data>
   <data name="Inscription" xml:space="preserve">
     <value>Inschrijven</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Inloggen</value>
+    <value>Log in</value>
   </data>
   <data name="MinimumLength" xml:space="preserve">
     <value></value>
   <comment>modif L.28</comment></data>
   <data name="ValidationLetter" xml:space="preserve">
-    <value>Controleletters</value>
+    <value>Validatie letters</value>
+  </data>
+  <data name="FillInscription" xml:space="preserve">
+    <value>Beantwoord volgende vragen om je in te schrijven</value>
+  </data>
+  <data name="QualityOfProfils" xml:space="preserve">
+    <value>Om er zeker van te zijn dat alle profielen echt zijn, kan eWorky je vragen om je profiel te bevestigen via een sociaal netwerk</value>
+  </data>
+  <data name="RequiredFields" xml:space="preserve">
+    <value>Velden gevolgd door een asterix zijn verplicht in te vullen</value>
+  </data>
+  <data name="EnterFollowingLetters" xml:space="preserve">
+    <value>Geef de volgende letters in</value>
+  </data>
+  <data name="AgreeWithCGU" xml:space="preserve">
+    <value>Ik heb de gebruiksvoorwaarden van eWorky gelezen en accepteer ze ({0}).</value>
+  </data>
+  <data name="LoginToEWorky" xml:space="preserve">
+    <value>Meld je aan bij eWorky</value>
+  </data>
+  <data name="ForgottenPassword" xml:space="preserve">
+    <value>Paswoord vergeten</value>
   </data>
 </root>

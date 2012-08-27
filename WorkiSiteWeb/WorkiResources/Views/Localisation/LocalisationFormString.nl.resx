@@ -209,4 +209,19 @@
   <data name="Wednesday" xml:space="preserve">
     <value>Woensdag</value>
   </data>
+  <data name="LinkToFB" xml:space="preserve">
+    <value>Link naar de Facebook pagina</value>
+  </data>
+  <data name="LinkToTwitter" xml:space="preserve">
+    <value>Link naar het Twitter profiel</value>
+  </data>
+  <data name="RoadExample" xml:space="preserve">
+    <value>Vb: bereikbaar via de E40</value>
+  </data>
+  <data name="SncfExample" xml:space="preserve">
+    <value>Vb: Station Gent-Sint-Pieters</value>
+  </data>
+  <data name="SubwayExample" xml:space="preserve">
+    <value>Vb: op 3 minuten wandelen van station Simonis, Lijn 2</value>
+  </data>
 </root>

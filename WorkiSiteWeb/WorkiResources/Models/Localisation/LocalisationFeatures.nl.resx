@@ -202,7 +202,7 @@
     <comment>?</comment>
   </data>
   <data name="LunchClose" xml:space="preserve">
-    <value>Gesloten voor de lunch</value>
+    <value>Gesloten tijdens lunchperiode</value>
   </data>
   <data name="Micro" xml:space="preserve">
     <value>Micro</value>
@@ -412,7 +412,7 @@
     <value>Advocaten</value>
   </data>
   <data name="Nomads" xml:space="preserve">
-    <value>Mobiele medewerkers</value>
+    <value>Nomadisch werker</value>
   </data>
   <data name="Photographers" xml:space="preserve">
     <value>Fotografen</value>

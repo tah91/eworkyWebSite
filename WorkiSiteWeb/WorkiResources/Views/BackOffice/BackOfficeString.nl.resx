@@ -154,7 +154,7 @@
     <value>Vous n'avez fait aucune demande de devis. Pour effectuer une demande de devis, allez sur la fiche du lieu souhaité.</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
+    <value>Voornaam</value>
   </data>
   <data name="Historic" xml:space="preserve">
     <value>Historique</value>
@@ -163,7 +163,7 @@
     <value>En ligne</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Nom</value>
+    <value>Naam</value>
   </data>
   <data name="LastNews" xml:space="preserve">
     <value>Dernières actualités</value>

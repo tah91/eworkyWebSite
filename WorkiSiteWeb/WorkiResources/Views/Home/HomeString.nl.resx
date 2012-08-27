@@ -129,7 +129,7 @@
     <comment>A compléter</comment>
   </data>
   <data name="CostSpace" xml:space="preserve">
-    <value>Een betalende werkruimte</value>
+    <value>Een betalende werkplaats</value>
     <comment>?</comment>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
@@ -182,7 +182,7 @@
     <value>Welkom</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>Zakencetrum, reizigersruimte, coworking plaats, telecenter, ed.</value>
+    <value>- Business centers, business lounges&lt;br /&gt;- Coworking space&lt;br /&gt;- Smart work Centers, etc.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Búsqueda</value>
@@ -191,7 +191,9 @@
     <value>Zoeken</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>- internetcafé, hot spot&lt;br /&gt;- digitale publieke ruimte&lt;br /&gt;, bibliotheek, museum, ed.</value>
+    <value>
+- Cafés met wifi, Hotspots&lt;br /&gt;- Publieke digitale ruimte&lt;br /&gt;, - Bibilotheek, museum, etc.
+</value>
   </data>
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Vind de beste locatie om te werken</value>
@@ -200,16 +202,16 @@
     <value>De eWorky blog</value>
   </data>
   <data name="FreeSpace" xml:space="preserve">
-    <value>Een gratis werkruimte</value>
+    <value>Een gratis werkplaats</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>Kies het type ruimte dat u wilt toevoegen</value>
+    <value>Selecteer het type werkplaats dat je wilt toevoegen</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>Een gedeeld bureau</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>Hebt u ongebruikte werkruimtes in uw onderneming? Deel ze op eWorky en profiteer van de extra inkomsten!</value>
+    <value>Heb je vrije bureaus in je kantoren? Deel ze op eWorky en verdien er wat aan!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>Tussen... coworking ruimtes, cafés met wifi, business centers, shared offices</value>
