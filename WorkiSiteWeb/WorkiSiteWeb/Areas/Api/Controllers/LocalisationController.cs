@@ -153,6 +153,10 @@ namespace Worki.Web.Areas.Api.Controllers
 
                     context.Commit();
                 }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    return new ObjectResult<AuthJson>(null, 400, dbEx.GetErrors());
+                }
                 catch (Exception ex)
                 {
                     _Logger.Error("Comment", ex);
@@ -188,6 +192,10 @@ namespace Worki.Web.Areas.Api.Controllers
                         member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
                         context.Commit();
                     }
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    return new ObjectResult<AuthJson>(null, 400, dbEx.GetErrors());
                 }
                 catch (Exception ex)
                 {

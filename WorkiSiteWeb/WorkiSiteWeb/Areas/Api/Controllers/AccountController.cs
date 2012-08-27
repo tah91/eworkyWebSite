@@ -153,6 +153,10 @@ namespace Worki.Web.Areas.Api.Controllers
                         throw ex;
                     }
                 }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    return new ObjectResult<AuthJson>(null, 400, dbEx.GetErrors());
+                }
                 catch (Exception ex)
                 {
                     _Logger.Error("Create", ex);
@@ -188,7 +192,7 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult EditInfo(string id, MemberApiModel model)
+        public virtual ActionResult EditInfo(MemberApiModel model)
         {
             if (ModelState.IsValid)
             {
@@ -196,7 +200,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 {
                     var context = ModelFactory.GetUnitOfWork();
                     var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    Member m = mRepo.GetMemberFromToken(id);
+                    Member m = mRepo.GetMemberFromToken(model.Token);
 
                     try
                     {
@@ -213,8 +217,12 @@ namespace Worki.Web.Areas.Api.Controllers
                     var newContext = ModelFactory.GetUnitOfWork();
                     mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
 
-                    m = mRepo.GetMemberFromToken(id);
+                    m = mRepo.GetMemberFromToken(model.Token);
                     return new ObjectResult<AuthJson>(m.GetAuthData());
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    return new ObjectResult<AuthJson>(null, 400, dbEx.GetErrors());
                 }
                 catch (Exception ex)
                 {
@@ -228,7 +236,7 @@ namespace Worki.Web.Areas.Api.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult EditPassword(string id, ChangePasswordModel model)
+        public virtual ActionResult EditPassword(ChangePasswordModel model)
         {
             if (ModelState.IsValid)
             {
@@ -236,14 +244,14 @@ namespace Worki.Web.Areas.Api.Controllers
                 {
                     var context = ModelFactory.GetUnitOfWork();
                     var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    var member = mRepo.GetMemberFromToken(id);
+                    var member = mRepo.GetMemberFromToken(model.Token);
 
                     if (_MembershipService.ChangePassword(member.Username, model.OldPassword, model.NewPassword))
                     {
                         var newContext = ModelFactory.GetUnitOfWork();
                         mRepo = ModelFactory.GetRepository<IMemberRepository>(newContext);
 
-                        member = mRepo.GetMemberFromToken(id);
+                        member = mRepo.GetMemberFromToken(model.Token);
                         return new ObjectResult<AuthJson>(member.GetAuthData());
                     }
                     else

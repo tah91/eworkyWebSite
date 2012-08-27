@@ -59,7 +59,7 @@ namespace Worki.Data.Models
 	public class CommentJson
 	{
 		public int id { get; set; }
-		public DateTime date { get; set; }
+		public string date { get; set; }
         public MemberJson author { get; set; }
 		public string post { get; set; }
 		public int rating { get; set; }
@@ -151,7 +151,7 @@ namespace Worki.Data.Models
         public string       email { get; set; }
         public string       firstName { get; set; }
         public string       lastName { get; set; }
-        public DateTime?    birthDate {get;set;}
+        public string       birthDate {get;set;}
         public string       phoneNumber { get; set; }
         public int          profile { get; set; }
         public int          civility { get; set; }

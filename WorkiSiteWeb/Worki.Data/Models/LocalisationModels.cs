@@ -2057,7 +2057,7 @@ namespace Worki.Data.Models
 			return new CommentJson
 			{
 				id = ID,
-				date = Date,
+				date = Date.ToApiDate(),
 				post = GetPost(),
 				rating = Rating,
 				ratingWifi = RatingWifi,

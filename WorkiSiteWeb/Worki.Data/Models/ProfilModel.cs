@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using Worki.Infrastructure.Helpers;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Worki.Data.Models
 {
@@ -78,7 +79,7 @@ namespace Worki.Data.Models
                 email = Email,
                 firstName = MemberMainData.FirstName,
                 lastName = MemberMainData.LastName,
-                birthDate = MemberMainData.BirthDate,
+                birthDate = MemberMainData.BirthDate.ToApiDate(),
                 phoneNumber = MemberMainData.PhoneNumber,
                 profile = MemberMainData.Profile,
                 civility = MemberMainData.Civility,
@@ -764,12 +765,23 @@ namespace Worki.Data.Models
         {
             member.MemberMainData.FirstName = FirstName;
             member.MemberMainData.LastName = LastName;
-            member.MemberMainData.BirthDate = BirthDate;
-            member.MemberMainData.PhoneNumber = PhoneNumber;
             member.MemberMainData.Profile = Profile;
             member.MemberMainData.Civility = Civility;
-            member.MemberMainData.Description = Description;
+            if (BirthDate.HasValue)
+                member.MemberMainData.BirthDate = BirthDate;
+            if (!string.IsNullOrEmpty(PhoneNumber))
+                member.MemberMainData.PhoneNumber = PhoneNumber;
+            if (!string.IsNullOrEmpty(City))
+                member.MemberMainData.City = City;
+            if (!string.IsNullOrEmpty(PostalCode))
+                member.MemberMainData.PostalCode = PostalCode;
+            if (!string.IsNullOrEmpty(Country))
+                member.MemberMainData.Country = Country;
+            if (!string.IsNullOrEmpty(Description))
+                member.MemberMainData.Description = Description;
         }
+
+        public string Token { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string FirstName { get; set; }
@@ -777,7 +789,6 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string LastName { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Email { get; set; }
 
         public string Password { get; set; }

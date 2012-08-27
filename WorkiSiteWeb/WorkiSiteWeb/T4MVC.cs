@@ -648,7 +648,6 @@ namespace Links {
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
-            public static readonly string jonathan_png = Url("jonathan.png");
             public static readonly string listing_png = Url("listing.png");
             public static readonly string loaderbig_gif = Url("loaderbig.gif");
             public static readonly string loading_gif = Url("loading.gif");
@@ -3438,16 +3437,14 @@ namespace Worki.Web.Areas.Api.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditInfo(string id, Worki.Data.Models.MemberApiModel model) {
+        public override System.Web.Mvc.ActionResult EditInfo(Worki.Data.Models.MemberApiModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditInfo);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditPassword(string id, Worki.Data.Models.ChangePasswordModel model) {
+        public override System.Web.Mvc.ActionResult EditPassword(Worki.Data.Models.ChangePasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditPassword);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }

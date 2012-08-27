@@ -14,6 +14,8 @@ namespace Worki.Data.Models
     {
 		public int MemberId { get; set; }
 
+        public string Token { get; set; }
+
         [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
         [Display(Name = "OldPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]

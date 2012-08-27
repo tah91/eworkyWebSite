@@ -289,6 +289,20 @@ namespace Worki.Web.Helpers
 			return toRet;
 		}
 
+        public static string GetErrors(this System.Data.Entity.Validation.DbEntityValidationException dbException)
+        {
+            var toRet = "";
+            foreach (var error in dbException.EntityValidationErrors)
+            {
+                foreach (var item in error.ValidationErrors)
+                {
+                    toRet += item.ErrorMessage + " ;";
+                }
+            }
+
+            return toRet;
+        }
+
         public static string GetErrors(this ModelStateDictionary modelState)
         {
             var toRet = "";

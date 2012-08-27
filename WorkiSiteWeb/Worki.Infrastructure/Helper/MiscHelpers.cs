@@ -555,5 +555,17 @@ namespace Worki.Infrastructure.Helpers
 
 			return value.ToUniversalTime();
 		}
+
+        public static string ToApiDate(this DateTime value)
+        {
+            return value.ToString("R");
+        }
+
+        public static string ToApiDate(this DateTime? value)
+        {
+            if (!value.HasValue)
+                return "";
+            return value.Value.ToString("R");
+        }
 	}
 }
