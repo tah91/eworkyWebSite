@@ -198,7 +198,7 @@
     <value>Ik ben de eigenaar / uitbater van de locatie</value>
   </data>
   <data name="Longitude" xml:space="preserve">
-    <value></value>
+    <value>lengte</value>
     <comment>?</comment>
   </data>
   <data name="LunchClose" xml:space="preserve">
@@ -221,11 +221,11 @@
     <comment>?</comment>
   </data>
   <data name="PhoneJack" xml:space="preserve">
-    <value></value>
+    <value>Krick</value>
     <comment>?</comment>
   </data>
   <data name="Picturesque" xml:space="preserve">
-    <value></value>
+    <value>schilderachtig</value>
     <comment>?</comment>
   </data>
   <data name="Pressing" xml:space="preserve">
@@ -272,7 +272,7 @@
     <value>TV</value>
   </data>
   <data name="VideoProj" xml:space="preserve">
-    <value></value>
+    <value>projector</value>
     <comment>?</comment>
   </data>
   <data name="Wifi_Free" xml:space="preserve">
@@ -328,7 +328,7 @@
     <value>&gt; 100 m2</value>
   </data>
   <data name="FlexibleContract" xml:space="preserve">
-    <value></value>
+    <value>flexibel contract</value>
     <comment>?</comment>
   </data>
   <data name="ForCardOwner" xml:space="preserve">

@@ -237,7 +237,7 @@
     <value>naar</value>
   </data>
   <data name="Bookable" xml:space="preserve">
-    <value></value>
+    <value>bespreekbaar</value>
     <comment>?</comment>
   </data>
   <data name="Facebook" xml:space="preserve">
@@ -250,7 +250,7 @@
     <value>Café</value>
   </data>
   <data name="UsefulHandicap" xml:space="preserve">
-    <value></value>
+    <value>Aangepast voor mensen met een beperkte mobiliteit</value>
     <comment>?</comment>
   </data>
   <data name="Description" xml:space="preserve">
@@ -281,16 +281,16 @@
     <value>Freelancer</value>
   </data>
   <data name="LocalisationError" xml:space="preserve">
+    <value>De overeenkomstige plaats kon niet worden gevonden</value>
     <comment>DE</comment>
-    <value></value>
   </data>
   <data name="OwnerAllreadyExist" xml:space="preserve">
+    <value>Er is al een manager voor deze plaats</value>
     <comment>DE</comment>
-    <value></value>
   </data>
   <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <value>Direct Ontvang offerte</value>
     <comment>DE</comment>
-    <value></value>
   </data>
   <data name="BigCompany" xml:space="preserve">
     <value>Corporatie</value>
