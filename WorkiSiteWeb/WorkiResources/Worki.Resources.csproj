@@ -404,6 +404,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Account\AccountModels.es.resx" />
+    <EmbeddedResource Include="Models\Account\AccountModels.nl.resx" />
     <EmbeddedResource Include="Models\Account\AccountModels.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountModels.Designer.cs</LastGenOutput>
