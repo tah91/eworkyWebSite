@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web.Routing;
 using Worki.Web.Model;
 using Worki.Memberships;
+using Worki.Infrastructure;
 
 namespace Worki.Web.Helpers
 {
@@ -78,7 +79,7 @@ namespace Worki.Web.Helpers
                 });
             }
 
-            foreach (var item in localisation.Comments)
+            foreach (var item in localisation.GetOrderedComments(MultiCultureMvcRouteHandler.DefaultCulture))
             {
                 var toAdd = item.GetJson();
                 toAdd.author.avatar = new ImageJson

@@ -2059,6 +2059,7 @@ namespace Worki.Data.Models
 				id = ID,
 				date = Date.ToApiDate(),
 				post = GetPost(),
+                ratingAverage = (int)GetRating(), 
 				rating = Rating,
 				ratingWifi = RatingWifi,
 				ratingDispo = RatingDispo,

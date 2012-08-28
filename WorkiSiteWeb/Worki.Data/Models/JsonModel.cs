@@ -62,6 +62,7 @@ namespace Worki.Data.Models
 		public string date { get; set; }
         public MemberJson author { get; set; }
 		public string post { get; set; }
+        public int ratingAverage { get; set; }
 		public int rating { get; set; }
 		public int ratingPrice { get; set; }
 		public int ratingWifi { get; set; }

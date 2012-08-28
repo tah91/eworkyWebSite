@@ -147,6 +147,10 @@ namespace Worki.Web.Areas.Api.Controllers
                     com.Localisation = localisation;
                     com.PostUserID = member.MemberId;
                     com.Date = System.DateTime.UtcNow;
+                    com.RatingDispo = com.Rating;
+                    com.RatingPrice = com.Rating;
+                    com.RatingWifi = com.Rating;
+                    com.RatingWelcome = com.Rating;
                     com.Validate(ref  error);
 
                     localisation.Comments.Add(com);
