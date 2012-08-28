@@ -172,4 +172,7 @@
   <data name="StatusPaid" xml:space="preserve">
     <value>Betaald</value>
   </data>
+  <data name="RegisterParty" xml:space="preserve">
+    <value>Inschrijven</value>
+  </data>
 </root>

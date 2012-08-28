@@ -117,94 +117,134 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DeleteComment" xml:space="preserve">
-    <value>Beoordeling wissen</value>
+  <data name="AddedPlaces" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Hourly" xml:space="preserve">
-    <value>Uurregeling</value>
+  <data name="Admins" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="KnowHouly" xml:space="preserve">
-    <value>Indien u de openingsurgen van deze locatie kent, voer ze in via het formulier, of contacteer ons:</value>
+  <data name="AdminSpace" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Tweet" xml:space="preserve">
-    <value>Tweet</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Gebruikers </value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Toevoegen</value>
-  </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Beheerder</value>
-  </data>
-  <data name="CGU" xml:space="preserve">
-    <value>Algemene voorwaarden</value>
-  </data>
-  <data name="CorrectThenTryAgain" xml:space="preserve">
-    <value>Oeps! Er werd een fout gevonden. Controleer uw gegevens en probeer opnieuw. Als het probleem zich blijft voordoen, neem dan contact met ons op: support@eworky.com</value>
+  <data name="BONews" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Reservatie</value>
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Press" xml:space="preserve">
-    <value>Pers</value>
+  <data name="BusinessCenterFr" xml:space="preserve">
+    <value>Business Center</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Beschrijving</value>
+  <data name="Clients" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="InfoAdmin" xml:space="preserve">
-    <value>Info admin</value>
+  <data name="Community" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="CoworkingSpaceFr" xml:space="preserve">
+    <value>Coworking</value>
+  </data>
+  <data name="CurrentBookings" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="EditPassword" xml:space="preserve">
+    <value>Paswoord</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="EditProfil" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Moderation" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="ModifyPayement" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value>Aanbiedingen</value>
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Services" xml:space="preserve">
-    <value>Professionele dienstverlening</value>
+  <data name="OnlineRental" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Adds" xml:space="preserve">
-    <value>Toevoegen</value>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Log in</value>
+  <data name="Profil" xml:space="preserve">
+    <value>Profiel</value>
+    <comment>Mika</comment>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Verfijn</value>
+  <data name="Quoations" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Send" xml:space="preserve">
-    <value>Verzenden</value>
+  <data name="Rentals" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Subscribe" xml:space="preserve">
-    <value>Inschrijven</value>
+  <data name="Subscription" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="HeaderSuggest" xml:space="preserve">
-    <value>Een ruimte voorstellen</value>
+  <data name="TopMember" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="StarPlaces" xml:space="preserve">
-    <value>Ten eerste</value>
+  <data name="UserSpace" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Choose" xml:space="preserve">
-    <value>Kies</value>
+  <data name="WorkingBook" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Laden...</value>
+  <data name="WorkingQuotation" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="ContactMail" xml:space="preserve">
-    <value>contact@eworky.com</value>
+  <data name="Options" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="FastLogonFb" xml:space="preserve">
-    <value>Om tijd te besparen kan je inloggen via je Facebook-account</value>
+  <data name="Owner" xml:space="preserve">
+    <value></value>
+    <comment>Mika</comment>
   </data>
-  <data name="MinChar" xml:space="preserve">
-    <value>minimum tekens</value>
-  </data>
-  <data name="Connect" xml:space="preserve">
-    <value>Log in</value>
-  </data>
-  <data name="FastLogonFb2" xml:space="preserve">
-    <value>Log in bij eWorky in enkele seconden via je Facebook account!</value>
-  </data>
-  <data name="Or" xml:space="preserve">
-    <value>of</value>
+  <data name="PendingBO" xml:space="preserve">
+    <value></value>
+    <comment>Steeve</comment>
   </data>
 </root>

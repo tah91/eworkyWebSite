@@ -121,7 +121,7 @@
     <value>Bibliotheek / Museum</value>
   </data>
   <data name="BuisnessCenter" xml:space="preserve">
-    <value>Zakencentrum</value>
+    <value>Business Center</value>
   </data>
   <data name="CoffeePrice" xml:space="preserve">
     <value>Koffie prijzen</value>
@@ -131,10 +131,10 @@
     <value>Café / Restaurant</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>land</value>
+    <value>Land</value>
   </data>
   <data name="CoworkingSpace" xml:space="preserve">
-    <value>Coworking ruimte</value>
+    <value>Coworking space</value>
   </data>
   <data name="Latitude" xml:space="preserve">
     <value>Breedte</value>
@@ -193,13 +193,13 @@
     <value>Openbaar vervoer</value>
   </data>
   <data name="RoadAccess" xml:space="preserve">
-    <value>Toegang per auto</value>
+    <value>Met de wagen</value>
   </data>
   <data name="Station" xml:space="preserve">
     <value>Treinstation(s)</value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value>Telecentrum</value>
+    <value>Smart work center</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
     <value>Reizigersruimte</value>
@@ -260,7 +260,7 @@
     <value>{0}, {1} à {2}</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Shared office</value>
+    <value>Een gedeeld kantoor</value>
   </data>
   <data name="FreeAreas" xml:space="preserve">
     <value>Gratis ruimte (WiFi hotspot, café, etc.)</value>
@@ -276,5 +276,32 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="Independent" xml:space="preserve">
+    <value>Freelancer</value>
+  </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <comment>DE</comment>
+    <value></value>
+  </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <comment>DE</comment>
+    <value></value>
+  </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <comment>DE</comment>
+    <value></value>
+  </data>
+  <data name="BigCompany" xml:space="preserve">
+    <value>Corporatie</value>
+  </data>
+  <data name="Mr" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Mme" xml:space="preserve">
+    <value>Mw</value>
+  </data>
+  <data name="Mlle" xml:space="preserve">
+    <value>Mw</value>
   </data>
 </root>

@@ -135,4 +135,10 @@
   <data name="Map" xml:space="preserve">
     <value>Kaart</value>
   </data>
+  <data name="ConnectNow" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Connection" xml:space="preserve">
+    <value>Log in</value>
+  </data>
 </root>

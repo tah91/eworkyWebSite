@@ -332,13 +332,21 @@
     <EmbeddedResource Include="Email\BookingString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\Common.de.resx" />
+    <EmbeddedResource Include="Email\Common.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\Common.es.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.de.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.es.resx" />
-    <EmbeddedResource Include="Email\ResetPassword.de.resx" />
-    <EmbeddedResource Include="Email\ResetPassword.es.resx" />
-    <EmbeddedResource Include="Menu\Menu.de.resx" />
+    <EmbeddedResource Include="Email\ResetPassword.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\ResetPassword.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\Menu.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu\Menu.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -366,37 +374,54 @@
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\Common.en.resx" />
+    <EmbeddedResource Include="Email\Common.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\FacebookRegistration.en.resx" />
+    <EmbeddedResource Include="Email\FacebookRegistration.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\FacebookRegistration.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FacebookRegistration.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\ResetPassword.en.resx" />
+    <EmbeddedResource Include="Email\ResetPassword.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\ResetPassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Account\AccountModels.de.resx" />
-    <EmbeddedResource Include="Models\Account\AccountModels.en.resx" />
+    <EmbeddedResource Include="Models\Account\AccountModels.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Account\AccountModels.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Account\AccountModels.es.resx" />
     <EmbeddedResource Include="Models\Account\AccountModels.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountModels.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Admin\Admin.nl.resx" />
+    <EmbeddedResource Include="Models\Admin\Admin.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Admin\Admin.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Admin.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Booking\Booking.de.resx" />
-    <EmbeddedResource Include="Models\Booking\Booking.en.resx" />
+    <EmbeddedResource Include="Models\Booking\Booking.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Booking\Booking.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Booking\Booking.es.resx" />
     <EmbeddedResource Include="Models\Booking\Invoice.de.resx" />
     <EmbeddedResource Include="Models\Booking\Invoice.en.resx" />
@@ -407,7 +432,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Contact\Contact.de.resx" />
-    <EmbeddedResource Include="Models\Contact\Contact.en.resx" />
+    <EmbeddedResource Include="Models\Contact\Contact.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Contact\Contact.es.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.nl.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.resx">
@@ -420,8 +447,12 @@
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Localisation\Localisation.de.resx" />
-    <EmbeddedResource Include="Models\Localisation\Localisation.nl.resx" />
+    <EmbeddedResource Include="Models\Localisation\Localisation.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\Localisation.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\LocalisationCountry.de.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -436,10 +467,16 @@
       <LastGenOutput>LocalisationCountry.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Localisation\Localisation.en.resx" />
+    <EmbeddedResource Include="Models\Localisation\Localisation.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.es.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.de.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.en.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.es.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.nl.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.de.resx" />
@@ -455,10 +492,16 @@
       <LastGenOutput>Offer.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Profile\Profile.de.resx" />
-    <EmbeddedResource Include="Models\Profile\Profile.en.resx" />
+    <EmbeddedResource Include="Models\Profile\Profile.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Profile\Profile.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Profile\Profile.es.resx" />
-    <EmbeddedResource Include="Models\Rental\Rental.de.resx" />
+    <EmbeddedResource Include="Models\Rental\Rental.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Rental\Rental.en.resx" />
     <EmbeddedResource Include="Models\Rental\Rental.es.resx" />
     <EmbeddedResource Include="Models\Rental\Rental.resx">
@@ -502,10 +545,16 @@
       <LastGenOutput>ValidationString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\AccountString.de.resx" />
-    <EmbeddedResource Include="Views\Account\AccountString.en.resx" />
+    <EmbeddedResource Include="Views\Account\AccountString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\AccountString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\AccountString.es.resx" />
-    <EmbeddedResource Include="Views\Account\AccountString.nl.resx" />
+    <EmbeddedResource Include="Views\Account\AccountString.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\AccountString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountString.Designer.cs</LastGenOutput>
@@ -534,7 +583,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\AdminString.de.resx" />
-    <EmbeddedResource Include="Views\Admin\AdminString.en.resx" />
+    <EmbeddedResource Include="Views\Admin\AdminString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\AdminString.es.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.nl.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
@@ -542,10 +593,13 @@
       <LastGenOutput>AdminString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\StatString.de.resx" />
+    <EmbeddedResource Include="Views\Admin\StatString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\StatString.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatString.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\StatString.es.resx" />
     <EmbeddedResource Include="Views\Admin\StatString.resx">
@@ -553,7 +607,9 @@
       <LastGenOutput>StatString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.de.resx" />
-    <EmbeddedResource Include="Views\BackOffice\BackOfficeString.en.resx" />
+    <EmbeddedResource Include="Views\BackOffice\BackOfficeString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.es.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.nl.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.resx">
@@ -571,7 +627,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Booking\BookingString.de.resx" />
-    <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
+    <EmbeddedResource Include="Views\Booking\BookingString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Booking\BookingString.es.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.nl.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
@@ -599,16 +657,22 @@
     <EmbeddedResource Include="Views\Home\HomeString.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\FaqString.de.resx" />
+    <EmbeddedResource Include="Views\Home\FaqString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\HomeString.de.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\FaqString.es.resx" />
+    <EmbeddedResource Include="Views\Home\FaqString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\HomeString.es.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.de.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.es.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.nl.resx" />
-    <EmbeddedResource Include="Views\Home\JobString.de.resx" />
+    <EmbeddedResource Include="Views\Home\JobString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\JobString.es.resx" />
     <EmbeddedResource Include="Views\Home\JobString.nl.resx" />
     <EmbeddedResource Include="Views\Home\MentionLegaleString.de.resx" />
@@ -617,8 +681,12 @@
     <EmbeddedResource Include="Views\Home\PresseString.de.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.es.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.nl.resx" />
-    <EmbeddedResource Include="Views\Home\ShareOffice.de.resx" />
-    <EmbeddedResource Include="Views\Home\ShareOffice.en.resx" />
+    <EmbeddedResource Include="Views\Home\ShareOffice.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\ShareOffice.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\ShareOffice.es.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.nl.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.resx">
@@ -634,15 +702,21 @@
       <LastGenOutput>HowItWorksString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\FaqString.en.resx" />
+    <EmbeddedResource Include="Views\Home\FaqString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\HomeString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\JobString.en.resx" />
+    <EmbeddedResource Include="Views\Home\JobString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\MentionLegaleString.en.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.en.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.de.resx" />
-    <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.es.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.nl.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationString.de.resx">
@@ -656,11 +730,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationString.nl.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.de.resx" />
-    <EmbeddedResource Include="Views\Mobile\MobileString.en.resx" />
+    <EmbeddedResource Include="Views\Mobile\MobileString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Mobile\MobileString.es.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.nl.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.de.resx" />
-    <EmbeddedResource Include="Views\Offer\OfferString.en.resx" />
+    <EmbeddedResource Include="Views\Offer\OfferString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Offer\OfferString.es.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.nl.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.resx">
@@ -672,12 +750,18 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MobileString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Profile\ProfileString.de.resx" />
-    <EmbeddedResource Include="Views\Profile\ProfileString.en.resx" />
+    <EmbeddedResource Include="Views\Profile\ProfileString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\ProfileString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Profile\ProfileString.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Rental\RentalString.de.resx" />
+    <EmbeddedResource Include="Views\Rental\RentalString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Rental\RentalString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -751,8 +835,12 @@
       <LastGenOutput>SearchString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\SharedString.de.resx" />
-    <EmbeddedResource Include="Views\Shared\SharedString.en.resx" />
+    <EmbeddedResource Include="Views\Shared\SharedString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\SharedString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\SharedString.es.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.nl.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.resx">
