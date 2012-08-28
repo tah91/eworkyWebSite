@@ -272,10 +272,10 @@ namespace Worki.Data.Models
             {
                 try
                 {
-                    string[] typesArray = types.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
+                    var typesArray = types.SplitAndParse();
                     foreach (var item in typesArray)
                     {
-                        var intType = (LocalisationType)Int32.Parse(item);
+                        var intType = (LocalisationType)item;
                         switch (intType)
                         {
                             case LocalisationType.SpotWifi:
@@ -320,9 +320,9 @@ namespace Worki.Data.Models
                     }
                     criteria.Everything = false;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw new Exception("The \"types\" parameter is not correctly filled");
+                    throw new Exception(ex.Message);
                 }
             }
 
@@ -332,16 +332,15 @@ namespace Worki.Data.Models
                 try
                 {
                     //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
-                    string[] featuresArray = features.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',');
+                    var featuresArray = features.SplitAndParse();
                     foreach (var item in featuresArray)
                     {
-                        var intType = Int32.Parse(item);
-                        criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = intType });
+                        criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = item });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw new Exception("The \"features\" parameter is not correctly filled");
+                    throw new Exception(ex.Message);
                 }
             }
 

@@ -567,5 +567,21 @@ namespace Worki.Infrastructure.Helpers
                 return "";
             return value.Value.ToString("R");
         }
+
+        public static IEnumerable<int> SplitAndParse(this string array)
+        {
+            if (string.IsNullOrEmpty(array))
+                return new List<int>();
+
+            var typesArray = array.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',').Select(ot =>
+            {
+                int value;
+                bool success = int.TryParse(ot, out value);
+                return new { value, success };
+            }).Where(pair => pair.success)
+              .Select(pair => pair.value).ToList();
+
+            return typesArray;
+        }
 	}
 }

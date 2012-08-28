@@ -170,17 +170,10 @@ namespace Worki.Data.Models
             //if list of offer types (in api)
             if (!string.IsNullOrEmpty(criteria.OfferTypes))
             {
-                var offerTypeArray = criteria.OfferTypes.Trim(MiscHelpers.ApiConstants.ArrayTrim).Split(',').Select(ot =>
-                {
-                    int value;
-                    bool success = int.TryParse(ot, out value);
-                    return new { value, success };
-                })
-                  .Where(pair => pair.success)
-                  .Select(pair => pair.value).ToList();
+                var offerTypeArray = criteria.OfferTypes.SplitAndParse();
 
                 var needFreeArea = offerTypeArray.Contains((int)LocalisationOffer.FreeArea);
-                if (offerTypeArray.Count > 0)
+                if (offerTypeArray.Count() > 0)
                     locProjectionList = locProjectionList.Where(p => (p.OfferTypes.Intersect(offerTypeArray).Count() > 0) || (needFreeArea && Localisation.FreeLocalisationTypes.Contains(p.LocalisationType))).ToList();
             }
             else
