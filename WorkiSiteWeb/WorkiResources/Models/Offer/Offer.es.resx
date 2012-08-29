@@ -276,4 +276,43 @@
   <data name="SameOffersCount" xml:space="preserve">
     <value>Número de ofertas idénticas</value>
   <comment>DE</comment></data>
+  <data name="BuisnessLoungeCount" xml:space="preserve">
+    <value>Número de salones de negocios</value>
+  </data>
+  <data name="BuisnessLoungeTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de salones de negocios!</value>
+  </data>
+  <data name="DesktopCount" xml:space="preserve">
+    <value>Número de despachos independientes</value>
+  </data>
+  <data name="DesktopTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de despachos independientes!</value>
+  </data>
+  <data name="DuplicateCount" xml:space="preserve">
+    <value>Número e ofertas idénticas</value>
+  </data>
+  <data name="MeetingRoomCount" xml:space="preserve">
+    <value>Número de salas de reunión</value>
+  </data>
+  <data name="MeetingRoomTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de salas de reunión!</value>
+  </data>
+  <data name="SeminarRoomCount" xml:space="preserve">
+    <value>Número de salas de seminario</value>
+  </data>
+  <data name="SeminarRoomTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de salas de seminario!</value>
+  </data>
+  <data name="VisioRoomCount" xml:space="preserve">
+    <value>Número de salas de videoconferencia</value>
+  </data>
+  <data name="VisioRoomTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de salas de videoconferencia!</value>
+  </data>
+  <data name="WorkstationCount" xml:space="preserve">
+    <value>Número de puestos de trabajo</value>
+  </data>
+  <data name="WorkstationTellMore" xml:space="preserve">
+    <value>¡Dinos algo más sobre tus ofertas de puestos de trabajo!</value>
+  </data>
 </root>

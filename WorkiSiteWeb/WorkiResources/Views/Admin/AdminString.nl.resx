@@ -182,5 +182,10 @@
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Bevestigen</value>
+  <comment>DE</comment></data>
+  <data name="AddOwner" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
   </data>
 </root>

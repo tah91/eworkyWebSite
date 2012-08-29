@@ -119,7 +119,7 @@
   </resheader>
   <data name="AllInclusive" xml:space="preserve">
     <value>Alle kosten inclusief</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="AllInclusive_false" xml:space="preserve">
     <value>Non</value>
   </data>
@@ -170,7 +170,7 @@
   </data>
   <data name="LeaseTerm" xml:space="preserve">
     <value>Duur van de verhuur</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Month" xml:space="preserve">
     <value>Maand</value>
   </data>
@@ -200,7 +200,7 @@
   </data>
   <data name="PriceBy" xml:space="preserve">
     <value>Prijs per</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="PriceFrom" xml:space="preserve">
     <value>Vanaf {0}</value>
   </data>
@@ -236,5 +236,10 @@
   </data>
   <data name="Year" xml:space="preserve">
     <value>jaar</value>
+  </data>
+  <data name="SameOffersCount" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
   </data>
 </root>

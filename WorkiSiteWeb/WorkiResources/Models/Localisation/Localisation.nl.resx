@@ -277,4 +277,19 @@
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="LocalisationError" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
+  <data name="OwnerAllreadyExist" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
+  <data name="DirectlyReceiveQuotation" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
 </root>

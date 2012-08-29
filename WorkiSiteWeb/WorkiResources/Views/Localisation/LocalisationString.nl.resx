@@ -221,7 +221,7 @@
   </data>
   <data name="SeeOffers" xml:space="preserve">
     <value>Ga naar de aanbiedingen</value>
-  </data>
+  <comment>DE</comment></data>
   <data name="Host" xml:space="preserve">
     <value>Gastheer / gastvrouw</value>
   </data>
