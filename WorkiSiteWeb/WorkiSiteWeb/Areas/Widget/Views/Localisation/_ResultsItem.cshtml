@@ -37,8 +37,9 @@
             @foreach (var offer in Model.Localisation.Offers.Take(3))
             {
                 var firstPrice = offer.GetFirstPrice();
+                var display = offer.HasSpecificName() ? offer.Name : Localisation.GetOfferType(offer.Type);
                 <li>
-                    @offer.Name
+                    @display
                     @if (!string.IsNullOrEmpty(firstPrice))
                     {
                     <span class="badge badge-warning">@firstPrice</span>
