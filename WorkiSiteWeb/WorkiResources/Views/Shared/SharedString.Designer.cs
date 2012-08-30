@@ -403,6 +403,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plus de détails.
+        /// </summary>
+        public static string MoreDetails {
+            get {
+                return ResourceManager.GetString("MoreDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiche Suivante &gt;.
         /// </summary>
         public static string NextDesc {

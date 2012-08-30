@@ -47,6 +47,7 @@ namespace Worki.Infrastructure
                     culture =  Culture.de;
                     break;
                 case ".nl":
+                case ".be":
                     culture = Culture.nl;
                     break;
 				case ".com":

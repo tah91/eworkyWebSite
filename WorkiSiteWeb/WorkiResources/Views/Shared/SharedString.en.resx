@@ -312,4 +312,7 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>More details</value>
+  </data>
 </root>

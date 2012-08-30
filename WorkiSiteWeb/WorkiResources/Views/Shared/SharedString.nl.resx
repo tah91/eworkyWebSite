@@ -207,4 +207,7 @@
   <data name="Or" xml:space="preserve">
     <value>of</value>
   </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Meer details</value>
+  </data>
 </root>
