@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Worki.Rest.Routing;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Api
 {
@@ -15,7 +16,7 @@ namespace Worki.Web.Areas.Api
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
+            context.CultureMapRoute(
                 "Api_default",
                 "Api/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
