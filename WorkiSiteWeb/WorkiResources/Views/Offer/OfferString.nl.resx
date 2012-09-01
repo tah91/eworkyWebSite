@@ -134,5 +134,10 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschrijving van de aanbieding</value>
+  <comment>DE</comment></data>
+  <data name="DescriptionOffer" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
   </data>
 </root>

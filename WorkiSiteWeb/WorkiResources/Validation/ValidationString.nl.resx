@@ -131,4 +131,19 @@
     <value></value>
     <comment>?</comment>
   </data>
+  <data name="OfferPriceType" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
+  <data name="SuperiorTo" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
+  <data name="ProhibitedString" xml:space="preserve">
+    <comment>DE</comment>
+    <value>
+    </value>
+  </data>
 </root>
