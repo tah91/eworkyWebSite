@@ -231,6 +231,7 @@ namespace Worki.Infrastructure.Helpers
             public const string ItemId = "item-id";
             public const string PlaceHolder = "placeholder";
             public const string LocaleCulture = "locale-culture";
+            public const string ForceNonMobile = "force-non-mobile";
             public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id,placeholder,locale-culture";
 
             #endregion

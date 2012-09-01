@@ -133,6 +133,13 @@ namespace Worki.Infrastructure
             if (!httpContext.Session.IsNewSession)
                 return true;
 
+            var parameters = HttpUtility.ParseQueryString(httpContext.Request.Url.Query);
+            var fromQuery = parameters[MiscHelpers.WidgetConstants.ForceNonMobile];
+            if (!string.IsNullOrEmpty(fromQuery))
+            {
+                return true;
+            }
+
             // Don't redirect non-mobile browsers, or mobile but tablet
 			var isMobile = false;
 			var isTablet = false;
