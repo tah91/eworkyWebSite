@@ -584,5 +584,13 @@ namespace Worki.Infrastructure.Helpers
 
             return typesArray;
         }
+
+        public static string GetApiString(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return "N/A";
+
+            return value;
+        }
 	}
 }

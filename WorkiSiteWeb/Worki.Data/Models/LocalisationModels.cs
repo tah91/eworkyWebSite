@@ -31,7 +31,7 @@ namespace Worki.Data.Models
                 latitude = Latitude,
                 longitude = Longitude,
                 name = Name,
-				description = GetDescription(),
+                description = MiscHelpers.GetApiString(GetDescription()),
                 address = Adress,
                 postalCode = PostalCode,
                 city = City,
@@ -82,20 +82,20 @@ namespace Worki.Data.Models
             //get openning time
             json.openingTimes = new OpeningTimesJson
             {
-                monday = GetOpenningTime(DayOfWeek.Monday),
-                tuesday = GetOpenningTime(DayOfWeek.Tuesday),
-                wednesday = GetOpenningTime(DayOfWeek.Wednesday),
-                thursday = GetOpenningTime(DayOfWeek.Thursday),
-                friday = GetOpenningTime(DayOfWeek.Friday),
-                saturday = GetOpenningTime(DayOfWeek.Saturday),
-                sunday = GetOpenningTime(DayOfWeek.Sunday)
+                monday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Monday)),
+                tuesday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Tuesday)),
+                wednesday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Wednesday)),
+                thursday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Thursday)),
+                friday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Friday)),
+                saturday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Saturday)),
+                sunday = MiscHelpers.GetApiString(GetOpenningTime(DayOfWeek.Sunday))
             };
 
             json.access = new AccessJson
             {
-                publicTransport = PublicTransportation,
-                roadAccess = RoadAccess,
-                station = Station
+                publicTransport = MiscHelpers.GetApiString(PublicTransportation),
+                roadAccess = MiscHelpers.GetApiString(RoadAccess),
+                station = MiscHelpers.GetApiString(Station)
             };
 
             return json;
