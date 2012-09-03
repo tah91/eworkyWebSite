@@ -180,15 +180,36 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the localisation</param>
 		/// <returns>contact info</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual PartialViewResult AskContact(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisation = lRepo.Get(id);
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual PartialViewResult AskContact(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
 
-			return PartialView(MVC.Localisation.Views._AskContact,localisation);
-		}
+            return PartialView(MVC.Localisation.Views._AskContact, localisation);
+        }
+
+        public virtual ActionResult PutOfflineAndRedirect(int id, string redirect)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
+            var redirectUrl = string.IsNullOrEmpty(redirect) ? localisation.GetDetailFullUrl(Url) : redirect;
+            try
+            {
+                localisation.MainLocalisation.IsOffline = true;
+                context.Commit();
+                TempData[MiscHelpers.TempDataConstants.Info] = "Le lieu est bien hors-ligne.";
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("PutOfflineAndRedirect", ex);
+            }
+
+            return Redirect(redirectUrl);
+        }
 
         /// <summary>
         /// GET action to create a new free localisation

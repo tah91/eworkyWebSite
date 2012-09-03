@@ -513,94 +513,9 @@ namespace Worki.Web.Areas.Admin.Controllers
 
         #endregion
 
-		#region Migration
+        #region Resources
 
-		public virtual ActionResult MigrateOfferPrices()
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-
-			var message = "";
-			try
-			{
-				var offersWithPrice = oRepo.GetMany(o => o.Price != 0);
-				var count = 0;
-				foreach (var item in offersWithPrice)
-				{
-					if (item.OfferPrices.Count != 0)
-						continue;
-
-					item.OfferPrices.Add(new OfferPrice
-					{
-						Price = item.Price,
-						PriceType = item.Period
-					});
-					count++;
-				}
-
-				message = string.Format("migration of {0} offers", count);
-
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("MigrateOfferPrices", ex);
-				context.Complete();
-				Content(ex.Message);
-			}
-			return Content(message);
-		}
-
-			
-
-		public virtual ActionResult MigrateClients()
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
-			var memberWithImage = mRepo.GetMany(m => !string.IsNullOrEmpty(m.MemberMainData.Avatar) && m.MemberMainData.Avatar.StartsWith("http"));
-
-			var message = "";
-			try
-			{
-				var count = 0;
-				foreach (var item in memberWithImage)
-				{
-					var uploadedFileName = this.UploadFile(item.MemberMainData.Avatar, MiscHelpers.ImageSize.MemberAvatar, Member.AvatarFolder);
-					item.MemberMainData.Avatar = uploadedFileName;
-					count++;
-				}
-
-				message = string.Format("modification of {0} members", count);
-
-				var bookings = bRepo.GetAll();
-				foreach (var b in bookings)
-				{
-					b.InvoiceNumber = new InvoiceNumber();
-				}
-
-				var invoices = iRepo.GetAll();
-				foreach (var i in invoices)
-				{
-					i.InvoiceNumber = new InvoiceNumber();
-				}
-
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("MigrateClients", ex);
-				context.Complete();
-				Content(ex.Message);
-			}
-			return Content(message);
-		}
-
-		#endregion
-		
-		public class ResourceValue
+        public class ResourceValue
 		{
 			public string FrValue { get; set; }
 			public string EnValue { get; set; }
@@ -748,5 +663,76 @@ namespace Worki.Web.Areas.Admin.Controllers
 			var content = MiscHelpers.Nl2Br(builder.ToString());
 			return Content(content);
 		}
+
+        #endregion
+
+        public virtual ActionResult SendMailToOldOffice()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var message = "";
+            var tenDaysAgo =  DateTime.UtcNow.AddDays(-10);
+            var surveyLink = "http://freeonlinesurveys.com/app/rendersurvey.asp?sid=k6ayan6kqlq5jzg103522";
+            try
+            {
+                var oldSharedOffices = lRepo.GetMany(l => l.TypeValue == (int)LocalisationType.SharedOffice &&
+                    l.CountryId == "FR" &&
+                    l.MemberEditions.FirstOrDefault(me => me.ModificationType == (int)EditionType.Creation).ModificationDate < tenDaysAgo &&
+                    l.MainLocalisation.IsOffline == false);
+
+                int count = 1;
+                foreach (var item in oldSharedOffices)
+                {
+                    if (!item.HasOwner())
+                        continue;
+
+                    dynamic oldOfficeMail = new Email(MVC.Emails.Views.Email);
+
+                    var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+
+                    var offlineAndRedirectUrl = urlHelp.ActionAbsolute(MVC.Localisation.PutOfflineAndRedirect(item.ID, surveyLink));
+                    offlineAndRedirectUrl = offlineAndRedirectUrl.Replace("localhost:15157", "www.eworky.fr");
+                    TagBuilder offlineAndRedirectLink = new TagBuilder("a");
+                    offlineAndRedirectLink.MergeAttribute("href", offlineAndRedirectUrl);
+                    offlineAndRedirectLink.InnerHtml = "cliquer sur ce lien pour la mettre hors ligne";
+
+                    var editUrl = urlHelp.ActionAbsolute(MVC.Localisation.Edit(item.ID));
+                    editUrl = editUrl.Replace("localhost:15157", "www.eworky.fr");
+                    TagBuilder editLink = new TagBuilder("a");
+                    editLink.MergeAttribute("href", editUrl);
+                    editLink.InnerHtml = "compléter au mieux votre fiche avec les prix des différentes offres et des photos";
+
+                    oldOfficeMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    oldOfficeMail.To = WebHelper.IsDebug() ? MiscHelpers.EmailConstants.ContactMail : item.Member.Email;
+                    oldOfficeMail.Subject = string.Format("Votre annonce {0} sur eWorky", item.Name);
+                    oldOfficeMail.ToName = item.Member.MemberMainData.FirstName;
+                    var content = @"vous avez ajouté une annonce de bureau à partager sur eWorky.
+
+Si vous avez loué votre bureau et que votre annonce n'est plus d'actualité, merci de {0}.
+
+Si vos bureaux sont toujours disponibles ou que vous les louez régulièrement sur du court terme, nous vous invitons à {1}. Les annonces les mieux complétées, avec de belles photos et un prix attractif pour la localisation sont celles qui reçoivent le plus de demandes.
+";
+                    oldOfficeMail.Content = string.Format(content, offlineAndRedirectLink, editLink);
+
+                    oldOfficeMail.Send();
+
+                    count++;
+
+                    message += item.ID.ToString();
+                    message += "\n";
+                    if (WebHelper.IsDebug())
+                        break;
+                }
+
+                message += string.Format("\nsending of {0} mails", count);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("SendMailToOldOffice", ex);
+                return Content(ex.Message);
+            }
+            return Content(MiscHelpers.Nl2Br(message));
+        }
 	}
 }

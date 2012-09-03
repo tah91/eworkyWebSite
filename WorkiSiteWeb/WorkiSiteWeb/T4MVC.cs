@@ -1419,6 +1419,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PutOfflineAndRedirect() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PutOfflineAndRedirect);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
@@ -1518,6 +1523,7 @@ namespace Worki.Web.Controllers {
             public readonly string MapItemLink = "MapItemLink";
             public readonly string AskBooking = "AskBooking";
             public readonly string AskContact = "AskContact";
+            public readonly string PutOfflineAndRedirect = "PutOfflineAndRedirect";
             public readonly string CreateFree = "add-free-place";
             public readonly string CreateNotFree = "add-place";
             public readonly string CreateSharedOffice = "add-shared-office";
@@ -1635,6 +1641,13 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.PartialViewResult AskContact(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AskContact);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PutOfflineAndRedirect(int id, string redirect) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PutOfflineAndRedirect);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("redirect", redirect);
             return callInfo;
         }
 
@@ -3030,9 +3043,8 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string DeleteQuotation = "DeleteQuotation";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
-            public readonly string MigrateOfferPrices = "MigrateOfferPrices";
-            public readonly string MigrateClients = "MigrateClients";
             public readonly string CheckResources = "CheckResources";
+            public readonly string SendMailToOldOffice = "SendMailToOldOffice";
         }
 
 
@@ -3114,18 +3126,13 @@ namespace Worki.Web.Areas.Admin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult MigrateOfferPrices() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateOfferPrices);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult MigrateClients() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateClients);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.ActionResult CheckResources() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CheckResources);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendMailToOldOffice() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendMailToOldOffice);
             return callInfo;
         }
 

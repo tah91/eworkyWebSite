@@ -479,7 +479,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.es.resx" />
-    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.nl.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Offer\Offer.de.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.en.resx">
       <SubType>Designer</SubType>
