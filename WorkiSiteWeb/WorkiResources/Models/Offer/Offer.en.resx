@@ -280,4 +280,43 @@
   <data name="Transfert" xml:space="preserve">
     <value>Transfer</value>
   </data>
+  <data name="BuisnessLoungeCount" xml:space="preserve">
+    <value>Number of business lounges</value>
+  </data>
+  <data name="BuisnessLoungeTellMore" xml:space="preserve">
+    <value>Tell us more about your offers of business lounges!</value>
+  </data>
+  <data name="DesktopCount" xml:space="preserve">
+    <value>Number of private offices</value>
+  </data>
+  <data name="DesktopTellMore" xml:space="preserve">
+    <value>Tell us more about your private office offers!</value>
+  </data>
+  <data name="DuplicateCount" xml:space="preserve">
+    <value>Number of similar offers</value>
+  </data>
+  <data name="MeetingRoomCount" xml:space="preserve">
+    <value>Number of meeting rooms</value>
+  </data>
+  <data name="MeetingRoomTellMore" xml:space="preserve">
+    <value>Tell us more about your meeting rooms!</value>
+  </data>
+  <data name="SeminarRoomCount" xml:space="preserve">
+    <value>Number of seminar rooms</value>
+  </data>
+  <data name="SeminarRoomTellMore" xml:space="preserve">
+    <value>Tell us more about your offers of seminar rooms!</value>
+  </data>
+  <data name="VisioRoomCount" xml:space="preserve">
+    <value>Number of visioconference rooms</value>
+  </data>
+  <data name="VisioRoomTellMore" xml:space="preserve">
+    <value>Tell us more about your offers of visioconference rooms!</value>
+  </data>
+  <data name="WorkstationCount" xml:space="preserve">
+    <value>Number of desks</value>
+  </data>
+  <data name="WorkstationTellMore" xml:space="preserve">
+    <value>Tell us more about your desks!</value>
+  </data>
 </root>

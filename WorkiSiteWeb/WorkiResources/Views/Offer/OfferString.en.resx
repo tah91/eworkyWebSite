@@ -171,4 +171,19 @@
   <data name="Description" xml:space="preserve">
     <value>Description of the offer</value>
   <comment>DE</comment></data>
+  <data name="DuplicateHelp" xml:space="preserve">
+    <value>Please select amongst your remaining offers of {0} which one have the same description, price and characteristics.</value>
+  </data>
+  <data name="EditOffers" xml:space="preserve">
+    <value>Edit offers</value>
+  </data>
+  <data name="OfferDetails" xml:space="preserve">
+    <value>Offers details</value>
+  </data>
+  <data name="OfferListDisplay" xml:space="preserve">
+    <value>{0} from {1}</value>
+  </data>
+  <data name="OffersCount" xml:space="preserve">
+    <value>Number of offers</value>
+  </data>
 </root>

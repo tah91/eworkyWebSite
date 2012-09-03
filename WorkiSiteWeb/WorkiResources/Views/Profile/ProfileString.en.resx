@@ -157,7 +157,7 @@
     <value>eWorker {0} - {1:### ### ###} pts</value>
   </data>
   <data name="YourCompanyFunction" xml:space="preserve">
-    <value></value>
+    <value>Ex: function, company, etc.</value>
   <comment>? etc. =&gt; ?</comment></data>
   <data name="HeadModifyPayment" xml:space="preserve">
     <value>Your clients will pay you through the Paypal plateform. To be able to be paid, you must own a Paypal account (to open a Paypal account, click &lt;a href="{0}" target="_blank"&gt;here&lt;/a&gt;).</value>
@@ -170,5 +170,74 @@
   </data>
   <data name="PasswordEworky" xml:space="preserve">
     <value>eWorky Paswoord</value>
+  </data>
+  <data name="MemberNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="MyCommentedSpaces" xml:space="preserve">
+    <value>My commented spaces</value>
+  </data>
+  <data name="MyComments" xml:space="preserve">
+    <value>My comments</value>
+  </data>
+  <data name="MyCompany" xml:space="preserve">
+    <value>Professional activity</value>
+  </data>
+  <data name="MyCompanyPublic" xml:space="preserve">
+    <value>has not filled in this information.</value>
+  </data>
+  <data name="MyFavoritePlaces" xml:space="preserve">
+    <value>Favorite work atmosphere </value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="MySpaces" xml:space="preserve">
+    <value>Added spaces</value>
+  </data>
+  <data name="MyWebsite" xml:space="preserve">
+    <value>My website</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>My personal information</value>
+  </data>
+  <data name="ProfessionalInfo" xml:space="preserve">
+    <value>My professional information</value>
+  </data>
+  <data name="ProfilHaveBeenEdit" xml:space="preserve">
+    <value>Your profile was correctly edited.</value>
+  </data>
+  <data name="RelCommentsEmpty" xml:space="preserve">
+    <value>None of the spaces you added was commented.</value>
+  </data>
+  <data name="SocialNetwork" xml:space="preserve">
+    <value>Social networks</value>
+  </data>
+  <data name="TwitterProfile" xml:space="preserve">
+    <value>Twitter profile</value>
+  </data>
+  <data name="ViadeoProfile" xml:space="preserve">
+    <value>Viadeo profile</value>
+  </data>
+  <data name="Wait2Days" xml:space="preserve">
+    <value>You must wait for 48 hours before editing a workplace</value>
+  </data>
+  <data name="YourFacebook" xml:space="preserve">
+    <value>Your Facebook page</value>
+  </data>
+  <data name="YourLinkedIn" xml:space="preserve">
+    <value>Your Linkedin page</value>
+  </data>
+  <data name="YourTwitter" xml:space="preserve">
+    <value>Your Twitter login</value>
+  </data>
+  <data name="YourViadeo" xml:space="preserve">
+    <value>Your Viadeo page</value>
+  </data>
+  <data name="YourWebsite" xml:space="preserve">
+    <value>Your website</value>
+  </data>
+  <data name="MyComActivities" xml:space="preserve">
+    <value>Your community activity</value>
   </data>
 </root>

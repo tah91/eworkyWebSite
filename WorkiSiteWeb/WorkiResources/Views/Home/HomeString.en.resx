@@ -397,4 +397,7 @@
   <data name="TimeAgo_prefixFromNow" xml:space="preserve">
     <value>in</value>
   </data>
+  <data name="Dutch" xml:space="preserve">
+    <value>Dutch</value>
+  </data>
 </root>
