@@ -1,35 +1,52 @@
 ﻿using System;
-using Worki.Infrastructure.Email;
+using System.Collections.Generic;
 using System.Net.Mail;
-using System.Configuration;
+using Worki.Infrastructure.Email;
+using Worki.Infrastructure.Helpers;
+using System.Linq;
 
 namespace Worki.Service
 {
     public class EmailService : IEmailService
     {
-        public string LastErrorMessage
+        public Object PrepareMessage(MailAddress from, IEnumerable<MailAddress> to, string subject, string body)
         {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool Send(string fromAddress, string fromName, string subject, string body, bool isHtml, string toAddress)
-        {
-            //SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             SmtpClient smtpClient = new SmtpClient();
             var mailMessage = new MailMessage();
-            var from = new MailAddress(fromAddress, fromName);
             mailMessage.From = from;
-            mailMessage.To.Add(toAddress);
+            foreach (var item in to)
+            {
+                mailMessage.To.Add(item);
+            }
+
             mailMessage.Subject = subject;
             mailMessage.Body = body;
-            mailMessage.IsBodyHtml = isHtml;
-            smtpClient.Send(mailMessage);
-            return true;
+            mailMessage.IsBodyHtml = true;
+
+            return mailMessage;
         }
 
-        public bool Send(string fromAddress, string fromName, string subject, string body, bool isHtml, string[] toAddresses)
+        public Object PrepareMessage(MailAddress from, MailAddress to, string subject, string body)
         {
-            throw new NotImplementedException();
+            return PrepareMessage(from, new List<MailAddress> { to }, subject, body);
+        }
+
+        public Object PrepareMessageFromDefault(MailAddress to, string subject, string body)
+        {
+            return PrepareMessage(new MailAddress(MiscHelpers.EmailConstants.ContactMail, MiscHelpers.EmailConstants.ContactDisplayName), to, subject, body);
+        }
+
+        public Object PrepareMessageToDefault(MailAddress from, string subject, string body)
+        {
+            return PrepareMessage(from, new MailAddress(MiscHelpers.EmailConstants.ContactMail, MiscHelpers.EmailConstants.ContactDisplayName), subject, body);
+        }
+
+        public bool Deliver(Object message)
+        {
+            SmtpClient smtpClient = new SmtpClient();
+            var mailMessage = (MailMessage)message;
+            smtpClient.Send(mailMessage);
+            return true;
         }
     }
 }

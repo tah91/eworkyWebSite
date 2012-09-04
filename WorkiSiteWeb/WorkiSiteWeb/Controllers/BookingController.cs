@@ -20,7 +20,6 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		IEmailService _EmailService;
         IMembershipService _MembershipService;
         IPaymentService _PaymentService;
 
@@ -28,12 +27,10 @@ namespace Worki.Web.Controllers
 
 		public BookingController(	ILogger logger,
                                     IObjectStore objectStore,
-									IEmailService emailService,
                                     IMembershipService membershipService,
                                     IPaymentService paymentService)
             : base(logger, objectStore)
 		{
-			_EmailService = emailService;
             _MembershipService = membershipService;
             _PaymentService = paymentService;
 		}

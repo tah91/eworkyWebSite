@@ -208,5 +208,11 @@ namespace Worki.Web.Helpers
                 return sw.GetStringBuilder().ToString();
             }
         }
+
+        public static string RendeEmailToString(this Controller controller, string displayName, string body)
+        {
+            var contentModel = new EmailContentModel { ToName = displayName, Content = body };
+            return controller.RenderRazorViewToString(MVC.Emails.Views.NewEmail, contentModel);
+        }
     }
 }

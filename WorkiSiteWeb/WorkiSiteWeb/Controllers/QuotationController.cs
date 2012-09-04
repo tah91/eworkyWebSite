@@ -20,20 +20,17 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		IEmailService _EmailService;
         IMembershipService _MembershipService;
         IPaymentService _PaymentService;
 
 		#endregion
 
         public QuotationController( ILogger logger,
-                                    IObjectStore objectStore, 
-									IEmailService emailService,
+                                    IObjectStore objectStore,
                                     IMembershipService membershipService,
                                     IPaymentService paymentService)
             : base(logger, objectStore)
 		{
-			_EmailService = emailService;
             _MembershipService = membershipService;
             _PaymentService = paymentService;
 		}

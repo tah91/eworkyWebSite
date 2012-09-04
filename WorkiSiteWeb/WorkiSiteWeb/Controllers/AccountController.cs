@@ -22,18 +22,15 @@ namespace Worki.Web.Controllers
 
         IFormsAuthenticationService _FormsService;
         IMembershipService _MembershipService;
-        IEmailService _EmailService;
 
         public AccountController(   IFormsAuthenticationService formsService, 
                                     IMembershipService membershipService,
                                     ILogger logger,
-                                    IObjectStore objectStore,
-                                    IEmailService emailService)
+                                    IObjectStore objectStore)
             : base(logger, objectStore)
         {
             this._FormsService = formsService;
             this._MembershipService = membershipService;
-            this._EmailService = emailService;
         }
 
         /// <summary>

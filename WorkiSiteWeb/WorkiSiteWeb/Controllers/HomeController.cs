@@ -19,6 +19,7 @@ using Worki.Web.Helpers;
 using System.Web;
 using System.Web.Security;
 using Worki.Web.Model;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Controllers
 {
@@ -30,27 +31,33 @@ namespace Worki.Web.Controllers
 	{
         protected ILogger _Logger;
         protected IObjectStore _ObjectStore;
-
+        protected Worki.Infrastructure.Email.IEmailService _EmailService;
+ 
         public ControllerBase()
         {
         }
 
-        public ControllerBase(ILogger logger,IObjectStore objectStore)
+        public ControllerBase(ILogger logger, IObjectStore objectStore)
         {
             this._Logger = logger;
             this._ObjectStore = objectStore;
+        }
+
+        public ControllerBase(ILogger logger,IObjectStore objectStore, Worki.Infrastructure.Email.IEmailService emailService)
+        {
+            this._Logger = logger;
+            this._ObjectStore = objectStore;
+            this._EmailService = emailService;
         }
 	}
 
 	public partial class HomeController : ControllerBase
     {
-        IEmailService _EmailService;
 		IBlogService _IBlogService;
 
-        public HomeController(ILogger logger, IObjectStore objectStore, IEmailService emailService, IBlogService blogService)
-            : base(logger,objectStore)
+        public HomeController(ILogger logger, IObjectStore objectStore, Worki.Infrastructure.Email.IEmailService emailService, IBlogService blogService)
+            : base(logger,objectStore,emailService)
         {
-            this._EmailService = emailService;
 			this._IBlogService = blogService;
         }
 
@@ -197,22 +204,19 @@ namespace Worki.Web.Controllers
         public virtual ActionResult Contact(Contact contact, string myCaptcha, string attempt)
         {
             //check capatcha
-            if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
-            {
-                ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
-            }
-            //check model validity
-            else if (ModelState.IsValid)
+            //if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
+            //{
+            //    ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
+            //}
+            ////check model validity
+            //else 
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    dynamic contactMail = new Email(MVC.Emails.Views.Email);
-                    contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
-                    contactMail.To = MiscHelpers.EmailConstants.ContactMail;
-                    contactMail.Subject = contact.Subject;
-					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                    contactMail.Content = contact.Message;
-                    contactMail.Send();
+                    var displsayName = contact.FirstName + " " + contact.LastName;
+                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, this.RendeEmailToString(displsayName, contact.Message));
+                    _EmailService.Deliver(mail);
                 }
                 catch (Exception ex)
                 {

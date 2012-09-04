@@ -2479,6 +2479,7 @@ namespace T4MVC {
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
+            public readonly string NewEmail = "~/Views/Emails/NewEmail.cshtml";
         }
     }
 

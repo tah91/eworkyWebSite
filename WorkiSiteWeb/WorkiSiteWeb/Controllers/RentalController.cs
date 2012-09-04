@@ -16,16 +16,14 @@ namespace Worki.Web.Controllers
 
 		IGeocodeService _GeocodeService;
         IRentalSearchService _RentalSearchService;
-        IEmailService _EmailService;
 
 		#endregion
 
-        public RentalController(ILogger logger, IObjectStore objectStore, IGeocodeService geocodeService, IRentalSearchService rentalSearchService, IEmailService emailService)
+        public RentalController(ILogger logger, IObjectStore objectStore, IGeocodeService geocodeService, IRentalSearchService rentalSearchService)
             : base(logger, objectStore)
 		{
 			_GeocodeService = geocodeService;
             _RentalSearchService = rentalSearchService;
-            _EmailService = emailService;
 		}
 
 		/// <summary>

@@ -83,11 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogService.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="InvoiceService.cs" />
     <Compile Include="PaymentService.cs" />
     <Compile Include="RentalSearchService.cs" />
     <Compile Include="GeocodeService.cs" />
-    <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchService.cs" />
   </ItemGroup>

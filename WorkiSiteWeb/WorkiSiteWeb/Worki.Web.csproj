@@ -1118,6 +1118,7 @@
     <Content Include="Views\Localisation\_MapScript.cshtml" />
     <Content Include="Views\Booking\_CreateScript.cshtml" />
     <Content Include="Views\Localisation\EditOffers.cshtml" />
+    <Content Include="Views\Emails\NewEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

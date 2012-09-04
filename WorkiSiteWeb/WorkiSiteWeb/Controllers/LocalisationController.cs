@@ -437,7 +437,7 @@ namespace Worki.Web.Controllers
 
                     if (formData.NeedAddOffer(out offerType, out currentNeed, out helpText))
                     {
-                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(formData.IsSharedOffice, offerType, currentNeed) { LocId = id }); ;
+                        var newForm = this.RenderRazorViewToString(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(formData.IsSharedOffice, offerType, currentNeed) { LocId = id });
                         return Json(new { help = helpText, form = newForm });
                     }
                     else
