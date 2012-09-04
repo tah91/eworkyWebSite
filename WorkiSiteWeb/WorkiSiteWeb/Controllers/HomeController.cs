@@ -10,7 +10,6 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Globalization;
-using Postal;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
 using Microsoft.ApplicationServer.Caching;
@@ -32,15 +31,9 @@ namespace Worki.Web.Controllers
         protected ILogger _Logger;
         protected IObjectStore _ObjectStore;
         protected Worki.Infrastructure.Email.IEmailService _EmailService;
- 
+
         public ControllerBase()
         {
-        }
-
-        public ControllerBase(ILogger logger, IObjectStore objectStore)
-        {
-            this._Logger = logger;
-            this._ObjectStore = objectStore;
         }
 
         public ControllerBase(ILogger logger,IObjectStore objectStore, Worki.Infrastructure.Email.IEmailService emailService)
@@ -204,18 +197,17 @@ namespace Worki.Web.Controllers
         public virtual ActionResult Contact(Contact contact, string myCaptcha, string attempt)
         {
             //check capatcha
-            //if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
-            //{
-            //    ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
-            //}
-            ////check model validity
-            //else 
-            if (ModelState.IsValid)
+            if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
+            {
+                ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
+            }
+            //check model validity
+            else if (ModelState.IsValid)
             {
                 try
                 {
                     var displsayName = contact.FirstName + " " + contact.LastName;
-                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, this.RendeEmailToString(displsayName, contact.Message));
+                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, this.RenderEmailToString(displsayName, contact.Message));
                     _EmailService.Deliver(mail);
                 }
                 catch (Exception ex)

@@ -9,7 +9,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Service;
 using Worki.Infrastructure.Repository;
-using Postal;
+using Worki.Infrastructure.Email;
 using System.Collections.Generic;
 using Facebook;
 
@@ -19,8 +19,8 @@ namespace Worki.Web.Controllers
     {
 		ISearchService _SearchService;
 
-        public LocalisationController(ILogger logger, IObjectStore objectStore, ISearchService searchService)
-            : base(logger, objectStore)
+        public LocalisationController(ILogger logger, IObjectStore objectStore, IEmailService emailService, ISearchService searchService)
+            : base(logger, objectStore, emailService)
         {
             _SearchService = searchService;
         }

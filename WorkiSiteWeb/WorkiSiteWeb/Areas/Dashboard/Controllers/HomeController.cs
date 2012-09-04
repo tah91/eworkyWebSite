@@ -8,7 +8,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
-using Postal;
+using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
 

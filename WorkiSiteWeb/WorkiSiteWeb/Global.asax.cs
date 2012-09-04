@@ -10,7 +10,6 @@ using Microsoft.WindowsAzure.ServiceRuntime;
 using MvcSiteMapProvider.Web;
 using Ninject;
 using Ninject.Modules;
-using Postal;
 using Worki.Data.Models;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
@@ -22,6 +21,7 @@ using Worki.Service;
 using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web
 {
@@ -48,11 +48,8 @@ namespace Worki.Web
 			Bind<IGroupRepository>()
 				.To<GroupRepository>();
 
-			Bind<Worki.Infrastructure.Email.IEmailService>()
-                .To<Worki.Service.EmailService>();
-
-            Bind<IEmailService>()
-                .To<Postal.EmailService>();
+			Bind<IEmailService>()
+                .To<EmailService>();
 
 			Bind<IWelcomePeopleRepository>()
 				.To<WelcomePeopleRepository>();

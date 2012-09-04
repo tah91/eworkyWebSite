@@ -9,6 +9,7 @@ using DotNetOpenAuth.Messaging;
 using System.Net;
 using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Controllers
 {
@@ -16,8 +17,8 @@ namespace Worki.Web.Controllers
     {
 		private readonly AuthorizationServer authorizationServer = new AuthorizationServer(new OAuth2AuthorizationServer());
 
-		public OAuthController(ILogger logger, IObjectStore objectStore)
-            : base(logger, objectStore)
+		public OAuthController(ILogger logger, IObjectStore objectStore, IEmailService emailService)
+            : base(logger, objectStore, emailService)
         {
             
         }

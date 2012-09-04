@@ -16,7 +16,7 @@ using System.Collections;
 using System.Text;
 using System.Net;
 using Worki.Web.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
 using System.Web.Security;
 using System.Data;
 

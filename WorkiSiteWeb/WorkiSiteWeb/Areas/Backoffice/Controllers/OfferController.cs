@@ -9,7 +9,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
 using Worki.Web.Model;
 using System.Web.Security;
 using System.IO;

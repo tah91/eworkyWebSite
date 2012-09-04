@@ -10,7 +10,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
 using Worki.Memberships;
-using Postal;
+using Worki.Infrastructure.Email;
 using System.IO;
 using Worki.Service;
 using Worki.Web.Model;

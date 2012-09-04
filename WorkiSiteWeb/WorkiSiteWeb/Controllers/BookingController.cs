@@ -8,11 +8,12 @@ using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
 using Worki.Service;
 using Worki.Infrastructure;
-using Postal;
 using System.Linq;
 using Worki.Memberships;
 using System.Collections.Generic;
 using Worki.Section;
+using Worki.Infrastructure.Email;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -28,8 +29,9 @@ namespace Worki.Web.Controllers
 		public BookingController(	ILogger logger,
                                     IObjectStore objectStore,
                                     IMembershipService membershipService,
+                                    IEmailService emailService,
                                     IPaymentService paymentService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
 		{
             _MembershipService = membershipService;
             _PaymentService = paymentService;
@@ -63,9 +65,9 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>View containing booking form</returns>
         //[AcceptVerbs(HttpVerbs.Post), Authorize]
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult Create(int id, MemberBookingFormViewModel formData)
-		{
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult Create(int id, MemberBookingFormViewModel formData)
+        {
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -73,73 +75,67 @@ namespace Worki.Web.Controllers
             var member = mRepo.Get(memberId);
             var offer = oRepo.Get(id);
 
-			if (ModelState.IsValid)
-			{
-				var sendNewAccountMail = false;
-				try
-				{
-					var memberData = new MemberMainData
-					{
-						FirstName = formData.FirstName,
-						LastName = formData.LastName,
-						PhoneNumber = formData.PhoneNumber,
-					};
-					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
-					member = mRepo.Get(memberId);
+            if (ModelState.IsValid)
+            {
+                var sendNewAccountMail = false;
+                try
+                {
+                    var memberData = new MemberMainData
+                    {
+                        FirstName = formData.FirstName,
+                        LastName = formData.LastName,
+                        PhoneNumber = formData.PhoneNumber,
+                    };
+                    sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+                    member = mRepo.Get(memberId);
 
-					var locName = offer.Localisation.Name;
+                    var locName = offer.Localisation.Name;
                     var locUrl = offer.Localisation.GetDetailFullUrl(Url);
-					try
-					{
-						formData.MemberBooking.MemberId = memberId;
-						formData.MemberBooking.OfferId = id;
-						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
+                    try
+                    {
+                        formData.MemberBooking.MemberId = memberId;
+                        formData.MemberBooking.OfferId = id;
+                        formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
                         formData.AjustBookingPeriod();
-                        formData.MemberBooking.Price = offer.GetDefaultPrice(   formData.MemberBooking.FromDate,
+                        formData.MemberBooking.Price = offer.GetDefaultPrice(formData.MemberBooking.FromDate,
                                                                                 formData.MemberBooking.ToDate,
-																				formData.MemberBooking.PeriodType == (int)MemberBooking.ePeriodType.SpendUnit,
+                                                                                formData.MemberBooking.PeriodType == (int)MemberBooking.ePeriodType.SpendUnit,
                                                                                 (Offer.PaymentPeriod)formData.MemberBooking.TimeType,
                                                                                 formData.MemberBooking.TimeUnits);
-						//set phone number to the one from form
-						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-						member.MemberBookings.Add(formData.MemberBooking);
+                        //set phone number to the one from form
+                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+                        member.MemberBookings.Add(formData.MemberBooking);
 
-						formData.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
-						{
-							CreatedDate = DateTime.UtcNow,
-							Event = "Booking Created",
-							EventType = (int)MemberBookingLog.BookingEvent.Creation,
-							LoggerId = memberId
-						});
+                        formData.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Event = "Booking Created",
+                            EventType = (int)MemberBookingLog.BookingEvent.Creation,
+                            LoggerId = memberId
+                        });
 
-						formData.MemberBooking.InvoiceNumber = new InvoiceNumber();
+                        formData.MemberBooking.InvoiceNumber = new InvoiceNumber();
 
-						if (!offer.Localisation.HasClient(memberId))
-						{
-							offer.Localisation.LocalisationClients.Add(new LocalisationClient { ClientId = memberId });
-						}
+                        if (!offer.Localisation.HasClient(memberId))
+                        {
+                            offer.Localisation.LocalisationClients.Add(new LocalisationClient { ClientId = memberId });
+                        }
 
-						dynamic newMemberMail = null;
-						if (sendNewAccountMail)
-						{
-							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-							TagBuilder profilLink = new TagBuilder("a");
-							profilLink.MergeAttribute("href", editprofilUrl);
-							profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
+                        object newMemberMail = null;
+                        if (sendNewAccountMail)
+                        {
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder profilLink = new TagBuilder("a");
+                            profilLink.MergeAttribute("href", editprofilUrl);
+                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
                             var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
                             TagBuilder passwordLink = new TagBuilder("a");
                             passwordLink.MergeAttribute("href", editpasswordUrl);
                             passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
 
-							newMemberMail = new Email(MVC.Emails.Views.Email);
-							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							newMemberMail.To = formData.Email;
-							newMemberMail.ToName = formData.FirstName;
-
-							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
                                                                     formData.MemberBooking.GetStartDate(),
                                                                     formData.MemberBooking.GetEndDate(),
@@ -149,86 +145,85 @@ namespace Worki.Web.Controllers
                                                                     _MembershipService.GetPassword(formData.Email, null),
                                                                     passwordLink,
                                                                     profilLink);
-						}
 
-						//send mail to team
-						dynamic teamMail = new Email(MVC.Emails.Views.Email);
-						teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-						teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-						teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingTeam,
-														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-														 formData.PhoneNumber,
-														 member.Email,
-														 locName,
-														 Localisation.GetOfferType(offer.Type),
-														 formData.MemberBooking.GetStartDate(),
-														 formData.MemberBooking.GetEndDate(),
-														 formData.MemberBooking.Message,
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
+                                Worki.Resources.Email.BookingString.BookingNewMemberSubject,
+                                this.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                        }
+
+                        //send mail to team
+                        var teamMailContent = string.Format(Worki.Resources.Email.BookingString.CreateBookingTeam,
+                                                         string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+                                                         formData.PhoneNumber,
+                                                         member.Email,
+                                                         locName,
+                                                         Localisation.GetOfferType(offer.Type),
+                                                         formData.MemberBooking.GetStartDate(),
+                                                         formData.MemberBooking.GetEndDate(),
+                                                         formData.MemberBooking.Message,
                                                          locUrl);
+                        var teamMail = _EmailService.PrepareMessageToDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
+                                Worki.Resources.Email.BookingString.BookingMailSubject,
+                                this.RenderEmailToString(MiscHelpers.EmailConstants.ContactDisplayName, teamMailContent));
 
-						//send mail to booking member
-						dynamic clientMail = new Email(MVC.Emails.Views.Email);
-						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						clientMail.To = member.Email;
-						clientMail.Subject = Worki.Resources.Email.BookingString.CreateBookingClientSubject;
-						clientMail.ToName = member.MemberMainData.FirstName;
-						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
-														 Localisation.GetOfferType(offer.Type),
-														 formData.MemberBooking.GetStartDate(),
-														 formData.MemberBooking.GetEndDate(),
-														 locName,
-														 offer.Localisation.Adress);
+                        //send mail to booking member
+                        var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
+                                                         Localisation.GetOfferType(offer.Type),
+                                                         formData.MemberBooking.GetStartDate(),
+                                                         formData.MemberBooking.GetEndDate(),
+                                                         locName,
+                                                         offer.Localisation.Adress);
 
-						//send mail to localisation member
+                        var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                            Worki.Resources.Email.BookingString.CreateBookingClientSubject,
+                            this.RenderEmailToString(member.MemberMainData.FirstName, clientMailContent));
+
+                        //send mail to localisation member
                         var urlHelp = new UrlHelper(ControllerContext.RequestContext);
                         var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
-						TagBuilder ownerLink = new TagBuilder("a");
+                        TagBuilder ownerLink = new TagBuilder("a");
                         ownerLink.MergeAttribute("href", ownerUrl);
                         ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						ownerMail.To = offer.Localisation.Member.Email;
-						ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName);
-						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
-														Localisation.GetOfferType(offer.Type),
-														locName,
-														offer.Localisation.Adress,
-                                                        ownerLink);
+                        var ownerMailContent = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
+                                Localisation.GetOfferType(offer.Type),
+                                locName,
+                                offer.Localisation.Adress,
+                                ownerLink);
+                        var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(offer.Localisation.Member.Email, offer.Localisation.Member.MemberMainData.FirstName),
+                                string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName),
+                                this.RenderEmailToString(offer.Localisation.Member.MemberMainData.FirstName, ownerMailContent));
 
-						context.Commit();
+                        context.Commit();
 
-						if (sendNewAccountMail)
-						{
-							newMemberMail.Send();
-						}
-						clientMail.Send();
-						teamMail.Send();
-						ownerMail.Send();
-					}
-					catch (Exception ex)
-					{
-						_Logger.Error(ex.Message);
-						context.Complete();
-						throw ex;
-					}
+                        if (sendNewAccountMail)
+                        {
+                            _EmailService.Deliver(newMemberMail);
+                        }
+                        _EmailService.Deliver(clientMail);
+                        _EmailService.Deliver(teamMail);
+                        _EmailService.Deliver(ownerMail);
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
+                        context.Complete();
+                        throw ex;
+                    }
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
-					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("Create", ex);
-					ModelState.AddModelError("", ex.Message);
-				}
-			}
+                    return Redirect(offer.Localisation.GetDetailFullUrl(Url));
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("Create", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
             formData.Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value");
-			formData.BookingOffer = offer;
-			return View(formData);
-		}
+            formData.BookingOffer = offer;
+            return View(formData);
+        }
 
         [AcceptVerbs(HttpVerbs.Get)]
         [ActionName("paywithpaypal")]

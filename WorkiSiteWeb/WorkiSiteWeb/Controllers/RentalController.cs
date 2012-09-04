@@ -6,7 +6,8 @@ using Worki.Infrastructure.Logging;
 using Worki.Service;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -19,12 +20,12 @@ namespace Worki.Web.Controllers
 
 		#endregion
 
-        public RentalController(ILogger logger, IObjectStore objectStore, IGeocodeService geocodeService, IRentalSearchService rentalSearchService)
-            : base(logger, objectStore)
-		{
-			_GeocodeService = geocodeService;
+        public RentalController(ILogger logger, IObjectStore objectStore, IEmailService emailService, IGeocodeService geocodeService, IRentalSearchService rentalSearchService)
+            : base(logger, objectStore, emailService)
+        {
+            _GeocodeService = geocodeService;
             _RentalSearchService = rentalSearchService;
-		}
+        }
 
 		/// <summary>
 		/// GET Action result to show rental details
@@ -313,14 +314,9 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    dynamic contactMail = new Email(MVC.Emails.Views.EmailOwner);
-                    contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
-                    contactMail.To = contact.ToEMail;
-                    contactMail.Subject = contact.Subject;
-                    contactMail.ToName = contact.ToName;
-                    contactMail.Content = contact.Message;
-                    contactMail.Link = contact.Link;
-                    contactMail.Send();
+                    var displsayName = contact.FirstName + " " + contact.LastName;
+                    var mail = _EmailService.PrepareMessage(new MailAddress(contact.EMail, displsayName), new MailAddress(contact.ToEMail), contact.Subject, this.RenderEmailToString(displsayName, contact.Message));
+                    _EmailService.Deliver(mail);
                 }
                 catch (Exception ex)
                 {

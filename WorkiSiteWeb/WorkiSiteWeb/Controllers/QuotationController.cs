@@ -8,7 +8,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
 using Worki.Service;
 using Worki.Infrastructure;
-using Postal;
+using Worki.Infrastructure.Email;
 using System.Linq;
 using Worki.Memberships;
 using System.Collections.Generic;
@@ -26,10 +26,11 @@ namespace Worki.Web.Controllers
 		#endregion
 
         public QuotationController( ILogger logger,
-                                    IObjectStore objectStore,
+                                    IObjectStore objectStore, 
+                                    IEmailService emailService,
                                     IMembershipService membershipService,
                                     IPaymentService paymentService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
 		{
             _MembershipService = membershipService;
             _PaymentService = paymentService;

@@ -11,7 +11,7 @@ using Worki.Data.Models;
 using Worki.Memberships;
 using System.Web.Security;
 using Worki.Web.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {

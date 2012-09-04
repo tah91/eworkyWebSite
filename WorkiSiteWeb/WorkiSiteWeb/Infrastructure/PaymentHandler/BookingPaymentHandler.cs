@@ -12,7 +12,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using System.Globalization;
-using Postal;
+using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Section;
 

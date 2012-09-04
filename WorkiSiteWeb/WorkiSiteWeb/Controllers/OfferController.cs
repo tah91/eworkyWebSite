@@ -8,11 +8,11 @@ using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
 using Worki.Service;
 using Worki.Infrastructure;
-using Postal;
 using System.Linq;
 using Worki.Memberships;
 using System.Web.Security;
 using System.Collections.Generic;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Controllers
 {
@@ -26,8 +26,9 @@ namespace Worki.Web.Controllers
 
         public OfferController( ILogger logger, 
                                 IObjectStore objectStore,
+                                IEmailService emailService,
                                 IMembershipService membershipService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
 		{
             _MembershipService = membershipService;
 		}

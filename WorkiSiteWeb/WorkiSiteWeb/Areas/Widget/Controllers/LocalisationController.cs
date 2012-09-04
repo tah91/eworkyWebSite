@@ -11,7 +11,6 @@ using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using System.Web.Routing;
 using Worki.Memberships;
-using Postal;
 using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Areas.Widget.Controllers
@@ -43,7 +42,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         int _PageSize = 6;
 
         public LocalisationController(  ILogger logger,
-                                        IObjectStore objectStore, 
+                                        IObjectStore objectStore,
                                         ISearchService searchService)
             : base(logger, objectStore)
         {

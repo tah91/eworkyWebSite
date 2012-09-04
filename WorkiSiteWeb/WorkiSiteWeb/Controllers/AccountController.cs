@@ -8,7 +8,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Logging;
 using Worki.Memberships;
 using Worki.Web.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
 using Facebook;
@@ -26,8 +26,9 @@ namespace Worki.Web.Controllers
         public AccountController(   IFormsAuthenticationService formsService, 
                                     IMembershipService membershipService,
                                     ILogger logger,
+                                    IEmailService emailService,
                                     IObjectStore objectStore)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
         {
             this._FormsService = formsService;
             this._MembershipService = membershipService;

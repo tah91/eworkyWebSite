@@ -10,7 +10,7 @@ using Worki.Memberships;
 using Worki.Infrastructure.Logging;
 using Worki.Rest;
 using Worki.Web.Helpers;
-using Postal;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
