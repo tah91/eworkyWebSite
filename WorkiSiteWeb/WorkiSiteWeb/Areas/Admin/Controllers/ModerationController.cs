@@ -19,16 +19,15 @@ using Worki.Web.Helpers;
 using Worki.Infrastructure.Email;
 using System.Web.Security;
 using System.Data;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
 	public partial class ModerationController : AdminControllerBase
     {
-        ILogger _Logger;
-
-        public ModerationController(ILogger logger)
+        public ModerationController(ILogger logger, IEmailService emailService)
+            : base(logger, emailService)
         {
-            _Logger = logger;
         }
 
         #region Statistic
@@ -182,8 +181,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 
                 var offer = quotation.Offer;
                 var localisation = offer.Localisation;
-                dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-
+                object ownerMail = null;
 
                 if (Roles.IsUserInRole(localisation.Member.Email, MiscHelpers.BackOfficeConstants.BackOfficeRole))
                 {
@@ -193,15 +191,15 @@ namespace Worki.Web.Areas.Admin.Controllers
                     ownerLink.MergeAttribute("href", ownerUrl);
                     ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    ownerMail.To = localisation.Member.Email;
-                    ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name);
-                    ownerMail.ToName = localisation.Member.MemberMainData.FirstName;
-                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
+                    var ownerMailContent = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
                                                     Localisation.GetOfferType(offer.Type),
                                                     localisation.Name,
                                                     localisation.Adress,
                                                     ownerLink);
+
+                    ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(localisation.Member.Email, localisation.Member.MemberMainData.FirstName),
+                            string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name),
+                            WebHelper.RenderEmailToString(localisation.Member.MemberMainData.FirstName, ownerMailContent));
                 }
                 else
                 {
@@ -216,21 +214,20 @@ namespace Worki.Web.Areas.Admin.Controllers
                     ownerLink.MergeAttribute("href", ownerUrl);
                     ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    ownerMail.To = localisation.Member.Email;
-                    ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name);
-                    ownerMail.ToName = localisation.Member.MemberMainData.FirstName;
-                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationAndBOOwner,
+                    var ownerMailContent =  string.Format(Worki.Resources.Email.BookingString.CreateQuotationAndBOOwner,
                                                     Localisation.GetOfferType(offer.Type),
                                                     localisation.Name,
                                                     localisation.Adress,
                                                     ownerUrl);
-                }
 
+                    ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(localisation.Member.Email, localisation.Member.MemberMainData.FirstName),
+                            string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name),
+                            WebHelper.RenderEmailToString(localisation.Member.MemberMainData.FirstName, ownerMailContent));
+                }
 
                 context.Commit();
 
-                ownerMail.Send();
+                _EmailService.Deliver(ownerMail);
             }
             catch (Exception ex)
             {
@@ -687,8 +684,6 @@ namespace Worki.Web.Areas.Admin.Controllers
                     if (!item.HasOwner())
                         continue;
 
-                    dynamic oldOfficeMail = new Email(MVC.Emails.Views.Email);
-
                     var urlHelp = new UrlHelper(ControllerContext.RequestContext);
 
                     var offlineAndRedirectUrl = urlHelp.ActionAbsolute(MVC.Localisation.PutOfflineAndRedirect(item.ID, surveyLink));
@@ -703,19 +698,20 @@ namespace Worki.Web.Areas.Admin.Controllers
                     editLink.MergeAttribute("href", editUrl);
                     editLink.InnerHtml = "compléter au mieux votre fiche avec les prix des différentes offres et des photos";
 
-                    oldOfficeMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    oldOfficeMail.To = WebHelper.IsDebug() ? MiscHelpers.EmailConstants.ContactMail : item.Member.Email;
-                    oldOfficeMail.Subject = string.Format("Votre annonce {0} sur eWorky", item.Name);
-                    oldOfficeMail.ToName = item.Member.MemberMainData.FirstName;
                     var content = @"vous avez ajouté une annonce de bureau à partager sur eWorky.
 
 Si vous avez loué votre bureau et que votre annonce n'est plus d'actualité, merci de {0}.
 
 Si vos bureaux sont toujours disponibles ou que vous les louez régulièrement sur du court terme, nous vous invitons à {1}. Les annonces les mieux complétées, avec de belles photos et un prix attractif pour la localisation sont celles qui reçoivent le plus de demandes.
 ";
-                    oldOfficeMail.Content = string.Format(content, offlineAndRedirectLink, editLink);
 
-                    oldOfficeMail.Send();
+                    var oldOfficeMailContent = string.Format(content, offlineAndRedirectLink, editLink);
+
+                    var oldOfficeMail = _EmailService.PrepareMessageFromDefault(new MailAddress(item.Member.Email,item.Member.MemberMainData.FirstName),
+                            string.Format("Votre annonce {0} sur eWorky", item.Name),
+                            WebHelper.RenderEmailToString(item.Member.MemberMainData.FirstName, oldOfficeMailContent));
+
+                    _EmailService.Deliver(oldOfficeMail);
 
                     count++;
 

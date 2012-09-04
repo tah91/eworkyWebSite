@@ -13,6 +13,7 @@ using System.Linq;
 using Worki.Memberships;
 using System.Collections.Generic;
 using Worki.Section;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -60,36 +61,36 @@ namespace Worki.Web.Controllers
 		/// Post Action result to add Quotation request
 		/// </summary>
 		/// <returns>View containing Quotation form</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult Create(int id, MemberQuotationFormViewModel formData)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult Create(int id, MemberQuotationFormViewModel formData)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			var member = mRepo.Get(memberId);
-			var offer = oRepo.Get(id);
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var member = mRepo.Get(memberId);
+            var offer = oRepo.Get(id);
 
-			if (ModelState.IsValid)
-			{
-				var sendNewAccountMail = false;
-				try
-				{
-					var memberData = new MemberMainData
-					{
-						FirstName = formData.FirstName,
-						LastName = formData.LastName,
-						PhoneNumber = formData.PhoneNumber,
-					};
-					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
-					member = mRepo.Get(memberId);
+            if (ModelState.IsValid)
+            {
+                var sendNewAccountMail = false;
+                try
+                {
+                    var memberData = new MemberMainData
+                    {
+                        FirstName = formData.FirstName,
+                        LastName = formData.LastName,
+                        PhoneNumber = formData.PhoneNumber,
+                    };
+                    sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+                    member = mRepo.Get(memberId);
 
-					var locName = offer.Localisation.Name;
+                    var locName = offer.Localisation.Name;
                     var locUrl = offer.Localisation.GetDetailFullUrl(Url);
-					try
-					{
+                    try
+                    {
                         var localisation = lRepo.Get(offer.LocalisationId);
                         var hasOwner = localisation.HasOwner();
 
@@ -108,13 +109,13 @@ namespace Worki.Web.Controllers
                                 LoggerId = memberId
                             });
                         }
-						//set phone number to the one from form
-						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+                        //set phone number to the one from form
+                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 
-						dynamic newMemberMail = null;
-						if (sendNewAccountMail)
-						{
-							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                        dynamic newMemberMail = null;
+                        if (sendNewAccountMail)
+                        {
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
                             var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.ChangePassword());
                             TagBuilder editpasswordLink = new TagBuilder("a");
                             editpasswordLink.MergeAttribute("href", editpasswordUrl);
@@ -124,49 +125,45 @@ namespace Worki.Web.Controllers
                             editprofilLink.MergeAttribute("href", editprofilUrl);
                             editprofilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
-							newMemberMail = new Email(MVC.Emails.Views.Email);
-							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							newMemberMail.To = formData.Email;
-							newMemberMail.ToName = formData.FirstName;
-
-							newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
                                                                     Localisation.GetOfferType(offer.Type), //0
                                                                     offer.Localisation.Name, //1
                                                                     offer.Localisation.Adress, //2
                                                                     formData.Email, //3
                                                                     _MembershipService.GetPassword(formData.Email, null), //4
                                                                     editpasswordLink, //5
-                                                                    editprofilLink); //6
-						}
+                                                                    editprofilLink); //6;
 
-						//send mail to team
-						dynamic teamMail = new Email(MVC.Emails.Views.Email);
-						teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                        teamMail.Subject = hasOwner ? Worki.Resources.Email.BookingString.QuotationMailSubject : Worki.Resources.Email.BookingString.QuotationMailSubject + " (sans gérant)";
-						teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
-														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName), //0
-														 formData.PhoneNumber, //1
-														 member.Email, //2
-														 locName, //3
-														 Localisation.GetOfferType(offer.Type), //4
-														 formData.MemberQuotation.Message, //5
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
+                                Worki.Resources.Email.BookingString.QuotationNewMemberSubject,
+                                WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                        }
+
+                        //send mail to team
+                        var teamMailContent = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
+                                                         string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName), //0
+                                                         formData.PhoneNumber, //1
+                                                         member.Email, //2
+                                                         locName, //3
+                                                         Localisation.GetOfferType(offer.Type), //4
+                                                         formData.MemberQuotation.Message, //5
                                                          locUrl); //6
 
-						//send mail to quoation client
-                        dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        clientMail.To = member.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.CreateQuotationClientSubject;
-                        clientMail.ToName = member.MemberMainData.FirstName;
-                        clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
+                        var teamMail = _EmailService.PrepareMessageFromDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
+                            hasOwner ? Worki.Resources.Email.BookingString.QuotationMailSubject : Worki.Resources.Email.BookingString.QuotationMailSubject + " (sans gérant)",
+                            WebHelper.RenderEmailToString(formData.FirstName, teamMailContent));
+
+                        //send mail to quoation client
+                        var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
                                                          Localisation.GetOfferType(offer.Type), //0
                                                          locName, //1
                                                          offer.Localisation.Adress); //2
-       
-						context.Commit();
+
+                        var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                             Worki.Resources.Email.BookingString.CreateQuotationClientSubject,
+                            WebHelper.RenderEmailToString(formData.FirstName, teamMailContent));
+
+                        context.Commit();
 
                         if (hasOwner && formData.MemberQuotation.StatusId == (int)MemberQuotation.Status.Unknown)
                         {
@@ -180,9 +177,7 @@ namespace Worki.Web.Controllers
                             var offer2 = oRepo2.Get(id);
                             var localisation2 = lRepo2.Get(offer.LocalisationId);
                             var member2 = mRepo2.Get(localisation2.OwnerID);
-                            
 
-                            dynamic ownerMail = new Email(MVC.Emails.Views.Email);
                             var urlHelp = new UrlHelper(ControllerContext.RequestContext);
                             //we get the ownerUrl from the id of the created MemberQuotation
                             var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(formData.MemberQuotation.Id));
@@ -190,43 +185,42 @@ namespace Worki.Web.Controllers
                             ownerLink.MergeAttribute("href", ownerUrl);
                             ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                            ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            ownerMail.To = member2.Email;
-                            ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation2.Name);
-                            ownerMail.ToName = localisation2.Member.MemberMainData.FirstName;
-                            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
+                            var ownerMailContent = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
                                                             Localisation.GetOfferType(offer.Type),
                                                             localisation2.Name,
                                                             localisation2.Adress,
                                                             ownerLink);
-                            ownerMail.Send();
+
+                            var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member2.Email, localisation2.Member.MemberMainData.FirstName),
+                                  string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation2.Name),
+                                WebHelper.RenderEmailToString(member2.Email, ownerMailContent));
                         }
                         if (sendNewAccountMail)
                         {
-                            newMemberMail.Send();
+                            _EmailService.Deliver(newMemberMail);
                         }
-						clientMail.Send();
-						teamMail.Send();
-					}
-					catch (Exception ex)
-					{
-						_Logger.Error(ex.Message);
-						context.Complete();
-						throw ex;
-					}
+                        _EmailService.Deliver(clientMail);
+                        _EmailService.Deliver(teamMail);
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
+                        context.Complete();
+                        throw ex;
+                    }
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.QuotationConfirmed;
-					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("Create", ex);
-					ModelState.AddModelError("", ex.Message);
-				}
-			}
-			formData.QuotationOffer = offer;
-			return View(formData);
-		}
+                    return Redirect(offer.Localisation.GetDetailFullUrl(Url));
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("Create", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            formData.QuotationOffer = offer;
+            return View(formData);
+        }
 
 		/// <summary>
 		/// GET Action result to show Quotation data

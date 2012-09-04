@@ -148,7 +148,7 @@ namespace Worki.Web.Controllers
 
                             newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
                                 Worki.Resources.Email.BookingString.BookingNewMemberSubject,
-                                this.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                                WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
                         }
 
                         //send mail to team
@@ -164,7 +164,7 @@ namespace Worki.Web.Controllers
                                                          locUrl);
                         var teamMail = _EmailService.PrepareMessageToDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
                                 Worki.Resources.Email.BookingString.BookingMailSubject,
-                                this.RenderEmailToString(MiscHelpers.EmailConstants.ContactDisplayName, teamMailContent));
+                                WebHelper.RenderEmailToString(MiscHelpers.EmailConstants.ContactDisplayName, teamMailContent));
 
                         //send mail to booking member
                         var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
@@ -176,7 +176,7 @@ namespace Worki.Web.Controllers
 
                         var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
                             Worki.Resources.Email.BookingString.CreateBookingClientSubject,
-                            this.RenderEmailToString(member.MemberMainData.FirstName, clientMailContent));
+                            WebHelper.RenderEmailToString(member.MemberMainData.FirstName, clientMailContent));
 
                         //send mail to localisation member
                         var urlHelp = new UrlHelper(ControllerContext.RequestContext);
@@ -192,7 +192,7 @@ namespace Worki.Web.Controllers
                                 ownerLink);
                         var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(offer.Localisation.Member.Email, offer.Localisation.Member.MemberMainData.FirstName),
                                 string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName),
-                                this.RenderEmailToString(offer.Localisation.Member.MemberMainData.FirstName, ownerMailContent));
+                                WebHelper.RenderEmailToString(offer.Localisation.Member.MemberMainData.FirstName, ownerMailContent));
 
                         context.Commit();
 

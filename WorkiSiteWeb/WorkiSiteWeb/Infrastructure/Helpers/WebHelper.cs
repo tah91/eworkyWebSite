@@ -370,5 +370,16 @@ namespace Worki.Web.Helpers
             }
         }
         #endregion
+
+        public static string RenderEmailToString(string displayName, string body)
+        {
+            var contentModel = new EmailContentModel { ToName = displayName, Content = body };
+            using (var template = File.OpenText(MVC.Emails.Views.NewEmail))
+            {
+                var content = template.ReadToEnd();
+                string message = RazorEngine.Razor.Parse<EmailContentModel>(content, contentModel);
+                return message;
+            }
+        }
     }
 }

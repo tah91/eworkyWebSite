@@ -9,6 +9,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
 using Worki.Data.Models;
 using Worki.Infrastructure.Repository;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -19,9 +20,10 @@ namespace Worki.Web.Areas.Widget.Controllers
 
         public AccountController(ILogger logger,
                                 IObjectStore objectStore,
+                                IEmailService emailService,
                                 IFormsAuthenticationService formsService, 
                                 IMembershipService membershipService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
         {
            _FormsService = formsService;
            _MembershipService = membershipService;

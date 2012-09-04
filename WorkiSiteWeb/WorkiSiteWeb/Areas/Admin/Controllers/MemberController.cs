@@ -12,19 +12,18 @@ using Worki.Memberships;
 using System.Web.Security;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Email;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
 	public partial class MemberController : AdminControllerBase
     {
         IMembershipService _MembershipService;
-        ILogger _Logger;
 
-        public MemberController(IMembershipService memberShipservice,
-                                ILogger logger)
+        public MemberController(ILogger logger, IEmailService emailService, IMembershipService memberShipservice)
+            : base(logger, emailService)
         {
             _MembershipService = memberShipservice;
-            _Logger = logger;
         }
 
         #region Members
@@ -253,22 +252,18 @@ namespace Worki.Web.Areas.Admin.Controllers
                         link.MergeAttribute("href", activationLink);
                         link.InnerHtml = activationLink;
 
-                        dynamic ownerMail = null;
-
-                        ownerMail = new Email(MVC.Emails.Views.Email);
-                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        ownerMail.To = model.Email;
-                        ownerMail.ToName = model.Firstname;
-
-                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
-                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnershipAndAccount,
+                        var ownerMailContent = string.Format(Worki.Resources.Email.Common.AdminOwnershipAndAccount,
                                                             loc.Name,
                                                             activationLink.ToString(),
                                                             loc.GetDetailFullUrl(Url),
                                                             model.Email,
                                                             _MembershipService.GetPassword(model.Email, null));
 
-                        ownerMail.Send();
+                        var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(model.Email, model.Firstname),
+                              string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name),
+                              WebHelper.RenderEmailToString(model.Firstname, ownerMailContent));
+
+                        _EmailService.Deliver(ownerMail);
                     }
                     else
                     {
@@ -278,19 +273,15 @@ namespace Worki.Web.Areas.Admin.Controllers
                         link.MergeAttribute("href", boLink);
                         link.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                        dynamic ownerMail = null;
-
-                        ownerMail = new Email(MVC.Emails.Views.Email);
-                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        ownerMail.To = model.Email;
-                        ownerMail.ToName = model.Firstname;
-
-                        ownerMail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name);
-                        ownerMail.Content = string.Format(Worki.Resources.Email.Common.AdminOwnership,
+                        var ownerMailContent = string.Format(Worki.Resources.Email.Common.AdminOwnership,
                                                             loc.Name,
                                                             boLink.ToString());
 
-                        ownerMail.Send();
+                        var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(model.Email, model.Firstname),
+                              string.Format(Worki.Resources.Email.Common.OwnershipSubject, loc.Name),
+                              WebHelper.RenderEmailToString(model.Firstname, ownerMailContent));
+
+                        _EmailService.Deliver(ownerMail);
                     }
 
                     return RedirectToAction(MVC.Admin.Member.IndexOwner());
@@ -325,24 +316,24 @@ namespace Worki.Web.Areas.Admin.Controllers
 			return View(viewModel);
 		}
 
-		public virtual ActionResult SetBackoffice(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var member = mRepo.Get(id);
-			try
-			{
-				var roleToGive = !Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
-				if (roleToGive)
-				{
+        public virtual ActionResult SetBackoffice(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.Get(id);
+            try
+            {
+                var roleToGive = !Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                if (roleToGive)
+                {
                     member.MemberMainData.BOStatus = (int)eBOStatus.Done;
-					Roles.AddUserToRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
-				}
-				else
-				{
+                    Roles.AddUserToRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                }
+                else
+                {
                     member.MemberMainData.BOStatus = (int)eBOStatus.None;
-					Roles.RemoveUserFromRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
-				}
+                    Roles.RemoveUserFromRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                }
                 context.Commit();
                 //email to tell bo has been given
                 if (roleToGive)
@@ -353,23 +344,23 @@ namespace Worki.Web.Areas.Admin.Controllers
                     boHomeLink.MergeAttribute("href", boHomeUrl);
                     boHomeLink.InnerHtml = Worki.Resources.Email.Activation.BOLink;
 
-                    dynamic confirmationMail = new Email(MVC.Emails.Views.Email);
-                    confirmationMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    confirmationMail.To = member.Email;
-                    confirmationMail.ToName = member.GetDisplayName();
-                    confirmationMail.Subject = Worki.Resources.Email.Activation.BOConfirmSubject;
-                    confirmationMail.Content = string.Format(Worki.Resources.Email.Activation.BOConfirmContent, boHomeLink);
-                    confirmationMail.Send();
-                }
-			}
-			catch (Exception ex)
-			{
-                context.Complete();
-				_Logger.Error("SetBackoffice", ex);
-			}
+                    var confirmationMailContent = string.Format(Worki.Resources.Email.Activation.BOConfirmContent, boHomeLink);
 
-			return RedirectToAction(MVC.Admin.Member.IndexOwner());
-		}
+                    var confirmationMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.GetDisplayName()),
+                           Worki.Resources.Email.Activation.BOConfirmSubject,
+                           WebHelper.RenderEmailToString(member.GetDisplayName(), confirmationMailContent));
+
+                    _EmailService.Deliver(confirmationMail);
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("SetBackoffice", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.Member.IndexOwner());
+        }
 
 		#endregion
 

@@ -19,10 +19,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class OfferController : BackofficeControllerBase
     {
-        public OfferController(ILogger logger, IObjectStore objectStore)
-            : base(logger, objectStore)
+        public OfferController(ILogger logger, IObjectStore objectStore, IEmailService emailService)
+            : base(logger, objectStore, emailService)
         {
-            
+
         }
 
 		#region Index

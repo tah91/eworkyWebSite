@@ -12,6 +12,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Email;
 using System.Collections.Generic;
 using Facebook;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -155,13 +156,13 @@ namespace Worki.Web.Controllers
 			{
 				try
 				{
-					dynamic contactMail = new Email(MVC.Emails.Views.Email);
-					contactMail.From = formData.Contact.FirstName + " " + formData.Contact.LastName + "<" + formData.Contact.EMail + ">";
-					contactMail.To = MiscHelpers.EmailConstants.ContactMail;
-					contactMail.Subject = string.Format("{0} - {1}", formData.Contact.Subject, localisation.GetDetailFullUrl(Url));
-					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-					contactMail.Content = formData.Contact.Message;
-					contactMail.Send();
+                    var contactMailContent = Worki.Resources.Email.Activation.BOAskContent;
+
+                    var contactMail = _EmailService.PrepareMessageToDefault(new MailAddress(formData.Contact.EMail, formData.Contact.FirstName + " " + formData.Contact.LastName),
+                        string.Format("{0} - {1}", formData.Contact.Subject, localisation.GetDetailFullUrl(Url)),
+                        WebHelper.RenderEmailToString(formData.Contact.FirstName + " " + formData.Contact.LastName, formData.Contact.Message));
+
+                    _EmailService.Deliver(contactMail);
 				}
 				catch (Exception ex)
 				{
@@ -282,13 +283,7 @@ namespace Worki.Web.Controllers
                 //send welcome mail
                 if (!string.IsNullOrEmpty(localisation.Mail))
                 {
-                    dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
-                    newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    newMemberMail.To = localisation.Mail;
-                    newMemberMail.ToName = "";
-
-                    newMemberMail.Subject = string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisation.GetFullName());
-                    newMemberMail.Content = string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
+                    var newMemberMailContent =string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
                                                             localisation.GetFullName(),
                                                             Localisation.GetOfferType(localisation.TypeValue),
                                                             localisation.City,
@@ -296,7 +291,11 @@ namespace Worki.Web.Controllers
                                                             localisation.GetFullName(),
                                                             localisation.GetFullName());
 
-                    newMemberMail.Send();
+                    var newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(localisation.Mail),
+                        string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisation.GetFullName()),
+                        WebHelper.RenderEmailToString("", newMemberMailContent));
+
+                    _EmailService.Deliver(newMemberMail);
                 }
 
                 //need for pricing page
@@ -602,17 +601,16 @@ namespace Worki.Web.Controllers
 				}
 				var dest = member.Email;
 				//send mail to member
-				dynamic Ownermail = new Email(MVC.Emails.Views.Email);
-				Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				Ownermail.To = dest;
-				Ownermail.ToName = member.MemberMainData.FirstName;
-				Ownermail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, localisation.Name);
-				Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
+                var ownermailContent =string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
 										Url.ActionAbsolute(MVC.Localisation.Edit(id)));
+
+                var ownermail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                    string.Format(Worki.Resources.Email.Common.OwnershipSubject, localisation.Name),
+                    WebHelper.RenderEmailToString(member.MemberMainData.FirstName, ownermailContent));
 
                 context.Commit();
 
-                Ownermail.Send();
+                _EmailService.Deliver(ownermail);
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.YouAreOwner;
 			}

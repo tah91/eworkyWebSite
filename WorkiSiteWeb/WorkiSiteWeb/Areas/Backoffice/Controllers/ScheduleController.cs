@@ -14,15 +14,16 @@ using Worki.Web.Model;
 using System.Web.Security;
 using System.IO;
 using Worki.Service;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class ScheduleController : BackofficeControllerBase
     {
-        public ScheduleController(ILogger logger, IObjectStore objectStore)
-            : base(logger, objectStore)
+        public ScheduleController(ILogger logger, IObjectStore objectStore, IEmailService emailService)
+            : base(logger, objectStore, emailService)
         {
-            
+
         }
 
 		/// <summary>
@@ -173,21 +174,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					localisationLink.MergeAttribute("href", localisationUrl);
 					localisationLink.InnerHtml = localisationUrl;
 
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModification,
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														localisationLink);
+                    var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModification,
+                                                        booking.Offer.Localisation.Name,
+                                                        booking.GetStartDate(),
+                                                        booking.GetEndDate(),
+                                                        dashboardLink,
+                                                        localisationLink);
+
+                    var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(booking.Client.Email, booking.Client.MemberMainData.FirstName),
+                          string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name),
+                          WebHelper.RenderEmailToString(booking.Client.MemberMainData.FirstName, clientMailContent));
 
 					context.Commit();
 
-					clientMail.Send();
+                    _EmailService.Deliver(clientMail);
 
 					return Json("Drop success");
 				}
@@ -240,21 +240,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					localisationLink.MergeAttribute("href", localisationUrl);
 					localisationLink.InnerHtml = localisationUrl;
 
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(	Worki.Resources.Email.BookingString.CalandarBookingModification,
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														localisationLink);
+                    var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModification,
+                                                        booking.Offer.Localisation.Name,
+                                                        booking.GetStartDate(),
+                                                        booking.GetEndDate(),
+                                                        dashboardLink,
+                                                        localisationLink);
+
+                    var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(booking.Client.Email, booking.Client.MemberMainData.FirstName),
+                          string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name),
+                          WebHelper.RenderEmailToString(booking.Client.MemberMainData.FirstName, clientMailContent));
 
                     context.Commit();
 
-					clientMail.Send();
+                    _EmailService.Deliver(clientMail);
 
                     return Json("Resize success");
                 }
@@ -344,21 +343,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				localisationLink.MergeAttribute("href", localisationUrl);
 				localisationLink.InnerHtml = localisationUrl;
 
-				dynamic clientMail = new Email(MVC.Emails.Views.Email);
-				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				clientMail.To = booking.Client.Email;
-				clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
-				clientMail.ToName = booking.Client.MemberMainData.FirstName;
-				clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
-													Localisation.GetOfferType(booking.Offer.Type),
-													booking.Offer.Localisation.Name,
-													booking.GetStartDate(),
-													booking.GetEndDate(),
-													dashboardLink,
-													booking.Price,
-													localisationLink);
+                var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
+                                                    Localisation.GetOfferType(booking.Offer.Type),
+                                                    booking.Offer.Localisation.Name,
+                                                    booking.GetStartDate(),
+                                                    booking.GetEndDate(),
+                                                    dashboardLink,
+                                                    booking.Price,
+                                                    localisationLink);
 
-				clientMail.Send();
+                var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(booking.Client.Email, booking.Client.MemberMainData.FirstName),
+                      string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name),
+                      WebHelper.RenderEmailToString(booking.Client.MemberMainData.FirstName, clientMailContent));
+
+                _EmailService.Deliver(clientMail);
 
 				return booking;
 			}
@@ -564,7 +562,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						});
 					}
 
-                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    object clientMail = null;
                     if (booking.StatusId == (int)MemberBooking.Status.Accepted)
                     {
                         //send mail to client
@@ -573,11 +571,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                         TagBuilder userLink = new TagBuilder("a");
                         userLink.MergeAttribute("href", userUrl);
                         userLink.InnerHtml = Worki.Resources.Views.Shared.SharedString.SpaceUser;
-                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                        clientMail.To = booking.Client.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.AcceptBookingClientSubject;
-                        clientMail.ToName = booking.Client.MemberMainData.FirstName;
-                        clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
+
+                        var clientMailContent = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
                                                             Localisation.GetOfferType(booking.Offer.Type),
                                                             booking.GetStartDate(),
                                                             booking.GetEndDate(),
@@ -585,13 +580,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                                                             booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
                                                             booking.Price,
                                                             userLink);
+
+                        clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(booking.Client.Email, booking.Client.MemberMainData.FirstName),
+                              Worki.Resources.Email.BookingString.AcceptBookingClientSubject,
+                              WebHelper.RenderEmailToString(booking.Client.MemberMainData.FirstName, clientMailContent));
                     }
 
 					context.Commit();
 
                     if (booking.StatusId == (int)MemberBooking.Status.Accepted)
                     {
-                        clientMail.Send();
+                        _EmailService.Deliver(clientMail);
                     }
 
 					var newContext = ModelFactory.GetUnitOfWork();

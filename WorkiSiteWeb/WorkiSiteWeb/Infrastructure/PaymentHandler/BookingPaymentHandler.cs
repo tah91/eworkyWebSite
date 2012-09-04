@@ -1,30 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Net;
-using System.Web;
-using System.IO;
-using System.Xml;
-using System.Web.Mvc;
-using Newtonsoft.Json;
+using System.Net.Mail;
+using Worki.Data.Models;
+using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
-using Worki.Data.Models;
-using System.Globalization;
-using Worki.Infrastructure.Email;
-using Worki.Infrastructure.Helpers;
-using Worki.Section;
+using Worki.Web.Helpers;
 
 namespace Worki.Web
 {
     public class MemberBookingPaymentHandler : IPaymentHandler
     {
         ILogger _Logger;
+        IEmailService _EmailService;
 
-        public MemberBookingPaymentHandler(ILogger logger)
+        public MemberBookingPaymentHandler(ILogger logger, IEmailService emailService)
         {
             _Logger = logger;
+            _EmailService = emailService;
         }
 
         public class Constants
@@ -159,17 +153,16 @@ namespace Worki.Web
 				});
 
 				//send mail to owner
-				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				ownerMail.To = booking.Owner.Email;
-				ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.PayementSubject, booking.Id);
-				ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-				ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner, booking.Id);
+                var ownerMailContent = string.Format(Worki.Resources.Email.BookingString.PayementOwner, booking.Id);
+
+                var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress( booking.Owner.Email, booking.Owner.MemberMainData.FirstName),
+                      string.Format(Worki.Resources.Email.BookingString.PayementSubject, booking.Id),
+                      WebHelper.RenderEmailToString(booking.Owner.MemberMainData.FirstName, ownerMailContent));
 
 				context.Commit();
 				completed = true;
 
-				ownerMail.Send();
+                _EmailService.Deliver(ownerMail);
 			}
 			catch (Exception ex)
 			{

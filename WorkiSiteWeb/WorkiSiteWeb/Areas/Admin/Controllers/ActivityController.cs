@@ -11,16 +11,15 @@ using Worki.Data.Models;
 using Worki.Web.Singletons;
 using Worki.Web.Helpers;
 using Worki.Service;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
 	public partial class ActivityController : AdminControllerBase
     {
-        ILogger _Logger;
-
-        public ActivityController(ILogger logger)
+        public ActivityController(ILogger logger, IEmailService emailService)
+            : base(logger, emailService)
         {
-            _Logger = logger;
         }
 
         #region Admin WelcomePeople	

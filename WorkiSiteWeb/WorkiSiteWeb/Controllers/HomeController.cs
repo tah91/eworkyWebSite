@@ -19,6 +19,7 @@ using System.Web;
 using System.Web.Security;
 using Worki.Web.Model;
 using Worki.Infrastructure.Email;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -30,13 +31,13 @@ namespace Worki.Web.Controllers
 	{
         protected ILogger _Logger;
         protected IObjectStore _ObjectStore;
-        protected Worki.Infrastructure.Email.IEmailService _EmailService;
+        protected IEmailService _EmailService;
 
         public ControllerBase()
         {
         }
 
-        public ControllerBase(ILogger logger,IObjectStore objectStore, Worki.Infrastructure.Email.IEmailService emailService)
+        public ControllerBase(ILogger logger,IObjectStore objectStore, IEmailService emailService)
         {
             this._Logger = logger;
             this._ObjectStore = objectStore;
@@ -207,7 +208,7 @@ namespace Worki.Web.Controllers
                 try
                 {
                     var displsayName = contact.FirstName + " " + contact.LastName;
-                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, this.RenderEmailToString(displsayName, contact.Message));
+                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, WebHelper.RenderEmailToString(displsayName, contact.Message));
                     _EmailService.Deliver(mail);
                 }
                 catch (Exception ex)
@@ -300,24 +301,24 @@ namespace Worki.Web.Controllers
                     context.Commit();
 
                     //send mail to team
-                    dynamic teamMail = new Email(MVC.Emails.Views.Email);
-                    teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                    teamMail.Subject = Worki.Resources.Email.Activation.BOTeamAskSubject;
-                    teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                    teamMail.Content = string.Format(Worki.Resources.Email.Activation.BOTeamAsk,
+                    var teamMailContent = string.Format(Worki.Resources.Email.Activation.BOTeamAsk,
                                                      string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
                                                      member.Email);
-                    teamMail.Send();
+
+                    var teamMail = _EmailService.PrepareMessageFromDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
+                        Worki.Resources.Email.Activation.BOTeamAskSubject,
+                        WebHelper.RenderEmailToString(member.MemberMainData.FirstName, teamMailContent));
+
+                    _EmailService.Deliver(teamMail);
 
                     //email to tell ask is pending
-                    dynamic confirmationMail = new Email(MVC.Emails.Views.Email);
-                    confirmationMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    confirmationMail.To = member.Email;
-                    confirmationMail.ToName = member.GetDisplayName();
-                    confirmationMail.Subject = Worki.Resources.Email.Activation.BOAskSubject;
-                    confirmationMail.Content = Worki.Resources.Email.Activation.BOAskContent;
-                    confirmationMail.Send();
+                    var confirmationMailContent = Worki.Resources.Email.Activation.BOAskContent;
+
+                    var confirmationMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email,member.GetDisplayName()),
+                        Worki.Resources.Email.Activation.BOAskSubject,
+                        WebHelper.RenderEmailToString(member.MemberMainData.FirstName, confirmationMailContent));
+
+                    _EmailService.Deliver(confirmationMail);
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.BackOfficeAsked;
                     return RedirectToAction(MVC.Home.Index());

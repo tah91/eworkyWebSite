@@ -14,15 +14,16 @@ using Worki.Web.Model;
 using System.Web.Security;
 using System.IO;
 using Worki.Service;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class LocalisationController : BackofficeControllerBase
     {
-        public LocalisationController(ILogger logger, IObjectStore objectStore)
-            : base(logger, objectStore)
+        public LocalisationController(ILogger logger, IObjectStore objectStore, IEmailService emailService)
+            : base(logger, objectStore, emailService)
         {
-            
+
         }
 
 		#region Index
@@ -346,23 +347,23 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     TagBuilder userLink = new TagBuilder("a");
                     userLink.MergeAttribute("href", userUrl);
                     userLink.InnerHtml = Worki.Resources.Views.Shared.SharedString.SpaceUser;
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = Worki.Resources.Email.BookingString.AcceptBookingClientSubject;
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
-														Localisation.GetOfferType(booking.Offer.Type),
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														booking.Offer.Localisation.Name,
-														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
-														booking.Price,
+
+                    var clientMailContent = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
+                                                        Localisation.GetOfferType(booking.Offer.Type),
+                                                        booking.GetStartDate(),
+                                                        booking.GetEndDate(),
+                                                        booking.Offer.Localisation.Name,
+                                                        booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
+                                                        booking.Price,
                                                         userLink);
+
+                    var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress( booking.Client.Email,  booking.Client.MemberMainData.FirstName),
+                          Worki.Resources.Email.BookingString.AcceptBookingClientSubject,
+                          WebHelper.RenderEmailToString( booking.Client.MemberMainData.FirstName, clientMailContent));
 
 					context.Commit();
 
-                    clientMail.Send();
+                    _EmailService.Deliver(clientMail);
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingAccepted;
 
@@ -440,21 +441,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						LoggerId = memberId
 					});
 
-                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                    clientMail.To = booking.Client.Email;
-                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseBookingClientSubject;
-                    clientMail.ToName = booking.Client.MemberMainData.FirstName;
-                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
+                    var clientMailContent = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
                                                         Localisation.GetOfferType(booking.Offer.Type),
-														booking.GetStartDate(),
-														booking.GetEndDate(),
+                                                        booking.GetStartDate(),
+                                                        booking.GetEndDate(),
                                                         booking.Offer.Localisation.Name,
                                                         booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
 
+                    var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(booking.Client.Email, booking.Client.MemberMainData.FirstName),
+                          Worki.Resources.Email.BookingString.RefuseBookingClientSubject,
+                          WebHelper.RenderEmailToString(booking.Client.MemberMainData.FirstName, clientMailContent)); 
+
                     context.Commit();
 
-                    clientMail.Send();
+                    _EmailService.Deliver(clientMail);
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingRefused;
 

@@ -15,6 +15,7 @@ using System.IO;
 using Worki.Service;
 using Worki.Web.Model;
 using System.Web.UI;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -25,12 +26,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
         public ClientController(ILogger logger,
                                 IObjectStore objectStore,
+                                IEmailService emailService,
                                 IMembershipService membershipService,
                                 IInvoiceService invoiceService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
         {
             _MembershipService = membershipService;
-			_InvoiceService  = invoiceService;
+            _InvoiceService = invoiceService;
         }
 
         public const int PageSize = 5;
@@ -150,7 +152,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 						TryUpdateModel(client, "InnerModel.Member");
 
-                        dynamic newMemberMail = null;
+                        object newMemberMail = null;
                         if (sendNewAccountMail)
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
@@ -164,24 +166,22 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                             passwordLink.MergeAttribute("href", editpasswordUrl);
                             passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
 
-                            newMemberMail = new Email(MVC.Emails.Views.Email);
-                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            newMemberMail.To = client.Email;
-                            newMemberMail.ToName = client.MemberMainData.FirstName;
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.BookingString.ClientCreationAccount,
+                                                                    client.Email,
+                                                                    _MembershipService.GetPassword(client.Email, null),
+                                                                    passwordLink,
+                                                                    profilLink);
 
-							newMemberMail.Subject = Worki.Resources.Email.BookingString.ClientCreationAccountSubject;
-							newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.ClientCreationAccount,
-																	client.Email,
-																	_MembershipService.GetPassword(client.Email, null),
-																	passwordLink,
-																	profilLink);
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(client.Email, client.MemberMainData.FirstName),
+                                  Worki.Resources.Email.BookingString.ClientCreationAccountSubject,
+                                  WebHelper.RenderEmailToString(client.MemberMainData.FirstName, newMemberMailContent));
                         }
 
                         context.Commit();
 
                         if (sendNewAccountMail)
                         {
-                            newMemberMail.Send();
+                            _EmailService.Deliver(newMemberMail);
                         }
                     }
                     catch (Exception ex)

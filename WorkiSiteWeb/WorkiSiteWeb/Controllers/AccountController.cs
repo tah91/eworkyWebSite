@@ -13,6 +13,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
 using Facebook;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace Worki.Web.Controllers
 {
@@ -132,98 +133,98 @@ namespace Worki.Web.Controllers
         /// <param name="myCaptcha">The captcha to avoid spam</param>
         /// <param name="attempt">The user attempt to the captcha</param>
         /// <returns>Redirect to register succes page if succes, the form with errors if not</returns>
-		[HttpPost]
-		[ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         [ActionName("register")]
-		public virtual ActionResult Register(RegisterModel model, string myCaptcha, string attempt)
-		{
-			//check capatcha
-			if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
-			{
-				ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
-			}
-			//check model validity
-			else if (ModelState.IsValid)
-			{
-				// Tentative d'inscription de l'utilisateur
-				bool createStatusSuccess = false;
-				bool addMemberDataSuccess = false;
-				string error = string.Empty;
-				string field = string.Empty;
-				MembershipCreateStatus createStatus = MembershipCreateStatus.UserRejected;
-				try
-				{
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var fromDB = mRepo.GetMember(model.Email);
-					if (fromDB != null)
-					{
-						error = Worki.Resources.Validation.ValidationString.UsernameExistForThisMail;
-						field = "Email";
-						throw new Exception(error);
-					}
-					createStatus = _MembershipService.CreateUser(model.Email, model.Password, model.Email);
-					createStatusSuccess = createStatus == MembershipCreateStatus.Success;
-					if (!createStatusSuccess)
-					{
-						error = AccountValidation.ErrorCodeToString(createStatus);
-						throw new Exception(error);
-					}
+        public virtual ActionResult Register(RegisterModel model, string myCaptcha, string attempt)
+        {
+            //check capatcha
+            if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
+            {
+                ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
+            }
+            //check model validity
+            else if (ModelState.IsValid)
+            {
+                // Tentative d'inscription de l'utilisateur
+                bool createStatusSuccess = false;
+                bool addMemberDataSuccess = false;
+                string error = string.Empty;
+                string field = string.Empty;
+                MembershipCreateStatus createStatus = MembershipCreateStatus.UserRejected;
+                try
+                {
+                    var context = ModelFactory.GetUnitOfWork();
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var fromDB = mRepo.GetMember(model.Email);
+                    if (fromDB != null)
+                    {
+                        error = Worki.Resources.Validation.ValidationString.UsernameExistForThisMail;
+                        field = "Email";
+                        throw new Exception(error);
+                    }
+                    createStatus = _MembershipService.CreateUser(model.Email, model.Password, model.Email);
+                    createStatusSuccess = createStatus == MembershipCreateStatus.Success;
+                    if (!createStatusSuccess)
+                    {
+                        error = AccountValidation.ErrorCodeToString(createStatus);
+                        throw new Exception(error);
+                    }
 
-					//add memberData
-					context = ModelFactory.GetUnitOfWork();
-					mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var created = mRepo.GetMember(model.Email);
-					created.MemberMainData = model.MemberMainData;
-					context.Commit();
-					addMemberDataSuccess = true;
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error(ex.Message);
-					if (string.IsNullOrEmpty(error))
-						error = Worki.Resources.Views.Account.InscriptionString.ErrorSave;
-				}
+                    //add memberData
+                    context = ModelFactory.GetUnitOfWork();
+                    mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var created = mRepo.GetMember(model.Email);
+                    created.MemberMainData = model.MemberMainData;
+                    context.Commit();
+                    addMemberDataSuccess = true;
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error(ex.Message);
+                    if (string.IsNullOrEmpty(error))
+                        error = Worki.Resources.Views.Account.InscriptionString.ErrorSave;
+                }
 
-				if (createStatusSuccess && addMemberDataSuccess)
-				{
-					//add them to private beta role
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var member = mRepo.GetMember(model.Email);
-					//send mail to activate the account
-					try
-					{
+                if (createStatusSuccess && addMemberDataSuccess)
+                {
+                    //add them to private beta role
+                    var context = ModelFactory.GetUnitOfWork();
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var member = mRepo.GetMember(model.Email);
+                    //send mail to activate the account
+                    try
+                    {
                         var urlHelper = new UrlHelper(ControllerContext.RequestContext);
                         var activationLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
                         TagBuilder link = new TagBuilder("a");
                         link.MergeAttribute("href", activationLink);
                         link.InnerHtml = activationLink;
 
-                        dynamic activateMail = new Email(MVC.Emails.Views.Email);
-						activateMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        activateMail.To = member.Email;
-                        activateMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
-                        activateMail.ToName = member.MemberMainData.FirstName;
-                        activateMail.Content = string.Format(Worki.Resources.Email.Activation.ActivationContent, link.ToString(), member.Email);
-                        activateMail.Send();
-					}
-					catch (Exception ex)
-					{
-						_Logger.Error(ex.Message);
+                        var activateMailContent = string.Format(Worki.Resources.Email.Activation.ActivationContent, link.ToString(), member.Email);
+
+                        var activateMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                            Worki.Resources.Email.Activation.ActivationSubject,
+                            WebHelper.RenderEmailToString(member.MemberMainData.FirstName, activateMailContent));
+
+                        _EmailService.Deliver(activateMail);
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
                     }
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.ConfirmationMail;
                     return RedirectToAction(MVC.Home.Index());
-				}
-				else
-				{
-					ModelState.AddModelError(field, error);
-				}
-			}
-			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
-			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
-			return View(model);
-		}
+                }
+                else
+                {
+                    ModelState.AddModelError(field, error);
+                }
+            }
+            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
+            ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
+            return View(model);
+        }
 
         /// <summary>
         /// Action method to activate an account for a member
@@ -262,7 +263,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="model">The reset password data from the form</param>
         /// <returns>Password reset succes page if ok, the form with error if not</returns>
-        [HttpPost] 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("reset-password")]
         public virtual ActionResult ResetPassword(ResetPasswordModel model)
@@ -280,18 +281,18 @@ namespace Worki.Web.Controllers
                         try
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-							var profilLink = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+                            var profilLink = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
                             TagBuilder link = new TagBuilder("a");
                             link.MergeAttribute("href", profilLink);
                             link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
 
-                            dynamic resetMail = new Email(MVC.Emails.Views.Email);
-                            resetMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            resetMail.To = member.Email;
-                            resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
-                            resetMail.ToName = member.MemberMainData.FirstName;
-                            resetMail.Content = string.Format(Worki.Resources.Email.ResetPassword.ResetPasswordContent, member.Email, _MembershipService.GetPassword(member.Email, null), link.ToString());
-                            resetMail.Send();
+                            var resetMailContent = string.Format(Worki.Resources.Email.ResetPassword.ResetPasswordContent, member.Email, _MembershipService.GetPassword(member.Email, null), link.ToString()); ;
+
+                            var resetMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                                Worki.Resources.Email.ResetPassword.ResetPasswordSubject,
+                                WebHelper.RenderEmailToString(member.MemberMainData.FirstName, resetMailContent));
+
+                            _EmailService.Deliver(resetMail);
                         }
                         catch (Exception ex)
                         {
@@ -486,16 +487,16 @@ namespace Worki.Web.Controllers
 							// Send mail
 							try
 							{
-								dynamic facebookMail = new Email(MVC.Emails.Views.Email);
-								facebookMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-								facebookMail.To = member.Email;
-								facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
-								facebookMail.ToName = member.MemberMainData.FirstName;
-								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content,
-																	urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()), 
-																	member.Email, 
-																	_MembershipService.GetPassword(member.Email, null));
-								facebookMail.Send();
+                                var facebookMailContent = string.Format(Worki.Resources.Email.FacebookRegistration.Content,
+                                                                    urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()),
+                                                                    member.Email,
+                                                                    _MembershipService.GetPassword(member.Email, null));
+
+                                var facebookMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                                    Worki.Resources.Email.Activation.ActivationSubject,
+                                    WebHelper.RenderEmailToString(member.MemberMainData.FirstName, facebookMailContent));
+
+                                _EmailService.Deliver(faceBookEmail);
 							}
 							catch (Exception ex)
 							{

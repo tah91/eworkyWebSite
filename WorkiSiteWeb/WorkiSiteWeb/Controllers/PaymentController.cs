@@ -12,6 +12,8 @@ using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using System.Text;
 using Worki.Section;
+using System.Net.Mail;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -19,8 +21,8 @@ namespace Worki.Web.Controllers
     {
         IPaymentService _PaymentService;
 
-        public PaymentController(ILogger logger, IObjectStore objectStore, IPaymentService paymentService)
-            : base(logger, objectStore)
+        public PaymentController(ILogger logger, IObjectStore objectStore, IEmailService emailService, IPaymentService paymentService)
+            : base(logger, objectStore, emailService)
         {
             this._PaymentService = paymentService;
         }
@@ -49,18 +51,18 @@ namespace Worki.Web.Controllers
 				default:
 					{
 						//send mail to admin 
-						dynamic adminMail = new Email(MVC.Emails.Views.Email);
-						adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						adminMail.To = MiscHelpers.AdminConstants.AdminMail;
-						adminMail.Subject = status;
-						adminMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-						var strBuilder = new StringBuilder();
-						foreach (var item in errors)
-						{
-							strBuilder.AppendLine(item);
-						}
-						adminMail.Content = strBuilder.ToString();
-						adminMail.Send();
+                        var strBuilder = new StringBuilder();
+                        foreach (var item in errors)
+                        {
+                            strBuilder.AppendLine(item);
+                        }
+                        var adminMailContent = strBuilder.ToString();
+
+                        var adminMail = _EmailService.PrepareMessageFromDefault(new MailAddress(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.EmailConstants.ContactDisplayName),
+                            status,
+                            WebHelper.RenderEmailToString(MiscHelpers.AdminConstants.AdminMail, adminMailContent));
+
+                        _EmailService.Deliver(adminMail);
 
 						break;
 					}

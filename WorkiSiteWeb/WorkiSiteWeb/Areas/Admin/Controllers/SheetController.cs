@@ -9,25 +9,35 @@ using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
 using Worki.Data.Models;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
-	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-	[CompressFilter(Order = 1)]
-	[CacheFilter(Order = 2)]
-	[RequireHttpsRemote]
-	public abstract class AdminControllerBase : Controller
-	{
+    [Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
+    [RequireHttpsRemote]
+    public abstract class AdminControllerBase : Controller
+    {
+        protected ILogger _Logger;
+        protected IEmailService _EmailService;
 
-	}
+        public AdminControllerBase()
+        {
+        }
+
+        public AdminControllerBase(ILogger logger, IEmailService emailService)
+        {
+            this._Logger = logger;
+            this._EmailService = emailService;
+        }
+    }
 
 	public partial class SheetController : AdminControllerBase
     {
-        ILogger _Logger;
-
-        public SheetController(ILogger logger)
+        public SheetController(ILogger logger, IEmailService emailService)
+            : base(logger, emailService)
         {
-            _Logger = logger;
         }
 
         #region Admin Localisation

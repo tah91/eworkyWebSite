@@ -11,18 +11,22 @@ using Worki.Infrastructure.Logging;
 using Worki.Rest;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Email;
+using System.Net.Mail;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
     public partial class AccountController : Controller
     {
         ILogger _Logger;
+        IEmailService _EmailService;
         IMembershipService _MembershipService;
 
         public AccountController(ILogger logger,
+                                 IEmailService emailService,
                                  IMembershipService membershipService)
         {
             _Logger = logger;
+            _EmailService = emailService;
             _MembershipService = membershipService;
         }
 
@@ -74,7 +78,7 @@ namespace Worki.Web.Areas.Api.Controllers
 
                     try
                     {
-                        dynamic newMemberMail = null;
+                        object newMemberMail = null;
                         if (sendNewAccountMailPass)
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
@@ -88,14 +92,8 @@ namespace Worki.Web.Areas.Api.Controllers
                             passwordLink.MergeAttribute("href", editpasswordUrl);
                             passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
 
-                            newMemberMail = new Email(MVC.Emails.Views.Email);
-                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            newMemberMail.To = formData.Email;
-                            newMemberMail.ToName = formData.FirstName;
-
-                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
                             /*
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
                                                                     formData.MemberBooking.GetStartDate(),
                                                                     formData.MemberBooking.GetEndDate(),
@@ -106,8 +104,13 @@ namespace Worki.Web.Areas.Api.Controllers
                                                                     passwordLink,
                                                                     profilLink);
                              */
-                            newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
+                            var newMemberMailContent = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
                                 _MembershipService.GetPassword(formData.Email, null) + " (" + passwordLink + ").";
+
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
+                                  Worki.Resources.Email.BookingString.BookingNewMemberSubject,
+                                  WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                          
                         }
                         if (sendNewAccountMail)
                         {
@@ -117,12 +120,6 @@ namespace Worki.Web.Areas.Api.Controllers
                             profilLink.MergeAttribute("href", editprofilUrl);
                             profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
-                            newMemberMail = new Email(MVC.Emails.Views.Email);
-                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            newMemberMail.To = formData.Email;
-                            newMemberMail.ToName = formData.FirstName;
-
-                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
                             /*
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
@@ -135,13 +132,17 @@ namespace Worki.Web.Areas.Api.Controllers
                                                                     passwordLink,
                                                                     profilLink);
                              */
-                            newMemberMail.Content = "Vous vous êtes bien inscrit via mobile.\n";
+                            var newMemberMailContent = "Vous vous êtes bien inscrit via mobile.\n";
+
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
+                                  Worki.Resources.Email.BookingString.BookingNewMemberSubject,
+                                  WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
                         }
                         context.Commit();
 
                         if (sendNewAccountMail || sendNewAccountMailPass)
                         {
-                            newMemberMail.Send();
+                            _EmailService.Deliver(newMemberMail);
                         }
 
                         return new ObjectResult<AuthJson>(ModelHelper.GetAuthData(_MembershipService, formData.Email));

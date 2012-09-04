@@ -12,6 +12,8 @@ using Worki.Infrastructure.Repository;
 using System.Web.Routing;
 using Worki.Memberships;
 using Worki.Infrastructure.Helpers;
+using System.Net.Mail;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -23,15 +25,17 @@ namespace Worki.Web.Areas.Widget.Controllers
     {
         protected ILogger _Logger;
         protected IObjectStore _ObjectStore;
+        protected IEmailService _EmailService;
 
         public ControllerBase()
         {
         }
 
-        public ControllerBase(ILogger logger, IObjectStore objectStore)
+        public ControllerBase(ILogger logger, IObjectStore objectStore, IEmailService emailService)
         {
             this._Logger = logger;
             this._ObjectStore = objectStore;
+            this._EmailService = emailService;
         }
     }
 
@@ -41,10 +45,11 @@ namespace Worki.Web.Areas.Widget.Controllers
         ISearchService _SearchService;
         int _PageSize = 6;
 
-        public LocalisationController(  ILogger logger,
+        public LocalisationController(ILogger logger,
                                         IObjectStore objectStore,
+                                        IEmailService emailService,
                                         ISearchService searchService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
         {
             _SearchService = searchService;
         }
@@ -300,12 +305,7 @@ namespace Worki.Web.Areas.Widget.Controllers
                         }
 
                         //send mail to team
-                        dynamic teamMail = new Email(MVC.Emails.Views.Email);
-                        teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                        teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-                        teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                        teamMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingTeam,
+                        var teamMailContent = string.Format(Worki.Resources.Email.BookingString.CreateBookingTeam,
                                                          string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
                                                          formData.PhoneNumber,
                                                          member.Email,
@@ -316,18 +316,21 @@ namespace Worki.Web.Areas.Widget.Controllers
                                                          formData.MemberBooking.Message,
                                                          locUrl);
 
+                        var teamMail = _EmailService.PrepareMessageFromDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
+                              Worki.Resources.Email.BookingString.BookingMailSubject,
+                              WebHelper.RenderEmailToString(MiscHelpers.EmailConstants.ContactDisplayName, teamMailContent));
+
                         //send mail to booking member
-                        dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        clientMail.To = member.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.CreateBookingClientSubject;
-                        clientMail.ToName = member.MemberMainData.FirstName;
-                        clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
+                        var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
                                                          Localisation.GetOfferType(offer.Type),
                                                          formData.MemberBooking.GetStartDate(),
                                                          formData.MemberBooking.GetEndDate(),
                                                          locName,
                                                          offer.Localisation.Adress);
+
+                        var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                              Worki.Resources.Email.BookingString.CreateBookingClientSubject,
+                              WebHelper.RenderEmailToString(member.MemberMainData.FirstName, clientMailContent));
 
                         //send mail to localisation member
                         var urlHelp = new UrlHelper(ControllerContext.RequestContext);
@@ -336,22 +339,21 @@ namespace Worki.Web.Areas.Widget.Controllers
                         ownerLink.MergeAttribute("href", ownerUrl);
                         ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
-                        dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        ownerMail.To = offer.Localisation.Member.Email;
-                        ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName);
-                        ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-                        ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
+                        var ownerMailContent = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
                                                         Localisation.GetOfferType(offer.Type),
                                                         locName,
                                                         offer.Localisation.Adress,
                                                         ownerLink);
 
+                        var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(offer.Localisation.Member.Email, offer.Localisation.Member.MemberMainData.FirstName),
+                              string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName),
+                              WebHelper.RenderEmailToString(offer.Localisation.Member.MemberMainData.FirstName, ownerMailContent));
+
                         context.Commit();
 
-                        clientMail.Send();
-                        teamMail.Send();
-                        ownerMail.Send();
+                        _EmailService.Deliver(clientMail);
+                        _EmailService.Deliver(teamMail);
+                        _EmailService.Deliver(ownerMail);
                     }
                     catch (Exception ex)
                     {

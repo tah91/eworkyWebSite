@@ -12,6 +12,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
 using Worki.Service;
 using System.Linq.Expressions;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -24,22 +25,24 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	{
         protected ILogger _Logger;
         protected IObjectStore _ObjectStore;
+        protected IEmailService _EmailService;
 
         public BackofficeControllerBase()
         {
         }
 
-        public BackofficeControllerBase(ILogger logger, IObjectStore objectStore)
+        public BackofficeControllerBase(ILogger logger, IObjectStore objectStore, IEmailService emailService)
         {
             this._Logger = logger;
             this._ObjectStore = objectStore;
+            this._EmailService = emailService;
         }
 	}
 
 	public partial class HomeController : BackofficeControllerBase
     {
-        public HomeController(ILogger logger, IObjectStore objectStore)
-            : base(logger, objectStore)
+        public HomeController(ILogger logger, IObjectStore objectStore, IEmailService emailService)
+            : base(logger, objectStore, emailService)
         {
 
         }

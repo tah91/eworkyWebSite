@@ -11,6 +11,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using System.Web.Security;
 using Worki.Memberships;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -22,13 +23,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 		#endregion
 
-		public ProfilController(ILogger logger,
+        public ProfilController(ILogger logger,
                                 IObjectStore objectStore,
+                                IEmailService emailService,
                                 IMembershipService membershipService)
-            : base(logger, objectStore)
-		{
-			_MembershipService = membershipService;
-		}
+            : base(logger, objectStore, emailService)
+        {
+            _MembershipService = membershipService;
+        }
 
         /// <summary>
         /// GET Action method to change payment information

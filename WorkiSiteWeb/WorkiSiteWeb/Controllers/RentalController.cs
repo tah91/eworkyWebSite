@@ -8,6 +8,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Email;
 using System.Net.Mail;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -315,7 +316,7 @@ namespace Worki.Web.Controllers
                 try
                 {
                     var displsayName = contact.FirstName + " " + contact.LastName;
-                    var mail = _EmailService.PrepareMessage(new MailAddress(contact.EMail, displsayName), new MailAddress(contact.ToEMail), contact.Subject, this.RenderEmailToString(displsayName, contact.Message));
+                    var mail = _EmailService.PrepareMessage(new MailAddress(contact.EMail, displsayName), new MailAddress(contact.ToEMail), contact.Subject, WebHelper.RenderEmailToString(displsayName, contact.Message));
                     _EmailService.Deliver(mail);
                 }
                 catch (Exception ex)

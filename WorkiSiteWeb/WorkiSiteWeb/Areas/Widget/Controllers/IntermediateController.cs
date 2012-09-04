@@ -11,6 +11,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Email;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -20,8 +21,9 @@ namespace Worki.Web.Areas.Widget.Controllers
 
         public IntermediateController(  ILogger logger,
                                         IObjectStore objectStore,
+                                        IEmailService emailService,
                                         ISearchService searchService)
-            : base(logger, objectStore)
+            : base(logger, objectStore, emailService)
         {
             _SearchService = searchService;
         }
