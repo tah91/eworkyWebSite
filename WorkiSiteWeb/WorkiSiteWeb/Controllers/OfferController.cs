@@ -249,6 +249,7 @@ namespace Worki.Web.Controllers
                                 loc.Offers.Add(offer);
                             }
                         }
+                        //force online when one offer added
                         loc.MainLocalisation.IsOffline = false;
                         context.Commit();
                     }
