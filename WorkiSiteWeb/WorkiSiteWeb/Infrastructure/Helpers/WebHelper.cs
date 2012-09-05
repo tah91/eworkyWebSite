@@ -373,13 +373,17 @@ namespace Worki.Web.Helpers
 
         public static string RenderEmailToString(string displayName, string body)
         {
-            var contentModel = new EmailContentModel { ToName = displayName, Content = body };
-            using (var template = File.OpenText(MVC.Emails.Views.NewEmail))
-            {
-                var content = template.ReadToEnd();
-                string message = RazorEngine.Razor.Parse<EmailContentModel>(content, contentModel);
-                return message;
-            }
+            // Get the HttpContext
+            HttpContextBase httpContextBase = new HttpContextWrapper(HttpContext.Current);
+            // Build the route data, pointing to the dummy controller
+            RouteData routeData = new RouteData();
+            routeData.Values.Add("controller", typeof(Worki.Web.Controllers.DummyController).Name);
+            // Create the controller context
+            Controller controller = new Worki.Web.Controllers.DummyController();
+            ControllerContext controllerContext = new ControllerContext(new RequestContext(httpContextBase, routeData), controller);
+            controller.ControllerContext = controllerContext;
+
+            return controller.RenderRazorViewToString(MVC.Emails.Views.NewEmail, new EmailContentModel { ToName = displayName, Content = body });
         }
     }
 }

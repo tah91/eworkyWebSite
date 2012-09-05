@@ -45,6 +45,14 @@ namespace Worki.Web.Controllers
         }
 	}
 
+    public class DummyController : ControllerBase
+    {
+        public DummyController()
+            : base()
+        {
+        }
+    }
+
 	public partial class HomeController : ControllerBase
     {
 		IBlogService _IBlogService;
