@@ -11,7 +11,6 @@ namespace Worki.Service
     {
         public Object PrepareMessage(MailAddress from, IEnumerable<MailAddress> to, string subject, string body)
         {
-            SmtpClient smtpClient = new SmtpClient();
             var mailMessage = new MailMessage();
             mailMessage.From = from;
             foreach (var item in to)

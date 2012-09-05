@@ -49,7 +49,7 @@ namespace Worki.Web
 				.To<GroupRepository>();
 
 			Bind<IEmailService>()
-                .To<EmailService>();
+                .To<SendGridEmailService>();
 
 			Bind<IWelcomePeopleRepository>()
 				.To<WelcomePeopleRepository>();
