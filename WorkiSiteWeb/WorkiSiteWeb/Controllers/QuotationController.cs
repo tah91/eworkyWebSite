@@ -151,7 +151,7 @@ namespace Worki.Web.Controllers
 
                         var teamMail = _EmailService.PrepareMessageFromDefault(new MailAddress(MiscHelpers.EmailConstants.BookingMail, MiscHelpers.EmailConstants.ContactDisplayName),
                             hasOwner ? Worki.Resources.Email.BookingString.QuotationMailSubject : Worki.Resources.Email.BookingString.QuotationMailSubject + " (sans gérant)",
-                            WebHelper.RenderEmailToString(formData.FirstName, teamMailContent));
+                            WebHelper.RenderEmailToString(MiscHelpers.EmailConstants.ContactDisplayName, teamMailContent));
 
                         //send mail to quoation client
                         var clientMailContent = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
@@ -161,7 +161,7 @@ namespace Worki.Web.Controllers
 
                         var clientMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
                              Worki.Resources.Email.BookingString.CreateQuotationClientSubject,
-                            WebHelper.RenderEmailToString(formData.FirstName, teamMailContent));
+                            WebHelper.RenderEmailToString(member.MemberMainData.FirstName, clientMailContent));
 
                         context.Commit();
 
@@ -193,7 +193,9 @@ namespace Worki.Web.Controllers
 
                             var ownerMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member2.Email, localisation2.Member.MemberMainData.FirstName),
                                   string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation2.Name),
-                                WebHelper.RenderEmailToString(member2.Email, ownerMailContent));
+                                  WebHelper.RenderEmailToString(member2.Email, ownerMailContent));
+
+                            _EmailService.Deliver(ownerMail);
                         }
                         if (sendNewAccountMail)
                         {
