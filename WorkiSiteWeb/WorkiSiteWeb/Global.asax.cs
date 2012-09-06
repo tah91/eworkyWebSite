@@ -48,8 +48,11 @@ namespace Worki.Web
 			Bind<IGroupRepository>()
 				.To<GroupRepository>();
 
-			Bind<IEmailService>()
-                .To<SendGridEmailService>();
+            //Bind<IEmailService>()
+            //    .To<SendGridEmailService>();
+
+            Bind<IEmailService>()
+                .To<EmailService>();
 
 			Bind<IWelcomePeopleRepository>()
 				.To<WelcomePeopleRepository>();

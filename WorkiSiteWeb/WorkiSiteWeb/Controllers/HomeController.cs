@@ -45,7 +45,7 @@ namespace Worki.Web.Controllers
         }
 	}
 
-    public class DummyController : ControllerBase
+    public partial class DummyController : ControllerBase
     {
         public DummyController()
             : base()
@@ -191,7 +191,15 @@ namespace Worki.Web.Controllers
         [ActionName("contact")]
         public virtual ActionResult Contact()
         {
-            return View(MVC.Home.Views.Contact, new Contact());
+            var contact = new Contact();
+            contact.FirstName = "tata";
+            contact.LastName = "plop";
+            contact.EMail = "t.iftikhar@hotmail.fr";
+            contact.Subject = "subject";
+            contact.Message = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+            var model = new EmailContentModel { ToName = contact.FirstName + " " + contact.LastName, Content = contact.Message };
+            return View(MVC.Emails.Views.Email, model);
+            //return View(MVC.Home.Views.Contact, new Contact());
         }
 
         /// <summary>
@@ -206,29 +214,37 @@ namespace Worki.Web.Controllers
         public virtual ActionResult Contact(Contact contact, string myCaptcha, string attempt)
         {
             //check capatcha
-            if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
-            {
-                ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
-            }
-            //check model validity
-            else if (ModelState.IsValid)
-            {
-                try
-                {
-                    var displsayName = contact.FirstName + " " + contact.LastName;
-                    var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, WebHelper.RenderEmailToString(displsayName, contact.Message));
-                    _EmailService.Deliver(mail);
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("Contact", ex);
-                }
+            //if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
+            //{
+            //    ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
+            //}
+            ////check model validity
+            //else 
+            //    if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        var displsayName = contact.FirstName + " " + contact.LastName;
+            //        var mail = _EmailService.PrepareMessageToDefault(new System.Net.Mail.MailAddress(contact.EMail, displsayName), contact.Subject, WebHelper.RenderEmailToString(displsayName, contact.Message));
+            //        _EmailService.Deliver(mail);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        _Logger.Error("Contact", ex);
+            //    }
 
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
+            //    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
 
-                return RedirectToAction(MVC.Home.Index());
-            }
-            return View(contact);
+            //    return RedirectToAction(MVC.Home.Index());
+            //}
+            //return View(contact);
+            contact.FirstName = "tata";
+            contact.LastName = "plop";
+            contact.EMail = "t.iftikhar@hotmail.fr";
+            contact.Subject = "subject";
+            contact.Message = "bla bla bla";
+            var model = new EmailContentModel { ToName = contact.FirstName + " " + contact.LastName, Content = contact.Message };
+            return View(MVC.Emails.Views.Email, model);
         }
 
         /// <summary>
