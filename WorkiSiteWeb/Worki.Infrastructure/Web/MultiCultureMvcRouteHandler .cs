@@ -79,9 +79,8 @@ namespace Worki.Infrastructure
                     return ".es";
                 case Culture.de:
                     return ".de";
-                //TODO
-                //case Culture.nl:
-                    //return ".nl";
+                case Culture.nl:
+                    return ".nl";
                 case Culture.en:
                 default:
                     return ".com";
