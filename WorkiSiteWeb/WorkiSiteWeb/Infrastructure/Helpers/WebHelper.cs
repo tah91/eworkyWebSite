@@ -383,7 +383,7 @@ namespace Worki.Web.Helpers
             ControllerContext controllerContext = new ControllerContext(new RequestContext(httpContextBase, routeData), controller);
             controller.ControllerContext = controllerContext;
 
-            return controller.RenderRazorViewToString(MVC.Emails.Views.NewEmail, new EmailContentModel { ToName = displayName, Content = body });
+            return controller.RenderRazorViewToString(MVC.Emails.Views.Email, new EmailContentModel { ToName = displayName, Content = body }, false);
         }
     }
 }

@@ -38,6 +38,7 @@ public static class MVC {
     public static Worki.Web.Controllers.AccountController Account = new Worki.Web.Controllers.T4MVC_AccountController();
     public static Worki.Web.Controllers.BookingController Booking = new Worki.Web.Controllers.T4MVC_BookingController();
     public static Worki.Web.Controllers.CaptchaImageController CaptchaImage = new Worki.Web.Controllers.T4MVC_CaptchaImageController();
+    public static Worki.Web.Controllers.DummyController Dummy = new Worki.Web.Controllers.T4MVC_DummyController();
     public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
     public static Worki.Web.Controllers.OAuthController OAuth = new Worki.Web.Controllers.T4MVC_OAuthController();
@@ -1140,6 +1141,48 @@ namespace Worki.Web.Controllers {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_CaptchaImageController: Worki.Web.Controllers.CaptchaImageController {
         public T4MVC_CaptchaImageController() : base(Dummy.Instance) { }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class DummyController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected DummyController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public DummyController Actions { get { return MVC.Dummy; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Dummy";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_DummyController: Worki.Web.Controllers.DummyController {
+        public T4MVC_DummyController() : base(Dummy.Instance) { }
 
     }
 }
@@ -2475,6 +2518,7 @@ namespace T4MVC {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string @__Layout = "~/Views/Emails/__Layout.cshtml";
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";

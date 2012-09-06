@@ -196,12 +196,13 @@ namespace Worki.Web.Helpers
             }
         }
 
-        public static string RenderRazorViewToString(this Controller controller, string viewName, object model)
+        public static string RenderRazorViewToString(this Controller controller, string viewName, object model, bool isPartial = true)
         {
             controller.ViewData.Model = model;
             using (var sw = new StringWriter())
             {
-                var viewResult = ViewEngines.Engines.FindPartialView(controller.ControllerContext, viewName);
+                var viewResult = isPartial ?    ViewEngines.Engines.FindPartialView(controller.ControllerContext, viewName) : 
+                                                ViewEngines.Engines.FindView(controller.ControllerContext, viewName, "");
                 var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, sw);
                 viewResult.View.Render(viewContext, sw);
                 viewResult.ViewEngine.ReleaseView(controller.ControllerContext, viewResult.View);

@@ -1,13 +1,16 @@
-﻿To: @ViewBag.To
-From: @Html.Raw(ViewBag.From)
-Subject: @Html.Raw(ViewBag.Subject)
+﻿@model Worki.Infrastructure.Email.EmailContentModel
+           
+@section HeadContent
+{
+    <title>@Model.ToName</title>
+}
 
-<p>@string.Format(Worki.Resources.Email.Common.Hello, ViewBag.ToName),</p>
-
-<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))</p>
-
-@Html.Raw(Worki.Resources.Email.Common.SeeYouSoon)
-<a href="@MiscHelpers.EmailConstants.ContactMail">@MiscHelpers.EmailConstants.ContactMail</a><br />
-@MiscHelpers.EmailConstants.Tel<br />
-<a href="@MiscHelpers.UrlConstants.eWorkyFacebook">@Worki.Resources.Email.Common.FollowFacebook</a><br />
-<a href="@Worki.Resources.Email.Common.Twitter">@Worki.Resources.Email.Common.FollowTwitter</a><br />
+<p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
+    @string.Format(Worki.Resources.Email.Common.Hello, Model.ToName),
+</p>
+<p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
+    @Html.Raw(MiscHelpers.Nl2Br(Model.Content))
+</p>
+<p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
+    @Html.Raw(Worki.Resources.Email.Common.SeeYouSoon)
+</p>
