@@ -414,8 +414,8 @@ page width. Or, you can specify an exact pixel width. */
 {
 	background-image: url('images/logo.png');
 	background-repeat: no-repeat;
-	width: 125px;
-	height: 40px;
+	width: 136px;
+	height: 42px;
 	margin-right: 20px;
 }
 

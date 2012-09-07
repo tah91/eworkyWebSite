@@ -2523,7 +2523,12 @@ namespace T4MVC {
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
-            public readonly string NewEmail = "~/Views/Emails/NewEmail.cshtml";
+            static readonly _images s_images = new _images();
+            public _images images { get { return s_images; } }
+            public partial class _images{
+                public readonly string email_footer = "~/Views/Emails/images/email-footer.jpg";
+                public readonly string email_header = "~/Views/Emails/images/email-header.png";
+            }
         }
     }
 

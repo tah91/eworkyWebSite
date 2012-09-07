@@ -872,6 +872,8 @@
     <Content Include="Scripts\WorkiWidgetIntermediate.min.js">
       <DependentUpon>WorkiWidgetIntermediate.js</DependentUpon>
     </Content>
+    <Content Include="Views\Emails\images\email-footer.jpg" />
+    <Content Include="Views\Emails\images\email-header.png" />
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
@@ -1115,7 +1117,6 @@
     <Content Include="Views\Localisation\_MapScript.cshtml" />
     <Content Include="Views\Booking\_CreateScript.cshtml" />
     <Content Include="Views\Localisation\EditOffers.cshtml" />
-    <Content Include="Views\Emails\NewEmail.cshtml" />
     <Content Include="Views\Emails\__Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
