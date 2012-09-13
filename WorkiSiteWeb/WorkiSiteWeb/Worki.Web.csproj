@@ -872,8 +872,10 @@
     <Content Include="Scripts\WorkiWidgetIntermediate.min.js">
       <DependentUpon>WorkiWidgetIntermediate.js</DependentUpon>
     </Content>
+    <Content Include="Views\Emails\images\email-fb.png" />
     <Content Include="Views\Emails\images\email-header.png" />
     <Content Include="Views\Emails\images\email-footer.png" />
+    <Content Include="Views\Emails\images\email-tw.png" />
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
