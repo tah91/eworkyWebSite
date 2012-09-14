@@ -845,7 +845,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\SharedString.es.resx" />
-    <EmbeddedResource Include="Views\Shared\SharedString.nl.resx" />
+    <EmbeddedResource Include="Views\Shared\SharedString.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\SharedString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedString.Designer.cs</LastGenOutput>
