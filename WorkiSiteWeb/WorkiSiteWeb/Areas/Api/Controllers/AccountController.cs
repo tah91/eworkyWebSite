@@ -82,61 +82,27 @@ namespace Worki.Web.Areas.Api.Controllers
                         if (sendNewAccountMailPass)
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-                            TagBuilder profilLink = new TagBuilder("a");
-                            profilLink.MergeAttribute("href", editprofilUrl);
-                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
-                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-                            TagBuilder passwordLink = new TagBuilder("a");
-                            passwordLink.MergeAttribute("href", editpasswordUrl);
-                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.FacebookRegistration.Content,
+                                                                    urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()),
+                                                                    member.Email,
+                                                                    _MembershipService.GetPassword(member.Email, null));
 
-                            /*
-                            var newMemberMailContent = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
-                                                                    Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberBooking.GetStartDate(),
-                                                                    formData.MemberBooking.GetEndDate(),
-                                                                    locName,
-                                                                    offer.Localisation.Adress,
-                                                                    formData.Email,
-                                                                    _MembershipService.GetPassword(formData.Email, null),
-                                                                    passwordLink,
-                                                                    profilLink);
-                             */
-                            var newMemberMailContent = "Vous vous êtes bien inscrit via mobile.\nVotre mot de passe est : " +
-                                _MembershipService.GetPassword(formData.Email, null) + " (" + passwordLink + ").";
-
-                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
-                                  Worki.Resources.Email.BookingString.BookingNewMemberSubject,
-                                  WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                                Worki.Resources.Email.Activation.ActivationSubject,
+                                WebHelper.RenderEmailToString(member.MemberMainData.FirstName, newMemberMailContent));
                           
                         }
                         if (sendNewAccountMail)
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-                            TagBuilder profilLink = new TagBuilder("a");
-                            profilLink.MergeAttribute("href", editprofilUrl);
-                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
-                            /*
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
-                                                                    Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberBooking.GetStartDate(),
-                                                                    formData.MemberBooking.GetEndDate(),
-                                                                    locName,
-                                                                    offer.Localisation.Adress,
-                                                                    formData.Email,
-                                                                    _MembershipService.GetPassword(formData.Email, null),
-                                                                    passwordLink,
-                                                                    profilLink);
-                             */
-                            var newMemberMailContent = "Vous vous êtes bien inscrit via mobile.\n";
+                            var newMemberMailContent = string.Format(Worki.Resources.Email.FacebookRegistration.ContentWithoutPass,
+                                                                    urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()));
 
-                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(formData.Email, formData.FirstName),
-                                  Worki.Resources.Email.BookingString.BookingNewMemberSubject,
-                                  WebHelper.RenderEmailToString(formData.FirstName, newMemberMailContent));
+                            newMemberMail = _EmailService.PrepareMessageFromDefault(new MailAddress(member.Email, member.MemberMainData.FirstName),
+                                Worki.Resources.Email.Activation.ActivationSubject,
+                                WebHelper.RenderEmailToString(member.MemberMainData.FirstName, newMemberMailContent));
                         }
                         context.Commit();
 

@@ -125,4 +125,7 @@ A partir de ahora podrás conectarte indistintamente con Facebook o con los dato
 Usuario: {1}
 Contraseña: {2} (Te recomendamos que cambies tu contraseña la proxima vez que te conectes)</value>
   </data>
+  <data name="ContentWithoutPass" xml:space="preserve">
+    <value>Tenemos el placer de confirmarte que formas parte de la comunidad de eWorkers y que ya puedes acceder a todas las funcionalidades de eWorky y completar tu perfil que encontrarás a la dirección siguiente: {0}</value>
+  </data>
 </root>

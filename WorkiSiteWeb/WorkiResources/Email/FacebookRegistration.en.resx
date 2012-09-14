@@ -126,4 +126,7 @@ Login: {1}
 Password: {2} (we invite you to change it next time you connect on eWorky) 
 </value>
   </data>
+  <data name="ContentWithoutPass" xml:space="preserve">
+    <value>We are happy to let you know that you are now part of the large community of eWorkers and that you can access all eWorky features and complete your profile here: {0}</value>
+  </data>
 </root>

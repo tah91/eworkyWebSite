@@ -445,7 +445,7 @@ namespace Worki.Web.Controllers
 					FacebookClient fbClient = new FacebookClient(accessToken);
 					dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name,link,birthday");
 					long facebookId = Convert.ToInt64(me.id);
-					string faceBookEmail = ((string)me.email).ToString();
+					string faceBookEmailAddress = ((string)me.email).ToString();
 					string faceBookFirstName = ((string)me.first_name).ToString();
 					string faceBookLastName = ((string)me.last_name).ToString();
 					string faceBookLink = ((string)me.link).ToString();
@@ -453,7 +453,7 @@ namespace Worki.Web.Controllers
 
 					var context = ModelFactory.GetUnitOfWork();
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var member = mRepo.GetMember(faceBookEmail);
+                    var member = mRepo.GetMember(faceBookEmailAddress);
 
 					if (member == null)
 					{
@@ -470,7 +470,7 @@ namespace Worki.Web.Controllers
 								LastName = faceBookLastName,
 								BirthDate = facebookBirthday
 							};
-							created = _MembershipService.TryCreateAccount(faceBookEmail, memberData, out memberId);
+                            created = _MembershipService.TryCreateAccount(faceBookEmailAddress, memberData, out memberId);
 						}
 						catch (Exception ex)
 						{
@@ -496,7 +496,7 @@ namespace Worki.Web.Controllers
                                     Worki.Resources.Email.Activation.ActivationSubject,
                                     WebHelper.RenderEmailToString(member.MemberMainData.FirstName, facebookMailContent));
 
-                                _EmailService.Deliver(faceBookEmail);
+                                _EmailService.Deliver(facebookMail);
 							}
 							catch (Exception ex)
 							{

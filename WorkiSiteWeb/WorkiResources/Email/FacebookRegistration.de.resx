@@ -125,4 +125,7 @@ Ab jetzt, Sie können sich gleichgültig mit Ihrem Facebook-Konto oder mit Ihren
 Benutzerdaten : {1}
 Passwort : {2} (wir laden Sie ein, Ihr Passwort nächstes Mal zu ändern)</value>
   </data>
+  <data name="ContentWithoutPass" xml:space="preserve">
+    <value>WIr freuen uns, Ihnen mitteilen zu dürfen, dass Sie zu der großen eWorkers-Gemeinschaft gehören und dass Sie jetzt einen Zugang zu allen eWorky-Eigenschaften haben und so Ihr Profil auf der nächsten Seite {0} ergänzen können.</value>
+  </data>
 </root>
