@@ -191,9 +191,7 @@ namespace Worki.Web.Controllers
         [ActionName("contact")]
         public virtual ActionResult Contact()
         {
-            //return View(MVC.Home.Views.Contact, new Contact());
-            //var model = new Contact { FirstName = "tata", LastName = "plop", EMail = "t.iftikhar@hotmail.fr", Subject = "subject", Message = "message" };
-            return View(MVC.Emails.Views.Email, new EmailContentModel { ToName = "plop", Content = "bla bla" });
+            return View(MVC.Home.Views.Contact, new Contact());
         }
 
         /// <summary>

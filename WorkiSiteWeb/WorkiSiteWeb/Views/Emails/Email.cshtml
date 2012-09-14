@@ -8,9 +8,11 @@
 <p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
     @string.Format(Worki.Resources.Email.Common.Hello, Model.ToName),
 </p>
+<br />
 <p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
     @Html.Raw(MiscHelpers.Nl2Br(Model.Content))
 </p>
+<br />
 <p style="font-size: 13px; font-weight: normal; color: rgb(51, 51, 51); padding-left: 20px; margin-bottom: 0px">
     @Html.Raw(Worki.Resources.Email.Common.SeeYouSoon)
 </p>
