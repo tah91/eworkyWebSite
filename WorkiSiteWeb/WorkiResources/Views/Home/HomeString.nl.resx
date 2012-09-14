@@ -318,4 +318,7 @@
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="AddPlaceTitle" xml:space="preserve">
+    <value>Voeg een werkplaats toe</value>
+  </data>
 </root>

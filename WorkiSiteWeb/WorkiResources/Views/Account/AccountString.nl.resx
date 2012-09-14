@@ -153,4 +153,7 @@
   <data name="ForgottenPassword" xml:space="preserve">
     <value>Paswoord vergeten</value>
   </data>
+  <data name="SocialNetworkSoon" xml:space="preserve">
+    <value>al snel aan bij uw profiel authenticeren via een sociaal netwerk.</value>
+  </data>
 </root>
