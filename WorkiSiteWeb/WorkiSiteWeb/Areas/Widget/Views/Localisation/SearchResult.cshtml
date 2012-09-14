@@ -68,9 +68,9 @@
                     $('.loaderBlock').addClass("visuallyhidden");
                 };
 
-                mapSearch = new WorkiMapSearch('@Url.Action(MVC.Widget.Localisation.ActionNames.MapItemSummary, MVC.Widget.Localisation.Name)', 
-                    '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
-                    '@Url.Action(MVC.Widget.Localisation.AjaxSearch(null))', 
+                mapSearch = new WorkiMapSearch('@Html.Raw(Url.Action(MVC.Widget.Localisation.ActionNames.MapItemSummary, MVC.Widget.Localisation.Name))', 
+                    '@Html.Raw(Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name))',
+                    '@Html.Raw(Url.Action(MVC.Widget.Localisation.AjaxSearch(null)))', 
                     @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
                     refreshResults,
                     false,

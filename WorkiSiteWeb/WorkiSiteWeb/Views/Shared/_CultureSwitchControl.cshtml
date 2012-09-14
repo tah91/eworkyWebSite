@@ -1,44 +1,46 @@
 ﻿@{
-    var Current = string.Empty;
-    
+    var current = string.Empty;
+    var title = string.Empty;
     switch(Url.GetCulture())
     {
         case Worki.Infrastructure.Culture.en:
-            Current = "flags etats-unis";
+            current = "flags etats-unis";
+            title = Worki.Resources.Views.Home.HomeString.English;
             break;
         case Worki.Infrastructure.Culture.fr:
-            Current = "flags france";
+            current = "flags france";
+            title = Worki.Resources.Views.Home.HomeString.French;
             break;
         case Worki.Infrastructure.Culture.es:
-            Current = "flags espagne";
+            current = "flags espagne";
+            title = Worki.Resources.Views.Home.HomeString.Spanish;
             break;
         case Worki.Infrastructure.Culture.nl:
-            Current = "flags espagne";
+            current = "flags espagne";
+            title = Worki.Resources.Views.Home.HomeString.Dutch;
             break;
         case Worki.Infrastructure.Culture.de:
-            Current = "flags allemagne";
+            current = "flags allemagne";
+            title = Worki.Resources.Views.Home.HomeString.German;
             break;
     }
     
-    var LanguageSwitcher = new DropDownModel
+    var languageSwitcher = new DropDownModel
     {
         Id = "CultureSwitcher",
-        Title = "",
-        TitleCss = Current,
+        Title = title,
         Items = new List<DropDownItem>
 		{
 			new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.French,  Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
             new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.English,  Link = Url.Action(MVC.Home.ChangeCulture("en")) },
-            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Spanish,  Link = Url.Action(MVC.Home.ChangeCulture("es")) }
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Spanish,  Link = Url.Action(MVC.Home.ChangeCulture("es")) },
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Dutch,  Link = Url.Action(MVC.Home.ChangeCulture("nl")) },
 		}
-        
-
     };
     if(Request.IsAuthenticated && User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
     {
-        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German, Link = Url.Action(MVC.Home.ChangeCulture("de")) });
-        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Dutch, Link = Url.Action(MVC.Home.ChangeCulture("nl")) });
+        languageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German, Link = Url.Action(MVC.Home.ChangeCulture("de")) });
     }
 }
 
-@Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)
+@Html.Partial(MVC.Shared.Views._DropDownList, languageSwitcher)
