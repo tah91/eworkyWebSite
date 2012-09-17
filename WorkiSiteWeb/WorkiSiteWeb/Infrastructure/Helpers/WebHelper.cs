@@ -207,30 +207,7 @@ namespace Worki.Web.Helpers
 		/// <returns>A reference to the mapped route.</returns>
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
 		{
-
-
-			var route = routes.MapRoute(
-				"",
-				url,
-				defaults,
-				constraints,
-				namespaces
-			);
-
-			route.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-
-			//other languages
-			var clUrl = "fr/" + url;
-			var clRoute = routes.MapRoute(
-				"",
-				clUrl,
-				defaults,
-				constraints,
-				namespaces
-			);
-			clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-
-			return route;
+            return Worki.Infrastructure.MultiCultureMvcRouteHandler.MapRoute(routes, name, url, defaults, constraints, namespaces);
 		}
 
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, string[] namespaces)
@@ -244,42 +221,32 @@ namespace Worki.Web.Helpers
 			);
 		}
 
-		public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
-		{
-			var route = areaContext.MapRoute(
-				"",
-				url,
-				defaults,
-				constraints,
-				namespaces
-			);
+        public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
+        {
+            return Worki.Infrastructure.MultiCultureMvcRouteHandler.MapRoute(areaContext, name, url, defaults, constraints, namespaces);
+        }
 
-			route.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+        public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, string[] namespaces)
+        {
+            return areaContext.CultureMapRoute(
+                name,
+                url,
+                defaults,
+                null,
+                namespaces
+            );
+        }
 
-			return route;
-		}
-
-		public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, string[] namespaces)
-		{
-			return areaContext.CultureMapRoute(
-				name,
-				url,
-				defaults,
-				null,
-				namespaces
-			);
-		}
-
-		public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults)
-		{
-			return areaContext.CultureMapRoute(
-				name,
-				url,
-				defaults,
-				null,
-				null
-			);
-		}
+        public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults)
+        {
+            return areaContext.CultureMapRoute(
+                name,
+                url,
+                defaults,
+                null,
+                null
+            );
+        }
 
 		public static Worki.Infrastructure.Culture GetCulture(this UrlHelper instance)
 		{
@@ -328,9 +295,9 @@ namespace Worki.Web.Helpers
             return instance.IsOfCulture(Infrastructure.Culture.en);
         }
 
-        public static string GetSuffix(this UrlHelper instance)
+        public static string GetPrefix(this UrlHelper instance)
         {
-            return Worki.Infrastructure.MultiCultureMvcRouteHandler.ExtractDomainSuffix(instance.RequestContext.HttpContext.Request.Url);
+            return Worki.Infrastructure.MultiCultureMvcRouteHandler.ExtractDomainPrefix(instance.RequestContext.HttpContext.Request.Url);
         }
 
 		public static string GetFileFullUrl(this UrlHelper html, string path, bool forceHttps = false)

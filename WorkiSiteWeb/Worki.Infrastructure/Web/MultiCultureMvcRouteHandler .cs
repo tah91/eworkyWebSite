@@ -8,12 +8,72 @@ using System;
 using System.Web.SessionState;
 using System.Collections.Generic;
 using Worki.Infrastructure.Helpers;
+using System.IO;
+using System.Linq;
 
 namespace Worki.Infrastructure 
 {
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
 		public static Culture DefaultCulture = Culture.en;
+
+        public static List<string> Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
+
+        public static Route MapRoute(RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
+        {
+            var route = routes.MapRoute(
+                            "",
+                            url,
+                            defaults,
+                            constraints,
+                            namespaces
+                        );
+
+            route.RouteHandler = new MultiCultureMvcRouteHandler();
+
+            foreach (var item in Cultures)
+            {
+                var clUrl = item + "/" + url;
+                var clRoute = routes.MapRoute(
+                    "",
+                    clUrl,
+                    defaults,
+                    constraints,
+                    namespaces
+                );
+                clRoute.RouteHandler = new MultiCultureMvcRouteHandler();
+            }
+
+            return route;
+        }
+
+        public static Route MapRoute(AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
+        {
+            var route = areaContext.MapRoute(
+                            "",
+                            url,
+                            defaults,
+                            constraints,
+                            namespaces
+                        );
+
+            route.RouteHandler = new MultiCultureMvcRouteHandler();
+
+            foreach (var item in Cultures)
+            {
+                var clUrl = item + "/" + url;
+                var clRoute = areaContext.MapRoute(
+                    "",
+                    clUrl,
+                    defaults,
+                    constraints,
+                    namespaces
+                );
+                clRoute.RouteHandler = new MultiCultureMvcRouteHandler();
+            }
+
+            return route;
+        }
 
 		/// <summary>
 		/// Get culture type from url
@@ -33,24 +93,23 @@ namespace Worki.Infrastructure
                 return true;
             }
 
-			var suffix = ExtractDomainSuffix(url);
+			var prefix = ExtractDomainPrefix(url);
 
-			switch(suffix)
+            switch (prefix)
 			{
-				case ".fr":
+				case "fr":
 					culture =  Culture.fr;
                     break;
-				case ".es":
+				case "es":
 					culture =  Culture.es;
                     break;
-                case ".de":
+                case "de":
                     culture =  Culture.de;
                     break;
-                case ".nl":
-                case ".be":
+                case "nl":
                     culture = Culture.nl;
                     break;
-				case ".com":
+				case "en":
 					culture =  Culture.en;
                     break;
 				default:
@@ -66,7 +125,7 @@ namespace Worki.Infrastructure
         /// </summary>
         /// <param name="lang">the lang</param>
         /// <returns>the suffix</returns>
-        public static string GetSuffix(string lang)
+        public static string GetPrefix(string lang)
         {
             Culture culture = DefaultCulture;
             Enum.TryParse<Culture>(lang, out culture);
@@ -74,16 +133,17 @@ namespace Worki.Infrastructure
             switch (culture)
             {
                 case Culture.fr:
-                    return ".fr";
+                    return "fr";
                 case Culture.es:
-                    return ".es";
+                    return "es";
                 case Culture.de:
-                    return ".de";
+                    return "de";
                 case Culture.nl:
-                    return ".nl";
+                    return "nl";
                 case Culture.en:
+                    return "en";
                 default:
-                    return ".com";
+                    return "";
             }
         }
 
@@ -110,16 +170,16 @@ namespace Worki.Infrastructure
 		/// </summary>
 		/// <param name="url">the url</param>
 		/// <returns>the domain suffix, null if no culture found</returns>
-		public static string ExtractDomainSuffix(Uri url)
+		public static string ExtractDomainPrefix(Uri url)
 		{
-			if (string.IsNullOrEmpty(url.Host))
+			if (string.IsNullOrEmpty(url.PathAndQuery))
 				return null;
 
-			var lastDot = url.Host.LastIndexOf(".");
-			if (lastDot == -1)
+			var paths = url.PathAndQuery.Split('/');
+			if (paths.Length == 0)
 				return null;
 
-			return url.Host.Substring(lastDot);
+            return paths[1];
 		}
 
 		/// <summary>
@@ -128,20 +188,17 @@ namespace Worki.Infrastructure
 		/// <param name="url">the url</param>
 		/// <param name="lang">the lang of the suffix</param>
 		/// <returns>the new url</returns>
-		public static string SetDomainSuffix(Uri url, string lang)
+		public static string SetDomainPrefix(Uri url, string lang)
 		{
-			if (string.IsNullOrEmpty(url.Host))
-				return url.PathAndQuery;
+            var suffix = GetPrefix(lang);
 
-			var suffix = GetSuffix(lang);
+            var paths = url.PathAndQuery.Split('/').Where(s => !string.IsNullOrEmpty(s));
+            if (paths.Count() == 0)
+                return url.PathAndQuery;
 
-			var lastDot = url.Host.LastIndexOf(".");
-			if (lastDot == -1)
-				return null;
+            var newPathAndQuery = "/" + suffix + string.Join("/", paths);
 
-			var newHost = url.Host.Substring(0, lastDot) + suffix;
-
-			var newUrl = url.Scheme + System.Uri.SchemeDelimiter + newHost + (url.IsDefaultPort ? "" : ":" + url.Port) + url.PathAndQuery;
+            var newUrl = url.Scheme + System.Uri.SchemeDelimiter + url.Host + (url.IsDefaultPort ? "" : ":" + url.Port) + newPathAndQuery;
 
 			return newUrl;
 		}
@@ -163,7 +220,7 @@ namespace Worki.Infrastructure
 				return false;
 
 			//comming from a .fr or so, mean that the language is already defined
-            if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com")
+            if (!string.IsNullOrEmpty(ExtractDomainPrefix(HttpContext.Current.Request.Url)))
                 return false;
 
 			return true;
@@ -182,6 +239,9 @@ namespace Worki.Infrastructure
 
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
+            if (!string.IsNullOrEmpty(Path.GetExtension(requestContext.HttpContext.Request.CurrentExecutionFilePath)))
+                return base.GetHttpHandler(requestContext);
+
             Culture urlCulture;
             var fromQuery = GetCulture(HttpContext.Current.Request.Url, out urlCulture);
 
@@ -191,7 +251,7 @@ namespace Worki.Infrastructure
 				var userCulture = GetCulture(HttpContext.Current.Request.UserLanguages);
 				if (userCulture != urlCulture)
 				{
-					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString());
+					var correctUrl = SetDomainPrefix(HttpContext.Current.Request.Url, userCulture.ToString());
                     //avoid loop...
                     if (correctUrl == HttpContext.Current.Request.Url.AbsoluteUri)
                     {
@@ -238,8 +298,7 @@ namespace Worki.Infrastructure
             this._values = values;
         }
 
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName,
-                            RouteValueDictionary values, RouteDirection routeDirection)
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
 
             // Get the value called "parameterName" from the 

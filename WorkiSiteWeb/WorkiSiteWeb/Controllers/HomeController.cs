@@ -409,7 +409,7 @@ namespace Worki.Web.Controllers
         /// <returns></returns>
         public virtual ActionResult ChangeCulture(string lang)
         {
-			var newUrl = MultiCultureMvcRouteHandler.SetDomainSuffix(Request.UrlReferrer, lang);
+			var newUrl = MultiCultureMvcRouteHandler.SetDomainPrefix(Request.UrlReferrer, lang);
 			if (string.IsNullOrEmpty(newUrl))
 			{
 				return Redirect(Request.UrlReferrer.PathAndQuery);

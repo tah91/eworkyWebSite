@@ -22,34 +22,13 @@
 	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
     @{
-        var suffix = Url.GetSuffix();
         var culture = Url.GetCulture();
     }
-    @if (suffix == ".com")
-    { 
-    <script type="text/javascript">
-
-    	var _gaq = _gaq || [];
-    	_gaq.push(['_setAccount', 'UA-21890480-2']);
-    	_gaq.push(['_setDomainName', 'eworky.com']);
-    	_gaq.push(['_setAllowLinker', true]);
-    	_gaq.push(['_trackPageview']);
-
-    	(function () {
-    		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    	})();
-
-    </script>
-    }
-    else if (suffix == ".fr")
-    { 
     <script type="text/javascript">
 
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-21890480-4']);
-        _gaq.push(['_setDomainName', 'eworky.fr']);
+        _gaq.push(['_setAccount', 'UA-21890480-2']);
+        _gaq.push(['_setDomainName', 'eworky.com']);
         _gaq.push(['_setAllowLinker', true]);
         _gaq.push(['_trackPageview']);
 
@@ -60,61 +39,6 @@
         })();
 
     </script>
-    }
-    else if (suffix == ".es")
-    { 
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-21890480-5']);
-        _gaq.push(['_setDomainName', 'eworky.es']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-    }
-    else if (suffix == ".de")
-    { 
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-21890480-6']);
-        _gaq.push(['_setDomainName', 'eworky.de']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-    }
-    else if (suffix == ".nl")
-    { 
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-21890480-7']);
-        _gaq.push(['_setDomainName', 'eworky.nl']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-    }
     <div id="fb-root"></div>
 	<script>
 		window.fbAsyncInit = function () {
