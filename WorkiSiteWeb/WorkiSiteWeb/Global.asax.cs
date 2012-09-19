@@ -22,6 +22,8 @@ using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
 using Worki.Infrastructure.Email;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace Worki.Web
 {
@@ -145,130 +147,20 @@ namespace Worki.Web
 
             #region Home
 
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/ajouter-espace/",
-                new { controller = "Home", action = "add-space" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
+            CultureInfo cultureFR = CultureInfo.GetCultureInfo("fr");
 
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/contact/",
-                new { controller = "Home", action = "contact" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/comment-ça-marche/",
-                new { controller = "Home", action = "how-it-works" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/mode-d'emploi-utilisateur/",
-                new { controller = "Home", action = "user-notice" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/mode-d'emploi-gérant/",
-                new { controller = "Home", action = "owner-notice" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/espace-gérant/",
-                new { controller = "Home", action = "pricing" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/partager-un-bureau/",
-                new { controller = "Home", action = "share-office" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/faq/",
-                new { controller = "Home", action = "faq" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/a-propos/",
-                new { controller = "Home", action = "about" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/l'équipe/",
-                new { controller = "Home", action = "team" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/presse/",
-                new { controller = "Home", action = "press" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/jobs/",
-                new { controller = "Home", action = "jobs" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/cgu/",
-                new { controller = "Home", action = "tos" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
-            );
-
-            routes.SpecificCultureMapRoute(
-                "",
-                "accueil/mentions-légales/",
-                new { controller = "Home", action = "legal" },
-                null,
-                new string[] { "Worki.Web.Controllers" },
-                "fr"
+            DictionaryRouteValueTranslationProvider homeActions = new DictionaryRouteValueTranslationProvider(
+                new List<RouteValueTranslation> {
+                    new RouteValueTranslation(cultureFR, "add-space", "ajouter-espace"),
+                    new RouteValueTranslation(cultureFR, "how-it-works", "comment-ca-marche"),
+                    new RouteValueTranslation(cultureFR, "user-notice", "mode-d'emploi-utilisateur"),
+                    new RouteValueTranslation(cultureFR, "owner-notice", "mode-d'emploi-gerant"),
+                    new RouteValueTranslation(cultureFR, "pricing", "espace-gerant"),
+                    new RouteValueTranslation(cultureFR, "share-office", "partager-un-bureau"),
+                    new RouteValueTranslation(cultureFR, "about", "a-propos"),
+                    new RouteValueTranslation(cultureFR, "team", "l'equipe"),
+                    new RouteValueTranslation(cultureFR, "press", "presse")
+                }
             );
 
             //home index
@@ -276,14 +168,28 @@ namespace Worki.Web
                 "",
                 "",
                 new { controller = "Home", action = "Index" },
-                new string[] { "Worki.Web.Controllers" }
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                new { action = homeActions }
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/{action}/",
+                new { controller = "Home", action = "Index" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr",
+                new { action = homeActions }
             );
 
             routes.CultureMapRoute(
                 "",
                 "home/{action}/",
                 new { controller = "Home", action = "Index" },
-                new string[] { "Worki.Web.Controllers" }
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                new { action = homeActions }
             );
 
             #endregion
@@ -359,14 +265,30 @@ namespace Worki.Web
 
             #region Localisation
 
-            var localisationTypes = (from t in Localisation.GetLocalisationTypes().Values select MiscHelpers.GetSeoString(t));
+            DictionaryRouteValueTranslationProvider detailTypes = new DictionaryRouteValueTranslationProvider(
+                new List<RouteValueTranslation> {
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.SpotWifi, MiscHelpers.SeoConstantsFr.SpotWifi),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.CoworkingSpace, MiscHelpers.SeoConstantsFr.CoworkingSpace)
+                }
+            );
+
+            routes.SpecificCultureMapRoute(
+                "", // Nom d'itinéraire
+                "{type}/{id}/{name}", // URL avec des paramètres
+                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+                new { id = @"\d+", type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                "fr",
+                new { type = detailTypes }
+            );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{type}/{id}/{name}", // URL avec des paramètres
                 new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
-                new { id = @"\d+", type = new FromValuesListConstraint(Localisation.GetLocalisationSeoTypes().Values) },
-                new string[] { "Worki.Web.Controllers" }
+                new { id = @"\d+", type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                new { type = detailTypes }
             );
 
             routes.CultureMapRoute(
@@ -394,57 +316,10 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-				"workspaces/details/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-				"workspaces/{action}/{id}/{type}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Offers" }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
 				"workspaces/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
-
-            #region Old Routes
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-                "{type}/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "DetailsOld" }, // Paramètres par défaut
-                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-                "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "DetailsOld" }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-                "lieu-de-travail/{action}/{id}/{type}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Offers" }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-                "lieu-de-travail/{action}/{id}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            #endregion
 
             #endregion
 
@@ -515,7 +390,7 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
+                "{controller}/{action}/{id}", // URL with parameters,
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );

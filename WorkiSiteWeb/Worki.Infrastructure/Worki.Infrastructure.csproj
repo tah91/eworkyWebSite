@@ -89,6 +89,11 @@
     <Compile Include="Model\PaymentHandlerFactory.cs" />
     <Compile Include="Model\IUnitOfWork.cs" />
     <Compile Include="Model\ModelFactory.cs" />
+    <Compile Include="Routing\DictionaryRouteValueTranslationProvider.cs" />
+    <Compile Include="Routing\IRouteValueTranslationProvider.cs" />
+    <Compile Include="Routing\RouteValueTranslation.cs" />
+    <Compile Include="Routing\TranslatedRoute.cs" />
+    <Compile Include="Routing\TranslatedRouteCollectionExtensions.cs" />
     <Compile Include="Web\ActionResult.cs" />
     <Compile Include="Web\Attributes.cs" />
     <Compile Include="Model\Exceptions.cs" />
@@ -97,7 +102,7 @@
     <Compile Include="Model\IRepository.cs" />
     <Compile Include="Helper\MiscHelpers.cs" />
     <Compile Include="Web\RouteConstraint.cs" />
-    <Compile Include="Web\MultiCultureMvcRouteHandler .cs" />
+    <Compile Include="Web\MultiCultureMvcRouteHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

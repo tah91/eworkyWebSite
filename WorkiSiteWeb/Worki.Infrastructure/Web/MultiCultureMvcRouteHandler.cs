@@ -12,8 +12,72 @@ using System.IO;
 
 namespace Worki.Infrastructure 
 {
+    public class RouteInfo
+    {
+        #region Ctor
+        
+        public RouteInfo(RouteData data)
+        {
+            RouteData = data;
+        }
+
+        public RouteInfo(Uri uri, string applicationPath)
+        {
+            RouteData = RouteTable.Routes.GetRouteData(new InternalHttpContext(uri, applicationPath));
+        }
+
+        #endregion
+
+        #region private
+
+        private class InternalHttpContext : HttpContextBase
+        {
+            private readonly HttpRequestBase _request;
+
+            public InternalHttpContext(Uri uri, string applicationPath)
+            {
+                _request = new InternalRequestContext(uri, applicationPath);
+            }
+
+            public override HttpRequestBase Request { get { return _request; } }
+        }
+
+        private class InternalRequestContext : HttpRequestBase
+        {
+            private readonly string _appRelativePath;
+            private readonly string _pathInfo;
+
+            public InternalRequestContext(Uri uri, string applicationPath)
+            {
+                _pathInfo = uri.Query;
+
+                if (String.IsNullOrEmpty(applicationPath) || !uri.AbsolutePath.StartsWith(applicationPath, StringComparison.OrdinalIgnoreCase))
+                    _appRelativePath = uri.AbsolutePath.Substring(applicationPath.Length);
+                else
+                    _appRelativePath = uri.AbsolutePath;
+            }
+
+            public override string AppRelativeCurrentExecutionFilePath { get { return String.Concat("~", _appRelativePath); } }
+            public override string PathInfo { get { return _pathInfo; } }
+        }
+
+        #endregion
+
+        public RouteData RouteData { get; private set; }
+
+        public string GetSpecificUrl(string culture)
+        {
+            RouteData.Values[MultiCultureMvcRouteHandler.CultureKey] = culture;
+            var httpContextBase = new HttpContextWrapper(HttpContext.Current);
+            var requestContext = new RequestContext(httpContextBase, RouteData);
+            var urelHelper = new UrlHelper(requestContext);
+            return urelHelper.RouteUrl(RouteData.Values);
+        }
+    }  
+
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
+        public const string CultureKey = "culture";
 		public static Culture DefaultCulture = Culture.en;
 
 		/// <summary>
@@ -131,12 +195,10 @@ namespace Worki.Infrastructure
 		/// <returns>the new url</returns>
 		public static string SetDomainPrefix(Uri url, string lang)
 		{
-            var suffix = GetPrefix(lang);
+            RouteInfo routeInfo = new RouteInfo(url, HttpContext.Current.Request.ApplicationPath);
 
-            var paths = url.PathAndQuery.Split('/').Where(s => !string.IsNullOrEmpty(s)).Skip(1);
-
-            var newPathAndQuery = "/" + suffix + "/" + string.Join("/", paths);
-
+            var newPathAndQuery = routeInfo.GetSpecificUrl(GetPrefix(lang));
+            newPathAndQuery = HttpUtility.UrlDecode(newPathAndQuery);
             var newUrl = url.Scheme + System.Uri.SchemeDelimiter + url.Host + (url.IsDefaultPort ? "" : ":" + url.Port) + newPathAndQuery;
 
 			return newUrl;
@@ -227,34 +289,6 @@ namespace Worki.Infrastructure
 			}
             return base.GetHttpHandler(requestContext);
         }
-    }
-
-    public class CultureConstraint : IRouteConstraint
-    {
-        static List<string> _Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
-        private string[] _values;
-
-        public CultureConstraint(params string[] values)
-        {
-            this._values = values;
-        }
-
-        public CultureConstraint()
-        {
-            this._values = _Cultures.ToArray();
-        }
-
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
-        {
-
-            // Get the value called "parameterName" from the 
-            // RouteValueDictionary called "value"
-            string value = values[parameterName].ToString();
-            // Return true is the list of allowed values contains 
-            // this value.
-            return _values.Contains(value);
-        }
-
     }
 
     public enum Culture

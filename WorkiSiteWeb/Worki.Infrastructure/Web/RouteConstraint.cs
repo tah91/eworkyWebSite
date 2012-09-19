@@ -30,4 +30,31 @@ namespace Worki.Infrastructure
             return _Filtered.Contains(value);
         }
     }
+
+    public class CultureConstraint : IRouteConstraint
+    {
+        static List<string> _Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
+        private string[] _values;
+
+        public CultureConstraint(params string[] values)
+        {
+            this._values = values;
+        }
+
+        public CultureConstraint()
+        {
+            this._values = _Cultures.ToArray();
+        }
+
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        {
+
+            // Get the value called "parameterName" from the 
+            // RouteValueDictionary called "value"
+            string value = values[parameterName].ToString();
+            // Return true is the list of allowed values contains 
+            // this value.
+            return _values.Contains(value);
+        }
+    }
 }

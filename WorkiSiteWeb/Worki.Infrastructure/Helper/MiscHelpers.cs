@@ -69,6 +69,62 @@ namespace Worki.Infrastructure.Helpers
 
         #endregion
 
+        public static class SeoConstantsFr
+        {
+            public const string FreeAreas = "free-areas";
+            public const string Telecentre = "smart-workcenter";
+            public const string BuisnessCenter = "business-center";
+            public const string CoworkingSpace = "espace-de-coworking";
+            public const string OtherPlaces = "other-places";
+            public const string SharedOffice = "shared-office";
+            public const string SpotWifi = "spot-wifi";
+            public const string CoffeeResto = "pub-resto";
+            public const string Biblio = "library";
+            public const string TravelerSpace = "travel-lounge";
+            public const string WorkingHotel = "incubator";
+            public const string PrivateArea = "private-place";
+            public const string PublicSpace = "cyber";
+            public const string Hotel = "hotel";
+            public const string Type = "type";
+
+            public static List<string> LocalisationTypes = new List<string>
+            {
+                FreeAreas ,
+                Telecentre ,
+                BuisnessCenter ,
+                CoworkingSpace ,
+                OtherPlaces ,
+                SharedOffice ,
+                SpotWifi ,
+                CoffeeResto ,
+                Biblio ,
+                TravelerSpace,
+                WorkingHotel,
+                PrivateArea,
+                PublicSpace,
+                Hotel
+            };
+
+            public const string FreeArea = "free-area";
+            public const string BuisnessLounge = "buisness-lounge";
+            public const string Workstation = "workstation";
+            public const string Desktop = "desktop";
+            public const string MeetingRoom = "meeting-room";
+            public const string SeminarRoom = "conf-room";
+            public const string VisioRoom = "visio-room";
+
+            public static List<string> LocalisationOfferTypes = new List<string>
+            {
+                FreeArea ,
+                BuisnessLounge,
+                Workstation ,
+                Desktop ,
+                MeetingRoom ,
+                SeminarRoom ,
+                VisioRoom 
+            };
+        }
+
         public static class SeoConstants
         {
             public const string FreeAreas = "free-areas";
@@ -86,6 +142,34 @@ namespace Worki.Infrastructure.Helpers
             public const string PublicSpace = "cyber";
             public const string Hotel = "hotel";
             public const string Type = "type";
+
+            public static List<string> AllLocalisationTypes = new List<string>
+            {
+                SpotWifi,
+                CoffeeResto,
+                Biblio,
+                PublicSpace,
+                TravelerSpace,
+                Hotel,
+                Telecentre,
+                BuisnessCenter,
+                CoworkingSpace,
+                WorkingHotel,
+                PrivateArea,
+                SharedOffice,
+                SeoConstantsFr.SpotWifi,
+                SeoConstantsFr.CoffeeResto,
+                SeoConstantsFr.Biblio,
+                SeoConstantsFr.PublicSpace,
+                SeoConstantsFr.TravelerSpace,
+                SeoConstantsFr.Hotel,
+                SeoConstantsFr.Telecentre,
+                SeoConstantsFr.BuisnessCenter,
+                SeoConstantsFr.CoworkingSpace,
+                SeoConstantsFr.WorkingHotel,
+                SeoConstantsFr.PrivateArea,
+                SeoConstantsFr.SharedOffice
+            };
 
             public class Coordinates
             {
