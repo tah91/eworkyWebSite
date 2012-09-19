@@ -145,11 +145,127 @@ namespace Worki.Web
 
             #region Home
 
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/ajouter-espace/",
+                new { controller = "Home", action = "add-space" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/contact/",
+                new { controller = "Home", action = "contact" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/comment-ça-marche/",
+                new { controller = "Home", action = "how-it-works" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/mode-d'emploi-utilisateur/",
+                new { controller = "Home", action = "user-notice" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/mode-d'emploi-gérant/",
+                new { controller = "Home", action = "owner-notice" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/espace-gérant/",
+                new { controller = "Home", action = "pricing" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/partager-un-bureau/",
+                new { controller = "Home", action = "share-office" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/faq/",
+                new { controller = "Home", action = "faq" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
 
             routes.SpecificCultureMapRoute(
                 "",
                 "accueil/a-propos/",
                 new { controller = "Home", action = "about" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/l'équipe/",
+                new { controller = "Home", action = "team" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/presse/",
+                new { controller = "Home", action = "press" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/jobs/",
+                new { controller = "Home", action = "jobs" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/cgu/",
+                new { controller = "Home", action = "tos" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/mentions-légales/",
+                new { controller = "Home", action = "legal" },
                 null,
                 new string[] { "Worki.Web.Controllers" },
                 "fr"
@@ -169,87 +285,6 @@ namespace Worki.Web
                 new { controller = "Home", action = "Index" },
                 new string[] { "Worki.Web.Controllers" }
             );
-
-            #region Old Routes
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/presse/",
-                new { controller = "Home", action = "press" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/jobs/",
-                new { controller = "Home", action = "jobs" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/a-propos/",
-                new { controller = "Home", action = "about" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/cgu/",
-                new { controller = "Home", action = "tos" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/mentions-legales/",
-                new { controller = "Home", action = "legal" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/comment-ça-marche/",
-                new { controller = "Home", action = "how-it-works" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/mode-d'emploi-gérant/",
-                new { controller = "Home", action = "owner-notice" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/mode-d'emploi-utilisateur/",
-                new { controller = "Home", action = "user-notice" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/partager-un-bureau/",
-                new { controller = "Home", action = "share-office" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/ajouter-espace/",
-                new { controller = "Home", action = "add-space" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.CultureMapRoute(
-                "",
-                "accueil/{action}/",
-                new { controller = "Home", action = "Index" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            #endregion
 
             #endregion
 
