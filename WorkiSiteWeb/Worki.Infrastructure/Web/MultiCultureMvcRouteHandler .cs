@@ -9,71 +9,12 @@ using System.Web.SessionState;
 using System.Collections.Generic;
 using Worki.Infrastructure.Helpers;
 using System.IO;
-using System.Linq;
 
 namespace Worki.Infrastructure 
 {
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
 		public static Culture DefaultCulture = Culture.en;
-
-        public static List<string> Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
-
-        public static Route MapRoute(RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
-        {
-            var route = routes.MapRoute(
-                            "",
-                            url,
-                            defaults,
-                            constraints,
-                            namespaces
-                        );
-
-            route.RouteHandler = new MultiCultureMvcRouteHandler();
-
-            foreach (var item in Cultures)
-            {
-                var clUrl = item + "/" + url;
-                var clRoute = routes.MapRoute(
-                    "",
-                    clUrl,
-                    defaults,
-                    constraints,
-                    namespaces
-                );
-                clRoute.RouteHandler = new MultiCultureMvcRouteHandler();
-            }
-
-            return route;
-        }
-
-        public static Route MapRoute(AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
-        {
-            var route = areaContext.MapRoute(
-                            "",
-                            url,
-                            defaults,
-                            constraints,
-                            namespaces
-                        );
-
-            route.RouteHandler = new MultiCultureMvcRouteHandler();
-
-            foreach (var item in Cultures)
-            {
-                var clUrl = item + "/" + url;
-                var clRoute = areaContext.MapRoute(
-                    "",
-                    clUrl,
-                    defaults,
-                    constraints,
-                    namespaces
-                );
-                clRoute.RouteHandler = new MultiCultureMvcRouteHandler();
-            }
-
-            return route;
-        }
 
 		/// <summary>
 		/// Get culture type from url
@@ -192,11 +133,9 @@ namespace Worki.Infrastructure
 		{
             var suffix = GetPrefix(lang);
 
-            var paths = url.PathAndQuery.Split('/').Where(s => !string.IsNullOrEmpty(s));
-            if (paths.Count() == 0)
-                return url.PathAndQuery;
+            var paths = url.PathAndQuery.Split('/').Where(s => !string.IsNullOrEmpty(s)).Skip(1);
 
-            var newPathAndQuery = "/" + suffix + string.Join("/", paths);
+            var newPathAndQuery = "/" + suffix + "/" + string.Join("/", paths);
 
             var newUrl = url.Scheme + System.Uri.SchemeDelimiter + url.Host + (url.IsDefaultPort ? "" : ":" + url.Port) + newPathAndQuery;
 
@@ -292,10 +231,17 @@ namespace Worki.Infrastructure
 
     public class CultureConstraint : IRouteConstraint
     {
+        static List<string> _Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
         private string[] _values;
+
         public CultureConstraint(params string[] values)
         {
             this._values = values;
+        }
+
+        public CultureConstraint()
+        {
+            this._values = _Cultures.ToArray();
         }
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)

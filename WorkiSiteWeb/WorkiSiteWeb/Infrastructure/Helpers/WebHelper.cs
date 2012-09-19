@@ -207,7 +207,33 @@ namespace Worki.Web.Helpers
 		/// <returns>A reference to the mapped route.</returns>
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
 		{
-            return Worki.Infrastructure.MultiCultureMvcRouteHandler.MapRoute(routes, name, url, defaults, constraints, namespaces);
+            //other languages
+            var clUrl = "{culture}/" + url;
+            var clConstraint = constraints != null ? new RouteValueDictionary(constraints) : new RouteValueDictionary();
+            clConstraint.Add("culture", new Worki.Infrastructure.CultureConstraint());
+            var clRoute = routes.MapRoute(
+                name,
+                clUrl,
+                defaults,
+                constraints,
+                namespaces
+            );
+            clRoute.Constraints = clConstraint;
+            clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+
+            //default language
+            var frDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
+            frDefault.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
+            var frRoute = routes.MapRoute(
+                "",
+                url,
+                defaults,
+                constraints,
+                namespaces
+            );
+            frRoute.Defaults = frDefault;
+            frRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+            return frRoute;
 		}
 
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, string[] namespaces)
@@ -221,9 +247,53 @@ namespace Worki.Web.Helpers
 			);
 		}
 
+        public static Route SpecificCultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces, string culture)
+        {
+            //other languages
+            var clUrl = "{culture}/" + url;
+            var clConstraint = constraints != null ? new RouteValueDictionary(constraints) : new RouteValueDictionary();
+            clConstraint.Add("culture", new Worki.Infrastructure.CultureConstraint(culture));
+            var clRoute = routes.MapRoute(
+                name,
+                clUrl,
+                defaults,
+                constraints,
+                namespaces
+            );
+            clRoute.Constraints = clConstraint;
+            clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+            return clRoute;
+        }
+
         public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
         {
-            return Worki.Infrastructure.MultiCultureMvcRouteHandler.MapRoute(areaContext, name, url, defaults, constraints, namespaces);
+            //other languages
+            var clUrl = "{culture}/" + url;
+            var clConstraint = constraints != null ? new RouteValueDictionary(constraints) : new RouteValueDictionary();
+            clConstraint.Add("culture", new Worki.Infrastructure.CultureConstraint());
+            var clRoute = areaContext.MapRoute(
+                name,
+                clUrl,
+                defaults,
+                constraints,
+                namespaces
+            );
+            clRoute.Constraints = clConstraint;
+            clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+
+            //default language
+            var frDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
+            frDefault.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
+            var frRoute = areaContext.MapRoute(
+                "",
+                url,
+                defaults,
+                constraints,
+                namespaces
+            );
+            frRoute.Defaults = frDefault;
+            frRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+            return frRoute;
         }
 
         public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, string[] namespaces)

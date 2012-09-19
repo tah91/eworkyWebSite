@@ -145,6 +145,16 @@ namespace Worki.Web
 
             #region Home
 
+
+            routes.SpecificCultureMapRoute(
+                "",
+                "accueil/a-propos/",
+                new { controller = "Home", action = "about" },
+                null,
+                new string[] { "Worki.Web.Controllers" },
+                "fr"
+            );
+
             //home index
 			routes.CultureMapRoute(
                 "",
@@ -156,7 +166,7 @@ namespace Worki.Web
             routes.CultureMapRoute(
                 "",
                 "home/{action}/",
-                new { controller = "Home", action = "Default" },
+                new { controller = "Home", action = "Index" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
