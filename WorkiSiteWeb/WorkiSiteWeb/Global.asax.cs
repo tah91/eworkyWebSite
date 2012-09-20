@@ -265,10 +265,20 @@ namespace Worki.Web
 
             #region Localisation
 
-            DictionaryRouteValueTranslationProvider detailTypes = new DictionaryRouteValueTranslationProvider(
+            DictionaryRouteValueTranslationProvider localisationTypes = new DictionaryRouteValueTranslationProvider(
                 new List<RouteValueTranslation> {
                     new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.SpotWifi, MiscHelpers.SeoConstantsFr.SpotWifi),
-                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.CoworkingSpace, MiscHelpers.SeoConstantsFr.CoworkingSpace)
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.CoffeeResto, MiscHelpers.SeoConstantsFr.CoffeeResto),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.Biblio, MiscHelpers.SeoConstantsFr.Biblio),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.PublicSpace, MiscHelpers.SeoConstantsFr.PublicSpace),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.TravelerSpace, MiscHelpers.SeoConstantsFr.TravelerSpace),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.Hotel, MiscHelpers.SeoConstantsFr.Hotel),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.Telecentre, MiscHelpers.SeoConstantsFr.Telecentre),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.BuisnessCenter, MiscHelpers.SeoConstantsFr.BuisnessCenter),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.CoworkingSpace, MiscHelpers.SeoConstantsFr.CoworkingSpace),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.WorkingHotel, MiscHelpers.SeoConstantsFr.WorkingHotel),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.PrivateArea, MiscHelpers.SeoConstantsFr.PrivateArea),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.SharedOffice, MiscHelpers.SeoConstantsFr.SharedOffice)
                 }
             );
 
@@ -279,7 +289,7 @@ namespace Worki.Web
                 new { id = @"\d+", type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
                 new string[] { "Worki.Web.Controllers" },
                 "fr",
-                new { type = detailTypes }
+                new { type = localisationTypes }
             );
 
             routes.CultureMapRoute(
@@ -288,23 +298,57 @@ namespace Worki.Web
                 new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
                 new { id = @"\d+", type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
                 new string[] { "Worki.Web.Controllers" },
-                new { type = detailTypes }
+                new { type = localisationTypes }
+            );
+
+            routes.SpecificCultureMapRoute(
+                "", // Nom d'itinéraire
+                "{type}/{place}", // URL avec des paramètres
+                new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
+                new { type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                "fr",
+                new { type = localisationTypes }
             );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{type}/{place}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
-                new { type = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationTypes) },
-                new string[] { "Worki.Web.Controllers" }
+                new { type = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllLocalisationTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                new { type = localisationTypes }
+            );
+
+            DictionaryRouteValueTranslationProvider offerTypes = new DictionaryRouteValueTranslationProvider(
+                new List<RouteValueTranslation> {
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.FreeArea, MiscHelpers.SeoConstantsFr.FreeArea),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.BuisnessLounge, MiscHelpers.SeoConstantsFr.BuisnessLounge),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.Workstation, MiscHelpers.SeoConstantsFr.Workstation),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.Desktop, MiscHelpers.SeoConstantsFr.Desktop),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.MeetingRoom, MiscHelpers.SeoConstantsFr.MeetingRoom),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.SeminarRoom, MiscHelpers.SeoConstantsFr.SeminarRoom),
+                    new RouteValueTranslation(cultureFR, MiscHelpers.SeoConstants.VisioRoom, MiscHelpers.SeoConstantsFr.VisioRoom)
+                }
+            );
+
+            routes.SpecificCultureMapRoute(
+                "", // Nom d'itinéraire
+                "{offerType}/{place}", // URL avec des paramètres
+                new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
+                new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllOfferTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                "fr",
+                new { offerType = offerTypes }
             );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{offerType}/{place}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
-                new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationOfferTypes) },
-                new string[] { "Worki.Web.Controllers" }
+                new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.AllOfferTypes) },
+                new string[] { "Worki.Web.Controllers" },
+                new { offerType = offerTypes }
             );
 
             routes.CultureMapRoute(

@@ -71,19 +71,19 @@ namespace Worki.Infrastructure.Helpers
 
         public static class SeoConstantsFr
         {
-            public const string FreeAreas = "free-areas";
-            public const string Telecentre = "smart-workcenter";
-            public const string BuisnessCenter = "business-center";
+            public const string FreeAreas = "lieux-gratuits";
+            public const string Telecentre = "telecentre";
+            public const string BuisnessCenter = "centre-d'affaires";
             public const string CoworkingSpace = "espace-de-coworking";
-            public const string OtherPlaces = "other-places";
-            public const string SharedOffice = "shared-office";
+            public const string OtherPlaces = "autres-lieux";
+            public const string SharedOffice = "bureau-partage";
             public const string SpotWifi = "spot-wifi";
-            public const string CoffeeResto = "pub-resto";
-            public const string Biblio = "library";
-            public const string TravelerSpace = "travel-lounge";
-            public const string WorkingHotel = "incubator";
-            public const string PrivateArea = "private-place";
-            public const string PublicSpace = "cyber";
+            public const string CoffeeResto = "cafe-resto";
+            public const string Biblio = "biblioteque";
+            public const string TravelerSpace = "espace-voyageur";
+            public const string WorkingHotel = "incubateur";
+            public const string PrivateArea = "espace-evenmentiel";
+            public const string PublicSpace = "cybercafe";
             public const string Hotel = "hotel";
             public const string Type = "type";
 
@@ -105,13 +105,13 @@ namespace Worki.Infrastructure.Helpers
                 Hotel
             };
 
-            public const string FreeArea = "free-area";
+            public const string FreeArea = "espace-gratuit";
             public const string BuisnessLounge = "buisness-lounge";
-            public const string Workstation = "workstation";
-            public const string Desktop = "desktop";
-            public const string MeetingRoom = "meeting-room";
-            public const string SeminarRoom = "conf-room";
-            public const string VisioRoom = "visio-room";
+            public const string Workstation = "poste-de-travail";
+            public const string Desktop = "bureau";
+            public const string MeetingRoom = "salle-de-reunion";
+            public const string SeminarRoom = "salle-de-conference";
+            public const string VisioRoom = "salle-de-visio";
 
             public static List<string> LocalisationOfferTypes = new List<string>
             {
@@ -169,6 +169,24 @@ namespace Worki.Infrastructure.Helpers
                 SeoConstantsFr.WorkingHotel,
                 SeoConstantsFr.PrivateArea,
                 SeoConstantsFr.SharedOffice
+            };
+
+            public static List<string> AllOfferTypes = new List<string>
+            {
+                FreeArea,
+                BuisnessLounge,
+                Workstation,
+                Desktop,
+                MeetingRoom,
+                SeminarRoom,
+                VisioRoom, 
+                SeoConstantsFr.FreeArea,
+                SeoConstantsFr.BuisnessLounge,
+                SeoConstantsFr.Workstation,
+                SeoConstantsFr.Desktop,
+                SeoConstantsFr.MeetingRoom,
+                SeoConstantsFr.SeminarRoom,
+                SeoConstantsFr.VisioRoom
             };
 
             public class Coordinates
