@@ -58,7 +58,7 @@
                     @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.SeeClientProfile, MVC.Account.Public(Model.MemberId))
                 </div>
             }
-            else if (!Model.Offer.Localisation.IsSharedOffice())
+            else if (!Model.Offer.Localisation.ShouldNotPayQuotation())
             { 
                 <div class="clear"></div>
                 <div class="innerContentBlock italic">

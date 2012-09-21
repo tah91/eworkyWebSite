@@ -318,6 +318,11 @@ namespace Worki.Data.Models
 			return FreeLocalisationTypes.Contains(TypeValue);
 		}
 
+        public bool ShouldNotPayQuotation()
+        {
+            return (int)LocalisationType.SharedOffice == TypeValue || (int)LocalisationType.CoworkingSpace == TypeValue;
+        }
+
 		public bool IsSharedOffice()
 		{
 			return (int)LocalisationType.SharedOffice == TypeValue;
