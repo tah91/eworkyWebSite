@@ -78,7 +78,7 @@ namespace Worki.Infrastructure
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
         public const string CultureKey = "culture";
-		public static Culture DefaultCulture = Culture.en;
+		public static Culture DefaultCulture = Culture.fr;
 
 		/// <summary>
 		/// Get culture type from url
