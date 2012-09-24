@@ -40,19 +40,6 @@ namespace Worki.Web.Controllers
         /// The view containing the details of a localisation
         /// </summary>
         /// <returns>The action result.</returns>
-		public virtual ActionResult DetailsOld(int id, string name)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisation = lRepo.Get(id);
-
-            return RedirectPermanent(localisation.GetDetailFullUrl(Url));
-		}
-
-        /// <summary>
-        /// The view containing the details of a localisation
-        /// </summary>
-        /// <returns>The action result.</returns>
         [ActionName("details")]
         public virtual ActionResult Details(int id, string name)
         {
@@ -69,6 +56,10 @@ namespace Worki.Web.Controllers
             else
             {
                 var container = new SearchSingleResultViewModel { Localisation = localisation };
+                if (localisation.IsOffline)
+                {
+                    ModelState.AddModelError("", Worki.Resources.Views.Localisation.LocalisationString.PlaceNotAvailable);
+                }
                 return View(MVC.Localisation.Views.FullSearchResultDetail, container);
             }
         }

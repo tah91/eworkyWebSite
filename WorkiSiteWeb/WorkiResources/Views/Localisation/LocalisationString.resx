@@ -341,8 +341,12 @@
   </data>
   <data name="SeeOffers" xml:space="preserve">
     <value>Voir les offres</value>
-  <comment>DE</comment></data>
+    <comment>DE</comment>
+  </data>
   <data name="Host" xml:space="preserve">
     <value>Hôte</value>
+  </data>
+  <data name="PlaceNotAvailable" xml:space="preserve">
+    <value>Ce lieu n'est plus disponible</value>
   </data>
 </root>

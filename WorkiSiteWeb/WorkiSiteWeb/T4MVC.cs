@@ -1427,11 +1427,6 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult DetailsOld() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.DetailsOld);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Details() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
         }
@@ -1559,7 +1554,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
-            public readonly string DetailsOld = "DetailsOld";
             public readonly string Details = "details";
             public readonly string Suggestions = "Suggestions";
             public readonly string MapItemSummary = "MapItemSummary";
@@ -1633,13 +1627,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Index(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult DetailsOld(int id, string name) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DetailsOld);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("name", name);
             return callInfo;
         }
 
@@ -2526,8 +2513,10 @@ namespace T4MVC {
             static readonly _images s_images = new _images();
             public _images images { get { return s_images; } }
             public partial class _images{
-                public readonly string email_footer = "~/Views/Emails/images/email-footer.jpg";
+                public readonly string email_fb = "~/Views/Emails/images/email-fb.png";
+                public readonly string email_footer = "~/Views/Emails/images/email-footer.png";
                 public readonly string email_header = "~/Views/Emails/images/email-header.png";
+                public readonly string email_tw = "~/Views/Emails/images/email-tw.png";
             }
         }
     }
