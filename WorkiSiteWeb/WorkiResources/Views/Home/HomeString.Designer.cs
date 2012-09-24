@@ -259,6 +259,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to télécentre,espace de coworking,centre d&apos;affaires,partage de bureaux,café wifi,salle de réunion.
+        /// </summary>
+        public static string Keywords {
+            get {
+                return ResourceManager.GetString("Keywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre message a été envoyé avec succès, nos services vont vous répondre rapidement..
         /// </summary>
         public static string MailWellSent {
