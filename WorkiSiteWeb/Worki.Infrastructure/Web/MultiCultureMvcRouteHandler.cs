@@ -77,6 +77,7 @@ namespace Worki.Infrastructure
 
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
+        public static List<string> Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
         public const string CultureKey = "culture";
 		public static Culture DefaultCulture = Culture.fr;
 
@@ -86,8 +87,8 @@ namespace Worki.Infrastructure
 		/// <param name="url">the url</param>
         /// <param name="culture">culture to be set</param>
 		/// <returns>true if from query string</returns>
-		public static bool GetCulture(Uri url, out Culture culture)
-		{
+        public static bool GetCulture(Uri url, out Culture culture)
+        {
             var parameters = HttpUtility.ParseQueryString(url.Query);
             var fromQuery = parameters[MiscHelpers.WidgetConstants.LocaleCulture];
             if (!string.IsNullOrEmpty(fromQuery))
@@ -98,32 +99,32 @@ namespace Worki.Infrastructure
                 return true;
             }
 
-			var prefix = ExtractDomainPrefix(url);
+            var prefix = ExtractDomainPrefix(url);
 
             switch (prefix)
-			{
-				case "fr":
-					culture =  Culture.fr;
+            {
+                case "fr":
+                    culture = Culture.fr;
                     break;
-				case "es":
-					culture =  Culture.es;
+                case "es":
+                    culture = Culture.es;
                     break;
                 case "de":
-                    culture =  Culture.de;
+                    culture = Culture.de;
                     break;
                 case "nl":
                     culture = Culture.nl;
                     break;
-				case "en":
-					culture =  Culture.en;
+                case "en":
+                    culture = Culture.en;
                     break;
-				default:
-					culture =  DefaultCulture;
+                default:
+                    culture = DefaultCulture;
                     break;
-			}
+            }
 
             return false;
-		}
+        }
 
         /// <summary>
         /// Get suffix from culture
@@ -195,6 +196,9 @@ namespace Worki.Infrastructure
 		/// <returns>the new url</returns>
 		public static string SetDomainPrefix(Uri url, string lang)
 		{
+            if (url == null)
+                return null;
+
             RouteInfo routeInfo = new RouteInfo(url, HttpContext.Current.Request.ApplicationPath);
 
             var newPathAndQuery = routeInfo.GetSpecificUrl(GetPrefix(lang));

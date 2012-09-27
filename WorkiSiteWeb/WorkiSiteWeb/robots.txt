@@ -10,6 +10,8 @@ Disallow: /workspaces/search-detail/
 Disallow: /workspaces/search-detail?
 Disallow: /api/
 Disallow: /api?
+Disallow: /Quotation/
+Disallow: /Quotation?
 
 Allow: /
 

@@ -46,9 +46,8 @@ namespace Worki.Web.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var localisation = lRepo.Get(id);
-            var nameToMatch = MiscHelpers.GetSeoString(localisation.Name);
 
-            if (localisation == null || string.IsNullOrEmpty(name) /*|| string.Compare(nameToMatch, name, true) != 0*/)
+            if (localisation == null || string.IsNullOrEmpty(name) /*|| string.Compare(MiscHelpers.GetSeoString(localisation.Name), name, true) != 0*/)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());

@@ -9,6 +9,7 @@ using System.Web.Routing;
 using Worki.Web.Model;
 using Worki.Memberships;
 using Worki.Infrastructure;
+using System.Globalization;
 
 namespace Worki.Web.Helpers
 {
@@ -118,7 +119,7 @@ namespace Worki.Web.Helpers
             return toRet;
         }
 
-        public static MetaData GetMetaData(this IPictureDataProvider provider)
+        public static MetaData GetMetaData(this IPictureDataProvider provider, UrlHelper urlHelper)
         {
             if (provider == null)
                 return null;
@@ -130,23 +131,40 @@ namespace Worki.Web.Helpers
             if (!string.IsNullOrEmpty(imagePath) && VirtualPathUtility.IsAppRelative(imagePath))
 				imagePath = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imagePath), true);
 
-            return new MetaData
+            var metaData = new MetaData
             {
                 Title = provider.GetDisplayName(),
                 Image = imagePath,
                 Description = provider.GetDescription()
             };
+
+            if (provider is Localisation)
+            {
+                var localisation = (Localisation)provider;
+                metaData.CanonicalUrl = localisation.GetDetailFullUrl(urlHelper, MultiCultureMvcRouteHandler.DefaultCulture.ToString());
+                foreach (var lang in MultiCultureMvcRouteHandler.Cultures)
+                {
+                    metaData.AlternateUrls.Add(new AlternateUrl { Lang = lang, Url = localisation.GetDetailFullUrl(urlHelper, lang) });
+                }
+            }
+
+            return metaData;
         }
 
-        public static string GetDetailFullUrl(this Localisation loc, UrlHelper urlHelper)
+        public static string GetDetailFullUrl(this Localisation loc, UrlHelper urlHelper, string culture = null)
         {
             if (loc == null || urlHelper == null)
                 return null;
 
+            if(string.IsNullOrEmpty(culture))
+            {
+                culture = CultureInfo.CurrentCulture.ToString().Substring(0, 2);
+            }
+
             string typeStr = Localisation.GetLocalisationSeoType(loc.TypeValue);
             var type = MiscHelpers.GetSeoString(typeStr);
             var name = MiscHelpers.GetSeoString(loc.GetFullName());
-            return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
+            return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "", culture = culture });
         }
 
         public static string GetDetailFullUrl(this Rental rental, UrlHelper urlHelper)

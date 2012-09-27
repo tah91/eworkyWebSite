@@ -33,7 +33,6 @@ namespace Worki.Infrastructure
 
     public class CultureConstraint : IRouteConstraint
     {
-        static List<string> _Cultures = new List<string> { "fr", "es", "de", "nl", "en" };
         private string[] _values;
 
         public CultureConstraint(params string[] values)
@@ -43,7 +42,7 @@ namespace Worki.Infrastructure
 
         public CultureConstraint()
         {
-            this._values = _Cultures.ToArray();
+            this._values = MultiCultureMvcRouteHandler.Cultures.ToArray();
         }
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)

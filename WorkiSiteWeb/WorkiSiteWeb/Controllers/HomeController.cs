@@ -409,12 +409,19 @@ namespace Worki.Web.Controllers
         /// <returns></returns>
         public virtual ActionResult ChangeCulture(string lang)
         {
-			var newUrl = MultiCultureMvcRouteHandler.SetDomainPrefix(Request.UrlReferrer, lang);
-			if (string.IsNullOrEmpty(newUrl))
-			{
-				return Redirect(Request.UrlReferrer.PathAndQuery);
-			}
-			return Redirect(newUrl);
+            var newUrl = MultiCultureMvcRouteHandler.SetDomainPrefix(Request.UrlReferrer, lang);
+            if (string.IsNullOrEmpty(newUrl))
+            {
+                if (Request.UrlReferrer != null)
+                {
+                    return Redirect(Request.UrlReferrer.PathAndQuery);
+                }
+                else
+                {
+                    return RedirectToAction(MVC.Home.Index());
+                }
+            }
+            return Redirect(newUrl);
         }
 
         [ActionName("add-space")]

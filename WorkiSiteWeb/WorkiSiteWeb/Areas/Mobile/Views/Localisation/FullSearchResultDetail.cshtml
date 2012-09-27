@@ -2,11 +2,7 @@
 
 @section HeadContent
 {
-    @{
-        var metaData = Model.Localisation.GetMetaData();
-        metaData.Url = Model.Localisation.GetDetailFullUrl(Url);
-    }
-    @Html.Partial(MVC.Shared.Views._MetaDataHeader, metaData) 
+    @Html.Partial(MVC.Shared.Views._MetaDataHeader, Model.Localisation.GetMetaData(Url)) 
     <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />	
     <link href="@Url.VersionedContent(Links.Content.Profil_css) " rel="stylesheet" type="text/css"/>

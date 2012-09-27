@@ -1,11 +1,15 @@
 ﻿@model Worki.Data.Models.MetaData
       
-<link rel="canonical" href="@Model.Url"/>
+<link rel="canonical" href="@Model.CanonicalUrl"/>
+@foreach (var item in Model.AlternateUrls)
+{
+    <link rel="alternate" hreflang="@item.Lang" href="@item.Url" />   
+}
 <meta name="Description" content="@Html.TruncateAtWord(Model.Description, 150)"/>
 <title>@Html.WorkiTitle(Model.Title)</title>     
 <meta property="og:title" content="@Model.Title" />
 <meta property="og:type" content="@string.Format("{0}:workspace", WebHelper.GetFacebookNamespace())" /> 
-<meta property="og:url" content="@Model.Url" />
+<meta property="og:url" content="@Model.CanonicalUrl" />
 <meta property="og:image" content="@Url.GetFileFullUrl(Model.Image)" />
 <meta property="og:site_name" content="eWorky" />
 <meta property="og:description" content="@Html.TruncateAtWord(Model.Description, 150)"/>
