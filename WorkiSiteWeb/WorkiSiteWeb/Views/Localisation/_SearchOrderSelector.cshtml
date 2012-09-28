@@ -13,8 +13,8 @@
         Title = Model.GetOrderName(),
         Items = new List<DropDownItem>
         {
-			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.DistanceOrdered, Link = Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult,distRvd), Id="orderByDistance"},
-            new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.RateOrdered, Link = Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult,ratingRvd), Id="orderByRating"}
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.DistanceOrdered, Link = Url.Action(MVC.Localisation.ActionNames.FullSearchResult,distRvd), Id="orderByDistance"},
+            new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.RateOrdered, Link = Url.Action(MVC.Localisation.ActionNames.FullSearchResult,ratingRvd), Id="orderByRating"}
 		}
     };
 }

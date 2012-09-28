@@ -13,6 +13,25 @@
     var _infowindow = null;
     var _newResultsPushed = false;
 
+    var _history = window.History; // Note: We are using a capital H instead of a lower h
+    var _rootUrl = _history.getRootUrl();
+    // Bind to StateChange Event
+    _history.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
+        // Prepare Variables
+        var state = _history.getState(),
+			url = state.url,
+			relativeUrl = url.replace(_rootUrl, '');
+
+        if (state.data.toProcess != null || state.data.toProcess == false) {
+            return;
+        }
+
+        $.ajax({
+            url: url,
+            success: _refreshResults
+        });
+    });
+
     _bounds_changed = function () {
         //this is gg map, we are in an handler
         var bounds = this.getBounds();
@@ -98,13 +117,22 @@
 
     _applyResults = function (link) {
         _goToTop.apply();
-        $.ajax({
-            url: link.href,
-            success: _refreshResults
-        });
+        // Ajaxify this link
+        _history.pushState({ toProcess: true }, "", link.href);
+        event.preventDefault();
+        return false;
+//        $.ajax({
+//            url: link.href,
+//            success: _refreshResults
+//        });
     }
 
     var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
+
+    _onSubmitSuccess = function (data) {
+        _refreshResults(data);
+        _history.pushState({ toProcess: false }, "", data.url);
+    }
 
     _submitData = function () {
         _goToTop.apply();
@@ -112,7 +140,7 @@
 			_ajaxSubmitUrl,
 			"POST",
 			$('#searchFormReset form').serializeArray(),
-            _refreshResults,
+            _onSubmitSuccess,
             errorBuilder.ErrorFunc
 		);
     }

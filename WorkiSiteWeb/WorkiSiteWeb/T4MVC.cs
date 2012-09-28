@@ -1530,16 +1530,6 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult AjaxFullSearch() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult AjaxFullSearchResult() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Localisation; } }
@@ -1582,8 +1572,6 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchResult = "search-results";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
-            public readonly string AjaxFullSearch = "AjaxFullSearch";
-            public readonly string AjaxFullSearchResult = "AjaxFullSearchResult";
         }
 
 
@@ -1829,18 +1817,6 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult GetMainLocalisations() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult AjaxFullSearch(Worki.Data.Models.SearchCriteria criteria) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
-            callInfo.RouteValueDictionary.Add("criteria", criteria);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult AjaxFullSearchResult(int? page) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
-            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 

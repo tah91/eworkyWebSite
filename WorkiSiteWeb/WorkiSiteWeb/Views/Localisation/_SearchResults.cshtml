@@ -13,6 +13,6 @@
     }
 
 	<div class="pager">
-		@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
+		@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd); })
 	</div>
 </div>  

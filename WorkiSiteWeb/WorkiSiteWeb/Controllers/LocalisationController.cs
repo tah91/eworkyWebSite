@@ -832,27 +832,48 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="criteria">The criteria data from the form</param>
 		/// <returns>redirect to the list of results</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[ActionName("search")]
-		[ValidateAntiForgeryToken]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ActionName("search")]
+        [ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
-		public virtual ActionResult FullSearch(SearchCriteria criteria)
-		{
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					var rvd = _SearchService.GetRVD(criteria);
-					return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("FullSearch", ex);
-					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
-				}
-			}
-            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
-		}
+        [HandleModelStateException]
+        public virtual ActionResult FullSearch(SearchCriteria criteria)
+        {
+            var isAjax = Request.IsAjaxRequest();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (isAjax)
+                    {
+                        var criteriaViewModel = _SearchService.FillSearchResults(criteria);
+                        return GetSearchResult(criteriaViewModel);
+                    }
+                    else
+                    {
+                        var rvd = _SearchService.GetRVD(criteria);
+                        return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("FullSearch", ex);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
+                    if (isAjax)
+                    {
+                        throw new ModelStateException(ModelState);
+                    }
+                }
+            }
+            if (isAjax)
+            {
+                throw new ModelStateException(ModelState);
+            }
+            else
+            {
+                return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
+            }
+        }
 
 		/// <summary>
 		/// GET Action result to show paginated search results from a SearchCriteria
@@ -875,7 +896,15 @@ namespace Worki.Web.Controllers
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue);
-			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
+
+            if (Request.IsAjaxRequest())
+            {
+                return GetSearchResult(criteriaViewModel);
+            }
+            else
+            {
+                return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
+            }            
 		}
 
         #region Ajax
@@ -921,19 +950,22 @@ namespace Worki.Web.Controllers
 		{
             var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
             var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
+            var rvd = _SearchService.GetRVD(criteriaViewModel.Criteria);
+            var url = Url.Action(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+
             switch (criteriaViewModel.Criteria.ResultView)
             {
                 case eResultView.Map:
                     {
                         var locList = (from item in criteriaViewModel.Criteria.Projection select item.GetJson());
-                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url }, JsonRequestBehavior.AllowGet);
                     }
                 case eResultView.List:
                 default:
                     {
                         var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
                         var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url }, JsonRequestBehavior.AllowGet);
                     }
             }
 
@@ -944,45 +976,45 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>json containing results</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
-        [HandleModelStateException]
-        public virtual ActionResult AjaxFullSearch(SearchCriteria criteria)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var criteriaViewModel = _SearchService.FillSearchResults(criteria);
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //[ValidateAntiForgeryToken]
+        //[ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
+        //[HandleModelStateException]
+        //public virtual ActionResult AjaxFullSearch(SearchCriteria criteria)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
-					return GetSearchResult(criteriaViewModel);
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("AjaxFullSearch", ex);
-                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
-                    throw new ModelStateException(ModelState);
-                }
-            }
-            throw new ModelStateException(ModelState);
-        }
+        //            return GetSearchResult(criteriaViewModel);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            _Logger.Error("AjaxFullSearch", ex);
+        //            ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
+        //            throw new ModelStateException(ModelState);
+        //        }
+        //    }
+        //    throw new ModelStateException(ModelState);
+        //}
 
         /// <summary>
         /// Ajax GET Action result to show paginated search results from a SearchCriteria
         /// </summary>
         /// <param name="page">the page to display</param>
         /// <returns>JSON of the list of results in the page</returns>
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult AjaxFullSearchResult(int? page)
-        {
-            var pageValue = page ?? 1;
-            var criteria = _SearchService.GetCriteria(Request, pageValue);
-            var criteriaViewModel = _SearchService.FillSearchResults(criteria);
+        //[AcceptVerbs(HttpVerbs.Get)]
+        //public virtual ActionResult AjaxFullSearchResult(int? page)
+        //{
+        //    var pageValue = page ?? 1;
+        //    var criteria = _SearchService.GetCriteria(Request, pageValue);
+        //    var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
-            criteriaViewModel.FillPageInfo(pageValue);
-			return GetSearchResult(criteriaViewModel);
-        }
+        //    criteriaViewModel.FillPageInfo(pageValue);
+        //    return GetSearchResult(criteriaViewModel);
+        //}
 
 
         #endregion
