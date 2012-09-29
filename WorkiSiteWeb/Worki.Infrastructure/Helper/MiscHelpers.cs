@@ -142,6 +142,7 @@ namespace Worki.Infrastructure.Helpers
             public const string PublicSpace = "cyber";
             public const string Hotel = "hotel";
             public const string Type = "type";
+            public const string LocalisationType = "loc-type";
 
             public static List<string> AllLocalisationTypes = new List<string>
             {

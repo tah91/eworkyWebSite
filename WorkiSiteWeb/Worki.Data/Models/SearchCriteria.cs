@@ -121,7 +121,7 @@ namespace Worki.Data.Models
             if (Hotel)
                 localisationTypes.Add(MiscHelpers.SeoConstants.Hotel);
 
-            toRet[MiscHelpers.SeoConstants.Type] = string.Join(",", localisationTypes);
+            toRet[MiscHelpers.SeoConstants.LocalisationType] = string.Join(",", localisationTypes);
 
             foreach (var neededFeature in LocalisationData.LocalisationFeatures)
             {
