@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coworking, partage de bureaux, cafés wifi.
+        ///   Looks up a localized string similar to Centres d&apos;affaires, partage de bureaux, coworking, télécentres.
         /// </summary>
         public static string BestWorkspace {
             get {
@@ -133,7 +133,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : bureaux à partager, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
+        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : centres d&apos;affaires, coworking, bureaux à partager, télécentres, salles de réunion ou de séminaire..
         /// </summary>
         public static string Description {
             get {
@@ -187,7 +187,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parmi &lt;em&gt;{0:### ### ###}&lt;/em&gt; espaces de coworking, cafés wifi, centres d&apos;affaires, bureaux partagés.
+        ///   Looks up a localized string similar to Parmi &lt;em&gt;{0:### ### ###}&lt;/em&gt; centres d&apos;affaires, bureaux partagés, espaces de coworking, télécentres.
         /// </summary>
         public static string FindTheBesPlace2 {
             get {
