@@ -10,6 +10,7 @@
     @Html.HiddenFor(model => model.Criteria.SouthWestLng)
     @Html.HiddenFor(model => model.Criteria.SearchType)
     @Html.HiddenFor(model => model.Criteria.ResultView)
+    @Html.HiddenFor(model => model.Criteria.GlobalType)
     if (Model.Criteria.SearchType == eSearchType.ePerName)
     { 
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Name)

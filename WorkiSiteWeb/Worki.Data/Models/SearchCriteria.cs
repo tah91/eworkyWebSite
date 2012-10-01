@@ -41,12 +41,12 @@ namespace Worki.Data.Models
             Init();
         }
 
-		public SearchCriteria(bool wifi = false, eSearchType searchType = eSearchType.ePerOffer, eOrderBy orderBy = eOrderBy.Distance)
+		public SearchCriteria(bool wifi = false, eSearchType searchType = eSearchType.ePerType, eOrderBy orderBy = eOrderBy.Distance)
 		{
             Init(wifi, searchType, orderBy);
 		}
 
-        void Init(bool wifi = false, eSearchType searchType = eSearchType.ePerOffer, eOrderBy orderBy = eOrderBy.Distance)
+        void Init(bool wifi = false, eSearchType searchType = eSearchType.ePerType, eOrderBy orderBy = eOrderBy.Distance)
         {
             LocalisationData = new Localisation();
             OfferData = new Offer { Type = -1 };
@@ -59,6 +59,7 @@ namespace Worki.Data.Models
             SearchType = searchType;
             OrderBy = orderBy;
 			ResultView = eResultView.List;
+            GlobalType = eGlobalType.None;
         }
 
         public Dictionary<string, object> GetDictionnary()
@@ -70,6 +71,7 @@ namespace Worki.Data.Models
 
             toRet[MiscHelpers.SeoConstants.Place] = Place;
             toRet[MiscHelpers.SeoConstants.SearchOfferType] = Localisation.GetSeoStringOfferFromType(OfferData.Type);
+            toRet[MiscHelpers.SeoConstants.GlobalType] = (int)GlobalType;
             toRet[MiscHelpers.SeoConstants.Latitude] = (float)LocalisationData.Latitude;
             toRet[MiscHelpers.SeoConstants.Longitude] = (float)LocalisationData.Longitude;
             toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;
@@ -211,6 +213,7 @@ namespace Worki.Data.Models
 		public eOrderBy OrderBy { get; set; }
         public eSearchType SearchType { get; set; }
 		public eResultView ResultView { get; set; }
+        public eGlobalType GlobalType { get; set; } 
         public int Page { get; set; }
         public IEnumerable<LocalisationProjection> Projection { get; set; }
         public Filter PreFilter { get; set; }
@@ -370,12 +373,21 @@ namespace Worki.Data.Models
 		Map
 	}
 
+    public enum eGlobalType
+    {
+        None,
+        BuisnessCenter_Smartworkcenter,
+        Coworking_SharedOffice,
+        MeetingRoom
+    }
+
     public class SearchCriteriaFormViewModel : PagingList<Localisation>
     {
         #region Properties
 
         public SearchCriteria Criteria { get; private set; }
         public SelectList Offers { get; private set; }
+        public SelectList GlobalTypes { get; private set; }
         public Dictionary<int, double> DistanceFromLocalisation { get; private set; }
 
         public IList<Localisation> PageResults
@@ -392,6 +404,34 @@ namespace Worki.Data.Models
 
         #region Ctor
 
+        public static List<int> GlobalTypesList = new List<int>()
+        {
+            (int)eGlobalType.BuisnessCenter_Smartworkcenter,
+            (int)eGlobalType.Coworking_SharedOffice,
+            (int)eGlobalType.MeetingRoom
+        };
+
+        public static string GetGlobalType(int globalTypeInt)
+        {
+            var globalType = (eGlobalType)globalTypeInt;
+            switch (globalType)
+            {
+                case eGlobalType.BuisnessCenter_Smartworkcenter:
+                    return  Worki.Resources.Models.Search.SearchCriteria.BuisnessCenter_Smartworkcenter;
+                case eGlobalType.Coworking_SharedOffice:
+                    return  Worki.Resources.Models.Search.SearchCriteria.Coworking_SharedOffice;
+                case eGlobalType.MeetingRoom:
+                    return  Worki.Resources.Models.Search.SearchCriteria.MeetingRoom;
+                default:
+                    return "";
+            }
+        }
+
+        public static Dictionary<int, string> GetGlobalTypes()
+        {
+            return GlobalTypesList.ToDictionary(o => o, o => GetGlobalType(o));
+        }
+
         void Init(bool allOffers = false)
         {
             List = new List<Localisation>();
@@ -401,6 +441,7 @@ namespace Worki.Data.Models
                 : new List<LocalisationOffer> { LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom };
             var offers = Localisation.GetOfferTypeDict(toExclude, true);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
+            GlobalTypes = new SelectList(GetGlobalTypes(), "Key", "Value", eGlobalType.BuisnessCenter_Smartworkcenter);
         }
 
         public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false)

@@ -183,6 +183,9 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.SearchOfferType, ref value))
                 criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(value);
 
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.GlobalType, ref value) && int.TryParse(value, out intVal))
+                criteria.GlobalType = (eGlobalType)intVal;
+
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.LocalisationType, ref value))
             {
                 var localisationTypes = value.Split(',');

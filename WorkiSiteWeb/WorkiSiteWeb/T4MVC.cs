@@ -1575,6 +1575,7 @@ namespace Worki.Web.Controllers {
             public readonly string AddFavorite = "AddFavorite";
             public readonly string SearchForm = "SearchForm";
             public readonly string FullSearch = "search";
+            public readonly string FullSearchPerOffer = "search-per-offer";
             public readonly string FullSearchPerType = "search-per-type";
             public readonly string FullSearchPerName = "search-per-name";
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
@@ -1781,6 +1782,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult FullSearch() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchPerOffer() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerOffer);
             return callInfo;
         }
 
