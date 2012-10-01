@@ -69,7 +69,7 @@ namespace Worki.Data.Models
                 toRet[MiscHelpers.SeoConstants.Page] = Page;
 
             toRet[MiscHelpers.SeoConstants.Place] = Place;
-            toRet[MiscHelpers.SeoConstants.OfferType] = Localisation.GetSeoStringOfferFromType(OfferData.Type);
+            toRet[MiscHelpers.SeoConstants.SearchOfferType] = Localisation.GetSeoStringOfferFromType(OfferData.Type);
             toRet[MiscHelpers.SeoConstants.Latitude] = (float)LocalisationData.Latitude;
             toRet[MiscHelpers.SeoConstants.Longitude] = (float)LocalisationData.Longitude;
             toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;

@@ -248,6 +248,7 @@ namespace Worki.Infrastructure.Helpers
             public const string Place = "place";
             public const string Boundary = "boundary";
             public const string OfferType = "offerType";
+            public const string SearchOfferType = "offer-type";
             public const string Latitude = "lat";
             public const string Longitude = "lng";
             public const string PlaceName = "name";
