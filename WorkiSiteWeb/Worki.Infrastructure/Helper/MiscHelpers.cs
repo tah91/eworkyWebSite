@@ -80,9 +80,9 @@ namespace Worki.Infrastructure.Helpers
             public const string SpotWifi = "spot-wifi";
             public const string CoffeeResto = "cafe-resto";
             public const string Biblio = "biblioteque";
-            public const string TravelerSpace = "espace-voyageur";
+            public const string TravelerSpace = "espace-voyageurs";
             public const string WorkingHotel = "incubateur";
-            public const string PrivateArea = "espace-evenmentiel";
+            public const string PrivateArea = "espace-evenementiel";
             public const string PublicSpace = "cybercafe";
             public const string Hotel = "hotel";
             public const string Type = "type";
