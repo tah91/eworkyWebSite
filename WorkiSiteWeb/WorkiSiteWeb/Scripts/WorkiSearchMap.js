@@ -30,6 +30,7 @@
 
         $.ajax({
             url: url,
+            cache: false,
             success: _refreshResults
         });
     });
@@ -120,7 +121,7 @@
     _applyResults = function (link) {
         _goToTop.apply();
         // Ajaxify this link
-        _history.pushState({ toProcess: true }, "", link.href);
+        _history.pushState(null, "", link.href);
         //event.preventDefault();
         return false;
 //        $.ajax({
@@ -134,7 +135,7 @@
     _onSubmitSuccess = function (data) {
         _refreshResults(data);
         _shouldProccess = false;
-        _history.pushState({ toProcess: false }, "", data.url);
+        _history.pushState(null, "", data.url);
     }
 
     _submitData = function () {

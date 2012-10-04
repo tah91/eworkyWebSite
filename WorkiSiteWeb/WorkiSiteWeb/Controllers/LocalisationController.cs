@@ -941,52 +941,6 @@ namespace Worki.Web.Controllers
 
 		}
 
-        /// <summary>
-        /// Ajax POST Action result to search localisations from a SearchCriteria
-        /// </summary>
-        /// <param name="criteria">The criteria data from the form</param>
-        /// <returns>json containing results</returns>
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //[ValidateAntiForgeryToken]
-        //[ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
-        //[HandleModelStateException]
-        //public virtual ActionResult AjaxFullSearch(SearchCriteria criteria)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var criteriaViewModel = _SearchService.FillSearchResults(criteria);
-
-        //            return GetSearchResult(criteriaViewModel);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            _Logger.Error("AjaxFullSearch", ex);
-        //            ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
-        //            throw new ModelStateException(ModelState);
-        //        }
-        //    }
-        //    throw new ModelStateException(ModelState);
-        //}
-
-        /// <summary>
-        /// Ajax GET Action result to show paginated search results from a SearchCriteria
-        /// </summary>
-        /// <param name="page">the page to display</param>
-        /// <returns>JSON of the list of results in the page</returns>
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public virtual ActionResult AjaxFullSearchResult(int? page)
-        //{
-        //    var pageValue = page ?? 1;
-        //    var criteria = _SearchService.GetCriteria(Request, pageValue);
-        //    var criteriaViewModel = _SearchService.FillSearchResults(criteria);
-
-        //    criteriaViewModel.FillPageInfo(pageValue);
-        //    return GetSearchResult(criteriaViewModel);
-        //}
-
-
         #endregion
 
 		#endregion
