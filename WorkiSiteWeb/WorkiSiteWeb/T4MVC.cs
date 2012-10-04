@@ -1522,6 +1522,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FullSearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
         }
@@ -1564,11 +1569,9 @@ namespace Worki.Web.Controllers {
             public readonly string AddToOpenGraph = "AddToOpenGraph";
             public readonly string AddFavorite = "AddFavorite";
             public readonly string SearchForm = "SearchForm";
-            public readonly string FullSearch = "search";
-            public readonly string FullSearchPerType = "search-per-type";
-            public readonly string FullSearchPerName = "search-per-name";
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
             public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
+            public readonly string FullSearch = "search";
             public readonly string FullSearchResult = "search-results";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
@@ -1764,21 +1767,6 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
             callInfo.RouteValueDictionary.Add("searchType", searchType);
             callInfo.RouteValueDictionary.Add("place", place);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearch() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchPerType() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerType);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchPerName() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerName);
             return callInfo;
         }
 

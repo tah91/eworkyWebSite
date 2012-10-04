@@ -13,6 +13,7 @@
     var _infowindow = null;
     var _newResultsPushed = false;
 
+    var _shouldProccess = true;
     var _history = window.History; // Note: We are using a capital H instead of a lower h
     var _rootUrl = _history.getRootUrl();
     // Bind to StateChange Event
@@ -22,7 +23,8 @@
 			url = state.url,
 			relativeUrl = url.replace(_rootUrl, '');
 
-        if (state.data.toProcess != null || state.data.toProcess == false) {
+        if (_shouldProccess == false) {
+            _shouldProccess = true;
             return;
         }
 
@@ -119,7 +121,7 @@
         _goToTop.apply();
         // Ajaxify this link
         _history.pushState({ toProcess: true }, "", link.href);
-        event.preventDefault();
+        //event.preventDefault();
         return false;
 //        $.ajax({
 //            url: link.href,
@@ -131,6 +133,7 @@
 
     _onSubmitSuccess = function (data) {
         _refreshResults(data);
+        _shouldProccess = false;
         _history.pushState({ toProcess: false }, "", data.url);
     }
 

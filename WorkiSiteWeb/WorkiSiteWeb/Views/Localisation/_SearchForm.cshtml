@@ -7,9 +7,9 @@
 		Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
 		Items = new List<DropDownItem>
 				{
-					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Home.Index()), Id="searchPerNeed"},
-					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-					new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" }
+					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Id="searchPerNeed"},
+					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Id = "searchPerType"},
+					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Id = "searchPerName" }
 				}
 	};          
 }

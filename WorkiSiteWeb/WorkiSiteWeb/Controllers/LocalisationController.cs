@@ -735,36 +735,6 @@ namespace Worki.Web.Controllers
             return PartialView(MVC.Localisation.Views._SearchForm, model);
         }
 
-		/// <summary>
-		/// GET Action result to search localisations from a SearchCriteria
-		/// the search is per offer (free area, meeting room etc...)
-		/// </summary>
-		/// <returns>the form to fill</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("search")]
-		public virtual ActionResult FullSearch()
-		{
-			var criteria = new SearchCriteria(true);
-            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
-		}
-
-		[AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("search-per-type")]
-		public virtual ActionResult FullSearchPerType()
-		{
-            var criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
-            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
-		}
-
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("search-per-name")]
-        public virtual ActionResult FullSearchPerName()
-        {
-            var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
-            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
-        }
-
         /// <summary>
         /// action which redirect to search results, for seo purpose
         /// </summary>
