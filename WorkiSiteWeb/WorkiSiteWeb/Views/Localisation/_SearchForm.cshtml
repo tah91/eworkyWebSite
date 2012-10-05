@@ -1,17 +1,17 @@
 ﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
 
 @{
-	var dropDown = new DropDownModel
-	{
-		Id = DropDownModel.AdvancedSearchDD,
-		Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
-		Items = new List<DropDownItem>
+    var dropDown = new DropDownModel
+    {
+        Id = DropDownModel.AdvancedSearchDD,
+        Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
+        Items = new List<DropDownItem>
 				{
-					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Id="searchPerNeed"},
 					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Id = "searchPerType"},
+					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Id="searchPerNeed"},
 					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Id = "searchPerName" }
 				}
-	};          
+    };
 }
 
 <div id="searchFormPartialContainer">
@@ -20,8 +20,8 @@
 		@Html.AntiForgeryToken()
 		@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
 		@Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-		@Html.HiddenFor(m => m.Criteria.SearchType)
-		@Html.HiddenFor(m => m.Criteria.OrderBy)
+		@Html.HiddenFor(model => model.Criteria.SearchType)
+		@Html.HiddenFor(model => model.Criteria.OrderBy)
 		
 		<div class="indexSearch relative">
 	    @switch (Model.Criteria.SearchType)
@@ -60,8 +60,8 @@
 				</div>
 		 
 				<h3>@Worki.Resources.Views.Search.SearchString.SearchType</h3>
-				<div class="indexSearchFormField">
-					<div class="searchCheckBoxs float-left">
+				<div class="editor-field  indexSearchFormField">
+@*					<div class="searchCheckBoxs float-left">
 						<div class="editor-field">
 						@Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
 						@Html.LabelFor(model => model.Criteria.CoworkingSpace)
@@ -91,7 +91,8 @@
 						@Html.LabelFor(model => model.Criteria.OtherTypes)
 						</div>
 					</div>
-					<div class="clear"></div>                            
+					<div class="clear"></div>   *@
+                    @Html.DropDownListFor(model => model.Criteria.GlobalType, Model.GlobalTypes)
 				</div>
 			}
 			break;

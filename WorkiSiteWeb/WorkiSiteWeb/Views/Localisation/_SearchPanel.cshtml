@@ -3,6 +3,7 @@
 <h3 class="blue">@Worki.Resources.Views.Search.SearchString.RefineSearch</h3>
 <div id="searchPanelForm">
     @Html.Partial(MVC.Localisation.Views._SearchPanelForm)
+    @Html.HiddenFor(model => model.Criteria.GlobalType)
 </div>
 
 <script type="text/javascript">

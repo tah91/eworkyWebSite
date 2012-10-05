@@ -80,9 +80,9 @@ namespace Worki.Infrastructure.Helpers
             public const string SpotWifi = "spot-wifi";
             public const string CoffeeResto = "cafe-resto";
             public const string Biblio = "biblioteque";
-            public const string TravelerSpace = "espace-voyageur";
+            public const string TravelerSpace = "espace-voyageurs";
             public const string WorkingHotel = "incubateur";
-            public const string PrivateArea = "espace-evenmentiel";
+            public const string PrivateArea = "espace-evenementiel";
             public const string PublicSpace = "cybercafe";
             public const string Hotel = "hotel";
             public const string Type = "type";
@@ -142,6 +142,7 @@ namespace Worki.Infrastructure.Helpers
             public const string PublicSpace = "cyber";
             public const string Hotel = "hotel";
             public const string Type = "type";
+            public const string LocalisationType = "loc-type";
 
             public static List<string> AllLocalisationTypes = new List<string>
             {
@@ -247,6 +248,8 @@ namespace Worki.Infrastructure.Helpers
             public const string Place = "place";
             public const string Boundary = "boundary";
             public const string OfferType = "offerType";
+            public const string SearchOfferType = "offer-type";
+            public const string GlobalType = "global-type";
             public const string Latitude = "lat";
             public const string Longitude = "lng";
             public const string PlaceName = "name";

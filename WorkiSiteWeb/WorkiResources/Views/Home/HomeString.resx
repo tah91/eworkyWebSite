@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>Coworking, partage de bureaux, cafés wifi</value>
+    <value>Centres d'affaires, partage de bureaux, coworking, télécentres</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -170,7 +170,7 @@
     <value>Qui sommes-nous ?</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Trouvez un lieu de travail où vous voulez : bureaux à partager, centre d'affaires, espaces de coworking, café wifi, salle de réunion ou de conférence.</value>
+    <value>Trouvez un lieu de travail où vous voulez : centres d'affaires, coworking, bureaux à partager, télécentres, salles de réunion ou de séminaire.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
@@ -247,7 +247,7 @@
     <value>Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>Parmi &lt;em&gt;{0:### ### ###}&lt;/em&gt; espaces de coworking, cafés wifi, centres d'affaires, bureaux partagés</value>
+    <value>Parmi &lt;em&gt;{0:### ### ###}&lt;/em&gt; centres d'affaires, bureaux partagés, espaces de coworking, télécentres</value>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <value>Ils en parlent</value>

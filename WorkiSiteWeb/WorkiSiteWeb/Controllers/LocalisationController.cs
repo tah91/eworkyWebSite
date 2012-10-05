@@ -708,7 +708,7 @@ namespace Worki.Web.Controllers
             {
                 case eSearchType.ePerOffer:
                     {
-                        var criteria = new SearchCriteria(true);
+                        var criteria = new SearchCriteria { SearchType = eSearchType.ePerOffer };
                         criteria.Place = place;
                         model = new SearchCriteriaFormViewModel(criteria);
                     }
@@ -736,6 +736,14 @@ namespace Worki.Web.Controllers
         }
 
         /// <summary>
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("search-per-offer")]
+        public virtual ActionResult FullSearchPerOffer()
+        {
+            var criteria = new SearchCriteria { SearchType = eSearchType.ePerOffer };
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
+        }
         /// action which redirect to search results, for seo purpose
         /// </summary>
         /// <param name="localisationType">localisation type</param>

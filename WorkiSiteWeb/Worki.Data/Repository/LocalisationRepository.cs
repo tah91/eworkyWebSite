@@ -110,6 +110,23 @@ namespace Worki.Data.Models
                 criteria.Hotel = true;
             }
 
+            switch (criteria.GlobalType)
+            {
+                case eGlobalType.BuisnessCenter_Smartworkcenter:
+                    criteria.BuisnessCenter = true;
+                    criteria.Telecentre = true;
+                    break;
+                case eGlobalType.Coworking_SharedOffice:
+                    criteria.CoworkingSpace = true;
+                    criteria.SharedOffice = true;
+                    break;
+                case eGlobalType.MeetingRoom:
+                    criteria.OfferData.Type = (int)LocalisationOffer.MeetingRoom;
+                    break;
+                default:
+                    break;
+            }
+
             //matching type
             var allowedTypes = new List<int>();
             if (criteria.SpotWifi)

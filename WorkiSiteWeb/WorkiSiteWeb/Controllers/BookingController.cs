@@ -253,7 +253,7 @@ namespace Worki.Web.Controllers
 
 			if (eworkyAmount != 0)
 			{
-				new PaymentItem { Index = 1, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail };
+                payments.Add(new PaymentItem { Index = 1, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail });
 			}
 
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,

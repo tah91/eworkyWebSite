@@ -180,10 +180,13 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Longitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Longitude = floatVal;
 
-            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.OfferType, ref value))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.SearchOfferType, ref value))
                 criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(value);
 
-            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Type, ref value))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.GlobalType, ref value) && int.TryParse(value, out intVal))
+                criteria.GlobalType = (eGlobalType)intVal;
+
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.LocalisationType, ref value))
             {
                 var localisationTypes = value.Split(',');
                 foreach (var item in localisationTypes)

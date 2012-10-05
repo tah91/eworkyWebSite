@@ -1569,6 +1569,7 @@ namespace Worki.Web.Controllers {
             public readonly string AddToOpenGraph = "AddToOpenGraph";
             public readonly string AddFavorite = "AddFavorite";
             public readonly string SearchForm = "SearchForm";
+            public readonly string FullSearchPerOffer = "search-per-offer";
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
             public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
             public readonly string FullSearch = "search";
@@ -1771,6 +1772,11 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchPerOffer() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerOffer);
         public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string type, string place) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
             callInfo.RouteValueDictionary.Add("type", type);

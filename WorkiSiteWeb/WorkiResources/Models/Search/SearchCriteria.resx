@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BuisnessCenter_Smartworkcenter" xml:space="preserve">
+    <value>Centres d'affaires, télécentres</value>
+  </data>
+  <data name="Coworking_SharedOffice" xml:space="preserve">
+    <value>Bureaux partagés, coworking</value>
+  </data>
   <data name="Everything" xml:space="preserve">
     <value>Tous</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Salles de réunion</value>
   </data>
   <data name="Place" xml:space="preserve">
     <value>Lieu</value>
