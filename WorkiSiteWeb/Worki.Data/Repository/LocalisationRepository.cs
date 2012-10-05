@@ -157,7 +157,7 @@ namespace Worki.Data.Models
                 localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
 
             //retrieve list from db, then filter it
-            var locProjectionList = (from item in localisations.ToList()
+            var locProjectionList = (from item in localisations
                                      select new LocalisationProjection
                                      {
                                          ID = item.ID,
