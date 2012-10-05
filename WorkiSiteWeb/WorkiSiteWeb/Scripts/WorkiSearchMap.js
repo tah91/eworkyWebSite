@@ -160,4 +160,5 @@
     this.NeedAutocomplete = _needAutocomplete;
     this.NeedMap = _needMap;
     this.AjaxSubmit = _ajaxSubmit;
+    this.MarkerHandler = this.IsBig ? _markerDetailPopUp : _markerDetailPage;
 }

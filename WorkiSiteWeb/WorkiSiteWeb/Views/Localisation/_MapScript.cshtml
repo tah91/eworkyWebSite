@@ -1,5 +1,6 @@
 ﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
 
+
 <script type="text/javascript">
 
     function initialize() {
@@ -17,14 +18,33 @@
                 mapSearch.Map = new WorkiMap('resultsMap');
                 mapSearch.Map.LoadSearchMap(where, !mapSearch.IsBig);
 
+                var bounds = new google.maps.LatLngBounds();
+
+                mapSearch.Map.ClearMap();
+                if (!mapSearch.IsBig) {
+                    mapSearch.Map.CenterSearchResults(where);
+                }
+
+                var count = 0;
+                @foreach (var item in Model.PageResults)
+                {
+                    @:count++;
+                    @:mapSearch.Map.AddMarker(@item.Latitude, @item.Longitude, '@Html.JSEscape(item.Name)', @item.ID, bounds, mapSearch.MarkerHandler);
+                }
+
+                if (count >= 2 && !mapSearch.IsBig) {
+                    mapSearch.Map.FitBoundsSearchResults(bounds);
+                }
+
+                if (mapSearch.IsBig) {
+                    mapSearch.Map.SetCluster();
+                }
+
                 if (mapSearch.IsBig) {
                     mapSearch.Map.AddHandler('idle', mapSearch.Bounds_changed);
                     mapSearch.Map.AddHandler('dragend', mapSearch.AskForResults);
                     mapSearch.Map.AddHandler('zoom_changed', mapSearch.AskForResults);
                 }
-
-                //relaod it first time
-                //$("#searchFormReset form").submit();
             }
         });
     }

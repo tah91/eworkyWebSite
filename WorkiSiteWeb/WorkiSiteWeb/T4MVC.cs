@@ -1772,11 +1772,11 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult FullSearchPerOffer() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerOffer);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearchPerOffer() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerOffer);
         public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string type, string place) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
             callInfo.RouteValueDictionary.Add("type", type);

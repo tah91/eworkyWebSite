@@ -947,7 +947,6 @@ namespace Worki.Web.Controllers
                         return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url, form = panelForm }, JsonRequestBehavior.AllowGet);
                     }
             }
-
 		}
 
         #endregion
