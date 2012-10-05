@@ -920,6 +920,7 @@ namespace Worki.Web.Controllers
 		{
             var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
             var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
+            var panelForm = this.RenderRazorViewToString(MVC.Localisation.Views._SearchPanelForm, criteriaViewModel);
             var rvd = _SearchService.GetRVD(criteriaViewModel.Criteria);
             var url = Url.Action(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
 
@@ -928,14 +929,14 @@ namespace Worki.Web.Controllers
                 case eResultView.Map:
                     {
                         var locList = (from item in criteriaViewModel.Criteria.Projection select item.GetJson());
-                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url }, JsonRequestBehavior.AllowGet);
+                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url, form = panelForm }, JsonRequestBehavior.AllowGet);
                     }
                 case eResultView.List:
                 default:
                     {
                         var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
                         var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url }, JsonRequestBehavior.AllowGet);
+                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place, url = url, form = panelForm }, JsonRequestBehavior.AllowGet);
                     }
             }
 

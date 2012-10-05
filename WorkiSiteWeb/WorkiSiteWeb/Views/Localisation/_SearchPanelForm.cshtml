@@ -1,0 +1,120 @@
+﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
+
+@using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Criteria.NorthEastLat)
+    @Html.HiddenFor(model => model.Criteria.NorthEastLng)
+    @Html.HiddenFor(model => model.Criteria.SouthWestLat)
+    @Html.HiddenFor(model => model.Criteria.SouthWestLng)
+    @Html.HiddenFor(model => model.Criteria.SearchType)
+    @Html.HiddenFor(model => model.Criteria.ResultView)
+    if (Model.Criteria.SearchType == eSearchType.ePerName)
+    { 
+    @Html.HiddenFor(model => model.Criteria.LocalisationData.Name)
+    }
+	@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
+    <div class="toogle_container active">
+        <div class="block">
+            <div class="editor-field float-left">
+                @Html.TextBoxFor(model => model.Criteria.Place)
+            </div>
+            <div class="buttonStd buttonBlue refineSubmit linkImg float-right">
+                <a href="#" id="resetPlace">@Worki.Resources.Views.Shared.SharedString.Reset</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+                    
+    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
+    <div class="toogle_container active">
+        <div class="block">
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
+            </div>
+        </div>
+	</div>
+
+    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
+    <div class="toogle_container active">
+        <div class="block" id="serviceSelector">
+            @Html.Partial(MVC.Localisation.Views._ServicesSelector)
+        </div>
+    </div>
+                    
+    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
+    <div class="toogle_container active">
+        <div class="block">
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
+                @Html.LabelFor(model => model.Criteria.CoworkingSpace)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.Telecentre)
+                @Html.LabelFor(model => model.Criteria.Telecentre)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.SharedOffice)
+                @Html.LabelFor(model => model.Criteria.SharedOffice)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
+                @Html.LabelFor(model => model.Criteria.BuisnessCenter)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
+                @Html.LabelFor(model => model.Criteria.SpotWifi)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
+                @Html.LabelFor(model => model.Criteria.CoffeeResto)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.Biblio)
+                @Html.LabelFor(model => model.Criteria.Biblio)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
+                @Html.LabelFor(model => model.Criteria.TravelerSpace)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
+                @Html.LabelFor(model => model.Criteria.WorkingHotel)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
+                @Html.LabelFor(model => model.Criteria.PrivateArea)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
+                @Html.LabelFor(model => model.Criteria.PublicSpace)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Criteria.Hotel)
+                @Html.LabelFor(model => model.Criteria.Hotel)
+            </div>
+        </div>
+    </div>
+
+    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h4>
+    <div class="toogle_container">
+        <div class="block">
+            <div>
+                <div id="searchOption0">
+                    <div id="searchOptionToReplace">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear">
+    </div>
+    
+    <script type="text/javascript">
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
+    </script>
+    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria)
+}

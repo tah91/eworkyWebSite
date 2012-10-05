@@ -49,26 +49,26 @@
 
     var ajaxSubmit = true;
     //result view changed => no ajax
-    $('#resultByMap').click(function (evt) {
+    $('#resultByMap').live('click', function (evt) {
         $('#Criteria_ResultView').val('@eResultView.Map');
         ajaxSubmit = false;
         $("#searchFormReset form").submit();
     });
 
-    $('#resultByList').click(function (evt) {
+    $('#resultByList').live('click', function (evt) {
         $('#Criteria_ResultView').val('@eResultView.List');
         ajaxSubmit = false;
         $("#searchFormReset form").submit();
     });
 
-    $("#searchFormReset form").submit(function (evt) {
+    $("#searchFormReset form").live('submit', function (evt) {
         if (ajaxSubmit && (mapSearch.AjaxSubmit || mapSearch.NeedMap)) {
             mapSearch.SubmitData();
             return false;
         }
     });
 
-    $('#Criteria_Place').blur(function (evt) {
+    $('#Criteria_Place').live('blur', function (evt) {
         mapSearch.WorkiGeoCoder.SearchHandler(evt, function () {
             $('#Criteria_NorthEastLat').val(0);
             $('#Criteria_NorthEastLng').val(0);

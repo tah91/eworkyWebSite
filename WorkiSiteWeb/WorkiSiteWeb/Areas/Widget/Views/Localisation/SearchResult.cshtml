@@ -65,7 +65,7 @@
                     if(mapSearch.NeedMap) {
                         mapSearch.PushResults(data.place, data.localisations);
                     }
-                    $('.loaderBlock').addClass("visuallyhidden");
+                    hideLoadPending();
                 };
 
                 mapSearch = new WorkiMapSearch('@Html.Raw(Url.Action(MVC.Widget.Localisation.ActionNames.MapItemSummary, MVC.Widget.Localisation.Name))', 

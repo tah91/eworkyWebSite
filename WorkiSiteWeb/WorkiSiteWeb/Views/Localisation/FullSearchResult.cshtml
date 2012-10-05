@@ -18,7 +18,9 @@
         <div class="searchFormBlockLeft">
             @if (Model.Criteria.ResultView == eResultView.List)
             {
+            <div id="searchResults">
                 @Html.Partial(MVC.Localisation.Views._SearchResults)
+            </div>
             }
             else
             {
@@ -44,7 +46,9 @@
                 </div>
                 @if (Model.Criteria.ResultView == eResultView.List)
                 {
+                <div id="searchSelectorContainer" class="float-right">
                     @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+                </div>
                 }
                 <div class="clear">
                 </div>
@@ -68,11 +72,3 @@
 	<div class="clear">
     </div>
 </div>
-
-@section ScriptContent
-{
-    <script type="text/javascript">
-        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
-    </script>
-    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
-}

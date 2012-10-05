@@ -72,15 +72,23 @@ function ErrorBuilder(id, errorId) {
     this.ErrorFunc = ErrorFunc;
 }
 
-function InitLoadPending() {
+function showLoadPending() {
+    $('.loaderBlock').removeClass('visuallyhidden');
+}
+
+function hideLoadPending() {
+    $('.loaderBlock').addClass('visuallyhidden');
+}
+
+function initLoadPending() {
     //ajax load pending
-    $('.loaderBlock').addClass('visuallyhidden');   // hide it initially
+    hideLoadPending();   // hide it initially
     jQuery.ajaxSetup({
         beforeSend: function () {
-            $('.loaderBlock').removeClass('visuallyhidden');
+            showLoadPending();
         },
         complete: function () {
-            $('.loaderBlock').addClass('visuallyhidden');
+            hideLoadPending();
         },
         success: function () { }
     });
