@@ -247,7 +247,7 @@
     <value>You have free desks in your offices ? Share them on eWorky for free and get some extra income!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>More than &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
+    <value>More than &lt;em&gt;{0:### ### ###}&lt;/em&gt; business centers, shared offices, coworking spaces, smart work centers</value>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <value>As seen on</value>

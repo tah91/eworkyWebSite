@@ -251,7 +251,7 @@
     <value>¿Tienes mesas sin ocupar en tu oficina? ¡Compártelas en eWorky y consigue ingresos adicionales!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
-    <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
+    <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; centros de negocio, espacios de coworking, oficinas compartidas</value>
   </data>
   <data name="SliderItemDesc" xml:space="preserve">
     <value>{0} en {1}</value>

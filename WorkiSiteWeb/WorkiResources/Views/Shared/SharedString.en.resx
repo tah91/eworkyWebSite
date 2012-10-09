@@ -315,4 +315,7 @@
   <data name="MoreDetails" xml:space="preserve">
     <value>More details</value>
   </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Carry on</value>
+  </data>
 </root>
