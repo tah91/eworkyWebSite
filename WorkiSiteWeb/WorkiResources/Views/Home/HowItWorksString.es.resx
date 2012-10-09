@@ -202,7 +202,7 @@
     <value>Pagar online</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Crea gratuitamente {0} especificando que eres propietario</value>
+    <value>Crea {0} de forma gratuita, especificando que eres propietario</value>
   <comment>JM Modif l.22</comment></data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>una ficha para tu espacio</value>

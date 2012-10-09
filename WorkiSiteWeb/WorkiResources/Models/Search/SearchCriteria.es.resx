@@ -123,4 +123,13 @@
   <data name="Place" xml:space="preserve">
     <value>Espacio</value>
   </data>
+  <data name="BuisnessCenter_Smartworkcenter" xml:space="preserve">
+    <value>Centros de negocios, centro de teletrabajo</value>
+  </data>
+  <data name="Coworking_SharedOffice" xml:space="preserve">
+    <value>Oficina compartida, coworking</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Salas de reunión</value>
+  </data>
 </root>
