@@ -344,4 +344,7 @@
   <data name="Host" xml:space="preserve">
     <value>Anfitrión</value>
   </data>
+  <data name="PlaceNotAvailable" xml:space="preserve">
+    <value>Este espacio ya no está disponible</value>
+  </data>
 </root>

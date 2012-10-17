@@ -289,7 +289,7 @@
     <value>¡Dinos algo más sobre tus ofertas de despachos independientes!</value>
   </data>
   <data name="DuplicateCount" xml:space="preserve">
-    <value>Número e ofertas idénticas</value>
+    <value>Número de ofertas idénticas</value>
   </data>
   <data name="MeetingRoomCount" xml:space="preserve">
     <value>Número de salas de reunión</value>

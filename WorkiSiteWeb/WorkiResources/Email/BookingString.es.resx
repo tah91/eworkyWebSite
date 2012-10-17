@@ -315,4 +315,13 @@ La consulta de la primera solicitud de contacto es gratuita. Entra en tu Acceso 
 
 Entra en tu {3} para consultar esta solicitud y contestar o rechazarla lo antes posible. </value>
   </data>
+  <data name="BookingNewMemberBody" xml:space="preserve">
+    <value>Según los datos que nos has proporcionado para la reserva de un {0} del {1} al {2} a las {3} ({4}), te hemos creado una cuenta eWorky. Te permitirá seguir el historial y las novedades sobre tus reservas. 
+
+Tu usuario es "{5}" y tu contraseña provisional "{6}". Puedes cambiar tu contraseña en tu perfil: {7}. 
+
+Por favor, completa los detalles de tu perfil aqui: {8}.
+
+Esperamos volver a verte pronto en eWorky.es,</value>
+  </data>
 </root>

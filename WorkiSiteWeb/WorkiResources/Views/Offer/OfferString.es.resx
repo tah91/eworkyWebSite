@@ -172,7 +172,7 @@
     <value>Descripción de la oferta</value>
   <comment>DE</comment></data>
   <data name="DuplicateHelp" xml:space="preserve">
-    <value>Seleccionar dentro de tus ofertas restantes de {0}, cuales corresponden a la misma descripción, a los mismos precios y a las mismas características.</value>
+    <value>Selecciona dentro de las demás ofertas de {0}, cuales corresponden a la misma descripción, a los mismos precios y a las mismas características.</value>
   </data>
   <data name="EditOffers" xml:space="preserve">
     <value>Editar las ofertas</value>
