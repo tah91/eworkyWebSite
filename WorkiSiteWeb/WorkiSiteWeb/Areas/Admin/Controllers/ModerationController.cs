@@ -687,13 +687,13 @@ namespace Worki.Web.Areas.Admin.Controllers
                     var urlHelp = new UrlHelper(ControllerContext.RequestContext);
 
                     var offlineAndRedirectUrl = urlHelp.ActionAbsolute(MVC.Localisation.PutOfflineAndRedirect(item.ID, surveyLink));
-                    offlineAndRedirectUrl = offlineAndRedirectUrl.Replace("localhost:15157", "www.eworky.fr");
+                    offlineAndRedirectUrl = offlineAndRedirectUrl.Replace("localhost:15157", "www.eworky.com");
                     TagBuilder offlineAndRedirectLink = new TagBuilder("a");
                     offlineAndRedirectLink.MergeAttribute("href", offlineAndRedirectUrl);
                     offlineAndRedirectLink.InnerHtml = "cliquer sur ce lien pour la mettre hors ligne";
 
                     var editUrl = urlHelp.ActionAbsolute(MVC.Localisation.Edit(item.ID));
-                    editUrl = editUrl.Replace("localhost:15157", "www.eworky.fr");
+                    editUrl = editUrl.Replace("localhost:15157", "www.eworky.com");
                     TagBuilder editLink = new TagBuilder("a");
                     editLink.MergeAttribute("href", editUrl);
                     editLink.InnerHtml = "compléter au mieux votre fiche avec les prix des différentes offres et des photos";
