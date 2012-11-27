@@ -2295,4 +2295,88 @@ namespace Worki.Data.Models
 			get { return (Feature)FeatureID; }
 		}
 	}
+
+    public class LocalisationCartItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+    }
+
+    public class LocalisationCart
+    {
+        public LocalisationCart()
+        {
+        }
+
+        List<LocalisationCartItem> _Items = null;
+        public List<LocalisationCartItem> Items
+        {
+            get
+            {
+                if (_Items == null)
+                    _Items = new List<LocalisationCartItem>();
+                return _Items;
+            }
+        }
+
+        public bool   NeedNewAccount { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string Email { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string PhoneNumber { get; set; }
+
+        public string Message { get; set; }
+
+        public void CopyData(LocalisationCart toCopy)
+        {
+            //NeedNewAccount = toCopy.NeedNewAccount;
+            FirstName = toCopy.FirstName;
+            LastName = toCopy.LastName;
+            Email = toCopy.Email;
+            PhoneNumber = toCopy.PhoneNumber;
+            Message = toCopy.Message;
+        }
+
+        public LocalisationCartItem AddItem(int id, string name, string url)
+        {
+            if (Items.Count(i => i.Id == id) != 0)
+                return null;
+
+            var toAdd = new LocalisationCartItem { Id = id, Name = name, Url = url };
+            Items.Add(toAdd);
+
+            return toAdd;
+        }
+
+        public void AddItem(LocalisationCartItem item)
+        {
+            if (Items.Count(i => i.Id == item.Id) != 0)
+                return;
+
+            Items.Add(item);
+        }
+
+        public void RemoveItem(int id)
+        {
+            Items.RemoveAll(i => i.Id == id);
+        }
+
+        public void Clear()
+        {
+            Items.Clear();
+        }
+    }
 }

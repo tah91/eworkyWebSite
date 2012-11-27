@@ -17,16 +17,36 @@ namespace Worki.Data.Models
 		public MemberQuotation MemberQuotation { get; set; }
 		public Offer QuotationOffer { get; set; }
 
-		public MemberQuotationFormViewModel(Member member, Offer offer)
+        void Init(Member member, Offer offer)
         {
-			MemberQuotation = new MemberQuotation();
-			QuotationOffer = offer;
+            MemberQuotation = new MemberQuotation();
+            QuotationOffer = offer;
             var membetExists = member != null;
             PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty;
             NeedNewAccount = !membetExists;
             FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty;
             LastName = membetExists ? member.MemberMainData.LastName : string.Empty;
             Email = membetExists ? member.Email : string.Empty;
+        }
+
+		public MemberQuotationFormViewModel(Member member, Offer offer)
+        {
+            Init(member, offer);
+        }
+
+        public MemberQuotationFormViewModel(Member member, Offer offer, LocalisationCart cart)
+        {
+            Init(member, offer);
+            if (string.IsNullOrEmpty(Email))
+                Email = cart.Email;
+            if (string.IsNullOrEmpty(PhoneNumber))
+                PhoneNumber = cart.PhoneNumber;
+            if (string.IsNullOrEmpty(FirstName))
+                FirstName = cart.FirstName;
+            if (string.IsNullOrEmpty(LastName))
+                LastName = cart.LastName;
+
+            MemberQuotation.Message = cart.Message;
         }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

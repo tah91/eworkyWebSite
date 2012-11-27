@@ -294,6 +294,7 @@
     <Compile Include="Infrastructure\Helpers\WebHelper.cs" />
     <Compile Include="Infrastructure\Helpers\ModelHelper.cs" />
     <Compile Include="Infrastructure\Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\ModelBinder\LocalisationCartBinder.cs" />
     <Compile Include="Infrastructure\OAuth2AuthorizationServer.cs" />
     <Compile Include="Infrastructure\PaymentHandler\BookingPaymentHandler.cs" />
     <Compile Include="Infrastructure\Model\MenuItem.cs" />
@@ -1121,6 +1122,8 @@
     <Content Include="Views\Localisation\EditOffers.cshtml" />
     <Content Include="Views\Emails\__Layout.cshtml" />
     <Content Include="Views\Localisation\_SearchPanelForm.cshtml" />
+    <Content Include="Views\Quotation\_CartPanel.cshtml" />
+    <Content Include="Views\Quotation\_CartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

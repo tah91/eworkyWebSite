@@ -2145,6 +2145,26 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult PayWithPayPal() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CartPanel() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CartPanel);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AddToCart() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddToCart);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult RemoveFromCart() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.RemoveFromCart);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SendCart() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SendCart);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public QuotationController Actions { get { return MVC.Quotation; } }
@@ -2162,6 +2182,10 @@ namespace Worki.Web.Controllers {
             public readonly string Details = "Details";
             public readonly string Edit = "Edit";
             public readonly string PayWithPayPal = "paywithpaypal";
+            public readonly string CartPanel = "CartPanel";
+            public readonly string AddToCart = "AddToCart";
+            public readonly string RemoveFromCart = "RemoveFromCart";
+            public readonly string SendCart = "SendCart";
         }
 
 
@@ -2170,6 +2194,8 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _CartItem = "~/Views/Quotation/_CartItem.cshtml";
+            public readonly string _CartPanel = "~/Views/Quotation/_CartPanel.cshtml";
             public readonly string Create = "~/Views/Quotation/Create.cshtml";
             public readonly string Details = "~/Views/Quotation/Details.cshtml";
             public readonly string Edit = "~/Views/Quotation/Edit.cshtml";
@@ -2215,6 +2241,32 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CartPanel(Worki.Data.Models.LocalisationCart cart) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CartPanel);
+            callInfo.RouteValueDictionary.Add("cart", cart);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddToCart(int id, Worki.Data.Models.LocalisationCart cart) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddToCart);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("cart", cart);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult RemoveFromCart(int id, Worki.Data.Models.LocalisationCart cart) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RemoveFromCart);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("cart", cart);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendCart(Worki.Data.Models.LocalisationCart cart) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendCart);
+            callInfo.RouteValueDictionary.Add("cart", cart);
             return callInfo;
         }
 

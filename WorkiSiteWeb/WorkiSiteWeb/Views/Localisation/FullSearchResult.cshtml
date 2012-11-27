@@ -34,39 +34,45 @@
     </div>
 
     <div class="searchFormBlock float-right blockContainer">
-		<div class="contentBlock" id="resultSearchBlock">
-            <div class="marginb10" >
-                <div class="float-left bold noUnderline">
-                    <div class="float-left resultViewSelect @(Model.Criteria.ResultView == eResultView.Map ? "orange" : "")">
-                        <a href=# id="resultByMap">@Worki.Resources.Views.Mobile.MobileString.Map</a>
+        <div id="resultSearchBlock">
+            <div class="contentBlock" >
+	            <h3 class="blue">@Worki.Resources.Views.Booking.BookingString.Cart</h3>
+	            @{Html.RenderAction(MVC.Quotation.CartPanel());}
+            </div>
+		    <div class="contentBlock">
+                <div class="marginb10" >
+                    <div class="float-left bold noUnderline">
+                        <div class="float-left resultViewSelect @(Model.Criteria.ResultView == eResultView.Map ? "orange" : "")">
+                            <a href=# id="resultByMap">@Worki.Resources.Views.Mobile.MobileString.Map</a>
+                        </div>
+                        <div class="float-right resultViewSelect @(Model.Criteria.ResultView == eResultView.List ? "orange" : "")">
+                            <a href=# id="resultByList">@Worki.Resources.Views.Mobile.MobileString.List</a>
+                        </div>
                     </div>
-                    <div class="float-right resultViewSelect @(Model.Criteria.ResultView == eResultView.List ? "orange" : "")">
-                        <a href=# id="resultByList">@Worki.Resources.Views.Mobile.MobileString.List</a>
+                    @if (Model.Criteria.ResultView == eResultView.List)
+                    {
+                    <div id="searchSelectorContainer" class="float-right">
+                        @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+                    </div>
+                    }
+                    <div class="clear">
                     </div>
                 </div>
                 @if (Model.Criteria.ResultView == eResultView.List)
-                {
-                <div id="searchSelectorContainer" class="float-right">
-                    @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
-                </div>
-                }
-                <div class="clear">
-                </div>
-            </div>
-            @if (Model.Criteria.ResultView == eResultView.List)
-            { 
-			<div class="resultsMapDiv">
-                <div class="relative">
-                    <div class="mapContainer smallResultsMap" id="resultsMap">
+                { 
+			    <div class="resultsMapDiv">
+                    <div class="relative">
+                        <div class="mapContainer smallResultsMap" id="resultsMap">
+                        </div>
+                        @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
                     </div>
-                    @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
+                </div> 
+                }
+                <div class="searchResultFormDiv" id="searchFormReset">
+                    @Html.Partial(MVC.Localisation.Views._SearchPanel)
                 </div>
-            </div> 
-            }
-            <div class="searchResultFormDiv" id="searchFormReset">
-                @Html.Partial(MVC.Localisation.Views._SearchPanel)
-            </div>
-		</div>
+		    </div>
+        </div>
     </div>
 
 	<div class="clear">

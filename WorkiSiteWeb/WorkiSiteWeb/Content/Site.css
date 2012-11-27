@@ -2655,3 +2655,15 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	margin: 15px auto;*/
 }
 
+/* CART PANEL
+----------------------------------------------------------*/
+
+#cartForm .input-validation-error 
+{
+    background-color: white;
+}
+
+.cartRow td:first-child
+{
+    width:180px;
+}

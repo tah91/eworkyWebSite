@@ -1,0 +1,10 @@
+﻿@model LocalisationCartItem
+
+<tr class="cartRow">
+    <td>
+        <a href="@Model.Url" class="orange">@Model.Name</a>
+    </td>
+    <td>
+        <div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Quotation.RemoveFromCart(Model.Id, null), new { @class = "removeFromCart" })</div>
+    </td>
+</tr>

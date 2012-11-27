@@ -395,4 +395,19 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
   <data name="ContactAvailable" xml:space="preserve">
     <value>Les coordonnées du prospect pour l'offre {0} sont disponibles !</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Ajouter au panier</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Panier</value>
+  </data>
+  <data name="CartHelpEmpty" xml:space="preserve">
+    <value>Ajoutez à votre liste et insérez vos coordonnées pour obtenir plus de détails.</value>
+  </data>
+  <data name="CartHelpNotEmpty" xml:space="preserve">
+    <value>Ajoutez votre sélection à la liste ci-dessus pour pouvoir accéder à plus de détails.</value>
+  </data>
+  <data name="ValidateCart" xml:space="preserve">
+    <value>Valider le panier</value>
+  </data>
 </root>
