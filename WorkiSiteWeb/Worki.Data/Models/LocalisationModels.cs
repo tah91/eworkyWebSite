@@ -2318,6 +2318,11 @@ namespace Worki.Data.Models
                     _Items = new List<LocalisationCartItem>();
                 return _Items;
             }
+
+            set
+            {
+                _Items = value;
+            }
         }
 
         public bool   NeedNewAccount { get; set; }
