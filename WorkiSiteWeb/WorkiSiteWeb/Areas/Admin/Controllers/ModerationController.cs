@@ -670,7 +670,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 
             var message = "";
             var tenDaysAgo =  DateTime.UtcNow.AddDays(-10);
-            var surveyLink = "http://freeonlinesurveys.com/app/rendersurvey.asp?sid=k6ayan6kqlq5jzg103522";
+            //var surveyLink = "http://freeonlinesurveys.com/app/rendersurvey.asp?sid=k6ayan6kqlq5jzg103522";
             try
             {
                 var oldSharedOffices = lRepo.GetMany(l => l.TypeValue == (int)LocalisationType.SharedOffice &&
@@ -686,7 +686,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 
                     var urlHelp = new UrlHelper(ControllerContext.RequestContext);
 
-                    var offlineAndRedirectUrl = urlHelp.ActionAbsolute(MVC.Localisation.PutOfflineAndRedirect(item.ID, surveyLink));
+                    var offlineAndRedirectUrl = urlHelp.ActionAbsolute(MVC.Localisation.PutOfflineAndRedirect(item.ID, null));
                     offlineAndRedirectUrl = offlineAndRedirectUrl.Replace("localhost:15157", "www.eworky.com");
                     TagBuilder offlineAndRedirectLink = new TagBuilder("a");
                     offlineAndRedirectLink.MergeAttribute("href", offlineAndRedirectUrl);
